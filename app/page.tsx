@@ -1,16 +1,38 @@
+import Link from "next/link";
+
+import { Button } from "@/components/ui/button";
+import { Hero } from "@/components/layout/hero";
+import { FeaturedEssays } from "@/components/home/featured-essays";
+import { FeaturedBlueprints } from "@/components/home/featured-blueprints";
+import { FeaturedLabs } from "@/components/home/featured-labs";
+import { NewsletterCta } from "@/components/home/newsletter-cta";
+
 export default function Home() {
   return (
-    <main className="flex flex-1 flex-col items-center justify-center gap-4 px-6 text-center">
-      <p className="font-mono text-xs tracking-[0.2em] text-muted-foreground uppercase">
-        Project scaffold — Phase 1
-      </p>
-      <h1 className="font-serif text-5xl font-medium tracking-tight text-balance sm:text-6xl">
-        Bodhi<span className="text-brand">Protocol</span>
-      </h1>
-      <p className="max-w-md text-base text-muted-foreground">
-        Understand complex systems through essays, visual explanations, and
-        interactive learning.
-      </p>
-    </main>
+    <>
+      <Hero
+        eyebrow="BodhiProtocol"
+        title="Understand Complex Systems."
+        description="Essays. Visual Learning. Interactive Labs."
+        actions={
+          <>
+            <Button nativeButton={false} render={<Link href="/essays" />}>
+              Explore Essays
+            </Button>
+            <Button
+              variant="outline"
+              nativeButton={false}
+              render={<Link href="/labs" />}
+            >
+              Explore Labs
+            </Button>
+          </>
+        }
+      />
+      <FeaturedEssays />
+      <FeaturedBlueprints />
+      <FeaturedLabs />
+      <NewsletterCta />
+    </>
   );
 }
