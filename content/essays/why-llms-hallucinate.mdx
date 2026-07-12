@@ -1,0 +1,34 @@
+---
+title: "Why LLMs Hallucinate"
+description: "The mechanics behind confident, wrong answers — and what that implies for how you use AI tools."
+category: "Artificial Intelligence"
+tags: ["ai", "llm"]
+author: "Surya"
+date: "2026-07-10"
+---
+
+Ask a language model a question it doesn't know the answer to, and it rarely says "I don't know." Instead, it tells you something specific, plausible, and wrong — a fabricated citation, a function that doesn't exist, a date that's off by a decade. This isn't a bug that a bigger model quietly fixes. It's a direct consequence of what these models are actually trained to do.
+
+## The model was never trained to be right
+
+A large language model is trained on one core task: given the text so far, predict the most probable next token. It's optimized for *fluency and plausibility*, not for a separate, explicit notion of truth. There's no internal step where the model checks a fact against a database and reports "unknown" if it's not there. Every answer, true or false, is produced by exactly the same mechanism — pattern completion.
+
+That means a hallucination isn't the model "lying." It's the model doing precisely what it was trained to do — produce statistically plausible text — in a situation where plausible and true have quietly come apart.
+
+## Confidence is not a measurement
+
+Humans read confident, fluent prose as a signal that the speaker knows what they're talking about. LLMs generate confident, fluent prose *unconditionally* — the model's fluency doesn't fluctuate based on whether it actually has reliable information. A model discussing a well-documented topic and a model inventing a nonexistent research paper use the exact same tone, the same sentence structure, the same apparent certainty. There's no dial inside the model for "how sure am I," at least not one that's exposed in the output by default.
+
+## Where it gets worse: the long tail
+
+Hallucination rates aren't evenly distributed. They spike in predictable places:
+
+- **Sparse training data** — obscure APIs, small libraries, niche historical facts. The model has seen just enough to pattern-match a plausible-sounding answer, not enough to have actually learned the real one.
+- **Compound specificity** — ask for a precise citation, a specific line number, an exact date, and you're asking the model to hit a needle in a haystack of plausible-sounding needles. It will pick one.
+- **Leading questions** — "What year did X happen?" presupposes X happened. The model tends to go along with the premise rather than push back on it.
+
+## What this implies for how you use these tools
+
+None of this means LLMs are unreliable in general — for reasoning through a problem, drafting, summarizing, or explaining a well-covered concept, the fluency *is* the value. The failure mode specifically shows up around **verifiable, specific facts**: citations, statistics, code that needs to actually run, anything with a single correct answer buried in a sea of plausible-sounding ones.
+
+The practical rule follows directly from the mechanism: the more specific and checkable the claim, the more you should verify it independently — not because the model is untrustworthy, but because "trustworthy" was never the property it was optimized for in the first place.

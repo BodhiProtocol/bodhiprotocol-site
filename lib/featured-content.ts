@@ -1,43 +1,7 @@
-import type { Blueprint, Essay, Lab } from "@/types/content";
+import type { Blueprint, Lab } from "@/types/content";
 
-// Seed content for the homepage until Phases 5-7 wire up the real
-// MDX-backed Essays/Lighthouse/Labs pipelines.
-
-export const featuredEssays: Essay[] = [
-  {
-    slug: "how-order-books-work",
-    title: "How Order Books Actually Work",
-    description:
-      "A visual walk-through of bid/ask spreads, market depth, and why price moves the way it does.",
-    category: "Capital Markets",
-    tags: ["markets", "trading"],
-    author: "Surya",
-    date: "Jul 2026",
-    readingTime: "6 min",
-  },
-  {
-    slug: "why-llms-hallucinate",
-    title: "Why LLMs Hallucinate",
-    description:
-      "The mechanics behind confident, wrong answers — and what that implies for how you use AI tools.",
-    category: "Artificial Intelligence",
-    tags: ["ai", "llm"],
-    author: "Surya",
-    date: "Jul 2026",
-    readingTime: "5 min",
-  },
-  {
-    slug: "writing-requirements-that-survive-contact",
-    title: "Writing Requirements That Survive Contact With Engineering",
-    description:
-      "Why most business requirements fall apart in sprint planning, and how to write ones that don't.",
-    category: "Business Analysis",
-    tags: ["requirements", "process"],
-    author: "Surya",
-    date: "Jun 2026",
-    readingTime: "7 min",
-  },
-];
+// Seed content for the homepage until Phases 6-7 wire up the real
+// Lighthouse/Labs pipelines. Essays now come from lib/essays.ts.
 
 export const featuredBlueprints: Blueprint[] = [
   {

@@ -1,0 +1,34 @@
+---
+title: "How Order Books Actually Work"
+description: "A visual walk-through of bid/ask spreads, market depth, and why price moves the way it does."
+category: "Capital Markets"
+tags: ["markets", "trading"]
+author: "Surya"
+date: "2026-07-12"
+---
+
+Every price you see on a stock ticker is a lie of convenience. It's not "the price" — it's the last price two people agreed on. The real state of the market is a living structure called the order book, and understanding it changes how you read every price move that follows.
+
+## Two stacks of intent
+
+An order book is just two lists. On one side, buyers say what they're willing to pay — the **bids**. On the other, sellers say what they're willing to accept — the **asks** (or offers). Each list is sorted by price: the best bid (highest price a buyer will pay) sits at the top of one stack, the best ask (lowest price a seller will accept) sits at the top of the other.
+
+The gap between those two numbers is the **spread**. A tight spread (a cent or two on a liquid stock) means lots of people are actively disagreeing about price in a narrow range — that's a healthy, liquid market. A wide spread means few participants, or a lot of uncertainty about fair value.
+
+## Depth is the part most people miss
+
+The best bid and ask only tell you the price for the *next* trade, not what happens after that. Behind the top-of-book price sits **depth** — all the orders queued at worse prices, waiting their turn. A stock can have a tight one-cent spread but almost no depth behind it, meaning a single moderately sized order can blow through several price levels and move the market meaningfully. That's the mechanical reason "thin" markets are more volatile: there's nothing absorbing size.
+
+## A trade is a collision, not an event
+
+Nothing happens in an order book until a bid and an ask cross — until someone is willing to pay what someone else is willing to accept. When a new order arrives priced aggressively enough to match the best price on the other side, a trade executes immediately, and that execution price becomes the new "last price" everyone quotes. Everything else — candles, tickers, price charts — is just a time series built from these collisions.
+
+## Why this matters
+
+Once you see the book as two competing stacks instead of a single number, a lot of market behavior stops looking mysterious:
+
+- **Slippage** is just running out of depth at your price and having to accept worse ones further down the stack.
+- **Spoofing** (placing large orders you never intend to fill) works because it changes what other participants *believe* about depth, without ever adding real liquidity.
+- **Flash moves** happen when a thin book meets a large order — there's no depth to cushion the impact.
+
+The order book isn't hidden machinery behind the market. On most modern exchanges, it *is* the market — and once you can read it, price charts start to look like the shadow it casts.

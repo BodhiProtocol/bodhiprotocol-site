@@ -1,0 +1,33 @@
+---
+title: "Writing Requirements That Survive Contact With Engineering"
+description: "Why most business requirements fall apart in sprint planning, and how to write ones that don't."
+category: "Business Analysis"
+tags: ["requirements", "process"]
+author: "Surya"
+date: "2026-06-28"
+---
+
+Most requirements documents fail the same way: they read perfectly clearly to the person who wrote them, and then fall apart the moment an engineer asks the first follow-up question in sprint planning. The gap isn't intelligence or effort — it's that the requirement was written to describe the *what* the business wants, without ever forcing a decision on the *edge cases* that engineering will inevitably hit first.
+
+## The requirement that sounds complete but isn't
+
+"Users should be able to reset their password via email" looks like a complete requirement. It isn't. It's a headline. The moment an engineer starts building it, real questions surface immediately:
+
+- What happens if the email doesn't exist in the system? Do we say so, or stay silent to avoid leaking which emails are registered?
+- How long is the reset link valid?
+- Can a user request a second reset link before using the first one — does the first one get invalidated?
+- Is there a rate limit, and what does the user see if they hit it?
+
+None of these are edge cases in the dismissive sense — they're the *actual specification*. A requirement that doesn't answer them isn't incomplete by 10%; it's a title without a body.
+
+## Write the failure paths first
+
+The reliable way to catch this before it reaches sprint planning is to write the unhappy paths before the happy path. If you can describe what happens when the input is wrong, missing, late, duplicated, or unauthorized, the happy path falls out almost for free — it's just "none of the above happened." Requirements that only describe the happy path are requirements that were never stress-tested against reality.
+
+## Acceptance criteria are a contract, not documentation
+
+Treat acceptance criteria as the actual deliverable, not a formality attached to one. A useful test: could two different engineers, working independently, build something testably identical from your acceptance criteria alone? If the answer depends on them both happening to make the same assumptions, the criteria aren't specific enough yet — they're leaving decisions to whoever implements it, which means the business is no longer the one making the decision.
+
+## The one-sentence check
+
+Before a requirement goes into a sprint, it should survive this question: **"What should happen when this goes wrong?"** — asked of every input, every dependency, and every actor involved. If you don't know the answer, that's not a gap to leave for engineering to fill in. It's the next thing to go define, because whatever they fill it in with becomes the real, shipped behavior — whether or not it was ever actually a decision the business meant to make.
