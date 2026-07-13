@@ -7,9 +7,9 @@ import { Section } from "@/components/ui/section";
 import { H1 } from "@/components/ui/typography";
 import { Divider } from "@/components/ui/divider";
 import { EssayMeta } from "@/components/essays/essay-meta";
-import { EssayNav } from "@/components/essays/essay-nav";
+import { ContentNav } from "@/components/shared/content-nav";
 import { RelatedEssays } from "@/components/essays/related-essays";
-import { TableOfContents } from "@/components/essays/table-of-contents";
+import { TableOfContents } from "@/components/shared/table-of-contents";
 import {
   getAdjacentEssays,
   getAllEssays,
@@ -75,7 +75,7 @@ export default async function EssayPage({ params }: EssayPageProps) {
             </div>
             <Divider />
             <RelatedEssays essays={related} />
-            <EssayNav previous={previous} next={next} />
+            <ContentNav previous={previous} next={next} basePath="/essays" />
           </article>
           <aside className="hidden lg:block">
             <div className="sticky top-24">

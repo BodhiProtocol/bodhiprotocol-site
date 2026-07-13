@@ -2,15 +2,20 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 import { Muted } from "@/components/ui/typography";
-import { cn } from "@/lib/utils";
-import type { Essay } from "@/types/content";
 
-function EssayNav({
+interface NavItem {
+  slug: string;
+  title: string;
+}
+
+function ContentNav({
   previous,
   next,
+  basePath,
 }: {
-  previous: Essay | null;
-  next: Essay | null;
+  previous: NavItem | null;
+  next: NavItem | null;
+  basePath: string;
 }) {
   if (!previous && !next) return null;
 
@@ -18,7 +23,7 @@ function EssayNav({
     <nav className="grid gap-4 border-t border-border pt-8 sm:grid-cols-2">
       {previous ? (
         <Link
-          href={`/essays/${previous.slug}`}
+          href={`${basePath}/${previous.slug}`}
           className="group flex flex-col gap-1 rounded-lg border border-border p-4 transition-colors hover:border-foreground/30"
         >
           <Muted className="flex items-center gap-1 text-xs">
@@ -34,10 +39,8 @@ function EssayNav({
       )}
       {next ? (
         <Link
-          href={`/essays/${next.slug}`}
-          className={cn(
-            "group flex flex-col items-end gap-1 rounded-lg border border-border p-4 text-right transition-colors hover:border-foreground/30",
-          )}
+          href={`${basePath}/${next.slug}`}
+          className="group flex flex-col items-end gap-1 rounded-lg border border-border p-4 text-right transition-colors hover:border-foreground/30"
         >
           <Muted className="flex items-center gap-1 text-xs">
             Next
@@ -52,4 +55,4 @@ function EssayNav({
   );
 }
 
-export { EssayNav };
+export { ContentNav };

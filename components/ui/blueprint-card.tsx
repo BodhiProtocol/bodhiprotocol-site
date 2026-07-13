@@ -21,18 +21,14 @@ function BlueprintCard({ blueprint }: { blueprint: Blueprint }) {
           </div>
         ) : null}
         <div className="flex flex-1 flex-col gap-3 px-(--card-spacing)">
+          <Tag>{blueprint.module}</Tag>
           <h3 className="font-heading text-lg leading-snug font-medium text-balance group-hover:text-brand">
             {blueprint.title}
           </h3>
           <Muted className="line-clamp-2">{blueprint.summary}</Muted>
-          <div className="mt-auto flex flex-wrap items-center gap-2 pt-1">
-            {blueprint.tags.map((tag) => (
-              <Tag key={tag}>{tag}</Tag>
-            ))}
-            <Muted className="ml-auto font-mono text-xs">
-              {blueprint.readingTime}
-            </Muted>
-          </div>
+          <Muted className="mt-auto font-mono text-xs">
+            {blueprint.season} · {blueprint.readingTime}
+          </Muted>
         </div>
       </Card>
     </Link>

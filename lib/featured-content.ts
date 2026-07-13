@@ -1,31 +1,8 @@
-import type { Blueprint, Lab } from "@/types/content";
+import type { Lab } from "@/types/content";
 
-// Seed content for the homepage until Phases 6-7 wire up the real
-// Lighthouse/Labs pipelines. Essays now come from lib/essays.ts.
-
-export const featuredBlueprints: Blueprint[] = [
-  {
-    slug: "supply-and-demand",
-    title: "Supply & Demand",
-    summary: "The core mechanism behind every price you've ever paid.",
-    tags: ["Economics", "Season 1"],
-    readingTime: "4 min",
-  },
-  {
-    slug: "the-business-case",
-    title: "The Business Case",
-    summary: "How organizations decide what's worth building at all.",
-    tags: ["Business Analysis", "Season 1"],
-    readingTime: "5 min",
-  },
-  {
-    slug: "risk-vs-uncertainty",
-    title: "Risk vs. Uncertainty",
-    summary: "The distinction that changes how good decision-makers actually think.",
-    tags: ["Decision Making", "Season 1"],
-    readingTime: "4 min",
-  },
-];
+// Seed content for the homepage until Phase 7 wires up the real Labs
+// pipeline. Essays and Blueprints now come from lib/essays.ts and
+// lib/blueprints.ts.
 
 export const featuredLabs: Lab[] = [
   {

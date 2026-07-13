@@ -14,9 +14,12 @@ export interface Blueprint {
   slug: string;
   title: string;
   summary: string;
+  module: string;
+  season: string;
   tags: string[];
   readingTime: string;
   heroImage?: string;
+  pdfUrl?: string;
 }
 
 export type LabStatus = "live" | "in-progress" | "planned";
