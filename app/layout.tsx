@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Fraunces } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { getSearchIndex } from "@/lib/search-index";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -36,6 +37,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const searchItems = getSearchIndex();
+
   return (
     <html
       lang="en"
@@ -49,7 +52,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
+          <Navbar searchItems={searchItems} />
           <main className="flex-1">{children}</main>
           <Footer />
         </ThemeProvider>

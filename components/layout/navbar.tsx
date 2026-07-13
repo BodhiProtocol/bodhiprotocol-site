@@ -10,9 +10,10 @@ import { MobileNav } from "@/components/layout/mobile-nav";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { Container } from "@/components/ui/container";
 import { navLinks } from "@/lib/nav-links";
+import type { SearchItem } from "@/lib/search-index";
 import { cn } from "@/lib/utils";
 
-function Navbar() {
+function Navbar({ searchItems }: { searchItems: SearchItem[] }) {
   const [scrolled, setScrolled] = React.useState(false);
   const pathname = usePathname();
 
@@ -54,7 +55,7 @@ function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <CommandMenu />
+          <CommandMenu items={searchItems} />
           <ThemeToggle />
           <MobileNav />
         </div>
