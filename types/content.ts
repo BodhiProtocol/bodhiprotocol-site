@@ -36,4 +36,5 @@ export interface Lab {
   thumbnail?: string;
   liveUrl?: string;
   githubUrl?: string;
+  roadmap?: string[];
 }

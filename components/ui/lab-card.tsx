@@ -3,6 +3,7 @@ import { ExternalLink, FolderGit2 } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
+import { LabRoadmap } from "@/components/ui/lab-roadmap";
 import { Tag } from "@/components/ui/tag";
 import { Muted } from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
@@ -74,6 +75,7 @@ function LabCard({ lab }: { lab: Lab }) {
             ) : null}
           </div>
         </div>
+        <LabRoadmap items={lab.roadmap} />
       </div>
     </Card>
   );
