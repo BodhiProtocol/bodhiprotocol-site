@@ -1,6 +1,7 @@
 import { getAllEssays } from "@/lib/essays";
+import { siteConfig } from "@/lib/site-config";
 
-const SITE_URL = "https://bodhiprotocol.com";
+const SITE_URL = siteConfig.url;
 
 function escapeXml(value: string): string {
   return value

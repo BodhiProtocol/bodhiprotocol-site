@@ -10,6 +10,7 @@ import { EssayMeta } from "@/components/essays/essay-meta";
 import { ContentNav } from "@/components/shared/content-nav";
 import { RelatedEssays } from "@/components/essays/related-essays";
 import { TableOfContents } from "@/components/shared/table-of-contents";
+import { JsonLd } from "@/components/shared/json-ld";
 import {
   getAdjacentEssays,
   getAllEssays,
@@ -17,6 +18,7 @@ import {
   getRelatedEssays,
 } from "@/lib/essays";
 import { mdxOptions } from "@/lib/mdx-options";
+import { siteConfig } from "@/lib/site-config";
 
 interface EssayPageProps {
   params: Promise<{ slug: string }>;
@@ -37,6 +39,7 @@ export async function generateMetadata({
     title: essay.title,
     description: essay.description,
     authors: [{ name: essay.author }],
+    alternates: { canonical: `/essays/${essay.slug}` },
     openGraph: {
       title: essay.title,
       description: essay.description,
@@ -61,8 +64,19 @@ export default async function EssayPage({ params }: EssayPageProps) {
   const { previous, next } = getAdjacentEssays(slug);
   const related = getRelatedEssays(essay);
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: essay.title,
+    description: essay.description,
+    datePublished: essay.date,
+    author: { "@type": "Person", name: essay.author },
+    url: `${siteConfig.url}/essays/${essay.slug}`,
+  };
+
   return (
     <Section>
+      <JsonLd data={articleJsonLd} />
       <Container>
         <div className="grid gap-12 lg:grid-cols-[1fr_240px]">
           <article className="flex min-w-0 flex-col gap-8">

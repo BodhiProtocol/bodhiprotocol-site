@@ -6,10 +6,20 @@ import { Section } from "@/components/ui/section";
 import { BlueprintList } from "@/components/lighthouse/blueprint-list";
 import { getAllBlueprints } from "@/lib/blueprints";
 
+const description =
+  "Visual-metaphor blueprints that break down the core concepts behind AI, capital markets, business analysis, decision making, and economics.";
+
 export const metadata: Metadata = {
   title: "Project Lighthouse",
-  description:
-    "Visual-metaphor blueprints that break down the core concepts behind AI, capital markets, business analysis, decision making, and economics.",
+  description,
+  alternates: { canonical: "/lighthouse" },
+  openGraph: {
+    type: "website",
+    title: "Project Lighthouse",
+    description,
+    url: "/lighthouse",
+    images: ["/opengraph-image"],
+  },
 };
 
 export default function LighthousePage() {

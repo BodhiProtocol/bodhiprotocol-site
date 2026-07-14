@@ -6,10 +6,20 @@ import { Section } from "@/components/ui/section";
 import { EssayList } from "@/components/essays/essay-list";
 import { getAllEssays } from "@/lib/essays";
 
+const description =
+  "Essays on artificial intelligence, capital markets, business analysis, decision making, and economics.";
+
 export const metadata: Metadata = {
   title: "Essays",
-  description:
-    "Essays on artificial intelligence, capital markets, business analysis, decision making, and economics.",
+  description,
+  alternates: { canonical: "/essays" },
+  openGraph: {
+    type: "website",
+    title: "Essays",
+    description,
+    url: "/essays",
+    images: ["/opengraph-image"],
+  },
 };
 
 export default function EssaysPage() {

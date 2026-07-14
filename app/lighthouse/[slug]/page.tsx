@@ -11,6 +11,7 @@ import { Callout } from "@/components/lighthouse/callout";
 import { RelatedBlueprints } from "@/components/lighthouse/related-blueprints";
 import { ContentNav } from "@/components/shared/content-nav";
 import { TableOfContents } from "@/components/shared/table-of-contents";
+import { JsonLd } from "@/components/shared/json-ld";
 import {
   getAdjacentBlueprints,
   getAllBlueprints,
@@ -18,6 +19,7 @@ import {
   getRelatedBlueprints,
 } from "@/lib/blueprints";
 import { mdxOptions } from "@/lib/mdx-options";
+import { siteConfig } from "@/lib/site-config";
 
 interface BlueprintPageProps {
   params: Promise<{ slug: string }>;
@@ -37,11 +39,17 @@ export async function generateMetadata({
   return {
     title: blueprint.title,
     description: blueprint.summary,
+    alternates: { canonical: `/lighthouse/${blueprint.slug}` },
     openGraph: {
       title: blueprint.title,
       description: blueprint.summary,
       type: "article",
       url: `/lighthouse/${blueprint.slug}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: blueprint.title,
+      description: blueprint.summary,
     },
   };
 }
@@ -54,8 +62,17 @@ export default async function BlueprintPage({ params }: BlueprintPageProps) {
   const { previous, next } = getAdjacentBlueprints(slug);
   const related = getRelatedBlueprints(blueprint);
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: blueprint.title,
+    description: blueprint.summary,
+    url: `${siteConfig.url}/lighthouse/${blueprint.slug}`,
+  };
+
   return (
     <Section>
+      <JsonLd data={articleJsonLd} />
       <Container>
         <div className="grid gap-12 lg:grid-cols-[1fr_240px]">
           <article className="flex min-w-0 flex-col gap-8">

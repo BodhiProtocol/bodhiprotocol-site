@@ -9,10 +9,20 @@ import { Section } from "@/components/ui/section";
 import { H2, H3, Muted, P } from "@/components/ui/typography";
 import { FaqItem } from "@/components/about/faq-item";
 
+const description =
+  "Why BodhiProtocol exists, how it's built, and the philosophy behind Project Lighthouse.";
+
 export const metadata: Metadata = {
   title: "About",
-  description:
-    "Why BodhiProtocol exists, how it's built, and the philosophy behind Project Lighthouse.",
+  description,
+  alternates: { canonical: "/about" },
+  openGraph: {
+    type: "website",
+    title: "About",
+    description,
+    url: "/about",
+    images: ["/opengraph-image"],
+  },
 };
 
 const timeline = [
