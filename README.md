@@ -1,36 +1,106 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BodhiProtocol
 
-## Getting Started
+A premium knowledge platform for understanding complex systems — essays, visual
+explanations, and interactive learning experiences on AI, capital markets,
+business analysis, decision making, and economics.
 
-First, run the development server:
+## Tech stack
+
+- [Next.js 15](https://nextjs.org) — App Router, Server Components, static generation
+- [TypeScript](https://www.typescriptlang.org)
+- [Tailwind CSS v4](https://tailwindcss.com)
+- [shadcn/ui](https://ui.shadcn.com) (Base UI primitives)
+- [Framer Motion](https://www.framer.com/motion/) — mobile nav animation only, lazy-loaded
+- [MDX](https://mdxjs.com) via `next-mdx-remote` — essays and blueprints are git-tracked files, no CMS
+- [Fuse.js](https://www.fusejs.io) — client-side fuzzy search
+- [Vercel Analytics](https://vercel.com/analytics)
+- Deployed on [Vercel](https://vercel.com)
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Copy `.env.example` to `.env.local` if you need to override the site URL locally
+(optional — it falls back to sensible defaults).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project structure
 
-## Learn More
+```
+app/                Routes (App Router)
+components/
+  ui/                Design-system primitives (Button, Card, Tag, Typography, ...)
+  layout/             Nav, footer, theme toggle, search
+  home/               Homepage-only sections
+  essays/             Essay-specific components
+  lighthouse/         Project Lighthouse (blueprint) components
+  labs/               Labs components
+  shared/             Cross-section components (TOC, prev/next nav, JSON-LD)
+content/
+  essays/*.mdx         Essay content (frontmatter + MDX body)
+  blueprints/*.mdx      Project Lighthouse content
+lib/                 Data access (content parsing, search index, site config)
+types/               Shared content types
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Adding content
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**An essay** — add a file to `content/essays/your-slug.mdx`:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```mdx
+---
+title: "Your Title"
+description: "One-sentence summary."
+category: "Capital Markets"
+tags: ["markets"]
+author: "Your Name"
+date: "2026-07-14"
+---
 
-## Deploy on Vercel
+Essay body in Markdown/MDX. Use `##`/`###` headings — they automatically
+populate the table of contents.
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**A Project Lighthouse blueprint** — add a file to `content/blueprints/your-slug.mdx`:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```mdx
+---
+title: "Your Title"
+summary: "One-sentence summary."
+module: "Economics"
+season: "Season 1"
+tags: ["pricing"]
+---
+
+Blueprint body. Use `<Callout type="insight">...</Callout>` or
+`type="question"` for expandable callouts.
+```
+
+**A Lab** — add an entry to the `labs` array in `lib/labs.ts`.
+
+Both essays and blueprints are picked up automatically by their index pages,
+the homepage, sitemap, RSS feed, and search — no other wiring required.
+
+## Scripts
+
+```bash
+npm run dev      # local dev server
+npm run build    # production build (also runs lint + type check)
+npm run lint     # ESLint
+```
+
+## Deploying
+
+This is a zero-config Next.js app — any Vercel deployment works out of the box:
+
+1. Push this repo to GitHub.
+2. Import it in [Vercel](https://vercel.com/new).
+3. Optionally set `NEXT_PUBLIC_SITE_URL` in the project's environment variables
+   if deploying under a custom domain (see `.env.example`).
+
+CI (`.github/workflows/ci.yml`) runs lint, type-check, and build on every push
+and pull request to `main`.
