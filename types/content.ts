@@ -22,6 +22,20 @@ export interface Blueprint {
   pdfUrl?: string;
 }
 
+export type ResourceKind = "book" | "paper" | "course" | "essay" | "reference";
+
+export interface Resource {
+  title: string;
+  author: string;
+  year?: string;
+  kind: ResourceKind;
+  category: string;
+  url: string;
+  /** Why this is worth your time — the editorial value of the library. */
+  why: string;
+  free: boolean;
+}
+
 export type LabStatus = "live" | "in-progress" | "planned";
 export type LabDifficulty = "beginner" | "intermediate" | "advanced";
 

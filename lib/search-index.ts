@@ -1,8 +1,9 @@
 import { getAllBlueprints } from "@/lib/blueprints";
 import { getAllEssays } from "@/lib/essays";
 import { getAllLabs } from "@/lib/labs";
+import { getAllResources } from "@/lib/resources";
 
-export type SearchItemType = "essay" | "blueprint" | "lab";
+export type SearchItemType = "essay" | "blueprint" | "lab" | "resource";
 
 export interface SearchItem {
   type: SearchItemType;
@@ -45,5 +46,15 @@ export function getSearchIndex(): SearchItem[] {
     href: "/labs",
   }));
 
-  return [...essays, ...blueprints, ...labs];
+  const resources: SearchItem[] = getAllResources().map((resource) => ({
+    type: "resource",
+    title: resource.title,
+    description: resource.why,
+    category: resource.category,
+    tags: [resource.author, resource.kind],
+    content: "",
+    href: "/library",
+  }));
+
+  return [...essays, ...blueprints, ...labs, ...resources];
 }

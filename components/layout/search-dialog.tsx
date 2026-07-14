@@ -3,7 +3,7 @@
 import * as React from "react";
 import { useRouter } from "next/navigation";
 import Fuse, { type FuseResultMatch } from "fuse.js";
-import { BookOpen, Compass, FlaskConical } from "lucide-react";
+import { BookOpen, Compass, FlaskConical, Library } from "lucide-react";
 
 import {
   CommandDialog,
@@ -21,6 +21,7 @@ const GROUP_CONFIG: Record<SearchItemType, { label: string; icon: typeof BookOpe
   essay: { label: "Essays", icon: BookOpen },
   blueprint: { label: "Project Lighthouse", icon: Compass },
   lab: { label: "Labs", icon: FlaskConical },
+  resource: { label: "Library", icon: Library },
 };
 
 function matchFor(matches: readonly FuseResultMatch[] | undefined, key: string) {
@@ -64,6 +65,7 @@ function SearchDialog({ items, open, onOpenChange }: SearchDialogProps) {
       essay: [],
       blueprint: [],
       lab: [],
+      resource: [],
     };
     for (const result of results) groups[result.item.type].push(result);
     return groups;
