@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ExternalLink, FolderGit2 } from "lucide-react";
+import { ArrowRight, ExternalLink, FolderGit2 } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -25,7 +25,13 @@ function LabCard({ lab }: { lab: Lab }) {
   const href = lab.liveUrl ?? lab.githubUrl;
 
   return (
-    <Card className="h-full p-0">
+    <Card
+      className={cn(
+        "h-full p-0",
+        href &&
+          "group transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-brand/15 hover:ring-brand/60",
+      )}
+    >
       {href ? (
         <a href={href} target="_blank" rel="noreferrer" className="flex h-full flex-col">
           <LabCardBody lab={lab} />
@@ -38,6 +44,8 @@ function LabCard({ lab }: { lab: Lab }) {
 }
 
 function LabCardBody({ lab }: { lab: Lab }) {
+  const href = lab.liveUrl ?? lab.githubUrl;
+
   return (
     <div className="flex flex-1 flex-col gap-3 p-(--card-spacing)">
       {lab.thumbnail ? (
@@ -54,7 +62,9 @@ function LabCardBody({ lab }: { lab: Lab }) {
           {statusLabel[lab.status]}
         </Badge>
       </div>
-      <h3 className="font-heading text-lg leading-snug font-medium text-balance">{lab.title}</h3>
+      <h3 className="font-heading text-lg leading-snug font-medium text-balance transition-colors group-hover:text-brand">
+        {lab.title}
+      </h3>
       <Muted className="line-clamp-2">{lab.description}</Muted>
       <div className="flex flex-wrap gap-1.5">
         {lab.technology.map((tech) => (
@@ -66,6 +76,12 @@ function LabCardBody({ lab }: { lab: Lab }) {
         <div className="flex items-center gap-3 text-muted-foreground">
           {lab.githubUrl ? <FolderGit2 className="size-4" /> : null}
           {lab.liveUrl ? <ExternalLink className="size-4" /> : null}
+          {href ? (
+            <span className="flex -translate-x-1 items-center gap-1 text-xs font-semibold text-brand opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
+              Launch
+              <ArrowRight className="size-3.5" />
+            </span>
+          ) : null}
         </div>
       </div>
       <LabRoadmap items={lab.roadmap} />

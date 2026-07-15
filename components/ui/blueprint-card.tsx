@@ -9,7 +9,7 @@ import type { Blueprint } from "@/types/content";
 function BlueprintCard({ blueprint }: { blueprint: Blueprint }) {
   return (
     <Link href={`/lighthouse/${blueprint.slug}`} className="group block">
-      <Card className="h-full transition-shadow group-hover:shadow-lg group-hover:shadow-foreground/5">
+      <Card className="h-full transition-[transform,box-shadow] duration-300 group-hover:-translate-y-1 group-hover:shadow-lg group-hover:shadow-brand/15 group-hover:ring-brand/60">
         {blueprint.heroImage ? (
           <div className="relative aspect-[16/9] w-full overflow-hidden">
             <Image

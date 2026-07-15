@@ -21,7 +21,7 @@ function ResourceCard({ resource }: { resource: Resource }) {
       rel="noreferrer"
       className="group block"
     >
-      <Card className="h-full transition-shadow group-hover:shadow-lg group-hover:shadow-foreground/5">
+      <Card className="h-full transition-[transform,box-shadow] duration-300 group-hover:-translate-y-1 group-hover:shadow-lg group-hover:shadow-brand/15 group-hover:ring-brand/60">
         <div className="flex flex-1 flex-col gap-3 px-(--card-spacing)">
           <div className="flex items-center gap-2">
             <Tag>{kindLabel[resource.kind]}</Tag>
