@@ -1,6 +1,6 @@
 "use client";
 
-import * as React from "react";
+import { useRevealOnScroll } from "@/components/essays/use-reveal-on-scroll";
 
 interface OrderBookRow {
   bidQty: string;
@@ -23,36 +23,6 @@ const rowsBelowMid: OrderBookRow[] = [
 ];
 
 const sparkPoints = "0,22 12,19 24,20 36,12 48,15 60,7 72,10 84,4 100,5";
-
-function useRevealOnScroll() {
-  const ref = React.useRef<HTMLDivElement>(null);
-  const [played, setPlayed] = React.useState(false);
-  const [reducedMotion, setReducedMotion] = React.useState(false);
-
-  React.useEffect(() => {
-    const query = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReducedMotion(query.matches);
-    if (query.matches) {
-      setPlayed(true);
-      return;
-    }
-    const node = ref.current;
-    if (!node) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setPlayed(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.4 },
-    );
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
-
-  return { ref, played, reducedMotion };
-}
 
 function OrderBookIllustration() {
   const { ref, played, reducedMotion } = useRevealOnScroll();
