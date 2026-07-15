@@ -5,6 +5,7 @@ import * as React from "react";
 import { ResourceCard } from "@/components/ui/resource-card";
 import { TagButton } from "@/components/ui/tag";
 import { Muted } from "@/components/ui/typography";
+import { categoryIcons } from "@/lib/category-icons";
 import type { Resource } from "@/types/content";
 
 function ResourceList({ resources }: { resources: Resource[] }) {
@@ -32,15 +33,19 @@ function ResourceList({ resources }: { resources: Resource[] }) {
           >
             All
           </TagButton>
-          {categories.map((category) => (
-            <TagButton
-              key={category}
-              active={activeCategory === category}
-              onClick={() => setActiveCategory(category)}
-            >
-              {category}
-            </TagButton>
-          ))}
+          {categories.map((category) => {
+            const Icon = categoryIcons[category];
+            return (
+              <TagButton
+                key={category}
+                active={activeCategory === category}
+                onClick={() => setActiveCategory(category)}
+              >
+                {Icon ? <Icon className="size-3.5 shrink-0" /> : null}
+                {category}
+              </TagButton>
+            );
+          })}
         </div>
         <div className="flex items-center gap-3">
           <TagButton active={freeOnly} onClick={() => setFreeOnly((v) => !v)}>

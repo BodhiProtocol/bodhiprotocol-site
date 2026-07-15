@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 const tagClassName = (className?: string) =>
   cn(
-    "inline-flex h-6 w-fit shrink-0 items-center rounded-full border border-border px-2.5 text-xs font-medium whitespace-nowrap text-muted-foreground transition-colors",
+    "inline-flex h-6 w-fit shrink-0 items-center gap-1.5 rounded-full border border-border px-2.5 text-xs font-medium whitespace-nowrap text-muted-foreground transition-colors",
     "data-[active=true]:border-brand data-[active=true]:bg-brand/10 data-[active=true]:text-brand",
     className,
   );

@@ -4,6 +4,7 @@ import * as React from "react";
 
 import { LabCard } from "@/components/ui/lab-card";
 import { TagButton } from "@/components/ui/tag";
+import { categoryIcons } from "@/lib/category-icons";
 import type { Lab } from "@/types/content";
 
 function LabList({ labs }: { labs: Lab[] }) {
@@ -23,15 +24,19 @@ function LabList({ labs }: { labs: Lab[] }) {
         <TagButton active={activeCategory === null} onClick={() => setActiveCategory(null)}>
           All
         </TagButton>
-        {categories.map((category) => (
-          <TagButton
-            key={category}
-            active={activeCategory === category}
-            onClick={() => setActiveCategory(category)}
-          >
-            {category}
-          </TagButton>
-        ))}
+        {categories.map((category) => {
+          const Icon = categoryIcons[category];
+          return (
+            <TagButton
+              key={category}
+              active={activeCategory === category}
+              onClick={() => setActiveCategory(category)}
+            >
+              {Icon ? <Icon className="size-3.5 shrink-0" /> : null}
+              {category}
+            </TagButton>
+          );
+        })}
       </div>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map((lab) => (

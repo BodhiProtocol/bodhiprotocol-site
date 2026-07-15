@@ -4,6 +4,7 @@ import * as React from "react";
 
 import { ArticleCard } from "@/components/ui/article-card";
 import { TagButton } from "@/components/ui/tag";
+import { categoryIcons } from "@/lib/category-icons";
 import type { Essay } from "@/types/content";
 
 function EssayList({ essays }: { essays: Essay[] }) {
@@ -26,15 +27,19 @@ function EssayList({ essays }: { essays: Essay[] }) {
         >
           All
         </TagButton>
-        {categories.map((category) => (
-          <TagButton
-            key={category}
-            active={activeCategory === category}
-            onClick={() => setActiveCategory(category)}
-          >
-            {category}
-          </TagButton>
-        ))}
+        {categories.map((category) => {
+          const Icon = categoryIcons[category];
+          return (
+            <TagButton
+              key={category}
+              active={activeCategory === category}
+              onClick={() => setActiveCategory(category)}
+            >
+              {Icon ? <Icon className="size-3.5 shrink-0" /> : null}
+              {category}
+            </TagButton>
+          );
+        })}
       </div>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map((essay) => (
