@@ -1,9 +1,9 @@
 import { getAllBlueprints } from "@/lib/blueprints";
 import { getAllEssays } from "@/lib/essays";
-import { getAllLabs } from "@/lib/labs";
+import { getAllTools } from "@/lib/tools";
 import { getAllResources } from "@/lib/resources";
 
-export type SearchItemType = "essay" | "blueprint" | "lab" | "resource";
+export type SearchItemType = "essay" | "blueprint" | "tool" | "resource";
 
 export interface SearchItem {
   type: SearchItemType;
@@ -36,14 +36,14 @@ export function getSearchIndex(): SearchItem[] {
     href: `/lighthouse/${blueprint.slug}`,
   }));
 
-  const labs: SearchItem[] = getAllLabs().map((lab) => ({
-    type: "lab",
-    title: lab.title,
-    description: lab.description,
-    category: lab.category,
-    tags: lab.technology,
+  const tools: SearchItem[] = getAllTools().map((tool) => ({
+    type: "tool",
+    title: tool.title,
+    description: tool.description,
+    category: tool.category,
+    tags: tool.technology,
     content: "",
-    href: "/labs",
+    href: "/tools",
   }));
 
   const resources: SearchItem[] = getAllResources().map((resource) => ({
@@ -56,5 +56,5 @@ export function getSearchIndex(): SearchItem[] {
     href: "/library",
   }));
 
-  return [...essays, ...blueprints, ...labs, ...resources];
+  return [...essays, ...blueprints, ...tools, ...resources];
 }

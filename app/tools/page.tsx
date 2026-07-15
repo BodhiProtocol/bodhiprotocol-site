@@ -7,7 +7,7 @@ import { LabList } from "@/components/labs/lab-list";
 import { getAllTools } from "@/lib/tools";
 
 const description =
-  "5 live, browser-based tools for capital markets and business analysis.";
+  "9 live, browser-based tools for AI, capital markets, and business analysis.";
 
 export const metadata: Metadata = {
   title: "Tools",
@@ -30,7 +30,7 @@ export default function ToolsPage() {
       <PageHeader
         eyebrow="Tools"
         title="Tools"
-        description="5 live, browser-based tools you can use right now."
+        description="9 live, browser-based tools you can use right now."
       />
       <Section>
         <Container>

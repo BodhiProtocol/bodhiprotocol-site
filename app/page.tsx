@@ -5,7 +5,6 @@ import { Hero } from "@/components/layout/hero";
 import { FeaturedEssays } from "@/components/home/featured-essays";
 import { FeaturedBlueprints } from "@/components/home/featured-blueprints";
 import { FeaturedLabs } from "@/components/home/featured-labs";
-import { NewsletterCta } from "@/components/home/newsletter-cta";
 
 export default function Home() {
   return (
@@ -13,7 +12,7 @@ export default function Home() {
       <Hero
         eyebrow="BodhiProtocol"
         title="Understand Complex Systems."
-        description="Essays. Visual Learning. Interactive Labs."
+        description="Essays. Visual Learning. Interactive Tools."
         actions={
           <>
             <Button nativeButton={false} render={<Link href="/essays" />}>
@@ -22,9 +21,9 @@ export default function Home() {
             <Button
               variant="outline"
               nativeButton={false}
-              render={<Link href="/labs" />}
+              render={<Link href="/tools" />}
             >
-              Explore Labs
+              Explore Tools
             </Button>
           </>
         }
@@ -32,7 +31,6 @@ export default function Home() {
       <FeaturedEssays />
       <FeaturedBlueprints />
       <FeaturedLabs />
-      <NewsletterCta />
     </>
   );
 }

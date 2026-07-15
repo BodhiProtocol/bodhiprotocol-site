@@ -80,7 +80,7 @@ Blueprint body. Use `<Callout type="insight">...</Callout>` or
 `type="question"` for expandable callouts.
 ```
 
-**A Lab** — add an entry to the `labs` array in `lib/labs.ts`.
+**A Tool** — add an entry to the `tools` array in `lib/tools.ts`.
 
 Both essays and blueprints are picked up automatically by their index pages,
 the homepage, sitemap, RSS feed, and search — no other wiring required.

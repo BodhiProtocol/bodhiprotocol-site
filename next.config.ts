@@ -11,6 +11,9 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"],
   },
   poweredByHeader: false,
+  async redirects() {
+    return [{ source: "/labs", destination: "/tools", permanent: true }];
+  },
 };
 
 const withMDX = createMDX({

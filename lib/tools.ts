@@ -1,8 +1,57 @@
 import type { Lab } from "@/types/content";
 
-// The 5 tools with dedicated bodhiprotocol.com subdomains.
+// Real, live BodhiProtocol reference tools — the education/reference product
+// line, distinct from the separate arcade-games portfolio.
 
 export const tools: Lab[] = [
+  {
+    slug: "llm-wiki",
+    title: "LLM Wiki",
+    description: "24 core LLM concepts — tokens, prompting, RAG, embeddings, agents, MCP.",
+    technology: ["HTML", "JS"],
+    status: "live",
+    difficulty: "beginner",
+    category: "Artificial Intelligence",
+    liveUrl: "https://bodhiprotocol.github.io/llm-wiki/",
+    githubUrl: "https://github.com/BodhiProtocol/llm-wiki",
+    roadmap: ["Expand coverage to evaluation and fine-tuning concepts"],
+  },
+  {
+    slug: "regulatory-acronym-map",
+    title: "Regulatory Acronym Map",
+    description: "114 capital-markets regulatory terms across 10 categories, region-tagged.",
+    technology: ["HTML", "JS"],
+    status: "live",
+    difficulty: "intermediate",
+    category: "Capital Markets",
+    liveUrl: "https://bodhiprotocol.github.io/regulatory-acronym-map/",
+    githubUrl: "https://github.com/BodhiProtocol/regulatory-acronym-map",
+    roadmap: ["Add APAC-specific regulatory coverage"],
+  },
+  {
+    slug: "requirements-translator",
+    title: "Requirements-to-User-Story Translator",
+    description: "Turns raw business requirements into structured, testable user stories.",
+    technology: ["HTML", "JS"],
+    status: "live",
+    difficulty: "intermediate",
+    category: "Business Analysis",
+    liveUrl: "https://bodhiprotocol.github.io/requirements-translator/",
+    githubUrl: "https://github.com/BodhiProtocol/requirements-translator",
+    roadmap: ["Add edge-case / acceptance-criteria prompts"],
+  },
+  {
+    slug: "business-analysis-blueprint-explorer",
+    title: "Business Analysis Blueprint Explorer",
+    description: "All Business Analysis Lighthouse blueprints in one searchable, filterable view.",
+    technology: ["HTML", "JS"],
+    status: "live",
+    difficulty: "beginner",
+    category: "Business Analysis",
+    liveUrl: "https://bodhiprotocol.github.io/business-analysis-blueprint-explorer/",
+    githubUrl: "https://github.com/BodhiProtocol/business-analysis-blueprint-explorer",
+    roadmap: ["Sync directly with this site's Project Lighthouse content"],
+  },
   {
     slug: "jargon-decoder",
     title: "Capital Markets Jargon Decoder",
@@ -35,6 +84,7 @@ export const tools: Lab[] = [
     category: "Capital Markets",
     liveUrl: "https://trade-lifecycle-explorer.bodhiprotocol.com/",
     githubUrl: "https://github.com/BodhiProtocol/trade-lifecycle-explorer",
+    roadmap: ["Add a failed-settlement / exception-handling walkthrough"],
   },
   {
     slug: "layering-spoofing-order-book",
@@ -57,6 +107,7 @@ export const tools: Lab[] = [
     category: "Capital Markets",
     liveUrl: "https://capital-markets-blueprint-explorer.bodhiprotocol.com/",
     githubUrl: "https://github.com/BodhiProtocol/capital-markets-blueprint-explorer",
+    roadmap: ["Sync directly with this site's Project Lighthouse content"],
   },
 ];
 

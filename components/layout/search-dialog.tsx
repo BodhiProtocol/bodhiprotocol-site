@@ -20,7 +20,7 @@ import type { SearchItem, SearchItemType } from "@/lib/search-index";
 const GROUP_CONFIG: Record<SearchItemType, { label: string; icon: typeof BookOpen }> = {
   essay: { label: "Essays", icon: BookOpen },
   blueprint: { label: "Project Lighthouse", icon: Compass },
-  lab: { label: "Labs", icon: FlaskConical },
+  tool: { label: "Tools", icon: FlaskConical },
   resource: { label: "Library", icon: Library },
 };
 
@@ -64,7 +64,7 @@ function SearchDialog({ items, open, onOpenChange }: SearchDialogProps) {
     const groups: Record<SearchItemType, typeof results> = {
       essay: [],
       blueprint: [],
-      lab: [],
+      tool: [],
       resource: [],
     };
     for (const result of results) groups[result.item.type].push(result);
