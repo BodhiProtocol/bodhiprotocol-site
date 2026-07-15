@@ -4,9 +4,12 @@ import Link from "next/link";
 import { Card } from "@/components/ui/card";
 import { Tag } from "@/components/ui/tag";
 import { Muted } from "@/components/ui/typography";
+import { essayIcons } from "@/lib/essay-icons";
 import type { Essay } from "@/types/content";
 
 function ArticleCard({ essay }: { essay: Essay }) {
+  const Icon = essayIcons[essay.slug];
+
   return (
     <Link href={`/essays/${essay.slug}`} className="group block">
       <Card className="h-full transition-[transform,box-shadow] duration-300 group-hover:-translate-y-1 group-hover:shadow-lg group-hover:shadow-brand/15 group-hover:ring-brand/60">
@@ -21,7 +24,14 @@ function ArticleCard({ essay }: { essay: Essay }) {
           </div>
         ) : null}
         <div className="flex flex-1 flex-col gap-3 px-(--card-spacing)">
-          <Tag>{essay.category}</Tag>
+          <div className="flex items-start justify-between gap-2">
+            <Tag>{essay.category}</Tag>
+            {!essay.coverImage && Icon ? (
+              <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-brand/10 text-brand">
+                <Icon className="size-4.5" />
+              </span>
+            ) : null}
+          </div>
           <h3 className="font-heading text-lg leading-snug font-medium text-balance group-hover:text-brand">
             {essay.title}
           </h3>

@@ -136,3 +136,13 @@
     @apply font-sans;
   }
 }
+
+@keyframes ob-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--brand) 45%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 0 5px color-mix(in oklab, var(--brand) 0%, transparent);
+  }
+}

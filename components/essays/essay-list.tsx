@@ -5,8 +5,9 @@ import { LayoutGrid } from "lucide-react";
 
 import { ArticleCard } from "@/components/ui/article-card";
 import { TagButton } from "@/components/ui/tag";
-import { FeaturedArticleCard } from "@/components/essays/featured-article-card";
+import { FeaturedEssayCard } from "@/components/essays/featured-essay-card";
 import { categoryIcons } from "@/lib/category-icons";
+import { essayIllustrations } from "@/lib/essay-illustrations";
 import type { Essay } from "@/types/content";
 
 const activeChipClassName =
@@ -19,10 +20,18 @@ function EssayList({ essays }: { essays: Essay[] }) {
   );
   const [activeCategory, setActiveCategory] = React.useState<string | null>(null);
 
+  const featuredEssay = essays.find((essay) => essay.featured);
+
   const filtered = activeCategory
     ? essays.filter((essay) => essay.category === activeCategory)
     : essays;
-  const [featured, ...rest] = filtered;
+  const showFeatured = Boolean(
+    featuredEssay && filtered.some((essay) => essay.slug === featuredEssay.slug),
+  );
+  const rest = showFeatured
+    ? filtered.filter((essay) => essay.slug !== featuredEssay!.slug)
+    : filtered;
+  const Illustration = featuredEssay ? essayIllustrations[featuredEssay.slug] : undefined;
 
   return (
     <div className="flex flex-col gap-8">
@@ -50,7 +59,12 @@ function EssayList({ essays }: { essays: Essay[] }) {
           );
         })}
       </div>
-      {featured ? <FeaturedArticleCard essay={featured} /> : null}
+      {showFeatured && featuredEssay ? (
+        <FeaturedEssayCard
+          essay={featuredEssay}
+          illustration={Illustration ? <Illustration /> : undefined}
+        />
+      ) : null}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {rest.map((essay) => (
           <ArticleCard key={essay.slug} essay={essay} />
