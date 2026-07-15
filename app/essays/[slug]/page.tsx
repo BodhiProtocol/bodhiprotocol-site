@@ -17,6 +17,7 @@ import {
   getEssayBySlug,
   getRelatedEssays,
 } from "@/lib/essays";
+import { essayIllustrations } from "@/lib/essay-illustrations";
 import { mdxOptions } from "@/lib/mdx-options";
 import { siteConfig } from "@/lib/site-config";
 
@@ -63,6 +64,7 @@ export default async function EssayPage({ params }: EssayPageProps) {
 
   const { previous, next } = getAdjacentEssays(slug);
   const related = getRelatedEssays(essay);
+  const Illustration = essayIllustrations[essay.slug];
 
   const articleJsonLd = {
     "@context": "https://schema.org",
@@ -84,6 +86,11 @@ export default async function EssayPage({ params }: EssayPageProps) {
               <H1>{essay.title}</H1>
               <EssayMeta essay={essay} />
             </div>
+            {Illustration ? (
+              <div className="max-w-md">
+                <Illustration />
+              </div>
+            ) : null}
             <div className="prose prose-neutral dark:prose-invert max-w-none prose-headings:font-heading prose-a:text-brand">
               <MDXRemote source={essay.content} options={mdxOptions} />
             </div>
