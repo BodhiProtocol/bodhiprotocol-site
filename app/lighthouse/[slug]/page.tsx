@@ -18,6 +18,7 @@ import {
   getBlueprintBySlug,
   getRelatedBlueprints,
 } from "@/lib/blueprints";
+import { blueprintIllustrations } from "@/lib/blueprint-illustrations";
 import { mdxOptions } from "@/lib/mdx-options";
 import { siteConfig } from "@/lib/site-config";
 
@@ -61,6 +62,7 @@ export default async function BlueprintPage({ params }: BlueprintPageProps) {
 
   const { previous, next } = getAdjacentBlueprints(slug);
   const related = getRelatedBlueprints(blueprint);
+  const Illustration = blueprintIllustrations[blueprint.slug];
 
   const articleJsonLd = {
     "@context": "https://schema.org",
@@ -78,6 +80,11 @@ export default async function BlueprintPage({ params }: BlueprintPageProps) {
           <article className="flex min-w-0 flex-col gap-8">
             <BlueprintHero blueprint={blueprint} />
             <BlueprintMeta blueprint={blueprint} />
+            {Illustration ? (
+              <div className="max-w-md">
+                <Illustration />
+              </div>
+            ) : null}
             <div className="prose prose-neutral dark:prose-invert max-w-none prose-headings:font-heading prose-a:text-brand">
               <MDXRemote
                 source={blueprint.content}

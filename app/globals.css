@@ -137,6 +137,19 @@
   }
 }
 
+@keyframes unc-flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  45% {
+    opacity: 0.35;
+  }
+  55% {
+    opacity: 1;
+  }
+}
+
 @keyframes ob-pulse {
   0%,
   100% {
