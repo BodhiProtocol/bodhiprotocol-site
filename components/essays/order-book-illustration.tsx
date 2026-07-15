@@ -35,7 +35,11 @@ function OrderBookIllustration() {
       <div className="flex justify-end">
         <div
           className="flex h-[15px] items-center justify-start overflow-hidden rounded-[3px] bg-emerald-600 pl-1.5 text-[10px] font-semibold whitespace-nowrap text-white dark:bg-emerald-500"
-          style={{ width: played ? `${row.bidWidth}%` : "0%", transition: barTransition(delayMs) }}
+          style={{
+            width: played ? `${row.bidWidth}%` : "0%",
+            minWidth: played ? "2.75rem" : 0,
+            transition: barTransition(delayMs),
+          }}
         >
           {row.bidQty}
         </div>
@@ -43,7 +47,11 @@ function OrderBookIllustration() {
       <span className="text-center text-muted-foreground">{row.price}</span>
       <div
         className="flex h-[15px] items-center justify-end overflow-hidden rounded-[3px] bg-rose-600 pr-1.5 text-[10px] font-semibold whitespace-nowrap text-white dark:bg-rose-500"
-        style={{ width: played ? `${row.askWidth}%` : "0%", transition: barTransition(delayMs) }}
+        style={{
+          width: played ? `${row.askWidth}%` : "0%",
+          minWidth: played ? "2.75rem" : 0,
+          transition: barTransition(delayMs),
+        }}
       >
         {row.askQty}
       </div>

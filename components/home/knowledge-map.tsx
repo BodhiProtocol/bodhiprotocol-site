@@ -4,6 +4,7 @@ import { Brain, ClipboardList, GitFork, Landmark, LineChart, Sparkles } from "lu
 import type { LucideIcon } from "lucide-react";
 
 import { useRevealOnScroll } from "@/components/essays/use-reveal-on-scroll";
+import { LighthouseGlyph } from "@/components/shared/lighthouse-glyph";
 
 interface MapNode {
   slug: string;
@@ -16,6 +17,8 @@ interface MapNode {
   ring: string;
   fill: string;
   text: string;
+  bgSoft: string;
+  borderSoft: string;
 }
 
 const nodes: MapNode[] = [
@@ -30,6 +33,8 @@ const nodes: MapNode[] = [
     ring: "stroke-violet-500",
     fill: "fill-violet-500/10",
     text: "text-violet-600 dark:text-violet-400",
+    bgSoft: "bg-violet-500/10",
+    borderSoft: "border-violet-500/40",
   },
   {
     slug: "capital-markets",
@@ -42,6 +47,8 @@ const nodes: MapNode[] = [
     ring: "stroke-blue-500",
     fill: "fill-blue-500/10",
     text: "text-blue-600 dark:text-blue-400",
+    bgSoft: "bg-blue-500/10",
+    borderSoft: "border-blue-500/40",
   },
   {
     slug: "business-analysis",
@@ -54,6 +61,8 @@ const nodes: MapNode[] = [
     ring: "stroke-teal-500",
     fill: "fill-teal-500/10",
     text: "text-teal-600 dark:text-teal-400",
+    bgSoft: "bg-teal-500/10",
+    borderSoft: "border-teal-500/40",
   },
   {
     slug: "decision-making",
@@ -66,6 +75,8 @@ const nodes: MapNode[] = [
     ring: "stroke-orange-500",
     fill: "fill-orange-500/10",
     text: "text-orange-600 dark:text-orange-400",
+    bgSoft: "bg-orange-500/10",
+    borderSoft: "border-orange-500/40",
   },
   {
     slug: "economics",
@@ -78,20 +89,12 @@ const nodes: MapNode[] = [
     ring: "stroke-emerald-500",
     fill: "fill-emerald-500/10",
     text: "text-emerald-600 dark:text-emerald-400",
+    bgSoft: "bg-emerald-500/10",
+    borderSoft: "border-emerald-500/40",
   },
 ];
 
 const hub = { x: 310, y: 108 };
-
-function LighthouseGlyph({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" className={className} fill="none">
-      <path d="M10 3h4l2 5H8l2-5Z" className="fill-brand-foreground" />
-      <path d="M8 8h8l1.5 13h-11L8 8Z" className="fill-brand-foreground" />
-      <path d="M9.2 12h5.6M8.6 16h6.8" stroke="var(--brand)" strokeWidth="1.2" />
-    </svg>
-  );
-}
 
 function KnowledgeMap() {
   const { ref, played, reducedMotion } = useRevealOnScroll();
@@ -103,7 +106,7 @@ function KnowledgeMap() {
         Learn through connections, not just content.
       </div>
 
-      <svg viewBox="0 0 620 220" className="h-auto w-full max-w-3xl">
+      <svg viewBox="0 0 620 220" className="hidden h-auto w-full max-w-3xl sm:block">
         {nodes.map((node, i) => (
           <path
             key={`line-${node.slug}`}
@@ -216,6 +219,34 @@ function KnowledgeMap() {
           );
         })}
       </svg>
+
+      <div className="flex w-full max-w-sm flex-col gap-2 sm:hidden">
+        {nodes.map((node, i) => {
+          const Icon = node.icon;
+          return (
+            <a
+              key={node.slug}
+              href={`/library?category=${node.slug}`}
+              className={`flex items-center gap-3 rounded-xl border p-3 transition-colors ${node.borderSoft} hover:bg-muted/50`}
+              style={{
+                opacity: played ? 1 : 0,
+                transform: played ? "translateY(0)" : "translateY(6px)",
+                transition: reducedMotion
+                  ? "none"
+                  : `opacity 350ms ease ${i * 80}ms, transform 350ms ease ${i * 80}ms`,
+              }}
+            >
+              <span className={`flex size-10 shrink-0 items-center justify-center rounded-full ${node.bgSoft}`}>
+                <Icon className={`size-5 ${node.text}`} strokeWidth={1.8} />
+              </span>
+              <span className="flex flex-col">
+                <span className="text-sm font-semibold text-foreground">{node.category}</span>
+                <span className="text-xs text-muted-foreground">{node.tagline}</span>
+              </span>
+            </a>
+          );
+        })}
+      </div>
     </div>
   );
 }
