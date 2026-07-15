@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/card";
 import { LabRoadmap } from "@/components/ui/lab-roadmap";
 import { Tag } from "@/components/ui/tag";
 import { Muted } from "@/components/ui/typography";
+import { categoryIcons } from "@/lib/category-icons";
 import { cn } from "@/lib/utils";
 import type { Lab } from "@/types/content";
 
@@ -45,6 +46,7 @@ function LabCard({ lab }: { lab: Lab }) {
 
 function LabCardBody({ lab }: { lab: Lab }) {
   const href = lab.liveUrl ?? lab.githubUrl;
+  const Icon = categoryIcons[lab.category];
 
   return (
     <div className="flex flex-1 flex-col gap-3 p-(--card-spacing)">
@@ -55,12 +57,19 @@ function LabCardBody({ lab }: { lab: Lab }) {
       ) : null}
       <div className="flex items-center justify-between gap-2">
         <Tag>{lab.category}</Tag>
-        <Badge
-          variant={lab.status === "live" ? "default" : "outline"}
-          className={cn(lab.status === "live" && "bg-brand text-brand-foreground")}
-        >
-          {statusLabel[lab.status]}
-        </Badge>
+        <div className="flex items-center gap-2">
+          {!lab.thumbnail && Icon ? (
+            <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-brand/10 text-brand">
+              <Icon className="size-4" />
+            </span>
+          ) : null}
+          <Badge
+            variant={lab.status === "live" ? "default" : "outline"}
+            className={cn(lab.status === "live" && "bg-brand text-brand-foreground")}
+          >
+            {statusLabel[lab.status]}
+          </Badge>
+        </div>
       </div>
       <h3 className="font-heading text-lg leading-snug font-medium text-balance transition-colors group-hover:text-brand">
         {lab.title}

@@ -4,11 +4,11 @@ import Link from "next/link";
 import { Card } from "@/components/ui/card";
 import { Tag } from "@/components/ui/tag";
 import { Muted } from "@/components/ui/typography";
-import { essayIcons } from "@/lib/essay-icons";
+import { categoryIcons } from "@/lib/category-icons";
 import type { Essay } from "@/types/content";
 
 function ArticleCard({ essay }: { essay: Essay }) {
-  const Icon = essayIcons[essay.slug];
+  const Icon = categoryIcons[essay.category];
 
   return (
     <Link href={`/essays/${essay.slug}`} className="group block">
