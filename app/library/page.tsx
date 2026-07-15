@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 
 import { PageHeader } from "@/components/layout/page-header";
 import { Container } from "@/components/ui/container";
@@ -34,7 +35,9 @@ export default function LibraryPage() {
       />
       <Section>
         <Container>
-          <ResourceList resources={resources} />
+          <Suspense fallback={null}>
+            <ResourceList resources={resources} />
+          </Suspense>
         </Container>
       </Section>
     </>

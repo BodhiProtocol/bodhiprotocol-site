@@ -1,20 +1,25 @@
 "use client";
 
 import * as React from "react";
+import { useSearchParams } from "next/navigation";
 
 import { ResourceCard } from "@/components/ui/resource-card";
 import { TagButton } from "@/components/ui/tag";
 import { Muted } from "@/components/ui/typography";
+import { categorySlugs } from "@/lib/category-slugs";
 import { categoryIcons } from "@/lib/category-icons";
 import type { Resource } from "@/types/content";
 
 function ResourceList({ resources }: { resources: Resource[] }) {
+  const searchParams = useSearchParams();
+  const categoryFromUrl = categorySlugs[searchParams.get("category") ?? ""] ?? null;
+
   const categories = React.useMemo(
     () => Array.from(new Set(resources.map((r) => r.category))).sort(),
     [resources],
   );
 
-  const [activeCategory, setActiveCategory] = React.useState<string | null>(null);
+  const [activeCategory, setActiveCategory] = React.useState<string | null>(categoryFromUrl);
   const [freeOnly, setFreeOnly] = React.useState(false);
 
   const filtered = resources.filter(
