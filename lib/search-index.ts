@@ -1,9 +1,10 @@
 import { getAllBlueprints } from "@/lib/blueprints";
 import { getAllEssays } from "@/lib/essays";
+import { getAllInvisibleBusinesses } from "@/lib/invisible-businesses";
 import { getAllTools } from "@/lib/tools";
 import { getAllResources } from "@/lib/resources";
 
-export type SearchItemType = "essay" | "blueprint" | "tool" | "resource";
+export type SearchItemType = "essay" | "invisibleBusiness" | "blueprint" | "tool" | "resource";
 
 export interface SearchItem {
   type: SearchItemType;
@@ -24,6 +25,16 @@ export function getSearchIndex(): SearchItem[] {
     tags: essay.tags,
     content: essay.content,
     href: `/essays/${essay.slug}`,
+  }));
+
+  const invisibleBusinesses: SearchItem[] = getAllInvisibleBusinesses().map((episode) => ({
+    type: "invisibleBusiness",
+    title: episode.title,
+    description: episode.description,
+    category: "Invisible Businesses",
+    tags: [],
+    content: episode.content,
+    href: `/invisible-businesses/${episode.slug}`,
   }));
 
   const blueprints: SearchItem[] = getAllBlueprints().map((blueprint) => ({
@@ -56,5 +67,5 @@ export function getSearchIndex(): SearchItem[] {
     href: "/library",
   }));
 
-  return [...essays, ...blueprints, ...tools, ...resources];
+  return [...essays, ...invisibleBusinesses, ...blueprints, ...tools, ...resources];
 }

@@ -169,3 +169,9 @@
     box-shadow: 0 0 0 5px color-mix(in oklab, var(--brand) 0%, transparent);
   }
 }
+
+@keyframes ib-orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}

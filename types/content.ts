@@ -38,6 +38,36 @@ export interface Resource {
   free: boolean;
 }
 
+export interface InvisibleBusinessInsight {
+  icon: string;
+  text: string;
+}
+
+export interface InvisibleBusinessNextEpisode {
+  title: string;
+  slug?: string;
+  comingSoon?: boolean;
+}
+
+export interface InvisibleBusiness {
+  slug: string;
+  title: string;
+  tagline: string;
+  episode: number;
+  description: string;
+  author: string;
+  date: string;
+  readingTime: string;
+  coverImage?: string;
+  featured?: boolean;
+  bigIdea: string;
+  flywheel: string[];
+  insightsHeading: string;
+  insights: InvisibleBusinessInsight[];
+  reflection: string;
+  nextEpisode?: InvisibleBusinessNextEpisode;
+}
+
 export type LabStatus = "live" | "in-progress" | "planned";
 export type LabDifficulty = "beginner" | "intermediate" | "advanced";
 

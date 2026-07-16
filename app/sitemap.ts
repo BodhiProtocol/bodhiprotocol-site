@@ -2,12 +2,14 @@ import type { MetadataRoute } from "next";
 
 import { getAllBlueprints } from "@/lib/blueprints";
 import { getAllEssays } from "@/lib/essays";
+import { getAllInvisibleBusinesses } from "@/lib/invisible-businesses";
 import { siteConfig } from "@/lib/site-config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
     "",
     "/essays",
+    "/invisible-businesses",
     "/lighthouse",
     "/tools",
     "/library",
@@ -22,10 +24,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(essay.date),
   }));
 
+  const invisibleBusinessRoutes: MetadataRoute.Sitemap = getAllInvisibleBusinesses().map(
+    (episode) => ({
+      url: `${siteConfig.url}/invisible-businesses/${episode.slug}`,
+      lastModified: new Date(episode.date),
+    }),
+  );
+
   const blueprintRoutes: MetadataRoute.Sitemap = getAllBlueprints().map((blueprint) => ({
     url: `${siteConfig.url}/lighthouse/${blueprint.slug}`,
     lastModified: new Date(),
   }));
 
-  return [...staticRoutes, ...essayRoutes, ...blueprintRoutes];
+  return [...staticRoutes, ...essayRoutes, ...invisibleBusinessRoutes, ...blueprintRoutes];
 }
