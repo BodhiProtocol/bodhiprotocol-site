@@ -113,7 +113,18 @@ function GoogleIntentEngineDiagram() {
               </span>
             </motion.div>
             {index < steps.length - 1 ? (
-              <ArrowRight className="mt-4 hidden size-3.5 shrink-0 text-muted-foreground/50 sm:block" />
+              <motion.span
+                className="mt-4 hidden shrink-0 sm:block"
+                animate={played && !reducedMotion ? { x: [0, 4, 0] } : {}}
+                transition={{
+                  duration: 1.8,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: index * 0.15,
+                }}
+              >
+                <ArrowRight className="size-3.5 text-muted-foreground/50" />
+              </motion.span>
             ) : null}
           </div>
         ))}
@@ -138,7 +149,18 @@ function GoogleIntentEngineDiagram() {
               </span>
             </div>
             {index < flywheelNodes.length - 1 ? (
-              <ArrowRight className="size-4 shrink-0 text-muted-foreground/50" />
+              <motion.span
+                className="shrink-0"
+                animate={played && !reducedMotion ? { x: [0, 4, 0] } : {}}
+                transition={{
+                  duration: 1.8,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: index * 0.15,
+                }}
+              >
+                <ArrowRight className="size-4 text-muted-foreground/50" />
+              </motion.span>
             ) : null}
           </div>
         ))}
