@@ -56,6 +56,17 @@ const websiteJsonLd = {
   name: siteConfig.name,
   url: siteConfig.url,
   description: siteConfig.description,
+  publisher: {
+    "@type": "Organization",
+    name: siteConfig.name,
+    url: siteConfig.url,
+    sameAs: siteConfig.sameAs,
+    founder: {
+      "@type": "Person",
+      name: "Surya",
+      sameAs: [siteConfig.sameAs[1]],
+    },
+  },
 };
 
 export default function RootLayout({

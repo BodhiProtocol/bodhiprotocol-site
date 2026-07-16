@@ -18,4 +18,8 @@ export const siteConfig = {
   title: "BodhiProtocol — Understand Complex Systems",
   description:
     "Essays, visual explanations, and interactive learning experiences on AI, capital markets, business analysis, decision making, and economics.",
+  sameAs: [
+    "https://github.com/BodhiProtocol",
+    "https://www.linkedin.com/in/surya-singh-7b6ab144/",
+  ],
 };
