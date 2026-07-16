@@ -9,6 +9,6 @@ interface IBIllustrationConfig {
 }
 
 export const ibIllustrations: Record<string, IBIllustrationConfig> = {
-  "netflix-doesnt-sell-movies": { component: NetflixIllustration },
+  "netflix-doesnt-sell-movies": { component: NetflixIllustration, wide: true },
   "apple-doesnt-sell-phones": { component: AppleIllustration, wide: true },
 };
