@@ -8,6 +8,7 @@ import { Divider } from "@/components/ui/divider";
 import { TableOfContents } from "@/components/shared/table-of-contents";
 import { JsonLd } from "@/components/shared/json-ld";
 import { IBHero } from "@/components/invisible-businesses/ib-hero";
+import { AmazonEpisodeBody } from "@/components/invisible-businesses/amazon-episode-body";
 import { BigIdeaCard } from "@/components/invisible-businesses/big-idea-card";
 import { FlywheelDiagram } from "@/components/invisible-businesses/flywheel-diagram";
 import { InsightGrid } from "@/components/invisible-businesses/insight-grid";
@@ -106,30 +107,34 @@ export default async function InvisibleBusinessPage({ params }: IBPageProps) {
         illustration={Illustration ? <Illustration /> : undefined}
         illustrationWide={illustrationConfig?.wide}
       />
-      <Section className="pt-0">
-        <Container>
-          <div className="grid gap-12 lg:grid-cols-[1fr_240px]">
-            <article className="flex min-w-0 flex-col gap-14">
-              <BigIdeaCard text={episode.bigIdea} />
-              <div className="prose prose-neutral dark:prose-invert max-w-none prose-headings:font-heading prose-a:text-brand">
-                <MDXRemote source={episode.content} options={mdxOptions} />
-              </div>
-              {episode.flywheel.length > 0 ? (
-                <FlywheelDiagram steps={episode.flywheel} />
-              ) : null}
-              <InsightGrid heading={episode.insightsHeading} insights={episode.insights} />
-              <ReflectionCard text={episode.reflection} />
-              <Divider />
-              <NextEpisodeCta nextEpisode={episode.nextEpisode} />
-            </article>
-            <aside className="hidden lg:block">
-              <div className="sticky top-24">
-                <TableOfContents content={episode.content} />
-              </div>
-            </aside>
-          </div>
-        </Container>
-      </Section>
+      {episode.slug === "amazon-doesnt-sell-products" ? (
+        <AmazonEpisodeBody episode={episode} />
+      ) : (
+        <Section className="pt-0">
+          <Container>
+            <div className="grid gap-12 lg:grid-cols-[1fr_240px]">
+              <article className="flex min-w-0 flex-col gap-14">
+                <BigIdeaCard text={episode.bigIdea} />
+                <div className="prose prose-neutral dark:prose-invert max-w-none prose-headings:font-heading prose-a:text-brand">
+                  <MDXRemote source={episode.content} options={mdxOptions} />
+                </div>
+                {episode.flywheel.length > 0 ? (
+                  <FlywheelDiagram steps={episode.flywheel} />
+                ) : null}
+                <InsightGrid heading={episode.insightsHeading} insights={episode.insights} />
+                <ReflectionCard text={episode.reflection} />
+                <Divider />
+                <NextEpisodeCta nextEpisode={episode.nextEpisode} />
+              </article>
+              <aside className="hidden lg:block">
+                <div className="sticky top-24">
+                  <TableOfContents content={episode.content} />
+                </div>
+              </aside>
+            </div>
+          </Container>
+        </Section>
+      )}
     </>
   );
 }
