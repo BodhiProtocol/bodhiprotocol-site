@@ -24,6 +24,7 @@ interface InvisibleBusinessFrontmatter {
   date: string;
   coverImage?: string;
   featured?: boolean;
+  draft?: boolean;
   bigIdea: string;
   flywheel: string[];
   insightsHeading: string;
@@ -48,6 +49,7 @@ function readEpisodeFile(filename: string): InvisibleBusinessWithContent {
     date: frontmatter.date,
     coverImage: frontmatter.coverImage,
     featured: frontmatter.featured ?? false,
+    draft: frontmatter.draft ?? false,
     bigIdea: frontmatter.bigIdea,
     flywheel: frontmatter.flywheel ?? [],
     insightsHeading: frontmatter.insightsHeading,
@@ -65,6 +67,7 @@ export function getAllInvisibleBusinesses(): InvisibleBusinessWithContent[] {
     .readdirSync(IB_DIR)
     .filter((file) => file.endsWith(".mdx"))
     .map(readEpisodeFile)
+    .filter((episode) => !episode.draft)
     .sort((a, b) => a.episode - b.episode);
 }
 
@@ -81,7 +84,8 @@ export function getInvisibleBusinessBySlug(
 ): InvisibleBusinessWithContent | undefined {
   const filename = `${slug}.mdx`;
   if (!fs.existsSync(path.join(IB_DIR, filename))) return undefined;
-  return readEpisodeFile(filename);
+  const episode = readEpisodeFile(filename);
+  return episode.draft ? undefined : episode;
 }
 
 export function getAdjacentInvisibleBusinesses(slug: string): {

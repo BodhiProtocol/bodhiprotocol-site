@@ -60,6 +60,7 @@ export interface InvisibleBusiness {
   readingTime: string;
   coverImage?: string;
   featured?: boolean;
+  draft?: boolean;
   bigIdea: string;
   flywheel: string[];
   insightsHeading: string;
