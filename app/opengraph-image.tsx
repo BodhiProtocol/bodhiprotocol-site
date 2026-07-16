@@ -18,13 +18,13 @@ export default async function Image() {
           justifyContent: "center",
           alignItems: "center",
           gap: 24,
-          backgroundColor: "#0a0a0a",
-          backgroundImage: "radial-gradient(circle at 50% 45%, #2e1f52 0%, #0a0a0a 65%)",
-          color: "#fafafa",
+          backgroundColor: "#fafafa",
+          backgroundImage: "radial-gradient(circle at 50% 45%, #ede9fe 0%, #fafafa 65%)",
+          color: "#0a0a0a",
         }}
       >
         <div style={{ display: "flex", fontSize: 64, fontWeight: 600 }}>
-          Bodhi<span style={{ color: "#a78bfa" }}>Protocol</span>
+          Bodhi<span style={{ color: "#7c3aed" }}>Protocol</span>
         </div>
         <div
           style={{
@@ -32,7 +32,7 @@ export default async function Image() {
             maxWidth: 800,
             textAlign: "center",
             fontSize: 28,
-            color: "#a1a1aa",
+            color: "#52525b",
           }}
         >
           {siteConfig.description}

@@ -18,8 +18,8 @@ export default async function Image({ params }: { params: Promise<{ slug: string
           width: "100%",
           height: "100%",
           display: "flex",
-          backgroundColor: "#0a0a0a",
-          color: "#fafafa",
+          backgroundColor: "#fafafa",
+          color: "#0a0a0a",
         }}
       >
         <div style={{ display: "flex", width: 10, height: "100%", backgroundColor: accent }} />
@@ -32,7 +32,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
             padding: "80px",
           }}
         >
-          <div style={{ display: "flex", fontSize: 28, color: "#a78bfa" }}>
+          <div style={{ display: "flex", fontSize: 28, color: "#7c3aed" }}>
             BodhiProtocol
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
@@ -56,7 +56,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
               {essay?.title ?? "BodhiProtocol"}
             </div>
             {essay ? (
-              <div style={{ display: "flex", fontSize: 24, color: "#a1a1aa" }}>
+              <div style={{ display: "flex", fontSize: 24, color: "#52525b" }}>
                 {essay.author} · {essay.readingTime}
               </div>
             ) : null}
