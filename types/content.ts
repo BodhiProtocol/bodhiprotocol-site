@@ -8,7 +8,6 @@ export interface Essay {
   date: string;
   readingTime: string;
   coverImage?: string;
-  featured?: boolean;
 }
 
 export interface Blueprint {

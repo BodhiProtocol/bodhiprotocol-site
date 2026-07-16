@@ -19,7 +19,6 @@ interface EssayFrontmatter {
   author: string;
   date: string;
   coverImage?: string;
-  featured?: boolean;
 }
 
 function readEssayFile(filename: string): EssayWithContent {
@@ -37,7 +36,6 @@ function readEssayFile(filename: string): EssayWithContent {
     author: frontmatter.author,
     date: frontmatter.date,
     coverImage: frontmatter.coverImage,
-    featured: frontmatter.featured ?? false,
     readingTime: readingTime(content).text,
     content,
   };

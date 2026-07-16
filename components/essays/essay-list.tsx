@@ -20,7 +20,8 @@ function EssayList({ essays }: { essays: Essay[] }) {
   );
   const [activeCategory, setActiveCategory] = React.useState<string | null>(null);
 
-  const featuredEssay = essays.find((essay) => essay.featured);
+  // essays is sorted newest-first (see getAllEssays), so the newest is featured.
+  const featuredEssay = essays[0];
 
   const filtered = activeCategory
     ? essays.filter((essay) => essay.category === activeCategory)
