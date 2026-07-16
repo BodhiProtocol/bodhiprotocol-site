@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 
 import { Eyebrow, Muted } from "@/components/ui/typography";
+import { cn } from "@/lib/utils";
 
 interface IBHeroProps {
   episode: number;
@@ -10,9 +11,19 @@ interface IBHeroProps {
   date: string;
   readingTime: string;
   illustration?: ReactNode;
+  illustrationWide?: boolean;
 }
 
-function IBHero({ episode, title, tagline, author, date, readingTime, illustration }: IBHeroProps) {
+function IBHero({
+  episode,
+  title,
+  tagline,
+  author,
+  date,
+  readingTime,
+  illustration,
+  illustrationWide,
+}: IBHeroProps) {
   return (
     <div className="flex flex-col items-center gap-6 py-16 text-center sm:py-24">
       <Eyebrow className="text-brand">Episode {String(episode).padStart(2, "0")}</Eyebrow>
@@ -26,7 +37,9 @@ function IBHero({ episode, title, tagline, author, date, readingTime, illustrati
         {author} · {date} · {readingTime}
       </Muted>
       {illustration ? (
-        <div className="mt-6 w-full max-w-xs sm:max-w-sm">{illustration}</div>
+        <div className={cn("mt-6 w-full", illustrationWide ? "max-w-2xl" : "max-w-xs sm:max-w-sm")}>
+          {illustration}
+        </div>
       ) : null}
     </div>
   );

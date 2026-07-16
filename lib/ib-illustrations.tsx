@@ -3,7 +3,12 @@ import type { ComponentType } from "react";
 import { AppleIllustration } from "@/components/invisible-businesses/apple-illustration";
 import { NetflixIllustration } from "@/components/invisible-businesses/netflix-illustration";
 
-export const ibIllustrations: Record<string, ComponentType> = {
-  "netflix-doesnt-sell-movies": NetflixIllustration,
-  "apple-doesnt-sell-phones": AppleIllustration,
+interface IBIllustrationConfig {
+  component: ComponentType;
+  wide?: boolean;
+}
+
+export const ibIllustrations: Record<string, IBIllustrationConfig> = {
+  "netflix-doesnt-sell-movies": { component: NetflixIllustration },
+  "apple-doesnt-sell-phones": { component: AppleIllustration, wide: true },
 };

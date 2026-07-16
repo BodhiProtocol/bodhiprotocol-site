@@ -59,7 +59,8 @@ export default async function InvisibleBusinessPage({ params }: IBPageProps) {
   const episode = getInvisibleBusinessBySlug(slug);
   if (!episode) notFound();
 
-  const Illustration = ibIllustrations[episode.slug];
+  const illustrationConfig = ibIllustrations[episode.slug];
+  const Illustration = illustrationConfig?.component;
   const episodeUrl = `${siteConfig.url}/invisible-businesses/${episode.slug}`;
 
   const articleJsonLd = {
@@ -103,6 +104,7 @@ export default async function InvisibleBusinessPage({ params }: IBPageProps) {
         date={episode.date}
         readingTime={episode.readingTime}
         illustration={Illustration ? <Illustration /> : undefined}
+        illustrationWide={illustrationConfig?.wide}
       />
       <Section className="pt-0">
         <Container>
