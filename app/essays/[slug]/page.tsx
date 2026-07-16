@@ -66,19 +66,36 @@ export default async function EssayPage({ params }: EssayPageProps) {
   const related = getRelatedEssays(essay);
   const Illustration = essayIllustrations[essay.slug];
 
+  const essayUrl = `${siteConfig.url}/essays/${essay.slug}`;
+
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: essay.title,
     description: essay.description,
+    image: `${essayUrl}/opengraph-image`,
     datePublished: essay.date,
+    dateModified: essay.date,
     author: { "@type": "Person", name: essay.author },
-    url: `${siteConfig.url}/essays/${essay.slug}`,
+    publisher: { "@type": "Organization", name: siteConfig.name, url: siteConfig.url },
+    mainEntityOfPage: { "@type": "WebPage", "@id": essayUrl },
+    url: essayUrl,
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
+      { "@type": "ListItem", position: 2, name: "Essays", item: `${siteConfig.url}/essays` },
+      { "@type": "ListItem", position: 3, name: essay.title, item: essayUrl },
+    ],
   };
 
   return (
     <Section>
       <JsonLd data={articleJsonLd} />
+      <JsonLd data={breadcrumbJsonLd} />
       <Container>
         <div className="grid gap-12 lg:grid-cols-[1fr_240px]">
           <article className="flex min-w-0 flex-col gap-8">

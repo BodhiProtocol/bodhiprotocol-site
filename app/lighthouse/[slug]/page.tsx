@@ -64,17 +64,36 @@ export default async function BlueprintPage({ params }: BlueprintPageProps) {
   const related = getRelatedBlueprints(blueprint);
   const Illustration = blueprintIllustrations[blueprint.slug];
 
+  const blueprintUrl = `${siteConfig.url}/lighthouse/${blueprint.slug}`;
+
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: blueprint.title,
     description: blueprint.summary,
-    url: `${siteConfig.url}/lighthouse/${blueprint.slug}`,
+    image: `${blueprintUrl}/opengraph-image`,
+    datePublished: blueprint.date,
+    dateModified: blueprint.date,
+    author: { "@type": "Person", name: blueprint.author },
+    publisher: { "@type": "Organization", name: siteConfig.name, url: siteConfig.url },
+    mainEntityOfPage: { "@type": "WebPage", "@id": blueprintUrl },
+    url: blueprintUrl,
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
+      { "@type": "ListItem", position: 2, name: "Project Lighthouse", item: `${siteConfig.url}/lighthouse` },
+      { "@type": "ListItem", position: 3, name: blueprint.title, item: blueprintUrl },
+    ],
   };
 
   return (
     <Section>
       <JsonLd data={articleJsonLd} />
+      <JsonLd data={breadcrumbJsonLd} />
       <Container>
         <div className="grid gap-12 lg:grid-cols-[1fr_240px]">
           <article className="flex min-w-0 flex-col gap-8">

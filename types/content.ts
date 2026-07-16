@@ -18,6 +18,8 @@ export interface Blueprint {
   module: string;
   season: string;
   tags: string[];
+  author: string;
+  date: string;
   readingTime: string;
   heroImage?: string;
   pdfUrl?: string;

@@ -17,6 +17,8 @@ interface BlueprintFrontmatter {
   module: string;
   season: string;
   tags?: string[];
+  author: string;
+  date: string;
   heroImage?: string;
   pdfUrl?: string;
 }
@@ -34,6 +36,8 @@ function readBlueprintFile(filename: string): BlueprintWithContent {
     module: frontmatter.module,
     season: frontmatter.season,
     tags: frontmatter.tags ?? [],
+    author: frontmatter.author,
+    date: frontmatter.date,
     heroImage: frontmatter.heroImage,
     pdfUrl: frontmatter.pdfUrl,
     readingTime: readingTime(content).text,
