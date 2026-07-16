@@ -33,7 +33,12 @@ function NvidiaStackDiagram() {
       <div className="flex items-stretch gap-4">
         {/* Switching-cost axis */}
         <div className="flex w-6 shrink-0 flex-col items-center justify-between py-1 sm:w-8">
-          <ArrowUp className="size-4 text-brand" />
+          <motion.span
+            animate={played && !reducedMotion ? { y: [0, -4, 0] } : {}}
+            transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <ArrowUp className="size-4 text-brand" />
+          </motion.span>
           <span className="flex-1 text-center font-mono text-[9px] leading-tight font-semibold tracking-[0.15em] text-brand/70 [writing-mode:vertical-rl] rotate-180 uppercase sm:text-[10px]">
             Switching cost grows
           </span>
