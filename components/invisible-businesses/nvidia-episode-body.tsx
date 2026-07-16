@@ -1,10 +1,9 @@
-import type { ComponentProps } from "react";
-import { Boxes, Eye, Quote, ShieldCheck, type LucideIcon } from "lucide-react";
+import { Quote } from "lucide-react";
 import { MDXRemote } from "next-mdx-remote/rsc";
 
-import { AmazonFunnelDiagram } from "@/components/invisible-businesses/amazon-funnel-diagram";
-import { AmazonOutcomeSidebar } from "@/components/invisible-businesses/amazon-outcome-sidebar";
-import { AmazonPageToc } from "@/components/invisible-businesses/amazon-page-toc";
+import { NvidiaOutcomeSidebar } from "@/components/invisible-businesses/nvidia-outcome-sidebar";
+import { NvidiaPageToc } from "@/components/invisible-businesses/nvidia-page-toc";
+import { NvidiaStackDiagram } from "@/components/invisible-businesses/nvidia-stack-diagram";
 import { GlassCard } from "@/components/invisible-businesses/glass-card";
 import { IBArticleHero } from "@/components/invisible-businesses/ib-article-hero";
 import { InsightGrid } from "@/components/invisible-businesses/insight-grid";
@@ -17,29 +16,7 @@ import { Eyebrow } from "@/components/ui/typography";
 import type { InvisibleBusinessWithContent } from "@/lib/invisible-businesses";
 import { mdxOptions } from "@/lib/mdx-options";
 
-const headingIcons: Record<string, LucideIcon> = {
-  "the-invisible-business": Eye,
-  "why-the-products-arent-the-product": Boxes,
-  "the-confidence-engine": ShieldCheck,
-};
-
-function AmazonHeading({ id, children }: ComponentProps<"h2">) {
-  const Icon = id ? headingIcons[id] : undefined;
-  return (
-    <h2 id={id} className="flex scroll-mt-24 items-center gap-2.5">
-      {Icon ? (
-        <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-brand/10 text-brand">
-          <Icon className="size-4" />
-        </span>
-      ) : null}
-      <span className="text-brand">{children}</span>
-    </h2>
-  );
-}
-
-const mdxComponents = { h2: AmazonHeading };
-
-function AmazonEpisodeBody({ episode }: { episode: InvisibleBusinessWithContent }) {
+function NvidiaEpisodeBody({ episode }: { episode: InvisibleBusinessWithContent }) {
   return (
     <Section>
       <Container>
@@ -54,10 +31,6 @@ function AmazonEpisodeBody({ episode }: { episode: InvisibleBusinessWithContent 
               readingTime={episode.readingTime}
             />
 
-            <div id="the-flywheel">
-              <AmazonFunnelDiagram />
-            </div>
-
             <GlassCard className="flex-row items-center justify-between gap-6">
               <div className="flex flex-col gap-2">
                 <Eyebrow className="text-brand">The Big Idea</Eyebrow>
@@ -69,7 +42,11 @@ function AmazonEpisodeBody({ episode }: { episode: InvisibleBusinessWithContent 
             </GlassCard>
 
             <div className="prose prose-neutral dark:prose-invert max-w-none prose-headings:font-heading prose-a:text-brand">
-              <MDXRemote source={episode.content} options={mdxOptions} components={mdxComponents} />
+              <MDXRemote source={episode.content} options={mdxOptions} />
+            </div>
+
+            <div id="the-stack">
+              <NvidiaStackDiagram />
             </div>
 
             <div id="key-takeaways">
@@ -83,8 +60,8 @@ function AmazonEpisodeBody({ episode }: { episode: InvisibleBusinessWithContent 
 
           <aside className="hidden lg:block">
             <div className="sticky top-24 flex flex-col gap-6">
-              <AmazonPageToc />
-              <AmazonOutcomeSidebar />
+              <NvidiaPageToc />
+              <NvidiaOutcomeSidebar />
             </div>
           </aside>
         </div>
@@ -93,4 +70,4 @@ function AmazonEpisodeBody({ episode }: { episode: InvisibleBusinessWithContent 
   );
 }
 
-export { AmazonEpisodeBody };
+export { NvidiaEpisodeBody };
