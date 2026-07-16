@@ -10,6 +10,7 @@ import { TableOfContents } from "@/components/shared/table-of-contents";
 import { JsonLd } from "@/components/shared/json-ld";
 import { IBHero } from "@/components/invisible-businesses/ib-hero";
 import { AmazonEpisodeBody } from "@/components/invisible-businesses/amazon-episode-body";
+import { GoogleEpisodeBody } from "@/components/invisible-businesses/google-episode-body";
 import { NvidiaEpisodeBody } from "@/components/invisible-businesses/nvidia-episode-body";
 import { BigIdeaCard } from "@/components/invisible-businesses/big-idea-card";
 import { FlywheelDiagram } from "@/components/invisible-businesses/flywheel-diagram";
@@ -32,6 +33,7 @@ const customEpisodeBodies: Record<
   (props: { episode: InvisibleBusinessWithContent }) => ReactNode
 > = {
   "amazon-doesnt-sell-products": AmazonEpisodeBody,
+  "google-doesnt-sell-search": GoogleEpisodeBody,
   "nvidia-doesnt-sell-gpus": NvidiaEpisodeBody,
 };
 
