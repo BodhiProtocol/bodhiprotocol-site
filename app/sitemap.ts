@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 
 import { getAllBlueprints } from "@/lib/blueprints";
 import { getAllEssays } from "@/lib/essays";
+import { getAllGreatMinds } from "@/lib/great-minds";
 import { getAllInvisibleBusinesses } from "@/lib/invisible-businesses";
 import { siteConfig } from "@/lib/site-config";
 
@@ -9,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
     "",
     "/essays",
+    "/great-minds",
     "/invisible-businesses",
     "/lighthouse",
     "/tools",
@@ -36,5 +38,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
   }));
 
-  return [...staticRoutes, ...essayRoutes, ...invisibleBusinessRoutes, ...blueprintRoutes];
+  const greatMindRoutes: MetadataRoute.Sitemap = getAllGreatMinds().map((mind) => ({
+    url: `${siteConfig.url}/great-minds/${mind.slug}`,
+    lastModified: new Date(mind.date),
+  }));
+
+  return [
+    ...staticRoutes,
+    ...essayRoutes,
+    ...invisibleBusinessRoutes,
+    ...greatMindRoutes,
+    ...blueprintRoutes,
+  ];
 }

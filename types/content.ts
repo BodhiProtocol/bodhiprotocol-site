@@ -69,6 +69,60 @@ export interface InvisibleBusiness {
   nextEpisode?: InvisibleBusinessNextEpisode;
 }
 
+export interface GreatMindWheelNode {
+  label: string;
+  icon: string;
+  description: string;
+}
+
+export interface GreatMindThinkingStep {
+  title: string;
+  description: string;
+}
+
+export interface GreatMindMentalModel {
+  name: string;
+  description: string;
+}
+
+export interface GreatMindBigIdea {
+  title: string;
+  description: string;
+}
+
+export interface GreatMindTimelineEvent {
+  year: string;
+  event: string;
+}
+
+export interface GreatMindBook {
+  title: string;
+  author: string;
+  why: string;
+}
+
+export interface GreatMind {
+  slug: string;
+  name: string;
+  positioning: string;
+  metaphor: string;
+  quote: string;
+  secondaryQuote?: string;
+  lifespan: string;
+  era: string;
+  roles: string[];
+  description: string;
+  date: string;
+  draft?: boolean;
+  wheel: GreatMindWheelNode[];
+  corePhilosophy: string;
+  thinkingProcess: GreatMindThinkingStep[];
+  mentalModels: GreatMindMentalModel[];
+  bigIdeas: GreatMindBigIdea[];
+  timeline: GreatMindTimelineEvent[];
+  books: GreatMindBook[];
+}
+
 export type LabStatus = "live" | "in-progress" | "planned";
 export type LabDifficulty = "beginner" | "intermediate" | "advanced";
 
