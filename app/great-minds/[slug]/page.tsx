@@ -18,6 +18,8 @@ import { GreatMindsBooks } from "@/components/great-minds/great-minds-books";
 import { GreatMindsRelated } from "@/components/great-minds/great-minds-related";
 import { LeonardoWheelDiagram } from "@/components/great-minds/leonardo-wheel-diagram";
 import { LeonardoHeroBackground } from "@/components/great-minds/leonardo-hero-background";
+import { NewtonChainDiagram } from "@/components/great-minds/newton-chain-diagram";
+import { NewtonHeroBackground } from "@/components/great-minds/newton-hero-background";
 import { getAllGreatMinds, getGreatMindBySlug, type GreatMindWithContent } from "@/lib/great-minds";
 import { mdxOptions } from "@/lib/mdx-options";
 import { siteConfig } from "@/lib/site-config";
@@ -27,10 +29,12 @@ import { siteConfig } from "@/lib/site-config";
 // everyone), so this is a registry rather than a generic renderer.
 const heroDiagrams: Record<string, (mind: GreatMindWithContent) => ReactNode> = {
   "leonardo-da-vinci": (mind) => <LeonardoWheelDiagram nodes={mind.wheel} />,
+  "isaac-newton": (mind) => <NewtonChainDiagram nodes={mind.wheel} />,
 };
 
 const heroBackgrounds: Record<string, ReactNode> = {
   "leonardo-da-vinci": <LeonardoHeroBackground />,
+  "isaac-newton": <NewtonHeroBackground />,
 };
 
 interface GreatMindPageProps {
