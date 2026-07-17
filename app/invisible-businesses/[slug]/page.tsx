@@ -14,6 +14,7 @@ import { GoogleEpisodeBody } from "@/components/invisible-businesses/google-epis
 import { NvidiaEpisodeBody } from "@/components/invisible-businesses/nvidia-episode-body";
 import { VisaEpisodeBody } from "@/components/invisible-businesses/visa-episode-body";
 import { CostcoEpisodeBody } from "@/components/invisible-businesses/costco-episode-body";
+import { SpotifyEpisodeBody } from "@/components/invisible-businesses/spotify-episode-body";
 import { BigIdeaCard } from "@/components/invisible-businesses/big-idea-card";
 import { FlywheelDiagram } from "@/components/invisible-businesses/flywheel-diagram";
 import { InsightGrid } from "@/components/invisible-businesses/insight-grid";
@@ -39,6 +40,7 @@ const customEpisodeBodies: Record<
   "nvidia-doesnt-sell-gpus": NvidiaEpisodeBody,
   "visa-doesnt-move-money": VisaEpisodeBody,
   "costco-doesnt-sell-groceries": CostcoEpisodeBody,
+  "spotify-doesnt-sell-music": SpotifyEpisodeBody,
 };
 
 interface IBPageProps {
