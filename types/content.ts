@@ -75,6 +75,10 @@ export interface GreatMindWheelNode {
   description: string;
   /** Marks a node as a dead end in the diagram (e.g. a path selection removed) rather than part of the main sequence. */
   pruned?: boolean;
+  /** Optional per-node quote that replaces the hero's default quote while this node is active. */
+  quote?: string;
+  /** Ordered labels of other nodes this one's thinking flows into, for cross-connection pulse animations. */
+  relatedNodes?: string[];
 }
 
 export interface GreatMindThinkingStep {

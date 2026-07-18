@@ -22,6 +22,7 @@ import { NewtonChainDiagram } from "@/components/great-minds/newton-chain-diagra
 import { NewtonHeroBackground } from "@/components/great-minds/newton-hero-background";
 import { DarwinTreeDiagram } from "@/components/great-minds/darwin-tree-diagram";
 import { DarwinHeroBackground } from "@/components/great-minds/darwin-hero-background";
+import { MindGraphProvider } from "@/components/great-minds/mind-graph-context";
 import { getAllGreatMinds, getGreatMindBySlug, type GreatMindWithContent } from "@/lib/great-minds";
 import { mdxOptions } from "@/lib/mdx-options";
 import { siteConfig } from "@/lib/site-config";
@@ -113,17 +114,19 @@ export default async function GreatMindPage({ params }: GreatMindPageProps) {
     <>
       <JsonLd data={personJsonLd} />
       <JsonLd data={breadcrumbJsonLd} />
-      <GreatMindsHero
-        name={mind.name}
-        positioning={mind.positioning}
-        quote={mind.quote}
-        secondaryQuote={mind.secondaryQuote}
-        lifespan={mind.lifespan}
-        era={mind.era}
-        roles={mind.roles}
-        diagram={diagram}
-        background={heroBackgrounds[mind.slug]}
-      />
+      <MindGraphProvider>
+        <GreatMindsHero
+          name={mind.name}
+          positioning={mind.positioning}
+          quote={mind.quote}
+          secondaryQuote={mind.secondaryQuote}
+          lifespan={mind.lifespan}
+          era={mind.era}
+          roles={mind.roles}
+          diagram={diagram}
+          background={heroBackgrounds[mind.slug]}
+        />
+      </MindGraphProvider>
       <Section>
         <Container>
           <div className="grid gap-12 lg:grid-cols-[1fr_240px]">

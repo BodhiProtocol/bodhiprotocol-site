@@ -3,7 +3,7 @@ import { Bookmark, Calendar, Landmark, Sparkles, Star } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Eyebrow } from "@/components/ui/typography";
+import { HeroSecondaryQuote } from "@/components/great-minds/hero-secondary-quote";
 
 interface GreatMindsHeroProps {
   name: string;
@@ -89,11 +89,7 @@ function GreatMindsHero({
 
         <div className="flex flex-col items-center gap-6">
           {diagram}
-          {secondaryQuote ? (
-            <Eyebrow className="hidden max-w-52 text-center font-serif text-base tracking-normal text-muted-foreground normal-case italic sm:block">
-              &ldquo;{secondaryQuote}&rdquo;
-            </Eyebrow>
-          ) : null}
+          <HeroSecondaryQuote defaultQuote={secondaryQuote} />
         </div>
       </div>
     </div>
