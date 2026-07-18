@@ -8,6 +8,7 @@ import type {
   GreatMindBigIdea,
   GreatMindBook,
   GreatMindMentalModel,
+  GreatMindRelatedEntry,
   GreatMindThinkingStep,
   GreatMindTimelineEvent,
   GreatMindWheelNode,
@@ -39,6 +40,7 @@ interface GreatMindFrontmatter {
   bigIdeas: GreatMindBigIdea[];
   timeline: GreatMindTimelineEvent[];
   books: GreatMindBook[];
+  relatedMinds?: GreatMindRelatedEntry[];
 }
 
 function readGreatMindFile(filename: string): GreatMindWithContent {
@@ -67,6 +69,7 @@ function readGreatMindFile(filename: string): GreatMindWithContent {
     bigIdeas: frontmatter.bigIdeas ?? [],
     timeline: frontmatter.timeline ?? [],
     books: frontmatter.books ?? [],
+    relatedMinds: frontmatter.relatedMinds ?? [],
     readingTime: readingTime(content).text,
     content,
   };

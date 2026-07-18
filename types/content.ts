@@ -73,6 +73,8 @@ export interface GreatMindWheelNode {
   label: string;
   icon: string;
   description: string;
+  /** Marks a node as a dead end in the diagram (e.g. a path selection removed) rather than part of the main sequence. */
+  pruned?: boolean;
 }
 
 export interface GreatMindThinkingStep {
@@ -101,6 +103,12 @@ export interface GreatMindBook {
   why: string;
 }
 
+export interface GreatMindRelatedEntry {
+  name: string;
+  /** Omit if that figure doesn't have a page yet — renders as a "coming soon" tile instead of a link. */
+  slug?: string;
+}
+
 export interface GreatMind {
   slug: string;
   name: string;
@@ -121,6 +129,7 @@ export interface GreatMind {
   bigIdeas: GreatMindBigIdea[];
   timeline: GreatMindTimelineEvent[];
   books: GreatMindBook[];
+  relatedMinds?: GreatMindRelatedEntry[];
 }
 
 export type LabStatus = "live" | "in-progress" | "planned";
