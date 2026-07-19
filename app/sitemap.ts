@@ -12,6 +12,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/essays",
     "/great-minds",
     "/invisible-businesses",
+    "/simulators",
+    "/simulators/network-effects",
     "/lighthouse",
     "/tools",
     "/library",

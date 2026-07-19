@@ -5,7 +5,14 @@ import { getAllInvisibleBusinesses } from "@/lib/invisible-businesses";
 import { getAllTools } from "@/lib/tools";
 import { getAllResources } from "@/lib/resources";
 
-export type SearchItemType = "essay" | "invisibleBusiness" | "greatMind" | "blueprint" | "tool" | "resource";
+export type SearchItemType =
+  | "essay"
+  | "invisibleBusiness"
+  | "greatMind"
+  | "blueprint"
+  | "tool"
+  | "resource"
+  | "simulator";
 
 export interface SearchItem {
   type: SearchItemType;
@@ -78,5 +85,17 @@ export function getSearchIndex(): SearchItem[] {
     href: "/library",
   }));
 
-  return [...essays, ...invisibleBusinesses, ...greatMinds, ...blueprints, ...tools, ...resources];
+  const simulators: SearchItem[] = [
+    {
+      type: "simulator",
+      title: "Network Effects",
+      description: "Move the sliders and discover why products become more valuable as more people join.",
+      category: "Simulators",
+      tags: ["network effects", "flywheel", "platform"],
+      content: "",
+      href: "/simulators/network-effects",
+    },
+  ];
+
+  return [...essays, ...invisibleBusinesses, ...greatMinds, ...blueprints, ...tools, ...resources, ...simulators];
 }
