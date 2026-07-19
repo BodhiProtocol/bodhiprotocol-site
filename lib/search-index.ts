@@ -95,6 +95,15 @@ export function getSearchIndex(): SearchItem[] {
       content: "",
       href: "/simulators/network-effects",
     },
+    {
+      type: "simulator",
+      title: "Supply & Demand",
+      description: "See how price is determined by the balance between buyers and sellers.",
+      category: "Simulators",
+      tags: ["supply and demand", "equilibrium", "economics"],
+      content: "",
+      href: "/simulators/supply-demand",
+    },
   ];
 
   return [...essays, ...invisibleBusinesses, ...greatMinds, ...blueprints, ...tools, ...resources, ...simulators];

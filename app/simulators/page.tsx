@@ -52,7 +52,8 @@ export default function SimulatorsPage() {
               description="Why do products like WhatsApp and Visa become more valuable as more people join?"
               preview={<NetworkEffectsPreview />}
             />
-            <SimulatorPreviewLockedCard
+            <SimulatorCard
+              href="/simulators/supply-demand"
               title="Supply & Demand"
               description="See how price is determined by the balance between buyers and sellers."
               preview={<SupplyDemandPreview />}

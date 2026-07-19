@@ -1,11 +1,11 @@
 "use client";
 
+import { ChallengePanel } from "@/components/simulators/challenge-panel";
 import { GlassCard } from "@/components/simulators/glass-card";
-import { ChallengePanel } from "@/components/simulators/network-effects/challenge-panel";
+import { LiveExplanationPanel } from "@/components/simulators/live-explanation-panel";
 import { CompletionScreen } from "@/components/simulators/network-effects/completion-screen";
 import { EcosystemTimeline } from "@/components/simulators/network-effects/ecosystem-timeline";
 import { InsightsPanel } from "@/components/simulators/network-effects/insights-panel";
-import { LiveExplanationPanel } from "@/components/simulators/network-effects/live-explanation-panel";
 import { NetworkEffectsControls } from "@/components/simulators/network-effects/network-effects-controls";
 import { NetworkEffectsHero } from "@/components/simulators/network-effects/network-effects-hero";
 import { NetworkGraph } from "@/components/simulators/network-effects/network-graph";

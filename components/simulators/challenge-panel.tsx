@@ -1,11 +1,16 @@
 import { Check, Lock } from "lucide-react";
 
 import { Eyebrow, H3 } from "@/components/ui/typography";
-import type { Challenge } from "@/components/simulators/network-effects/use-network-effects-simulator";
 import { cn } from "@/lib/utils";
 
+interface ChallengeSummary {
+  id: string;
+  title: string;
+  description: string;
+}
+
 interface ChallengePanelProps {
-  challenges: Challenge[];
+  challenges: ChallengeSummary[];
   completedChallenges: string[];
   activeChallengeIndex: number;
 }
@@ -55,3 +60,4 @@ function ChallengePanel({ challenges, completedChallenges, activeChallengeIndex 
 }
 
 export { ChallengePanel };
+export type { ChallengeSummary };
