@@ -14,7 +14,8 @@ import { NetworkEffectsControls } from "@/components/simulators/network-effects/
 import { NetworkEffectsHero } from "@/components/simulators/network-effects/network-effects-hero";
 import { NetworkGraph } from "@/components/simulators/network-effects/network-graph";
 import { PlatformExamples } from "@/components/simulators/network-effects/platform-examples";
-import { PlatformValueMeter } from "@/components/simulators/network-effects/platform-value-meter";
+import { getTierLabel } from "@/components/simulators/network-effects/platform-value-meter";
+import { StatusPanel } from "@/components/simulators/network-effects/status-panel";
 import { useNetworkEffectsSimulator } from "@/components/simulators/network-effects/use-network-effects-simulator";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
@@ -54,6 +55,11 @@ function NetworkEffectsSimulator() {
   } = useNetworkEffectsSimulator();
 
   const [pulseTrigger, setPulseTrigger] = React.useState(0);
+  const handleHoverExample = React.useCallback(() => {
+    setPulseTrigger((n) => n + 1);
+  }, []);
+
+  const tierLabel = getTierLabel(platformValue);
 
   return (
     <>
@@ -65,23 +71,26 @@ function NetworkEffectsSimulator() {
 
       <Section id="simulator" className="scroll-mt-20">
         <Container className="flex min-w-0 flex-col gap-20 sm:gap-24">
-          <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-            <GlassCard className="gap-8 p-6 sm:p-8">
-              <NetworkEffectsControls state={state} onChange={updateField} />
-            </GlassCard>
+          <div className="flex flex-col gap-8">
+            <div className="grid gap-8 lg:grid-cols-[0.7fr_1.6fr_0.7fr] lg:items-start">
+              <GlassCard className="gap-8 p-6 transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-brand/10 sm:p-8">
+                <NetworkEffectsControls state={state} onChange={updateField} />
+              </GlassCard>
 
-            <div className="flex flex-col gap-6">
-              <GlassCard className="gap-6 p-6 sm:p-8">
+              <GlassCard className="items-center justify-center gap-6 p-8 sm:p-12">
                 <NetworkGraph
                   users={state.users}
                   mode={state.mode}
                   congested={congested}
                   pulseKey={pulseTrigger}
+                  className="max-w-xl"
                 />
-                <PlatformValueMeter value={platformValue} />
               </GlassCard>
-              <LiveExplanationPanel explanation={explanation} />
+
+              <StatusPanel value={platformValue} />
             </div>
+
+            <LiveExplanationPanel explanation={explanation} tierLabel={tierLabel} />
           </div>
 
           <RevealSection>
@@ -100,7 +109,7 @@ function NetworkEffectsSimulator() {
               <PlatformExamples
                 selectedExample={selectedExample}
                 onSelect={setSelectedExample}
-                onHoverExample={() => setPulseTrigger((n) => n + 1)}
+                onHoverExample={handleHoverExample}
               />
             </div>
           </RevealSection>

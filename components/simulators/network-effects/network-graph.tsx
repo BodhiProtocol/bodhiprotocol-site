@@ -81,9 +81,14 @@ function computeConnections(points: NodePoint[], neighborsPerNode: number): Conn
   return connections;
 }
 
+function connectionKey(connection: Connection) {
+  return `${connection.from}-${connection.to}`;
+}
+
 function NetworkGraph({ users, mode, congested, pulseKey = 0, className }: NetworkGraphProps) {
   const { ref, played, reducedMotion } = useRevealOnScroll();
   const [hoveredId, setHoveredId] = React.useState<number | null>(null);
+  const [hoveredConnection, setHoveredConnection] = React.useState<string | null>(null);
   const [showPulse, setShowPulse] = React.useState(false);
   const isFirstPulseRef = React.useRef(true);
 
@@ -114,6 +119,11 @@ function NetworkGraph({ users, mode, congested, pulseKey = 0, className }: Netwo
     const step = connections.length / count;
     return Array.from({ length: count }, (_, i) => connections[Math.floor(i * step)]);
   }, [connections]);
+
+  const hoveredEdge = React.useMemo(
+    () => connections.find((connection) => connectionKey(connection) === hoveredConnection) ?? null,
+    [connections, hoveredConnection],
+  );
 
   React.useEffect(() => {
     if (isFirstPulseRef.current) {
@@ -170,25 +180,40 @@ function NetworkGraph({ users, mode, congested, pulseKey = 0, className }: Netwo
             {connections.map((connection) => {
               const from = points[connection.from];
               const to = points[connection.to];
+              const key = connectionKey(connection);
+              const isConnectionHovered = hoveredConnection === key;
               const isHoverRelated =
-                hoveredId !== null && (connection.from === hoveredId || connection.to === hoveredId);
-              const dimmed = hoveredId !== null && !isHoverRelated;
+                isConnectionHovered ||
+                (hoveredId !== null && (connection.from === hoveredId || connection.to === hoveredId));
+              const dimmed = (hoveredId !== null || hoveredConnection !== null) && !isHoverRelated;
               return (
-                <motion.line
-                  key={`${connection.from}-${connection.to}`}
-                  x1={from.x}
-                  y1={from.y}
-                  x2={to.x}
-                  y2={to.y}
-                  initial={{ opacity: 0 }}
-                  animate={{
-                    opacity: !played ? 0 : dimmed ? 0.08 : isHoverRelated ? 0.7 : congested ? 0.12 : 0.35,
-                  }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: reducedMotion ? 0 : 0.3 }}
-                  stroke={congested ? "var(--color-muted-foreground)" : "var(--color-brand)"}
-                  strokeWidth={isHoverRelated ? 0.6 : congested ? 0.2 : 0.35}
-                />
+                <React.Fragment key={key}>
+                  <motion.line
+                    x1={from.x}
+                    y1={from.y}
+                    x2={to.x}
+                    y2={to.y}
+                    initial={{ opacity: 0 }}
+                    animate={{
+                      opacity: !played ? 0 : dimmed ? 0.08 : isHoverRelated ? 0.7 : congested ? 0.12 : 0.35,
+                    }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: reducedMotion ? 0 : 0.3 }}
+                    stroke={congested ? "var(--color-muted-foreground)" : "var(--color-brand)"}
+                    strokeWidth={isHoverRelated ? 0.6 : congested ? 0.2 : 0.35}
+                  />
+                  {/* Wider invisible hit-target — the visible line is too thin to hover reliably. */}
+                  <line
+                    x1={from.x}
+                    y1={from.y}
+                    x2={to.x}
+                    y2={to.y}
+                    stroke="transparent"
+                    strokeWidth={3}
+                    onMouseEnter={() => setHoveredConnection(key)}
+                    onMouseLeave={() => setHoveredConnection((current) => (current === key ? null : current))}
+                  />
+                </React.Fragment>
               );
             })}
           </AnimatePresence>
@@ -217,6 +242,26 @@ function NetworkGraph({ users, mode, congested, pulseKey = 0, className }: Netwo
                 );
               })
             : null}
+
+          <AnimatePresence>
+            {hoveredEdge && !reducedMotion
+              ? (() => {
+                  const from = points[hoveredEdge.from];
+                  const to = points[hoveredEdge.to];
+                  return (
+                    <motion.circle
+                      key={`hover-flash-${hoveredConnection}`}
+                      r={0.8}
+                      className="fill-brand"
+                      initial={{ cx: from.x, cy: from.y, opacity: 0 }}
+                      animate={{ cx: to.x, cy: to.y, opacity: [0, 1, 0] }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.6, ease: "easeOut" }}
+                    />
+                  );
+                })()
+              : null}
+          </AnimatePresence>
         </svg>
 
         <AnimatePresence>
@@ -233,6 +278,9 @@ function NetworkGraph({ users, mode, congested, pulseKey = 0, className }: Netwo
                 : reducedMotion
                   ? baseOpacity
                   : [pulseLow, pulseHigh, pulseLow];
+            const canDrift = played && !reducedMotion && !dimmed;
+            const driftX = ((point.id % 5) - 2) * 1.2;
+            const driftY = (((point.id * 3) % 5) - 2) * 1.2;
 
             return (
               <motion.div
@@ -242,7 +290,12 @@ function NetworkGraph({ users, mode, congested, pulseKey = 0, className }: Netwo
                 onMouseEnter={() => setHoveredId(point.id)}
                 onMouseLeave={() => setHoveredId(null)}
                 initial={{ opacity: 0, scale: 0.4 }}
-                animate={{ opacity: animateOpacity, scale: isHovered ? 1.5 : 1 }}
+                animate={{
+                  opacity: animateOpacity,
+                  scale: isHovered ? 1.5 : 1,
+                  x: canDrift ? [0, driftX, 0, -driftX, 0] : 0,
+                  y: canDrift ? [0, driftY, 0, -driftY, 0] : 0,
+                }}
                 exit={{ opacity: 0, scale: 0.4 }}
                 transition={{
                   scale: { duration: 0.25, ease: "easeOut" },
@@ -255,6 +308,12 @@ function NetworkGraph({ users, mode, congested, pulseKey = 0, className }: Netwo
                           delay: (point.id % 7) * 0.15,
                         }
                       : { duration: reducedMotion ? 0 : 0.5, ease: "easeOut" },
+                  x: canDrift
+                    ? { duration: 10 + (point.id % 5), repeat: Infinity, ease: "easeInOut", delay: (point.id % 7) * 0.3 }
+                    : { duration: 0 },
+                  y: canDrift
+                    ? { duration: 11 + (point.id % 4), repeat: Infinity, ease: "easeInOut", delay: (point.id % 6) * 0.25 }
+                    : { duration: 0 },
                 }}
                 className={cn(
                   "absolute size-2 -translate-x-1/2 -translate-y-1/2 rounded-full sm:size-2.5",

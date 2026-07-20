@@ -1,5 +1,7 @@
 "use client";
 
+import * as React from "react";
+
 import { GlassCard } from "@/components/simulators/glass-card";
 import { cn } from "@/lib/utils";
 
@@ -88,4 +90,6 @@ function PlatformExamples({ selectedExample, onSelect, onHoverExample }: Platfor
   );
 }
 
-export { PlatformExamples };
+const MemoizedPlatformExamples = React.memo(PlatformExamples);
+
+export { MemoizedPlatformExamples as PlatformExamples };

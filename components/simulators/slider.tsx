@@ -87,7 +87,8 @@ function Slider({
         disabled={disabled}
         onChange={(event) => handleChange(Number(event.target.value))}
         className={cn(
-          "h-1.5 w-full cursor-pointer appearance-none rounded-full bg-muted accent-brand",
+          "h-1.5 w-full cursor-pointer appearance-none rounded-full bg-muted accent-brand transition-shadow duration-300",
+          "hover:shadow-[0_0_10px_-2px_var(--color-brand)]",
           "focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50",
           disabled && "cursor-not-allowed opacity-50",
         )}

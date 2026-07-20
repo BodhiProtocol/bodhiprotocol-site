@@ -4,6 +4,7 @@ import * as React from "react";
 import { Check, Lock, Target } from "lucide-react";
 
 import { ChallengeCelebration } from "@/components/simulators/challenge-celebration";
+import { playSimulatorSound } from "@/components/simulators/simulator-sound";
 import { Eyebrow, H3 } from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
 
@@ -28,6 +29,7 @@ function ChallengePanel({ challenges, completedChallenges, activeChallengeIndex 
     const freshlyCompleted = completedChallenges.find((id) => !prev.includes(id));
     if (freshlyCompleted) {
       setCelebratingId(freshlyCompleted);
+      playSimulatorSound("challenge-complete");
     }
     prevCompletedRef.current = completedChallenges;
   }, [completedChallenges]);
@@ -87,5 +89,7 @@ function ChallengePanel({ challenges, completedChallenges, activeChallengeIndex 
   );
 }
 
-export { ChallengePanel };
+const MemoizedChallengePanel = React.memo(ChallengePanel);
+
+export { MemoizedChallengePanel as ChallengePanel };
 export type { ChallengeSummary };

@@ -1,5 +1,6 @@
 "use client";
 
+import * as React from "react";
 import { TrendingDown, TrendingUp } from "lucide-react";
 
 import { GlassCard } from "@/components/simulators/glass-card";
@@ -14,7 +15,7 @@ interface InsightsPanelProps {
   platformValueDelta: number;
 }
 
-function DeltaStat({ label, delta }: { label: string; delta: number }) {
+const DeltaStat = React.memo(function DeltaStat({ label, delta }: { label: string; delta: number }) {
   const display = useCountUp(delta);
   const rounded = Math.round(display);
   const positive = delta >= 0;
@@ -33,7 +34,7 @@ function DeltaStat({ label, delta }: { label: string; delta: number }) {
       </span>
     </div>
   );
-}
+});
 
 function InsightsPanel({ usersDelta, businessesDelta, developersDelta, platformValueDelta }: InsightsPanelProps) {
   return (
