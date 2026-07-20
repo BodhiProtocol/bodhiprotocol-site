@@ -58,7 +58,8 @@ export default function SimulatorsPage() {
               description="See how price is determined by the balance between buyers and sellers."
               preview={<SupplyDemandPreview />}
             />
-            <SimulatorPreviewLockedCard
+            <SimulatorCard
+              href="/simulators/inflation"
               title="Inflation"
               description="See how interest rates impact inflation, growth, and unemployment."
               preview={<InflationPreview />}

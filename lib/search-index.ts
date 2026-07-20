@@ -104,6 +104,15 @@ export function getSearchIndex(): SearchItem[] {
       content: "",
       href: "/simulators/supply-demand",
     },
+    {
+      type: "simulator",
+      title: "Inflation",
+      description: "See how interest rates impact inflation, growth, and unemployment.",
+      category: "Simulators",
+      tags: ["inflation", "interest rates", "economics"],
+      content: "",
+      href: "/simulators/inflation",
+    },
   ];
 
   return [...essays, ...invisibleBusinesses, ...greatMinds, ...blueprints, ...tools, ...resources, ...simulators];
