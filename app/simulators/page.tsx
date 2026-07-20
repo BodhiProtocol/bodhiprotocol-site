@@ -46,11 +46,16 @@ export default function SimulatorsPage() {
       <Section>
         <Container>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <SimulatorPreviewLockedCard
+              title="Order Book"
+              description="Move orders and see how they affect the market price."
+              preview={<OrderBookPreview />}
+            />
             <SimulatorCard
-              href="/simulators/network-effects"
-              title="Network Effects"
-              description="Why do products like WhatsApp and Visa become more valuable as more people join?"
-              preview={<NetworkEffectsPreview />}
+              href="/simulators/inflation"
+              title="Inflation"
+              description="See how interest rates impact inflation, growth, and unemployment."
+              preview={<InflationPreview />}
             />
             <SimulatorCard
               href="/simulators/supply-demand"
@@ -59,15 +64,10 @@ export default function SimulatorsPage() {
               preview={<SupplyDemandPreview />}
             />
             <SimulatorCard
-              href="/simulators/inflation"
-              title="Inflation"
-              description="See how interest rates impact inflation, growth, and unemployment."
-              preview={<InflationPreview />}
-            />
-            <SimulatorPreviewLockedCard
-              title="Order Book"
-              description="Move orders and see how they affect the market price."
-              preview={<OrderBookPreview />}
+              href="/simulators/network-effects"
+              title="Network Effects"
+              description="Why do products like WhatsApp and Visa become more valuable as more people join?"
+              preview={<NetworkEffectsPreview />}
             />
             <SimulatorRoadmapCard
               title="Switching Costs"
