@@ -9,7 +9,6 @@ import { NetworkEffectsPreview } from "@/components/simulators/dashboard/network
 import { OrderBookPreview } from "@/components/simulators/dashboard/order-book-preview";
 import { SupplyDemandPreview } from "@/components/simulators/dashboard/supply-demand-preview";
 import { SimulatorCard } from "@/components/simulators/simulator-card";
-import { SimulatorPreviewLockedCard } from "@/components/simulators/simulator-preview-locked-card";
 import { SimulatorRoadmapCard } from "@/components/simulators/simulator-roadmap-card";
 
 const description =
@@ -46,7 +45,8 @@ export default function SimulatorsPage() {
       <Section>
         <Container>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            <SimulatorPreviewLockedCard
+            <SimulatorCard
+              href="/simulators/order-book"
               title="Order Book"
               description="Move orders and see how they affect the market price."
               preview={<OrderBookPreview />}
