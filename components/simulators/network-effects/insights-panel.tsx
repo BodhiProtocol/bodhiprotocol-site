@@ -1,6 +1,9 @@
+"use client";
+
 import { TrendingDown, TrendingUp } from "lucide-react";
 
 import { GlassCard } from "@/components/simulators/glass-card";
+import { useCountUp } from "@/components/simulators/use-count-up";
 import { Eyebrow } from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
 
@@ -9,10 +12,11 @@ interface InsightsPanelProps {
   businessesDelta: number;
   developersDelta: number;
   platformValueDelta: number;
-  reason: string;
 }
 
 function DeltaStat({ label, delta }: { label: string; delta: number }) {
+  const display = useCountUp(delta);
+  const rounded = Math.round(display);
   const positive = delta >= 0;
   return (
     <div className="flex flex-col gap-1">
@@ -25,19 +29,13 @@ function DeltaStat({ label, delta }: { label: string; delta: number }) {
       >
         {positive ? <TrendingUp className="size-4" /> : <TrendingDown className="size-4" />}
         {positive ? "+" : ""}
-        {delta}%
+        {rounded}%
       </span>
     </div>
   );
 }
 
-function InsightsPanel({
-  usersDelta,
-  businessesDelta,
-  developersDelta,
-  platformValueDelta,
-  reason,
-}: InsightsPanelProps) {
+function InsightsPanel({ usersDelta, businessesDelta, developersDelta, platformValueDelta }: InsightsPanelProps) {
   return (
     <GlassCard className="gap-5 p-6 sm:p-6">
       <Eyebrow className="text-brand">Insights</Eyebrow>
@@ -47,7 +45,6 @@ function InsightsPanel({
         <DeltaStat label="Developers" delta={developersDelta} />
         <DeltaStat label="Platform Value" delta={platformValueDelta} />
       </div>
-      <p className="text-sm leading-relaxed text-muted-foreground">{reason}</p>
     </GlassCard>
   );
 }

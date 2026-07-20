@@ -110,18 +110,18 @@ function getExplanation(prev: SimulatorState, next: SimulatorState, prevValue: n
   }
   if (next.users !== prev.users) {
     return next.users > prev.users
-      ? "The platform became more valuable because there are now many more possible connections between users. More users create more opportunities to interact. This is why WhatsApp, LinkedIn, and Facebook became dramatically more useful as adoption grew."
+      ? "Interesting... more people means more possible connections. The platform gets more useful for everyone already on it — that's why WhatsApp and LinkedIn grew the way they did."
       : "Fewer users means fewer possible connections — the network shrinks, and so does its value.";
   }
   if (next.businesses !== prev.businesses) {
     return next.businesses > prev.businesses
-      ? "More businesses joined the platform, giving users more reasons to stick around — and giving developers a bigger audience to build for."
-      : "Fewer businesses means fewer reasons for users to stay, which can slow the whole flywheel down.";
+      ? "More businesses joined, giving users more reasons to stay — and developers a bigger audience to build for."
+      : "Fewer businesses means fewer reasons for users to stay, which slows everything else down.";
   }
   if (next.developers !== prev.developers) {
     return next.developers > prev.developers
-      ? "More developers means more tools, integrations, and improvements — the platform itself gets better, attracting even more users."
-      : "Fewer developers means slower improvement — the platform's edge can dull over time.";
+      ? "More developers means more tools and improvements — the platform itself gets better, which attracts even more users."
+      : "Fewer developers means slower improvement — the platform's edge dulls over time.";
   }
   if (next.engagement !== prev.engagement) {
     return next.engagement > prev.engagement
@@ -130,11 +130,11 @@ function getExplanation(prev: SimulatorState, next: SimulatorState, prevValue: n
   }
   if (next.growthRate !== prev.growthRate) {
     return next.growthRate > prev.growthRate
-      ? "A faster growth rate means the flywheel spins up sooner — but the underlying value still comes from users, businesses, developers, and engagement."
-      : "A slower growth rate just means it takes longer to get there — it doesn't cap how valuable the network can eventually become.";
+      ? "A faster growth rate just gets you there sooner — the real value still comes from users, businesses, developers, and engagement."
+      : "A slower growth rate just means it takes longer — it doesn't cap how valuable the network can eventually become.";
   }
   if (nextValue > prevValue + 5) {
-    return "Notice what happened: platform value didn't increase linearly — it accelerated. Small changes early, bigger changes later. That's what compounding network effects look like.";
+    return "Notice what happened: value didn't increase in a straight line — it accelerated. Small changes early, bigger changes later. That's what network effects feel like.";
   }
   return "Move any slider to see how the ecosystem responds in real time.";
 }

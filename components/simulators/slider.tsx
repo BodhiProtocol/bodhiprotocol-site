@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { motion } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 
@@ -66,7 +67,15 @@ function Slider({
         <label htmlFor={inputId} className="text-sm font-medium text-foreground">
           {label}
         </label>
-        <span className="font-mono text-sm font-semibold text-brand">{displayValue}</span>
+        <motion.span
+          key={displayValue}
+          initial={{ scale: 1.15 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
+          className="inline-block font-mono text-sm font-semibold text-brand"
+        >
+          {displayValue}
+        </motion.span>
       </div>
       <input
         id={inputId}

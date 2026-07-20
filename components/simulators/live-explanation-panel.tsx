@@ -1,4 +1,6 @@
-import { Sparkles } from "lucide-react";
+"use client";
+
+import { AnimatePresence, motion } from "framer-motion";
 
 import { GlassCard } from "@/components/simulators/glass-card";
 
@@ -10,10 +12,21 @@ function LiveExplanationPanel({ explanation }: LiveExplanationPanelProps) {
   return (
     <GlassCard aria-live="polite" className="gap-3 p-6 sm:p-6">
       <span className="flex items-center gap-2 font-mono text-xs tracking-[0.2em] text-brand uppercase">
-        <Sparkles className="size-3.5" />
-        What&apos;s happening
+        <span aria-hidden="true">🧠</span>
+        Bodhi Insight
       </span>
-      <p className="leading-relaxed text-foreground">{explanation}</p>
+      <AnimatePresence mode="wait">
+        <motion.p
+          key={explanation}
+          initial={{ opacity: 0, y: 4 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -4 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          className="leading-relaxed text-foreground"
+        >
+          {explanation}
+        </motion.p>
+      </AnimatePresence>
     </GlassCard>
   );
 }

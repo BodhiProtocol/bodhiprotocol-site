@@ -1,5 +1,9 @@
-import { Check, Lock } from "lucide-react";
+"use client";
 
+import * as React from "react";
+import { Check, Lock, Target } from "lucide-react";
+
+import { ChallengeCelebration } from "@/components/simulators/challenge-celebration";
 import { Eyebrow, H3 } from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
 
@@ -16,6 +20,18 @@ interface ChallengePanelProps {
 }
 
 function ChallengePanel({ challenges, completedChallenges, activeChallengeIndex }: ChallengePanelProps) {
+  const prevCompletedRef = React.useRef<string[]>(completedChallenges);
+  const [celebratingId, setCelebratingId] = React.useState<string | null>(null);
+
+  React.useEffect(() => {
+    const prev = prevCompletedRef.current;
+    const freshlyCompleted = completedChallenges.find((id) => !prev.includes(id));
+    if (freshlyCompleted) {
+      setCelebratingId(freshlyCompleted);
+    }
+    prevCompletedRef.current = completedChallenges;
+  }, [completedChallenges]);
+
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-2">
@@ -32,22 +48,34 @@ function ChallengePanel({ challenges, completedChallenges, activeChallengeIndex 
             <div
               key={challenge.id}
               className={cn(
-                "flex items-start gap-3 rounded-2xl border p-4 transition-colors",
+                "relative flex items-start gap-4 overflow-hidden rounded-2xl border p-5 transition-colors",
                 completed && "border-brand/30 bg-brand/5",
                 active && "border-brand/40 bg-brand/[0.03] shadow-sm shadow-brand/10",
                 locked && "border-dashed border-border opacity-50",
                 !completed && !active && !locked && "border-border",
               )}
             >
+              {celebratingId === challenge.id ? (
+                <ChallengeCelebration onDone={() => setCelebratingId(null)} />
+              ) : null}
               <span
                 className={cn(
-                  "mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full font-mono text-xs",
+                  "mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full",
                   completed ? "bg-brand text-brand-foreground" : "bg-muted text-muted-foreground",
                 )}
               >
-                {locked ? <Lock className="size-3.5" /> : completed ? <Check className="size-3.5" /> : index + 1}
+                {locked ? (
+                  <Lock className="size-3.5" />
+                ) : completed ? (
+                  <Check className="size-4" />
+                ) : (
+                  <Target className="size-3.5" />
+                )}
               </span>
               <div className="flex flex-col gap-1">
+                <span className="font-mono text-[10px] tracking-[0.15em] text-brand uppercase">
+                  Mission {index + 1}
+                </span>
                 <span className="text-sm font-semibold">{challenge.title}</span>
                 <span className="text-sm text-muted-foreground">{challenge.description}</span>
               </div>

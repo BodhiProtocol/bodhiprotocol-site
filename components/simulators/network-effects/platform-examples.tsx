@@ -51,9 +51,10 @@ const PLATFORM_EXAMPLES: PlatformExample[] = [
 interface PlatformExamplesProps {
   selectedExample: string | null;
   onSelect: (id: string) => void;
+  onHoverExample?: (id: string) => void;
 }
 
-function PlatformExamples({ selectedExample, onSelect }: PlatformExamplesProps) {
+function PlatformExamples({ selectedExample, onSelect, onHoverExample }: PlatformExamplesProps) {
   const active = PLATFORM_EXAMPLES.find((example) => example.id === selectedExample) ?? PLATFORM_EXAMPLES[0];
 
   return (
@@ -66,8 +67,9 @@ function PlatformExamples({ selectedExample, onSelect }: PlatformExamplesProps) 
               key={example.id}
               type="button"
               onClick={() => onSelect(example.id)}
+              onMouseEnter={() => onHoverExample?.(example.id)}
               className={cn(
-                "rounded-full border px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50",
+                "rounded-full border px-4 py-2 text-sm font-medium transition-[color,transform,background-color,border-color] duration-200 hover:scale-105 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50",
                 isActive
                   ? "border-brand/40 bg-brand/10 text-brand"
                   : "border-border text-muted-foreground hover:text-foreground",

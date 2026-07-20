@@ -11,6 +11,8 @@ interface NetworkGraphProps {
   users: number;
   mode: NetworkMode;
   congested: boolean;
+  /** Increment to trigger a one-shot ripple pulse (e.g. on hovering a platform example). */
+  pulseKey?: number;
   className?: string;
 }
 
@@ -18,6 +20,7 @@ const MIN_NODES = 12;
 const MAX_NODES = 120;
 const USERS_MIN = 100;
 const USERS_MAX = 100000;
+const PARTICLE_COUNT = 9;
 
 interface NodePoint {
   id: number;
@@ -78,8 +81,12 @@ function computeConnections(points: NodePoint[], neighborsPerNode: number): Conn
   return connections;
 }
 
-function NetworkGraph({ users, mode, congested, className }: NetworkGraphProps) {
+function NetworkGraph({ users, mode, congested, pulseKey = 0, className }: NetworkGraphProps) {
   const { ref, played, reducedMotion } = useRevealOnScroll();
+  const [hoveredId, setHoveredId] = React.useState<number | null>(null);
+  const [showPulse, setShowPulse] = React.useState(false);
+  const isFirstPulseRef = React.useRef(true);
+
   const nodeCount = nodeCountForUsers(users);
   const density = (nodeCount - MIN_NODES) / (MAX_NODES - MIN_NODES);
   const neighborsPerNode = congested ? 2 : Math.round(2 + density * 2);
@@ -90,49 +97,174 @@ function NetworkGraph({ users, mode, congested, className }: NetworkGraphProps) 
     [points, neighborsPerNode],
   );
 
+  const adjacency = React.useMemo(() => {
+    const map = new Map<number, Set<number>>();
+    for (const connection of connections) {
+      if (!map.has(connection.from)) map.set(connection.from, new Set());
+      if (!map.has(connection.to)) map.set(connection.to, new Set());
+      map.get(connection.from)?.add(connection.to);
+      map.get(connection.to)?.add(connection.from);
+    }
+    return map;
+  }, [connections]);
+
+  const particleEdges = React.useMemo(() => {
+    if (connections.length === 0) return [];
+    const count = Math.min(PARTICLE_COUNT, connections.length);
+    const step = connections.length / count;
+    return Array.from({ length: count }, (_, i) => connections[Math.floor(i * step)]);
+  }, [connections]);
+
+  React.useEffect(() => {
+    if (isFirstPulseRef.current) {
+      isFirstPulseRef.current = false;
+      return;
+    }
+    setShowPulse(true);
+    const timeout = setTimeout(() => setShowPulse(false), 700);
+    return () => clearTimeout(timeout);
+  }, [pulseKey]);
+
   return (
     <div ref={ref} className={cn("relative aspect-square w-full", className)}>
-      <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full overflow-visible">
+      <motion.div
+        aria-hidden="true"
+        className={cn(
+          "pointer-events-none absolute inset-[10%] rounded-full blur-2xl",
+          congested ? "bg-destructive/10" : "bg-brand/15",
+        )}
+        animate={
+          played
+            ? {
+                opacity: 0.3 + density * 0.4,
+                scale: reducedMotion ? 1 : [1, 1.04, 1],
+              }
+            : { opacity: 0 }
+        }
+        transition={{
+          opacity: { duration: 0.6 },
+          scale: reducedMotion ? { duration: 0 } : { duration: 8, repeat: Infinity, ease: "easeInOut" },
+        }}
+      />
+
+      <AnimatePresence>
+        {showPulse ? (
+          <motion.div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-[10%] rounded-full border-2 border-brand/40"
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 0.7, scale: 1.15 }}
+            exit={{ opacity: 0, scale: 1.3 }}
+            transition={{ duration: reducedMotion ? 0 : 0.6, ease: "easeOut" }}
+          />
+        ) : null}
+      </AnimatePresence>
+
+      <motion.div
+        className="absolute inset-0"
+        animate={played && !reducedMotion ? { scale: [1, 1.015, 1] } : { scale: 1 }}
+        transition={{ duration: 6, repeat: played && !reducedMotion ? Infinity : 0, ease: "easeInOut" }}
+      >
+        <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full overflow-visible">
+          <AnimatePresence>
+            {connections.map((connection) => {
+              const from = points[connection.from];
+              const to = points[connection.to];
+              const isHoverRelated =
+                hoveredId !== null && (connection.from === hoveredId || connection.to === hoveredId);
+              const dimmed = hoveredId !== null && !isHoverRelated;
+              return (
+                <motion.line
+                  key={`${connection.from}-${connection.to}`}
+                  x1={from.x}
+                  y1={from.y}
+                  x2={to.x}
+                  y2={to.y}
+                  initial={{ opacity: 0 }}
+                  animate={{
+                    opacity: !played ? 0 : dimmed ? 0.08 : isHoverRelated ? 0.7 : congested ? 0.12 : 0.35,
+                  }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: reducedMotion ? 0 : 0.3 }}
+                  stroke={congested ? "var(--color-muted-foreground)" : "var(--color-brand)"}
+                  strokeWidth={isHoverRelated ? 0.6 : congested ? 0.2 : 0.35}
+                />
+              );
+            })}
+          </AnimatePresence>
+
+          {played && !reducedMotion
+            ? particleEdges.map((edge, i) => {
+                const from = points[edge.from];
+                const to = points[edge.to];
+                return (
+                  <motion.circle
+                    key={`particle-${edge.from}-${edge.to}`}
+                    r={0.5}
+                    className={congested ? "fill-muted-foreground" : "fill-brand"}
+                    animate={{
+                      cx: [from.x, to.x, from.x],
+                      cy: [from.y, to.y, from.y],
+                      opacity: [0, 0.8, 0],
+                    }}
+                    transition={{
+                      duration: 3 + (i % 3),
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: i * 0.4,
+                    }}
+                  />
+                );
+              })
+            : null}
+        </svg>
+
         <AnimatePresence>
-          {connections.map((connection) => {
-            const from = points[connection.from];
-            const to = points[connection.to];
+          {points.map((point) => {
+            const isHovered = hoveredId === point.id;
+            const dimmed = hoveredId !== null && !isHovered && !adjacency.get(hoveredId)?.has(point.id);
+            const baseOpacity = congested ? 0.55 : 0.9;
+            const pulseLow = congested ? 0.4 : 0.7;
+            const pulseHigh = congested ? 0.6 : 1;
+            const animateOpacity = !played
+              ? 0
+              : dimmed
+                ? 0.25
+                : reducedMotion
+                  ? baseOpacity
+                  : [pulseLow, pulseHigh, pulseLow];
+
             return (
-              <motion.line
-                key={`${connection.from}-${connection.to}`}
-                x1={from.x}
-                y1={from.y}
-                x2={to.x}
-                y2={to.y}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: played ? (congested ? 0.12 : 0.35) : 0 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: reducedMotion ? 0 : 0.4 }}
-                stroke={congested ? "var(--color-muted-foreground)" : "var(--color-brand)"}
-                strokeWidth={congested ? 0.2 : 0.35}
+              <motion.div
+                key={point.id}
+                layout
+                style={{ left: `${point.x}%`, top: `${point.y}%` }}
+                onMouseEnter={() => setHoveredId(point.id)}
+                onMouseLeave={() => setHoveredId(null)}
+                initial={{ opacity: 0, scale: 0.4 }}
+                animate={{ opacity: animateOpacity, scale: isHovered ? 1.5 : 1 }}
+                exit={{ opacity: 0, scale: 0.4 }}
+                transition={{
+                  scale: { duration: 0.25, ease: "easeOut" },
+                  opacity:
+                    played && !reducedMotion && !dimmed
+                      ? {
+                          duration: 2.2 + (point.id % 5) * 0.3,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                          delay: (point.id % 7) * 0.15,
+                        }
+                      : { duration: reducedMotion ? 0 : 0.5, ease: "easeOut" },
+                }}
+                className={cn(
+                  "absolute size-2 -translate-x-1/2 -translate-y-1/2 rounded-full sm:size-2.5",
+                  congested ? "bg-destructive" : "bg-brand shadow-[0_0_6px_var(--color-brand)]",
+                )}
               />
             );
           })}
         </AnimatePresence>
-      </svg>
-
-      <AnimatePresence>
-        {points.map((point) => (
-          <motion.div
-            key={point.id}
-            layout
-            style={{ left: `${point.x}%`, top: `${point.y}%` }}
-            initial={{ opacity: 0, scale: 0.4 }}
-            animate={{ opacity: played ? (congested ? 0.55 : 0.9) : 0, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.4 }}
-            transition={{ duration: reducedMotion ? 0 : 0.5, ease: "easeOut" }}
-            className={cn(
-              "absolute size-2 -translate-x-1/2 -translate-y-1/2 rounded-full sm:size-2.5",
-              congested ? "bg-destructive" : "bg-brand shadow-[0_0_6px_var(--color-brand)]",
-            )}
-          />
-        ))}
-      </AnimatePresence>
+      </motion.div>
 
       {mode === "negative" && congested ? (
         <motion.div
