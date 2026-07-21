@@ -86,6 +86,13 @@ const SHOCK_MS = 1500;
 const VOLATILE_WINDOW_MS = 8000;
 const VOLATILE_DECAY_MS = 4000;
 
+// Staggered delays (ms) for a single market-order cascade, so the effects of one
+// action read as one causal chain — impact, then price, then classification,
+// then narration — instead of six independent widgets updating at once.
+const FIRE_PHASE_PRICE_MS = 130;
+const FIRE_PHASE_STATUS_MS = 280;
+const FIRE_PHASE_INSIGHT_MS = 430;
+
 const DEFAULT_STATE: OrderBookState = {
   buyInterest: 50,
   sellInterest: 50,
@@ -388,6 +395,8 @@ export function useOrderBookSimulator() {
   const lastFireAtRef = React.useRef<number | null>(null);
   const scenarioTimeoutsRef = React.useRef<ReturnType<typeof setTimeout>[]>([]);
   const runIdRef = React.useRef(0);
+  const fireTimeoutsRef = React.useRef<ReturnType<typeof setTimeout>[]>([]);
+  const fireRunIdRef = React.useRef(0);
 
   const book = React.useMemo(() => computeBook(state), [state]);
   const statusLabel = getStatusLabel(state, shockActive, volatile);
@@ -429,6 +438,7 @@ export function useOrderBookSimulator() {
       if (shockTimeoutRef.current) clearTimeout(shockTimeoutRef.current);
       if (volatileTimeoutRef.current) clearTimeout(volatileTimeoutRef.current);
       scenarioTimeoutsRef.current.forEach(clearTimeout);
+      fireTimeoutsRef.current.forEach(clearTimeout);
     };
   }, []);
 
@@ -442,26 +452,56 @@ export function useOrderBookSimulator() {
       const priceDelta = round2(levelsCleared * TICK * (side === "buy" ? 1 : -1));
       const nextPriceShift = round2(current.priceShift + priceDelta);
 
-      setState((prev) => ({ ...prev, priceShift: nextPriceShift }));
-      setLastOrderImpact({ side, size, levelsCleared, priceDelta });
-      setLastEventExplanation(buildEventExplanation(side, levelsCleared));
+      fireTimeoutsRef.current.forEach(clearTimeout);
+      fireTimeoutsRef.current = [];
+      fireRunIdRef.current += 1;
+      const runId = fireRunIdRef.current;
 
+      const now = performance.now();
+      const isVolatile = lastFireAtRef.current !== null && now - lastFireAtRef.current < VOLATILE_WINDOW_MS;
+      lastFireAtRef.current = now;
+
+      const reduced = reducedMotionPreferred();
+      const schedule = (fn: () => void, delayMs: number) => {
+        if (reduced) {
+          fn();
+          return;
+        }
+        const timeout = setTimeout(() => {
+          if (fireRunIdRef.current !== runId) return;
+          fn();
+        }, delayMs);
+        fireTimeoutsRef.current.push(timeout);
+      };
+
+      // Phase 1 (immediate) — the cause becomes visible: the hit levels register.
+      setLastOrderImpact({ side, size, levelsCleared, priceDelta });
       setPriceHistory((history) => {
         const next = [...history, round2(BASE_PRICE + nextPriceShift)];
         return next.length > HISTORY_CAP ? next.slice(next.length - HISTORY_CAP) : next;
       });
 
-      if (shockTimeoutRef.current) clearTimeout(shockTimeoutRef.current);
-      setShockActive(true);
-      shockTimeoutRef.current = setTimeout(() => setShockActive(false), SHOCK_MS);
+      // Phase 2 — the book reflows to the new price.
+      schedule(() => {
+        setState((prev) => ({ ...prev, priceShift: nextPriceShift }));
+      }, FIRE_PHASE_PRICE_MS);
 
-      const now = performance.now();
-      if (lastFireAtRef.current !== null && now - lastFireAtRef.current < VOLATILE_WINDOW_MS) {
-        if (volatileTimeoutRef.current) clearTimeout(volatileTimeoutRef.current);
-        setVolatile(true);
-        volatileTimeoutRef.current = setTimeout(() => setVolatile(false), VOLATILE_DECAY_MS);
-      }
-      lastFireAtRef.current = now;
+      // Phase 3 — the market classifies what just happened.
+      schedule(() => {
+        if (shockTimeoutRef.current) clearTimeout(shockTimeoutRef.current);
+        setShockActive(true);
+        shockTimeoutRef.current = setTimeout(() => setShockActive(false), SHOCK_MS);
+        if (isVolatile) {
+          if (volatileTimeoutRef.current) clearTimeout(volatileTimeoutRef.current);
+          setVolatile(true);
+          volatileTimeoutRef.current = setTimeout(() => setVolatile(false), VOLATILE_DECAY_MS);
+        }
+      }, FIRE_PHASE_STATUS_MS);
+
+      // Phase 4 — Bodhi Insight narrates the outcome last.
+      schedule(() => {
+        setLastEventExplanation(buildEventExplanation(side, levelsCleared));
+      }, FIRE_PHASE_INSIGHT_MS);
     },
     [],
   );
@@ -485,6 +525,9 @@ export function useOrderBookSimulator() {
     scenarioTimeoutsRef.current = [];
     runIdRef.current += 1;
     const runId = runIdRef.current;
+    fireTimeoutsRef.current.forEach(clearTimeout);
+    fireTimeoutsRef.current = [];
+    fireRunIdRef.current += 1;
 
     setState((prev) => ({ ...prev, priceShift: 0 }));
     setLastOrderImpact(null);
@@ -537,6 +580,9 @@ export function useOrderBookSimulator() {
     scenarioTimeoutsRef.current.forEach(clearTimeout);
     scenarioTimeoutsRef.current = [];
     runIdRef.current += 1;
+    fireTimeoutsRef.current.forEach(clearTimeout);
+    fireTimeoutsRef.current = [];
+    fireRunIdRef.current += 1;
     if (shockTimeoutRef.current) clearTimeout(shockTimeoutRef.current);
     if (volatileTimeoutRef.current) clearTimeout(volatileTimeoutRef.current);
     setState(DEFAULT_STATE);

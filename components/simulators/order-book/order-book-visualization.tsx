@@ -179,7 +179,7 @@ function OrderBookVisualization({ book, statusLabel, lastOrderImpact, className 
           <ParticleColumn side="bid" burst={statusLabel === "Price Discovery"} reducedMotion={reducedMotion} />
           {bidOuterToInner.map((level, i) => (
             <Bar
-              key={level.price}
+              key={`bid-${i}`}
               size={level.size}
               side="bid"
               played={played}
@@ -236,7 +236,7 @@ function OrderBookVisualization({ book, statusLabel, lastOrderImpact, className 
           <ParticleColumn side="ask" burst={statusLabel === "Price Discovery"} reducedMotion={reducedMotion} />
           {askInnerToOuter.map((level, i) => (
             <Bar
-              key={level.price}
+              key={`ask-${i}`}
               size={level.size}
               side="ask"
               played={played}

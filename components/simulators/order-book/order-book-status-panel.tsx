@@ -1,3 +1,6 @@
+"use client";
+
+import { AnimatePresence, motion } from "framer-motion";
 import { AlertTriangle, Droplets, Scale, TrendingDown, TrendingUp, Zap, type LucideIcon } from "lucide-react";
 
 import { GlassCard } from "@/components/simulators/glass-card";
@@ -49,13 +52,24 @@ function OrderBookStatusPanel({ statusLabel }: OrderBookStatusPanelProps) {
   return (
     <GlassCard className="gap-4 p-6 transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-brand/10 sm:p-8">
       <Eyebrow className="text-brand">Market Status</Eyebrow>
-      <div className="flex items-center gap-3">
-        <span className={cn("flex size-9 shrink-0 items-center justify-center rounded-full bg-muted", detail.className)}>
-          <Icon className="size-4" />
-        </span>
-        <span className="font-serif text-xl font-medium text-balance">{statusLabel}</span>
-      </div>
-      <p className="text-sm leading-relaxed text-muted-foreground">{detail.description}</p>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={statusLabel}
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -6 }}
+          transition={{ duration: 0.45, ease: "easeOut" }}
+          className="flex flex-col gap-4"
+        >
+          <div className="flex items-center gap-3">
+            <span className={cn("flex size-9 shrink-0 items-center justify-center rounded-full bg-muted", detail.className)}>
+              <Icon className="size-4" />
+            </span>
+            <span className="font-serif text-xl font-medium text-balance">{statusLabel}</span>
+          </div>
+          <p className="text-sm leading-relaxed text-muted-foreground">{detail.description}</p>
+        </motion.div>
+      </AnimatePresence>
     </GlassCard>
   );
 }
