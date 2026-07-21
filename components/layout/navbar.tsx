@@ -26,6 +26,8 @@ function Navbar({ searchItems }: { searchItems: SearchItem[] }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  if (pathname?.startsWith("/admin")) return null;
+
   return (
     <header
       className={cn(

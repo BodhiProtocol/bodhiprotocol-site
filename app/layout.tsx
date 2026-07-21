@@ -5,6 +5,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { JsonLd } from "@/components/shared/json-ld";
+import { Tracker } from "@/components/analytics/tracker";
+import { AdminShortcut } from "@/components/admin/admin-shortcut";
 import { getSearchIndex } from "@/lib/search-index";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
@@ -102,6 +104,8 @@ export default function RootLayout({
           </main>
           <Footer />
           <Analytics />
+          <Tracker />
+          <AdminShortcut />
         </ThemeProvider>
       </body>
     </html>
