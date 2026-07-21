@@ -1,27 +1,13 @@
 import { getDashboardStats, type DashboardStats } from "@/lib/analytics/queries";
 import { getLiveCount, AnalyticsKvNotConfiguredError } from "@/lib/analytics/kv";
 import { AnalyticsNotConfiguredError } from "@/lib/analytics/db";
+import { REFERRER_LABELS } from "@/lib/analytics/referrer";
+import { formatDuration } from "@/lib/analytics/format";
 import { StatCard } from "@/components/admin/stat-card";
-import { LogoutButton } from "@/components/admin/logout-button";
+import { AdminHeader } from "@/components/admin/admin-header";
 
 // The dashboard reads live data on every request -- never statically cached.
 export const dynamic = "force-dynamic";
-
-const REFERRER_LABELS: Record<string, string> = {
-  google: "Google",
-  linkedin: "LinkedIn",
-  github: "GitHub",
-  direct: "Direct",
-  other: "Other",
-};
-
-function formatDuration(ms: number | null): string {
-  if (ms == null) return "—";
-  const totalSeconds = Math.round(ms / 1000);
-  const minutes = Math.floor(totalSeconds / 60);
-  const seconds = totalSeconds % 60;
-  return `${minutes}:${seconds.toString().padStart(2, "0")}`;
-}
 
 export default async function AdminHomePage() {
   let stats: DashboardStats | null = null;
@@ -50,15 +36,7 @@ export default async function AdminHomePage() {
 
   return (
     <>
-      <header className="flex items-center justify-between border-b border-foreground/10 px-6 py-4">
-        <div>
-          <p className="font-mono text-xs tracking-[0.15em] text-muted-foreground uppercase">
-            BodhiProtocol
-          </p>
-          <h1 className="font-heading text-xl font-medium">Analytics</h1>
-        </div>
-        <LogoutButton />
-      </header>
+      <AdminHeader />
 
       <main className="mx-auto max-w-6xl px-6 py-10">
         {setupNeeded.length > 0 && (

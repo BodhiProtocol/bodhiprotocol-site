@@ -1,5 +1,13 @@
 export type ReferrerSource = "google" | "linkedin" | "github" | "direct" | "other";
 
+export const REFERRER_LABELS: Record<ReferrerSource, string> = {
+  google: "Google",
+  linkedin: "LinkedIn",
+  github: "GitHub",
+  direct: "Direct",
+  other: "Other",
+};
+
 /** Classifies a raw `document.referrer` value into one of the buckets the dashboard reports on. */
 export function classifyReferrer(
   referrerRaw: string | null | undefined,

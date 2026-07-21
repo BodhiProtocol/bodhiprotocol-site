@@ -146,3 +146,59 @@ export async function getDashboardStats(): Promise<DashboardStats> {
         : null,
   };
 }
+
+// Matches the KV TTL used for the Home Dashboard's "Visitors Online" count, so
+// both agree on what "live" means even though they're read from different stores.
+const LIVE_WINDOW_SECONDS = 60;
+
+export type LiveVisitor = {
+  sessionId: string;
+  location: string | null;
+  currentPage: string;
+  device: string | null;
+  timeOnPageMs: number;
+  referrerSource: ReferrerSource;
+};
+
+/**
+ * Everyone currently active on the site, most-recently-active first. Reads straight
+ * from Postgres (not the KV live-count store) since this needs full per-session
+ * detail -- a lateral join keeps it to one query no matter how many are online.
+ */
+export async function getLiveVisitors(): Promise<LiveVisitor[]> {
+  const sql = await getSql();
+
+  const rows = await sql`
+    SELECT
+      s.id AS session_id,
+      s.country,
+      s.city,
+      s.device_type,
+      s.os,
+      s.browser,
+      s.referrer_source,
+      pv.path AS current_path,
+      EXTRACT(EPOCH FROM (now() - pv.viewed_at)) * 1000 AS time_on_page_ms
+    FROM sessions s
+    JOIN LATERAL (
+      SELECT path, viewed_at FROM page_views
+      WHERE session_id = s.id
+      ORDER BY viewed_at DESC
+      LIMIT 1
+    ) pv ON true
+    WHERE s.last_active_at >= now() - interval '1 second' * ${LIVE_WINDOW_SECONDS}
+    ORDER BY s.last_active_at DESC
+  `;
+
+  return rows.map((row) => ({
+    sessionId: row.session_id as string,
+    location:
+      row.city && row.country
+        ? `${row.city}, ${row.country}`
+        : (row.country as string | null) ?? null,
+    currentPage: resolvePageTitle(row.current_path as string) ?? (row.current_path as string),
+    device: [row.browser, row.os].filter(Boolean).join(" · ") || (row.device_type as string | null),
+    timeOnPageMs: Math.max(0, Number(row.time_on_page_ms)),
+    referrerSource: row.referrer_source as ReferrerSource,
+  }));
+}
