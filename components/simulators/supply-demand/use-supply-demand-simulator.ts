@@ -83,7 +83,7 @@ function getExplanation(prev: SupplyDemandState, next: SupplyDemandState): strin
       ? "The market grew — both curves stretch across more potential quantity, so more units trade at roughly the same price."
       : "The market shrank — fewer units are traded overall, though the price stays roughly where supply and demand agree.";
   }
-  return "Move a slider to see how the equilibrium responds.";
+  return "Buyers and sellers currently agree on one price. That's the equilibrium — the only point where what buyers want to pay matches what sellers want to accept.";
 }
 
 export function useSupplyDemandSimulator() {

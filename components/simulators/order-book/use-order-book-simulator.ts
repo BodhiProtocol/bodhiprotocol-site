@@ -211,7 +211,7 @@ function getExplanation(prev: SliderState, next: SliderState): string {
       ? "Typical order size just grew — each resting order on the book now represents more shares."
       : "Typical order size just shrank — each resting order on the book now represents fewer shares.";
   }
-  return "Move a slider, or send a market order, to see how the book responds.";
+  return "Buyers and sellers are currently in balance. Neither side has enough pressure to move the price.";
 }
 
 const CHALLENGES: Challenge[] = [

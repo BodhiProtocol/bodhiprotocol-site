@@ -86,7 +86,7 @@ function getExplanation(prev: InflationState, next: InflationState): string {
       ? "Higher productivity means the economy produces more without needing more money — growth rises and inflation actually falls."
       : "Lower productivity means the same money now chases fewer goods — inflation creeps up even without any change in spending.";
   }
-  return "Move a slider to see how the economy responds.";
+  return "This economy is at its neutral setting — interest rates, money supply, and productivity are all balanced. Inflation, growth, and unemployment are holding steady as a result.";
 }
 
 export function useInflationSimulator() {

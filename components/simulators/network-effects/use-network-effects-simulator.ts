@@ -136,7 +136,7 @@ function getExplanation(prev: SimulatorState, next: SimulatorState, prevValue: n
   if (nextValue > prevValue + 5) {
     return "Notice what happened: value didn't increase in a straight line — it accelerated. Small changes early, bigger changes later. That's what network effects feel like.";
   }
-  return "Move any slider to see how the ecosystem responds in real time.";
+  return "This network is just getting started — a small group of users, testing whether it's worth staying for. Value is still low because there aren't many people to connect with yet.";
 }
 
 function percentDelta(base: number, current: number): number {
