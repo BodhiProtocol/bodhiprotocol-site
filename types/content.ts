@@ -79,6 +79,8 @@ export interface GreatMindWheelNode {
   quote?: string;
   /** Ordered labels of other nodes this one's thinking flows into, for cross-connection pulse animations. */
   relatedNodes?: string[];
+  /** Which side of a two-path convergence diagram this node belongs on (e.g. Jobs' Intersection). */
+  side?: "technology" | "humanities";
 }
 
 export interface GreatMindThinkingStep {

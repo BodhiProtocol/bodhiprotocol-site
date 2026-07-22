@@ -26,6 +26,8 @@ import { TeslaMotorDiagram } from "@/components/great-minds/tesla-motor-diagram"
 import { TeslaHeroBackground } from "@/components/great-minds/tesla-hero-background";
 import { GatesFunnelDiagram } from "@/components/great-minds/gates-funnel-diagram";
 import { GatesHeroBackground } from "@/components/great-minds/gates-hero-background";
+import { JobsIntersectionDiagram } from "@/components/great-minds/jobs-intersection-diagram";
+import { JobsHeroBackground } from "@/components/great-minds/jobs-hero-background";
 import { MindGraphProvider } from "@/components/great-minds/mind-graph-context";
 import { getAllGreatMinds, getGreatMindBySlug, type GreatMindWithContent } from "@/lib/great-minds";
 import { mdxOptions } from "@/lib/mdx-options";
@@ -40,6 +42,7 @@ const heroDiagrams: Record<string, (mind: GreatMindWithContent) => ReactNode> = 
   "charles-darwin": (mind) => <DarwinTreeDiagram nodes={mind.wheel} />,
   "nikola-tesla": (mind) => <TeslaMotorDiagram nodes={mind.wheel} />,
   "bill-gates": (mind) => <GatesFunnelDiagram nodes={mind.wheel} />,
+  "steve-jobs": (mind) => <JobsIntersectionDiagram nodes={mind.wheel} />,
 };
 
 const heroBackgrounds: Record<string, ReactNode> = {
@@ -48,6 +51,7 @@ const heroBackgrounds: Record<string, ReactNode> = {
   "charles-darwin": <DarwinHeroBackground />,
   "nikola-tesla": <TeslaHeroBackground />,
   "bill-gates": <GatesHeroBackground />,
+  "steve-jobs": <JobsHeroBackground />,
 };
 
 interface GreatMindPageProps {
