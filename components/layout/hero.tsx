@@ -23,7 +23,7 @@ function Hero({
     <div className={cn("py-28 sm:py-40", className)} {...props}>
       <Container className="flex flex-col items-center text-center">
         {eyebrow ? <Eyebrow className="mb-5">{eyebrow}</Eyebrow> : null}
-        <H1 className="max-w-3xl text-5xl leading-[1.1] sm:text-6xl md:text-7xl">
+        <H1 className="max-w-3xl text-5xl leading-[1.1] sm:text-6xl md:text-7xl lg:text-7xl">
           {title}
         </H1>
         {description ? (
