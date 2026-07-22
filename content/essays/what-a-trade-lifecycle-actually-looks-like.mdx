@@ -1,0 +1,35 @@
+---
+title: "What a Trade Lifecycle Actually Looks Like"
+description: "Six pillars, one lifecycle — what actually happens between an order and a settled trade, and where a business analyst sits at each stage."
+category: "Capital Markets"
+tags: ["markets", "operations"]
+author: "Surya"
+date: "2026-07-22"
+---
+
+Most people picture a trade lifecycle as "buy button pressed, done." In reality, an executed trade is the *start* of a six-stage process, not the end of one — and almost every operational risk in capital markets lives somewhere in those six stages, not in the decision to trade.
+
+## The trade lifecycle in six stages
+
+Order Initiation → Execution → Capture & Enrichment → Clearing → Settlement → Post-Settlement. Each stage hands the trade to a different system, a different desk, and often a different legal entity. On India's T+1 cycle, the first three stages happen on trade day; the last three carry into T+1 morning.
+
+- **Order Initiation** — a client or trader instructs. Nothing exists in the market yet.
+- **Execution** — the order matches on the exchange. This is the "trade" everyone thinks the lifecycle is about — it's actually stage two of six.
+- **Capture & Enrichment** — the raw execution gets fields added: client account, settlement instructions, tax treatment, before anything downstream can act on it.
+- **Clearing** — a clearing corporation steps in as counterparty to both sides, replacing bilateral risk with mutualized risk.
+- **Settlement** — securities and cash actually move, on T+1.
+- **Post-Settlement** — reconciliation, reporting, and the record everything else refers back to.
+
+## Six pillars underneath the walk
+
+Underneath that walk sit six pillars: Market Structure & Participants, Financial Instruments, Trade Lifecycle, Clearing & Settlement, Risk & Compliance, and Technology & Data. A trade lifecycle diagram usually shows only the middle pillar and nothing else, but the other five are what turn an order into a settled, reconciled record — market structure decides who's allowed to trade with whom, clearing and settlement decides who bears counterparty risk in the meantime, and risk & compliance decides what would stop the trade before it ever reaches an exchange.
+
+## Where a business analyst actually sits
+
+Most people learn the lifecycle as a diagram to memorize. The useful version is the same diagram with one question added at every stage: what does a business analyst actually do here? At Order Initiation, it's defining what a valid order looks like before it's placed. At Capture & Enrichment, it's specifying what happens when enrichment fails — a trade with no settlement instructions doesn't just wait, it becomes an exception someone has to manually resolve. At Clearing, it's understanding what novation actually changes about who owes whom. The lifecycle isn't operations trivia; it's the map of where requirements, risk, and failure modes actually live.
+
+## Why the order matters
+
+A trade that fails at Settlement almost always failed earlier — in Enrichment, where an incomplete or wrong settlement instruction went unnoticed because nothing forced a check. The stages are sequential for a reason: each one is a gate that either catches a problem or passes it downstream, disguised as someone else's exception queue later. Understanding the lifecycle isn't about naming the six stages — it's about knowing which stage actually owns catching a given kind of failure, so it gets caught there instead of three stages later.
+
+[Walk the full interactive lifecycle →](https://bodhiprotocol.github.io/trade-lifecycle-explorer/)
