@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
@@ -17,15 +18,23 @@ export default function Home() {
         description="Essays. Visual Learning. Interactive Tools."
         actions={
           <>
-            <Button nativeButton={false} render={<Link href="/essays" />}>
+            <Button
+              nativeButton={false}
+              render={<Link href="/essays" />}
+              className="h-11 rounded-full px-7 shadow-sm duration-200 ease-out hover:-translate-y-0.5 hover:shadow-lg"
+            >
               Explore Essays
             </Button>
             <Button
-              variant="outline"
+              variant="ghost"
               nativeButton={false}
               render={<Link href="/tools" />}
+              className="h-11 gap-1.5 px-3 text-muted-foreground duration-200 hover:bg-transparent"
             >
-              Explore Tools
+              <span className="border-b border-transparent pb-0.5 transition-colors duration-200 group-hover/button:border-current">
+                Explore Tools
+              </span>
+              <ArrowRight className="size-4 transition-transform duration-200 ease-out group-hover/button:translate-x-1" />
             </Button>
           </>
         }
