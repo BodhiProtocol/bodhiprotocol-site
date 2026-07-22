@@ -22,6 +22,7 @@ import { AirbnbEpisodeBody } from "@/components/invisible-businesses/airbnb-epis
 import { IkeaEpisodeBody } from "@/components/invisible-businesses/ikea-episode-body";
 import { LinkedinEpisodeBody } from "@/components/invisible-businesses/linkedin-episode-body";
 import { MetaEpisodeBody } from "@/components/invisible-businesses/meta-episode-body";
+import { ZeptoEpisodeBody } from "@/components/invisible-businesses/zepto-episode-body";
 import { BigIdeaCard } from "@/components/invisible-businesses/big-idea-card";
 import { FlywheelDiagram } from "@/components/invisible-businesses/flywheel-diagram";
 import { InsightGrid } from "@/components/invisible-businesses/insight-grid";
@@ -55,6 +56,7 @@ const customEpisodeBodies: Record<
   "ikea-doesnt-sell-furniture": IkeaEpisodeBody,
   "linkedin-doesnt-sell-networking": LinkedinEpisodeBody,
   "meta-doesnt-sell-social-media": MetaEpisodeBody,
+  "zepto-doesnt-sell-groceries": ZeptoEpisodeBody,
 };
 
 interface IBPageProps {
