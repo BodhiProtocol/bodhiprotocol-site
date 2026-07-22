@@ -30,6 +30,8 @@ import { JobsIntersectionDiagram } from "@/components/great-minds/jobs-intersect
 import { JobsHeroBackground } from "@/components/great-minds/jobs-hero-background";
 import { RockefellerColumnDiagram } from "@/components/great-minds/rockefeller-column-diagram";
 import { RockefellerHeroBackground } from "@/components/great-minds/rockefeller-hero-background";
+import { KalamIgnitionDiagram } from "@/components/great-minds/kalam-ignition-diagram";
+import { KalamHeroBackground } from "@/components/great-minds/kalam-hero-background";
 import { MindGraphProvider } from "@/components/great-minds/mind-graph-context";
 import { getAllGreatMinds, getGreatMindBySlug, type GreatMindWithContent } from "@/lib/great-minds";
 import { mdxOptions } from "@/lib/mdx-options";
@@ -46,6 +48,7 @@ const heroDiagrams: Record<string, (mind: GreatMindWithContent) => ReactNode> = 
   "bill-gates": (mind) => <GatesFunnelDiagram nodes={mind.wheel} />,
   "steve-jobs": (mind) => <JobsIntersectionDiagram nodes={mind.wheel} />,
   "john-d-rockefeller": (mind) => <RockefellerColumnDiagram nodes={mind.wheel} />,
+  "apj-abdul-kalam": (mind) => <KalamIgnitionDiagram nodes={mind.wheel} />,
 };
 
 const heroBackgrounds: Record<string, ReactNode> = {
@@ -56,6 +59,7 @@ const heroBackgrounds: Record<string, ReactNode> = {
   "bill-gates": <GatesHeroBackground />,
   "steve-jobs": <JobsHeroBackground />,
   "john-d-rockefeller": <RockefellerHeroBackground />,
+  "apj-abdul-kalam": <KalamHeroBackground />,
 };
 
 interface GreatMindPageProps {
