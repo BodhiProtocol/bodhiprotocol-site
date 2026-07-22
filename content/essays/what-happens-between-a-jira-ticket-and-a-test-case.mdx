@@ -1,0 +1,30 @@
+---
+title: "What Actually Happens Between a Jira Ticket and a Test Case"
+description: "A ticket isn't a spec. Turning one into a tested, reviewed FSD takes a pipeline — whether a human runs it or an agent does."
+category: "Business Analysis"
+tags: ["automation", "process"]
+author: "Surya"
+date: "2026-07-22"
+---
+
+A Jira ticket eventually becomes a test case, but the ticket itself was never the spec. Somewhere between "ticket created" and "ready to test," something has to gather context, draft an actual functional spec, check that spec against two different standards, and only then generate test cases from it. Automating that pipeline with agents doesn't change the shape of the work — it just makes a process most BAs do silently, in their head, visible as a diagram.
+
+## Three agents read the same ticket differently
+
+Before a spec gets drafted, three separate passes gather context, each from a different source: a **Requirement Agent** pulls a numbered list of testable acceptance criteria straight from the ticket's own description. A **Context Agent** searches other recent tickets in the same project for related work already in flight. A **Knowledge Agent** searches Confluence for any prior documentation on the topic. Each one is explicitly instructed to say "not covered" rather than invent an answer when its source has nothing relevant — a discipline that matters more than it sounds like it should, because an agent (or a BA) that fills a silent gap with a plausible-sounding guess is worse than one that flags the gap honestly.
+
+## Two review gates, not one
+
+Once a draft FSD exists, it has to pass two different kinds of scrutiny before it counts as reviewed. The first is a **structure check** — deterministic, no judgment involved, just a regex confirming the five required section headers are present. The second is a **semantic check** — necessarily a judgment call, asking whether the FSD actually addresses what the ticket meant, not just whether it has the right headings. The split matters: a structural pass is something anyone (or anything) can run mechanically, but a semantic pass requires actually understanding intent, and conflating the two lets a document that "looks complete" pass review without ever being read for meaning.
+
+## The retry budget is the part worth noticing
+
+Both review gates share a single retry budget — a maximum of two regenerations total, whichever gate fails. That's a deliberate constraint, not a technical limitation. Unlimited retries would hide an FSD that's fundamentally wrong behind an endless series of small patches, each one slightly better than the last but never actually correct. A small, shared budget forces an explicit decision after two failed attempts: stop generating and escalate to a human, rather than keep iterating in the hope that attempt six magically succeeds where five didn't. The pipeline marks that outcome visibly — "failed after N retries" — instead of silently giving up.
+
+## Why this matters even away from the automation
+
+Strip away the agents and the same shape describes what a competent BA already does by hand: gather context from more than one source, draft, check it against a structural checklist, check it again for whether it actually answers the ask, and know when to stop refining alone and bring in another person's judgment. Automating the pipeline doesn't invent a new process — it just forces the process to be explicit enough to wire up, which is usually the harder part.
+
+## The one-question check
+
+Before any spec — human-written or agent-generated — goes to test-case writing, ask: **"If this failed review twice, what would tell us to stop and ask a person instead of trying again?"** If the honest answer is "nothing, it just keeps trying," that's not a review process. It's a loop with no exit.

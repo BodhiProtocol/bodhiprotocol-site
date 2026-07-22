@@ -1,6 +1,7 @@
 import type { ComponentType } from "react";
 
 import { ConfidenceIllustration } from "@/components/essays/confidence-illustration";
+import { FsdPipelineIllustration } from "@/components/essays/fsd-pipeline-illustration";
 import { JargonWallIllustration } from "@/components/essays/jargon-wall-illustration";
 import { JiraBacklogIllustration } from "@/components/essays/jira-backlog-illustration";
 import { LearningDividendIllustration } from "@/components/essays/learning-dividend-illustration";
@@ -18,4 +19,5 @@ export const essayIllustrations: Record<string, ComponentType> = {
   "what-a-trade-lifecycle-actually-looks-like": TradeLifecycleIllustration,
   "from-stakeholder-sentence-to-acceptance-criteria": RequirementsTranslatorIllustration,
   "why-jargon-is-a-wall": JargonWallIllustration,
+  "what-happens-between-a-jira-ticket-and-a-test-case": FsdPipelineIllustration,
 };
