@@ -1,6 +1,7 @@
 import type { ComponentType } from "react";
 
 import { ConfidenceIllustration } from "@/components/essays/confidence-illustration";
+import { JargonWallIllustration } from "@/components/essays/jargon-wall-illustration";
 import { JiraBacklogIllustration } from "@/components/essays/jira-backlog-illustration";
 import { LearningDividendIllustration } from "@/components/essays/learning-dividend-illustration";
 import { OrderBookIllustration } from "@/components/essays/order-book-illustration";
@@ -16,4 +17,5 @@ export const essayIllustrations: Record<string, ComponentType> = {
   "why-jira-tickets-rot-in-backlog": JiraBacklogIllustration,
   "what-a-trade-lifecycle-actually-looks-like": TradeLifecycleIllustration,
   "from-stakeholder-sentence-to-acceptance-criteria": RequirementsTranslatorIllustration,
+  "why-jargon-is-a-wall": JargonWallIllustration,
 };
