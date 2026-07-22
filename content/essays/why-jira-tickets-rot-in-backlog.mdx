@@ -1,0 +1,26 @@
+---
+title: "Why Jira Tickets Rot in Backlog"
+description: "Tickets don't die from neglect. They die from ambiguity about what would let them move — and no one owns fixing that."
+category: "Business Analysis"
+tags: ["process", "backlog"]
+author: "Surya"
+date: "2026-07-22"
+---
+
+Every backlog has tickets that are technically still alive — no one closed them, no one rejected them — but functionally dead. They surface in every grooming session, get nodded at, and go right back to where they were. The instinct is to blame prioritization: "we just have too much to do." That's rarely the real cause. Tickets rot because nobody ever defined what would let them move, so there's nothing left to do to them except discuss them again.
+
+## The funnel isn't shaped by effort, it's shaped by decisions
+
+Picture the backlog as a funnel: Backlog → Groomed → Ready → In Sprint → Done. Teams assume the walls of that funnel are made of *capacity* — not enough engineers, not enough sprint slots. But look at where tickets actually die, and it's almost never the sprint-capacity stage. It's earlier, at the stage with no owner and no exit criteria: the jump from "groomed" to "ready."
+
+## Grooming without a decision is just discussion
+
+A ticket gets groomed when the team talks about it out loud once. That's not the same as the ticket becoming ready. Readiness requires someone to make a call — on scope, on acceptance criteria, on which of three plausible interpretations is the one being built. If grooming ends in "let's revisit this next sprint," the ticket didn't get groomed. It got postponed with extra steps, and it will make the exact same lap next sprint, because the thing that was actually missing — a decision — still hasn't been made by anyone.
+
+## Entrance criteria, not effort estimates
+
+Story points measure how hard something is once it's understood. They say nothing about whether it's understood yet. The gate that actually prevents rot is an explicit entrance criterion for "Ready": acceptance criteria written, dependencies named, one clear owner for the decision if scope is ambiguous. Teams that skip this gate end up estimating tickets whose real content is still undecided — which is why "in sprint" tickets spawn new tickets mid-sprint. The ambiguity didn't go away. It just moved downstream, dressed up as a new backlog item.
+
+## The one-question check
+
+Before a ticket sits in backlog for another sprint, it should survive one question: **"What decision is blocking this from moving, and who is making it?"** If the answer is "nobody, we just haven't gotten to it," that's not a queuing problem — it's a ticket with no path forward, and no amount of sprint capacity will fix that.
