@@ -1,0 +1,28 @@
+---
+title: "From Stakeholder Sentence to Acceptance Criteria"
+description: "Every requirement hides a user story. The BA's job is making the translation visible — and being honest about which parts you inferred."
+category: "Business Analysis"
+tags: ["requirements", "user-stories"]
+author: "Surya"
+date: "2026-07-22"
+---
+
+Stakeholders don't speak in user stories. They speak in run-on sentences, half-finished asks, and complaints disguised as requirements — "the compliance team needs a way to flag suspicious trades before end of day" is a real requirement, but it isn't yet a testable one. Turning a sentence like that into `As a [role], I want [goal], so that [benefit]` plus acceptance criteria is a core BA skill, and it's usually invisible — done silently in a notebook or a Jira ticket, with none of the reasoning shown.
+
+## Three things are hiding in every sentence
+
+Every requirement sentence, however messy, is trying to smuggle in a role, a goal, and a benefit. "The compliance team needs a way to flag suspicious trades before end of day" gives you the role (compliance) and the goal (flag suspicious trades) almost for free — they're stated directly. The benefit is the part that's usually missing, and it's also the part that decides whether you built the right thing.
+
+## Detected vs. suggested is the distinction that matters
+
+Some benefits are stated explicitly — a "so that" or "because" clause that tells you exactly why the goal matters. Most aren't. In the sentence above, nobody said why flagging suspicious trades before end of day matters; you can *infer* it's about meeting a same-day regulatory reporting deadline, because "compliance" and "before end of day" are doing a lot of implicit work. That inference is usually right. It's still a guess, and treating it as equivalent to something the stakeholder actually said is how a requirement quietly drifts away from what was asked for. The honest move is to label it: this benefit was **detected**, that one was **suggested** — and confirm the suggested ones before they become acceptance criteria.
+
+## Acceptance criteria are where the guess gets tested
+
+A user story without acceptance criteria is a headline. "As a compliance analyst, I want to flag suspicious trades before end of day, so that the desk meets its same-day reporting deadline" only becomes buildable once you attach Given/When/Then criteria: given a trade crosses a risk threshold, when it's booked, then it's flagged before the end-of-day batch runs. Write the criteria against the *suggested* benefit specifically — if the stakeholder pushes back on one of them, you've just learned your inference was wrong, cheaply, before a sprint was spent on it.
+
+## The one-question check
+
+Before a translated requirement goes into a sprint, ask: **"Which parts of this did the stakeholder actually say, and which parts did I infer?"** If you can't draw that line, you don't have a translation — you have a rewrite, and rewrites are where requirements start meaning something the business never asked for.
+
+[Try the live translator →](https://bodhiprotocol.github.io/requirements-translator/)
