@@ -20,15 +20,17 @@ function Hero({
   ...props
 }: HeroProps) {
   return (
-    <div className={cn("py-24 sm:py-32", className)} {...props}>
-      <Container className="flex flex-col items-center gap-6 text-center">
-        {eyebrow ? <Eyebrow>{eyebrow}</Eyebrow> : null}
-        <H1 className="max-w-3xl">{title}</H1>
+    <div className={cn("py-28 sm:py-40", className)} {...props}>
+      <Container className="flex flex-col items-center text-center">
+        {eyebrow ? <Eyebrow className="mb-5">{eyebrow}</Eyebrow> : null}
+        <H1 className="max-w-3xl text-5xl leading-[1.1] sm:text-6xl md:text-7xl">
+          {title}
+        </H1>
         {description ? (
-          <Lead className="max-w-xl">{description}</Lead>
+          <Lead className="mt-6 max-w-md">{description}</Lead>
         ) : null}
         {actions ? (
-          <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
             {actions}
           </div>
         ) : null}
