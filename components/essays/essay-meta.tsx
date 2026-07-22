@@ -6,7 +6,7 @@ function EssayMeta({ essay }: { essay: Essay }) {
   return (
     <div className="flex flex-col gap-4">
       <Muted className="font-mono text-xs">
-        {essay.author} · {essay.date} · {essay.readingTime}
+        {essay.author} · {essay.readingTime}
       </Muted>
       <div className="flex flex-wrap gap-2">
         <Tag active>{essay.category}</Tag>

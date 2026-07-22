@@ -30,8 +30,7 @@ function FeaturedEssayCard({
               {essay.author.charAt(0)}
             </span>
             <Muted className="font-mono text-xs">
-              <span className="text-foreground">{essay.author}</span> · {essay.date} ·{" "}
-              {essay.readingTime}
+              <span className="text-foreground">{essay.author}</span> · {essay.readingTime}
             </Muted>
           </div>
         </div>

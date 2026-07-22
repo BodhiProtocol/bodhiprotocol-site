@@ -40,7 +40,7 @@ function ArticleCard({ essay }: { essay: Essay }) {
           </h3>
           <Muted className="line-clamp-2">{essay.description}</Muted>
           <Muted className="mt-auto font-mono text-xs">
-            {essay.author} · {essay.date} · {essay.readingTime}
+            {essay.author} · {essay.readingTime}
           </Muted>
         </div>
       </Card>
