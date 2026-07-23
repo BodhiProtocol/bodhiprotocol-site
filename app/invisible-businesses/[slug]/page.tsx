@@ -24,6 +24,7 @@ import { LinkedinEpisodeBody } from "@/components/invisible-businesses/linkedin-
 import { MetaEpisodeBody } from "@/components/invisible-businesses/meta-episode-body";
 import { ZeptoEpisodeBody } from "@/components/invisible-businesses/zepto-episode-body";
 import { ZerodhaEpisodeBody } from "@/components/invisible-businesses/zerodha-episode-body";
+import { CredEpisodeBody } from "@/components/invisible-businesses/cred-episode-body";
 import { BigIdeaCard } from "@/components/invisible-businesses/big-idea-card";
 import { FlywheelDiagram } from "@/components/invisible-businesses/flywheel-diagram";
 import { InsightGrid } from "@/components/invisible-businesses/insight-grid";
@@ -59,6 +60,7 @@ const customEpisodeBodies: Record<
   "meta-doesnt-sell-social-media": MetaEpisodeBody,
   "zepto-doesnt-sell-groceries": ZeptoEpisodeBody,
   "zerodha-doesnt-sell-stock-trades": ZerodhaEpisodeBody,
+  "cred-doesnt-sell-bill-payments": CredEpisodeBody,
 };
 
 interface IBPageProps {

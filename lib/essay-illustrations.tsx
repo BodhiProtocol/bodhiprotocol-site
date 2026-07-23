@@ -2,6 +2,7 @@ import type { ComponentType } from "react";
 
 import { AmlLadderIllustration } from "@/components/essays/aml-ladder-illustration";
 import { ConfidenceIllustration } from "@/components/essays/confidence-illustration";
+import { ContextWindowIllustration } from "@/components/essays/context-window-illustration";
 import { FsdPipelineIllustration } from "@/components/essays/fsd-pipeline-illustration";
 import { JargonWallIllustration } from "@/components/essays/jargon-wall-illustration";
 import { JiraBacklogIllustration } from "@/components/essays/jira-backlog-illustration";
@@ -22,4 +23,5 @@ export const essayIllustrations: Record<string, ComponentType> = {
   "why-jargon-is-a-wall": JargonWallIllustration,
   "what-happens-between-a-jira-ticket-and-a-test-case": FsdPipelineIllustration,
   "the-acronym-wall-every-new-banking-ba-hits": AmlLadderIllustration,
+  "context-windows-arent-memory": ContextWindowIllustration,
 };
