@@ -1,0 +1,28 @@
+---
+title: "The Acronym Wall Every New Banking BA Hits"
+description: "KYC, CDD, EDD, SAR — four acronyms that look interchangeable and aren't. Get the ladder wrong and the requirement you write is the one that fails."
+category: "Business Analysis"
+tags: ["banking", "regulatory"]
+author: "Surya"
+date: "2026-07-22"
+---
+
+A new BA joins a bank's onboarding project and sits through their first requirements session. Someone says: "run EDD, check the PEP flag, and if it trips, file a SAR." Everyone else in the room nods. The BA is expected to write acceptance criteria for that sentence by the end of the day, and nothing in a general business-analysis background prepared them for it — this isn't ambiguous stakeholder language to translate, it's a stack of regulatory terms that already have precise, non-negotiable meanings, and getting them wrong doesn't just produce a bad ticket. It produces a control that fails in production, at a bank, with real money moving through it.
+
+## KYC isn't one control, it's a ladder
+
+KYC, CDD, and EDD are not three words for the same thing — they're three rungs of increasing scrutiny. **KYC** (Know Your Customer) is the floor: verify who someone is before doing business with them. **CDD** (Customer Due Diligence) is KYC's ongoing, more formal cousin — continuously understanding and monitoring a customer's risk profile, not just checking it once at onboarding. **EDD** (Enhanced Due Diligence) is what CDD escalates to for higher-risk customers: politically exposed persons, high-risk jurisdictions, unusual transaction patterns — it requires senior sign-off and closer monitoring than the standard tier. A requirement that says "run KYC" when the actual need is ongoing CDD monitoring, or treats EDD as optional extra effort rather than a mandatory escalation path, isn't a small wording slip. It's a different control.
+
+## The acronyms aren't academic — they're where the fines land
+
+This isn't abstract vocabulary homework. **Danske Bank** pleaded guilty and forfeited $2 billion after its Estonian branch processed roughly $160 billion in non-resident flows with almost no real identity verification — arguably the purest large-scale KYC failure on record. **ING Bank** paid €775 million in what was, at the time, the largest criminal settlement in Dutch history, for classic CDD breakdowns: missing customer files, wrong risk classifications, no periodic reviews. **HSBC** paid $1.921 billion after its own internal risk rating flagged its Mexican affiliate as highest-risk — which should have triggered EDD and didn't — and cartel cash moved through undetected for years. **US Bancorp** paid $613 million for failing to timely file SARs on a customer later sentenced to 16+ years for a $2 billion fraud scheme, after capping how many alerts its own monitoring system could generate based on available staff rather than actual risk. Every one of these started as a requirement someone wrote.
+
+## Knowing the rung decides what the requirement actually says
+
+The practical BA skill isn't memorizing definitions — it's knowing that each rung of the ladder produces a *different kind* of requirement. "Flag PEP status" is a data-field requirement: a value on a customer record. "Route to EDD when risk score exceeds X" is a workflow requirement: a branching condition with an approval step. "File a SAR" is neither — it's an entirely separate downstream system with its own confidentiality rules (tipping off the customer is itself illegal). Writing all three as if they're the same kind of ticket — "add AML checks" — is how a bank ends up with a monitoring system that technically has AML features and still misses what regulators were actually asking for.
+
+## The one-question check
+
+Before writing a requirement that names one of these terms, ask: **"Which rung of the ladder is this, and what specifically fails at the bank if I implement it wrong?"** If the honest answer is "I'm not sure, I just know it's an AML thing," that requirement isn't ready to be written yet — because on this particular wall, the acronym you get wrong is the one that shows up in a regulator's press release two years later.
+
+[Explore the full Regulatory Acronym Map →](https://bodhiprotocol.github.io/regulatory-acronym-map/)

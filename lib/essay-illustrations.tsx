@@ -1,5 +1,6 @@
 import type { ComponentType } from "react";
 
+import { AmlLadderIllustration } from "@/components/essays/aml-ladder-illustration";
 import { ConfidenceIllustration } from "@/components/essays/confidence-illustration";
 import { FsdPipelineIllustration } from "@/components/essays/fsd-pipeline-illustration";
 import { JargonWallIllustration } from "@/components/essays/jargon-wall-illustration";
@@ -20,4 +21,5 @@ export const essayIllustrations: Record<string, ComponentType> = {
   "from-stakeholder-sentence-to-acceptance-criteria": RequirementsTranslatorIllustration,
   "why-jargon-is-a-wall": JargonWallIllustration,
   "what-happens-between-a-jira-ticket-and-a-test-case": FsdPipelineIllustration,
+  "the-acronym-wall-every-new-banking-ba-hits": AmlLadderIllustration,
 };
