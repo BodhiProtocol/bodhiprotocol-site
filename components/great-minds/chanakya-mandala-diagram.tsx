@@ -135,6 +135,14 @@ function ChanakyaMandalaDiagram({ nodes }: { nodes: GreatMindWheelNode[] }) {
               >
                 {ring.label}
               </span>
+              <span
+                className={cn(
+                  "text-[8px] font-medium tracking-[0.06em] whitespace-nowrap uppercase transition-colors",
+                  isActive ? "text-brand/70" : "text-muted-foreground/60",
+                )}
+              >
+                {ring.isRival ? "Rival" : "Ally"}
+              </span>
             </motion.button>
           );
         })}
