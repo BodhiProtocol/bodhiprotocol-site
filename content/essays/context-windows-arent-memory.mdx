@@ -1,0 +1,26 @@
+---
+title: "Context Windows Aren't Memory"
+description: "A context window isn't a brain that remembers your conversation. It's a token budget — and once it's full, the oldest content doesn't fade, it just stops existing to the model."
+category: "Artificial Intelligence"
+tags: ["llms", "tokens"]
+author: "Surya"
+date: "2026-07-22"
+---
+
+People call it "memory" because that's the closest human word for what a context window seems to do — it lets a model refer back to something you said ten messages ago. But nothing about how it works resembles memory. A context window is a token budget with a hard ceiling, and understanding it as a budget rather than a brain changes how you should actually use it.
+
+## The window is a budget, not a brain
+
+A model doesn't read words or characters — it reads tokens, roughly ¾ of an English word each, so 100 tokens is about 75 words. Every model has a fixed token ceiling for everything it can "see" at once: your whole conversation, any pasted documents, and its own reply, all combined. Claude 3.5 Sonnet holds around 200K tokens. GPT-4o holds around 128K. Gemini 1.5 Pro goes up to 2M tokens for some tiers. These aren't soft guidelines — they're hard limits, and every API call is priced per token against them, input and output both.
+
+## "Forgotten" is the wrong word for what happens
+
+Once a conversation exceeds the window, the oldest content doesn't get summarized, faded, or gently deprioritized. It gets pushed out, and the model can no longer see it at all — not "recalls it less well," but literally cannot access it, the same way a message scrolled off the top of a chat window no longer exists to whoever's reading. Nothing was erased from any file. The model simply has no channel back to it anymore. Calling that "forgetting" imports a human concept — gradual, fuzzy, sometimes recoverable — onto something that's actually a hard, binary cutoff.
+
+## Bigger is not free
+
+The instinct once you know the ceiling exists is to just use a model with a bigger one — paste the whole document, the whole codebase, the whole history in. That has real costs beyond price: latency goes up, and models measurably pay less attention to information buried in the middle of a very large context than to what's at the start or end — the "lost in the middle" effect. A well-designed retrieval step, pulling in only the specific passages relevant to the current question, usually outperforms dumping an entire 200-page document into the window and hoping the model finds the right paragraph on its own.
+
+## The one-question check
+
+Before pasting a large document into a prompt, ask: **does the model actually need to see all of this at once, or does it need to find the right ten pages inside it?** If it's the second, a bigger context window isn't the fix — retrieval is, and reaching for a bigger window instead is solving a search problem by force-feeding the entire library rather than looking up the one book.
