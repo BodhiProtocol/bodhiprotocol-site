@@ -9,6 +9,7 @@ import { FsdPipelineIllustration } from "@/components/essays/fsd-pipeline-illust
 import { JargonWallIllustration } from "@/components/essays/jargon-wall-illustration";
 import { JiraBacklogIllustration } from "@/components/essays/jira-backlog-illustration";
 import { LearningDividendIllustration } from "@/components/essays/learning-dividend-illustration";
+import { OpportunityCostIllustration } from "@/components/essays/opportunity-cost-illustration";
 import { OrderBookIllustration } from "@/components/essays/order-book-illustration";
 import { RequirementIllustration } from "@/components/essays/requirement-illustration";
 import { RequirementsTranslatorIllustration } from "@/components/essays/requirements-translator-illustration";
@@ -30,4 +31,5 @@ export const essayIllustrations: Record<string, ComponentType> = {
   "what-spoofing-actually-looks-like": SpoofingTimelineIllustration,
   "a-good-decision-can-still-lose": DecisionOutcomeGridIllustration,
   "people-respond-to-incentives-not-instructions": CobraEffectIllustration,
+  "opportunity-cost-is-the-only-cost-that-matters": OpportunityCostIllustration,
 };
