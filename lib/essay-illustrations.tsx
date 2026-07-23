@@ -14,6 +14,7 @@ import { OrderBookIllustration } from "@/components/essays/order-book-illustrati
 import { RequirementIllustration } from "@/components/essays/requirement-illustration";
 import { RequirementsTranslatorIllustration } from "@/components/essays/requirements-translator-illustration";
 import { SpoofingTimelineIllustration } from "@/components/essays/spoofing-timeline-illustration";
+import { SunkCostIllustration } from "@/components/essays/sunk-cost-illustration";
 import { TradeLifecycleIllustration } from "@/components/essays/trade-lifecycle-illustration";
 
 export const essayIllustrations: Record<string, ComponentType> = {
@@ -32,4 +33,5 @@ export const essayIllustrations: Record<string, ComponentType> = {
   "a-good-decision-can-still-lose": DecisionOutcomeGridIllustration,
   "people-respond-to-incentives-not-instructions": CobraEffectIllustration,
   "opportunity-cost-is-the-only-cost-that-matters": OpportunityCostIllustration,
+  "sunk-costs-cant-answer-the-question-youre-asking": SunkCostIllustration,
 };
