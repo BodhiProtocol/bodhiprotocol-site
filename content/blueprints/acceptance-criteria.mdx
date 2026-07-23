@@ -1,0 +1,31 @@
+---
+title: "Acceptance Criteria"
+summary: "The difference between a handshake deal and a contract, applied to requirements."
+module: "Business Analysis"
+season: "Season 2"
+tags: ["requirements", "testing"]
+author: "Surya"
+date: "2026-07-23"
+---
+
+**Core question:** how do you actually know when something is done?
+
+## The metaphor: a handshake vs. a contract
+
+A user story without acceptance criteria is a handshake deal. Both sides nod, both sides believe they agree, and both sides walk away with a slightly different picture of what was promised — which only becomes visible once the work is "done" and it doesn't match what either side remembers agreeing to. Acceptance criteria are the contract version of that same handshake: written down, specific, and checkable by someone who wasn't in the room when the deal was made.
+
+<Callout type="insight" title="A shared assumption isn't a shared understanding">
+Two people can nod at the same sentence and picture two different outcomes. Acceptance criteria exist to force that gap into the open before the work starts, not after it ships.
+</Callout>
+
+## Given / When / Then is the actual unit of "done"
+
+The useful structure is a precondition, a trigger, and an outcome: *given* the account is locked, *when* the user requests a password reset, *then* a reset link is emailed and the lock stays in place until it's used. Each clause is independently testable — a QA engineer, a developer, and the original stakeholder can all check the same sentence against the same built feature and reach the same yes-or-no answer. That's the entire point: acceptance criteria aren't documentation, they're a test someone can actually run.
+
+<Callout type="question">
+Could two different engineers, working independently, build testably identical things from this criteria alone? If the answer depends on both of them happening to guess the same unstated assumption, the criteria aren't finished yet.
+</Callout>
+
+## Why this matters
+
+"Done" isn't a feeling the team agrees on in a meeting. It's a checklist that was written before the work started, specific enough that no one — not the developer, not the tester, not the stakeholder — has to rely on memory to know whether it was actually met.
