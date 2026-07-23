@@ -39,7 +39,7 @@ export default function Home() {
           </>
         }
       />
-      <Container className="pb-16 sm:pb-24">
+      <Container className="hero-enter pb-16 sm:pb-24 [animation-delay:480ms]">
         <KnowledgeMap />
       </Container>
       <FeaturedEssays />

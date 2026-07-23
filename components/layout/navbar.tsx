@@ -44,7 +44,7 @@ function Navbar({ searchItems }: { searchItems: SearchItem[] }) {
         )}
       >
         <Container className="flex h-16 items-center justify-between gap-4">
-          <Logo />
+          <Logo className={pathname === "/" ? "hero-enter" : undefined} />
 
           <nav className="hidden items-center gap-1 md:flex">
             {navLinks.map((link) => (
