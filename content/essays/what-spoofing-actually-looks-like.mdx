@@ -1,0 +1,32 @@
+---
+title: "What Spoofing Actually Looks Like, Order by Order"
+description: "Spoofing is easy to define and hard to see. The evidence isn't in any single order's size — it's in when five unrelated-looking orders all get cancelled at once."
+category: "Capital Markets"
+tags: ["market-abuse", "surveillance"]
+author: "Surya"
+date: "2026-07-22"
+---
+
+Spoofing has a clean legal definition: placing an order you never intend to fill, to create a false impression of supply or demand. Read that sentence and it sounds obvious — of course regulators can catch that. In practice, spoofing is invisible in a definition and only becomes obvious when you watch the order lifecycle unfold, order by order, against the clock.
+
+## Five orders build a wall that isn't there
+
+A simulated episode: five bid-side orders land in quick succession — 4,000 shares at 99.97, 7,000 at 99.95, 5,500 at 99.93, 6,500 at 99.91, 3,800 at 99.89. None of these are large enough alone to look suspicious; a real buyer places orders like this constantly. Together, they add 26,800 shares of apparent buying depth stacked just below the market — a wall that makes the book look like real demand is building underneath the current price, exactly when a very different order is about to need that impression to hold.
+
+## One genuine order is the entire point
+
+While the fake depth sits there, a single ask order for 2,000 shares at 100.02 — the *real* trade — gets filled. That's it. That's the entire objective of the previous five orders: create enough apparent buying pressure that someone on the other side treats 100.02 as a reasonable, well-supported price to sell into. The genuine order is a fraction of the size of the fake depth surrounding it — roughly 13 times smaller than the wall built to support it landing.
+
+## The tell is in the clock, not the price
+
+Here's the part a definition can't show you: within moments of that genuine fill, all five bid layers get cancelled — not over the course of the trading day, not in response to news, but in a tight cluster immediately after the opposite-side order they were supporting has already filled. A trader who simply changed their mind cancels one order, at one moment, for one reason. Five orders, cancelled within the same narrow window, immediately after an opposing fill, isn't five coincidences. It's one plan, executed in five parts.
+
+## Why three regulators wrote the same rule independently
+
+MAS's Securities and Futures Act s197 (false trading), the CFTC's anti-spoofing statute (7 U.S.C. §6c(a)(5)(C)), and the EU's Market Abuse Regulation Article 12(1)(a) come from three different legal systems, drafted at different times, by regulators who don't share a rulebook. All three define the violation around the same structural signal: an order with no genuine intent to trade, that rests briefly, adds one-sided depth, and is pulled within moments of the opposing genuine order filling. The convergence isn't a coincidence — it's because the tell isn't a legal technicality specific to one jurisdiction, it's a pattern in the data itself, visible the same way no matter which regulator is looking at it.
+
+## The one-question check
+
+When reviewing order-book activity, the useful question isn't "was this order unusually large?" It's: **does this order's cancellation timing correlate with another order filling on the opposite side — and does that correlation repeat across multiple orders, not just one?** A single cancelled order is a Tuesday. Five orders cancelled in the same breath, right after the trade they were propping up went through, is the pattern every one of these regulations was written to catch.
+
+[Watch the full replay →](https://bodhiprotocol.github.io/layering-spoofing-order-book/)

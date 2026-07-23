@@ -10,6 +10,7 @@ import { LearningDividendIllustration } from "@/components/essays/learning-divid
 import { OrderBookIllustration } from "@/components/essays/order-book-illustration";
 import { RequirementIllustration } from "@/components/essays/requirement-illustration";
 import { RequirementsTranslatorIllustration } from "@/components/essays/requirements-translator-illustration";
+import { SpoofingTimelineIllustration } from "@/components/essays/spoofing-timeline-illustration";
 import { TradeLifecycleIllustration } from "@/components/essays/trade-lifecycle-illustration";
 
 export const essayIllustrations: Record<string, ComponentType> = {
@@ -24,4 +25,5 @@ export const essayIllustrations: Record<string, ComponentType> = {
   "what-happens-between-a-jira-ticket-and-a-test-case": FsdPipelineIllustration,
   "the-acronym-wall-every-new-banking-ba-hits": AmlLadderIllustration,
   "context-windows-arent-memory": ContextWindowIllustration,
+  "what-spoofing-actually-looks-like": SpoofingTimelineIllustration,
 };
