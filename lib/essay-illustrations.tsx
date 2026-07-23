@@ -1,6 +1,7 @@
 import type { ComponentType } from "react";
 
 import { AmlLadderIllustration } from "@/components/essays/aml-ladder-illustration";
+import { CobraEffectIllustration } from "@/components/essays/cobra-effect-illustration";
 import { ConfidenceIllustration } from "@/components/essays/confidence-illustration";
 import { ContextWindowIllustration } from "@/components/essays/context-window-illustration";
 import { DecisionOutcomeGridIllustration } from "@/components/essays/decision-outcome-grid-illustration";
@@ -28,4 +29,5 @@ export const essayIllustrations: Record<string, ComponentType> = {
   "context-windows-arent-memory": ContextWindowIllustration,
   "what-spoofing-actually-looks-like": SpoofingTimelineIllustration,
   "a-good-decision-can-still-lose": DecisionOutcomeGridIllustration,
+  "people-respond-to-incentives-not-instructions": CobraEffectIllustration,
 };
