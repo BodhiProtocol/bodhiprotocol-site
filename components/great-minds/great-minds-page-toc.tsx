@@ -5,7 +5,12 @@ import { AlignLeft } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-const sections = [
+export interface TocSection {
+  id: string;
+  label: string;
+}
+
+const defaultSections: TocSection[] = [
   { id: "core-philosophy", label: "Core Philosophy" },
   { id: "thinking-process", label: "Thinking Process" },
   { id: "mental-models", label: "Mental Models" },
@@ -15,7 +20,7 @@ const sections = [
   { id: "related-minds", label: "Related Minds" },
 ];
 
-function GreatMindsPageToc() {
+function GreatMindsPageToc({ sections = defaultSections }: { sections?: TocSection[] }) {
   const [activeId, setActiveId] = React.useState(sections[0].id);
 
   React.useEffect(() => {
@@ -36,7 +41,7 @@ function GreatMindsPageToc() {
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [sections]);
 
   return (
     <nav aria-label="Table of contents" className="flex flex-col gap-3 text-sm">

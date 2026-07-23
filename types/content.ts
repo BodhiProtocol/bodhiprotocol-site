@@ -91,16 +91,41 @@ export interface GreatMindThinkingStep {
 export interface GreatMindMentalModel {
   name: string;
   description: string;
+  /** Optional bespoke icon (key into the shared Great Minds icon map). Falls back to a generic Brain icon when omitted. */
+  icon?: string;
 }
 
 export interface GreatMindBigIdea {
   title: string;
   description: string;
+  /** Optional bespoke icon (key into the shared Great Minds icon map). Falls back to a generic Lightbulb icon when omitted. */
+  icon?: string;
 }
 
 export interface GreatMindTimelineEvent {
   year: string;
   event: string;
+  /** Optional expanded detail, revealed via a native <details> disclosure. Entries without this render exactly as before. */
+  detail?: string;
+}
+
+export interface GreatMindCentralThesisNode {
+  label: string;
+  icon: string;
+}
+
+export interface GreatMindCentralThesis {
+  centerLabel: string;
+  caption: string;
+  nodes: GreatMindCentralThesisNode[];
+}
+
+export interface GreatMindEnduringInfluenceEntry {
+  modelName: string;
+  icon: string;
+  ancient: string;
+  modern: string;
+  whyItMatters: string;
 }
 
 export interface GreatMindBook {
@@ -130,12 +155,27 @@ export interface GreatMind {
   draft?: boolean;
   wheel: GreatMindWheelNode[];
   corePhilosophy: string;
+  /** Optional closing takeaway line, rendered as a highlighted callout. Section renders exactly as before when omitted. */
+  corePhilosophyTakeaway?: string;
   thinkingProcess: GreatMindThinkingStep[];
+  thinkingProcessTakeaway?: string;
   mentalModels: GreatMindMentalModel[];
+  mentalModelsTakeaway?: string;
   bigIdeas: GreatMindBigIdea[];
   timeline: GreatMindTimelineEvent[];
+  timelineTakeaway?: string;
   books: GreatMindBook[];
   relatedMinds?: GreatMindRelatedEntry[];
+  /** Optional "5 inputs converging on 1 idea" diagram, rendered right after the hero. Section is omitted entirely when absent. */
+  centralThesis?: GreatMindCentralThesis;
+  /** Optional section extending each mental model with an ancient/modern/why-it-matters angle. Omitted entirely when absent. */
+  enduringInfluence?: GreatMindEnduringInfluenceEntry[];
+  /** When true, renders Mental Models before Thinking Process instead of the default order. Defaults to false (existing order) for every mind that doesn't set it. */
+  promoteMentalModels?: boolean;
+  /** Optional short closing statement rendered after Books, before Related Minds. Omitted entirely when absent. */
+  closingReflection?: string;
+  /** Optional list of historiography caveats, rendered as a collapsible disclosure near Books. Omitted entirely when absent. */
+  scholarshipNotes?: string[];
 }
 
 export type LabStatus = "live" | "in-progress" | "planned";

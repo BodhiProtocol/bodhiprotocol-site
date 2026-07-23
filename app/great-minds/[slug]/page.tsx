@@ -8,13 +8,17 @@ import { Section } from "@/components/ui/section";
 import { Divider } from "@/components/ui/divider";
 import { JsonLd } from "@/components/shared/json-ld";
 import { GreatMindsHero } from "@/components/great-minds/great-minds-hero";
-import { GreatMindsPageToc } from "@/components/great-minds/great-minds-page-toc";
+import { GreatMindsPageToc, type TocSection } from "@/components/great-minds/great-minds-page-toc";
+import { GreatMindsCentralThesis } from "@/components/great-minds/great-minds-central-thesis";
 import { GreatMindsCorePhilosophy } from "@/components/great-minds/great-minds-core-philosophy";
 import { GreatMindsThinkingProcess } from "@/components/great-minds/great-minds-thinking-process";
 import { GreatMindsMentalModels } from "@/components/great-minds/great-minds-mental-models";
 import { GreatMindsBigIdeas } from "@/components/great-minds/great-minds-big-ideas";
+import { GreatMindsEnduringInfluence } from "@/components/great-minds/great-minds-enduring-influence";
 import { GreatMindsTimeline } from "@/components/great-minds/great-minds-timeline";
 import { GreatMindsBooks } from "@/components/great-minds/great-minds-books";
+import { GreatMindsClosingReflection } from "@/components/great-minds/great-minds-closing-reflection";
+import { GreatMindsScholarshipNotes } from "@/components/great-minds/great-minds-scholarship-notes";
 import { GreatMindsRelated, type RelatedMindDisplay } from "@/components/great-minds/great-minds-related";
 import { LeonardoWheelDiagram } from "@/components/great-minds/leonardo-wheel-diagram";
 import { LeonardoHeroBackground } from "@/components/great-minds/leonardo-hero-background";
@@ -34,6 +38,8 @@ import { KalamIgnitionDiagram } from "@/components/great-minds/kalam-ignition-di
 import { KalamHeroBackground } from "@/components/great-minds/kalam-hero-background";
 import { MarcusAureliusCitadelDiagram } from "@/components/great-minds/marcus-aurelius-citadel-diagram";
 import { MarcusAureliusHeroBackground } from "@/components/great-minds/marcus-aurelius-hero-background";
+import { ChanakyaMandalaDiagram } from "@/components/great-minds/chanakya-mandala-diagram";
+import { ChanakyaHeroBackground } from "@/components/great-minds/chanakya-hero-background";
 import { MindGraphProvider } from "@/components/great-minds/mind-graph-context";
 import { getAllGreatMinds, getGreatMindBySlug, type GreatMindWithContent } from "@/lib/great-minds";
 import { mdxOptions } from "@/lib/mdx-options";
@@ -52,6 +58,7 @@ const heroDiagrams: Record<string, (mind: GreatMindWithContent) => ReactNode> = 
   "john-d-rockefeller": (mind) => <RockefellerColumnDiagram nodes={mind.wheel} />,
   "apj-abdul-kalam": (mind) => <KalamIgnitionDiagram nodes={mind.wheel} />,
   "marcus-aurelius": (mind) => <MarcusAureliusCitadelDiagram nodes={mind.wheel} />,
+  chanakya: (mind) => <ChanakyaMandalaDiagram nodes={mind.wheel} />,
 };
 
 const heroBackgrounds: Record<string, ReactNode> = {
@@ -64,6 +71,7 @@ const heroBackgrounds: Record<string, ReactNode> = {
   "john-d-rockefeller": <RockefellerHeroBackground />,
   "apj-abdul-kalam": <KalamHeroBackground />,
   "marcus-aurelius": <MarcusAureliusHeroBackground />,
+  chanakya: <ChanakyaHeroBackground />,
 };
 
 interface GreatMindPageProps {
@@ -105,6 +113,32 @@ export default async function GreatMindPage({ params }: GreatMindPageProps) {
 
   const mindUrl = `${siteConfig.url}/great-minds/${mind.slug}`;
   const diagram = heroDiagrams[mind.slug]?.(mind);
+
+  const showBigIdeas = mind.bigIdeas.length > 0;
+  const showCentralThesis = Boolean(mind.centralThesis);
+  const showEnduringInfluence = (mind.enduringInfluence ?? []).length > 0;
+
+  // Section order is fixed for every existing figure; a mind can opt into
+  // promoting Mental Models ahead of Thinking Process (see GreatMind.promoteMentalModels)
+  // without affecting anyone who doesn't set that flag.
+  const tocSections: TocSection[] = [
+    ...(showCentralThesis ? [{ id: "central-thesis", label: "Central Thesis" }] : []),
+    { id: "core-philosophy", label: "Core Philosophy" },
+    ...(mind.promoteMentalModels
+      ? [
+          { id: "mental-models", label: "Mental Models" },
+          { id: "thinking-process", label: "Thinking Process" },
+        ]
+      : [
+          { id: "thinking-process", label: "Thinking Process" },
+          { id: "mental-models", label: "Mental Models" },
+        ]),
+    ...(showBigIdeas ? [{ id: "big-ideas", label: "Big Ideas" }] : []),
+    { id: "timeline", label: "Timeline" },
+    ...(showEnduringInfluence ? [{ id: "enduring-influence", label: "Enduring Influence" }] : []),
+    { id: "books", label: "Books" },
+    { id: "related-minds", label: "Related Minds" },
+  ];
 
   const relatedMinds: RelatedMindDisplay[] = (mind.relatedMinds ?? []).map((entry) => {
     const relatedMind = entry.slug ? getGreatMindBySlug(entry.slug) : undefined;
@@ -158,18 +192,31 @@ export default async function GreatMindPage({ params }: GreatMindPageProps) {
               <div className="prose prose-neutral dark:prose-invert max-w-none prose-headings:font-heading prose-a:text-brand first:prose-p:font-serif first:prose-p:text-xl first:prose-p:leading-relaxed first:prose-p:text-foreground">
                 <MDXRemote source={mind.content} options={mdxOptions} />
               </div>
-              <GreatMindsCorePhilosophy philosophy={mind.corePhilosophy} />
-              <GreatMindsThinkingProcess steps={mind.thinkingProcess} />
-              <GreatMindsMentalModels models={mind.mentalModels} />
-              <GreatMindsBigIdeas ideas={mind.bigIdeas} />
-              <GreatMindsTimeline events={mind.timeline} />
+              <GreatMindsCentralThesis thesis={mind.centralThesis} />
+              <GreatMindsCorePhilosophy philosophy={mind.corePhilosophy} takeaway={mind.corePhilosophyTakeaway} />
+              {mind.promoteMentalModels ? (
+                <>
+                  <GreatMindsMentalModels models={mind.mentalModels} takeaway={mind.mentalModelsTakeaway} />
+                  <GreatMindsThinkingProcess steps={mind.thinkingProcess} takeaway={mind.thinkingProcessTakeaway} />
+                </>
+              ) : (
+                <>
+                  <GreatMindsThinkingProcess steps={mind.thinkingProcess} takeaway={mind.thinkingProcessTakeaway} />
+                  <GreatMindsMentalModels models={mind.mentalModels} takeaway={mind.mentalModelsTakeaway} />
+                </>
+              )}
+              {showBigIdeas ? <GreatMindsBigIdeas ideas={mind.bigIdeas} /> : null}
+              <GreatMindsTimeline events={mind.timeline} takeaway={mind.timelineTakeaway} />
+              <GreatMindsEnduringInfluence entries={mind.enduringInfluence} />
               <GreatMindsBooks books={mind.books} />
+              <GreatMindsScholarshipNotes notes={mind.scholarshipNotes} />
+              <GreatMindsClosingReflection text={mind.closingReflection} />
               <Divider />
               <GreatMindsRelated related={relatedMinds} />
             </article>
             <aside className="hidden lg:block">
               <div className="sticky top-24">
-                <GreatMindsPageToc />
+                <GreatMindsPageToc sections={tocSections} />
               </div>
             </aside>
           </div>

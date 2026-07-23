@@ -1,7 +1,14 @@
+import { GreatMindsTakeaway } from "@/components/great-minds/great-minds-takeaway";
 import { Eyebrow, H2 } from "@/components/ui/typography";
 import type { GreatMindTimelineEvent } from "@/types/content";
 
-function GreatMindsTimeline({ events }: { events: GreatMindTimelineEvent[] }) {
+function GreatMindsTimeline({
+  events,
+  takeaway,
+}: {
+  events: GreatMindTimelineEvent[];
+  takeaway?: string;
+}) {
   return (
     <section id="timeline" className="scroll-mt-24 flex flex-col gap-8">
       <div className="flex flex-col gap-3">
@@ -15,10 +22,21 @@ function GreatMindsTimeline({ events }: { events: GreatMindTimelineEvent[] }) {
             <span className="font-mono text-xs font-semibold tracking-[0.1em] text-brand uppercase">
               {event.year}
             </span>
-            <p className="mt-1 leading-relaxed text-muted-foreground">{event.event}</p>
+            {event.detail ? (
+              <details className="group mt-1">
+                <summary className="cursor-pointer leading-relaxed text-muted-foreground marker:content-none">
+                  {event.event}{" "}
+                  <span className="text-xs text-brand group-open:hidden">(expand)</span>
+                </summary>
+                <p className="mt-1.5 leading-relaxed text-muted-foreground">{event.detail}</p>
+              </details>
+            ) : (
+              <p className="mt-1 leading-relaxed text-muted-foreground">{event.event}</p>
+            )}
           </li>
         ))}
       </ol>
+      <GreatMindsTakeaway text={takeaway} />
     </section>
   );
 }

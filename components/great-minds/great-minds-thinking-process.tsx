@@ -1,7 +1,14 @@
 import { Eyebrow, H2 } from "@/components/ui/typography";
+import { GreatMindsTakeaway } from "@/components/great-minds/great-minds-takeaway";
 import type { GreatMindThinkingStep } from "@/types/content";
 
-function GreatMindsThinkingProcess({ steps }: { steps: GreatMindThinkingStep[] }) {
+function GreatMindsThinkingProcess({
+  steps,
+  takeaway,
+}: {
+  steps: GreatMindThinkingStep[];
+  takeaway?: string;
+}) {
   return (
     <section id="thinking-process" className="scroll-mt-24 flex flex-col gap-8">
       <div className="flex flex-col gap-3">
@@ -21,6 +28,7 @@ function GreatMindsThinkingProcess({ steps }: { steps: GreatMindThinkingStep[] }
           </li>
         ))}
       </ol>
+      <GreatMindsTakeaway text={takeaway} />
     </section>
   );
 }

@@ -7,6 +7,8 @@ import type {
   GreatMind,
   GreatMindBigIdea,
   GreatMindBook,
+  GreatMindCentralThesis,
+  GreatMindEnduringInfluenceEntry,
   GreatMindMentalModel,
   GreatMindRelatedEntry,
   GreatMindThinkingStep,
@@ -35,12 +37,21 @@ interface GreatMindFrontmatter {
   draft?: boolean;
   wheel: GreatMindWheelNode[];
   corePhilosophy: string;
+  corePhilosophyTakeaway?: string;
   thinkingProcess: GreatMindThinkingStep[];
+  thinkingProcessTakeaway?: string;
   mentalModels: GreatMindMentalModel[];
+  mentalModelsTakeaway?: string;
   bigIdeas: GreatMindBigIdea[];
   timeline: GreatMindTimelineEvent[];
+  timelineTakeaway?: string;
   books: GreatMindBook[];
   relatedMinds?: GreatMindRelatedEntry[];
+  centralThesis?: GreatMindCentralThesis;
+  enduringInfluence?: GreatMindEnduringInfluenceEntry[];
+  promoteMentalModels?: boolean;
+  closingReflection?: string;
+  scholarshipNotes?: string[];
 }
 
 function readGreatMindFile(filename: string): GreatMindWithContent {
@@ -64,12 +75,21 @@ function readGreatMindFile(filename: string): GreatMindWithContent {
     draft: frontmatter.draft ?? false,
     wheel: frontmatter.wheel ?? [],
     corePhilosophy: frontmatter.corePhilosophy,
+    corePhilosophyTakeaway: frontmatter.corePhilosophyTakeaway,
     thinkingProcess: frontmatter.thinkingProcess ?? [],
+    thinkingProcessTakeaway: frontmatter.thinkingProcessTakeaway,
     mentalModels: frontmatter.mentalModels ?? [],
+    mentalModelsTakeaway: frontmatter.mentalModelsTakeaway,
     bigIdeas: frontmatter.bigIdeas ?? [],
     timeline: frontmatter.timeline ?? [],
+    timelineTakeaway: frontmatter.timelineTakeaway,
     books: frontmatter.books ?? [],
     relatedMinds: frontmatter.relatedMinds ?? [],
+    centralThesis: frontmatter.centralThesis,
+    enduringInfluence: frontmatter.enduringInfluence ?? [],
+    promoteMentalModels: frontmatter.promoteMentalModels ?? false,
+    closingReflection: frontmatter.closingReflection,
+    scholarshipNotes: frontmatter.scholarshipNotes ?? [],
     readingTime: readingTime(content).text,
     content,
   };
