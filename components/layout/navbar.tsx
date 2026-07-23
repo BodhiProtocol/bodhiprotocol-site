@@ -19,7 +19,7 @@ function Navbar({ searchItems }: { searchItems: SearchItem[] }) {
 
   React.useEffect(() => {
     function onScroll() {
-      setScrolled(window.scrollY > 8);
+      setScrolled(window.scrollY > 24);
     }
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -31,37 +31,44 @@ function Navbar({ searchItems }: { searchItems: SearchItem[] }) {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 border-b transition-colors duration-300",
-        scrolled
-          ? "border-border bg-background/80 backdrop-blur-md"
-          : "border-transparent bg-transparent",
+        "sticky top-0 z-40 transition-all duration-300 ease-out",
+        scrolled ? "px-3 pt-3 sm:px-4" : "px-0 pt-0",
       )}
     >
-      <Container className="flex h-16 items-center justify-between gap-4">
-        <Logo />
+      <div
+        className={cn(
+          "mx-auto max-w-6xl rounded-2xl border transition-all duration-300 ease-out",
+          scrolled
+            ? "border-border/60 bg-background/80 shadow-sm backdrop-blur-md"
+            : "border-transparent bg-transparent shadow-none",
+        )}
+      >
+        <Container className="flex h-16 items-center justify-between gap-4">
+          <Logo />
 
-        <nav className="hidden items-center gap-6 md:flex">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              aria-current={pathname === link.href ? "page" : undefined}
-              className={cn(
-                "text-sm font-medium text-foreground/70 transition-colors hover:text-foreground",
-                pathname === link.href && "text-foreground",
-              )}
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+          <nav className="hidden items-center gap-1 md:flex">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={pathname === link.href ? "page" : undefined}
+                className={cn(
+                  "rounded-full px-3 py-1.5 text-sm font-medium text-foreground/70 transition-colors duration-200 hover:bg-muted hover:text-foreground",
+                  pathname === link.href && "text-foreground",
+                )}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
 
-        <div className="flex items-center gap-2">
-          <CommandMenu items={searchItems} />
-          <ThemeToggle />
-          <MobileNav />
-        </div>
-      </Container>
+          <div className="flex items-center gap-2">
+            <CommandMenu items={searchItems} />
+            <ThemeToggle />
+            <MobileNav />
+          </div>
+        </Container>
+      </div>
     </header>
   );
 }
