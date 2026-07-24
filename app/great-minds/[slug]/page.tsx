@@ -42,6 +42,8 @@ import { ChanakyaMandalaDiagram } from "@/components/great-minds/chanakya-mandal
 import { ChanakyaHeroBackground } from "@/components/great-minds/chanakya-hero-background";
 import { CurieVesselDiagram } from "@/components/great-minds/curie-vessel-diagram";
 import { CurieHeroBackground } from "@/components/great-minds/curie-hero-background";
+import { SarabhaiLadderDiagram } from "@/components/great-minds/sarabhai-ladder-diagram";
+import { SarabhaiHeroBackground } from "@/components/great-minds/sarabhai-hero-background";
 import { MindGraphProvider } from "@/components/great-minds/mind-graph-context";
 import { getAllGreatMinds, getGreatMindBySlug, type GreatMindWithContent } from "@/lib/great-minds";
 import { mdxOptions } from "@/lib/mdx-options";
@@ -62,6 +64,7 @@ const heroDiagrams: Record<string, (mind: GreatMindWithContent) => ReactNode> = 
   "marcus-aurelius": (mind) => <MarcusAureliusCitadelDiagram nodes={mind.wheel} />,
   chanakya: (mind) => <ChanakyaMandalaDiagram nodes={mind.wheel} />,
   "marie-curie": (mind) => <CurieVesselDiagram nodes={mind.wheel} />,
+  "vikram-sarabhai": (mind) => <SarabhaiLadderDiagram nodes={mind.wheel} />,
 };
 
 const heroBackgrounds: Record<string, ReactNode> = {
@@ -76,6 +79,7 @@ const heroBackgrounds: Record<string, ReactNode> = {
   "marcus-aurelius": <MarcusAureliusHeroBackground />,
   chanakya: <ChanakyaHeroBackground />,
   "marie-curie": <CurieHeroBackground />,
+  "vikram-sarabhai": <SarabhaiHeroBackground />,
 };
 
 interface GreatMindPageProps {
