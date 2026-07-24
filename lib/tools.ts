@@ -109,6 +109,30 @@ export const tools: Lab[] = [
     githubUrl: "https://github.com/BodhiProtocol/capital-markets-blueprint-explorer",
     roadmap: ["Sync directly with this site's Project Lighthouse content"],
   },
+  {
+    slug: "economics-blueprint-explorer",
+    title: "Economics Blueprint Explorer",
+    description: "All Economics Lighthouse blueprints in one searchable, filterable view.",
+    technology: ["HTML", "JS"],
+    status: "live",
+    difficulty: "beginner",
+    category: "Economics",
+    liveUrl: "https://bodhiprotocol.github.io/economics-blueprint-explorer/",
+    githubUrl: "https://github.com/BodhiProtocol/economics-blueprint-explorer",
+    roadmap: ["Sync directly with this site's Project Lighthouse content"],
+  },
+  {
+    slug: "finance-blueprint-explorer",
+    title: "Finance Blueprint Explorer",
+    description: "All Finance Lighthouse blueprints in one searchable, filterable view.",
+    technology: ["HTML", "JS"],
+    status: "live",
+    difficulty: "beginner",
+    category: "Finance",
+    liveUrl: "https://bodhiprotocol.github.io/finance-blueprint-explorer/",
+    githubUrl: "https://github.com/BodhiProtocol/finance-blueprint-explorer",
+    roadmap: ["Sync directly with this site's Project Lighthouse content"],
+  },
 ];
 
 export function getAllTools(): Lab[] {
