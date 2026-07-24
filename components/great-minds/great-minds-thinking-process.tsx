@@ -12,7 +12,7 @@ function GreatMindsThinkingProcess({
   return (
     <section id="thinking-process" className="scroll-mt-24 flex flex-col gap-8">
       <div className="flex flex-col gap-3">
-        <Eyebrow className="text-brand">How He Thought</Eyebrow>
+        <Eyebrow className="text-brand">How They Thought</Eyebrow>
         <H2>Thinking Process</H2>
       </div>
       <ol className="flex flex-col gap-6">
