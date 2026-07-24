@@ -1,0 +1,31 @@
+---
+title: "Embedding"
+summary: "Meaning, turned into numbers — so a computer can measure how alike two ideas are, not just how alike two strings of letters are."
+module: "Artificial Intelligence"
+season: "Season 1"
+tags: ["embeddings", "search"]
+author: "Surya"
+date: "2026-07-24"
+---
+
+**Core question:** how does a computer compare what two pieces of text *mean*, not just what words they literally contain?
+
+## The metaphor: a map where distance is meaning
+
+Every word or sentence gets plotted as a point on a giant map, positioned so that things which mean similar things end up physically close together — even if they share zero words in common. "Budapest" and "London" sit near each other on this map, because both are capital cities. "Budapest" and "pizza" sit far apart, despite both being ordinary nouns. The map was built from meaning, not spelling.
+
+<Callout type="insight" title="Search becomes a distance problem, not a word-matching problem">
+Once ideas are points on this map, "find things like this" stops requiring the exact same words and starts requiring only the same neighborhood. That's the entire trick behind semantic search: measuring distance on the map instead of matching letters.
+</Callout>
+
+## Nothing about the original words survives the trip
+
+Once a piece of text becomes a point on this map — a long list of numbers, called an embedding — the original words aren't stored in that representation anymore. All that's left is a location. Every downstream similarity search operates on that location alone, comparing how close one point sits to another, with no reference back to the sentences that produced them.
+
+<Callout type="question">
+Before assuming a search failed because a keyword didn't match exactly, ask whether the system was even doing keyword matching — or comparing map positions instead. Those are two different questions with two different answers to "why didn't it find this."
+</Callout>
+
+## Why this matters
+
+Embeddings are the quiet machinery underneath almost every "find things like this" feature that works well despite different wording — semantic search, recommendation systems, retrieval for AI. The words go in, a location comes out, and everything useful happens by measuring distance between locations, not by comparing text.

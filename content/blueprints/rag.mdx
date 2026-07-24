@@ -1,0 +1,31 @@
+---
+title: "RAG (Retrieval-Augmented Generation)"
+summary: "Giving a model access to information it was never trained on, without retraining it."
+module: "Artificial Intelligence"
+season: "Season 1"
+tags: ["rag", "retrieval"]
+author: "Surya"
+date: "2026-07-24"
+---
+
+**Core question:** how do you give a model access to information it never studied, without retraining it from scratch?
+
+## The metaphor: an open-book exam vs. a memorized one
+
+A model that was trained on a fixed dataset is taking a closed-book exam — it only knows what it studied before the exam started, frozen at that point. **RAG** — Retrieval-Augmented Generation — is an open-book exam instead: at question time, the model gets handed the specific pages relevant to *this* exact question, pulled fresh from a library it never had to memorize. It doesn't need to know everything in advance. It just needs to know how to look up the right page and read it.
+
+<Callout type="insight" title="The model doesn't change — only what it's shown does">
+RAG doesn't retrain the model at all. It changes what gets placed in front of it at question time, which is exactly why it's the easy way to keep answers current: add a new page to the library, and it's searchable immediately, with no retraining required.
+</Callout>
+
+## The default for anything that changes, or shouldn't be memorized
+
+This is why RAG is the standard choice for internal company documents, this week's data, or anyone's private files — a closed-book exam can't cover material that didn't exist when the studying happened, no matter how good the studying was. Fine-tuning a model's weights is for teaching a stable style or skill. RAG is for handing it facts that are still changing, or that were never meant to live inside the model itself.
+
+<Callout type="question">
+Before assuming a model should just "know" something, ask whether it's actually stable, general knowledge worth memorizing — or something that should be looked up fresh every time because it changes, it's private, or it's simply too large to bake in.
+</Callout>
+
+## Why this matters
+
+The instinct to fix a knowledge gap by retraining the model is usually the expensive, slow answer to a problem RAG solves in minutes. Most "the model doesn't know X" problems aren't training problems at all — they're retrieval problems, solved by handing over the right page instead of trying to make the model memorize the whole library.

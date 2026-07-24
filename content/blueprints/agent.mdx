@@ -1,0 +1,31 @@
+---
+title: "Agent"
+summary: "The difference between a chatbot that answers once and an assistant that actually gets the task done."
+module: "Artificial Intelligence"
+season: "Season 1"
+tags: ["agents", "tools"]
+author: "Surya"
+date: "2026-07-24"
+---
+
+**Core question:** what's actually different between a model that answers a question and one that completes a task?
+
+## The metaphor: asking a question vs. hiring someone
+
+Asking a librarian one question gets you one answer, drawn from whatever they already happen to know. Hiring an assistant to "handle it" gets you something different: someone who checks a few sources, calls someone if needed, tries again if the first attempt doesn't work, and comes back only once the task is actually done — not once they've said something that sounds plausible. An **agent** is a model doing the second thing: it doesn't just answer, it calls tools, reads what comes back, and decides what to do next, looping until the task is finished.
+
+<Callout type="insight" title="The loop is the entire difference">
+A single smart response and an agent can run on the exact same underlying model. What changes is whether it stops after one answer, or keeps going — checking its own work, adjusting, trying again — until the actual task is complete.
+</Callout>
+
+## Every extra step is a chance to drift
+
+This is also why agents can fail in ways a single answer never does. Each step in the loop is a fresh opportunity to go slightly off course, and a small wrong turn early on can compound by the time the loop reaches its fifth or sixth step — an error a single-response model simply doesn't have room to make, because it never gets a second step to compound on.
+
+<Callout type="question">
+Before trusting an agent's final result, ask not just "is the answer right" but "can I see the steps it took to get here?" A single answer is only as good as its content. An agent's result is only as good as every step along the way.
+</Callout>
+
+## Why this matters
+
+"Agent" isn't a bigger or smarter model — it's the same kind of model, given permission to keep working instead of stopping at the first response. That permission is powerful precisely because it's also where the risk lives: more steps mean more capability, and more chances for something to quietly go wrong along the way.

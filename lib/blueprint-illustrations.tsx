@@ -1,6 +1,7 @@
 import type { ComponentType } from "react";
 
 import { AcceptanceCriteriaIllustration } from "@/components/lighthouse/acceptance-criteria-illustration";
+import { AgentIllustration } from "@/components/lighthouse/agent-illustration";
 import { AnchoringIllustration } from "@/components/lighthouse/anchoring-illustration";
 import { BaseRatesIllustration } from "@/components/lighthouse/base-rates-illustration";
 import { BusinessCaseIllustration } from "@/components/lighthouse/business-case-illustration";
@@ -8,11 +9,13 @@ import { ComparativeAdvantageIllustration } from "@/components/lighthouse/compar
 import { CounterpartyRiskIllustration } from "@/components/lighthouse/counterparty-risk-illustration";
 import { DeckIllustration } from "@/components/lighthouse/deck-illustration";
 import { DiminishingReturnsIllustration } from "@/components/lighthouse/diminishing-returns-illustration";
+import { EmbeddingIllustration } from "@/components/lighthouse/embedding-illustration";
 import { ExchangesVsOtcIllustration } from "@/components/lighthouse/exchanges-vs-otc-illustration";
 import { ExternalitiesIllustration } from "@/components/lighthouse/externalities-illustration";
 import { PrioritizationIllustration } from "@/components/lighthouse/prioritization-illustration";
 import { PriceDiscoveryIllustration } from "@/components/lighthouse/price-discovery-illustration";
 import { ProblemSolutionIllustration } from "@/components/lighthouse/problem-solution-illustration";
+import { RagIllustration } from "@/components/lighthouse/rag-illustration";
 import { ReversibleDecisionsIllustration } from "@/components/lighthouse/reversible-decisions-illustration";
 import { SupplyDemandIllustration } from "@/components/lighthouse/supply-demand-illustration";
 
@@ -32,4 +35,7 @@ export const blueprintIllustrations: Record<string, ComponentType> = {
   "comparative-advantage": ComparativeAdvantageIllustration,
   "diminishing-returns": DiminishingReturnsIllustration,
   externalities: ExternalitiesIllustration,
+  embedding: EmbeddingIllustration,
+  rag: RagIllustration,
+  agent: AgentIllustration,
 };
