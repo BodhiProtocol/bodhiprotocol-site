@@ -29,6 +29,7 @@ import { JioEpisodeBody } from "@/components/invisible-businesses/jio-episode-bo
 import { RailwaysEpisodeBody } from "@/components/invisible-businesses/railways-episode-body";
 import { AmulEpisodeBody } from "@/components/invisible-businesses/amul-episode-body";
 import { PaytmEpisodeBody } from "@/components/invisible-businesses/paytm-episode-body";
+import { DuolingoEpisodeBody } from "@/components/invisible-businesses/duolingo-episode-body";
 import { BigIdeaCard } from "@/components/invisible-businesses/big-idea-card";
 import { FlywheelDiagram } from "@/components/invisible-businesses/flywheel-diagram";
 import { InsightGrid } from "@/components/invisible-businesses/insight-grid";
@@ -69,6 +70,7 @@ const customEpisodeBodies: Record<
   "indian-railways-doesnt-sell-train-tickets": RailwaysEpisodeBody,
   "amul-doesnt-sell-milk": AmulEpisodeBody,
   "paytm-doesnt-sell-payments": PaytmEpisodeBody,
+  "duolingo-doesnt-sell-language-lessons": DuolingoEpisodeBody,
 };
 
 interface IBPageProps {
