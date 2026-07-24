@@ -13,7 +13,7 @@ function ExternalitiesIllustration() {
   return (
     <div ref={ref} className="rounded-xl border border-border bg-muted p-4 font-mono text-[11px]">
       <div className="mb-3 text-[9px] font-bold tracking-wide text-muted-foreground">
-        THE SMOKER'S ROOM
+        THE SMOKER&apos;S ROOM
       </div>
 
       <div className="flex flex-col gap-1.5">

@@ -43,7 +43,7 @@ function BaseRatesIllustration() {
         <span className="text-[9px] font-bold tracking-wide text-muted-foreground">
           YOUR STORY FEELS DIFFERENT
         </span>
-        <span className="text-[9px] font-bold tracking-wide text-brand">IT USUALLY ISN'T</span>
+        <span className="text-[9px] font-bold tracking-wide text-brand">IT USUALLY ISN&apos;T</span>
       </div>
     </div>
   );
