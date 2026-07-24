@@ -40,6 +40,8 @@ import { MarcusAureliusCitadelDiagram } from "@/components/great-minds/marcus-au
 import { MarcusAureliusHeroBackground } from "@/components/great-minds/marcus-aurelius-hero-background";
 import { ChanakyaMandalaDiagram } from "@/components/great-minds/chanakya-mandala-diagram";
 import { ChanakyaHeroBackground } from "@/components/great-minds/chanakya-hero-background";
+import { CurieVesselDiagram } from "@/components/great-minds/curie-vessel-diagram";
+import { CurieHeroBackground } from "@/components/great-minds/curie-hero-background";
 import { MindGraphProvider } from "@/components/great-minds/mind-graph-context";
 import { getAllGreatMinds, getGreatMindBySlug, type GreatMindWithContent } from "@/lib/great-minds";
 import { mdxOptions } from "@/lib/mdx-options";
@@ -59,6 +61,7 @@ const heroDiagrams: Record<string, (mind: GreatMindWithContent) => ReactNode> = 
   "apj-abdul-kalam": (mind) => <KalamIgnitionDiagram nodes={mind.wheel} />,
   "marcus-aurelius": (mind) => <MarcusAureliusCitadelDiagram nodes={mind.wheel} />,
   chanakya: (mind) => <ChanakyaMandalaDiagram nodes={mind.wheel} />,
+  "marie-curie": (mind) => <CurieVesselDiagram nodes={mind.wheel} />,
 };
 
 const heroBackgrounds: Record<string, ReactNode> = {
@@ -72,6 +75,7 @@ const heroBackgrounds: Record<string, ReactNode> = {
   "apj-abdul-kalam": <KalamHeroBackground />,
   "marcus-aurelius": <MarcusAureliusHeroBackground />,
   chanakya: <ChanakyaHeroBackground />,
+  "marie-curie": <CurieHeroBackground />,
 };
 
 interface GreatMindPageProps {
