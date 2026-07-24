@@ -79,7 +79,7 @@ function GreatMindsHero({
 
           <div className="flex items-center gap-3 pt-1">
             <Button size="lg" nativeButton={false} render={<a href="#core-philosophy" />}>
-              Explore His Mind
+              Explore This Mind
             </Button>
             <Button size="icon-lg" variant="outline" aria-label={`Save ${name}`}>
               <Bookmark className="size-4" />
