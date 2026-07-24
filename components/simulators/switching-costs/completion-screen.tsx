@@ -7,9 +7,9 @@ import { Eyebrow, H2, Muted } from "@/components/ui/typography";
 
 const RELATED_MENTAL_MODELS = [
   {
-    name: "Switching Costs",
-    description: "Why leaving a product gets harder the longer you use it.",
-    href: "/simulators/switching-costs",
+    name: "Network Effects",
+    description: "Why some products become more valuable as more people join.",
+    href: "/simulators/network-effects",
   },
   { name: "Flywheel", description: "How reinforcing loops compound small advantages into big ones." },
   { name: "Economies of Scale", description: "Why unit costs fall as production or usage grows." },
@@ -24,7 +24,7 @@ function CompletionScreen() {
           <PartyPopper className="size-6" />
         </span>
         <Eyebrow className="text-brand">Mental Model Unlocked</Eyebrow>
-        <H2>You now understand Network Effects</H2>
+        <H2>You now understand Switching Costs</H2>
       </div>
 
       <div className="flex w-full flex-col gap-4">

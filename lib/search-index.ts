@@ -113,6 +113,15 @@ export function getSearchIndex(): SearchItem[] {
       content: "",
       href: "/simulators/inflation",
     },
+    {
+      type: "simulator",
+      title: "Switching Costs",
+      description: "Discover why leaving a product gets harder the longer you use it.",
+      category: "Simulators",
+      tags: ["switching costs", "lock-in", "customer retention"],
+      content: "",
+      href: "/simulators/switching-costs",
+    },
   ];
 
   return [...essays, ...invisibleBusinesses, ...greatMinds, ...blueprints, ...tools, ...resources, ...simulators];

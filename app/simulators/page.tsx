@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Lock as LockIcon, RefreshCw } from "lucide-react";
+import { RefreshCw } from "lucide-react";
 
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
@@ -8,6 +8,7 @@ import { InflationPreview } from "@/components/simulators/dashboard/inflation-pr
 import { NetworkEffectsPreview } from "@/components/simulators/dashboard/network-effects-preview";
 import { OrderBookPreview } from "@/components/simulators/dashboard/order-book-preview";
 import { SupplyDemandPreview } from "@/components/simulators/dashboard/supply-demand-preview";
+import { SwitchingCostsPreview } from "@/components/simulators/dashboard/switching-costs-preview";
 import { SimulatorCard } from "@/components/simulators/simulator-card";
 import { SimulatorRoadmapCard } from "@/components/simulators/simulator-roadmap-card";
 
@@ -69,10 +70,11 @@ export default function SimulatorsPage() {
               description="Why do products like WhatsApp and Visa become more valuable as more people join?"
               preview={<NetworkEffectsPreview />}
             />
-            <SimulatorRoadmapCard
+            <SimulatorCard
+              href="/simulators/switching-costs"
               title="Switching Costs"
               description="Why leaving a product gets harder the longer you use it."
-              icon={LockIcon}
+              preview={<SwitchingCostsPreview />}
             />
             <SimulatorRoadmapCard
               title="Flywheel"

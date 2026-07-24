@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/simulators/network-effects",
     "/simulators/supply-demand",
     "/simulators/inflation",
+    "/simulators/switching-costs",
     "/lighthouse",
     "/tools",
     "/library",
