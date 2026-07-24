@@ -40,7 +40,7 @@ function CommandMenu({ items }: { items: SearchItem[] }) {
     <>
       <Button
         variant="outline"
-        className="h-9 w-9 justify-center p-0 sm:h-8 sm:w-40 sm:justify-between sm:px-3"
+        className="h-9 w-9 justify-center p-0 sm:h-8 sm:w-32 sm:justify-between sm:px-2.5"
         onClick={handleOpen}
       >
         <span className="flex items-center gap-2 text-muted-foreground">

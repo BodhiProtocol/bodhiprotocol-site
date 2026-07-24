@@ -46,14 +46,14 @@ function Navbar({ searchItems }: { searchItems: SearchItem[] }) {
         <Container className="flex h-16 items-center justify-between gap-4">
           <Logo className={pathname === "/" ? "hero-enter" : undefined} />
 
-          <nav className="hidden items-center gap-1 md:flex">
+          <nav className="hidden items-center gap-0.5 lg:flex">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 aria-current={pathname === link.href ? "page" : undefined}
                 className={cn(
-                  "rounded-full px-3 py-1.5 text-sm font-medium text-foreground/70 transition-colors duration-200 hover:bg-muted hover:text-foreground",
+                  "rounded-full px-2.5 py-1.5 text-sm font-medium text-foreground/70 transition-colors duration-200 hover:bg-muted hover:text-foreground",
                   pathname === link.href && "text-foreground",
                 )}
               >
@@ -62,7 +62,7 @@ function Navbar({ searchItems }: { searchItems: SearchItem[] }) {
             ))}
           </nav>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5">
             <CommandMenu items={searchItems} />
             <ThemeToggle />
             <MobileNav />
