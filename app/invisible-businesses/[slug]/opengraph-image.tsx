@@ -18,14 +18,12 @@ export default async function Image({ params }: { params: Promise<{ slug: string
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          backgroundColor: "#0f0a1f",
-          backgroundImage:
-            "radial-gradient(circle at 15% 15%, rgba(139,92,246,0.35), transparent 55%)",
-          color: "#fafafa",
+          backgroundColor: "#fafafa",
+          color: "#0a0a0a",
           padding: "80px",
         }}
       >
-        <div style={{ display: "flex", fontSize: 28, color: "#c4b5fd" }}>
+        <div style={{ display: "flex", fontSize: 28, color: "#7c3aed" }}>
           BodhiProtocol · Invisible Businesses
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
@@ -36,7 +34,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
                 alignSelf: "flex-start",
                 fontSize: 22,
                 fontWeight: 600,
-                color: "#c4b5fd",
+                color: "#7c3aed",
                 padding: "6px 18px",
                 borderRadius: 999,
                 border: "2px solid #7c3aed",
@@ -49,7 +47,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
             {episode?.title ?? "Invisible Businesses"}
           </div>
           {episode ? (
-            <div style={{ display: "flex", fontSize: 26, color: "#a1a1aa" }}>
+            <div style={{ display: "flex", fontSize: 26, color: "#52525b" }}>
               {episode.tagline}
             </div>
           ) : null}
