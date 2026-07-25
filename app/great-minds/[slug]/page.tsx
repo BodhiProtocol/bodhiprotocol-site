@@ -48,6 +48,8 @@ import { SarabhaiLadderDiagram } from "@/components/great-minds/sarabhai-ladder-
 import { SarabhaiHeroBackground } from "@/components/great-minds/sarabhai-hero-background";
 import { TataReturnLoopDiagram } from "@/components/great-minds/tata-return-loop-diagram";
 import { TataHeroBackground } from "@/components/great-minds/tata-hero-background";
+import { RamanujanNegativeDiagram } from "@/components/great-minds/ramanujan-negative-diagram";
+import { RamanujanHeroBackground } from "@/components/great-minds/ramanujan-hero-background";
 import { MindGraphProvider } from "@/components/great-minds/mind-graph-context";
 import { getAllGreatMinds, getGreatMindBySlug, type GreatMindWithContent } from "@/lib/great-minds";
 import { mdxOptions } from "@/lib/mdx-options";
@@ -70,6 +72,7 @@ const heroDiagrams: Record<string, (mind: GreatMindWithContent) => ReactNode> = 
   "marie-curie": (mind) => <CurieVesselDiagram nodes={mind.wheel} />,
   "vikram-sarabhai": (mind) => <SarabhaiLadderDiagram nodes={mind.wheel} />,
   "ratan-tata": (mind) => <TataReturnLoopDiagram nodes={mind.wheel} />,
+  "srinivasa-ramanujan": (mind) => <RamanujanNegativeDiagram nodes={mind.wheel} />,
 };
 
 const heroBackgrounds: Record<string, ReactNode> = {
@@ -86,6 +89,7 @@ const heroBackgrounds: Record<string, ReactNode> = {
   "marie-curie": <CurieHeroBackground />,
   "vikram-sarabhai": <SarabhaiHeroBackground />,
   "ratan-tata": <TataHeroBackground />,
+  "srinivasa-ramanujan": <RamanujanHeroBackground />,
 };
 
 interface GreatMindPageProps {
