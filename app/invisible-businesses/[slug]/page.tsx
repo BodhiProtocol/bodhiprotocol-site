@@ -35,6 +35,7 @@ import { McdonaldsEpisodeBody } from "@/components/invisible-businesses/mcdonald
 import { NikeEpisodeBody } from "@/components/invisible-businesses/nike-episode-body";
 import { GilletteEpisodeBody } from "@/components/invisible-businesses/gillette-episode-body";
 import { SwiggyEpisodeBody } from "@/components/invisible-businesses/swiggy-episode-body";
+import { TeslaEpisodeBody } from "@/components/invisible-businesses/tesla-episode-body";
 import { BigIdeaCard } from "@/components/invisible-businesses/big-idea-card";
 import { FlywheelDiagram } from "@/components/invisible-businesses/flywheel-diagram";
 import { InsightGrid } from "@/components/invisible-businesses/insight-grid";
@@ -81,6 +82,7 @@ const customEpisodeBodies: Record<
   "nikes-real-business-is-identity": NikeEpisodeBody,
   "gillettes-real-business-is-the-refill": GilletteEpisodeBody,
   "swiggys-real-business-is-the-habit": SwiggyEpisodeBody,
+  "teslas-real-business-is-regulatory-credits": TeslaEpisodeBody,
 };
 
 interface IBPageProps {
