@@ -140,6 +140,32 @@ export interface GreatMindRelatedEntry {
   slug?: string;
 }
 
+export interface GreatMindTurningPointSide {
+  year: string;
+  label: string;
+  description: string;
+}
+
+export interface GreatMindTurningPoint {
+  eyebrow: string;
+  heading: string;
+  before: GreatMindTurningPointSide;
+  after: GreatMindTurningPointSide;
+  insight: string;
+}
+
+export interface GreatMindConceptFacet {
+  label: string;
+  icon: string;
+}
+
+export interface GreatMindConceptIllustration {
+  eyebrow: string;
+  heading: string;
+  principle: string;
+  facets: GreatMindConceptFacet[];
+}
+
 export interface GreatMind {
   slug: string;
   name: string;
@@ -176,6 +202,10 @@ export interface GreatMind {
   closingReflection?: string;
   /** Optional list of historiography caveats, rendered as a collapsible disclosure near Books. Omitted entirely when absent. */
   scholarshipNotes?: string[];
+  /** Optional before/after comparison section, rendered after Thinking Process. Omitted entirely when absent. */
+  turningPoint?: GreatMindTurningPoint;
+  /** Optional principle + facet-icons illustration, rendered after Big Ideas. Omitted entirely when absent. */
+  conceptIllustration?: GreatMindConceptIllustration;
 }
 
 export type LabStatus = "live" | "in-progress" | "planned";

@@ -9,9 +9,11 @@ import {
   MapPin,
   Radio,
   Scale,
+  Shield,
   Target,
   TrendingUp,
   UserCog,
+  Users,
   type LucideIcon,
 } from "lucide-react";
 
@@ -32,6 +34,8 @@ const GREAT_MINDS_ICON_MAP: Record<string, LucideIcon> = {
   Radio,
   Target,
   Crown,
+  Shield,
+  Users,
 };
 
 export { GREAT_MINDS_ICON_MAP };

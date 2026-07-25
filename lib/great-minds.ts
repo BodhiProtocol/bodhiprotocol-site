@@ -8,11 +8,13 @@ import type {
   GreatMindBigIdea,
   GreatMindBook,
   GreatMindCentralThesis,
+  GreatMindConceptIllustration,
   GreatMindEnduringInfluenceEntry,
   GreatMindMentalModel,
   GreatMindRelatedEntry,
   GreatMindThinkingStep,
   GreatMindTimelineEvent,
+  GreatMindTurningPoint,
   GreatMindWheelNode,
 } from "@/types/content";
 
@@ -52,6 +54,8 @@ interface GreatMindFrontmatter {
   promoteMentalModels?: boolean;
   closingReflection?: string;
   scholarshipNotes?: string[];
+  turningPoint?: GreatMindTurningPoint;
+  conceptIllustration?: GreatMindConceptIllustration;
 }
 
 function readGreatMindFile(filename: string): GreatMindWithContent {
@@ -90,6 +94,8 @@ function readGreatMindFile(filename: string): GreatMindWithContent {
     promoteMentalModels: frontmatter.promoteMentalModels ?? false,
     closingReflection: frontmatter.closingReflection,
     scholarshipNotes: frontmatter.scholarshipNotes ?? [],
+    turningPoint: frontmatter.turningPoint,
+    conceptIllustration: frontmatter.conceptIllustration,
     readingTime: readingTime(content).text,
     content,
   };

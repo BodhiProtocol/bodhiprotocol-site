@@ -14,6 +14,8 @@ import { GreatMindsCorePhilosophy } from "@/components/great-minds/great-minds-c
 import { GreatMindsThinkingProcess } from "@/components/great-minds/great-minds-thinking-process";
 import { GreatMindsMentalModels } from "@/components/great-minds/great-minds-mental-models";
 import { GreatMindsBigIdeas } from "@/components/great-minds/great-minds-big-ideas";
+import { GreatMindsTurningPoint } from "@/components/great-minds/great-minds-turning-point";
+import { GreatMindsConceptIllustration } from "@/components/great-minds/great-minds-concept-illustration";
 import { GreatMindsEnduringInfluence } from "@/components/great-minds/great-minds-enduring-influence";
 import { GreatMindsTimeline } from "@/components/great-minds/great-minds-timeline";
 import { GreatMindsBooks } from "@/components/great-minds/great-minds-books";
@@ -44,6 +46,8 @@ import { CurieVesselDiagram } from "@/components/great-minds/curie-vessel-diagra
 import { CurieHeroBackground } from "@/components/great-minds/curie-hero-background";
 import { SarabhaiLadderDiagram } from "@/components/great-minds/sarabhai-ladder-diagram";
 import { SarabhaiHeroBackground } from "@/components/great-minds/sarabhai-hero-background";
+import { TataReturnLoopDiagram } from "@/components/great-minds/tata-return-loop-diagram";
+import { TataHeroBackground } from "@/components/great-minds/tata-hero-background";
 import { MindGraphProvider } from "@/components/great-minds/mind-graph-context";
 import { getAllGreatMinds, getGreatMindBySlug, type GreatMindWithContent } from "@/lib/great-minds";
 import { mdxOptions } from "@/lib/mdx-options";
@@ -65,6 +69,7 @@ const heroDiagrams: Record<string, (mind: GreatMindWithContent) => ReactNode> = 
   chanakya: (mind) => <ChanakyaMandalaDiagram nodes={mind.wheel} />,
   "marie-curie": (mind) => <CurieVesselDiagram nodes={mind.wheel} />,
   "vikram-sarabhai": (mind) => <SarabhaiLadderDiagram nodes={mind.wheel} />,
+  "ratan-tata": (mind) => <TataReturnLoopDiagram nodes={mind.wheel} />,
 };
 
 const heroBackgrounds: Record<string, ReactNode> = {
@@ -80,6 +85,7 @@ const heroBackgrounds: Record<string, ReactNode> = {
   chanakya: <ChanakyaHeroBackground />,
   "marie-curie": <CurieHeroBackground />,
   "vikram-sarabhai": <SarabhaiHeroBackground />,
+  "ratan-tata": <TataHeroBackground />,
 };
 
 interface GreatMindPageProps {
@@ -125,6 +131,8 @@ export default async function GreatMindPage({ params }: GreatMindPageProps) {
   const showBigIdeas = mind.bigIdeas.length > 0;
   const showCentralThesis = Boolean(mind.centralThesis);
   const showEnduringInfluence = (mind.enduringInfluence ?? []).length > 0;
+  const showTurningPoint = Boolean(mind.turningPoint);
+  const showConceptIllustration = Boolean(mind.conceptIllustration);
 
   // Section order is fixed for every existing figure; a mind can opt into
   // promoting Mental Models ahead of Thinking Process (see GreatMind.promoteMentalModels)
@@ -141,7 +149,9 @@ export default async function GreatMindPage({ params }: GreatMindPageProps) {
           { id: "thinking-process", label: "Thinking Process" },
           { id: "mental-models", label: "Mental Models" },
         ]),
+    ...(showTurningPoint ? [{ id: "turning-point", label: "Turning Point" }] : []),
     ...(showBigIdeas ? [{ id: "big-ideas", label: "Big Ideas" }] : []),
+    ...(showConceptIllustration ? [{ id: "concept-illustration", label: "Concept" }] : []),
     { id: "timeline", label: "Timeline" },
     ...(showEnduringInfluence ? [{ id: "enduring-influence", label: "Enduring Influence" }] : []),
     { id: "books", label: "Books" },
@@ -213,7 +223,11 @@ export default async function GreatMindPage({ params }: GreatMindPageProps) {
                   <GreatMindsMentalModels models={mind.mentalModels} takeaway={mind.mentalModelsTakeaway} />
                 </>
               )}
+              {showTurningPoint ? <GreatMindsTurningPoint point={mind.turningPoint} /> : null}
               {showBigIdeas ? <GreatMindsBigIdeas ideas={mind.bigIdeas} /> : null}
+              {showConceptIllustration ? (
+                <GreatMindsConceptIllustration illustration={mind.conceptIllustration} />
+              ) : null}
               <GreatMindsTimeline events={mind.timeline} takeaway={mind.timelineTakeaway} />
               <GreatMindsEnduringInfluence entries={mind.enduringInfluence} />
               <GreatMindsBooks books={mind.books} />
