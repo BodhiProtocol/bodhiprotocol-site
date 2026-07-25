@@ -4,6 +4,7 @@ import { PageHeader } from "@/components/layout/page-header";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { BlueprintList } from "@/components/lighthouse/blueprint-list";
+import { SuggestedPath } from "@/components/lighthouse/suggested-path";
 import { getAllBlueprints } from "@/lib/blueprints";
 
 const description =
@@ -32,6 +33,7 @@ export default function LighthousePage() {
         title="Project Lighthouse"
         description="Every hard concept, reduced to the one metaphor that makes it click."
       />
+      <SuggestedPath />
       <Section>
         <Container>
           <BlueprintList blueprints={blueprints} />

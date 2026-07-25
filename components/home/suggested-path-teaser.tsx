@@ -15,7 +15,7 @@ function MarginaliaMark() {
   );
 }
 
-function NavigatorTeaser() {
+function SuggestedPathTeaser() {
   return (
     <Section className="bg-brand/5 py-16 sm:py-20">
       <Container className="flex max-w-2xl items-center gap-4">
@@ -30,11 +30,11 @@ function NavigatorTeaser() {
           <Button
             variant="ghost"
             nativeButton={false}
-            render={<Link href="/navigator" />}
+            render={<Link href="/lighthouse#suggested-path" />}
             className="mt-4 h-auto gap-1.5 px-0 text-brand hover:bg-transparent hover:text-brand"
           >
             <span className="border-b border-transparent pb-0.5 transition-colors duration-200 group-hover/button:border-current">
-              Continue to Navigator
+              See the suggested path
             </span>
             <ArrowRight className="size-4 transition-transform duration-200 ease-out group-hover/button:translate-x-1" />
           </Button>
@@ -44,4 +44,4 @@ function NavigatorTeaser() {
   );
 }
 
-export { NavigatorTeaser };
+export { SuggestedPathTeaser };

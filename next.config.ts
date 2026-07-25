@@ -12,7 +12,10 @@ const nextConfig: NextConfig = {
   },
   poweredByHeader: false,
   async redirects() {
-    return [{ source: "/labs", destination: "/tools", permanent: true }];
+    return [
+      { source: "/labs", destination: "/tools", permanent: true },
+      { source: "/navigator", destination: "/lighthouse#suggested-path", permanent: true },
+    ];
   },
 };
 
