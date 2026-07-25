@@ -37,6 +37,7 @@ import { GilletteEpisodeBody } from "@/components/invisible-businesses/gillette-
 import { SwiggyEpisodeBody } from "@/components/invisible-businesses/swiggy-episode-body";
 import { TeslaEpisodeBody } from "@/components/invisible-businesses/tesla-episode-body";
 import { LicEpisodeBody } from "@/components/invisible-businesses/lic-episode-body";
+import { TanishqEpisodeBody } from "@/components/invisible-businesses/tanishq-episode-body";
 import { BigIdeaCard } from "@/components/invisible-businesses/big-idea-card";
 import { FlywheelDiagram } from "@/components/invisible-businesses/flywheel-diagram";
 import { InsightGrid } from "@/components/invisible-businesses/insight-grid";
@@ -85,6 +86,7 @@ const customEpisodeBodies: Record<
   "swiggys-real-business-is-the-habit": SwiggyEpisodeBody,
   "teslas-real-business-is-regulatory-credits": TeslaEpisodeBody,
   "lics-real-business-is-institutional-trust": LicEpisodeBody,
+  "tanishqs-real-business-is-purity": TanishqEpisodeBody,
 };
 
 interface IBPageProps {
