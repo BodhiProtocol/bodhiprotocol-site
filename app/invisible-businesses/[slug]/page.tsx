@@ -39,6 +39,7 @@ import { TeslaEpisodeBody } from "@/components/invisible-businesses/tesla-episod
 import { LicEpisodeBody } from "@/components/invisible-businesses/lic-episode-body";
 import { TanishqEpisodeBody } from "@/components/invisible-businesses/tanishq-episode-body";
 import { CaratlaneEpisodeBody } from "@/components/invisible-businesses/caratlane-episode-body";
+import { UberEpisodeBody } from "@/components/invisible-businesses/uber-episode-body";
 import { BigIdeaCard } from "@/components/invisible-businesses/big-idea-card";
 import { FlywheelDiagram } from "@/components/invisible-businesses/flywheel-diagram";
 import { InsightGrid } from "@/components/invisible-businesses/insight-grid";
@@ -89,6 +90,7 @@ const customEpisodeBodies: Record<
   "lics-real-business-is-institutional-trust": LicEpisodeBody,
   "tanishqs-real-business-is-purity": TanishqEpisodeBody,
   "caratlanes-real-business-is-certainty": CaratlaneEpisodeBody,
+  "ubers-real-business-is-the-ad-slot": UberEpisodeBody,
 };
 
 interface IBPageProps {
