@@ -12,6 +12,7 @@ import { LearningDividendIllustration } from "@/components/essays/learning-divid
 import { NovationIllustration } from "@/components/essays/novation-illustration";
 import { OpportunityCostIllustration } from "@/components/essays/opportunity-cost-illustration";
 import { OrderBookIllustration } from "@/components/essays/order-book-illustration";
+import { RepoIllustration } from "@/components/essays/repo-illustration";
 import { RequirementIllustration } from "@/components/essays/requirement-illustration";
 import { RequirementsTranslatorIllustration } from "@/components/essays/requirements-translator-illustration";
 import { SpoofingTimelineIllustration } from "@/components/essays/spoofing-timeline-illustration";
@@ -36,4 +37,5 @@ export const essayIllustrations: Record<string, ComponentType> = {
   "opportunity-cost-is-the-only-cost-that-matters": OpportunityCostIllustration,
   "sunk-costs-cant-answer-the-question-youre-asking": SunkCostIllustration,
   "novation-how-a-clearinghouse-becomes-everyones-counterparty": NovationIllustration,
+  "repo-the-overnight-loan-thats-legally-two-trades": RepoIllustration,
 };
