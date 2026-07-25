@@ -81,6 +81,10 @@ export interface GreatMindWheelNode {
   relatedNodes?: string[];
   /** Which side of a two-path convergence diagram this node belongs on (e.g. Jobs' Intersection). */
   side?: "technology" | "humanities";
+  /** Which concentric orbit path a node sits on (e.g. JRD Tata's Orbit diagram). Unused by every other diagram. */
+  orbitRadius?: "inner" | "mid" | "outer";
+  /** Marks a node for distinct emphasis (ring + emphasized aria-label) in diagrams that single one node out (e.g. JRD Tata's Orbit diagram highlighting Air India). Unused by every other diagram. */
+  highlight?: boolean;
 }
 
 export interface GreatMindThinkingStep {
@@ -198,6 +202,8 @@ export interface GreatMind {
   enduringInfluence?: GreatMindEnduringInfluenceEntry[];
   /** When true, renders Mental Models before Thinking Process instead of the default order. Defaults to false (existing order) for every mind that doesn't set it. */
   promoteMentalModels?: boolean;
+  /** When true, renders Turning Point right after Core Philosophy instead of its default slot after Mental Models. Defaults to false (existing order) for every mind that doesn't set it. */
+  promoteTurningPoint?: boolean;
   /** Optional short closing statement rendered after Books, before Related Minds. Omitted entirely when absent. */
   closingReflection?: string;
   /** Optional list of historiography caveats, rendered as a collapsible disclosure near Books. Omitted entirely when absent. */

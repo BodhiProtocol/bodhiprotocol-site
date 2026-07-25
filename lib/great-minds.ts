@@ -52,6 +52,7 @@ interface GreatMindFrontmatter {
   centralThesis?: GreatMindCentralThesis;
   enduringInfluence?: GreatMindEnduringInfluenceEntry[];
   promoteMentalModels?: boolean;
+  promoteTurningPoint?: boolean;
   closingReflection?: string;
   scholarshipNotes?: string[];
   turningPoint?: GreatMindTurningPoint;
@@ -92,6 +93,7 @@ function readGreatMindFile(filename: string): GreatMindWithContent {
     centralThesis: frontmatter.centralThesis,
     enduringInfluence: frontmatter.enduringInfluence ?? [],
     promoteMentalModels: frontmatter.promoteMentalModels ?? false,
+    promoteTurningPoint: frontmatter.promoteTurningPoint ?? false,
     closingReflection: frontmatter.closingReflection,
     scholarshipNotes: frontmatter.scholarshipNotes ?? [],
     turningPoint: frontmatter.turningPoint,

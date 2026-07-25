@@ -50,6 +50,8 @@ import { TataReturnLoopDiagram } from "@/components/great-minds/tata-return-loop
 import { TataHeroBackground } from "@/components/great-minds/tata-hero-background";
 import { RamanujanNegativeDiagram } from "@/components/great-minds/ramanujan-negative-diagram";
 import { RamanujanHeroBackground } from "@/components/great-minds/ramanujan-hero-background";
+import { JrdOrbitDiagram } from "@/components/great-minds/jrd-orbit-diagram";
+import { JrdHeroBackground } from "@/components/great-minds/jrd-hero-background";
 import { MindGraphProvider } from "@/components/great-minds/mind-graph-context";
 import { getAllGreatMinds, getGreatMindBySlug, type GreatMindWithContent } from "@/lib/great-minds";
 import { mdxOptions } from "@/lib/mdx-options";
@@ -73,6 +75,7 @@ const heroDiagrams: Record<string, (mind: GreatMindWithContent) => ReactNode> = 
   "vikram-sarabhai": (mind) => <SarabhaiLadderDiagram nodes={mind.wheel} />,
   "ratan-tata": (mind) => <TataReturnLoopDiagram nodes={mind.wheel} />,
   "srinivasa-ramanujan": (mind) => <RamanujanNegativeDiagram nodes={mind.wheel} />,
+  "jrd-tata": (mind) => <JrdOrbitDiagram nodes={mind.wheel} />,
 };
 
 const heroBackgrounds: Record<string, ReactNode> = {
@@ -90,6 +93,7 @@ const heroBackgrounds: Record<string, ReactNode> = {
   "vikram-sarabhai": <SarabhaiHeroBackground />,
   "ratan-tata": <TataHeroBackground />,
   "srinivasa-ramanujan": <RamanujanHeroBackground />,
+  "jrd-tata": <JrdHeroBackground />,
 };
 
 interface GreatMindPageProps {
@@ -140,10 +144,13 @@ export default async function GreatMindPage({ params }: GreatMindPageProps) {
 
   // Section order is fixed for every existing figure; a mind can opt into
   // promoting Mental Models ahead of Thinking Process (see GreatMind.promoteMentalModels)
-  // without affecting anyone who doesn't set that flag.
+  // or promoting Turning Point ahead of both (see GreatMind.promoteTurningPoint)
+  // without affecting anyone who doesn't set those flags.
+  const turningPointToc = showTurningPoint ? [{ id: "turning-point", label: "Turning Point" }] : [];
   const tocSections: TocSection[] = [
     ...(showCentralThesis ? [{ id: "central-thesis", label: "Central Thesis" }] : []),
     { id: "core-philosophy", label: "Core Philosophy" },
+    ...(mind.promoteTurningPoint ? turningPointToc : []),
     ...(mind.promoteMentalModels
       ? [
           { id: "mental-models", label: "Mental Models" },
@@ -153,7 +160,7 @@ export default async function GreatMindPage({ params }: GreatMindPageProps) {
           { id: "thinking-process", label: "Thinking Process" },
           { id: "mental-models", label: "Mental Models" },
         ]),
-    ...(showTurningPoint ? [{ id: "turning-point", label: "Turning Point" }] : []),
+    ...(mind.promoteTurningPoint ? [] : turningPointToc),
     ...(showBigIdeas ? [{ id: "big-ideas", label: "Big Ideas" }] : []),
     ...(showConceptIllustration ? [{ id: "concept-illustration", label: "Concept" }] : []),
     { id: "timeline", label: "Timeline" },
@@ -216,6 +223,9 @@ export default async function GreatMindPage({ params }: GreatMindPageProps) {
               </div>
               <GreatMindsCentralThesis thesis={mind.centralThesis} />
               <GreatMindsCorePhilosophy philosophy={mind.corePhilosophy} takeaway={mind.corePhilosophyTakeaway} />
+              {mind.promoteTurningPoint && showTurningPoint ? (
+                <GreatMindsTurningPoint point={mind.turningPoint} />
+              ) : null}
               {mind.promoteMentalModels ? (
                 <>
                   <GreatMindsMentalModels models={mind.mentalModels} takeaway={mind.mentalModelsTakeaway} />
@@ -227,7 +237,9 @@ export default async function GreatMindPage({ params }: GreatMindPageProps) {
                   <GreatMindsMentalModels models={mind.mentalModels} takeaway={mind.mentalModelsTakeaway} />
                 </>
               )}
-              {showTurningPoint ? <GreatMindsTurningPoint point={mind.turningPoint} /> : null}
+              {!mind.promoteTurningPoint && showTurningPoint ? (
+                <GreatMindsTurningPoint point={mind.turningPoint} />
+              ) : null}
               {showBigIdeas ? <GreatMindsBigIdeas ideas={mind.bigIdeas} /> : null}
               {showConceptIllustration ? (
                 <GreatMindsConceptIllustration illustration={mind.conceptIllustration} />
