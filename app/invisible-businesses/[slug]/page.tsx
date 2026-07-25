@@ -31,6 +31,9 @@ import { AmulEpisodeBody } from "@/components/invisible-businesses/amul-episode-
 import { PaytmEpisodeBody } from "@/components/invisible-businesses/paytm-episode-body";
 import { DuolingoEpisodeBody } from "@/components/invisible-businesses/duolingo-episode-body";
 import { Dream11EpisodeBody } from "@/components/invisible-businesses/dream11-episode-body";
+import { McdonaldsEpisodeBody } from "@/components/invisible-businesses/mcdonalds-episode-body";
+import { NikeEpisodeBody } from "@/components/invisible-businesses/nike-episode-body";
+import { GilletteEpisodeBody } from "@/components/invisible-businesses/gillette-episode-body";
 import { BigIdeaCard } from "@/components/invisible-businesses/big-idea-card";
 import { FlywheelDiagram } from "@/components/invisible-businesses/flywheel-diagram";
 import { InsightGrid } from "@/components/invisible-businesses/insight-grid";
@@ -73,6 +76,9 @@ const customEpisodeBodies: Record<
   "paytm-doesnt-sell-payments": PaytmEpisodeBody,
   "duolingo-doesnt-sell-language-lessons": DuolingoEpisodeBody,
   "dream11-doesnt-sell-fantasy-contests": Dream11EpisodeBody,
+  "mcdonalds-real-business-is-real-estate": McdonaldsEpisodeBody,
+  "nikes-real-business-is-identity": NikeEpisodeBody,
+  "gillettes-real-business-is-the-refill": GilletteEpisodeBody,
 };
 
 interface IBPageProps {
