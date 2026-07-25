@@ -1,6 +1,7 @@
 import type { ComponentType } from "react";
 
 import { AmlLadderIllustration } from "@/components/essays/aml-ladder-illustration";
+import { CarriagePhaseIllustration } from "@/components/essays/carriage-phase-illustration";
 import { CobraEffectIllustration } from "@/components/essays/cobra-effect-illustration";
 import { ConfidenceIllustration } from "@/components/essays/confidence-illustration";
 import { ContextWindowIllustration } from "@/components/essays/context-window-illustration";
@@ -20,6 +21,7 @@ import { SunkCostIllustration } from "@/components/essays/sunk-cost-illustration
 import { TradeLifecycleIllustration } from "@/components/essays/trade-lifecycle-illustration";
 
 export const essayIllustrations: Record<string, ComponentType> = {
+  "weve-seen-this-movie-before": CarriagePhaseIllustration,
   "how-order-books-work": OrderBookIllustration,
   "why-llms-hallucinate": ConfidenceIllustration,
   "writing-requirements-that-survive-contact-with-engineering": RequirementIllustration,
