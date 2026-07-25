@@ -14,7 +14,7 @@ function HeroSecondaryQuote({ defaultQuote }: { defaultQuote?: string }) {
   if (!quote) return null;
 
   return (
-    <div className="relative hidden min-h-16 max-w-52 text-center sm:block">
+    <div className="relative hidden min-h-16 w-52 max-w-52 text-center sm:block">
       <AnimatePresence>
         <motion.div
           key={quote}
