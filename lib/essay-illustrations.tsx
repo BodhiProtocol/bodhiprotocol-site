@@ -17,6 +17,7 @@ import { RepoIllustration } from "@/components/essays/repo-illustration";
 import { RequirementIllustration } from "@/components/essays/requirement-illustration";
 import { RequirementsTranslatorIllustration } from "@/components/essays/requirements-translator-illustration";
 import { SpoofingTimelineIllustration } from "@/components/essays/spoofing-timeline-illustration";
+import { SubscriptionBillingIllustration } from "@/components/essays/subscription-billing-illustration";
 import { SunkCostIllustration } from "@/components/essays/sunk-cost-illustration";
 import { TradeLifecycleIllustration } from "@/components/essays/trade-lifecycle-illustration";
 
@@ -40,4 +41,5 @@ export const essayIllustrations: Record<string, ComponentType> = {
   "sunk-costs-cant-answer-the-question-youre-asking": SunkCostIllustration,
   "novation-how-a-clearinghouse-becomes-everyones-counterparty": NovationIllustration,
   "repo-the-overnight-loan-thats-legally-two-trades": RepoIllustration,
+  "the-decisions-that-never-stopped-billing": SubscriptionBillingIllustration,
 };
