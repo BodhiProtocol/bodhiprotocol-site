@@ -40,6 +40,7 @@ import { LicEpisodeBody } from "@/components/invisible-businesses/lic-episode-bo
 import { TanishqEpisodeBody } from "@/components/invisible-businesses/tanishq-episode-body";
 import { CaratlaneEpisodeBody } from "@/components/invisible-businesses/caratlane-episode-body";
 import { UberEpisodeBody } from "@/components/invisible-businesses/uber-episode-body";
+import { OyoEpisodeBody } from "@/components/invisible-businesses/oyo-episode-body";
 import { BigIdeaCard } from "@/components/invisible-businesses/big-idea-card";
 import { FlywheelDiagram } from "@/components/invisible-businesses/flywheel-diagram";
 import { InsightGrid } from "@/components/invisible-businesses/insight-grid";
@@ -91,6 +92,7 @@ const customEpisodeBodies: Record<
   "tanishqs-real-business-is-purity": TanishqEpisodeBody,
   "caratlanes-real-business-is-certainty": CaratlaneEpisodeBody,
   "ubers-real-business-is-the-ad-slot": UberEpisodeBody,
+  "oyos-real-business-is-standardization": OyoEpisodeBody,
 };
 
 interface IBPageProps {
