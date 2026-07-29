@@ -1,5 +1,6 @@
 import {
   Brain,
+  BookOpen,
   Coins,
   Compass,
   Cpu,
@@ -30,6 +31,7 @@ import {
 // new figure's frontmatter references an icon name that isn't here yet.
 const GREAT_MINDS_ICON_MAP: Record<string, LucideIcon> = {
   Brain,
+  BookOpen,
   Lightbulb,
   Globe,
   Layers,

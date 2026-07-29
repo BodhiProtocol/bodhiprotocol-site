@@ -52,6 +52,9 @@ import { RamanujanNegativeDiagram } from "@/components/great-minds/ramanujan-neg
 import { RamanujanHeroBackground } from "@/components/great-minds/ramanujan-hero-background";
 import { JrdOrbitDiagram } from "@/components/great-minds/jrd-orbit-diagram";
 import { JrdHeroBackground } from "@/components/great-minds/jrd-hero-background";
+import { VivekanandaConversionFunnelDiagram } from "@/components/great-minds/vivekananda-conversion-funnel-diagram";
+import { VivekanandaEngine } from "@/components/great-minds/vivekananda-engine";
+import { VivekanandaHeroBackground } from "@/components/great-minds/vivekananda-hero-background";
 import { MindGraphProvider } from "@/components/great-minds/mind-graph-context";
 import { getAllGreatMinds, getGreatMindBySlug, type GreatMindWithContent } from "@/lib/great-minds";
 import { mdxOptions } from "@/lib/mdx-options";
@@ -76,6 +79,7 @@ const heroDiagrams: Record<string, (mind: GreatMindWithContent) => ReactNode> = 
   "ratan-tata": (mind) => <TataReturnLoopDiagram nodes={mind.wheel} />,
   "srinivasa-ramanujan": (mind) => <RamanujanNegativeDiagram nodes={mind.wheel} />,
   "jrd-tata": (mind) => <JrdOrbitDiagram nodes={mind.wheel} />,
+  "swami-vivekananda": (mind) => <VivekanandaConversionFunnelDiagram nodes={mind.wheel} />,
 };
 
 const heroBackgrounds: Record<string, ReactNode> = {
@@ -94,6 +98,7 @@ const heroBackgrounds: Record<string, ReactNode> = {
   "ratan-tata": <TataHeroBackground />,
   "srinivasa-ramanujan": <RamanujanHeroBackground />,
   "jrd-tata": <JrdHeroBackground />,
+  "swami-vivekananda": <VivekanandaHeroBackground />,
 };
 
 interface GreatMindPageProps {
@@ -141,6 +146,7 @@ export default async function GreatMindPage({ params }: GreatMindPageProps) {
   const showEnduringInfluence = (mind.enduringInfluence ?? []).length > 0;
   const showTurningPoint = Boolean(mind.turningPoint);
   const showConceptIllustration = Boolean(mind.conceptIllustration);
+  const showVivekanandaEngine = mind.slug === "swami-vivekananda";
 
   // Section order is fixed for every existing figure; a mind can opt into
   // promoting Mental Models ahead of Thinking Process (see GreatMind.promoteMentalModels)
@@ -163,6 +169,7 @@ export default async function GreatMindPage({ params }: GreatMindPageProps) {
     ...(mind.promoteTurningPoint ? [] : turningPointToc),
     ...(showBigIdeas ? [{ id: "big-ideas", label: "Big Ideas" }] : []),
     ...(showConceptIllustration ? [{ id: "concept-illustration", label: "Concept" }] : []),
+    ...(showVivekanandaEngine ? [{ id: "vivekananda-engine", label: "Engine" }] : []),
     { id: "timeline", label: "Timeline" },
     ...(showEnduringInfluence ? [{ id: "enduring-influence", label: "Enduring Influence" }] : []),
     { id: "books", label: "Books" },
@@ -244,6 +251,7 @@ export default async function GreatMindPage({ params }: GreatMindPageProps) {
               {showConceptIllustration ? (
                 <GreatMindsConceptIllustration illustration={mind.conceptIllustration} />
               ) : null}
+              {showVivekanandaEngine ? <VivekanandaEngine /> : null}
               <GreatMindsTimeline events={mind.timeline} takeaway={mind.timelineTakeaway} />
               <GreatMindsEnduringInfluence entries={mind.enduringInfluence} />
               <GreatMindsBooks books={mind.books} />
