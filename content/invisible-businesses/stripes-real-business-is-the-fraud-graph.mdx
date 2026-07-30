@@ -1,0 +1,54 @@
+---
+title: "Stripe's Real Business Is the Fraud Graph"
+tagline: "It profits from every merchant's fraud teaching Radar to protect the next one."
+episode: 36
+description: "The invisible business model behind Stripe."
+author: "Surya"
+date: "2026-07-30"
+featured: false
+draft: true
+bigIdea: "Every card Stripe processes, every fraud pattern caught at one merchant, sharpens the risk model protecting every other merchant on the network — a shared defense no single business's own transaction history could ever build alone, and the real reason leaving Stripe costs more than a processing-rate comparison suggests."
+flywheel:
+  - "Merchant Processes A Payment, Stripe Sees The Transaction"
+  - "Radar Scores Risk Using Signals From Millions Of Other Merchants"
+  - "A Fraud Pattern Caught Once Is Learned Across The Whole Network"
+  - "Every Merchant's Fraud Makes Every Other Merchant Safer"
+  - "Switching Off Stripe Means Losing Access To That Shared Risk Model"
+  - "More Merchants, More Signal, A Harder Model To Replicate Alone"
+insightsHeading: "Key Takeaways"
+insights:
+  - icon: "💳"
+    text: "Stripe processed roughly $1.9 trillion in payments in 2025, and there's a 92% chance any given card has already been seen somewhere on the Stripe network before."
+  - icon: "🧠"
+    text: "Radar's machine learning model scores every transaction using hundreds of signals drawn from across the entire Stripe network — not just a single business's own transaction history."
+  - icon: "🔁"
+    text: "Radar uses embeddings that capture similarity between entities on the network, so a new fraud pattern caught at one merchant can be recognized at another automatically, without retraining."
+  - icon: "📉"
+    text: "Radar reduces fraud by an average of 32% — a reduction no merchant's own historical data, however large, could produce working alone."
+  - icon: "💰"
+    text: "Card transaction fees (2.9% + 30 cents) still make up roughly 80-85% of Stripe's revenue, but Radar, Billing, Capital, and Treasury are what make leaving Stripe cost more than a rate comparison suggests."
+reflection: "People think Stripe sells payment processing, priced at 2.9% plus 30 cents and easily undercut by a competitor's lower rate on paper. What actually leaves with a merchant who switches away isn't the processing. It's years of shared fraud signal, built by watching millions of other merchants' transactions, that a brand-new processor has no way to replicate on day one."
+nextEpisode:
+  title: "Salesforce's Real Business Is Lock-In"
+  comingSoon: true
+---
+
+Most people think Stripe sells payment processing the way any processor does — a card number in, an authorization out, a fee taken in between. Compare the headline rate to a competitor's and Stripe rarely wins on price alone: 2.9% plus 30 cents is not the cheapest number in the market.
+
+That comparison misses what a merchant is actually paying for.
+
+## The Invisible Business
+
+Every time a card is charged anywhere on Stripe, the transaction doesn't just get processed — it gets scored. Stripe's fraud system, Radar, has seen enough of the internet's card traffic that there's roughly a 92% chance a given card has already shown up somewhere on the network before. That single transaction becomes one more data point in a shared risk model protecting every other business on Stripe, not just the one that processed it.
+
+A new payment processor starting from zero can copy Stripe's pricing in an afternoon. It cannot copy years of fraud patterns learned from millions of other merchants' transactions. That gap — not the rate card — is the actual product being sold.
+
+## Why The Rate Isn't The Moat
+
+Radar's model doesn't just look at a single merchant's history. It scores every payment using hundreds of signals pulled from across the entire network — the card, the buyer, the device, the merchant, and how all of those have behaved everywhere else Stripe operates. When it catches a new fraud pattern at one business, it doesn't need to relearn that pattern from scratch at the next one; embeddings that capture similarity between entities on the network let it recognize the same pattern elsewhere automatically.
+
+The result shows up as a number that's hard to argue with: Radar reduces fraud by an average of 32%. No merchant, however large, generates enough of its own transaction volume to train a model that good in isolation. It only works because the network is shared.
+
+That's the part a switching cost comparison usually misses. A merchant evaluating a cheaper processor is really comparing two things: 2.9% plus 30 cents against a possibly lower number, and a fraud model trained on trillions of dollars of shared transaction data against a model with no history at all. The fee is negotiable. The fraud graph isn't something a competitor can quote a lower price on, because it doesn't exist anywhere else.
+
+Seen this way, Stripe was never really selling a payment rail. It was selling the accumulated fraud experience of everyone else already on it — and every new merchant that joins makes that experience a little harder for anyone else to replicate.

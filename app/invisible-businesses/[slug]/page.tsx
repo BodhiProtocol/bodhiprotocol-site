@@ -42,6 +42,7 @@ import { CaratlaneEpisodeBody } from "@/components/invisible-businesses/caratlan
 import { UberEpisodeBody } from "@/components/invisible-businesses/uber-episode-body";
 import { OyoEpisodeBody } from "@/components/invisible-businesses/oyo-episode-body";
 import { AsianPaintsEpisodeBody } from "@/components/invisible-businesses/asian-paints-episode-body";
+import { StripeEpisodeBody } from "@/components/invisible-businesses/stripe-episode-body";
 import { BigIdeaCard } from "@/components/invisible-businesses/big-idea-card";
 import { FlywheelDiagram } from "@/components/invisible-businesses/flywheel-diagram";
 import { InsightGrid } from "@/components/invisible-businesses/insight-grid";
@@ -95,6 +96,7 @@ const customEpisodeBodies: Record<
   "ubers-real-business-is-the-ad-slot": UberEpisodeBody,
   "oyos-real-business-is-standardization": OyoEpisodeBody,
   "asian-paints-real-business-is-confidence": AsianPaintsEpisodeBody,
+  "stripes-real-business-is-the-fraud-graph": StripeEpisodeBody,
 };
 
 interface IBPageProps {
