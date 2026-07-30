@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { Card } from "@/components/ui/card";
 import { Tag } from "@/components/ui/tag";
 import { Muted } from "@/components/ui/typography";
+import { getEssayHook } from "@/lib/essay-hooks";
 import type { Essay } from "@/types/content";
 
 function FeaturedEssayCard({
@@ -13,6 +14,8 @@ function FeaturedEssayCard({
   essay: Essay;
   illustration?: ReactNode;
 }) {
+  const hook = getEssayHook(essay);
+
   return (
     <Link href={`/essays/${essay.slug}`} className="group block">
       <Card className="grid gap-8 p-6 transition-[transform,box-shadow] duration-300 group-hover:-translate-y-1 group-hover:shadow-lg group-hover:shadow-brand/15 group-hover:ring-brand/60 sm:p-8 md:grid-cols-[1fr_auto] md:items-center">
@@ -24,6 +27,9 @@ function FeaturedEssayCard({
           <h2 className="font-heading text-2xl leading-snug font-medium text-balance group-hover:text-brand">
             {essay.title}
           </h2>
+          <p className="font-heading text-lg leading-snug font-medium text-foreground text-balance">
+            {hook}
+          </p>
           <p className="max-w-prose text-muted-foreground">{essay.description}</p>
           <div className="mt-1 flex items-center gap-2.5">
             <span className="flex size-7 items-center justify-center rounded-full bg-brand text-xs font-bold text-brand-foreground">
