@@ -8,6 +8,7 @@ import { H1 } from "@/components/ui/typography";
 import { Divider } from "@/components/ui/divider";
 import { EssayMeta } from "@/components/essays/essay-meta";
 import { ContentNav } from "@/components/shared/content-nav";
+import { ReadNextEssays } from "@/components/essays/read-next-essays";
 import { RelatedEssays } from "@/components/essays/related-essays";
 import { TableOfContents } from "@/components/shared/table-of-contents";
 import { JsonLd } from "@/components/shared/json-ld";
@@ -17,6 +18,7 @@ import {
   getEssayBySlug,
   getRelatedEssays,
 } from "@/lib/essays";
+import { getReadNextEssays } from "@/lib/essay-paths";
 import { essayIllustrations } from "@/lib/essay-illustrations";
 import { mdxOptions } from "@/lib/mdx-options";
 import { siteConfig } from "@/lib/site-config";
@@ -63,6 +65,7 @@ export default async function EssayPage({ params }: EssayPageProps) {
   if (!essay) notFound();
 
   const { previous, next } = getAdjacentEssays(slug);
+  const readNext = getReadNextEssays(essay);
   const related = getRelatedEssays(essay);
   const Illustration = essayIllustrations[essay.slug];
 
@@ -112,6 +115,7 @@ export default async function EssayPage({ params }: EssayPageProps) {
               <MDXRemote source={essay.content} options={mdxOptions} />
             </div>
             <Divider />
+            <ReadNextEssays essays={readNext} />
             <RelatedEssays essays={related} />
             <ContentNav previous={previous} next={next} basePath="/essays" />
           </article>
