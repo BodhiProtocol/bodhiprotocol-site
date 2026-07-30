@@ -225,7 +225,7 @@ function ReconciliationBreakFinder() {
 
           <GlassCard className="gap-4 p-5 sm:p-6">
             <div className="flex items-center justify-between gap-3 font-mono text-xs tracking-[0.18em] text-muted-foreground uppercase">
-              <span>Today's queue</span>
+              <span>Today&apos;s queue</span>
               <span>4 cases</span>
             </div>
             <div className="grid gap-3">
