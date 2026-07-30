@@ -6,11 +6,13 @@ import { Tag } from "@/components/ui/tag";
 import { Muted } from "@/components/ui/typography";
 import { categoryIcons } from "@/lib/category-icons";
 import { essayIllustrations } from "@/lib/essay-illustrations";
+import { getEssayHook } from "@/lib/essay-hooks";
 import type { Essay } from "@/types/content";
 
 function ArticleCard({ essay }: { essay: Essay }) {
   const Icon = categoryIcons[essay.category];
   const Illustration = essayIllustrations[essay.slug];
+  const hook = getEssayHook(essay);
 
   return (
     <Link href={`/essays/${essay.slug}`} className="group block">
@@ -38,6 +40,9 @@ function ArticleCard({ essay }: { essay: Essay }) {
           <h3 className="font-heading text-lg leading-snug font-medium text-balance group-hover:text-brand">
             {essay.title}
           </h3>
+          <p className="font-heading text-sm leading-snug font-medium text-foreground/85 text-balance">
+            {hook}
+          </p>
           <Muted className="line-clamp-2">{essay.description}</Muted>
           <Muted className="mt-auto font-mono text-xs">
             {essay.author} · {essay.readingTime}
