@@ -19,6 +19,7 @@ import { OrderBookIllustration } from "@/components/essays/order-book-illustrati
 import { RepoIllustration } from "@/components/essays/repo-illustration";
 import { RequirementIllustration } from "@/components/essays/requirement-illustration";
 import { RequirementsTranslatorIllustration } from "@/components/essays/requirements-translator-illustration";
+import { SettlementFinalityIllustration } from "@/components/essays/settlement-finality-illustration";
 import { SpoofingTimelineIllustration } from "@/components/essays/spoofing-timeline-illustration";
 import { SubscriptionBillingIllustration } from "@/components/essays/subscription-billing-illustration";
 import { SunkCostIllustration } from "@/components/essays/sunk-cost-illustration";
@@ -46,6 +47,7 @@ export const essayIllustrations: Record<string, ComponentType> = {
   "novation-how-a-clearinghouse-becomes-everyones-counterparty": NovationIllustration,
   "margin-how-a-clearinghouse-turns-fear-into-collateral": MarginIllustration,
   "netting-how-finance-cancels-a-mountain-of-debt-into-a-pebble": NettingIllustration,
+  "settlement-finality-when-a-trade-stops-being-a-promise": SettlementFinalityIllustration,
   "repo-the-overnight-loan-thats-legally-two-trades": RepoIllustration,
   "the-decisions-that-never-stopped-billing": SubscriptionBillingIllustration,
 };
