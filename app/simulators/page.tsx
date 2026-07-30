@@ -10,6 +10,7 @@ import { OrderBookPreview } from "@/components/simulators/dashboard/order-book-p
 import { ReconciliationBreakPreview } from "@/components/simulators/dashboard/reconciliation-break-preview";
 import { SupplyDemandPreview } from "@/components/simulators/dashboard/supply-demand-preview";
 import { SwitchingCostsPreview } from "@/components/simulators/dashboard/switching-costs-preview";
+import { TradeLifecyclePreview } from "@/components/simulators/dashboard/trade-lifecycle-preview";
 import { SimulatorCard } from "@/components/simulators/simulator-card";
 import { SimulatorRoadmapCard } from "@/components/simulators/simulator-roadmap-card";
 
@@ -47,6 +48,12 @@ export default function SimulatorsPage() {
       <Section>
         <Container>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <SimulatorCard
+              href="/simulators/trade-lifecycle"
+              title="Trade Lifecycle Simulator"
+              description="Follow a trade from execution to settlement and see where BA problems appear."
+              preview={<TradeLifecyclePreview />}
+            />
             <SimulatorCard
               href="/simulators/reconciliation-break-finder"
               title="Reconciliation Break Finder"
