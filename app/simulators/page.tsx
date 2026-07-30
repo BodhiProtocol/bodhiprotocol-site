@@ -7,6 +7,7 @@ import { Eyebrow } from "@/components/ui/typography";
 import { InflationPreview } from "@/components/simulators/dashboard/inflation-preview";
 import { NetworkEffectsPreview } from "@/components/simulators/dashboard/network-effects-preview";
 import { OrderBookPreview } from "@/components/simulators/dashboard/order-book-preview";
+import { ReconciliationBreakPreview } from "@/components/simulators/dashboard/reconciliation-break-preview";
 import { SupplyDemandPreview } from "@/components/simulators/dashboard/supply-demand-preview";
 import { SwitchingCostsPreview } from "@/components/simulators/dashboard/switching-costs-preview";
 import { SimulatorCard } from "@/components/simulators/simulator-card";
@@ -46,6 +47,12 @@ export default function SimulatorsPage() {
       <Section>
         <Container>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <SimulatorCard
+              href="/simulators/reconciliation-break-finder"
+              title="Reconciliation Break Finder"
+              description="Compare trade records and identify the breaks operations teams must resolve."
+              preview={<ReconciliationBreakPreview />}
+            />
             <SimulatorCard
               href="/simulators/order-book"
               title="Order Book"
