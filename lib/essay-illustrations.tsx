@@ -1,6 +1,7 @@
 import type { ComponentType } from "react";
 
 import { AmlLadderIllustration } from "@/components/essays/aml-ladder-illustration";
+import { CapitalMarketPathsIllustration } from "@/components/essays/capital-market-paths-illustration";
 import { CarriagePhaseIllustration } from "@/components/essays/carriage-phase-illustration";
 import { CobraEffectIllustration } from "@/components/essays/cobra-effect-illustration";
 import { ConfidenceIllustration } from "@/components/essays/confidence-illustration";
@@ -50,4 +51,5 @@ export const essayIllustrations: Record<string, ComponentType> = {
   "settlement-finality-when-a-trade-stops-being-a-promise": SettlementFinalityIllustration,
   "repo-the-overnight-loan-thats-legally-two-trades": RepoIllustration,
   "the-decisions-that-never-stopped-billing": SubscriptionBillingIllustration,
+  "capital-market-system-two-paths-one-market": CapitalMarketPathsIllustration,
 };
