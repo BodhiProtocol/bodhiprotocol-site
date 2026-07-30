@@ -27,6 +27,34 @@ After finality, the market can update its ledgers without holding its breath.
 
 **Execution says a trade happened. Finality says the trade can no longer be taken back.**
 
+## The dangerous gap
+
+Imagine a buyer purchases shares worth Rs 10 lakh at 10:15 in the morning.
+
+The order matches.
+
+The confirmation arrives.
+
+The app shows the trade.
+
+But the securities and money have not fully settled yet.
+
+Now imagine that, before settlement completes, one participant in the chain becomes insolvent.
+
+Can the transfer still go through?
+
+Can a liquidator pull the transaction back?
+
+Can other participants rely on the settlement file?
+
+This is the dangerous gap between execution and finality.
+
+Most users never see it because market infrastructure is designed to make the gap feel invisible.
+
+But the gap is real.
+
+Finality is what closes it.
+
 ## Why execution is not the end
 
 Most people imagine a trade as a single event.
@@ -81,6 +109,32 @@ With finality, the system can say:
 
 This transfer is done.
 
+## A T+1 trade in slow motion
+
+Take a simplified Indian equity trade.
+
+On T day, the buyer's order is executed on the exchange.
+
+The trade is real, but it is not yet the same thing as final ownership.
+
+The clearing corporation calculates obligations. Brokers prepare pay-in. Depositories and banks prepare the securities and funds movement.
+
+On T+1, settlement is completed through the market infrastructure.
+
+Funds move.
+
+Securities move.
+
+Ledgers update.
+
+The buyer's claim becomes ownership.
+
+The seller's claim becomes money.
+
+That is the practical meaning of finality:
+
+The trade stops being an instruction in progress and becomes a completed state.
+
 ## Example 1: India and settlement finality
 
 India's Payment and Settlement Systems Act, 2007 gives legal recognition to netting and settlement finality for payment systems regulated by the Reserve Bank of India.
@@ -103,12 +157,6 @@ It is money that has moved.
 
 ## Example 2: Indian equities and the settlement clock
 
-Now take an equity trade in India.
-
-When a buyer purchases shares on an exchange, execution happens on trade date, or T.
-
-But ownership and money movement are completed through the settlement cycle.
-
 India moved from T+2 to T+1 settlement for equity markets, and SEBI has also introduced an optional T+0 settlement cycle in the cash market.
 
 The shorter the settlement cycle, the shorter the period during which unsettled obligations remain exposed to operational, liquidity, and counterparty risk.
@@ -120,6 +168,10 @@ Speed is not free.
 It compresses the time available to fix mistakes.
 
 That is why finality matters even more when markets get faster.
+
+When the clock moves from T+2 to T+1, the market is not just becoming faster.
+
+It is shrinking the zone of uncertainty.
 
 ## Example 3: Fedwire and real-time finality
 
