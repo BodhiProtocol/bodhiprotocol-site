@@ -1,0 +1,238 @@
+---
+title: "Default Waterfall: Who Pays When a Clearing Member Fails"
+description: "A default waterfall is the pre-written loss sequence of a clearinghouse: it decides whose money absorbs a member default before panic gets to vote."
+category: "Capital Markets"
+tags: ["markets", "clearing", "risk"]
+author: "Surya"
+date: "2026-07-30"
+---
+
+A clearinghouse is built on a promise:
+
+If one clearing member fails, the market should not fail with it.
+
+That promise sounds simple when markets are calm. It becomes much harder when prices gap, collateral is exhausted, and a member cannot meet its obligations.
+
+At that moment, the clearinghouse has to answer the question no one wants to ask during a crisis:
+
+Who pays?
+
+The default waterfall is the answer written in advance.
+
+It is not a metaphor for elegance. It is a rulebook for pain.
+
+Layer by layer, it decides whose resources are used first, whose resources are protected, and when losses move from the defaulter to the clearinghouse and then to the wider membership.
+
+**A default waterfall is crisis governance before the crisis arrives.**
+
+## Why the waterfall exists
+
+Novation makes the clearinghouse everyone's counterparty.
+
+Margin makes each trader pre-fund some of their own danger.
+
+But margin can fail.
+
+A clearing member may default with losses larger than its posted collateral. Markets may move faster than models. A portfolio may be auctioned under stress. Liquidity may vanish exactly when the clearinghouse needs cash most.
+
+If the clearinghouse waits until that moment to decide who pays, uncertainty becomes part of the crisis.
+
+So the waterfall exists to remove ambiguity.
+
+It says:
+
+First use the defaulter's own resources.
+
+Then use the clearinghouse's committed resources.
+
+Then use mutualized resources from surviving members.
+
+Then, if the shock is still not contained, use recovery tools.
+
+The details differ across jurisdictions and products, but the logic is the same:
+
+Make loss allocation predictable before loss allocation becomes emotional.
+
+## The defaulter pays first
+
+The first rule is brutally intuitive:
+
+The member who brought the loss into the system should pay before anyone else.
+
+That usually means the clearinghouse applies the defaulting member's margin, its guaranty fund contribution, and other available resources of that member.
+
+This matters because a clearinghouse is not supposed to be a subsidy machine.
+
+If traders knew their losses would immediately be pushed onto everyone else, the system would reward recklessness. The defaulter-pays principle keeps responsibility attached to risk-taking.
+
+The clearinghouse guarantee is real.
+
+But it is not charity.
+
+## The clearinghouse puts skin in the game
+
+If the defaulter's resources are not enough, many waterfalls then use a dedicated contribution from the clearinghouse itself.
+
+This layer is often called skin in the game.
+
+It matters psychologically and structurally.
+
+Psychologically, it tells clearing members that the clearinghouse is not merely managing other people's money. It has its own capital exposed to the quality of its risk management.
+
+Structurally, it creates an incentive to set margins, membership standards, stress tests, and default management processes carefully.
+
+If the clearinghouse makes risk too cheap, it can pay for that mistake.
+
+That is the point.
+
+## The mutualized layer
+
+If the loss survives the defaulter's resources and the clearinghouse's committed contribution, the waterfall can reach the guaranty fund contributions of non-defaulting clearing members.
+
+This is the mutualized layer.
+
+It is also the most delicate layer.
+
+Surviving members did not cause the default. Yet they may be asked to help contain it because they benefit from belonging to a centrally cleared market.
+
+This is the bargain:
+
+Members get the liquidity, anonymity, netting, and counterparty protection of the clearinghouse.
+
+In return, they accept that extreme losses may be shared under pre-defined rules.
+
+Mutualization is not unfair by accident.
+
+It is the cost of making the market a shared infrastructure.
+
+## Example 1: India and the Core SGF
+
+In India, SEBI's framework for clearing corporations created the Core Settlement Guarantee Fund, or Core SGF, to support settlement completion when a clearing member fails to honor its obligations.
+
+NSE Clearing describes the Core SGF as a fund maintained for each segment, such as cash, futures and options, or currency derivatives, with the objective of guaranteeing settlement in that segment.
+
+The important phrase is "without affecting the normal settlement process."
+
+That is the point of the waterfall.
+
+If a member fails, the market should not have to stop and debate who absorbs the loss. The clearing corporation has a pre-funded structure and a pre-defined order.
+
+SEBI's default waterfall framework generally starts with the money of the defaulting member, then uses available insurance if any, then clearing corporation resources, then the Core SGF, then additional clearing corporation and stock exchange resources, then capped contributions from non-defaulting members, and only at the end pro-rata haircuts to payouts.
+
+That sequence reveals the philosophy:
+
+Exhaust the defaulter.
+
+Use institutional buffers.
+
+Mutualize only after the earlier layers are not enough.
+
+Protect settlement continuity as long as possible.
+
+## Example 2: CME Clearing
+
+CME Clearing uses the term financial safeguards package for what most people call the default waterfall.
+
+Its public explanation is unusually clear.
+
+If a clearing member defaults, CME first applies the defaulter's available resources, including performance bond collateral and guaranty fund contribution.
+
+If losses remain, CME uses its own contribution to the relevant waterfall.
+
+If that is still not enough, the guaranty fund contributions of non-defaulting clearing members can be used.
+
+If losses remain even after those pre-funded resources, CME can call assessments from clearing members, subject to its rules.
+
+CME says it supports the defaulter-pays model and uses its own contribution before using resources of non-defaulting clearing members.
+
+That order matters.
+
+It separates a clearinghouse from a vague promise.
+
+It turns the promise into a ranked list of money.
+
+## Why the order matters
+
+The order of the waterfall is not just accounting.
+
+It shapes incentives.
+
+If the defaulter's resources are first, members know their own risk-taking will consume their own collateral before anyone else's money is touched.
+
+If the clearinghouse contributes before mutualized member resources, it has a reason to manage margin models and default procedures seriously.
+
+If non-defaulting members are exposed only after earlier layers, the system can share tail losses without making ordinary members feel like first-loss insurers.
+
+And if final recovery tools exist, the market knows what can happen in an extreme scenario rather than discovering the rules mid-fire.
+
+A waterfall is a moral architecture disguised as financial plumbing.
+
+It decides who has responsibility, who has incentives, and who has residual exposure.
+
+## The hidden tradeoff
+
+The default waterfall makes clearing safer, but it does not make loss disappear.
+
+It only gives loss a path.
+
+That path can reassure the market because everyone knows the sequence. But it can also concentrate attention on the weakest layer.
+
+If the defaulter's collateral is too low, losses reach the shared layers quickly.
+
+If the clearinghouse's own contribution is too small, members may doubt its incentives.
+
+If mutualized funds are too large, clearing membership becomes expensive.
+
+If recovery tools are too harsh, the guarantee itself can feel conditional.
+
+So the waterfall is a design compromise.
+
+It balances credibility, incentives, affordability, and survival.
+
+## DeFi has waterfalls too
+
+DeFi rarely uses the language of clearing members and guaranty funds, but many protocols have their own version of a waterfall.
+
+A lending protocol may use borrower collateral first.
+
+Then liquidation penalties.
+
+Then insurance funds.
+
+Then bad debt socialization.
+
+Then governance intervention.
+
+A perpetual futures protocol may use trader margin, auto-liquidation, insurance funds, auto-deleveraging, and settlement haircuts.
+
+The vocabulary is different.
+
+The shape is familiar.
+
+When someone fails to pay, the protocol needs an ordered answer to the same question:
+
+Whose balance sheet absorbs the loss?
+
+## Lighthouse insight
+
+Margin asks each trader to fund their own risk.
+
+The default waterfall asks what happens when that is not enough.
+
+It is the clearinghouse's crisis script: defaulter first, institution second, members after that, recovery tools last.
+
+Without a waterfall, a default becomes a negotiation.
+
+With a waterfall, a default becomes a procedure.
+
+That is why clearinghouses can promise continuity in markets full of strangers.
+
+They do not wait for panic to decide who pays.
+
+They decide before panic arrives.
+
+## Reference anchors
+
+- [NSE Clearing: Core SGF and settlement guarantee](https://www.nseindia.com/static/nse-clearing/guarantee)
+- [SEBI: Core SGF, Default Waterfall and Stress Testing](https://www.sebi.gov.in/media/press-releases/aug-2014/sebi-issues-circular-on-core-settlement-guarantee-fund-default-waterfall-and-stress-testing_27859.html)
+- [CME Clearing financial safeguards](https://www.cmegroup.com/solutions/risk-management/financial-safeguards.html)
