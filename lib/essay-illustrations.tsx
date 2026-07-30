@@ -10,6 +10,7 @@ import { FsdPipelineIllustration } from "@/components/essays/fsd-pipeline-illust
 import { JargonWallIllustration } from "@/components/essays/jargon-wall-illustration";
 import { JiraBacklogIllustration } from "@/components/essays/jira-backlog-illustration";
 import { LearningDividendIllustration } from "@/components/essays/learning-dividend-illustration";
+import { NettingIllustration } from "@/components/essays/netting-illustration";
 import { NovationIllustration } from "@/components/essays/novation-illustration";
 import { OpportunityCostIllustration } from "@/components/essays/opportunity-cost-illustration";
 import { OrderBookIllustration } from "@/components/essays/order-book-illustration";
@@ -40,6 +41,7 @@ export const essayIllustrations: Record<string, ComponentType> = {
   "opportunity-cost-is-the-only-cost-that-matters": OpportunityCostIllustration,
   "sunk-costs-cant-answer-the-question-youre-asking": SunkCostIllustration,
   "novation-how-a-clearinghouse-becomes-everyones-counterparty": NovationIllustration,
+  "netting-how-finance-cancels-a-mountain-of-debt-into-a-pebble": NettingIllustration,
   "repo-the-overnight-loan-thats-legally-two-trades": RepoIllustration,
   "the-decisions-that-never-stopped-billing": SubscriptionBillingIllustration,
 };
