@@ -5,9 +5,9 @@ import { useRevealOnScroll } from "@/components/essays/use-reveal-on-scroll";
 const tokens = Array.from({ length: 10 }, (_, i) => ({ id: i, pushedOut: i < 3 }));
 
 const models = [
-  { name: "Claude 3.5 Sonnet", tokens: "~200K", width: 10 },
-  { name: "GPT-4o", tokens: "~128K", width: 6.4 },
-  { name: "Gemini 1.5 Pro", tokens: "up to 2M", width: 100 },
+  { name: "Claude Sonnet 5", tokens: "~1M", width: 100 },
+  { name: "GPT-5.1", tokens: "~400K", width: 40 },
+  { name: "Gemini 3 Pro", tokens: "up to 1M", width: 100 },
 ];
 
 function ContextWindowIllustration() {
