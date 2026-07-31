@@ -55,6 +55,8 @@ import { JrdHeroBackground } from "@/components/great-minds/jrd-hero-background"
 import { VivekanandaConversionFunnelDiagram } from "@/components/great-minds/vivekananda-conversion-funnel-diagram";
 import { VivekanandaEngine } from "@/components/great-minds/vivekananda-engine";
 import { VivekanandaHeroBackground } from "@/components/great-minds/vivekananda-hero-background";
+import { GrahamSpiralDiagram } from "@/components/great-minds/graham-spiral-diagram";
+import { GrahamHeroBackground } from "@/components/great-minds/graham-hero-background";
 import { MindGraphProvider } from "@/components/great-minds/mind-graph-context";
 import { getAllGreatMinds, getGreatMindBySlug, type GreatMindWithContent } from "@/lib/great-minds";
 import { mdxOptions } from "@/lib/mdx-options";
@@ -80,6 +82,7 @@ const heroDiagrams: Record<string, (mind: GreatMindWithContent) => ReactNode> = 
   "srinivasa-ramanujan": (mind) => <RamanujanNegativeDiagram nodes={mind.wheel} />,
   "jrd-tata": (mind) => <JrdOrbitDiagram nodes={mind.wheel} />,
   "swami-vivekananda": (mind) => <VivekanandaConversionFunnelDiagram nodes={mind.wheel} />,
+  "paul-graham": (mind) => <GrahamSpiralDiagram nodes={mind.wheel} />,
 };
 
 const heroBackgrounds: Record<string, ReactNode> = {
@@ -99,6 +102,7 @@ const heroBackgrounds: Record<string, ReactNode> = {
   "srinivasa-ramanujan": <RamanujanHeroBackground />,
   "jrd-tata": <JrdHeroBackground />,
   "swami-vivekananda": <VivekanandaHeroBackground />,
+  "paul-graham": <GrahamHeroBackground />,
 };
 
 interface GreatMindPageProps {
