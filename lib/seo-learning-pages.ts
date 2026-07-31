@@ -24,9 +24,9 @@ export const seoLearningPages: SeoLearningPage[] = [
     title: "Capital Markets Business Analyst Roadmap",
     description:
       "Learn the trade lifecycle, requirements skills, tools, and interview concepts needed for a capital markets BA role.",
-    seoTitle: "Capital Markets Business Analyst Roadmap - Skills, Concepts, Tools",
+    seoTitle: "Capital Markets Business Analyst Roadmap",
     seoDescription:
-      "Learn how to become a capital markets business analyst: trade lifecycle, financial products, requirements, user stories, acceptance criteria, Jira, and interview prep.",
+      "Learn how to become a capital markets business analyst: trade lifecycle, requirements, user stories, acceptance criteria, Jira, and interview prep.",
     intro: [
       "A capital markets business analyst sits between business teams, technology teams, operations, compliance, risk, and product owners. The role is not only about writing requirements. It is about understanding how trades move through systems, where risk appears, what users actually need, and how to translate messy business language into software teams can build and test.",
       "BodhiProtocol helps you learn the capital markets business analyst role through visual essays, plain-English explanations, practical tools, and structured learning paths.",
@@ -124,7 +124,7 @@ export const seoLearningPages: SeoLearningPage[] = [
     title: "Business Analyst Roadmap",
     description:
       "A practical roadmap for requirements, stakeholder analysis, user stories, acceptance criteria, Jira, UAT, SQL, and domain knowledge.",
-    seoTitle: "Business Analyst Roadmap - Skills, Tools, User Stories, Acceptance Criteria",
+    seoTitle: "Business Analyst Roadmap",
     seoDescription:
       "A practical business analyst roadmap covering requirements, stakeholder interviews, user stories, acceptance criteria, Jira, UAT, SQL, and domain knowledge.",
     intro: [
@@ -183,6 +183,18 @@ export const seoLearningPages: SeoLearningPage[] = [
         description: "See practical user stories for BA workflows.",
       },
     ],
+    faqs: [
+      {
+        question: "What skills does a business analyst need?",
+        answer:
+          "Core skills include stakeholder analysis, requirements writing, user stories, acceptance criteria, and comfort with tools like Jira, Confluence, Excel, and SQL. Domain knowledge sharpens all of it.",
+      },
+      {
+        question: "How do I become a business analyst with no experience?",
+        answer:
+          "Practice requirements writing and user stories on realistic scenarios, learn the core BA tools, and build domain knowledge in an industry you're targeting. Many BAs move in from adjacent roles like QA, support, or operations.",
+      },
+    ],
   },
   {
     slug: "capital-markets-for-business-analysts",
@@ -190,7 +202,7 @@ export const seoLearningPages: SeoLearningPage[] = [
     title: "Capital Markets for Business Analysts",
     description:
       "Plain-English capital markets concepts for BAs: order books, trade lifecycle, clearing, settlement, repo, reconciliation, and reporting.",
-    seoTitle: "Capital Markets for Business Analysts - Concepts, Trade Lifecycle, Systems",
+    seoTitle: "Capital Markets for Business Analysts",
     seoDescription:
       "Learn capital markets concepts for business analysts: order books, trade lifecycle, clearing, settlement, repo, derivatives, reconciliation, and reporting.",
     intro: [
@@ -211,6 +223,18 @@ export const seoLearningPages: SeoLearningPage[] = [
       { label: "Repo explained", href: "/essays/repo-the-overnight-loan-thats-legally-two-trades", description: "Learn why repo is legally two trades." },
       { label: "Regulatory Acronym Map", href: "https://regulatory-acronym-map.bodhiprotocol.com/", description: "Decode 100+ capital markets regulatory terms." },
     ],
+    faqs: [
+      {
+        question: "Do I need to be a trader to work in capital markets as a BA?",
+        answer:
+          "No. A capital markets BA needs to understand how financial transactions move through systems and where operational risk appears, not how to trade.",
+      },
+      {
+        question: "What capital markets concepts should a BA learn first?",
+        answer:
+          "Start with the trade lifecycle, then clearing, settlement, and reconciliation, since most BA requirements in capital markets connect to one of these stages.",
+      },
+    ],
   },
   {
     slug: "trade-lifecycle-business-analyst",
@@ -218,7 +242,7 @@ export const seoLearningPages: SeoLearningPage[] = [
     title: "Trade Lifecycle for Business Analysts",
     description:
       "Understand how a trade moves from order and execution through capture, confirmation, clearing, settlement, reporting, and reconciliation.",
-    seoTitle: "Trade Lifecycle for Business Analysts - Execution to Settlement",
+    seoTitle: "Trade Lifecycle for Business Analysts",
     seoDescription:
       "A plain-English guide to the trade lifecycle for business analysts: order, execution, booking, confirmation, clearing, settlement, reporting, and reconciliation.",
     intro: [
@@ -239,6 +263,18 @@ export const seoLearningPages: SeoLearningPage[] = [
       { label: "What a Trade Lifecycle Actually Looks Like", href: "/essays/what-a-trade-lifecycle-actually-looks-like", description: "Read the visual essay version." },
       { label: "Novation explained", href: "/essays/novation-how-a-clearinghouse-becomes-everyones-counterparty", description: "Understand how a clearinghouse becomes everyone's counterparty." },
     ],
+    faqs: [
+      {
+        question: "What are the main stages of the trade lifecycle?",
+        answer:
+          "Order, execution, trade capture, validation, confirmation, clearing, settlement, and reporting/reconciliation. Most BA requirements and defects map to one of these stages.",
+      },
+      {
+        question: "Why does the trade lifecycle matter for a business analyst?",
+        answer:
+          "It lets you trace where a requirement, defect, or report fits, and communicate clearly with operations, risk, and technology teams about what changed and why.",
+      },
+    ],
   },
   {
     slug: "business-analyst-interview-questions",
@@ -246,7 +282,7 @@ export const seoLearningPages: SeoLearningPage[] = [
     title: "Business Analyst Interview Questions",
     description:
       "Practice BA interview questions for requirements, user stories, acceptance criteria, Jira, UAT, stakeholders, and capital markets scenarios.",
-    seoTitle: "Business Analyst Interview Questions - Requirements, Jira, UAT, Capital Markets",
+    seoTitle: "Business Analyst Interview Questions",
     seoDescription:
       "Practice business analyst interview questions covering requirements, user stories, acceptance criteria, Jira, UAT, stakeholders, and capital markets scenarios.",
     intro: [
@@ -295,6 +331,18 @@ export const seoLearningPages: SeoLearningPage[] = [
       { label: "Capital Markets BA Roadmap", href: "/capital-markets-business-analyst", description: "Prepare for domain-specific BA interviews." },
       { label: "Acceptance Criteria Examples", href: "/acceptance-criteria-examples", description: "Practice testable interview examples." },
     ],
+    faqs: [
+      {
+        question: "What do interviewers look for in a BA interview?",
+        answer:
+          "Whether you can clarify ambiguity, write useful requirements, work with stakeholders, and support delivery, not just whether you know definitions.",
+      },
+      {
+        question: "How should I answer a capital markets BA interview question?",
+        answer:
+          "Define the concept simply, give a practical example, explain why it matters to the business, and mention how you would document or test it.",
+      },
+    ],
   },
   {
     slug: "acceptance-criteria-examples",
@@ -342,6 +390,18 @@ export const seoLearningPages: SeoLearningPage[] = [
       { label: "Business Analyst Roadmap", href: "/business-analyst-roadmap", description: "See where acceptance criteria fit in the BA workflow." },
       { label: "Requirements Translator", href: "https://requirements-translator.bodhiprotocol.com/", description: "Turn raw requirements into structured stories." },
     ],
+    faqs: [
+      {
+        question: "What is the Given/When/Then format?",
+        answer:
+          "A structured way to write acceptance criteria: given a starting context, when an action happens, then an expected result occurs. It makes requirements testable for developers, testers, and business users.",
+      },
+      {
+        question: "How many acceptance criteria should a user story have?",
+        answer:
+          "Enough to cover the main path and the important edge cases, usually three to six. Too few leaves gaps; too many usually means the story should be split.",
+      },
+    ],
   },
   {
     slug: "user-story-examples-business-analyst",
@@ -382,6 +442,18 @@ export const seoLearningPages: SeoLearningPage[] = [
       { label: "Acceptance Criteria Examples", href: "/acceptance-criteria-examples", description: "Make each story testable with Given/When/Then criteria." },
       { label: "Business Analyst Roadmap", href: "/business-analyst-roadmap", description: "Learn the full BA workflow around user stories." },
       { label: "Capital Markets BA Roadmap", href: "/capital-markets-business-analyst", description: "Apply user stories to capital markets workflows." },
+    ],
+    faqs: [
+      {
+        question: "What is the user story format?",
+        answer:
+          "As a [user], I want [capability], so that [business outcome]. The \"so that\" clause keeps the story tied to a real business reason instead of just a system task.",
+      },
+      {
+        question: "What's the difference between a user story and acceptance criteria?",
+        answer:
+          "A user story describes what a user needs and why. Acceptance criteria define the specific, testable conditions that must be true for that story to be considered done.",
+      },
     ],
   },
 ];
