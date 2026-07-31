@@ -25,6 +25,7 @@ import { SpoofingTimelineIllustration } from "@/components/essays/spoofing-timel
 import { SubscriptionBillingIllustration } from "@/components/essays/subscription-billing-illustration";
 import { SunkCostIllustration } from "@/components/essays/sunk-cost-illustration";
 import { TradeLifecycleIllustration } from "@/components/essays/trade-lifecycle-illustration";
+import { TradingDesksIllustration } from "@/components/essays/trading-desks-illustration";
 
 export const essayIllustrations: Record<string, ComponentType> = {
   "weve-seen-this-movie-before": CarriagePhaseIllustration,
@@ -52,4 +53,5 @@ export const essayIllustrations: Record<string, ComponentType> = {
   "repo-the-overnight-loan-thats-legally-two-trades": RepoIllustration,
   "the-decisions-that-never-stopped-billing": SubscriptionBillingIllustration,
   "capital-market-system-two-paths-one-market": CapitalMarketPathsIllustration,
+  "what-bank-trading-desks-actually-do": TradingDesksIllustration,
 };
