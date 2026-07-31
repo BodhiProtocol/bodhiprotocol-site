@@ -1,0 +1,80 @@
+---
+title: "Arrival Price: The Clock That Starts When You Decide"
+description: "VWAP asks: did you trade in line with the market's average? Arrival price asks a sharper question: compared to the price the moment you decided to trade, how much did waiting actually cost you?"
+category: "Capital Markets"
+tags: ["markets", "execution"]
+author: "Surya"
+date: "2026-07-31"
+---
+
+A fund manager reads a research note at 10:02 AM and decides, right then, to buy a stock.  
+At that exact moment, the stock is trading at ₹1,000.
+
+The order reaches the trading desk a minute later.  
+The desk starts working it.  
+By the time the last share is filled, hours have passed and the average price paid is ₹1,006.
+
+Six rupees a share, on every share, on a decision made at ₹1,000.  
+Where did that six rupees go?
+
+Arrival price is the benchmark built specifically to answer that question.
+
+## The number that starts the moment you decide
+
+Arrival price is simply the market price at the moment the order was born — the instant a decision became an instruction to trade. Everything that happens afterward is measured against that one fixed number.
+
+**A volume-based benchmark (VWAP)**  
+Compares you to the market's own average  
+- "Did you trade in line with everyone else today?"  
+- Doesn't care when the decision was actually made  
+- A fair execution can still be a late one
+
+**Arrival price**  
+Compares you to the moment you decided  
+- "How far did the price move between deciding and finishing?"  
+- Every minute of delay is counted, not ignored  
+- A fair execution and a *timely* execution are no longer the same claim
+
+Arrival price doesn't ask whether the trader kept pace with the market.  
+It asks whether the trader kept pace with *time itself*, starting from the second the order existed.
+
+## When the cost of delay outweighs the cost of impact
+
+Arrival price is the benchmark of choice whenever the reason for a trade has a shelf life — new research, a signal, information that's valuable now and less valuable the longer it sits unexecuted. In those cases, "did we match the day's average price" is the wrong question. The right question is "how much did we lose simply by not being fast enough."
+
+Algorithms built around this benchmark — often called Implementation Shortfall or arrival-price algorithms — trade more aggressively than a VWAP or POV strategy would, front-loading execution specifically to reduce the risk that the price drifts away while the order is still working.
+
+**Advantages**
+- The most economically honest benchmark available — it measures the real cost of turning a decision into an actual position, not just how the trade compares to an arbitrary average
+- Explicitly accounts for the cost of delay, which purely volume-based benchmarks ignore entirely
+- Aligns the trading desk's incentives with the portfolio manager's original decision, rather than with a schedule that has nothing to do with why the trade was made
+
+**Risks**
+- Trading faster to protect against price drift increases market impact — the very act of moving quickly can push the price further than a patient strategy would have
+- "Arrival" has to be defined precisely — the moment a manager decided, the moment the order reached the desk, and the moment the algorithm started are three different timestamps, and picking the wrong one quietly changes the whole performance story
+- It depends on accurate, tamper-resistant timestamping across every step of the chain — a genuine infrastructure requirement, not just a benchmark choice
+
+## Example 1: Timestamped accountability under SEBI
+
+In India, SEBI's rules for algorithmic trading require brokers to maintain precise, auditable order timestamps and a traceable audit trail at each stage of the trade lifecycle — infrastructure that exists partly because it's exactly what arrival-price measurement depends on. A PMS or AIF fund manager reviewing a dealing desk's performance will often measure it against the price at the moment the manager's instruction was given, not the day's VWAP, specifically to hold the desk accountable for the cost of any delay.
+
+## Example 2: Best execution under Europe's MiFID II
+
+Internationally, the same discipline is written directly into regulation. Under Europe's MiFID II best-execution requirements, asset managers are expected to run transaction cost analysis that includes arrival-price comparisons as part of demonstrating they got their clients the best possible outcome — not just a fair average, but a timely one.
+
+## Why this matters for a Business Analyst
+
+Arrival price only means anything if the "arrival" timestamp is trustworthy — captured automatically, at a clearly defined step, and never editable after the fact.
+
+If you're gathering requirements for an order-management or TCA system, "which exact event defines arrival, and where does that timestamp get written" is not a minor implementation detail — it's the foundation the entire benchmark rests on. Get that timestamp wrong, or let it be captured inconsistently across desks, and every performance number built on top of it becomes quietly unreliable, no matter how sound the rest of the analysis is.
+
+## Lighthouse Insight
+
+VWAP measures you against the market.  
+Arrival price measures you against the moment you decided to act —  
+a reminder that in markets, the cost of being right can still include the cost of being slow.
+
+## Reference anchors
+
+- [Arrival Price — IBKR Campus Glossary](https://www.interactivebrokers.com/campus/glossary-terms/arrival-price/)
+- [SEBI Circular: Safer Participation of Retail Investors in Algorithmic Trading](https://www.sebi.gov.in/legal/circulars/feb-2025/safer-participation-of-retail-investors-in-algorithmic-trading_91614.html)

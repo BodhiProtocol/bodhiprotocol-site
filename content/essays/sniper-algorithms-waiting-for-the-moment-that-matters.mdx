@@ -1,0 +1,84 @@
+---
+title: "Sniper Algorithms: Waiting for the Moment That Matters"
+description: "TWAP, VWAP, and POV all trade continuously, on some schedule. A sniper algorithm does the opposite — it does nothing at all, for as long as it takes, until one specific condition appears. Then it fires."
+category: "Capital Markets"
+tags: ["markets", "execution"]
+author: "Surya"
+date: "2026-07-31"
+---
+
+TWAP trades on a clock.  
+VWAP trades on a forecast.  
+POV trades on live volume, continuously, the entire time it's active.
+
+All three share one thing in common: they're always doing something.
+
+A sniper algorithm isn't.  
+Most of the time, it does nothing.  
+It watches, and waits, for one specific moment — and only then does it act.
+
+## Doing nothing, on purpose
+
+A sniper strategy sits dormant, monitoring the market for a very specific trigger: a spread narrow enough to be worth crossing, a large resting order appearing at a favorable price, a matching counterparty showing up in a block-trading mechanism.
+
+Until that trigger appears, it does nothing.  
+No small clips, no steady participation, no visible footprint at all.  
+The moment the condition is met, it fires — quickly, decisively, taking the opportunity before it disappears — and then goes quiet again.
+
+**A scheduled algorithm (TWAP / VWAP / POV)**  
+Continuous participation  
+- Trades on every clip, every interval, by design  
+- Visible, steady footprint the whole time it runs  
+- Finishes roughly on a predictable timeline
+
+**A sniper algorithm**  
+Opportunistic participation  
+- Does nothing until a specific condition appears  
+- No footprint at all while waiting  
+- Finishes whenever the right moment shows up — which might be soon, or might be a long time
+
+Patience isn't a side effect here.  
+It's the entire strategy.
+
+## When the better trade is the one you haven't made yet
+
+A sniper algorithm is the tool of choice when a desk cares more about **trading on good terms** than about trading on a schedule — when paying up to guarantee completion is worse than simply waiting for a better opportunity to arrive.
+
+It's especially useful for finding a natural counterparty for a large order — a buyer and seller of matching size, willing to trade at a fair price without either side having to reveal intent to the wider lit market first. Rather than working the order continuously and accepting whatever the market offers along the way, the algorithm waits for that specific match to appear.
+
+**Advantages**
+- Never trades on unfavorable terms — it simply waits until conditions improve
+- Produces almost no footprint while dormant, since an algorithm doing nothing gives nothing away
+- Can execute significant size in a single moment if it finds a genuine matching counterparty, with far less market impact than working the same size continuously
+
+**Risks**
+- The trigger condition might never appear — an order built entirely around "wait for the right moment" carries real risk of never completing at all
+- While waiting, the price can move away entirely — the cost of patience is that the market doesn't wait with you
+- The line between "legitimately watching for a good opportunity" and "aggressively anticipating other participants' orders" is a genuine regulatory fault line, and strategies that cross it draw serious scrutiny
+
+## Example 1: Block deals on the NSE, in the absence of dark pools
+
+India is a useful case here precisely because of a rule that shapes how a sniper strategy has to work: SEBI does not permit dark pools, so all liquidity has to be found on lit exchanges. A block-seeking algorithm on the NSE can't quietly ping a hidden pool for a matching counterparty — instead, it watches the exchange's block-deal window, a separate trading mechanism for large trades where the buyer, seller, price, and quantity are made public once the match is done, and fires only when a matching order of sufficient size appears there. The strategy is the same instinct — wait for the right match — built around a market structure that keeps that search fully in the open.
+
+## Example 2: Liquidity-seeking across US and European dark pools
+
+Internationally, the same instinct plays out differently. In the US and much of Europe, dark pools are a legal, regulated venue for exactly this kind of search — a liquidity-seeking algorithm can quietly ping several dark pools at once, watching for a natural counterparty willing to cross at the midpoint, without ever showing size on a lit exchange first.
+
+Same patience, same goal, shaped by two very different rulebooks.
+
+## Why this matters for a Business Analyst
+
+An order sitting untouched for hours, with zero fills and zero visible activity, looks broken in most monitoring systems — and for most algorithms, it would be.
+
+For a sniper strategy, long silence is completely normal behavior, not a failure state. If you're writing requirements for order monitoring, alerting, or exception handling, it's worth explicitly separating "this order hasn't traded because something is wrong" from "this order hasn't traded because it's still waiting for its trigger" — treating the two the same will bury real problems under a flood of false alerts, or worse, hide a genuinely stuck order inside a category of "normal" silence.
+
+## Lighthouse Insight
+
+Every other algorithm in this series measures itself by how it trades.  
+A sniper algorithm measures itself by how well it waits —  
+because sometimes the best execution isn't the one that acts fastest. It's the one that knows exactly when to.
+
+## Reference anchors
+
+- [What are 'dark pools' in share trading and why India has kept these at bay — The Federal](https://thefederal.com/category/explainers-2/what-are-dark-pools-in-share-trading-and-why-india-has-kept-these-at-bay-116942)
+- [Dark Liquidity Pools — StoneX Financial Glossary](https://www.stonex.com/en-us/business/financial-glossary/dark-liquidity-pools/)

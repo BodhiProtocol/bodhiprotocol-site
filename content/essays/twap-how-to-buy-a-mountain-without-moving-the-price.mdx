@@ -1,0 +1,95 @@
+---
+title: "TWAP: How to Buy a Mountain Without Moving the Price"
+description: "A fund needs to buy ten million shares. Buying them all at once would move the price against itself. TWAP solves this by refusing to rush — the same size trade, at fixed intervals, no matter what the market is doing."
+category: "Capital Markets"
+tags: ["markets", "execution"]
+author: "Surya"
+date: "2026-07-31"
+---
+
+Imagine you need to fill a swimming pool.  
+You have one enormous bucket of water.  
+Tip it all in at once, and the pool overflows — water everywhere, most of it wasted.  
+Pour it in a slow, steady stream instead, and every drop lands where it should.
+
+Large trades work the same way.
+
+A fund that needs to buy ten million shares can't just place one order and hope for the best.  
+Dump that size on the market in one shot, and the price runs away before the order is even half filled.  
+The very act of buying becomes the reason the buyer pays more.
+
+TWAP — Time-Weighted Average Price — is one answer to that problem.  
+It doesn't try to be clever about *when* to trade.  
+It just refuses to rush.
+
+## The shape of indifference
+
+TWAP takes one large order and slices it into many small, **equal-sized** pieces, spread evenly across a fixed window of time.
+
+Ten million shares over five hours, sliced into thirty-minute clips, becomes ten identical orders of one million shares each — one every thirty minutes, regardless of what else is happening in the market.
+
+**Without TWAP**  
+One order, one moment  
+- Full size hits the market at once  
+- Price impact is immediate and visible  
+- The order *is* the news
+
+**With TWAP**  
+Same order, spread flat across time  
+- Ten small, identical clips  
+- Each clip is easy for the market to absorb  
+- No single moment reveals the full size
+
+The defining feature isn't speed — it's indifference.  
+TWAP doesn't care if the market is busy or quiet in any given slice.  
+It trades the same size either way, purely by the clock.
+
+## When a flat schedule is the safest bet
+
+Trading desks reach for TWAP when they want **predictability** more than they want optimization.
+
+It's the standard choice when a stock's volume pattern can't be trusted — a thinly traded bond, a mid-cap name with erratic daily activity, a stock going through a corporate action where historical volume data is temporarily useless. In those cases, trying to match the market's volume curve is trying to match a curve that doesn't reliably exist.
+
+It's also used when a desk deliberately wants to avoid looking like it's reacting to volume — a flat, clock-driven pattern is harder to read as "the algorithm thinks something is about to happen" than a pattern that speeds up and slows down with the tape.
+
+**Advantages**
+- Simple to explain to a client, a compliance officer, or an auditor — one sentence describes the entire logic
+- Performs reliably on illiquid or erratic names where volume forecasts fail
+- Doesn't spike its own footprint by trading heavily in already-active windows, which can otherwise invite front-running
+
+**Risks**
+- It trades the same size in a dead, illiquid minute as it does in the busiest minute of the day — in the quiet minute, that fixed clip can move the price far more than a volume-aware strategy would have
+- The fixed-interval pattern is itself predictable — a clip every thirty minutes, forever, is a signature that sophisticated counterparties can learn to detect and trade ahead of
+- On a day when volume is genuinely lopsided (say, concentrated at the open), a rigid time schedule can underperform a strategy that actually follows the volume
+
+## Example 1: A mid-cap stake trimmed on the NSE
+
+In India, when a large domestic mutual fund needs to trim a stake in a mid-cap NSE stock that doesn't trade heavily every day, its dealing desk will often route the order as TWAP over two or three sessions — spreading it evenly rather than betting on a volume pattern that mid-cap name doesn't reliably have.
+
+## Example 2: A small-cap unwind on the Nasdaq
+
+Internationally, a US pension fund unwinding a position in a thinly traded Nasdaq small-cap frequently does the same thing — the stock's day-to-day volume is too erratic to trust a volume-following algorithm, so the fund accepts a flat, clock-based schedule instead.
+
+Same logic, same algorithm, different tickers, different currencies.
+
+## Why this matters for a Business Analyst
+
+"The algorithm executed the order over the day" sounds like one behavior.  
+It isn't.
+
+A time-weighted schedule and a volume-weighted schedule produce completely different trade blotters, completely different intraday participation rates, and completely different transaction-cost benchmarks.
+
+If you're building or testing a trading or TCA (transaction cost analysis) system, TWAP orders need to be measured against a *time*-based benchmark — not a volume-based one. Compare a TWAP fill against a VWAP benchmark and you'll routinely see "underperformance" that isn't underperformance at all. It's just the wrong ruler.
+
+Get the benchmark wrong in a report, and you'll tell a portfolio manager their execution was bad when the algorithm did exactly what it was designed to do.
+
+## Lighthouse Insight
+
+TWAP doesn't try to outsmart the market.  
+It trades the same amount, at the same pace, no matter what the market is doing —  
+because sometimes the safest strategy isn't the smartest one. It's the one that refuses to be provoked.
+
+## Reference anchors
+
+- [Time-Weighted Average Price (TWAP) — IBKR Campus](https://www.interactivebrokers.com/campus/trading-lessons/time-weighted-average-price-twap/)
+- [TWAP vs. VWAP Price Algorithms — Chainlink Education Hub](https://chain.link/education-hub/twap-vs-vwap)

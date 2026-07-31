@@ -1,0 +1,83 @@
+---
+title: "POV: The Algorithm That Never Trades Alone"
+description: "TWAP follows the clock. VWAP follows a forecast of the day's volume. POV follows the market itself, live — trading a fixed share of whatever volume actually shows up, with no fixed finish time."
+category: "Capital Markets"
+tags: ["markets", "execution"]
+author: "Surya"
+date: "2026-07-31"
+---
+
+TWAP has a plan and sticks to it, no matter what happens.  
+VWAP has a plan too — built from yesterday's pattern, hoping today looks similar.
+
+Both are, in a sense, guessing about the future before the day begins.
+
+POV — Percentage of Volume — doesn't guess.  
+It waits, watches what the market actually does, and reacts in real time.
+
+## Trading only alongside the market
+
+A POV algorithm is given one instruction: never be more than a fixed share of the market's real-time volume.
+
+Set it at 10%, and for every 100 shares that trade in the market, the algorithm trades 10 of its own — live, continuously, adjusting to whatever is actually happening rather than what a forecast expected to happen.
+
+**A forecast-driven schedule (VWAP)**  
+Built in advance  
+- Based on yesterday's volume pattern  
+- Executes the plan even if today looks different  
+- Finishes on a schedule set at the start
+
+**A market-driven schedule (POV)**  
+Built as the day unfolds  
+- No forecast — it watches live volume  
+- Speeds up when the market speeds up, slows when it slows  
+- Finishes whenever the target percentage is met — no fixed clock
+
+If the market goes quiet, POV goes quiet with it.  
+If volume suddenly surges, POV trades more, right along with it.  
+It never trades alone — it only ever trades *alongside*.
+
+## When finishing on time matters less than staying hidden
+
+POV is the choice when a desk cares more about **never standing out** than about finishing by any particular time.
+
+There's no urgency built into the algorithm — no deadline forcing it to trade into thin liquidity just to keep pace with a schedule. That makes it a natural fit for building or unwinding a large position over an open-ended horizon, especially in a stock where liquidity is unpredictable from day to day and a fixed schedule would either finish too aggressively or trade far too much on a quiet day.
+
+It's also useful when a desk deliberately wants to stay under a certain participation threshold — a self-imposed limit meant to avoid ever being an outsized share of that day's activity, regardless of how big or small that activity turns out to be.
+
+**Advantages**
+- Reacts to real liquidity instead of a forecast, so it never trades heavily into a dead market or under-trades into a busy one
+- Keeps the algorithm's footprint proportionally constant, which limits how much any single moment reveals about the order's size
+- Well suited to volatile or unpredictable names where historical volume patterns can't be trusted
+
+**Risks**
+- No completion guarantee — if market volume genuinely dries up, the order can sit unfinished far longer than expected, and the price can drift away while it waits
+- A fixed participation rate is itself a signature; a counterparty watching order flow can sometimes infer that "someone is consistently taking 10% of every print" and trade around that pattern
+- Without a deadline, there's no natural pressure to finish — which is a feature when patience is the goal, and a real cost when it isn't
+
+## Example 1: A patient stake-build on the NSE
+
+In India, a domestic mutual fund quietly building a position in a small-cap NSE stock will often cap its algorithm at a modest participation rate — say 8% of traded volume — with no fixed deadline. The position gets built over however many sessions it takes, deliberately never becoming a large enough share of any single day's volume to move the price or draw attention.
+
+## Example 2: Accumulating ahead of a US disclosure threshold
+
+Internationally, a US hedge fund accumulating a stake in a small-cap company ahead of a disclosure threshold uses the same logic — a capped participation rate lets it keep buying without becoming visibly dominant in the day's volume, buying time before the position has to be publicly reported.
+
+## Why this matters for a Business Analyst
+
+POV introduces a variable most execution algorithms don't have: an order with **no fixed completion time**.
+
+A trading or order-management system built around the assumption that every order eventually finishes on a predictable schedule will handle POV orders badly — flagging them as stale, timing them out, or generating alerts for an order that is behaving exactly as designed by simply waiting for volume that hasn't arrived yet.
+
+If you're gathering requirements for anything touching order lifecycle or exception monitoring, "how long can this legitimately stay open with zero fills" is a question worth asking explicitly — for a POV order, the honest answer might be days.
+
+## Lighthouse Insight
+
+TWAP trades on a plan.  
+VWAP trades on a forecast.  
+POV trades on the market itself, live — patient enough to wait for volume that hasn't shown up yet, because the one thing it refuses to do is trade alone.
+
+## Reference anchors
+
+- [Percent of Volume Algo — IBKR Campus Glossary](https://www.interactivebrokers.com/campus/glossary-terms/percent-of-volume-algo/)
+- [POV (Participation Order) in Trading — QuantifiedStrategies](https://www.quantifiedstrategies.com/pov-participation-order-in-trading/)

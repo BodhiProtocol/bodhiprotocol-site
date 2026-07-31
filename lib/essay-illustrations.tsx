@@ -1,6 +1,7 @@
 import type { ComponentType } from "react";
 
 import { AmlLadderIllustration } from "@/components/essays/aml-ladder-illustration";
+import { ArrivalPriceIllustration } from "@/components/essays/arrival-price-illustration";
 import { CapitalMarketPathsIllustration } from "@/components/essays/capital-market-paths-illustration";
 import { CarriagePhaseIllustration } from "@/components/essays/carriage-phase-illustration";
 import { CobraEffectIllustration } from "@/components/essays/cobra-effect-illustration";
@@ -9,6 +10,8 @@ import { ContextWindowIllustration } from "@/components/essays/context-window-il
 import { DecisionOutcomeGridIllustration } from "@/components/essays/decision-outcome-grid-illustration";
 import { DefaultWaterfallIllustration } from "@/components/essays/default-waterfall-illustration";
 import { FsdPipelineIllustration } from "@/components/essays/fsd-pipeline-illustration";
+import { IcebergIllustration } from "@/components/essays/iceberg-illustration";
+import { ImplementationShortfallIllustration } from "@/components/essays/implementation-shortfall-illustration";
 import { JargonWallIllustration } from "@/components/essays/jargon-wall-illustration";
 import { JiraBacklogIllustration } from "@/components/essays/jira-backlog-illustration";
 import { LearningDividendIllustration } from "@/components/essays/learning-dividend-illustration";
@@ -17,15 +20,19 @@ import { NettingIllustration } from "@/components/essays/netting-illustration";
 import { NovationIllustration } from "@/components/essays/novation-illustration";
 import { OpportunityCostIllustration } from "@/components/essays/opportunity-cost-illustration";
 import { OrderBookIllustration } from "@/components/essays/order-book-illustration";
+import { PovIllustration } from "@/components/essays/pov-illustration";
 import { RepoIllustration } from "@/components/essays/repo-illustration";
 import { RequirementIllustration } from "@/components/essays/requirement-illustration";
 import { RequirementsTranslatorIllustration } from "@/components/essays/requirements-translator-illustration";
 import { SettlementFinalityIllustration } from "@/components/essays/settlement-finality-illustration";
+import { SniperIllustration } from "@/components/essays/sniper-illustration";
 import { SpoofingTimelineIllustration } from "@/components/essays/spoofing-timeline-illustration";
 import { SubscriptionBillingIllustration } from "@/components/essays/subscription-billing-illustration";
 import { SunkCostIllustration } from "@/components/essays/sunk-cost-illustration";
 import { TradeLifecycleIllustration } from "@/components/essays/trade-lifecycle-illustration";
 import { TradingDesksIllustration } from "@/components/essays/trading-desks-illustration";
+import { TwapIllustration } from "@/components/essays/twap-illustration";
+import { VwapIllustration } from "@/components/essays/vwap-illustration";
 
 export const essayIllustrations: Record<string, ComponentType> = {
   "weve-seen-this-movie-before": CarriagePhaseIllustration,
@@ -54,4 +61,11 @@ export const essayIllustrations: Record<string, ComponentType> = {
   "the-decisions-that-never-stopped-billing": SubscriptionBillingIllustration,
   "capital-market-system-two-paths-one-market": CapitalMarketPathsIllustration,
   "what-bank-trading-desks-actually-do": TradingDesksIllustration,
+  "twap-how-to-buy-a-mountain-without-moving-the-price": TwapIllustration,
+  "vwap-the-benchmark-every-trader-is-graded-against": VwapIllustration,
+  "pov-the-algorithm-that-never-trades-alone": PovIllustration,
+  "iceberg-orders-the-trade-that-hides-its-own-size": IcebergIllustration,
+  "sniper-algorithms-waiting-for-the-moment-that-matters": SniperIllustration,
+  "arrival-price-the-clock-that-starts-when-you-decide": ArrivalPriceIllustration,
+  "implementation-shortfall-the-cost-of-time-between-deciding-and-doing": ImplementationShortfallIllustration,
 };

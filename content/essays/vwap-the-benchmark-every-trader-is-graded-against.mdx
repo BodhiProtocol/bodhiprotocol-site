@@ -1,0 +1,87 @@
+---
+title: "VWAP: The Benchmark Every Trader Is Graded Against"
+description: "TWAP ignores the market's rhythm. VWAP follows it — trading more when the market trades more, less when it doesn't. It's also the number every institutional trader gets measured against, whether they used the algorithm or not."
+category: "Capital Markets"
+tags: ["markets", "execution"]
+author: "Surya"
+date: "2026-07-31"
+---
+
+Most days in the stock market don't trade evenly.
+
+The first thirty minutes after the open are loud — overnight news, opening auctions, algorithms rebalancing.  
+The middle of the day is quiet.  
+The final thirty minutes get loud again — closing auctions, index funds, anyone who waited too long.
+
+A day's volume, drawn as a line, looks less like a flat road and more like a bowl with tall walls on both ends.
+
+TWAP ignores that shape entirely.  
+VWAP is built around it.
+
+## Trading in the market's own shape
+
+VWAP — Volume-Weighted Average Price — slices an order to match the market's own volume pattern, not the clock.
+
+Trade more in the loud minutes.  
+Trade less in the quiet ones.  
+Let the order's shape mirror the market's shape.
+
+**A flat schedule (TWAP)**  
+Same size, every clip  
+- 09:15, 09:45, 10:15, 10:45... identical size each time  
+- Blind to whether the market is busy or dead
+
+**A volume-matched schedule (VWAP)**  
+Size scales with the market  
+- Larger clips in the opening rush  
+- Smaller clips through the quiet midday  
+- Larger clips again into the close
+
+The order isn't trying to beat the market's average price.  
+It's trying to *become* it — to trade in the same proportion the rest of the market is trading, so its own average lands close to everyone else's.
+
+## The benchmark that became a report card
+
+VWAP is the closest thing institutional trading has to a universal report card.
+
+Ask a buy-side trader how their execution went, and the answer is almost always phrased against VWAP: better than VWAP, in line with VWAP, worse than VWAP. It's the default yardstick written into mandates, fund manager reviews, and best-execution reports — even for orders that weren't executed using a VWAP algorithm at all.
+
+Because of that, VWAP algorithms are the natural first choice for large, liquid orders where a trader wants an unremarkable, defensible execution — a fair average, nothing more, nothing less. It's the algorithm you pick when you have no strong view on timing and simply want to blend in with the day.
+
+**Advantages**
+- Trades in proportion to real liquidity, so each individual clip is easier for the market to absorb than a flat schedule's clip would be in a quiet window
+- Matches the benchmark it will be judged against, which makes performance easy to explain and hard to argue with
+- Well understood across the industry — clients, compliance, and counterparties all read the same number the same way
+
+**Risks**
+- It relies on a *forecast* of today's volume curve, built from historical patterns — if today turns out unusual (a surprise announcement, an index event), the forecast is wrong and the schedule trades the wrong amount at the wrong time
+- The predictable shape — heavier at open and close — means everyone running VWAP crowds into the same windows, which can itself distort prices right when the algorithm is trading most
+- A trader chasing the VWAP benchmark can end up optimizing for "matching the average" instead of "getting the best price," which are not always the same goal
+
+## Example 1: An MSCI rebalance on the NSE
+
+In India, when a large foreign portfolio investor needs to rebalance its NSE holdings after an MSCI index review, its broker will typically route the trade as VWAP over the review's effective date — the goal isn't to find the cheapest price, it's to trade in line with the day's volume so the fund's performance doesn't diverge from the benchmark everyone else rebalancing around the same event is also being measured against.
+
+## Example 2: An index rebalance on the NYSE
+
+Internationally, a large S&P 500 index fund doing the same kind of rebalance on the NYSE reaches for the identical tool, for the identical reason — tracking error against a benchmark index is minimized by trading in proportion to the market, not by trying to be clever about timing.
+
+## Why this matters for a Business Analyst
+
+VWAP shows up in two very different places in a trading system, and conflating them is a common source of bad requirements.
+
+One is an **execution strategy** — an algorithm that decides how to slice an order using a volume forecast.  
+The other is a **performance benchmark** — a number calculated after the fact from the market's actual traded volume, used to score any execution, regardless of which algorithm placed it.
+
+A TCA report comparing "our VWAP algo's fill price" to "the day's realized VWAP" is comparing a forecast-driven plan against an after-the-fact outcome. They're related, but they're not the same number, and a system that treats them as interchangeable will produce metrics that quietly mean the wrong thing.
+
+## Lighthouse Insight
+
+TWAP refuses to notice the market's rhythm.  
+VWAP tries to move with it —  
+which is why VWAP became more than an algorithm. It became the number everyone else gets measured against.
+
+## Reference anchors
+
+- [How to Use Volume-Weighted Indicators in Trading — Charles Schwab](https://www.schwab.com/learn/story/how-to-use-volume-weighted-indicators-trading)
+- [VWAP Definition — IG Glossary of Trading Terms](https://www.ig.com/en/glossary-trading-terms/vwap-definition)

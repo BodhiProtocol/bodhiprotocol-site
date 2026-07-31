@@ -1,0 +1,77 @@
+---
+title: "Iceberg Orders: The Trade That Hides Its Own Size"
+description: "An order book shows everyone what's for sale, at what price, and how much. An iceberg order breaks that last promise on purpose — showing a small slice of a much larger order, and quietly refilling it every time the slice gets taken."
+category: "Capital Markets"
+tags: ["markets", "execution"]
+author: "Surya"
+date: "2026-07-31"
+---
+
+An order book is supposed to be honest.  
+Every price level shows exactly how much is waiting to trade there.  
+Anyone can look and know how deep the liquidity really is.
+
+An iceberg order breaks that promise, deliberately, in plain sight.
+
+## The order book's honesty, deliberately broken
+
+An iceberg order splits a large order into two parts: a small **visible** slice, sitting in the public order book like any normal order, and a much larger **hidden** reserve, sitting behind it, invisible to everyone else.
+
+The moment the visible slice is fully traded, the system quietly pulls another identical slice from the hidden reserve and places it at the same price — over and over, until the whole order is filled or cancelled.
+
+**A normal limit order**  
+What you see is what there is  
+- Full size resting in the book  
+- Anyone can see the true depth at that price  
+- The size itself becomes information
+
+**An iceberg order**  
+What you see is a fraction of what there is  
+- A small visible tip, refilled again and again  
+- The true size stays hidden the whole time  
+- The order book *looks* shallower than it actually is
+
+Like an actual iceberg, the part above the surface is real — it's just not the whole story.
+
+## When size itself is the information you're protecting
+
+A resting limit order for a genuinely large size is a signal all by itself. Show ten million shares waiting to buy at a given price, and the rest of the market instantly knows a large buyer is present, at exactly what price they're willing to pay — information other participants can use to adjust their own quotes before that buyer ever gets filled.
+
+Iceberg orders let a desk place that same large order without broadcasting it. The visible clip looks like an ordinary, unremarkable order. The size that actually matters stays out of view until it's already been traded.
+
+This is why iceberg orders are common wherever a large limit order needs to sit patiently, waiting for a good price, without turning into a headline the moment it's placed — a promoter reducing a stake, a fund building a position over several sessions, or simply any order too large to show without moving the price against itself.
+
+**Advantages**
+- Hides the true size of the order, so counterparties can't trade ahead of size they can't see
+- Reduces the order's visible footprint, which limits how much the book's shape gives away about intent
+- Lets a large order rest patiently at a chosen price instead of being forced to chase the market
+
+**Risks**
+- The same visible size reappearing at the same price, again and again, is itself a pattern — sophisticated participants run detection logic specifically looking for repeated refills, and once spotted, the "hidden" size isn't really hidden anymore
+- On many venues, each refresh of the visible slice loses its place in the queue, meaning the strategy can trade less favorably than a single, fully visible order that kept its original time priority
+- A book full of icebergs can look shallower than it really is — useful for the trader hiding size, but a genuine distortion for anyone else trying to read true market depth
+
+## Example 1: Disclosed Quantity orders on the NSE
+
+India actually runs two related versions of this mechanism. The older and more common one is a "Disclosed Quantity" order — a single order that shows only a portion of its size in the book, with the hidden remainder refilling automatically at no extra cost. NSE and BSE also separately offer orders explicitly labelled "iceberg orders," which work the same way from the market's point of view but are technically built as a new order placed each time the visible slice refills — meaning each refill is billed as its own trade. Institutional desks and promoters reach for either version routinely when building or unwinding a significant stake without revealing the full size to the rest of the market.
+
+## Example 2: Reserve orders on the NYSE and Nasdaq
+
+Internationally, the same idea runs on exchanges like the NYSE and Nasdaq under "reserve orders" — a large asset manager accumulating a position in a heavily watched stock will often use one so the visible order book never shows the true size of what's actually being bought.
+
+## Why this matters for a Business Analyst
+
+An order-management or market-data system that treats "displayed size" as "true size" will misread the market every time an iceberg order is active.
+
+If you're specifying requirements for depth-of-book displays, liquidity analytics, or any feature that infers intent from order size, it's worth stating explicitly whether the system is expected to know the difference between an order's *displayed* quantity and its *total* quantity — and what happens when it doesn't, because on a real exchange, it usually doesn't.
+
+## Lighthouse Insight
+
+An order book claims to show the truth about what's for sale.  
+An iceberg order shows just enough of the truth to be useful —  
+and keeps the rest exactly where no one else can see it.
+
+## Reference anchors
+
+- [What is the Disclosed Quantity feature? — Zerodha Support](https://support.zerodha.com/category/trading-and-markets/general-kite/others-kite/articles/what-is-disclosed-quantity-feature-and-how-to-use-it)
+- [What are Iceberg orders, and how to use them? — Zerodha Support](https://support.zerodha.com/category/trading-and-markets/charts-and-orders/order/articles/iceberg-orders)
