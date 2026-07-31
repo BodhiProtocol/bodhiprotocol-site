@@ -4,7 +4,6 @@ import { PageHeader } from "@/components/layout/page-header";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { EssayList } from "@/components/essays/essay-list";
-import { EssaysIllustration } from "@/components/essays/essays-illustration";
 import { getAllEssays } from "@/lib/essays";
 
 const description =
@@ -32,7 +31,6 @@ export default function EssaysPage() {
         eyebrow="Essays"
         title="Essays"
         description="Writing on AI, capital markets, business analysis, decision making, and economics."
-        aside={<EssaysIllustration />}
       />
       <Section className="pt-10 sm:pt-12">
         <Container>
