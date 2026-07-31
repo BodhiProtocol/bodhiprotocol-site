@@ -60,7 +60,6 @@ export const essayIllustrations: Record<string, ComponentType> = {
   "repo-the-overnight-loan-thats-legally-two-trades": RepoIllustration,
   "the-decisions-that-never-stopped-billing": SubscriptionBillingIllustration,
   "capital-market-system-two-paths-one-market": CapitalMarketPathsIllustration,
-  "what-bank-trading-desks-actually-do": TradingDesksIllustration,
   "twap-how-to-buy-a-mountain-without-moving-the-price": TwapIllustration,
   "vwap-the-benchmark-every-trader-is-graded-against": VwapIllustration,
   "pov-the-algorithm-that-never-trades-alone": PovIllustration,
@@ -68,4 +67,5 @@ export const essayIllustrations: Record<string, ComponentType> = {
   "sniper-algorithms-waiting-for-the-moment-that-matters": SniperIllustration,
   "arrival-price-the-clock-that-starts-when-you-decide": ArrivalPriceIllustration,
   "implementation-shortfall-the-cost-of-time-between-deciding-and-doing": ImplementationShortfallIllustration,
+  "a-bank-trading-floor-is-a-marketplace-for-risk": TradingDesksIllustration,
 };

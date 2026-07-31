@@ -18,10 +18,10 @@ function TradingDesksIllustration() {
     <div ref={ref} className="rounded-xl border border-border bg-muted p-4 font-mono text-[11px]">
       <div className="mb-3 flex items-center justify-between">
         <span className="text-[9px] font-bold tracking-wide text-muted-foreground">
-          BANK TRADING DESKS
+          BANK TRADING FLOOR
         </span>
         <span className="rounded-full bg-brand/10 px-1.5 py-0.5 text-[8px] font-bold tracking-wide text-brand">
-          6 SPECIALTIES
+          MARKETPLACE FOR RISK
         </span>
       </div>
 
