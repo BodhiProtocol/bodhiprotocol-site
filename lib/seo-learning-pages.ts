@@ -230,9 +230,9 @@ export const seoLearningPages: SeoLearningPage[] = [
           "No. A capital markets BA needs to understand how financial transactions move through systems and where operational risk appears, not how to trade.",
       },
       {
-        question: "What capital markets concepts should a BA learn first?",
+        question: "What's the difference between clearing and settlement?",
         answer:
-          "Start with the trade lifecycle, then clearing, settlement, and reconciliation, since most BA requirements in capital markets connect to one of these stages.",
+          "Clearing manages the obligations created by a trade. In many markets, a clearinghouse steps in as the counterparty to both sides through novation. Settlement is the actual exchange of cash and securities that follows.",
       },
     ],
   },
