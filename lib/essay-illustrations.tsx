@@ -16,6 +16,7 @@ import { JargonWallIllustration } from "@/components/essays/jargon-wall-illustra
 import { JiraBacklogIllustration } from "@/components/essays/jira-backlog-illustration";
 import { LearningDividendIllustration } from "@/components/essays/learning-dividend-illustration";
 import { MarginIllustration } from "@/components/essays/margin-illustration";
+import { MarketInfrastructureIllustration } from "@/components/essays/market-infrastructure-illustration";
 import { NettingIllustration } from "@/components/essays/netting-illustration";
 import { NovationIllustration } from "@/components/essays/novation-illustration";
 import { OpportunityCostIllustration } from "@/components/essays/opportunity-cost-illustration";
@@ -56,6 +57,7 @@ export const essayIllustrations: Record<string, ComponentType> = {
   "sunk-costs-cant-answer-the-question-youre-asking": SunkCostIllustration,
   "novation-how-a-clearinghouse-becomes-everyones-counterparty": NovationIllustration,
   "margin-how-a-clearinghouse-turns-fear-into-collateral": MarginIllustration,
+  "infrastructure-the-nine-systems-behind-every-trade": MarketInfrastructureIllustration,
   "netting-how-finance-cancels-a-mountain-of-debt-into-a-pebble": NettingIllustration,
   "settlement-finality-when-a-trade-stops-being-a-promise":
     SettlementFinalityIllustration,

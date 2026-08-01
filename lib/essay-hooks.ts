@@ -20,6 +20,8 @@ const essayHooks: Record<string, string> = {
     "A market price is not discovered by magic. It is negotiated in public.",
   "what-a-trade-lifecycle-actually-looks-like":
     "A trade is not done when two people agree on price.",
+  "infrastructure-the-nine-systems-behind-every-trade":
+    "Nobody sees the machines that turn a click into a trade.",
   "what-spoofing-actually-looks-like":
     "The fake order is the bait. The real trade happens elsewhere.",
   "a-good-decision-can-still-lose":

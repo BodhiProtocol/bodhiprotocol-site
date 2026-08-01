@@ -1,0 +1,47 @@
+---
+title: "Infrastructure: The Nine Systems Behind Every Trade"
+description: "OMS, EMS, FIX, matching engines, CCPs, SWIFT, custodians — the machinery nobody sees between a click and a settled trade, and why almost none of it lives on a screen."
+category: "Capital Markets"
+tags: ["markets", "infrastructure"]
+author: "Surya"
+date: "2026-08-01"
+---
+
+Press buy. A confirmation appears in under a second. Nothing about that experience suggests that nine separate systems, built by five or six different organizations, just handed your order to each other in a specific order — or that if any single one of them used a different message format, the whole chain would break.
+
+That's the honest reason infrastructure is the part almost nobody explains. Clearing and settlement have a story a person can picture. Infrastructure doesn't look like anything. It's wiring behind a wall — you only think about it when it fails.
+
+## The flight path an order actually takes
+
+Think of an order the way an airline thinks of a passenger, not a parcel.
+
+- **OMS (Order Management System)** is the flight plan and the control tower on your side of the trade — the broker or firm's system of record. It checks whether the order is even allowed to fly: KYC, margin, position limits, before it reaches a market.
+- **EMS (Execution Management System)** is the pilot. Once the OMS clears the order for takeoff, the EMS decides how to actually fly it — which venue, which algorithm, how much size to reveal at once.
+- **FIX Protocol** is the language every tower and every cockpit agrees to speak. It isn't a system, it's a message format — `NewOrderSingle`, `ExecutionReport` — that lets an OMS built by one company talk to an EMS built by another, and both talk to an exchange built by a third, without any of them needing to know how the others were coded.
+- **Market Data** is the weather radar. Every decision above — the EMS choosing an algorithm, the OMS running a risk check — is reading a live feed of quotes and depth. Without it, every system on this list is flying blind.
+- **Exchange Gateway** is the airport gate: the literal, often co-located, technical doorway an order passes through to enter the exchange's own infrastructure. It's the last hop before the order stops being yours and becomes the exchange's problem.
+- **Matching Engine** is air traffic control assigning runways. It's the software at the exchange's core that pairs your buy with someone's sell, by price-time priority, and stamps out a trade.
+
+That's six systems, and the order hasn't even settled yet.
+
+## After the match, three more systems nobody sees
+
+A completed trade still isn't a settled one.
+
+- **CCP (Central Counterparty)** steps in immediately after the match and, through [novation](/essays/novation-how-a-clearinghouse-becomes-everyones-counterparty), becomes the buyer to your sell and the seller to your buy — mutualizing the risk that either original side might not show up.
+- **SWIFT** is the international mail system for what follows. It doesn't move money or securities itself; it carries the verified instruction that tells banks and custodians to move them.
+- **Custodian** is where the trade actually lands — the institution that holds your securities and cash after settlement, and handles what happens to them afterward: dividends, splits, corporate actions.
+
+## Why this layer stays invisible
+
+Every other stage of a trade has a human moment attached to it — someone decides, someone confirms, someone watches a number change. Infrastructure has none of that. Nobody watches a FIX message travel from an EMS to an exchange gateway. The only time this layer becomes visible is when it breaks: an exchange outage, a gateway reject, a settlement instruction that never reached the custodian because a SWIFT message carried the wrong code.
+
+## Why it matters for a business analyst
+
+If you've read [what a trade lifecycle actually looks like](/essays/what-a-trade-lifecycle-actually-looks-like), you already know the six stages a trade moves through. Infrastructure answers a different question: which system, built by which team, actually executes each of those stages. A requirement that says "the order should reach the exchange within 50ms" is really a requirement about the EMS-to-gateway hop. A ticket investigating why a trade never cleared is really asking whether the CCP received the FIX drop-copy at all. Naming the machine, not just the stage, is what turns a vague requirement into one an engineer can build against.
+
+## Lighthouse Insight
+
+A trade doesn't feel like nine systems because none of them were built to be seen. The whole point of good infrastructure is that it disappears — which is exactly why almost nobody can name what's actually running underneath the button they just pressed.
+
+[See where OMS, EMS, and the matching engine sit in the full trade lifecycle →](https://trade-lifecycle-explorer.bodhiprotocol.com/)

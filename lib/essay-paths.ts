@@ -5,6 +5,7 @@ import { getAllEssays } from "@/lib/essays";
 const capitalMarketsPath = [
   "shiv-pressed-buy-trade-execution",
   "what-a-trade-lifecycle-actually-looks-like",
+  "infrastructure-the-nine-systems-behind-every-trade",
   "how-order-books-work",
   "capital-market-system-two-paths-one-market",
   "repo-the-overnight-loan-thats-legally-two-trades",
