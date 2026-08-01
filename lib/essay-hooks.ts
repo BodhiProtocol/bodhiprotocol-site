@@ -1,8 +1,9 @@
 import type { Essay } from "@/types/content";
 
 const essayHooks: Record<string, string> = {
-  "capital-market-system-two-paths-one-market":
-    "Same stock. Different game.",
+  "shiv-pressed-buy-trade-execution":
+    "One order. Two markets. The hidden machinery behind every trade.",
+  "capital-market-system-two-paths-one-market": "Same stock. Different game.",
   "repo-the-overnight-loan-thats-legally-two-trades":
     "It looks like borrowing. Legally, ownership flips twice.",
   "netting-how-finance-cancels-a-mountain-of-debt-into-a-pebble":
@@ -31,8 +32,7 @@ const essayHooks: Record<string, string> = {
     "Every yes quietly spends the best no.",
   "sunk-costs-cant-answer-the-question-youre-asking":
     "Money already spent cannot vote on what happens next.",
-  "why-jargon-is-a-wall":
-    "Every unexplained acronym charges an entry fee.",
+  "why-jargon-is-a-wall": "Every unexplained acronym charges an entry fee.",
   "the-acronym-wall-every-new-banking-ba-hits":
     "Acronyms are not knowledge. They are locked doors.",
   "from-stakeholder-sentence-to-acceptance-criteria":
@@ -41,18 +41,13 @@ const essayHooks: Record<string, string> = {
     "A good requirement still works after the meeting ends.",
   "what-happens-between-a-jira-ticket-and-a-test-case":
     "The gap between idea and test is where defects are born.",
-  "why-jira-tickets-rot-in-backlog":
-    "A backlog is not storage. It is a decay chamber.",
-  "the-learning-dividend":
-    "Learning compounds when explanations become reusable.",
-  "context-windows-arent-memory":
-    "A larger window is not the same as remembering.",
-  "why-llms-hallucinate":
-    "Confidence is not the same as truth.",
+  "why-jira-tickets-rot-in-backlog": "A backlog is not storage. It is a decay chamber.",
+  "the-learning-dividend": "Learning compounds when explanations become reusable.",
+  "context-windows-arent-memory": "A larger window is not the same as remembering.",
+  "why-llms-hallucinate": "Confidence is not the same as truth.",
   "the-decisions-that-never-stopped-billing":
     "Some choices keep charging long after the purchase.",
-  "weve-seen-this-movie-before":
-    "New technology often repeats an old adoption pattern.",
+  "weve-seen-this-movie-before": "New technology often repeats an old adoption pattern.",
 };
 
 function firstSentence(text: string) {

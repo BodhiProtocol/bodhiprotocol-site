@@ -29,6 +29,7 @@ import { SniperIllustration } from "@/components/essays/sniper-illustration";
 import { SpoofingTimelineIllustration } from "@/components/essays/spoofing-timeline-illustration";
 import { SubscriptionBillingIllustration } from "@/components/essays/subscription-billing-illustration";
 import { SunkCostIllustration } from "@/components/essays/sunk-cost-illustration";
+import { TradeExecutionCardIllustration } from "@/components/essays/trade-execution-essay";
 import { TradeLifecycleIllustration } from "@/components/essays/trade-lifecycle-illustration";
 import { TradingDesksIllustration } from "@/components/essays/trading-desks-illustration";
 import { TwapIllustration } from "@/components/essays/twap-illustration";
@@ -56,16 +57,19 @@ export const essayIllustrations: Record<string, ComponentType> = {
   "novation-how-a-clearinghouse-becomes-everyones-counterparty": NovationIllustration,
   "margin-how-a-clearinghouse-turns-fear-into-collateral": MarginIllustration,
   "netting-how-finance-cancels-a-mountain-of-debt-into-a-pebble": NettingIllustration,
-  "settlement-finality-when-a-trade-stops-being-a-promise": SettlementFinalityIllustration,
+  "settlement-finality-when-a-trade-stops-being-a-promise":
+    SettlementFinalityIllustration,
   "repo-the-overnight-loan-thats-legally-two-trades": RepoIllustration,
   "the-decisions-that-never-stopped-billing": SubscriptionBillingIllustration,
   "capital-market-system-two-paths-one-market": CapitalMarketPathsIllustration,
+  "shiv-pressed-buy-trade-execution": TradeExecutionCardIllustration,
   "twap-how-to-buy-a-mountain-without-moving-the-price": TwapIllustration,
   "vwap-the-benchmark-every-trader-is-graded-against": VwapIllustration,
   "pov-the-algorithm-that-never-trades-alone": PovIllustration,
   "iceberg-orders-the-trade-that-hides-its-own-size": IcebergIllustration,
   "sniper-algorithms-waiting-for-the-moment-that-matters": SniperIllustration,
   "arrival-price-the-clock-that-starts-when-you-decide": ArrivalPriceIllustration,
-  "implementation-shortfall-the-cost-of-time-between-deciding-and-doing": ImplementationShortfallIllustration,
+  "implementation-shortfall-the-cost-of-time-between-deciding-and-doing":
+    ImplementationShortfallIllustration,
   "a-bank-trading-floor-is-a-marketplace-for-risk": TradingDesksIllustration,
 };

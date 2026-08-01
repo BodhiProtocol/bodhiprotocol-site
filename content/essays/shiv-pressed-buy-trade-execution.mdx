@@ -1,0 +1,374 @@
+---
+title: "Shiv Pressed Buy. Then an Entire Market Went to Work."
+description: "Follow Shiv's Reliance order in India and Maya's Apple order in the United States to understand brokers, order books, matching, partial fills, execution and settlement."
+category: "Capital Markets"
+tags:
+  [
+    "Trade Execution",
+    "Order Book",
+    "Matching Engine",
+    "Capital Markets",
+    "Market Structure",
+    "Clearing and Settlement",
+    "Business Analysis",
+  ]
+author: "Surya"
+date: "2026-08-01"
+---
+
+<TradeExecutionHero />
+
+## Meet Shiv
+
+Shiv has recently started his first job.
+
+After paying rent, sending some money home, and handling his first month of adult expenses, he has ₹15,000 left in savings.
+
+He opens his investing app, searches for Reliance Industries, and enters a simple instruction:
+
+Action: buy. Quantity: 10 shares. Order type: limit. Limit price: ₹1,500.
+
+Then he presses **Buy**.
+
+His screen displays:
+
+**Order placed.**
+
+<OrderTicketCard />
+
+<StoryBridge icon="wallet">
+  To Shiv, the work was finished. To the market, it had just begun.
+</StoryBridge>
+
+## What Did Shiv Ask For?
+
+Shiv was not merely saying:
+
+**I want Reliance shares.**
+
+He was saying:
+
+**Buy ten Reliance shares for me, but do not pay more than ₹1,500 per share.**
+
+That sentence contains the anatomy of an order.
+
+<OrderAnatomyCard />
+
+The important part is the order type.
+
+A **market order** says: buy now at the best available price.
+
+A **limit order** says: buy only at my price or better.
+
+<OrderTypeToggle />
+
+A market order gives up some price control in exchange for speed. A limit order keeps price control, but it may wait.
+
+Shiv chose control over price. Now he needed a seller willing to meet it.
+
+## The Broker Checkpoint
+
+Shiv's phone is not directly connected to the exchange.
+
+The app is the front door. Behind it sits the broker's systems.
+
+<HorizontalJourney />
+
+Before the order can go to market, the broker performs checks. This list is simplified. Real brokers may apply more controls, different controls, and market-specific rules.
+
+<BrokerValidationFlow />
+
+The professional insight is easy to miss:
+
+<StoryBridge icon="building">
+  The investment decision and the executable market instruction are not the same thing.
+</StoryBridge>
+
+Shiv decided to buy. The broker turned that decision into an instruction the market could accept, track, route, update, and report.
+
+## The Order Book
+
+Now the order reaches the market.
+
+An order book is a live queue of buying and selling intentions.
+
+It is not a list of completed trades. It is a list of people waiting with conditions.
+
+<OrderBookVisual />
+
+On the buy side, the best bid is ₹1,500. That is the highest price a buyer is currently willing to pay.
+
+On the sell side, the best ask is ₹1,501. That is the lowest price a seller is currently willing to accept.
+
+The spread is ₹1: the small gap between the highest buyer and the lowest seller.
+
+Why does Shiv's order not immediately execute?
+
+Because Shiv will pay no more than ₹1,500.
+
+The cheapest seller wants ₹1,501.
+
+The prices do not meet.
+
+<Insight>An order is an intention. A trade is a successful match.</Insight>
+
+Placing an order does not mean that a trade has happened.
+
+## Shiv Joins the Queue
+
+Shiv is not the only buyer at ₹1,500.
+
+Another buyer arrived three seconds earlier.
+
+The order book now has two buy orders at the same price:
+
+10:01:02 - Buy 15 at ₹1,500
+
+10:01:05 - Buy 10 at ₹1,500 - Shiv
+
+The rule is called price-time priority.
+
+First, better price wins.
+
+Then, at the same price, earlier arrival wins.
+
+<QueuePriorityChallenge />
+
+Price decides the lane. Time decides the place in line.
+
+## A Seller Arrives
+
+Now meet Neha, another fictional investor.
+
+Neha enters a sell order:
+
+Sell 20 Reliance shares. Limit price: ₹1,500.
+
+Her price is compatible with the buyers at ₹1,500.
+
+But she does not automatically sell all 20 shares to Shiv.
+
+The earlier buyer is still ahead.
+
+<MatchingSequence />
+
+The result is two executions:
+
+Trade 1: the earlier buyer buys 15 shares from Neha at ₹1,500.
+
+Trade 2: Shiv buys 5 shares from Neha at ₹1,500.
+
+Shiv's order status becomes:
+
+**Partially filled. 5 of 10 shares executed.**
+
+In a real market, Shiv would usually not see Neha's identity. The named participants here are used only to make the mechanics understandable.
+
+That is the first compression hidden behind the app screen: one order can become one execution, many executions, or no execution at all.
+
+## One Order, Multiple Trades
+
+Order statuses are the market's way of saying where an instruction is in its life.
+
+New. Accepted. Waiting. Partially filled. Filled. Cancelled. Rejected. Expired.
+
+You do not need to memorize every status today.
+
+For Shiv, the important one is **partially filled**.
+
+He asked for 10 shares.
+
+Only 5 have executed so far.
+
+5 still remain open.
+
+<OrderProgressCard />
+
+Practitioners often express this with three fields:
+
+**Order quantity**: what Shiv originally requested.
+
+**Cumulative quantity**: how much has executed so far.
+
+**Leaves quantity**: how much remains.
+
+For Shiv, after the first execution:
+
+10 = 5 + 5.
+
+Then a second seller arrives:
+
+Sell 5 shares at ₹1,500.
+
+Shiv is next. His remaining 5 shares execute.
+
+Now:
+
+10 = 10 + 0.
+
+The order is filled.
+
+Shiv submitted one order. The market created two executions for him.
+
+## Who Was on the Other Side?
+
+Shiv usually does not personally know the seller.
+
+That is the point of organised markets.
+
+The exchange does not require a buyer and seller to know each other. It requires compatible instructions and defined matching rules.
+
+<CounterpartyNetwork />
+
+The other side may be another individual investor. It may be an institution. It may be a firm providing liquidity.
+
+The human story is useful for learning, but the market itself runs on instructions.
+
+<StoryBridge icon="user">
+  A market replaces personal negotiation with organised rules.
+</StoryBridge>
+
+## Where a Market Maker Fits
+
+Sometimes liquidity comes from a market maker.
+
+A market maker may display a two-way quote: one price where it is willing to buy, and another where it is willing to sell.
+
+<MarketMakerQuote />
+
+The bid is the price at which the market maker is willing to buy.
+
+The ask is the price at which the market maker is willing to sell.
+
+The spread is the difference between the two.
+
+A market maker may stand ready to buy or sell, making it easier for other participants to transact. But its prices still need to meet the conditions of the incoming order.
+
+It is not always present. It does not guarantee execution. It does not always take the other side. It does not erase price risk.
+
+Liquidity makes trading easier. It does not erase price.
+
+## Execution Is Not Settlement
+
+Shiv's order is filled.
+
+That does not mean the entire trade lifecycle is finished.
+
+Execution means a compatible buyer and seller have been matched. Settlement means money and shares formally move.
+
+<LifecycleRail />
+
+Pressing Buy Now on an online shop is not the same as receiving the product. Similarly, trade execution is not the same as final settlement.
+
+Order: the instruction to buy or sell.
+
+Execution: a compatible buyer and seller have been matched.
+
+Confirmation: the trade details are recorded and communicated.
+
+Clearing: obligations are calculated and managed.
+
+Settlement: money and shares formally move.
+
+<Insight>Execution creates the transaction. Settlement completes the exchange.</Insight>
+
+This essay does not depend on a particular settlement cycle. Those rules can change by market and over time. The durable idea is the distinction: matching creates the transaction; settlement completes the exchange.
+
+## Same Trade. Different Market.
+
+Only now, after Shiv's journey is complete, meet Maya.
+
+Maya is completing an internship in the United States.
+
+She opens a fictional investing interface and enters:
+
+Company: Apple. Symbol: AAPL. Side: buy. Quantity: 10 shares. Order type: limit. Limit price: $200.
+
+<OrderTicketCard market="us" />
+
+The order reaches a venue-style order book.
+
+<OrderBookVisual market="us" />
+
+Maya will pay no more than $200.
+
+The lowest seller wants $200.10.
+
+What happens?
+
+<MarketMirrorChallenge />
+
+The company changed. The currency changed. The routing environment may differ. The core matching problem remained recognisable.
+
+Indian and US market structures are not identical. Venues, routing, regulations, and post-trade systems can differ. This simplified comparison focuses only on the shared logic of compatible buying and selling instructions.
+
+## One Trade, Two Markets
+
+<MarketComparisonTable />
+
+In both stories, the market is organising intent. A buyer has a condition. A seller has a condition. The system must decide whether those conditions are compatible and which eligible order gets priority.
+
+One trade. Two markets. The same need to organise intent.
+
+## What Shiv Saw vs What the Market Saw
+
+This is the strongest lesson.
+
+Shiv saw a short, friendly path:
+
+Buy. Order placed. Order executed.
+
+The market saw a much longer path.
+
+<SawVsMarketVisual />
+
+That compression is why investing apps feel simple.
+
+The button is simple because the market underneath is not.
+
+## For the Entry-Level Professional
+
+The beginner story is enough to understand the machine.
+
+The practitioner layer adds names to the parts you may see in requirements, tickets, data models, and production issues.
+
+<PractitionerLayer />
+
+This is where "shares" becomes "equity securities" in professional language. The underlying lesson stays the same: one instruction moves through order management, execution, and post-trade systems, collecting identifiers and statuses as it goes.
+
+## Five Ideas to Remember
+
+<FiveTakeaways />
+
+## Closing
+
+Shiv pressed one button.
+
+Behind it stood a broker validating his instruction, an exchange organising competing orders, a matching engine applying priority rules, sellers supplying shares, market participants providing liquidity, and post-trade systems preparing the movement of money and ownership.
+
+Maya pressed the same kind of button in another country.
+
+The company changed from Reliance to Apple.
+
+The currency changed from rupees to dollars.
+
+Some of the infrastructure and routing changed.
+
+The central problem did not.
+
+A buyer wanted shares.
+
+A seller was willing to provide them.
+
+A market had to decide whether their instructions were compatible and who deserved to trade first.
+
+The screen made the process feel instant.
+
+The system made the process possible.
+
+<Insight>
+  A trade begins with one person pressing Buy. It becomes real only when an entire market
+  agrees on what happens next.
+</Insight>
+
+<ContinueLearning />

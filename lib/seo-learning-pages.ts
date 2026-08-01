@@ -90,14 +90,22 @@ export const seoLearningPages: SeoLearningPage[] = [
     ],
     related: [
       {
+        label: "How Trade Execution Actually Works",
+        href: "/essays/shiv-pressed-buy-trade-execution",
+        description:
+          "Follow one fictional buy order through brokers, matching, fills, and settlement.",
+      },
+      {
         label: "Trade Lifecycle for Business Analysts",
         href: "/trade-lifecycle-business-analyst",
-        description: "Follow a trade from execution to settlement, reporting, and reconciliation.",
+        description:
+          "Follow a trade from execution to settlement, reporting, and reconciliation.",
       },
       {
         label: "Capital Markets for Business Analysts",
         href: "/capital-markets-for-business-analysts",
-        description: "Learn the domain concepts that appear in banking and trading systems.",
+        description:
+          "Learn the domain concepts that appear in banking and trading systems.",
       },
       {
         label: "Requirements Translator",
@@ -157,7 +165,16 @@ export const seoLearningPages: SeoLearningPage[] = [
       },
       {
         title: "Core BA tools",
-        items: ["Jira", "Confluence", "Excel", "SQL", "Diagramming tools", "Wireframes", "API documentation", "PowerPoint"],
+        items: [
+          "Jira",
+          "Confluence",
+          "Excel",
+          "SQL",
+          "Diagramming tools",
+          "Wireframes",
+          "API documentation",
+          "PowerPoint",
+        ],
       },
       {
         title: "Build domain knowledge",
@@ -210,18 +227,71 @@ export const seoLearningPages: SeoLearningPage[] = [
       "A capital markets business analyst does not need to become a trader. But they do need to understand how financial transactions move through systems and where operational risk appears.",
     ],
     sections: [
-      { title: "Order book", paragraphs: ["An order book is a live list of buy and sell interest. It helps explain how market prices form and why execution price can move as liquidity changes."] },
-      { title: "Trade lifecycle", paragraphs: ["The trade lifecycle is the journey a trade takes from execution to settlement and reporting. Most BA requirements in capital markets connect to one lifecycle stage."] },
-      { title: "Clearing", paragraphs: ["Clearing manages obligations after a trade is executed. In some markets, a clearinghouse steps in between buyer and seller through novation."] },
-      { title: "Settlement", paragraphs: ["Settlement is when securities and cash are exchanged. Many operational issues become urgent as settlement date approaches."] },
-      { title: "Repo", paragraphs: ["A repo looks like a loan, but legally it is structured as a sale and repurchase. That distinction matters when collateral ownership and default are involved."] },
-      { title: "Reconciliation", paragraphs: ["Reconciliation compares records between systems to find breaks. BAs often define matching rules, exception queues, and workflows for resolving breaks."] },
-      { title: "Regulatory reporting", paragraphs: ["Regulatory reporting sends required trade or transaction data to regulators or trade repositories. BAs often work on field mapping, validation rules, exceptions, and control reports."] },
+      {
+        title: "Order book",
+        paragraphs: [
+          "An order book is a live list of buy and sell interest. It helps explain how market prices form and why execution price can move as liquidity changes.",
+        ],
+      },
+      {
+        title: "Trade lifecycle",
+        paragraphs: [
+          "The trade lifecycle is the journey a trade takes from execution to settlement and reporting. Most BA requirements in capital markets connect to one lifecycle stage.",
+        ],
+      },
+      {
+        title: "Clearing",
+        paragraphs: [
+          "Clearing manages obligations after a trade is executed. In some markets, a clearinghouse steps in between buyer and seller through novation.",
+        ],
+      },
+      {
+        title: "Settlement",
+        paragraphs: [
+          "Settlement is when securities and cash are exchanged. Many operational issues become urgent as settlement date approaches.",
+        ],
+      },
+      {
+        title: "Repo",
+        paragraphs: [
+          "A repo looks like a loan, but legally it is structured as a sale and repurchase. That distinction matters when collateral ownership and default are involved.",
+        ],
+      },
+      {
+        title: "Reconciliation",
+        paragraphs: [
+          "Reconciliation compares records between systems to find breaks. BAs often define matching rules, exception queues, and workflows for resolving breaks.",
+        ],
+      },
+      {
+        title: "Regulatory reporting",
+        paragraphs: [
+          "Regulatory reporting sends required trade or transaction data to regulators or trade repositories. BAs often work on field mapping, validation rules, exceptions, and control reports.",
+        ],
+      },
     ],
     related: [
-      { label: "Capital Markets BA Roadmap", href: "/capital-markets-business-analyst", description: "Put these concepts into a practical career path." },
-      { label: "Repo explained", href: "/essays/repo-the-overnight-loan-thats-legally-two-trades", description: "Learn why repo is legally two trades." },
-      { label: "Regulatory Acronym Map", href: "https://regulatory-acronym-map.bodhiprotocol.com/", description: "Decode 100+ capital markets regulatory terms." },
+      {
+        label: "How Trade Execution Actually Works",
+        href: "/essays/shiv-pressed-buy-trade-execution",
+        description:
+          "Start with a beginner-friendly story of one order moving through the market.",
+      },
+      {
+        label: "Capital Markets BA Roadmap",
+        href: "/capital-markets-business-analyst",
+        description: "Put these concepts into a practical career path.",
+      },
+      {
+        label: "Repo explained",
+        href: "/essays/repo-the-overnight-loan-thats-legally-two-trades",
+        description: "Learn why repo is legally two trades.",
+      },
+      {
+        label: "Regulatory Acronym Map",
+        href: "https://regulatory-acronym-map.bodhiprotocol.com/",
+        description: "Decode 100+ capital markets regulatory terms.",
+      },
     ],
     faqs: [
       {
@@ -249,19 +319,71 @@ export const seoLearningPages: SeoLearningPage[] = [
       "The trade lifecycle explains what happens to a trade after a buyer and seller agree. For a capital markets business analyst, this is one of the most important concepts to understand because many requirements, defects, reports, and operational workflows are connected to lifecycle events.",
     ],
     sections: [
-      { title: "1. Order", paragraphs: ["A trader or client creates an order to buy or sell a financial instrument."] },
-      { title: "2. Execution", paragraphs: ["The order is matched or executed in a market, venue, platform, or bilateral agreement."] },
-      { title: "3. Trade capture", paragraphs: ["The executed trade is recorded in an internal system with product, price, quantity, counterparty, dates, and identifiers."] },
-      { title: "4. Validation", paragraphs: ["The system checks whether required fields are present and whether the trade follows business rules."] },
-      { title: "5. Confirmation", paragraphs: ["Both sides agree on the trade details. If details do not match, an exception or break may be created."] },
-      { title: "6. Clearing", paragraphs: ["For cleared products, a clearinghouse may become the counterparty to both sides of the trade."] },
-      { title: "7. Settlement", paragraphs: ["Cash and securities move between parties. Settlement failure can create financial, operational, and regulatory risk."] },
-      { title: "8. Reporting and reconciliation", paragraphs: ["The trade may need internal, external, or regulatory reporting. Records are then compared between systems so breaks can be investigated and resolved."] },
+      {
+        title: "1. Order",
+        paragraphs: [
+          "A trader or client creates an order to buy or sell a financial instrument.",
+        ],
+      },
+      {
+        title: "2. Execution",
+        paragraphs: [
+          "The order is matched or executed in a market, venue, platform, or bilateral agreement.",
+        ],
+      },
+      {
+        title: "3. Trade capture",
+        paragraphs: [
+          "The executed trade is recorded in an internal system with product, price, quantity, counterparty, dates, and identifiers.",
+        ],
+      },
+      {
+        title: "4. Validation",
+        paragraphs: [
+          "The system checks whether required fields are present and whether the trade follows business rules.",
+        ],
+      },
+      {
+        title: "5. Confirmation",
+        paragraphs: [
+          "Both sides agree on the trade details. If details do not match, an exception or break may be created.",
+        ],
+      },
+      {
+        title: "6. Clearing",
+        paragraphs: [
+          "For cleared products, a clearinghouse may become the counterparty to both sides of the trade.",
+        ],
+      },
+      {
+        title: "7. Settlement",
+        paragraphs: [
+          "Cash and securities move between parties. Settlement failure can create financial, operational, and regulatory risk.",
+        ],
+      },
+      {
+        title: "8. Reporting and reconciliation",
+        paragraphs: [
+          "The trade may need internal, external, or regulatory reporting. Records are then compared between systems so breaks can be investigated and resolved.",
+        ],
+      },
     ],
     related: [
-      { label: "Capital Markets Business Analyst Roadmap", href: "/capital-markets-business-analyst", description: "Use the lifecycle as the foundation for your BA learning path." },
-      { label: "What a Trade Lifecycle Actually Looks Like", href: "/essays/what-a-trade-lifecycle-actually-looks-like", description: "Read the visual essay version." },
-      { label: "Novation explained", href: "/essays/novation-how-a-clearinghouse-becomes-everyones-counterparty", description: "Understand how a clearinghouse becomes everyone's counterparty." },
+      {
+        label: "Capital Markets Business Analyst Roadmap",
+        href: "/capital-markets-business-analyst",
+        description: "Use the lifecycle as the foundation for your BA learning path.",
+      },
+      {
+        label: "What a Trade Lifecycle Actually Looks Like",
+        href: "/essays/what-a-trade-lifecycle-actually-looks-like",
+        description: "Read the visual essay version.",
+      },
+      {
+        label: "Novation explained",
+        href: "/essays/novation-how-a-clearinghouse-becomes-everyones-counterparty",
+        description: "Understand how a clearinghouse becomes everyone's counterparty.",
+      },
     ],
     faqs: [
       {
@@ -327,9 +449,21 @@ export const seoLearningPages: SeoLearningPage[] = [
       },
     ],
     related: [
-      { label: "Business Analyst Roadmap", href: "/business-analyst-roadmap", description: "Build the foundation before interview practice." },
-      { label: "Capital Markets BA Roadmap", href: "/capital-markets-business-analyst", description: "Prepare for domain-specific BA interviews." },
-      { label: "Acceptance Criteria Examples", href: "/acceptance-criteria-examples", description: "Practice testable interview examples." },
+      {
+        label: "Business Analyst Roadmap",
+        href: "/business-analyst-roadmap",
+        description: "Build the foundation before interview practice.",
+      },
+      {
+        label: "Capital Markets BA Roadmap",
+        href: "/capital-markets-business-analyst",
+        description: "Prepare for domain-specific BA interviews.",
+      },
+      {
+        label: "Acceptance Criteria Examples",
+        href: "/acceptance-criteria-examples",
+        description: "Practice testable interview examples.",
+      },
     ],
     faqs: [
       {
@@ -357,10 +491,15 @@ export const seoLearningPages: SeoLearningPage[] = [
       "Acceptance criteria define the conditions a feature must satisfy before it can be accepted. They make requirements testable for developers, testers, product owners, and business users.",
     ],
     sections: [
-      { title: "Format", paragraphs: ["Given [context], when [action], then [expected result]."] },
+      {
+        title: "Format",
+        paragraphs: ["Given [context], when [action], then [expected result]."],
+      },
       {
         title: "Login example",
-        paragraphs: ["User story: As a registered user, I want to log in so that I can access my account."],
+        paragraphs: [
+          "User story: As a registered user, I want to log in so that I can access my account.",
+        ],
         items: [
           "Given the user enters valid credentials, when they select login, then they are taken to the dashboard.",
           "Given the user enters an incorrect password, when they select login, then an error message is displayed.",
@@ -369,7 +508,9 @@ export const seoLearningPages: SeoLearningPage[] = [
       },
       {
         title: "Trade worklist example",
-        paragraphs: ["User story: As an operations analyst, I want to view unmatched trades so that I can investigate reconciliation breaks."],
+        paragraphs: [
+          "User story: As an operations analyst, I want to view unmatched trades so that I can investigate reconciliation breaks.",
+        ],
         items: [
           "Given a trade exists in the internal system but not the external file, when reconciliation runs, then the trade appears as unmatched.",
           "Given a trade is unmatched, when the user opens the worklist, then the trade ID, counterparty, product, amount, and status are displayed.",
@@ -386,9 +527,21 @@ export const seoLearningPages: SeoLearningPage[] = [
       },
     ],
     related: [
-      { label: "User Story Examples", href: "/user-story-examples-business-analyst", description: "Pair each story with testable acceptance criteria." },
-      { label: "Business Analyst Roadmap", href: "/business-analyst-roadmap", description: "See where acceptance criteria fit in the BA workflow." },
-      { label: "Requirements Translator", href: "https://requirements-translator.bodhiprotocol.com/", description: "Turn raw requirements into structured stories." },
+      {
+        label: "User Story Examples",
+        href: "/user-story-examples-business-analyst",
+        description: "Pair each story with testable acceptance criteria.",
+      },
+      {
+        label: "Business Analyst Roadmap",
+        href: "/business-analyst-roadmap",
+        description: "See where acceptance criteria fit in the BA workflow.",
+      },
+      {
+        label: "Requirements Translator",
+        href: "https://requirements-translator.bodhiprotocol.com/",
+        description: "Turn raw requirements into structured stories.",
+      },
     ],
     faqs: [
       {
@@ -416,7 +569,10 @@ export const seoLearningPages: SeoLearningPage[] = [
       "A user story describes what a user needs and why. It should be small enough to build, clear enough to test, and connected to a real business outcome.",
     ],
     sections: [
-      { title: "User story format", paragraphs: ["As a [user], I want [capability], so that [business outcome]."] },
+      {
+        title: "User story format",
+        paragraphs: ["As a [user], I want [capability], so that [business outcome]."],
+      },
       {
         title: "Examples",
         items: [
@@ -439,15 +595,27 @@ export const seoLearningPages: SeoLearningPage[] = [
       },
     ],
     related: [
-      { label: "Acceptance Criteria Examples", href: "/acceptance-criteria-examples", description: "Make each story testable with Given/When/Then criteria." },
-      { label: "Business Analyst Roadmap", href: "/business-analyst-roadmap", description: "Learn the full BA workflow around user stories." },
-      { label: "Capital Markets BA Roadmap", href: "/capital-markets-business-analyst", description: "Apply user stories to capital markets workflows." },
+      {
+        label: "Acceptance Criteria Examples",
+        href: "/acceptance-criteria-examples",
+        description: "Make each story testable with Given/When/Then criteria.",
+      },
+      {
+        label: "Business Analyst Roadmap",
+        href: "/business-analyst-roadmap",
+        description: "Learn the full BA workflow around user stories.",
+      },
+      {
+        label: "Capital Markets BA Roadmap",
+        href: "/capital-markets-business-analyst",
+        description: "Apply user stories to capital markets workflows.",
+      },
     ],
     faqs: [
       {
         question: "What is the user story format?",
         answer:
-          "As a [user], I want [capability], so that [business outcome]. The \"so that\" clause keeps the story tied to a real business reason instead of just a system task.",
+          'As a [user], I want [capability], so that [business outcome]. The "so that" clause keeps the story tied to a real business reason instead of just a system task.',
       },
       {
         question: "What's the difference between a user story and acceptance criteria?",

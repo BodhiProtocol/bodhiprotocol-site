@@ -22,12 +22,20 @@ export const suggestedPath: SuggestedPathTrack[] = [
     description:
       "Understand how markets actually work — order books, price discovery, clearing.",
     links: [
+      {
+        label: "How Trade Execution Works",
+        href: "/essays/shiv-pressed-buy-trade-execution",
+      },
       { label: "How Order Books Actually Work", href: "/essays/how-order-books-work" },
       {
         label: "Novation",
         href: "/essays/novation-how-a-clearinghouse-becomes-everyones-counterparty",
       },
-      { label: "Jargon Decoder", href: "https://jargon-decoder.bodhiprotocol.com/", external: true },
+      {
+        label: "Jargon Decoder",
+        href: "https://jargon-decoder.bodhiprotocol.com/",
+        external: true,
+      },
     ],
   },
   {
@@ -47,7 +55,8 @@ export const suggestedPath: SuggestedPathTrack[] = [
   },
   {
     title: "Business Analysis",
-    description: "Translate a stakeholder's sentence into requirements engineering can build.",
+    description:
+      "Translate a stakeholder's sentence into requirements engineering can build.",
     links: [
       {
         label: "Writing Requirements That Survive Contact With Engineering",
@@ -62,7 +71,8 @@ export const suggestedPath: SuggestedPathTrack[] = [
   },
   {
     title: "Systems Thinking",
-    description: "See capital markets as a system of interconnected incentives, not isolated trades.",
+    description:
+      "See capital markets as a system of interconnected incentives, not isolated trades.",
     links: [
       {
         label: "People Respond to Incentives, Not Instructions",
@@ -76,13 +86,15 @@ export const suggestedPath: SuggestedPathTrack[] = [
   },
   {
     title: "Interview Preparation",
-    description: "Prepare for the real questions banking interviews ask a business analyst.",
+    description:
+      "Prepare for the real questions banking interviews ask a business analyst.",
     links: [],
     comingSoon: true,
   },
   {
     title: "Resume Guidance",
-    description: "Frame your experience the way capital-markets hiring managers actually read it.",
+    description:
+      "Frame your experience the way capital-markets hiring managers actually read it.",
     links: [],
     comingSoon: true,
   },

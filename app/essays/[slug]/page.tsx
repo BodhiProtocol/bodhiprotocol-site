@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { MDXComponents } from "mdx/types";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 
@@ -12,6 +13,29 @@ import { ReadNextEssays } from "@/components/essays/read-next-essays";
 import { RelatedEssays } from "@/components/essays/related-essays";
 import { TableOfContents } from "@/components/shared/table-of-contents";
 import { JsonLd } from "@/components/shared/json-ld";
+import {
+  BrokerValidationFlow,
+  ContinueLearning,
+  CounterpartyNetwork,
+  FiveTakeaways,
+  HorizontalJourney,
+  Insight,
+  LifecycleRail,
+  MarketComparisonTable,
+  MarketMakerQuote,
+  MarketMirrorChallenge,
+  MatchingSequence,
+  OrderAnatomyCard,
+  OrderBookVisual,
+  OrderProgressCard,
+  OrderTicketCard,
+  OrderTypeToggle,
+  PractitionerLayer,
+  QueuePriorityChallenge,
+  SawVsMarketVisual,
+  StoryBridge,
+  TradeExecutionHero,
+} from "@/components/essays/trade-execution-essay";
 import {
   getAdjacentEssays,
   getAllEssays,
@@ -27,34 +51,69 @@ interface EssayPageProps {
   params: Promise<{ slug: string }>;
 }
 
+const immersiveEssaySlugs = new Set(["shiv-pressed-buy-trade-execution"]);
+
+const essayMdxComponents: MDXComponents = {
+  BrokerValidationFlow,
+  ContinueLearning,
+  CounterpartyNetwork,
+  FiveTakeaways,
+  HorizontalJourney,
+  Insight,
+  LifecycleRail,
+  MarketComparisonTable,
+  MarketMakerQuote,
+  MarketMirrorChallenge,
+  MatchingSequence,
+  OrderAnatomyCard,
+  OrderBookVisual,
+  OrderProgressCard,
+  OrderTicketCard,
+  OrderTypeToggle,
+  PractitionerLayer,
+  QueuePriorityChallenge,
+  SawVsMarketVisual,
+  StoryBridge,
+  TradeExecutionHero,
+};
+
 export function generateStaticParams() {
   return getAllEssays().map((essay) => ({ slug: essay.slug }));
 }
 
-export async function generateMetadata({
-  params,
-}: EssayPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: EssayPageProps): Promise<Metadata> {
   const { slug } = await params;
   const essay = getEssayBySlug(slug);
   if (!essay) return {};
 
+  const seoTitle =
+    essay.slug === "shiv-pressed-buy-trade-execution"
+      ? "Shiv Pressed Buy: How Trade Execution Actually Works"
+      : essay.title;
+  const seoDescription =
+    essay.slug === "shiv-pressed-buy-trade-execution"
+      ? "Follow a fictional Reliance order in India and Apple order in the US to understand brokers, order books, matching, partial fills and settlement."
+      : essay.description;
+
   return {
-    title: essay.title,
-    description: essay.description,
+    title: seoTitle,
+    description: seoDescription,
     authors: [{ name: essay.author }],
     alternates: { canonical: `/essays/${essay.slug}` },
     openGraph: {
-      title: essay.title,
-      description: essay.description,
+      title: seoTitle,
+      description: seoDescription,
       type: "article",
       publishedTime: essay.date,
       tags: essay.tags,
       url: `/essays/${essay.slug}`,
+      images: [`/essays/${essay.slug}/opengraph-image`],
     },
     twitter: {
       card: "summary_large_image",
-      title: essay.title,
-      description: essay.description,
+      title: seoTitle,
+      description: seoDescription,
+      images: [`/essays/${essay.slug}/opengraph-image`],
     },
   };
 }
@@ -68,6 +127,7 @@ export default async function EssayPage({ params }: EssayPageProps) {
   const readNext = getReadNextEssays(essay);
   const related = getRelatedEssays(essay);
   const Illustration = essayIllustrations[essay.slug];
+  const isImmersiveEssay = immersiveEssaySlugs.has(essay.slug);
 
   const essayUrl = `${siteConfig.url}/essays/${essay.slug}`;
 
@@ -90,7 +150,12 @@ export default async function EssayPage({ params }: EssayPageProps) {
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
-      { "@type": "ListItem", position: 2, name: "Essays", item: `${siteConfig.url}/essays` },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Essays",
+        item: `${siteConfig.url}/essays`,
+      },
       { "@type": "ListItem", position: 3, name: essay.title, item: essayUrl },
     ],
   };
@@ -102,17 +167,23 @@ export default async function EssayPage({ params }: EssayPageProps) {
       <Container>
         <div className="grid gap-12 lg:grid-cols-[1fr_240px]">
           <article className="flex min-w-0 flex-col gap-8">
-            <div className="flex flex-col gap-4">
-              <H1>{essay.title}</H1>
-              <EssayMeta essay={essay} />
-            </div>
-            {Illustration ? (
+            {!isImmersiveEssay ? (
+              <div className="flex flex-col gap-4">
+                <H1>{essay.title}</H1>
+                <EssayMeta essay={essay} />
+              </div>
+            ) : null}
+            {Illustration && !isImmersiveEssay ? (
               <div className="max-w-md">
                 <Illustration />
               </div>
             ) : null}
-            <div className="prose prose-neutral dark:prose-invert max-w-none prose-headings:font-heading prose-a:text-brand">
-              <MDXRemote source={essay.content} options={mdxOptions} />
+            <div className="prose prose-neutral dark:prose-invert prose-headings:font-heading prose-a:text-brand max-w-none">
+              <MDXRemote
+                source={essay.content}
+                options={mdxOptions}
+                components={essayMdxComponents}
+              />
             </div>
             <Divider />
             <ReadNextEssays essays={readNext} />

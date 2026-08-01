@@ -3,6 +3,7 @@ import type { Essay } from "@/types/content";
 import { getAllEssays } from "@/lib/essays";
 
 const capitalMarketsPath = [
+  "shiv-pressed-buy-trade-execution",
   "what-a-trade-lifecycle-actually-looks-like",
   "how-order-books-work",
   "capital-market-system-two-paths-one-market",
