@@ -7,7 +7,7 @@ import { EssayList } from "@/components/essays/essay-list";
 import { getAllEssays } from "@/lib/essays";
 
 const description =
-  "Essays on artificial intelligence, capital markets, business analysis, decision making, and economics.";
+  "Essays on artificial intelligence, capital markets, business analysis, and economics.";
 
 export const metadata: Metadata = {
   title: "Essays",
@@ -30,7 +30,7 @@ export default function EssaysPage() {
       <PageHeader
         eyebrow="Essays"
         title="Essays"
-        description="Writing on AI, capital markets, business analysis, decision making, and economics."
+        description="Writing on AI, capital markets, business analysis, and economics."
       />
       <Section className="pt-10 sm:pt-12">
         <Container>
