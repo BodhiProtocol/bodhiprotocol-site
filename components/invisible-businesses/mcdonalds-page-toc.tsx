@@ -6,9 +6,11 @@ import { AlignLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const sections = [
+  { id: "two-businesses-under-one-roof", label: "Two Businesses Under One Roof" },
   { id: "the-invisible-business", label: "The Invisible Business" },
-  { id: "why-the-burgers-arent-the-product", label: "Why The Burgers Aren't The Product" },
-  { id: "the-rent-split", label: "The Rent Split" },
+  { id: "why-the-burgers-arent-the-whole-business", label: "Why The Burgers Aren't The Whole Business" },
+  { id: "why-the-model-scales", label: "Why The Model Scales" },
+  { id: "the-rent-and-royalty-split", label: "The Rent And Royalty Split" },
   { id: "key-takeaways", label: "Key Takeaways" },
 ];
 

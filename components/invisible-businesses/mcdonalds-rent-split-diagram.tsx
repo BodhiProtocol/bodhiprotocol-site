@@ -24,7 +24,7 @@ const bars = [
 
 const loopNodes = [
   { label: "Franchisee Sales Grow", icon: TrendingUp },
-  { label: "Rent % Grows With It", icon: Building2 },
+  { label: "Royalty & Rent % Can Grow With It", icon: Building2 },
   { label: "McDonald's Revenue Grows", icon: Store },
 ];
 
@@ -59,7 +59,7 @@ function McdonaldsRentSplitDiagram() {
       className="flex flex-col gap-6 rounded-3xl border border-border bg-muted/40 p-6 sm:p-8"
     >
       <span className="font-mono text-[10px] font-semibold tracking-[0.2em] text-muted-foreground uppercase">
-        The Rent Split
+        The Rent And Royalty Split
       </span>
 
       <div className="flex flex-col gap-4">
@@ -120,9 +120,9 @@ function McdonaldsRentSplitDiagram() {
 
       <div className="flex items-center justify-center gap-2 text-center text-xs text-muted-foreground sm:text-sm">
         <span className="rounded-full bg-brand/10 px-2.5 py-1 font-mono text-[10px] font-bold text-brand">
-          $16.5B
+          ~$16.5B
         </span>
-        Franchised-restaurant revenue in 2025 — about 62% of everything McDonald&apos;s earns.
+        Franchised-restaurant revenue in 2025 — roughly 62% of McDonald&apos;s total revenue.
       </div>
     </div>
   );

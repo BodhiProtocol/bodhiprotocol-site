@@ -1,5 +1,5 @@
 import type { ComponentProps } from "react";
-import { Boxes, Eye, Quote, type LucideIcon } from "lucide-react";
+import { Boxes, Eye, Layers, Network, Quote, type LucideIcon } from "lucide-react";
 import { MDXRemote } from "next-mdx-remote/rsc";
 
 import { McdonaldsOutcomeSidebar } from "@/components/invisible-businesses/mcdonalds-outcome-sidebar";
@@ -18,8 +18,10 @@ import type { InvisibleBusinessWithContent } from "@/lib/invisible-businesses";
 import { mdxOptions } from "@/lib/mdx-options";
 
 const headingIcons: Record<string, LucideIcon> = {
+  "two-businesses-under-one-roof": Layers,
   "the-invisible-business": Eye,
-  "why-the-burgers-arent-the-product": Boxes,
+  "why-the-burgers-arent-the-whole-business": Boxes,
+  "why-the-model-scales": Network,
 };
 
 function McdonaldsHeading({ id, children }: ComponentProps<"h2">) {
@@ -53,10 +55,6 @@ function McdonaldsEpisodeBody({ episode }: { episode: InvisibleBusinessWithConte
               readingTime={episode.readingTime}
             />
 
-            <div id="the-rent-split">
-              <McdonaldsRentSplitDiagram />
-            </div>
-
             <GlassCard className="flex-row items-center justify-between gap-6">
               <div className="flex flex-col gap-2">
                 <Eyebrow className="text-brand">The Big Idea</Eyebrow>
@@ -71,6 +69,10 @@ function McdonaldsEpisodeBody({ episode }: { episode: InvisibleBusinessWithConte
               <MDXRemote source={episode.content} options={mdxOptions} components={mdxComponents} />
             </div>
 
+            <div id="the-rent-and-royalty-split">
+              <McdonaldsRentSplitDiagram />
+            </div>
+
             <div id="key-takeaways">
               <InsightGrid heading={episode.insightsHeading} insights={episode.insights} />
             </div>
@@ -78,6 +80,12 @@ function McdonaldsEpisodeBody({ episode }: { episode: InvisibleBusinessWithConte
             <ReflectionCard text={episode.reflection} />
             <Divider />
             <NextEpisodeCta nextEpisode={episode.nextEpisode} />
+
+            <p className="text-xs text-muted-foreground">
+              Financial figures and franchise-model descriptions are based on McDonald&apos;s
+              Corporation&apos;s 2025 Form 10-K and official investor disclosures. Figures are
+              rounded for readability.
+            </p>
           </article>
 
           <aside className="hidden lg:block">
