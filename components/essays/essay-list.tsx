@@ -13,9 +13,34 @@ import type { Essay } from "@/types/content";
 const activeChipClassName =
   "data-[active=true]:border-brand data-[active=true]:bg-brand data-[active=true]:text-brand-foreground";
 
+const categoryOrder = [
+  "Capital Markets",
+  "Business Analysis",
+  "Artificial Intelligence",
+  "Economics",
+];
+
 function EssayList({ essays }: { essays: Essay[] }) {
   const categories = React.useMemo(
-    () => Array.from(new Set(essays.map((essay) => essay.category))).sort(),
+    () =>
+      Array.from(new Set(essays.map((essay) => essay.category))).sort((a, b) => {
+        const aIndex = categoryOrder.indexOf(a);
+        const bIndex = categoryOrder.indexOf(b);
+
+        if (aIndex === -1 && bIndex === -1) {
+          return a.localeCompare(b);
+        }
+
+        if (aIndex === -1) {
+          return 1;
+        }
+
+        if (bIndex === -1) {
+          return -1;
+        }
+
+        return aIndex - bIndex;
+      }),
     [essays],
   );
   const [activeCategory, setActiveCategory] = React.useState<string | null>(null);
