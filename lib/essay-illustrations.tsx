@@ -9,6 +9,7 @@ import { ConfidenceIllustration } from "@/components/essays/confidence-illustrat
 import { ContextWindowIllustration } from "@/components/essays/context-window-illustration";
 import { DecisionOutcomeGridIllustration } from "@/components/essays/decision-outcome-grid-illustration";
 import { DefaultWaterfallIllustration } from "@/components/essays/default-waterfall-illustration";
+import { FinancialDominoesIllustration } from "@/components/essays/financial-dominoes-illustration";
 import { FsdPipelineIllustration } from "@/components/essays/fsd-pipeline-illustration";
 import { IcebergIllustration } from "@/components/essays/iceberg-illustration";
 import { ImplementationShortfallIllustration } from "@/components/essays/implementation-shortfall-illustration";
@@ -17,6 +18,7 @@ import { JiraBacklogIllustration } from "@/components/essays/jira-backlog-illust
 import { LearningDividendIllustration } from "@/components/essays/learning-dividend-illustration";
 import { MarginIllustration } from "@/components/essays/margin-illustration";
 import { MarketInfrastructureIllustration } from "@/components/essays/market-infrastructure-illustration";
+import { MoneyFactoryIllustration } from "@/components/essays/money-factory-illustration";
 import { NettingIllustration } from "@/components/essays/netting-illustration";
 import { NovationIllustration } from "@/components/essays/novation-illustration";
 import { OpportunityCostIllustration } from "@/components/essays/opportunity-cost-illustration";
@@ -52,6 +54,8 @@ export const essayIllustrations: Record<string, ComponentType> = {
   "what-spoofing-actually-looks-like": SpoofingTimelineIllustration,
   "a-good-decision-can-still-lose": DecisionOutcomeGridIllustration,
   "default-waterfall-who-pays-when-a-clearing-member-fails": DefaultWaterfallIllustration,
+  "the-financial-dominoes-why-one-default-rarely-stays-one-default": FinancialDominoesIllustration,
+  "the-money-factory-how-banks-create-money": MoneyFactoryIllustration,
   "people-respond-to-incentives-not-instructions": CobraEffectIllustration,
   "opportunity-cost-is-the-only-cost-that-matters": OpportunityCostIllustration,
   "sunk-costs-cant-answer-the-question-youre-asking": SunkCostIllustration,

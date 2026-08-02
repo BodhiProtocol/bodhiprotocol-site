@@ -1,0 +1,105 @@
+---
+title: "The Financial Dominoes: Why One Default Rarely Stays One Default"
+seoTitle: "The Financial Dominoes: How Financial Crises Spread"
+description: "A bank doesn't fail alone. It fails into every balance sheet that was counting on it — and whether the damage stops at one domino or takes down the row depends on channels most people never see."
+category: "Economics"
+tags: ["contagion", "systemic-risk", "banking"]
+author: "Surya"
+date: "2026-08-02"
+---
+
+A bank does not fail by itself.
+
+It fails into every balance sheet that was counting on it being fine.
+
+Some of those balance sheets absorb the hit and move on.
+
+Others were counting on the first bank so heavily that they start wobbling too.
+
+And a few institutions that had nothing directly to do with the failure get pulled in anyway, because everyone around them suddenly stops trusting everyone.
+
+That is contagion.
+
+Not one default. A chain of them, travelling through channels that are mostly invisible until the moment they matter.
+
+## Why one failure rarely stays one failure
+
+A single bank going under should, in theory, be a contained event. It has shareholders who lose money, employees who lose jobs, and a resolution process that unwinds it in an orderly way.
+
+But banks are not islands.
+
+They lend to each other overnight. They hold each other's bonds. They rely on the same short-term funding markets. They post collateral against trades with dozens of counterparties who, in turn, have their own web of obligations.
+
+**A bank's balance sheet is never really its own — it's a node in everyone else's.**
+
+When that node disappears, the question is not just "what did this bank owe." It's "how many other balance sheets were quietly built on the assumption that this one would still be there tomorrow."
+
+## The four channels contagion travels through
+
+Contagion doesn't need a single dramatic mechanism. It usually moves through some combination of four ordinary ones.
+
+**Direct exposure.** Bank B lent money to Bank A, or holds Bank A's bonds, or has an uncollateralized trade with Bank A. When Bank A defaults, Bank B takes a real, bookable loss.
+
+**Fire sales.** To raise cash fast, a stressed institution sells assets — not carefully, but urgently. That selling pushes prices down. Every other institution holding the same type of asset now has to mark its own book lower too, even if it never touched Bank A directly.
+
+**Liquidity freeze.** Short-term lenders can't quickly tell who else is exposed to the failing bank, so they stop lending to anyone who even resembles it. Solvent institutions can suddenly find themselves unable to roll over funding they've relied on for years — not because they're insolvent, but because nobody wants to be the one still lending when the next default hits.
+
+**Confidence.** The purest and fastest channel. Depositors and counterparties don't wait for proof. A rumor that a bank is "next" can trigger a withdrawal run that makes the bank fail for the very reason people feared it would — the fear becomes the mechanism.
+
+The first channel is arithmetic. The other three are behavioral. That's why contagion can travel faster than anyone modeled for.
+
+## When the dominoes actually fell — India, 2018
+
+In mid-2018, Infrastructure Leasing & Financial Services — IL&FS, a large Indian infrastructure financing group — began missing payments on its debt. IL&FS wasn't a household name to depositors, but it was deeply embedded in the balance sheets of mutual funds, banks, and other non-banking financial companies (NBFCs) that held its commercial paper and bonds.
+
+Direct exposure hit first: mutual funds holding IL&FS debt had to mark it down, some almost to zero.
+
+Fire sale followed: funds facing redemption pressure sold whatever NBFC paper they could, pushing down prices across the sector, not just for IL&FS.
+
+Then the liquidity freeze: banks and mutual funds, unsure which other NBFCs were carrying hidden exposure, simply stopped rolling over short-term funding to the entire sector. Housing Development Finance Corporation's peer, DHFL, was pulled into the same funding drought within months and eventually collapsed into insolvency proceedings — a company with no direct relationship to IL&FS, caught by the same confidence channel.
+
+The government superseded IL&FS's board within weeks and installed a new one to manage an orderly resolution. The Reserve Bank of India and the government followed with liquidity support measures aimed squarely at the NBFC sector — not to save IL&FS, but to stop the freeze from spreading to NBFCs that had done nothing wrong.
+
+## When the dominoes actually fell — 2008
+
+In September 2008, Lehman Brothers filed for bankruptcy. What followed wasn't contained to Lehman's own creditors.
+
+AIG, which had sold enormous amounts of insurance-like protection on mortgage securities, was suddenly facing collateral calls it couldn't meet — a direct-exposure channel large enough to require a US government rescue within days.
+
+The Reserve Primary Fund, a money market fund that held Lehman's commercial paper, "broke the buck" — its share price fell below the stable $1.00 investors assumed was guaranteed. That triggered a run across the entire money market fund industry, a confidence channel spreading to institutions with no relationship to Lehman at all.
+
+Commercial paper — the short-term IOUs companies use to fund payroll and everyday operations — became nearly impossible to issue, because the buyers who normally absorbed it had stopped trusting the whole market. A liquidity freeze that started with one investment bank ended up threatening the working capital of ordinary companies.
+
+Same four channels. Two economies, ten years apart, same chain reaction.
+
+## When the dominoes stopped — India, 2020
+
+Contagion isn't inevitable. Sometimes the row stops.
+
+In March 2020, Yes Bank — a large private Indian bank — was on the edge of failure after years of bad loans eroded its capital. Depositors were already nervous; a full-blown run was a real risk, and Yes Bank's failure alone could have made every mid-sized private bank in India look suspect by association.
+
+The RBI placed Yes Bank under a moratorium, capping withdrawals for a matter of weeks — a deliberately narrow, short window rather than an open-ended freeze — while it arranged a reconstruction scheme. The State Bank of India led a consortium of banks that injected fresh capital and took a stake in Yes Bank, and the moratorium was lifted within days of the scheme being finalized.
+
+The confidence channel got a very short runway to spread before the RBI cut it off with a plan, not just a promise.
+
+## When the dominoes stopped — 1998
+
+In 1998, the hedge fund Long-Term Capital Management faced catastrophic losses large enough that an uncontrolled unwind of its positions could have destabilized the banks on the other side of its trades. The Federal Reserve didn't bail LTCM out with public money — it convened LTCM's major bank counterparties and pushed them to jointly fund an orderly wind-down instead. The direct-exposure channel was managed deliberately, before it could turn into a fire sale.
+
+Neither case erased the original loss. Both cases stopped that loss from becoming everyone's loss.
+
+## Why systems people should care
+
+For anyone building or maintaining financial infrastructure — clearing systems, exposure reports, collateral engines, risk dashboards — contagion isn't an abstract macro concept. It's a data modeling problem.
+
+A system that tracks a counterparty's exposure only to its *direct* obligations will miss the fire-sale and liquidity channels entirely. A risk dashboard that updates once a day can't see a confidence-driven run that unfolds in hours. A collateral process built for calm markets can seize up exactly when speed matters most, because the assumptions it was built on — orderly markets, reliable prices, patient counterparties — are the first things a crisis removes.
+
+Modeling contagion correctly means modeling *indirect* exposure, not just direct exposure. That is a much harder, much less visible design problem — and it's usually the one nobody budgets time for until after the fact.
+
+## The hidden tradeoff
+
+The tools that stop contagion — capital buffers, [default waterfalls](/essays/default-waterfall-who-pays-when-a-clearing-member-fails), central bank backstops, deposit guarantees — all cost something to maintain, and all create a quiet temptation: if you know you'll be rescued, why manage your own risk as carefully?
+
+That's the tension underneath every firebreak. Make the backstop too weak, and one default cascades into a crisis. Make it too strong and too automatic, and you've quietly told every institution that its own caution is now optional.
+
+Financial systems don't get to choose between contagion risk and moral hazard. They only get to choose how they balance the two — and that choice gets rewritten every time a domino falls somewhere new.
