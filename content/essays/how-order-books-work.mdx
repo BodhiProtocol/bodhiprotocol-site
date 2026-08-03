@@ -7,6 +7,10 @@ author: "Surya"
 date: "2026-07-12"
 ---
 
+You've probably seen a wholesale vegetable market at dawn — several sellers calling out different asking prices for the same crate of tomatoes, several buyers each with their own top price in mind, everyone silently ranking the offers from best to worst. A trade happens the moment one buyer's top price meets one seller's bottom price.
+
+A stock exchange runs the exact same thing — just organized into two neat, sorted lists instead of one noisy crowd.
+
 Every price you see on a stock ticker is a lie of convenience. It's not "the price" — it's the last price two people agreed on. The real state of the market is a living structure called the order book, and understanding it changes how you read every price move that follows.
 
 ## Two stacks of intent
@@ -22,6 +26,16 @@ The best bid and ask only tell you the price for the *next* trade, not what happ
 ## A trade is a collision, not an event
 
 Nothing happens in an order book until a bid and an ask cross — until someone is willing to pay what someone else is willing to accept. When a new order arrives priced aggressively enough to match the best price on the other side, a trade executes immediately, and that execution price becomes the new "last price" everyone quotes. Everything else — candles, tickers, price charts — is just a time series built from these collisions.
+
+## Example 1: NSE's order book in India
+
+Open the market depth window for a stock like Reliance Industries on the NSE, and you're looking at exactly this structure, live: several levels of bids stacked below the current price, several levels of asks stacked above it, each showing the quantity waiting at that price. The exchange publishes this depth in real time specifically so that anyone — not just the exchange itself — can see how much genuine buying and selling interest sits behind the top price.
+
+## Example 2: NASDAQ's order book internationally
+
+The same structure runs a stock like Apple on NASDAQ, an ocean away and a different currency entirely. The bid/ask stacks, the spread, the depth behind the top price — none of that changes with geography. What changes is only the names on the tickets and the currency printed on them.
+
+Two exchanges, two continents, the same two stacks of intent.
 
 ## Why this matters
 
