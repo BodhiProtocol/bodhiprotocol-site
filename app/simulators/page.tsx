@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { RefreshCw } from "lucide-react";
 
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { Eyebrow } from "@/components/ui/typography";
+import { FlywheelPreview } from "@/components/simulators/dashboard/flywheel-preview";
 import { InflationPreview } from "@/components/simulators/dashboard/inflation-preview";
 import { NetworkEffectsPreview } from "@/components/simulators/dashboard/network-effects-preview";
 import { OrderBookPreview } from "@/components/simulators/dashboard/order-book-preview";
@@ -12,7 +12,6 @@ import { SupplyDemandPreview } from "@/components/simulators/dashboard/supply-de
 import { SwitchingCostsPreview } from "@/components/simulators/dashboard/switching-costs-preview";
 import { TradeLifecyclePreview } from "@/components/simulators/dashboard/trade-lifecycle-preview";
 import { SimulatorCard } from "@/components/simulators/simulator-card";
-import { SimulatorRoadmapCard } from "@/components/simulators/simulator-roadmap-card";
 
 const description =
   "Learn by doing, remember forever. Interactive simulators that let you move the sliders and feel how real-world systems actually work.";
@@ -90,10 +89,11 @@ export default function SimulatorsPage() {
               description="Why leaving a product gets harder the longer you use it."
               preview={<SwitchingCostsPreview />}
             />
-            <SimulatorRoadmapCard
+            <SimulatorCard
+              href="/simulators/flywheel"
               title="Flywheel"
               description="How reinforcing loops compound small advantages into big ones."
-              icon={RefreshCw}
+              preview={<FlywheelPreview />}
             />
           </div>
         </Container>
