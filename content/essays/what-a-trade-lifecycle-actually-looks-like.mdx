@@ -7,11 +7,13 @@ author: "Surya"
 date: "2026-07-22"
 ---
 
+You've probably tracked an online order this way: Placed → Shipped → Out for Delivery → Delivered → Return window closes. A trade goes through the same shape of journey — just moving cash and securities instead of a parcel.
+
 Most people picture a trade lifecycle as "buy button pressed, done." In reality, an executed trade is the *start* of a six-stage process, not the end of one — and almost every operational risk in capital markets lives somewhere in those six stages, not in the decision to trade.
 
 ## The trade lifecycle in six stages
 
-Order Initiation → Execution → Capture & Enrichment → Clearing → Settlement → Post-Settlement. Each stage hands the trade to a different system, a different desk, and often a different legal entity. On India's T+1 cycle, the first three stages happen on trade day; the last three carry into T+1 morning.
+Order Initiation → Execution → Capture & Enrichment → Clearing → Settlement → Post-Settlement. Each stage hands the trade to a different system, a different desk, and often a different legal entity.
 
 - **Order Initiation** — a client or trader instructs. Nothing exists in the market yet.
 - **Execution** — the order matches on the exchange. This is the "trade" everyone thinks the lifecycle is about — it's actually stage two of six.
@@ -27,6 +29,16 @@ Underneath that walk sit six pillars: Market Structure & Participants, Financial
 ## Where a business analyst actually sits
 
 Most people learn the lifecycle as a diagram to memorize. The useful version is the same diagram with one question added at every stage: what does a business analyst actually do here? At Order Initiation, it's defining what a valid order looks like before it's placed. At Capture & Enrichment, it's specifying what happens when enrichment fails — a trade with no settlement instructions doesn't just wait, it becomes an exception someone has to manually resolve. At Clearing, it's understanding what novation actually changes about who owes whom. The lifecycle isn't operations trivia; it's the map of where requirements, risk, and failure modes actually live.
+
+## Example 1: NSE settlement in India
+
+On the NSE, this whole walk happens on a T+1 cycle: Order Initiation through Capture & Enrichment finish on trade day, and Clearing through Settlement complete by the next morning. NSE Clearing (NSCCL) sits at the Clearing stage as the central counterparty for every trade.
+
+## Example 2: US equities internationally
+
+The US ran a T+2 cycle for decades before shortening it to T+1 in 2024 — compressing the same six-stage walk by an entire day, for the same reason India's markets already ran it that fast: less time sitting between execution and settlement is less time for something to go wrong while it's exposed.
+
+Two of the world's largest equity markets, arriving at the same one-day settlement cycle by different paths.
 
 ## Why the order matters
 
