@@ -17,7 +17,11 @@ function FeaturedEssayCard({
   const hook = getEssayHook(essay);
 
   return (
-    <Link href={`/essays/${essay.slug}`} className="group block">
+    <Link
+      href={`/essays/${essay.slug}`}
+      aria-label={`Read featured essay: ${essay.title}`}
+      className="group block"
+    >
       <Card className="grid gap-8 p-6 transition-[transform,box-shadow] duration-300 group-hover:-translate-y-1 group-hover:shadow-lg group-hover:shadow-brand/15 group-hover:ring-brand/60 sm:p-8 md:grid-cols-[1fr_auto] md:items-center">
         <div className="flex flex-col gap-3">
           <div className="flex flex-wrap items-center gap-2">
@@ -40,7 +44,11 @@ function FeaturedEssayCard({
             </Muted>
           </div>
         </div>
-        {illustration ? <div className="w-full md:w-[360px]">{illustration}</div> : null}
+        {illustration ? (
+          <div className="w-full md:w-[360px]" aria-hidden="true">
+            {illustration}
+          </div>
+        ) : null}
       </Card>
     </Link>
   );
