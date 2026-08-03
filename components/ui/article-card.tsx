@@ -15,7 +15,11 @@ function ArticleCard({ essay }: { essay: Essay }) {
   const hook = getEssayHook(essay);
 
   return (
-    <Link href={`/essays/${essay.slug}`} className="group block">
+    <Link
+      href={`/essays/${essay.slug}`}
+      aria-label={`Read essay: ${essay.title}`}
+      className="group block"
+    >
       <Card className="h-full transition-[transform,box-shadow] duration-300 group-hover:-translate-y-1 group-hover:shadow-lg group-hover:shadow-brand/15 group-hover:ring-brand/60">
         {essay.coverImage ? (
           <div className="relative aspect-[16/9] w-full overflow-hidden">
@@ -36,7 +40,11 @@ function ArticleCard({ essay }: { essay: Essay }) {
               </span>
             ) : null}
           </div>
-          {Illustration ? <Illustration /> : null}
+          {Illustration ? (
+            <div aria-hidden="true">
+              <Illustration />
+            </div>
+          ) : null}
           <h3 className="font-heading text-lg leading-snug font-medium text-balance group-hover:text-brand">
             {essay.title}
           </h3>
