@@ -33,6 +33,7 @@ function TagButton({ className, active, type = "button", ...props }: TagButtonPr
     <button
       data-slot="tag"
       data-active={active}
+      aria-pressed={active}
       type={type}
       className={tagClassName(
         cn("cursor-pointer hover:border-foreground/30 hover:text-foreground", className),
