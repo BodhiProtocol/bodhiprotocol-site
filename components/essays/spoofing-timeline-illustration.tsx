@@ -101,7 +101,7 @@ function SpoofingTimelineIllustration() {
         <span className="text-[9px] font-bold tracking-wide text-muted-foreground">
           13× FAKE VS. REAL
         </span>
-        <span className="text-[9px] font-bold tracking-wide text-brand">3 REGULATORS, 1 PATTERN</span>
+        <span className="text-[9px] font-bold tracking-wide text-brand">4 REGULATORS, 1 PATTERN</span>
       </div>
     </div>
   );

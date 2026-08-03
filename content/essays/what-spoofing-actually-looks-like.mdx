@@ -7,6 +7,10 @@ author: "Surya"
 date: "2026-07-22"
 ---
 
+You've probably heard of shill bidding at an auction — a planted bidder drives the price up with bids they never intend to honor, then disappears the moment a real buyer takes the bait.
+
+Spoofing is the same trick, played inside a stock exchange's order book instead of an auction house.
+
 Spoofing has a clean legal definition: placing an order you never intend to fill, to create a false impression of supply or demand. Read that sentence and it sounds obvious — of course regulators can catch that. In practice, spoofing is invisible in a definition and only becomes obvious when you watch the order lifecycle unfold, order by order, against the clock.
 
 ## Five orders build a wall that isn't there
@@ -21,9 +25,9 @@ While the fake depth sits there, a single ask order for 2,000 shares at 100.02 �
 
 Here's the part a definition can't show you: within moments of that genuine fill, all five bid layers get cancelled — not over the course of the trading day, not in response to news, but in a tight cluster immediately after the opposite-side order they were supporting has already filled. A trader who simply changed their mind cancels one order, at one moment, for one reason. Five orders, cancelled within the same narrow window, immediately after an opposing fill, isn't five coincidences. It's one plan, executed in five parts.
 
-## Why three regulators wrote the same rule independently
+## Why four regulators wrote the same rule independently
 
-MAS's Securities and Futures Act s197 (false trading), the CFTC's anti-spoofing statute (7 U.S.C. §6c(a)(5)(C)), and the EU's Market Abuse Regulation Article 12(1)(a) come from three different legal systems, drafted at different times, by regulators who don't share a rulebook. All three define the violation around the same structural signal: an order with no genuine intent to trade, that rests briefly, adds one-sided depth, and is pulled within moments of the opposing genuine order filling. The convergence isn't a coincidence — it's because the tell isn't a legal technicality specific to one jurisdiction, it's a pattern in the data itself, visible the same way no matter which regulator is looking at it.
+India's SEBI (Prohibition of Fraudulent and Unfair Trade Practices relating to Securities Market) Regulations, 2003, Regulation 4, MAS's Securities and Futures Act s197 (false trading), the CFTC's anti-spoofing statute (7 U.S.C. §6c(a)(5)(C)), and the EU's Market Abuse Regulation Article 12(1)(a) come from four different legal systems, drafted at different times, by regulators who don't share a rulebook. All four define the violation around the same structural signal: an order with no genuine intent to trade, that rests briefly, adds one-sided depth, and is pulled within moments of the opposing genuine order filling. The convergence isn't a coincidence — it's because the tell isn't a legal technicality specific to one jurisdiction, it's a pattern in the data itself, visible the same way no matter which regulator is looking at it.
 
 ## The one-question check
 
