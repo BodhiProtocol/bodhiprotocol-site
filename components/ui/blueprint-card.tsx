@@ -13,7 +13,11 @@ function BlueprintCard({ blueprint }: { blueprint: Blueprint }) {
   const Illustration = blueprintIllustrations[blueprint.slug];
 
   return (
-    <Link href={`/lighthouse/${blueprint.slug}`} className="group block">
+    <Link
+      href={`/lighthouse/${blueprint.slug}`}
+      aria-label={`Read Lighthouse blueprint: ${blueprint.title}`}
+      className="group block"
+    >
       <Card className="h-full transition-[transform,box-shadow] duration-300 group-hover:-translate-y-1 group-hover:shadow-lg group-hover:shadow-brand/15 group-hover:ring-brand/60">
         {blueprint.heroImage ? (
           <div className="relative aspect-[16/9] w-full overflow-hidden">
@@ -34,7 +38,11 @@ function BlueprintCard({ blueprint }: { blueprint: Blueprint }) {
               </span>
             ) : null}
           </div>
-          {Illustration ? <Illustration /> : null}
+          {Illustration ? (
+            <div aria-hidden="true">
+              <Illustration />
+            </div>
+          ) : null}
           <h3 className="font-heading text-lg leading-snug font-medium text-balance group-hover:text-brand">
             {blueprint.title}
           </h3>

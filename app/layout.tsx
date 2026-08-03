@@ -62,6 +62,11 @@ const websiteJsonLd = {
   name: siteConfig.name,
   url: siteConfig.url,
   description: siteConfig.description,
+  potentialAction: {
+    "@type": "SearchAction",
+    target: `${siteConfig.url}/search?q={search_term_string}`,
+    "query-input": "required name=search_term_string",
+  },
   publisher: {
     "@type": "Organization",
     name: siteConfig.name,

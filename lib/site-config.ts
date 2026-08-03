@@ -15,9 +15,9 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
 export const siteConfig = {
   name: "BodhiProtocol",
   url: siteUrl,
-  title: "BodhiProtocol — Understand Complex Systems",
+  title: "BodhiProtocol - Capital Markets and BA Learning",
   description:
-    "Essays, visual explanations, and interactive learning experiences on AI, capital markets, business analysis, decision making, and economics.",
+    "Visual roadmaps, essays, tools, and simulators for business analysts learning capital markets, trade lifecycle, requirements, decision-making, and AI systems.",
   sameAs: [
     "https://github.com/BodhiProtocol",
     "https://www.linkedin.com/in/surya-singh-7b6ab144/",

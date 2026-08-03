@@ -22,6 +22,7 @@ function ResourceCard({ resource }: { resource: Resource }) {
       href={resource.url}
       target="_blank"
       rel="noreferrer"
+      aria-label={`Open resource: ${resource.title}`}
       className="group block"
     >
       <Card className="h-full transition-[transform,box-shadow] duration-300 group-hover:-translate-y-1 group-hover:shadow-lg group-hover:shadow-brand/15 group-hover:ring-brand/60">

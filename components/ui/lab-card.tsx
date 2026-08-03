@@ -34,7 +34,13 @@ function LabCard({ lab }: { lab: Lab }) {
       )}
     >
       {href ? (
-        <a href={href} target="_blank" rel="noreferrer" className="flex h-full flex-col">
+        <a
+          href={href}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={`Launch tool: ${lab.title}`}
+          className="flex h-full flex-col"
+        >
           <LabCardBody lab={lab} />
         </a>
       ) : (
