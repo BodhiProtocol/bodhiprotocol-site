@@ -22,6 +22,7 @@ import { MoneyFactoryIllustration } from "@/components/essays/money-factory-illu
 import { NettingIllustration } from "@/components/essays/netting-illustration";
 import { NovationIllustration } from "@/components/essays/novation-illustration";
 import { OpportunityCostIllustration } from "@/components/essays/opportunity-cost-illustration";
+import { OptionsPayoffIllustration } from "@/components/essays/options-payoff-illustration";
 import { OrderBookIllustration } from "@/components/essays/order-book-illustration";
 import { PovIllustration } from "@/components/essays/pov-illustration";
 import { RepoIllustration } from "@/components/essays/repo-illustration";
@@ -78,4 +79,5 @@ export const essayIllustrations: Record<string, ComponentType> = {
   "implementation-shortfall-the-cost-of-time-between-deciding-and-doing":
     ImplementationShortfallIllustration,
   "a-bank-trading-floor-is-a-marketplace-for-risk": TradingDesksIllustration,
+  "options-the-right-to-walk-away": OptionsPayoffIllustration,
 };

@@ -1,0 +1,90 @@
+---
+title: "Options: The Right to Walk Away"
+description: "An option isn't a smaller bet on price direction — it's the purchase of a choice. The buyer's worst case is fixed and small. The seller's isn't."
+category: "Capital Markets"
+tags: ["markets", "derivatives"]
+author: "Surya"
+date: "2026-08-03"
+---
+
+Imagine paying ₹4 today for the right to buy a stock at ₹100, any time in the next month — even if it's trading at ₹300 by then.
+
+You don't have to buy it.  
+You just get to, if you want to.
+
+If the stock drops to ₹40 instead, you shrug and let the right expire.  
+You lose the ₹4. Nothing else.
+
+That's an option. And that one phrase — *you don't have to* — is the entire idea.
+
+## What an option actually is
+
+Most explanations start with "calls" and "puts" and lose people in the vocabulary before the idea ever lands.
+
+Start with the right instead.
+
+A call option gives the buyer the right to buy at a fixed price (the strike).  
+A put option gives the buyer the right to sell at a fixed price.
+
+In both cases, the buyer pays a small, fixed amount upfront — the premium — for the right to decide later.
+
+**The buyer's position**
+
+- Pays a fixed premium upfront
+- Decides later whether to use the right
+- Worst case: the premium, and nothing more
+
+**The seller's position**
+
+- Collects the fixed premium upfront
+- Must honor whatever the buyer decides
+- Worst case: potentially far larger than the premium collected, depending on how far the price moves
+
+The buyer bought a choice.  
+The seller sold an obligation.
+
+That's true even if the stock finishes exactly at the strike. The option is only worth something once the price actually clears ₹100 — so anything at or below it costs the buyer the same fixed ₹4, whether the stock sits flat or falls to zero.
+
+**Neither side is protected from being wrong. Only one side is protected from being wrong by a lot.**
+
+## Why this is different from just betting on direction
+
+A futures contract is a bet on direction with no ceiling on either side. If you're wrong, you're just as wrong as if you'd bought the stock outright.
+
+An option breaks that symmetry on purpose.
+
+Being wrong as a buyer costs exactly the premium, every time, no matter how wrong you turn out to be.  
+Being wrong as a seller costs whatever the market decides, with no such floor underneath it.
+
+That asymmetry isn't a side effect of options. It's the entire product.
+
+## Why markets needed this
+
+A farmer who wants protection against falling crop prices doesn't want a symmetric bet. She wants insurance: a known, capped cost, that only pays out if things go badly.
+
+An airline that wants protection against rising fuel prices wants the same shape of protection, just facing the other direction.
+
+Options let one side buy exactly that — a capped, known cost — in exchange for someone else agreeing to carry the uncapped side for a fee.
+
+Someone always has to hold the uncapped side. Options just make it explicit who, and put a price on it.
+
+## Why this matters for a Business Analyst
+
+"The client bought a hedge."
+
+That sentence hides a critical question: which side of the asymmetry is the client actually on?
+
+A trade booking or risk system that treats every option position the same way — as if buyer risk and seller risk were mirror images of each other — will understate risk on one side and overstate it on the other. Margin requirements, P&L attribution, and exposure limits all depend on knowing which side of the contract a given position sits on.
+
+Get the direction of that asymmetry wrong in a data model, and every downstream number built on top of it inherits the same mistake.
+
+## Lighthouse Insight
+
+Go back to that ₹4.
+
+Whether the stock crashes, sits still, or soars to ₹300, the buyer's worst case never changes — ₹4, paid the day the choice was bought.  
+The seller's worst case was never fixed at all.
+
+An option isn't a smaller version of owning the stock.
+
+It's the purchase of a choice — capped on one side, open-ended on the other — and someone always has to stand on the side without the cap.

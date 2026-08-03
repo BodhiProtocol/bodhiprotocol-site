@@ -12,6 +12,8 @@ const essayHooks: Record<string, string> = {
     "A clearinghouse turns future fear into collateral today.",
   "novation-how-a-clearinghouse-becomes-everyones-counterparty":
     "Two strangers trade. One institution becomes the promise.",
+  "options-the-right-to-walk-away":
+    "One side can walk away from a bad price. The other side can't.",
   "settlement-finality-when-a-trade-stops-being-a-promise":
     "At some point, a trade must stop being reversible.",
   "default-waterfall-who-pays-when-a-clearing-member-fails":

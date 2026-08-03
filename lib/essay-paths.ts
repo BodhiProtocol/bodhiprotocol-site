@@ -8,6 +8,7 @@ const capitalMarketsPath = [
   "infrastructure-the-nine-systems-behind-every-trade",
   "how-order-books-work",
   "capital-market-system-two-paths-one-market",
+  "options-the-right-to-walk-away",
   "repo-the-overnight-loan-thats-legally-two-trades",
   "novation-how-a-clearinghouse-becomes-everyones-counterparty",
   "margin-how-a-clearinghouse-turns-fear-into-collateral",
