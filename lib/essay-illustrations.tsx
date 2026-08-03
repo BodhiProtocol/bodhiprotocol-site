@@ -11,6 +11,7 @@ import { DecisionOutcomeGridIllustration } from "@/components/essays/decision-ou
 import { DefaultWaterfallIllustration } from "@/components/essays/default-waterfall-illustration";
 import { FinancialDominoesIllustration } from "@/components/essays/financial-dominoes-illustration";
 import { FsdPipelineIllustration } from "@/components/essays/fsd-pipeline-illustration";
+import { FuturesMarkToMarketIllustration } from "@/components/essays/futures-mark-to-market-illustration";
 import { IcebergIllustration } from "@/components/essays/iceberg-illustration";
 import { ImplementationShortfallIllustration } from "@/components/essays/implementation-shortfall-illustration";
 import { JargonWallIllustration } from "@/components/essays/jargon-wall-illustration";
@@ -80,4 +81,5 @@ export const essayIllustrations: Record<string, ComponentType> = {
     ImplementationShortfallIllustration,
   "a-bank-trading-floor-is-a-marketplace-for-risk": TradingDesksIllustration,
   "options-the-right-to-walk-away": OptionsPayoffIllustration,
+  "futures-the-bet-that-settles-every-single-day": FuturesMarkToMarketIllustration,
 };

@@ -14,6 +14,8 @@ const essayHooks: Record<string, string> = {
     "Two strangers trade. One institution becomes the promise.",
   "options-the-right-to-walk-away":
     "One side can walk away from a bad price. The other side can't.",
+  "futures-the-bet-that-settles-every-single-day":
+    "A futures gain isn't paper profit. It was already paid to you yesterday.",
   "settlement-finality-when-a-trade-stops-being-a-promise":
     "At some point, a trade must stop being reversible.",
   "default-waterfall-who-pays-when-a-clearing-member-fails":

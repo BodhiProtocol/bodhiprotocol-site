@@ -1,0 +1,83 @@
+---
+title: "Futures: The Bet That Settles Every Single Day"
+description: "A futures gain isn't a number on paper until you close the position — it was already paid to you yesterday. Futures settle in cash every day the position is open, not once at expiry."
+category: "Capital Markets"
+tags: ["markets", "derivatives"]
+author: "Surya"
+date: "2026-08-03"
+---
+
+Imagine you buy one futures contract at ₹100.  
+By tomorrow's close, the price is ₹102.
+
+Nothing has been sold. No one has "cashed out." The contract isn't even close to expiry.
+
+And yet ₹2 has already landed in your account — real cash, not a number on a screen — while ₹2 has just as really left someone else's.
+
+That's the part most explanations skip. A futures contract doesn't wait for anything to happen. It pays out every single day it's open.
+
+## What a futures contract actually is
+
+An option gave the buyer a choice: pay a small premium now, decide later whether to use the right.
+
+A futures contract has no such choice built in.
+
+Both sides agree today, at a fixed price, to a trade that will happen on a fixed future date — and neither side can simply let it expire worthless. There is no premium, because there is no optionality being purchased. Both sides are equally obligated.
+
+**The buyer's position**
+
+- No premium paid
+- Obligated to complete the trade at the agreed price
+- Gains or loses on every ₹ the price moves, in either direction
+
+**The seller's position**
+
+- No premium collected
+- Equally obligated to complete the trade
+- Gains or loses the exact mirror of the buyer, ₹ for ₹
+
+Where an option is capped on one side and open-ended on the other, a futures contract is open-ended on both. Symmetric risk, in exchange for symmetric obligation.
+
+## Why it settles every day, not just at expiry
+
+Here's the part that surprises most people: that symmetric gain or loss isn't just tracked. It's paid, in cash, every single trading day the position stays open — a process called mark-to-market.
+
+At the end of each day, the exchange looks at where the price settled, compares it to where it settled yesterday, and moves cash accordingly. If the price moved in your favor, cash is credited to your account that evening. If it moved against you, cash is debited — and if your account runs low, you're required to top it back up before markets open again.
+
+This is the same margin mechanic [covered earlier](/essays/margin-how-a-clearinghouse-turns-fear-into-collateral): the clearinghouse isn't willing to let unrealized losses pile up quietly until expiry. It collects the damage as it happens, every day, so no one's exposure is ever more than one day old.
+
+By the time a futures position finally closes, most of its profit or loss has already changed hands. Closing the position doesn't create the gain or the loss. It just stops the daily settlement from continuing.
+
+## Why this is different from options
+
+An option's uncapped side only applies once the buyer chooses to exercise. Until then, the buyer's downside stays capped at the premium — the choice not to act is itself a form of protection.
+
+A futures contract removes that off-ramp entirely. There's no premium standing between you and the day's move, and no choice to simply walk away once you've entered. You're in until the position is closed or expiry arrives, and the market settles the difference with you every day in between.
+
+## Why markets needed this
+
+A gold jewellery exporter in India needs to know today what next quarter's export order will actually cost her in raw gold. Locking in that price now with a gold futures contract on the MCX isn't buying insurance — it's buying certainty. Whatever gold does between now and delivery, her input cost is already fixed.
+
+A coffee roaster in the United States faces the same problem from a different commodity entirely. Bean prices move with weather and harvest yields long before the coffee is roasted and sold. Locking in a purchase price with a futures contract on the ICE means one bad harvest season doesn't wipe out a quarter's margin.
+
+Both trades only work because both sides are equally bound. If the exporter or the roaster could walk away the moment the price moved in their favor, the counterparty on the other side of the contract would have taken on all the risk for nothing. Futures work because neither side gets an exit that the other doesn't also have.
+
+## Why this matters for a Business Analyst
+
+"The desk's futures P&L for the month was ₹40 lakh."
+
+That sentence describes a total. It doesn't describe how the money moved.
+
+A system that models futures P&L as a single number realized at close-out will be wrong about when the cash actually moved, wrong about the account's daily liquidity needs, and wrong about how much margin was posted and returned along the way. Futures P&L isn't one event — it's a running ledger of daily cash movements that happens to sum to a total.
+
+Build the data model around the total, and you'll have modeled a number that was never how the money actually arrived.
+
+## Lighthouse Insight
+
+Go back to that ₹2.
+
+It didn't wait for the contract to close. It didn't wait for anyone to decide anything. It moved the evening the price moved, and it will keep moving every evening after, for as long as the position stays open.
+
+A futures contract isn't a bet you collect on someday.
+
+It's a bet you're already being paid — or already paying — one trading day at a time.
