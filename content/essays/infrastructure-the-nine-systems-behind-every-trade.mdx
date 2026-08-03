@@ -32,6 +32,18 @@ A completed trade still isn't a settled one.
 - **SWIFT** is the international mail system for what follows. It doesn't move money or securities itself; it carries the verified instruction that tells banks and custodians to move them.
 - **Custodian** is where the trade actually lands — the institution that holds your securities and cash after settlement, and handles what happens to them afterward: dividends, splits, corporate actions.
 
+## Example 1: A trade's flight path in India
+
+A retail order placed through a broker like Zerodha or ICICI Direct starts in that broker's OMS, moves through an EMS routing decision, speaks FIX to reach the NSE's exchange gateway, gets matched by NSE's matching engine, and clears through NSE Clearing (NSCCL) as the CCP. From there, SWIFT-carried instructions eventually reach the investor's depository participant, where the shares actually come to rest.
+
+Nine systems, one country, one order.
+
+## Example 2: A trade's flight path internationally
+
+Run the same order through NASDAQ instead. A US broker's OMS, an EMS routing decision, FIX messages to NASDAQ's gateway, NASDAQ's matching engine, and NSCC — a DTCC subsidiary — stepping in as CCP. SWIFT carries the settlement instruction onward to a global custodian — often one as large as BNY Mellon, the world's biggest custodian bank — where the shares finally land.
+
+Same nine systems. Different five or six organizations building every one of them.
+
 ## Why this layer stays invisible
 
 Every other stage of a trade has a human moment attached to it — someone decides, someone confirms, someone watches a number change. Infrastructure has none of that. Nobody watches a FIX message travel from an EMS to an exchange gateway. The only time this layer becomes visible is when it breaks: an exchange outage, a gateway reject, a settlement instruction that never reached the custodian because a SWIFT message carried the wrong code.
