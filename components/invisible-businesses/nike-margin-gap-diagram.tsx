@@ -7,16 +7,16 @@ import { useRevealOnScroll } from "@/components/essays/use-reveal-on-scroll";
 
 const bars = [
   {
-    label: "Adidas",
-    detail: "~32% gross margin",
-    widthPct: 32,
+    label: "Unbranded shoe",
+    detail: "Same factory, no logo",
+    widthPct: 35,
     icon: Factory,
     tone: "muted" as const,
   },
   {
-    label: "Nike",
-    detail: "~46% gross margin",
-    widthPct: 46,
+    label: "Nike shoe",
+    detail: "Same factory, with the swoosh",
+    widthPct: 100,
     icon: Sparkles,
     tone: "brand" as const,
   },
