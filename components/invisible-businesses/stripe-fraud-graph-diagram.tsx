@@ -7,7 +7,7 @@ import { useRevealOnScroll } from "@/components/essays/use-reveal-on-scroll";
 
 const statBars = [
   { label: "Cards Already Seen On The Network", detail: "92%", widthPct: 92, tone: "brand" as const },
-  { label: "Average Fraud Reduction From Radar", detail: "32%", widthPct: 32, tone: "muted" as const },
+  { label: "Average Fraud Reduction From Radar", detail: "38%", widthPct: 38, tone: "muted" as const },
 ];
 
 const sideMerchants = [

@@ -24,7 +24,7 @@ insights:
   - icon: "🔁"
     text: "Radar uses embeddings that capture similarity between entities on the network, so a new fraud pattern caught at one merchant can be recognized at another automatically, without retraining."
   - icon: "📉"
-    text: "Radar reduces fraud by an average of 32% — a reduction no merchant's own historical data, however large, could produce working alone."
+    text: "Radar reduces fraud by an average of 38% — a reduction no merchant's own historical data, however large, could produce working alone."
   - icon: "💰"
     text: "Card transaction fees (2.9% + 30 cents) still make up roughly 80-85% of Stripe's revenue, but Radar, Billing, Capital, and Treasury are what make leaving Stripe cost more than a rate comparison suggests."
 reflection: "Most defensible businesses build their moat on purpose — a patent, a contract, a format no competitor can open. Stripe's deepest one wasn't really designed as a moat at all. Radar started as a fraud tool built to protect Stripe's own balance sheet, scored against whatever transaction data Stripe already had lying around. It only turned into a competitive advantage because processing enough of the internet's payment volume quietly turned 'whatever data Stripe already had' into more fraud signal than anyone else on earth could gather standing still. Nobody sat down and planned the moat. Scale just made it one, one processed card at a time."
@@ -47,7 +47,7 @@ A new payment processor starting from zero can copy Stripe's pricing in an after
 
 Radar's model doesn't just look at a single merchant's history. It scores every payment using hundreds of signals pulled from across the entire network — the card, the buyer, the device, the merchant, and how all of those have behaved everywhere else Stripe operates. When it catches a new fraud pattern at one business, it doesn't need to relearn that pattern from scratch at the next one; embeddings that capture similarity between entities on the network let it recognize the same pattern elsewhere automatically.
 
-The result shows up as a number that's hard to argue with: Radar reduces fraud by an average of 32%. No merchant, however large, generates enough of its own transaction volume to train a model that good in isolation. It only works because the network is shared.
+The result shows up as a number that's hard to argue with: Radar reduces fraud by an average of 38%. No merchant, however large, generates enough of its own transaction volume to train a model that good in isolation. It only works because the network is shared.
 
 That's the part a switching cost comparison usually misses. A merchant evaluating a cheaper processor is really comparing two things: 2.9% plus 30 cents against a possibly lower number, and a fraud model trained on trillions of dollars of shared transaction data against a model with no history at all. The fee is negotiable. The fraud graph isn't something a competitor can quote a lower price on, because it doesn't exist anywhere else.
 
