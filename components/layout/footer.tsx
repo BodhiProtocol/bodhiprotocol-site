@@ -17,8 +17,8 @@ function Footer() {
         <div className="flex flex-col gap-2">
           <Logo />
           <p className="max-w-xs text-sm text-muted-foreground">
-            Understand complex systems through essays, visual explanations, and
-            interactive learning.
+            Visual roadmaps, essays, tools, and simulators for business analysts
+            learning capital markets and complex systems.
           </p>
         </div>
         <nav className="flex flex-wrap gap-x-6 gap-y-2">
