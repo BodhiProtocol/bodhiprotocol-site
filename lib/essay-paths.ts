@@ -10,6 +10,7 @@ const capitalMarketsPath = [
   "capital-market-system-two-paths-one-market",
   "options-the-right-to-walk-away",
   "futures-the-bet-that-settles-every-single-day",
+  "swaps-the-number-that-never-moves",
   "repo-the-overnight-loan-thats-legally-two-trades",
   "novation-how-a-clearinghouse-becomes-everyones-counterparty",
   "margin-how-a-clearinghouse-turns-fear-into-collateral",

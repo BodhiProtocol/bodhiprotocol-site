@@ -1,0 +1,80 @@
+---
+title: "Swaps: The Number That Never Moves"
+description: "A swap's notional principal is never exchanged — it's just the number two parties agree to calculate against. What actually moves, every period, is only the difference between two artificial cash flows built on top of it."
+category: "Capital Markets"
+tags: ["markets", "derivatives"]
+author: "Surya"
+date: "2026-08-03"
+---
+
+You've probably heard of switching a home loan from floating to fixed. Your bank's rate rises, your EMI rises with it; your bank's rate falls, your EMI falls — until you ask to lock in one fixed number for good.
+
+A swap lets a company do almost the same thing to a much bigger loan, without ever calling its original lender.
+
+An Indian manufacturing company has borrowed ₹10 crore, and like a floating-rate home loan, the interest it owes moves up and down with the market. This quarter, that rate is 8%.
+
+The company doesn't want to keep guessing what next quarter brings. So, separately from the loan itself, it enters an agreement with a bank — a swap — where the company pays a fixed 7% and receives floating, both calculated on that same ₹10 crore.
+
+Here's the part that surprises people: the ₹10 crore itself never moves between the company and the bank. Not once, not ever. It's simply the number both sides use to calculate two amounts.
+
+What actually moves is the difference between those two amounts — and this quarter, that's ₹2.5 lakh.
+
+## What a swap actually is
+
+A swap doesn't create a new loan, and it doesn't touch the real one. It creates two artificial cash flow streams, calculated on the same reference amount — the notional — and exchanges only the gap between them.
+
+**The fixed-rate payer's position**
+
+- Pays a rate agreed today, unchanged for the life of the swap
+- Receives whatever the floating rate resets to, each period
+- Knows exactly what this leg of the swap will cost, always
+
+**The floating-rate payer's position**
+
+- Pays whatever the benchmark resets to, each period
+- Receives the fixed rate agreed today
+- Bears the uncertainty the fixed-rate payer just gave up
+
+Neither side ever hands over the ₹10 crore. Both sides only ever settle the difference between the fixed leg and the floating leg.
+
+## Why the notional never moves
+
+Run the numbers for this quarter. Fixed leg: ₹10 crore × 7% × one quarter = ₹17.5 lakh. Floating leg: ₹10 crore × 8% × one quarter = ₹20 lakh.
+
+The floating leg is larger, so ₹2.5 lakh moves from the floating-rate payer to the fixed-rate payer. That's the entire cash settlement. The ₹10 crore that produced both numbers stays exactly where it started, on both sides, forever.
+
+The manufacturing company still pays its lender the full floating amount on the actual loan. But the ₹2.5 lakh arriving from the swap closes the gap — leaving its true, all-in interest cost at the fixed 7% it wanted, no matter where the floating rate goes next.
+
+## Why this is different from options and futures
+
+An option was a capped choice. A futures contract was a symmetric obligation, settled daily, on a real position. A swap is neither.
+
+There's no premium, and no daily mark-to-market on a traded price — there's a periodic exchange of two manufactured numbers, both derived from an amount that was never actually lent, borrowed, or transferred between the parties in the first place.
+
+Options and futures both reference something that trades. A swap's notional doesn't have to reference anything that ever changes hands at all.
+
+## Why markets needed this
+
+The manufacturing company above wanted certainty without going back to its bank to renegotiate the loan. A swap gave it that — converting a floating obligation into a fixed one, without touching the original loan at all.
+
+A US corporation can want the exact opposite. Say it borrowed money by issuing bonds — where instead of one bank, thousands of investors each lent it a slice of money in exchange for a fixed annual interest payment, called a coupon. If the company expects interest rates to fall generally, it might prefer paying a floating rate instead of being locked into that fixed coupon. So it enters a swap: pay floating, receive fixed. The fixed amount it receives from the swap covers the fixed coupon it owes its bondholders, leaving it with a net floating cost — without repaying a single bondholder early or issuing a new bond.
+
+Both companies changed what they actually pay in interest, without renegotiating a single word of their original loan or bond. The swap did the work quietly, off to the side.
+
+## Why this matters for a Business Analyst
+
+"The client has a ₹10 crore swap position."
+
+That sentence describes an amount that will never appear as cash in any account. Model it as if it were a real exposure — the way you'd model a loan balance or a cleared futures position — and every liquidity, credit, and margin calculation built on it starts from a number that was never at risk in the first place.
+
+The real exposure isn't the notional. It's what the future gap between the two legs is worth today — a much smaller, constantly moving number that has to be tracked separately from the reference amount that never moves at all.
+
+## Lighthouse Insight
+
+Go back to the ₹10 crore.
+
+It sat there, untouched, for the entire life of the swap. It never left the manufacturing company's balance sheet, and it never arrived on the swap counterparty's.
+
+The only thing that ever moved was ₹2.5 lakh — the gap between what two numbers, built on a principal that stayed exactly where it was, said the company owed and was owed.
+
+A swap doesn't move money by moving the amount everyone agrees to talk about. It moves money by disagreeing, periodically, about what that amount is worth.

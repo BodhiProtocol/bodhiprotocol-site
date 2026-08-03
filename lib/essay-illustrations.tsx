@@ -34,6 +34,7 @@ import { SniperIllustration } from "@/components/essays/sniper-illustration";
 import { SpoofingTimelineIllustration } from "@/components/essays/spoofing-timeline-illustration";
 import { SubscriptionBillingIllustration } from "@/components/essays/subscription-billing-illustration";
 import { SunkCostIllustration } from "@/components/essays/sunk-cost-illustration";
+import { SwapsNetSettlementIllustration } from "@/components/essays/swaps-net-settlement-illustration";
 import { TradeExecutionCardIllustration } from "@/components/essays/trade-execution-essay";
 import { TradeLifecycleIllustration } from "@/components/essays/trade-lifecycle-illustration";
 import { TradingDesksIllustration } from "@/components/essays/trading-desks-illustration";
@@ -82,4 +83,5 @@ export const essayIllustrations: Record<string, ComponentType> = {
   "a-bank-trading-floor-is-a-marketplace-for-risk": TradingDesksIllustration,
   "options-the-right-to-walk-away": OptionsPayoffIllustration,
   "futures-the-bet-that-settles-every-single-day": FuturesMarkToMarketIllustration,
+  "swaps-the-number-that-never-moves": SwapsNetSettlementIllustration,
 };
