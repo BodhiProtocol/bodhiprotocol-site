@@ -5,6 +5,7 @@ import { LayoutGrid } from "lucide-react";
 
 import { ArticleCard } from "@/components/ui/article-card";
 import { TagButton } from "@/components/ui/tag";
+import { ConceptMapCallout } from "@/components/essays/concept-map-callout";
 import { FeaturedEssayCard } from "@/components/essays/featured-essay-card";
 import { categoryIcons } from "@/lib/category-icons";
 import { essayIllustrations } from "@/lib/essay-illustrations";
@@ -91,6 +92,7 @@ function EssayList({ essays }: { essays: Essay[] }) {
           illustration={Illustration ? <Illustration /> : undefined}
         />
       ) : null}
+      <ConceptMapCallout />
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {rest.map((essay) => (
           <ArticleCard key={essay.slug} essay={essay} />
