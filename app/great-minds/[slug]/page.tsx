@@ -61,6 +61,8 @@ import { DruckerEffectivenessLoopDiagram } from "@/components/great-minds/drucke
 import { DruckerHeroBackground } from "@/components/great-minds/drucker-hero-background";
 import { FranklinVirtueLedgerDiagram } from "@/components/great-minds/franklin-virtue-ledger-diagram";
 import { FranklinHeroBackground } from "@/components/great-minds/franklin-hero-background";
+import { SunTzuCalculationDiagram } from "@/components/great-minds/suntzu-calculation-diagram";
+import { SunTzuHeroBackground } from "@/components/great-minds/suntzu-hero-background";
 import { MindGraphProvider } from "@/components/great-minds/mind-graph-context";
 import { getAllGreatMinds, getGreatMindBySlug, type GreatMindWithContent } from "@/lib/great-minds";
 import { mdxOptions } from "@/lib/mdx-options";
@@ -89,6 +91,7 @@ const heroDiagrams: Record<string, (mind: GreatMindWithContent) => ReactNode> = 
   "paul-graham": (mind) => <GrahamSpiralDiagram nodes={mind.wheel} />,
   "peter-drucker": (mind) => <DruckerEffectivenessLoopDiagram nodes={mind.wheel} />,
   "benjamin-franklin": (mind) => <FranklinVirtueLedgerDiagram nodes={mind.wheel} />,
+  "sun-tzu": (mind) => <SunTzuCalculationDiagram nodes={mind.wheel} />,
 };
 
 const heroBackgrounds: Record<string, ReactNode> = {
@@ -111,6 +114,7 @@ const heroBackgrounds: Record<string, ReactNode> = {
   "paul-graham": <GrahamHeroBackground />,
   "peter-drucker": <DruckerHeroBackground />,
   "benjamin-franklin": <FranklinHeroBackground />,
+  "sun-tzu": <SunTzuHeroBackground />,
 };
 
 interface GreatMindPageProps {
