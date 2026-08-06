@@ -1,0 +1,59 @@
+---
+title: "The Yield Curve: Why Short Rates and Long Rates Never Move Together"
+description: "A bond's yield isn't one number — it's a different number for every maturity, and the curve those numbers trace is normally upward-sloping. When short-term lending pays more than long-term lending, the curve isn't broken. It's pricing in rate cuts nobody has announced yet."
+hook: "Lending for ten years paid less than lending for two. That's not supposed to happen."
+category: "Capital Markets"
+tags: ["markets", "bonds"]
+author: "Surya"
+date: "2026-08-06"
+---
+
+You've probably compared fixed deposit rates before locking one in. The bank quotes one number for a 1-year FD and a higher number for a 5-year FD — lock your money up longer, get paid more for it.
+
+Line up the rate for every tenor a bond market offers — three months, one year, five years, ten, thirty — and you get the same thing, just for government and corporate debt instead of bank deposits. That line is called the yield curve.
+
+It's supposed to slope upward, for the same reason the 5-year FD pays more than the 1-year one. Most of the time, it does.
+
+In mid-2023, it didn't. The 2-year US Treasury bond paid close to 5%. The 10-year Treasury — a bond that ties your money up five times longer — paid under 4%.
+
+Lending for ten years paid less than lending for two.
+
+## What the curve actually is
+
+Every point on the curve is built from two things, stacked on top of each other: what the market expects the short-term rate to average out to over that period, plus a term premium — extra yield demanded for taking on the [duration risk](/essays/duration-why-a-30-year-bond-moves-more-than-a-1-year-bond) of being locked in that long.
+
+The term premium is why the curve normally slopes up. A 10-year bond swings far more for the same rate move than a 90-day bill does — that's the whole lesson of duration — so lenders want to be paid extra for taking on ten years of that exposure instead of ninety days of it. Longer maturity, more risk, higher yield. That's the default shape, and it's the shape you'd expect from first principles alone.
+
+## Why it flips
+
+Inversion happens when the other half of the number overwhelms the term premium.
+
+Run the arithmetic. Say the short-term rate sits at 5% today, and the market expects it to average 3.6% over the next ten years as the central bank cuts through a slowdown. Add a 0.4% term premium for locking money up that long, and the 10-year yield should land near 4%. The 2-year note, still mostly pricing today's rate before those cuts arrive, sits closer to 4.9%. The 10-year note now yields less than the 2-year — not because ten years of lending stopped deserving extra compensation, but because the average rate priced into those ten years is genuinely lower than the rate sitting right now.
+
+The curve doesn't invert because lenders stopped wanting compensation for risk. It inverts because enough of them expect the short rate itself to be far lower for most of the next decade than it is today.
+
+## Why markets needed this
+
+An Indian housing finance company funding long-term home loans faces this trade-off constantly. The cheapest money available today is 90-day commercial paper, rolled over four times a year — say, at 6.7%. Locking in a 3-year bond instead costs more upfront, say 7.5%, roughly 80 basis points higher.
+
+That extra 80 basis points buys certainty. Roll the commercial paper twelve times over three years, and each rollover is a fresh bet on wherever the short rate happens to sit that quarter — cheaper today, but exposed to twelve separate rate decisions between now and then. Lock the 3-year bond instead, and the number is fixed for the life of the loans it's funding, whatever the curve does afterwards.
+
+A US manufacturer funding a new plant in 2023 faced the same curve from the opposite side. Drawing on its revolving credit facility — short-term debt that resets to the prevailing benchmark rate every few months — cost close to 7%, in line with the elevated short-term rate the Federal Reserve was holding all year. Locking in a 10-year term loan instead, priced off that same inverted curve, cost closer to 5.8%.
+
+For once, the longer commitment was the cheaper one — not because lenders stopped wanting a term premium, but because the average short rate priced into those ten years was low enough to undercut it anyway. A treasurer who read the curve correctly locked in the term loan and paid less for more certainty in the same move. One who kept rolling the revolver paid more, every quarter, for the privilege of staying flexible.
+
+## Why this matters for a Business Analyst
+
+"We discounted the project's cash flows at 8%."
+
+If those cash flows land at different points over ten years, that single 8% is already an approximation stacked on an approximation — one blended guess standing in for ten different rates the curve is actually quoting.
+
+A cash flow landing in year one belongs at the curve's one-year point. A cash flow landing in year ten belongs at the ten-year point — normally a different number entirely, and during an inversion, sometimes the *lower* one. Flatten that into a single discount rate, and a model weighted toward early cash flows gets undervalued while one weighted toward late cash flows gets overvalued — and the error is invisible on the page. The spreadsheet still returns one clean, confident number. It's just discounting every year against a rate that only ever belonged to one of them.
+
+## Lighthouse Insight
+
+Go back to that 2023 curve.
+
+Nobody voted on it. No committee decided that ten-year money should be cheaper than two-year money. It was thousands of separate lenders, each pricing their own maturity, each acting on what they expected the future to hold — and when enough of them expect the same thing, their separate decisions draw the same shape without anyone drawing it on purpose.
+
+The yield curve isn't a forecast someone published. It's a forecast that falls out of ordinary lending, one maturity at a time — visible to anyone willing to read what the market's own transactions are already saying.
