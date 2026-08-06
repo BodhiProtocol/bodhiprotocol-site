@@ -11,6 +11,8 @@ export interface EssaySeries {
   slugs: string[];
   /** Where a reader goes after finishing this series, if anywhere. */
   nextSeriesId?: string;
+  /** Marks the entry point for a reader new to the whole body of work. */
+  recommendedStart?: boolean;
 }
 
 // Reading order lives here rather than in 34 MDX frontmatter blocks so there is
@@ -30,6 +32,7 @@ export const essaySeries: EssaySeries[] = [
       "capital-market-system-two-paths-one-market",
     ],
     nextSeriesId: "execution-algorithms",
+    recommendedStart: true,
   },
   {
     id: "execution-algorithms",

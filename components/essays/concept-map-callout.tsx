@@ -3,7 +3,7 @@ import { ArrowUpRight, Waypoints } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Muted } from "@/components/ui/typography";
 
-function ConceptMapCallout() {
+function ConceptMapCallout({ essayCount }: { essayCount: number }) {
   return (
     <a
       href="https://bodhiprotocol.github.io/essay-concept-map/"
@@ -22,7 +22,7 @@ function ConceptMapCallout() {
           </span>
           <span className="min-w-0">
             <span className="block font-heading text-base leading-snug font-medium text-balance group-hover:text-brand">
-              41 essays, 8 threads
+              All {essayCount} essays as one connected map
             </span>
             <Muted className="text-sm">
               See how they build on each other in the Essay Concept Map

@@ -124,7 +124,7 @@ function EssayList({ essays }: { essays: Essay[] }) {
           illustration={Illustration ? <Illustration /> : undefined}
         />
       ) : null}
-      <ConceptMapCallout />
+      <ConceptMapCallout essayCount={essays.length} />
       {visibleRails.length > 0 ? (
         <div className="flex flex-col gap-5">
           {visibleRails.map(({ series, essays: parts }) => (

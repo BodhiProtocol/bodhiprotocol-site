@@ -31,9 +31,16 @@ function SeriesRail({ series, essays, activeCategory }: SeriesRailProps) {
             <Icon className="size-4.5" />
           </span>
           <div className="min-w-0">
-            <h2 className="font-heading text-lg leading-snug font-medium text-balance">
-              {series.title}
-            </h2>
+            <div className="flex flex-wrap items-center gap-2">
+              <h2 className="font-heading text-lg leading-snug font-medium text-balance">
+                {series.title}
+              </h2>
+              {series.recommendedStart ? (
+                <span className="inline-flex h-5 shrink-0 items-center rounded-full bg-brand px-2 text-[0.65rem] font-semibold tracking-wide text-brand-foreground uppercase">
+                  Start here
+                </span>
+              ) : null}
+            </div>
             <Muted className="text-sm text-pretty">{series.blurb}</Muted>
           </div>
         </div>
