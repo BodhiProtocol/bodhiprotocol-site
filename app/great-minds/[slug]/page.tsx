@@ -73,6 +73,8 @@ import { SmithInvisibleHandDiagram } from "@/components/great-minds/smith-invisi
 import { SmithHeroBackground } from "@/components/great-minds/smith-hero-background";
 import { BezosLongHorizonDiagram } from "@/components/great-minds/bezos-long-horizon-diagram";
 import { BezosHeroBackground } from "@/components/great-minds/bezos-hero-background";
+import { EinsteinCurvedFrameDiagram } from "@/components/great-minds/einstein-curved-frame-diagram";
+import { EinsteinHeroBackground } from "@/components/great-minds/einstein-hero-background";
 import { MindGraphProvider } from "@/components/great-minds/mind-graph-context";
 import { getAllGreatMinds, getGreatMindBySlug, type GreatMindWithContent } from "@/lib/great-minds";
 import { mdxOptions } from "@/lib/mdx-options";
@@ -107,6 +109,7 @@ const heroDiagrams: Record<string, (mind: GreatMindWithContent) => ReactNode> = 
   "alan-turing": (mind) => <TuringUniversalMachineDiagram nodes={mind.wheel} />,
   "adam-smith": (mind) => <SmithInvisibleHandDiagram nodes={mind.wheel} />,
   "jeff-bezos": (mind) => <BezosLongHorizonDiagram nodes={mind.wheel} />,
+  "albert-einstein": (mind) => <EinsteinCurvedFrameDiagram nodes={mind.wheel} />,
 };
 
 const heroBackgrounds: Record<string, ReactNode> = {
@@ -135,6 +138,7 @@ const heroBackgrounds: Record<string, ReactNode> = {
   "alan-turing": <TuringHeroBackground />,
   "adam-smith": <SmithHeroBackground />,
   "jeff-bezos": <BezosHeroBackground />,
+  "albert-einstein": <EinsteinHeroBackground />,
 };
 
 interface GreatMindPageProps {
