@@ -1,0 +1,93 @@
+---
+title: "Bonds: The Fixed Deposit You Can Sell"
+description: "A bond's coupon is frozen the day it's issued, so when the going rate rises the price is the only part left that can move. That's why bond prices fall when rates rise — not a rule to memorise, just the only arithmetic that works."
+hook: "Nothing happened to your bond. The number that changed was somebody else's."
+category: "Capital Markets"
+tags: ["markets", "bonds"]
+author: "Surya"
+date: "2026-08-06"
+---
+
+You've probably heard of a fixed deposit — lock ₹1 lakh with a bank for five years at 7%, collect interest along the way, take your ₹1 lakh back at the end. Predictable, and completely inert — nothing to do with it until it matures.
+
+A bond is a fixed deposit you're allowed to sell.
+
+That single difference — somebody else can buy it from you before it matures — is where everything strange about bonds comes from.
+
+Imagine you hold a ₹1,000 bond paying 7% a year. It pays ₹70 every year and returns your ₹1,000 at the end.
+
+Then interest rates rise to 8%.
+
+Your bond is now worth ₹960.
+
+Nothing happened to your bond. Same issuer, same ₹70, same maturity date. The number that changed was somebody else's.
+
+## What a bond actually is
+
+A bond is a loan cut into tradable slices.
+
+Instead of borrowing from one bank, the borrower borrows from thousands of lenders at once, each holding a slip that says: I owe you ₹1,000 on this date, and ₹70 every year until then.
+
+**The issuer's position**
+
+- Receives the money upfront
+- Owes a fixed coupon every year, whatever happens to rates afterwards
+- Must return the face value on the maturity date
+
+**The holder's position**
+
+- Pays the money upfront
+- Receives that fixed coupon, whatever happens to rates afterwards
+- Gets the face value back at maturity — or sells the slip to someone else before then
+
+Both sides fixed everything on day one. The coupon can't move. The maturity date can't move. The face value can't move.
+
+Which leaves exactly one thing free to change: what that frozen stream is worth to somebody else today.
+
+## Why the price falls when the rate rises
+
+Go back to the ₹70.
+
+When the bond was issued, 7% was the going rate — ₹1,000 bought ₹70 a year, and so did everything else. Now rates are 8%. A fresh ₹1,000 bond pays ₹80 a year.
+
+Yours still pays ₹70. It will pay ₹70 until the day it matures, because that number was frozen the day it was printed.
+
+So nobody will pay ₹1,000 for ₹70 a year when ₹1,000 buys ₹80 a year across the street.
+
+The price falls until the arithmetic works out. At ₹960, a buyer collects ₹70 a year *and* picks up ₹40 extra at maturity when the bond repays its full ₹1,000 — which together comes to the same 8% they'd earn anywhere else. The discount is the market's way of topping up a coupon that cannot be topped up directly.
+
+That's the whole inversion, and it runs in both directions for the same reason. When the going rate rises, the price is the only part left that can fall to compensate. When the going rate falls, the price rises — because now a frozen ₹70 is *better* than what everyone else is offering, and buyers will pay above ₹1,000 to get it.
+
+A bond's price is rarely a verdict on the borrower. Most days it's a verdict on everybody else's interest rate.
+
+## Why markets needed this
+
+The Government of India needs to fund infrastructure on a scale no single lender can cover. It can't ring one bank for ₹50,000 crore — no bank holds that comfortably, and none wants that much of its balance sheet tied to one borrower. So it issues government securities instead: the same debt, sliced into pieces small enough for banks, insurers, pension funds, and now retail investors through RBI Retail Direct to each hold a part.
+
+A US corporation raising $2 billion for a new plant has the same problem with a different borrower. It issues corporate bonds, and investors who would never write a $2 billion cheque will happily put in $50,000 each — partly because the sum is small, but mostly because they can sell out next week if they change their minds.
+
+Neither borrower could have raised that money as one loan from one lender. Bonds work because the debt is sliced small enough for thousands of lenders to hold, and liquid enough that none of them is trapped holding it.
+
+That liquidity is the whole trade-off. The moment a loan becomes sellable, it acquires a market price — and a market price can fall while the borrower is doing absolutely nothing wrong.
+
+## Why this matters for a Business Analyst
+
+"The client holds ₹10 crore of the 2031 bond."
+
+That sentence contains at least three different numbers, and they're rarely equal.
+
+There's the face value — the ₹10 crore that comes back at maturity. There's the market value — what it's worth today, which moves every day the going rate does. And there's accrued interest: the slice of the next coupon that was earned by whoever held the bond before the sale, and legally belongs to them.
+
+That last one is where systems quietly break. Bonds are quoted at a clean price but settle at a dirty price — clean plus accrued interest — so the cash that moves on settlement day is never the number on the screen, except on a coupon date.
+
+Model a bond position as one price and one quantity, and you'll be wrong about what the client owns, wrong about what it's worth, and wrong about the cash that moves on settlement. By a little, on every trade — which is the hardest kind of wrong to notice.
+
+## Lighthouse Insight
+
+Go back to that ₹1,000 bond.
+
+It never changed. Same issuer, same ₹70 a year, same maturity date, same promise on the same piece of paper. Nobody defaulted. Nothing was renegotiated. No news arrived about the borrower at all.
+
+It simply became worth ₹960, because somewhere else, someone started offering ₹80 for the same ₹1,000.
+
+A bond's price isn't really a statement about the bond. It's a statement about [what else you could have done with the money](/essays/opportunity-cost-is-the-only-cost-that-matters) — and that number never belonged to the borrower who signed the paper.
