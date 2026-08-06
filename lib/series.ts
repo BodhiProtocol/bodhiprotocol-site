@@ -56,11 +56,12 @@ export const essaySeries: EssaySeries[] = [
   {
     id: "derivatives-and-funding",
     title: "Derivatives & Funding",
-    blurb: "Four contracts that move risk and cash without moving the asset.",
+    blurb: "Five contracts that move risk and cash without moving the asset.",
     icon: Layers,
     slugs: [
       "options-the-right-to-walk-away",
       "futures-the-bet-that-settles-every-single-day",
+      "forwards-the-same-bet-without-the-safety-net",
       "swaps-the-number-that-never-moves",
       "repo-the-overnight-loan-thats-legally-two-trades",
     ],

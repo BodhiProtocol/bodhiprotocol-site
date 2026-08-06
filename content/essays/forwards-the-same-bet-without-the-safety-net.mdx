@@ -1,0 +1,104 @@
+---
+title: "Forwards: The Same Bet, Without the Safety Net"
+description: "A forward is a futures contract with the exchange taken out — same obligation, same symmetric risk, but no daily cash, no clearinghouse, and no exit that doesn't run through the party you signed with."
+hook: "A futures contract with the exchange taken out — same bet, no safety net."
+category: "Capital Markets"
+tags: ["markets", "derivatives"]
+author: "Surya"
+date: "2026-08-06"
+---
+
+You've probably heard of booking a wedding caterer a year ahead — the rate agreed today for a date eleven months out. No money changes hands, and nobody checks that either side will still be around on the day. If food costs double by then, that's the caterer's problem. If they collapse, that's yours.
+
+The only thing holding the deal together is that both of you show up.
+
+A forward contract is that handshake, written down and priced.
+
+Imagine you buy one forward at ₹100.  
+By tomorrow's close, the price is ₹102.
+
+Nothing arrives. Not ₹2, not ₹1, not anything.
+
+The gain is real — you hold a contract to buy at ₹100 something now worth ₹102 — but no cash moves that evening. Or any evening for six months.
+
+[A futures contract](/essays/futures-the-bet-that-settles-every-single-day) paid that ₹2 out the same day it appeared. A forward is the identical bet, with the payout stripped out of every day except the last one.
+
+## What a forward actually is
+
+A forward is a private agreement to trade at a fixed price on a fixed future date.
+
+Both sides are bound, exactly as in a futures contract. No premium, no choice, symmetric risk.
+
+The difference isn't in the bet. It's in everything built around it.
+
+**What an exchange gives a futures contract**
+
+- Standard size and expiry, so anyone can trade it with anyone
+- A clearinghouse standing as counterparty to both sides
+- Daily cash settlement, so no loss ages more than a day
+- Margin posted upfront, topped up as the price moves against you
+
+**What a forward has in place of all that**
+
+- Terms fitted to one specific need — any amount, any date, any underlying
+- The original counterparty, by name, for the contract's whole life
+- One settlement, on the final day
+- Whatever collateral the two parties negotiated — sometimes substantial, sometimes none
+
+Same economics. Completely different plumbing.
+
+## Why ₹100 isn't today's price
+
+Here's the part that surprises people: the ₹100 was never the market price on the day it was signed.
+
+Say the asset was trading at ₹97 that morning. That extra ₹3 isn't a forecast. It's arithmetic — what it costs to carry the thing to delivery. Money spent buying it today isn't earning interest anywhere else, and a physical good must be stored and insured meanwhile.
+
+There is no prediction inside a forward price — if the market genuinely expected ₹118 six months out, that expectation would already be sitting in this morning's ₹97.
+
+## Why nothing settles until the end
+
+Mark-to-market wasn't a feature of the futures bet. It was a feature of the exchange the bet was traded on.
+
+Daily cash movement needs two things a forward doesn't have: an official closing price both sides accept, and a clearinghouse able to demand money from whoever is losing, tonight.
+
+A forward has neither. So the ₹2 doesn't move — it accrues.
+
+By the end of the first month the price is ₹104. By the third, ₹107. It sags to ₹99 in the fourth, then settles at ₹118 on the final day. A futures contract would have paid out every one of those moves, evening by evening, across roughly a hundred and twenty settlements — and pulled cash back on the days it fell. A forward pays none. The entire ₹18 moves on the last day, at once.
+
+[Margin exists](/essays/margin-how-a-clearinghouse-turns-fear-into-collateral) so that nobody's exposure is ever more than a day old. A forward inverts that. With no [novation](/essays/novation-how-a-clearinghouse-becomes-everyones-counterparty) to step in, the exposure is as old as the contract — owed by one named company you chose to face, and cannot stop facing. Nor can you sell your way out: exiting means unwinding with that same party, or writing a second, offsetting forward elsewhere — which flattens the price risk and leaves you holding two live counterparties instead of none.
+
+## Why markets needed this
+
+An Indian pharmaceutical company owes €4 million to a German supplier on 14 March, and its cost in rupees depends on where the euro sits that day. Listed currency futures expire on set dates each month, and far-dated ones trade thinly — near enough isn't exact when the payment is a single wire on a single date. So it books a forward with its bank: exactly €4 million, value 14 March, at a rate fixed today. The invoice is now a known rupee number.
+
+An Illinois corn farmer has the same problem in a different shape. The harvest is months away, the price then unknowable, and the crop will come in at roughly 63,000 bushels — *roughly*, because the weather decides the last few thousand. Exchange contracts trade in fixed 5,000-bushel lots with set delivery months. So the farmer signs a forward with the local grain elevator: this crop, delivered when the field is ready, at a price agreed today.
+
+Both paid for that fit in the same currency: they gave up the counterparty who could never fail.
+
+That trade-off has a history. The Chicago grain trade of the 1840s ran almost entirely on forwards like the farmer's — until prices moved far enough that one side found walking away cheaper than delivering. Enough walked away that the market had to build something sturdier: standardised contracts, margin upfront, and eventually a clearinghouse collecting cash daily, so nobody's losses could pile up quietly into a default.
+
+Futures didn't arrive to replace forwards. Futures are what a market builds after enough forwards have failed.
+
+## Why this matters for a Business Analyst
+
+"The desk is long €4 million, March."
+
+That sentence is identical whether the trade is a future or a forward — and in a position table, so is almost everything else: direction, notional, underlying, maturity, valuation.
+
+What separates them lives in fields a futures record never needed: which legal entity is on the other side, what the collateral agreement requires, which master netting agreement governs it. Store forwards in the futures table because the columns mostly line up, and the fields you drop are the ones that made them worth treating differently.
+
+The subtler trap is the valuation column. Both rows carry a daily mark-to-market number, and it means two different things. On the futures row, it's cash that moved last night. On the forward row, it's a valuation — real for accounting and credit exposure, but not a rupee has moved, and none will until maturity.
+
+Feed one shared "MTM" column into a cash forecast and you'll forecast money that was never going to arrive.
+
+## Lighthouse Insight
+
+Go back to that ₹2.
+
+In a futures contract it arrived that evening — and so did the next, and the one after, until the position closed with hardly anything left to pay.
+
+In a forward it never arrived at all. Neither did any behind it. They stacked up quietly, out of sight, into ₹18 owed by one company on one day — a day still six months away when the first ₹2 appeared.
+
+A forward doesn't remove the risk a futures contract settles away every evening.
+
+It just stores it — and pays it all on a single day, assuming both sides are still standing to collect.
