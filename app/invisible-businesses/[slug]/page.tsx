@@ -43,6 +43,7 @@ import { UberEpisodeBody } from "@/components/invisible-businesses/uber-episode-
 import { OyoEpisodeBody } from "@/components/invisible-businesses/oyo-episode-body";
 import { AsianPaintsEpisodeBody } from "@/components/invisible-businesses/asian-paints-episode-body";
 import { StripeEpisodeBody } from "@/components/invisible-businesses/stripe-episode-body";
+import { NoiceEpisodeBody } from "@/components/invisible-businesses/noice-episode-body";
 import { BigIdeaCard } from "@/components/invisible-businesses/big-idea-card";
 import { FlywheelDiagram } from "@/components/invisible-businesses/flywheel-diagram";
 import { InsightGrid } from "@/components/invisible-businesses/insight-grid";
@@ -97,6 +98,7 @@ const customEpisodeBodies: Record<
   "oyos-real-business-is-standardization": OyoEpisodeBody,
   "asian-paints-real-business-is-confidence": AsianPaintsEpisodeBody,
   "stripes-real-business-is-the-fraud-graph": StripeEpisodeBody,
+  "noice-doesnt-sell-snacks": NoiceEpisodeBody,
 };
 
 interface IBPageProps {
