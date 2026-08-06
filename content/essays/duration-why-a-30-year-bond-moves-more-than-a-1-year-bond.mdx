@@ -1,0 +1,72 @@
+---
+title: "Duration: Why a 30-Year Bond Moves More Than a 1-Year Bond"
+description: "The same 1% rate move barely dents a 1-year bond and guts a 30-year one. Duration is the number that explains why — how many years of frozen coupons are still waiting to be repriced."
+hook: "Same rate move. Twelve times the damage."
+category: "Capital Markets"
+tags: ["markets", "bonds"]
+author: "Surya"
+date: "2026-08-06"
+---
+
+You've probably broken a lease, or known someone who has. Break a month-to-month rental when rents have risen, and you've lost almost nothing — you were about to pay this month's rent anyway, and next month you're back at the going rate. Break a ten-year lease signed at last year's rent, and you're stuck paying below-market for a decade, or you pay dearly to get out of it.
+
+A bond has the same problem. It's called duration.
+
+Take two bonds, both ₹1,000 face value, both issued at par paying a 7% coupon. One matures in a year. The other in thirty. Rates rise to 8%, on the same day, for both.
+
+The 1-year bond falls to ₹991.  
+The 30-year bond falls to ₹887.
+
+Same 1% move. Twelve times the damage.
+
+## What duration actually is
+
+[Bond prices fall when rates rise](/essays/bonds-the-fixed-deposit-you-can-sell) because a frozen coupon becomes less attractive the moment a fresh bond starts paying more. What that idea leaves open is *how much* less attractive — and the answer depends entirely on how long the coupon stays frozen.
+
+The 1-year bond is stuck below market for one year. Its ₹1,070 payout arrives in twelve months regardless, gets discounted at the new 8% instead of the old 7%, and that's the whole of it: less than 1% lost.
+
+The 30-year bond is stuck below market for thirty years. Every one of those thirty ₹70 coupons is now worth slightly less, discounted at a rate a full point higher than what it was priced for — and the shortfall compounds, coupon after coupon, for three decades.
+
+Duration is the name for that gap. Not how long until the bond matures. How many years of a mismatched coupon a rate move has to work through before it's done.
+
+## Why it isn't quite the same thing as maturity
+
+Line up a third bond in between, and the pattern holds all the way through:
+
+| Maturity | Price after the rise | Loss |
+|---|---|---|
+| 1 year | ₹991 | 0.9% |
+| 5 years | ₹960 | 4.0% |
+| 30 years | ₹887 | 11.3% |
+
+That middle row is the bond from [the last essay](/essays/bonds-the-fixed-deposit-you-can-sell) — the ₹960 that seemed to appear out of nowhere. It didn't. It came from five years of frozen coupons instead of one.
+
+Duration tracks maturity closely, but it isn't identical to it. A bond paying a very generous coupon hands back cash sooner, which quietly shortens its duration below its stated maturity — some of the ₹1,000 has effectively already been returned before the final day. A bond paying no coupon at all, where the entire face value arrives only on maturity, has nothing returned early at all — so its duration equals its maturity exactly. It's the purest, most rate-sensitive bond there is.
+
+## Why markets needed this
+
+An Indian life insurer that sells a policy paying out in twenty-five years is carrying a twenty-five-year liability whether it plans for one or not. Park the premiums in short-term bonds, and a rate move changes what it owes far more than what it holds — leaving it overfunded in one scenario and dangerously short in another, purely because the two durations don't match. So insurers buy long-duration government bonds on purpose, matching the duration of what they hold to the duration of what they owe, so a rate move that hurts the bond portfolio also shrinks the liability it's meant to cover. The two roughly cancel out.
+
+A US bank found out what happens when nobody does that matching. Silicon Valley Bank took in deposits that could walk out the door on a single day — duration close to zero — and invested much of that money in long-duration government bonds. Rates rose through 2022 the way they do in the example above, and its bond portfolio lost value the way a 30-year bond does. When depositors began withdrawing and the bank had to sell those bonds to raise cash, it was forced to realise losses it had been carrying quietly on paper. The panic that followed emptied the bank within days, in March 2023.
+
+Same mechanism, opposite outcomes. One side matched duration on purpose. The other didn't, and found out why the match mattered.
+
+## Why this matters for a Business Analyst
+
+"The book's duration is 4.2 years."
+
+That single number stands in for how much an entire portfolio moves for a given rate shock — a shorthand risk desks rely on precisely so nobody has to reprice every bond by hand each time rates twitch.
+
+It's also easy to get quietly wrong. A portfolio's duration isn't a simple average of its bonds' individual durations — it's an average weighted by market value, not face value, not headcount of positions. Weight it by face value instead, and a modest position in a long-duration bond gets treated the same as a much larger one, understating exactly the exposure that matters most.
+
+Get that weighting wrong in a risk system, and every stress test, every VaR figure, every hedge ratio built on it is wrong by the same silent multiple — a portfolio that reads as moderately exposed on the dashboard while quietly carrying SVB's problem underneath it.
+
+## Lighthouse Insight
+
+Go back to the two bonds.
+
+Same issuer, same coupon, same 1% move, same day. One fell less than a percent. The other fell more than eleven.
+
+The difference was never about maturity as a date on a calendar. It was about how many years of a stale promise still had to be dragged, coupon by coupon, into a world that had already moved on.
+
+Duration doesn't measure how long you'll hold a bond. It measures how long the bond keeps you exposed to a rate that's already gone stale.
