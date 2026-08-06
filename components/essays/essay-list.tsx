@@ -7,8 +7,10 @@ import { ArticleCard } from "@/components/ui/article-card";
 import { TagButton } from "@/components/ui/tag";
 import { ConceptMapCallout } from "@/components/essays/concept-map-callout";
 import { FeaturedEssayCard } from "@/components/essays/featured-essay-card";
+import { SeriesRail } from "@/components/essays/series-rail";
 import { categoryIcons } from "@/lib/category-icons";
 import { essayIllustrations } from "@/lib/essay-illustrations";
+import { essaySeries } from "@/lib/series";
 import type { Essay } from "@/types/content";
 
 const activeChipClassName =
@@ -46,6 +48,24 @@ function EssayList({ essays }: { essays: Essay[] }) {
   );
   const [activeCategory, setActiveCategory] = React.useState<string | null>(null);
 
+  // Series membership and reading order both come from lib/series.ts.
+  const seriesRails = React.useMemo(() => {
+    const essayBySlug = new Map(essays.map((essay) => [essay.slug, essay]));
+    return essaySeries
+      .map((series) => ({
+        series,
+        essays: series.slugs
+          .map((slug) => essayBySlug.get(slug))
+          .filter((essay): essay is Essay => Boolean(essay)),
+      }))
+      .filter(({ essays: parts }) => parts.length > 0);
+  }, [essays]);
+
+  const standalone = React.useMemo(
+    () => essays.filter((essay) => !essay.series),
+    [essays],
+  );
+
   // essays is sorted newest-first (see getAllEssays), so the newest is featured.
   const featuredEssay = essays[0];
 
@@ -55,9 +75,21 @@ function EssayList({ essays }: { essays: Essay[] }) {
   const showFeatured = Boolean(
     featuredEssay && filtered.some((essay) => essay.slug === featuredEssay.slug),
   );
-  const rest = showFeatured
-    ? filtered.filter((essay) => essay.slug !== featuredEssay!.slug)
-    : filtered;
+
+  // A series spans categories (the clearing arc ends on an Economics essay), so a
+  // rail shows whenever any part matches — non-matching parts dim inside the rail.
+  const visibleRails = activeCategory
+    ? seriesRails.filter(({ essays: parts }) =>
+        parts.some((essay) => essay.category === activeCategory),
+      )
+    : seriesRails;
+
+  const visibleStandalone = standalone.filter(
+    (essay) =>
+      (!activeCategory || essay.category === activeCategory) &&
+      !(showFeatured && essay.slug === featuredEssay?.slug),
+  );
+
   const Illustration = featuredEssay ? essayIllustrations[featuredEssay.slug] : undefined;
 
   return (
@@ -93,11 +125,30 @@ function EssayList({ essays }: { essays: Essay[] }) {
         />
       ) : null}
       <ConceptMapCallout />
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {rest.map((essay) => (
-          <ArticleCard key={essay.slug} essay={essay} />
-        ))}
-      </div>
+      {visibleRails.length > 0 ? (
+        <div className="flex flex-col gap-5">
+          {visibleRails.map(({ series, essays: parts }) => (
+            <SeriesRail
+              key={series.id}
+              series={series}
+              essays={parts}
+              activeCategory={activeCategory}
+            />
+          ))}
+        </div>
+      ) : null}
+      {visibleStandalone.length > 0 ? (
+        <div className="flex flex-col gap-4">
+          <h2 className="font-heading text-lg leading-snug font-medium">
+            Standalone essays
+          </h2>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {visibleStandalone.map((essay) => (
+              <ArticleCard key={essay.slug} essay={essay} />
+            ))}
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }

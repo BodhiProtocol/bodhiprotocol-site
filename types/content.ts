@@ -8,6 +8,10 @@ export interface Essay {
   date: string;
   readingTime: string;
   coverImage?: string;
+  /** Series id from lib/series.ts — absent when the essay stands alone. */
+  series?: string;
+  /** 1-based position within that series. */
+  seriesOrder?: number;
 }
 
 export interface Blueprint {

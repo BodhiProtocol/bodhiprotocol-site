@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { MDXComponents } from "mdx/types";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 
@@ -41,6 +42,7 @@ import {
   getAllEssays,
   getEssayBySlug,
   getRelatedEssays,
+  getSeriesNav,
 } from "@/lib/essays";
 import { getReadNextEssays } from "@/lib/essay-paths";
 import { essayIllustrations } from "@/lib/essay-illustrations";
@@ -123,7 +125,11 @@ export default async function EssayPage({ params }: EssayPageProps) {
   const essay = getEssayBySlug(slug);
   if (!essay) notFound();
 
-  const { previous, next } = getAdjacentEssays(slug);
+  const seriesNav = getSeriesNav(slug);
+  const chronological = getAdjacentEssays(slug);
+  // Reading order beats publication order when the essay belongs to a series.
+  const previous = seriesNav ? seriesNav.previous : chronological.previous;
+  const next = seriesNav ? seriesNav.next : chronological.next;
   const readNext = getReadNextEssays(essay);
   const related = getRelatedEssays(essay);
   const Illustration = essayIllustrations[essay.slug];
@@ -169,6 +175,20 @@ export default async function EssayPage({ params }: EssayPageProps) {
           <article className="flex min-w-0 flex-col gap-8">
             {!isImmersiveEssay ? (
               <div className="flex flex-col gap-4">
+                {seriesNav ? (
+                  <Link
+                    href="/essays"
+                    className="group flex w-fit items-center gap-2 font-mono text-xs text-muted-foreground transition-colors hover:text-brand"
+                  >
+                    <span className="font-semibold text-brand">
+                      {seriesNav.series.title}
+                    </span>
+                    <span aria-hidden="true">·</span>
+                    <span>
+                      Part {seriesNav.part} of {seriesNav.total}
+                    </span>
+                  </Link>
+                ) : null}
                 <H1>{essay.title}</H1>
                 <EssayMeta essay={essay} />
               </div>
