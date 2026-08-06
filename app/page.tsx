@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Hero } from "@/components/layout/hero";
 import { FeaturedEssays } from "@/components/home/featured-essays";
+import { NewsletterSignup } from "@/components/home/newsletter-signup";
 import { SuggestedPathTeaser } from "@/components/home/suggested-path-teaser";
 import { FeaturedBlueprints } from "@/components/home/featured-blueprints";
 import { FeaturedLabs } from "@/components/home/featured-labs";
@@ -113,6 +114,7 @@ export default function Home() {
         </Container>
       </Section>
       <FeaturedEssays />
+      <NewsletterSignup />
       <SuggestedPathTeaser />
       <FeaturedBlueprints />
       <FeaturedLabs />

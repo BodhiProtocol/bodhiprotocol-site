@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 
 import { Container } from "@/components/ui/container";
 import { Logo } from "@/components/layout/logo";
+import { NewsletterForm } from "@/components/newsletter/newsletter-form";
 import { navLinks } from "@/lib/nav-links";
 
 function Footer() {
@@ -32,6 +33,10 @@ function Footer() {
             </Link>
           ))}
         </nav>
+        <div className="flex flex-col gap-2 sm:w-64">
+          <p className="text-sm font-medium">Weekly briefing</p>
+          <NewsletterForm source="footer" />
+        </div>
       </Container>
       <Container className="flex flex-col gap-2 border-t border-border py-6 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-xs text-muted-foreground">
