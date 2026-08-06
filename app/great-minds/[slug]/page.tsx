@@ -65,6 +65,8 @@ import { SunTzuCalculationDiagram } from "@/components/great-minds/suntzu-calcul
 import { SunTzuHeroBackground } from "@/components/great-minds/suntzu-hero-background";
 import { FordMovingLineDiagram } from "@/components/great-minds/ford-moving-line-diagram";
 import { FordHeroBackground } from "@/components/great-minds/ford-hero-background";
+import { JohnsonTrajectoryArcDiagram } from "@/components/great-minds/johnson-trajectory-arc-diagram";
+import { JohnsonHeroBackground } from "@/components/great-minds/johnson-hero-background";
 import { MindGraphProvider } from "@/components/great-minds/mind-graph-context";
 import { getAllGreatMinds, getGreatMindBySlug, type GreatMindWithContent } from "@/lib/great-minds";
 import { mdxOptions } from "@/lib/mdx-options";
@@ -95,6 +97,7 @@ const heroDiagrams: Record<string, (mind: GreatMindWithContent) => ReactNode> = 
   "benjamin-franklin": (mind) => <FranklinVirtueLedgerDiagram nodes={mind.wheel} />,
   "sun-tzu": (mind) => <SunTzuCalculationDiagram nodes={mind.wheel} />,
   "henry-ford": (mind) => <FordMovingLineDiagram nodes={mind.wheel} />,
+  "katherine-johnson": (mind) => <JohnsonTrajectoryArcDiagram nodes={mind.wheel} />,
 };
 
 const heroBackgrounds: Record<string, ReactNode> = {
@@ -119,6 +122,7 @@ const heroBackgrounds: Record<string, ReactNode> = {
   "benjamin-franklin": <FranklinHeroBackground />,
   "sun-tzu": <SunTzuHeroBackground />,
   "henry-ford": <FordHeroBackground />,
+  "katherine-johnson": <JohnsonHeroBackground />,
 };
 
 interface GreatMindPageProps {
