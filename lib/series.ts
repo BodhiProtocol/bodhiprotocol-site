@@ -56,13 +56,18 @@ export const essaySeries: EssaySeries[] = [
   {
     id: "derivatives-and-funding",
     title: "Derivatives & Funding",
-    blurb: "Five contracts that move risk and cash without moving the asset.",
+    blurb:
+      "Five contracts that move risk and cash without moving the asset — then a closer look at what makes a bond's price move at all.",
     icon: Layers,
     slugs: [
       "options-the-right-to-walk-away",
       "futures-the-bet-that-settles-every-single-day",
       "forwards-the-same-bet-without-the-safety-net",
       "swaps-the-number-that-never-moves",
+      "bonds-the-fixed-deposit-you-can-sell",
+      "duration-why-a-30-year-bond-moves-more-than-a-1-year-bond",
+      "yield-curve-why-short-rates-and-long-rates-never-move-together",
+      "convexity-why-the-bond-fell-less-than-duration-predicted",
       "repo-the-overnight-loan-thats-legally-two-trades",
     ],
     nextSeriesId: "clearing-and-counterparty-risk",
