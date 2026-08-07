@@ -68,6 +68,7 @@ export const essaySeries: EssaySeries[] = [
       "duration-why-a-30-year-bond-moves-more-than-a-1-year-bond",
       "yield-curve-why-short-rates-and-long-rates-never-move-together",
       "convexity-why-the-bond-fell-less-than-duration-predicted",
+      "credit-spread-the-extra-yield-thats-not-about-interest-rates",
       "repo-the-overnight-loan-thats-legally-two-trades",
     ],
     nextSeriesId: "clearing-and-counterparty-risk",
