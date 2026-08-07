@@ -1,0 +1,61 @@
+---
+title: "Credit Spread: The Extra Yield That Isn't About Interest Rates At All"
+description: "Duration and convexity explain how a bond's price moves with the risk-free rate. They don't explain why two bonds of identical maturity, issued the same day, can yield completely different amounts. That gap is credit spread — compensation for a risk duration was never built to measure."
+hook: "Same day. Same maturity. A 230 basis point gap that had nothing to do with rates."
+category: "Capital Markets"
+tags: ["markets", "bonds"]
+author: "Surya"
+date: "2026-08-07"
+---
+
+You've probably noticed two people can get an identical insurance quote — same car, same coverage, same policy — and walk away with completely different premiums. Nothing about the car changed. What changed is how likely the insurer thinks each driver is to file a claim.
+
+A bond prices the same question, for the same reason.
+
+Take two 5-year, ₹1,000 bonds, issued on the same day, into the same interest-rate environment. One is a Government of India security, yielding 7.20%. The other is issued by a BBB-rated NBFC, yielding 9.50%.
+
+Same maturity. Same face value. Same coupon mechanics. A 230 basis point gap.
+
+Nothing about duration explains that gap. Both bonds move by roughly the same amount when rates change — that's what identical maturity buys you. The 230 basis points is compensation for something duration was never built to measure: the chance the NBFC doesn't pay the money back.
+
+## What credit spread actually is
+
+A bond's yield is really two numbers stacked on top of each other. There's the risk-free rate — what the market pays for lending to a borrower assumed certain to repay, proxied by a government bond of matching maturity. And there's the credit spread — the extra yield demanded for lending to a borrower who might not.
+
+That spread isn't arbitrary. It's the market's estimate of expected loss: the probability the issuer defaults, multiplied by how much of the money wouldn't come back if it did, plus a premium for the fact that nobody knows either number precisely. A BBB-rated NBFC carries more of both than the Government of India, so its bonds have to offer more yield before anyone will hold them instead of a government security.
+
+Duration and convexity, from the last two essays, describe how a bond reacts to the world revising its view on money. Credit spread describes how a bond reacts to the world revising its view on the borrower — a completely separate question, priced as a completely separate number.
+
+## Why the gap moves on its own
+
+Six months later, the RBI cuts rates. The risk-free 5-year yield falls to 6.70% — a 50 basis point drop. If the spread had stayed put at 230 basis points, the NBFC bond should now yield 9.00%.
+
+It doesn't. It yields 10.20%.
+
+Rates fell by 50 basis points. The NBFC bond's yield rose by 70 basis points anyway. The spread didn't hold — it widened from 230 basis points to 350.
+
+That's what a credit scare looks like in the numbers. Nothing happened to interest rates that should have hurt the NBFC bond — if anything, a rate cut should have helped it, the same way it helps every bond. What moved was the market's estimate of the NBFC specifically, and that estimate travels on its own schedule, in its own direction, regardless of what the central bank just did.
+
+## Why markets needed this
+
+Indian NBFCs found this out directly in 2018. Infrastructure Leasing & Financial Services — a large, systemically important NBFC — missed a series of debt repayments, and the shock didn't stay contained to IL&FS. Spreads on NBFC bonds across the sector, which had spent years trading within shouting distance of government securities, blew out by hundreds of basis points within weeks. Nothing about the risk-free rate had moved. What moved was every lender's estimate of every NBFC's chance of being the next IL&FS — and funding that had been cheap and easy became expensive and scarce almost overnight.
+
+The US saw the same mechanism at a larger scale in 2008. As Lehman Brothers collapsed and the financial system seized up, the Federal Reserve was cutting the risk-free rate toward zero — exactly the environment that should have helped corporate bond prices. Instead, spreads on US high-yield corporate bonds, which typically traded in the 300–500 basis point range, spiked past 2,000 basis points within months. The risk-free rate cooperated. Corporate borrowers still got crushed, because the crisis was never about rates. It was about whether anyone still believed those borrowers would stay solvent.
+
+## Why this matters for a Business Analyst
+
+"The book's CS01 is ₹40,000."
+
+If DV01 is the money-terms version of duration — how much a position moves for one basis point of rate change — CS01 is its counterpart for credit: how much a position moves for one basis point of spread change. A desk can build both into the same trade and still end up owing to two entirely different risks.
+
+A trader who buys the NBFC bond and shorts a matching-duration government bond has hedged out the interest-rate risk almost completely — DV01 close to zero, the position looks flat on a rate-risk dashboard. But CS01 is not close to zero. The position is now a pure bet on that spread narrowing, with none of the offsetting government bond doing anything to protect it if the spread widens instead.
+
+A risk system — or a set of requirements for one — that reports duration and calls it "the risk" will show that trader a hedged, low-risk book right up until the spread moves and the P&L doesn't agree. Two risk factors need two numbers. Collapsing them into one is how a "hedged" position turns out to have been exposed the entire time.
+
+## Lighthouse Insight
+
+Go back to the two bonds.
+
+Same day. Same maturity. Same coupon mechanics. Issued into the exact same interest-rate environment, priced by the exact same market. The 230 basis points between them was never a question about time or rates — the last two essays already answered that one. It was the market answering a completely different question: how likely is this borrower to actually pay me back.
+
+Duration measures how a bond reacts when the world changes its mind about money. Credit spread measures how it reacts when the world changes its mind about the borrower. Nothing requires the two to move together — and the moments when they move hardest in opposite directions are exactly the moments a portfolio finds out which risk it was actually carrying.
