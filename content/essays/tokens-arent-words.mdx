@@ -24,6 +24,8 @@ Numbers get tokenized weirdly too, and not consistently. "380" might be one toke
 
 Tokenizers were mostly built off huge piles of English text, so English compresses nicely — short, common words often become a single token. Languages with different scripts or more complex word structure don't compress the same way, so the same sentence in, say, Hindi or Japanese can eat noticeably more tokens than the English version. That makes it more expensive, it fills the context window faster, and sometimes the model just performs a little worse in that language too, because there's less room per idea.
 
+This isn't a hypothetical. When researchers actually sat down and measured it across languages, some — Hindi and Burmese among the worst off — needed four, five, sometimes close to ten times more tokens than English for the exact same sentence. Same question, same length, same meaning, asked in two different languages: the English version sips at the context window, the other one gulps. Same API call, same words on the screen, a noticeably bigger bill for one of them.
+
 ## So what do you actually do with this
 
 Stop expecting it to nail letter-counting, backwards-spelling, or exact character tricks every time — that's genuinely not what it's built to be good at. For anything involving big or precise numbers, don't trust its mental math; hand it a calculator or code instead. And remember "context window" and "how much this costs" are both measured in tokens, not words — so a wall of text in a language other than English might be quietly eating more of your budget than it looks like it should.
