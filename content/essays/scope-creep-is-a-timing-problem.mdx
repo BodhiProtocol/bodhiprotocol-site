@@ -1,0 +1,27 @@
+---
+title: "Scope Creep Is a Timing Problem, Not a Willpower Problem"
+description: "The same change costs nothing in a requirements meeting and a full sprint once code exists to contradict it. Scope creep isn't a discipline failure — it's what happens when nobody names the cost out loud at the moment the request arrives."
+hook: "The same change request costs ten times more once code exists to contradict it."
+category: "Business Analysis"
+tags: ["process", "scope"]
+author: "Surya"
+date: "2026-08-07"
+---
+
+Scope creep gets blamed on the stakeholder — "they keep asking for more" — or on the team — "we should've pushed back harder." Both miss the actual mechanic. The problem was never whether the change was reasonable. It's when it arrived relative to how much had already been decided, designed, and built around the old assumption.
+
+## The same sentence, a different price tag
+
+"Can we also filter by region?" costs almost nothing in a requirements workshop — it's a sentence added to a document nobody has built against yet. The identical sentence, asked three days into a sprint, means unwinding a data model, a query, and two components that were built assuming region wasn't a filter. The request didn't get bigger. The number of things it now contradicts did — and a stakeholder who sizes the ask by how long it took to say has no way of knowing that, because the sentence is exactly as short either way.
+
+## The sprint's capacity was already spoken for
+
+A sprint isn't empty space waiting to absorb whatever comes up — every hour in it was assigned to something before the sprint even started. A mid-sprint addition doesn't draw from slack that happens to exist; it draws from hours already promised to something else, which is why "just add this too" so often turns into a missed date nobody can point to a single cause for. The team didn't get slower. The budget just got spent twice.
+
+## Silence is what turns a request into creep
+
+A change becomes "creep" only when it slides in without anyone naming its cost — no conversation about what it displaces, what it delays, or what it invalidates. Say yes loudly, with the tradeoff attached, and it's just reprioritization. Say yes quietly, to keep a stakeholder happy in the moment, and it's the thing that makes the sprint miss its date for reasons nobody can point to afterward.
+
+## The question that has to be asked out loud
+
+Before absorbing a mid-sprint change, it should survive one question, asked to the stakeholder directly: **"What already-built work does this contradict, and what's willing to come out to make room for it?"** If there's a real answer, it's a legitimate reprioritization. If the expectation is that it simply gets added on top, with nothing removed and no date moved, that's not a scope decision — it's scope creep with the cost hidden from the one person who'd need to see it to say no.

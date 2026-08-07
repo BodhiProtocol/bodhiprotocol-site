@@ -130,6 +130,7 @@ export const essaySeries: EssaySeries[] = [
       "writing-requirements-that-survive-contact-with-engineering",
       "what-happens-between-a-jira-ticket-and-a-test-case",
       "why-jira-tickets-rot-in-backlog",
+      "scope-creep-is-a-timing-problem",
     ],
   },
 ];
