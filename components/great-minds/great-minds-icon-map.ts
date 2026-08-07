@@ -7,6 +7,8 @@ import {
   Cpu,
   Crown,
   Factory,
+  FlaskConical,
+  Fuel,
   Globe,
   GraduationCap,
   Hand,
@@ -66,6 +68,8 @@ const GREAT_MINDS_ICON_MAP: Record<string, LucideIcon> = {
   GraduationCap,
   Zap,
   Building2,
+  FlaskConical,
+  Fuel,
 };
 
 export { GREAT_MINDS_ICON_MAP };

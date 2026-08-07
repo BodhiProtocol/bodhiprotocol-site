@@ -79,6 +79,8 @@ import { ShakespeareWoodenODiagram } from "@/components/great-minds/shakespeare-
 import { ShakespeareHeroBackground } from "@/components/great-minds/shakespeare-hero-background";
 import { JamsetjiRootsDiagram } from "@/components/great-minds/jamsetji-roots-diagram";
 import { JamsetjiHeroBackground } from "@/components/great-minds/jamsetji-hero-background";
+import { AmbaniReverseChainDiagram } from "@/components/great-minds/ambani-reverse-chain-diagram";
+import { AmbaniHeroBackground } from "@/components/great-minds/ambani-hero-background";
 import { MindGraphProvider } from "@/components/great-minds/mind-graph-context";
 import { getAllGreatMinds, getGreatMindBySlug, type GreatMindWithContent } from "@/lib/great-minds";
 import { mdxOptions } from "@/lib/mdx-options";
@@ -116,6 +118,7 @@ const heroDiagrams: Record<string, (mind: GreatMindWithContent) => ReactNode> = 
   "albert-einstein": (mind) => <EinsteinCurvedFrameDiagram nodes={mind.wheel} />,
   "william-shakespeare": (mind) => <ShakespeareWoodenODiagram nodes={mind.wheel} />,
   "jamsetji-tata": (mind) => <JamsetjiRootsDiagram nodes={mind.wheel} />,
+  "dhirubhai-ambani": (mind) => <AmbaniReverseChainDiagram nodes={mind.wheel} />,
 };
 
 const heroBackgrounds: Record<string, ReactNode> = {
@@ -147,6 +150,7 @@ const heroBackgrounds: Record<string, ReactNode> = {
   "albert-einstein": <EinsteinHeroBackground />,
   "william-shakespeare": <ShakespeareHeroBackground />,
   "jamsetji-tata": <JamsetjiHeroBackground />,
+  "dhirubhai-ambani": <AmbaniHeroBackground />,
 };
 
 interface GreatMindPageProps {
