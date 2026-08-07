@@ -2,6 +2,8 @@ export interface Essay {
   slug: string;
   title: string;
   description: string;
+  /** Short editorial one-liner for the concept map. Falls back to `description`. */
+  hook?: string;
   category: string;
   tags: string[];
   author: string;
@@ -89,6 +91,8 @@ export interface GreatMindWheelNode {
   orbitRadius?: "inner" | "mid" | "outer";
   /** Marks a node for distinct emphasis (ring + emphasized aria-label) in diagrams that single one node out (e.g. JRD Tata's Orbit diagram highlighting Air India). Unused by every other diagram. */
   highlight?: boolean;
+  /** Year this node's outcome actually arrived (e.g. Jamsetji Tata's Roots diagram, positioning each institution along a timeline). Unused by every other diagram. */
+  year?: string;
 }
 
 export interface GreatMindThinkingStep {

@@ -1,11 +1,14 @@
 import {
   Brain,
   BookOpen,
+  Building2,
   Coins,
   Compass,
   Cpu,
   Crown,
+  Factory,
   Globe,
+  GraduationCap,
   Hand,
   Handshake,
   HeartHandshake,
@@ -20,10 +23,12 @@ import {
   Scale,
   Shield,
   ShieldCheck,
+  Sprout,
   Target,
   TrendingUp,
   UserCog,
   Users,
+  Zap,
   type LucideIcon,
 } from "lucide-react";
 
@@ -56,6 +61,11 @@ const GREAT_MINDS_ICON_MAP: Record<string, LucideIcon> = {
   Plane,
   Cpu,
   HeartPulse,
+  Sprout,
+  Factory,
+  GraduationCap,
+  Zap,
+  Building2,
 };
 
 export { GREAT_MINDS_ICON_MAP };

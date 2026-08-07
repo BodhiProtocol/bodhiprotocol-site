@@ -77,6 +77,8 @@ import { EinsteinCurvedFrameDiagram } from "@/components/great-minds/einstein-cu
 import { EinsteinHeroBackground } from "@/components/great-minds/einstein-hero-background";
 import { ShakespeareWoodenODiagram } from "@/components/great-minds/shakespeare-wooden-o-diagram";
 import { ShakespeareHeroBackground } from "@/components/great-minds/shakespeare-hero-background";
+import { JamsetjiRootsDiagram } from "@/components/great-minds/jamsetji-roots-diagram";
+import { JamsetjiHeroBackground } from "@/components/great-minds/jamsetji-hero-background";
 import { MindGraphProvider } from "@/components/great-minds/mind-graph-context";
 import { getAllGreatMinds, getGreatMindBySlug, type GreatMindWithContent } from "@/lib/great-minds";
 import { mdxOptions } from "@/lib/mdx-options";
@@ -113,6 +115,7 @@ const heroDiagrams: Record<string, (mind: GreatMindWithContent) => ReactNode> = 
   "jeff-bezos": (mind) => <BezosLongHorizonDiagram nodes={mind.wheel} />,
   "albert-einstein": (mind) => <EinsteinCurvedFrameDiagram nodes={mind.wheel} />,
   "william-shakespeare": (mind) => <ShakespeareWoodenODiagram nodes={mind.wheel} />,
+  "jamsetji-tata": (mind) => <JamsetjiRootsDiagram nodes={mind.wheel} />,
 };
 
 const heroBackgrounds: Record<string, ReactNode> = {
@@ -143,6 +146,7 @@ const heroBackgrounds: Record<string, ReactNode> = {
   "jeff-bezos": <BezosHeroBackground />,
   "albert-einstein": <EinsteinHeroBackground />,
   "william-shakespeare": <ShakespeareHeroBackground />,
+  "jamsetji-tata": <JamsetjiHeroBackground />,
 };
 
 interface GreatMindPageProps {
