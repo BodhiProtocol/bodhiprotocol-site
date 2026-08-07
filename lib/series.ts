@@ -82,6 +82,7 @@ export const essaySeries: EssaySeries[] = [
     slugs: [
       "novation-how-a-clearinghouse-becomes-everyones-counterparty",
       "margin-how-a-clearinghouse-turns-fear-into-collateral",
+      "wrong-way-risk-the-hedge-that-fails-when-you-need-it",
       "netting-how-finance-cancels-a-mountain-of-debt-into-a-pebble",
       "settlement-finality-when-a-trade-stops-being-a-promise",
       "default-waterfall-who-pays-when-a-clearing-member-fails",
