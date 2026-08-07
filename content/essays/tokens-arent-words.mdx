@@ -1,0 +1,31 @@
+---
+title: "Tokens Aren't Words"
+description: "An LLM doesn't read your sentence — it reads a string of token IDs handed to it by a tokenizer that doesn't care about spelling or place value. That's the real reason it can't count the r's in strawberry, and why big-number math goes sideways."
+hook: "It doesn't see 'strawberry.' It sees two number IDs that used to be a word."
+category: "Artificial Intelligence"
+tags: ["ai", "llm", "tokens"]
+author: "Surya"
+date: "2026-08-07"
+---
+
+Okay, remember when everyone was dunking on ChatGPT for saying "strawberry" only has two r's? That wasn't the model being dumb. It wasn't even really wrong in the way people think — it just never saw the letters to begin with.
+
+## Wait, it doesn't read letters?
+
+Nope. Before your text ever reaches the model, it runs through something called a tokenizer, which chops your sentence into pieces called tokens — not words, not letters, just chunks, picked from a fixed list of maybe 100,000 the model learned during training. "Strawberry" might come out as two or three token pieces, and each one gets handed to the model as basically an ID number. The model never sees s-t-r-a-w-b-e-r-r-y. It sees something closer to [42891, 19204] — two numbers that happen to stand for "straw" and "berry."
+
+So when you ask how many r's are in strawberry, you're asking it to count letters inside a word it was never actually shown as letters. It's doing its best from pattern-matching on similar words it's seen before, not from looking at the spelling. Sometimes it gets there anyway. Sometimes it doesn't. Either way, it's not "seeing" the word the way you are.
+
+## This is also why it's bad at big-number math
+
+Numbers get tokenized weirdly too, and not consistently. "380" might be one token. "1,204" might split into three completely different pieces depending on the exact number and the tokenizer. None of that respects place value — the ones, tens, hundreds you actually need lined up correctly to add two numbers by hand. So when a model does arithmetic on something it hasn't basically memorized, it's not "carrying the 1" the way you learned in third grade. It's pattern-matching across chunks that don't line up with the math at all. Small, common numbers, usually fine — it's seen those a million times. Six-digit multiplication out of nowhere? Don't trust it without a calculator.
+
+## And why some languages cost more to use
+
+Tokenizers were mostly built off huge piles of English text, so English compresses nicely — short, common words often become a single token. Languages with different scripts or more complex word structure don't compress the same way, so the same sentence in, say, Hindi or Japanese can eat noticeably more tokens than the English version. That makes it more expensive, it fills the context window faster, and sometimes the model just performs a little worse in that language too, because there's less room per idea.
+
+## So what do you actually do with this
+
+Stop expecting it to nail letter-counting, backwards-spelling, or exact character tricks every time — that's genuinely not what it's built to be good at. For anything involving big or precise numbers, don't trust its mental math; hand it a calculator or code instead. And remember "context window" and "how much this costs" are both measured in tokens, not words — so a wall of text in a language other than English might be quietly eating more of your budget than it looks like it should.
+
+Anyway. That's the whole strawberry thing. It was never being dumb. It just genuinely never saw the letters.
