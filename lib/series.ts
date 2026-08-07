@@ -1,4 +1,4 @@
-import { Boxes, Brain, Layers, Network, Route, Workflow } from "lucide-react";
+import { Boxes, Brain, Cpu, Layers, Network, Route, Workflow } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 export interface EssaySeries {
@@ -100,7 +100,20 @@ export const essaySeries: EssaySeries[] = [
       "sunk-costs-cant-answer-the-question-youre-asking",
       "people-respond-to-incentives-not-instructions",
       "the-decisions-that-never-stopped-billing",
+    ],
+  },
+  {
+    id: "understanding-ai",
+    title: "Understanding How AI Actually Works",
+    blurb:
+      "The historical frame, then three mechanics that explain most of what an LLM gets wrong.",
+    icon: Cpu,
+    slugs: [
       "weve-seen-this-movie-before",
+      "tokens-arent-words",
+      "context-windows-arent-memory",
+      "why-llms-hallucinate",
+      "the-learning-dividend",
     ],
   },
   {
