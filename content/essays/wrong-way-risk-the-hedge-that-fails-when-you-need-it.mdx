@@ -1,0 +1,84 @@
+---
+title: "Wrong-Way Risk: The Hedge That Fails Exactly When You Need It"
+description: "A hedge is supposed to pay off when your main position loses. Wrong-way risk is what happens when the thing protecting you and the thing threatening you turn out to be tied to the same fate — so the protection weakens exactly when the danger is highest."
+hook: "The hedge and the danger turned out to be the same thing."
+category: "Capital Markets"
+tags: ["markets", "clearing", "risk"]
+author: "Surya"
+date: "2026-08-07"
+---
+
+A hedge is supposed to be the safe side of the trade.
+
+If your position loses, the hedge gains.
+
+If the hedge gains, it covers the loss.
+
+That is the whole promise of a hedge — until the moment the hedge and the danger turn out to be pointing at the same thing.
+
+Wrong-way risk is what happens when a counterparty's ability to pay you and your exposure to that counterparty move together instead of independently. The worse your counterparty's health gets, the more you're owed — and the less able they are to pay it.
+
+**The hedge does not fail randomly. It fails on cue.**
+
+## What wrong-way risk actually is
+
+Basel's own definition is blunt: wrong-way risk is when your exposure to a counterparty increases at the same time as that counterparty's credit quality gets worse. Not despite the crisis. Because of it.
+
+There are two flavors, and the difference matters.
+
+**Specific wrong-way risk** comes from the structure of the deal itself — most commonly, when a counterparty posts its own securities, or the securities of an entity closely tied to it, as collateral for the exposure. If the counterparty is in trouble, the collateral backing your protection is in exactly the same trouble, at exactly the same time, for exactly the same reason.
+
+**General wrong-way risk** is looser and harder to see coming. It's when some outside factor — a rate move, a sector-wide downturn, a macro shock — pushes both a counterparty's default probability and your exposure to them upward at once, without either side deliberately structuring it that way.
+
+Ordinary counterparty risk assumes the two things are independent: your exposure is one random variable, the counterparty's health is another, and a well-diversified hedge lets one offset the other. Wrong-way risk is what happens when that independence assumption was never actually true.
+
+## Example 1: Promoter share pledges in India
+
+India's most common version of specific wrong-way risk doesn't need a derivatives desk at all — it shows up in ordinary corporate lending.
+
+A promoter borrows against the shares of their own listed company, pledging that stock as collateral with a bank or NBFC. It looks like any other secured loan. But look at what's actually backing it: if the company's fortunes turn — earnings miss, debt comes due, a scandal breaks — two things happen at once. The company, and by extension the promoter's ability to repay, becomes a worse credit risk. And the pledged shares, being stock in that same company, fall in value at the same moment. The collateral and the credit risk were never independent. They were the same bet, wearing two names.
+
+The Reserve Bank of India's Financial Stability Report in June 2019 flagged exactly this pattern as a systemic concern — rising promoter share pledging as a warning sign, not a footnote. Several companies whose stock fell sharply around that period, including DHFL, Zee Group, and Yes Bank, had promoter pledging as part of their story: as the underlying business weakened, the pledged collateral backing loans against it weakened in step, leaving lenders holding security that was disappearing at the exact moment they needed it most.
+
+Nobody had to design this outcome. It falls out automatically the moment the collateral and the borrower are the same entity.
+
+## Example 2: AIG in 2008
+
+The textbook international case is AIG, and the mechanism was almost identical, just at a global-systemic scale.
+
+AIG's Financial Products unit had sold enormous volumes of credit default swaps — insurance-like protection against default — on mortgage-backed CDOs. As the US housing market weakened through 2007 and 2008, two things happened together. The CDOs AIG had insured started looking shakier, so AIG owed more collateral to the banks holding that protection. And AIG's own credit rating started sliding, because the same housing collapse that was making its CDS book more expensive was also making AIG itself look like a worse credit risk.
+
+On September 15, 2008, all three major rating agencies downgraded AIG below AA-. That downgrade triggered collateral-posting clauses written into AIG's own contracts — clauses meant to protect AIG's counterparties. Calls for collateral on AIG's credit default swaps jumped to $32 billion, and AIG was short $12.4 billion of it, immediately. The Federal Reserve stepped in with an $85 billion loan the very next day to keep AIG from defaulting outright; total US government support for AIG eventually reached $182 billion.
+
+AIG wasn't just unlucky on the timing. The thing that was supposed to make it able to pay out on its guarantees — its own creditworthiness — was destroyed by the exact same housing collapse that was making the guarantees more expensive. The protection and the danger were never two separate things.
+
+## Why this matters for a Business Analyst
+
+"We've hedged that exposure" is one of the most dangerous sentences in a risk report if nobody checked what the hedge is actually correlated with.
+
+A system that calculates counterparty exposure and a system that calculates counterparty credit quality are, in most risk architectures, two separate calculations, often built by two separate teams, sometimes running on two separate schedules. Wrong-way risk lives exactly in the gap between them — in the correlation neither calculation is built to see on its own.
+
+Model collateral eligibility without checking whether the collateral is issued by the counterparty itself, or a related entity, and the system will report a fully secured exposure that is quietly not secured at all. That's not a rare edge case to handle later. It's the single check — is the counterparty and the collateral drawing from the same underlying risk — that decides whether a "hedged" position report means anything.
+
+## The hidden tradeoff
+
+Specific wrong-way risk is the easier one to catch — check whether the collateral issuer and the counterparty are the same or related, and you've found most of it. Regulators require exactly that check for a reason: it's mechanical, and it can be built into a system as a rule.
+
+General wrong-way risk is the harder, more expensive problem. It requires stress-testing exposures against the same macro scenarios that would hurt the counterparty — rate shocks, sector downturns, currency moves — and asking whether the two move together under those scenarios, not just on an ordinary day. That's not a lookup. It's a standing analytical process, and it's exactly the kind of work that's cheap to skip until the one year it would have mattered.
+
+Basel III requires banks to identify specific wrong-way risk and to build stress scenarios for general wrong-way risk. Neither requirement makes the correlation go away. Both just make sure somebody has to go looking for it before the market finds it first.
+
+## Lighthouse Insight
+
+Go back to AIG, and to the pledged share.
+
+Neither was really a hedge that failed. Both were built on the same quiet mistake: treating two things as independent because they were labeled differently, when underneath they were the same risk wearing two names.
+
+A hedge only protects you if it can still pay when you need it to. Wrong-way risk is the reminder that some hedges were never actually separate from the danger — they were just waiting for the one scenario where everyone found out.
+
+## Reference anchors
+
+- [Basel Committee on Banking Supervision: Basel III counterparty credit risk framework](https://www.bis.org/publ/bcbs228.pdf)
+- [RBI Financial Stability Report, Issue No. 19, June 2019](https://rbidocs.rbi.org.in/rdocs/PublicationReport/Pdfs/FSRJUNE2019E5ECDDAD7E514756AFEF1E71CB2ADA2B.PDF)
+- [Federal Reserve: press release on the $85 billion AIG loan, September 16, 2008](https://www.federalreserve.gov/newsevents/pressreleases/other20080916a.htm)
+- [Financial Crisis Inquiry Commission report, Chapter 19: The Bailout of AIG](https://fcic-static.law.stanford.edu/cdn_media/fcic-reports/fcic_final_report_chapter19.pdf)
