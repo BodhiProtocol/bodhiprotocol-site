@@ -1,0 +1,62 @@
+---
+title: "Convexity: Why the Bond Fell Less Than Duration Predicted"
+description: "Duration treats the relationship between a bond's price and its yield as a straight line — accurate right at today's rate, and increasingly wrong the further rates move. Convexity is the curve duration misses, and for an ordinary bond, it bends in the holder's favor every time."
+hook: "Duration predicted a ₹124 loss. The bond lost ₹113."
+category: "Capital Markets"
+tags: ["markets", "bonds"]
+author: "Surya"
+date: "2026-08-07"
+---
+
+You've probably estimated how a meeting will end from how the first five minutes went — moving at this pace, we'll wrap by three. That estimate only holds if the pace holds, and it rarely does. Meetings that start slow tend to speed up. Meetings that start fast tend to drag. The straight-line guess and the actual ending are almost never the same number.
+
+A bond's price has the same problem, and there's a name for the gap.
+
+Take the ₹1,000, 7% coupon, 30-year bond from [the last essay](/essays/duration-why-a-30-year-bond-moves-more-than-a-1-year-bond). Its modified duration — the pace at which its price moves for a 1% rate change — works out to about 12.4 years. Extend that pace in a straight line, and a 1% rate rise should cost it ₹124, landing the price at ₹876.
+
+It didn't land at ₹876. It landed at ₹887.
+
+Duration's straight-line guess was off by ₹11 — and not randomly off. Every time.
+
+## What convexity actually is
+
+Plot a bond's price against every yield it could possibly trade at, and you don't get a straight line. You get a curve, bowed outward — sitting above any straight line drawn tangent to it at a single point.
+
+Duration draws exactly that tangent line. It measures the slope of the curve at today's yield — how fast the price is falling right now — and extends that slope outward as if the bond kept falling at the same constant rate. For a small move, a basis point or two, the tangent line and the actual curve sit close enough that the difference doesn't matter. For a full percentage point, on a 30-year bond, it does.
+
+Convexity is the name for that gap — how far the real curve pulls away from duration's straight line. It isn't a separate force acting on the bond. It's the correction for the fact that duration only measured the slope at one point, and the slope itself changes as yields move.
+
+## Why the gap always favors the holder
+
+Push the same bond in both directions and the pattern holds.
+
+| Scenario | Duration's straight-line estimate | Actual price | Gap |
+|---|---|---|---|
+| Rates rise to 8% | ₹876 | ₹887 | ₹11 better |
+| Rates fall to 6% | ₹1,124 | ₹1,138 | ₹14 better |
+
+Rates rise, and the bond loses less than duration warned. Rates fall, and it gains more than duration promised. Both land on the same side of the tangent line — because the actual curve sits above that line everywhere, not just past the point it was drawn from.
+
+That's why convexity is worth paying for. Two bonds with identical duration don't carry identical risk if one of them curves more sharply than the other — the more convex bond loses less in a selloff and gains more in a rally, for the same duration reading on a risk report. Duration alone can't tell them apart. Convexity is the number that does.
+
+## Why markets needed this
+
+An Indian pension fund building a bond portfolio around a 12-year duration target has more than one way to get there. It could hold a cluster of bonds all maturing near year twelve — a "bullet" portfolio. Or it could split the money between very short bonds and very long ones, averaging out to the same 12-year duration — a "barbell." Both show an identical duration on the risk report. They don't behave identically. The barbell, built from a wider spread of maturities, carries more convexity — so if rates swing hard in either direction, it loses less on the way down and gains more on the way up than the bullet does, purely from the shape of its own curve. Fund managers give up a little yield to hold the barbell on purpose, because convexity is exactly the kind of protection that only shows up when it's needed most.
+
+Mortgage-backed securities in the US show what happens when that protection runs in reverse. An MBS is built from home loans that borrowers are free to repay early, usually by refinancing — and refinancing accelerates precisely when rates fall, because that's when a cheaper loan becomes available. So when rates drop and an ordinary bond's price would keep climbing along its convex curve, an MBS instead gets prepaid faster, handing investors their principal back early instead of letting them keep collecting a now-below-market coupon. The price gain gets capped well below what duration alone would predict. Bond investors call this negative convexity, and it's why MBS trade at a yield premium over ordinary bonds carrying the same duration — investors are paid extra precisely because the curve, for this security, bends against them instead of for them.
+
+## Why this matters for a Business Analyst
+
+"The desk's DV01 is ₹18 lakh."
+
+That number is duration's shorthand in money terms — how much the desk's P&L moves for a one basis point rate change — and it's exactly as linear as duration itself. Multiply it by ten basis points, and the estimate is close enough to trust. Multiply it by a 100-basis-point shock, the kind a stress test is built to survive, and the estimate quietly stops being trustworthy, for the same reason duration's straight line missed by ₹11 on a single point.
+
+A risk system that only reports DV01, and scales it linearly to size a large stress scenario, will overstate losses in a selloff and understate gains in a rally — every time, in the same direction, because it's using a tangent line to answer a question about a curve. Let that structural bias sit inside a VaR model or a hedging calculation, and the desk ends up buying more protection than a big move actually costs, or trusting a hedge that's looser than it looks — a silent, one-directional error dressed up as a precise number.
+
+## Lighthouse Insight
+
+Go back to that bond.
+
+Duration measured its slope at 7% and drew a straight line outward — ₹124 lost if rates rose a point, ₹124 gained if they fell one. Neither happened. It lost ₹113. It would have gained ₹138.
+
+The bond was never moving in a straight line. Duration just measured its pace at a single instant and assumed the pace would hold. Convexity is the reminder that it never quite does — and for a bond built the ordinary way, the curve always breaks in the holder's favor.
