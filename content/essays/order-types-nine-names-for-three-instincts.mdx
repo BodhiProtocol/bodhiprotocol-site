@@ -1,0 +1,59 @@
+---
+title: "Order Types: Nine Names for Three Instincts"
+description: "Priya's about to buy Tata Motors on Zerodha. Jake's about to buy Tesla on Robinhood. Neither of them is choosing between nine order types — they're each answering the same question three different ways: how badly do you want this, right now?"
+hook: "Every order is answering the same question: how badly do you want this, right now?"
+category: "Capital Markets"
+tags: ["markets", "trading", "order types"]
+author: "Surya"
+date: "2026-08-07"
+---
+
+Priya's phone is open to Zerodha. Tata Motors is sitting at ₹952, and she wants in.
+
+The button in front of her doesn't ask "do you want to buy Tata Motors." It asks something narrower: *how badly do you want this, right now?* Every order type that exists is just a different answer to that one question.
+
+## Speed, or a price
+
+Priya has two honest options.
+
+She can say "just get me in, whatever it costs" — that's a **market order**. It fills almost instantly, at whatever the best available price happens to be the moment it lands. Fast, but she gives up control over the exact number.
+
+Or she can say "get me in, but only at ₹950 or less" — that's a **limit order**. It sits there and waits. If nobody's selling at ₹950, she doesn't get filled. She's traded speed for control.
+
+She goes with the limit order. She's not in a hurry, and ₹950 feels like a fairer entry than chasing ₹952.
+
+Six thousand kilometers away, Jake's looking at Tesla on Robinhood. It's trading at $228, and he's got the same two options, just in dollars instead of rupees. He also picks the limit order — $220, not a cent more. Different ticker, different currency, identical instinct: he'd rather wait than overpay.
+
+## What happens after you're in
+
+Priya's order fills at ₹950. Now she owns the stock — and a new fear shows up: what if it drops?
+
+She doesn't want to sit refreshing the app all afternoon, so she sets a **stop-loss order** at ₹930: if the price falls that far, sell automatically, no matter what. The moment it's triggered, it behaves exactly like the market order from before — get her out now, price be damned. It's not there to get her a good price. It's there to stop a bad day from becoming a terrible one.
+
+Jake does the version of this that keeps moving. Instead of a fixed stop-loss, he sets a **trailing stop** — 5% below whatever Tesla's current price is. If Tesla climbs to $250, his stop climbs to $237.50 right along with it. It only ever moves in his favor. If Tesla ever reverses hard, he's protected at whatever the best level was on the way up, not the level he started at.
+
+Some traders take the stop-loss idea one step further and add a price condition to the exit too — a **stop-limit order**: "once it hits ₹930, sell, but only at ₹928 or better." More control over the exit price, but a real risk attached — if the stock is falling fast, it can blow straight through ₹928 without ever giving you a fill, and you're left holding a position with no exit at all.
+
+## The order that outlives the day
+
+Priya's limit order for Tata Motors filled the same afternoon. But she's also had her eye on Reliance for a week, waiting for it to dip to ₹1,480 — and she doesn't want to keep re-entering that order every single morning.
+
+Most orders are **day orders** by default — if they don't fill by market close, they just die, and you're starting over tomorrow. Priya doesn't want that. So she sets a **GTT** — good-till-triggered, Zerodha's version of a standing order — and it just sits in the background for weeks, watching Reliance, ready to fire the moment it touches ₹1,480. Internationally the same idea goes by **GTC**, good-till-cancelled. Same patience, different acronym.
+
+## When "some of it" isn't good enough
+
+A different problem shows up for institutional money, not individual investors like Priya or Jake — but it's worth knowing because it explains behavior you'll see on any order book.
+
+A trading desk that wants to buy 50,000 shares right now, all at once or not at all, uses a **fill-or-kill (FOK)** order — the whole thing executes immediately, or the whole thing is cancelled. Nothing sits around half-done. A slightly looser cousin, **immediate-or-cancel (IOC)**, will take whatever quantity is available right now and cancel the rest — no lingering partial order left waiting in the book.
+
+And when that same desk wants to buy something big without spooking the market — because showing "buyer wants 50,000 shares" would make every seller raise their price — they use an **iceberg order**. It only displays a small slice, say 500 shares, in the public order book. The moment that slice fills, another 500 quietly appears behind it, until the full size is done. Everyone else in the market just sees a steady trickle of 500-share trades, never the whale behind them.
+
+## Automating the whole decision
+
+Back to Priya. A few weeks in, she's tired of placing three separate orders every time she wants to trade intraday — one to enter, one for the target, one for the stop-loss. So she starts using a **bracket order**: she sets all three at once — buy at ₹950, sell at ₹970 if it goes her way, sell at ₹940 if it doesn't. She places it once in the morning and doesn't touch her phone again until one side triggers.
+
+## Same instincts, two markets
+
+Priya never placed nine different "kinds" of orders. She placed a handful of instructions, each one answering the same underlying question in a slightly different way: *speed or price, protection or exposure, visible or hidden, today or standing.* Jake, on the other side of the planet, made the exact same set of decisions — just in dollars, on Tesla, on Robinhood.
+
+The order ticket has a lot of buttons on it. But underneath, there are only ever three instincts: how fast you want it, how much downside you're willing to risk, and how much of your hand you're willing to show.
