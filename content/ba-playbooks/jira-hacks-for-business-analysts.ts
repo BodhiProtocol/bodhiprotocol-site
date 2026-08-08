@@ -77,7 +77,11 @@ export const jiraHacksForBusinessAnalysts: Omit<Playbook, "readingTime"> = {
     "Most Jira problems are not really Jira problems. They are information-design problems. Clear context, explicit decisions, visible dependencies, and testable acceptance criteria make the tool much easier to work with.",
   closingTemplate: masterStoryTemplate,
   closingTemplateName: "BA Jira Story Template",
-  relatedPlaybookSlugs: ["acceptance-criteria-playbook", "requirement-elicitation-playbook"],
+  relatedPlaybookSlugs: [
+    "acceptance-criteria-playbook",
+    "requirement-elicitation-playbook",
+    "first-time-writing-a-user-story",
+  ],
   relatedTopics: ["Business Analyst User Story Template", "Impact Analysis Template"],
   hacks: [
     {

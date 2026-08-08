@@ -98,7 +98,7 @@ export const requirementElicitationPlaybook: Omit<Playbook, "readingTime"> = {
     "Every discovery conversation eventually reduces to the same shape: a stated ask, a real problem underneath it, and a set of questions that connects the two. The export button might still be the right answer. Now you'll know that for a reason, not by default.",
   closingTemplate: questionBank,
   closingTemplateName: "Requirement Elicitation Question Bank",
-  relatedPlaybookSlugs: ["acceptance-criteria-playbook"],
+  relatedPlaybookSlugs: ["acceptance-criteria-playbook", "first-time-writing-a-user-story"],
   relatedTopics: ["Business Analyst User Story Template", "New Project Discovery Playbook"],
   hacks: [
     {

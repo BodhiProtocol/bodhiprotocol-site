@@ -44,7 +44,11 @@ export const acceptanceCriteriaPlaybook: Omit<Playbook, "readingTime"> = {
     "Every acceptance criterion should survive one test: could two engineers, working alone, build the same thing from it? If the answer depends on both of them guessing the same way, it isn't finished yet.",
   closingTemplate: qualityChecklist,
   closingTemplateName: "Acceptance Criteria Quality Checklist",
-  relatedPlaybookSlugs: ["requirement-elicitation-playbook", "jira-hacks-for-business-analysts"],
+  relatedPlaybookSlugs: [
+    "requirement-elicitation-playbook",
+    "jira-hacks-for-business-analysts",
+    "first-time-writing-a-user-story",
+  ],
   relatedTopics: ["Business Analyst User Story Template", "Impact Analysis Template"],
   hacks: [
     {
