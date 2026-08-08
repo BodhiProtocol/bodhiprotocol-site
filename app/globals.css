@@ -176,6 +176,13 @@
   }
 }
 
+/* Drifts the dashed interchange curves on the essay concept map. */
+@keyframes cm-drift {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
 @keyframes fade-in-up {
   from {
     opacity: 0;

@@ -16,6 +16,7 @@ export interface EssayWithContent extends Essay {
 interface EssayFrontmatter {
   title: string;
   description: string;
+  hook?: string;
   category: string;
   tags?: string[];
   author: string;
@@ -36,6 +37,7 @@ function readEssayFile(filename: string): EssayWithContent {
     seriesOrder: membership?.order,
     title: frontmatter.title,
     description: frontmatter.description,
+    hook: frontmatter.hook,
     category: frontmatter.category,
     tags: frontmatter.tags ?? [],
     author: frontmatter.author,

@@ -15,7 +15,7 @@ export interface EssaySeries {
   recommendedStart?: boolean;
 }
 
-// Reading order lives here rather than in 34 MDX frontmatter blocks so there is
+// Reading order lives here rather than in 42 MDX frontmatter blocks so there is
 // exactly one place to reorder a series — and no way for the two to drift.
 export const essaySeries: EssaySeries[] = [
   {
@@ -26,6 +26,7 @@ export const essaySeries: EssaySeries[] = [
     icon: Route,
     slugs: [
       "shiv-pressed-buy-trade-execution",
+      "how-order-books-work",
       "what-a-trade-lifecycle-actually-looks-like",
       "infrastructure-the-nine-systems-behind-every-trade",
       "a-bank-trading-floor-is-a-marketplace-for-risk",
@@ -41,7 +42,6 @@ export const essaySeries: EssaySeries[] = [
       "The benchmarks a trader is graded against, then the algorithms built to beat them.",
     icon: Workflow,
     slugs: [
-      "how-order-books-work",
       "vwap-the-benchmark-every-trader-is-graded-against",
       "arrival-price-the-clock-that-starts-when-you-decide",
       "implementation-shortfall-the-cost-of-time-between-deciding-and-doing",
@@ -57,12 +57,12 @@ export const essaySeries: EssaySeries[] = [
     id: "derivatives-and-funding",
     title: "Derivatives & Funding",
     blurb:
-      "Five contracts that move risk and cash without moving the asset — then a closer look at what makes a bond's price move at all.",
+      "Four contracts that move risk without moving the asset, then the two that move the cash.",
     icon: Layers,
     slugs: [
-      "options-the-right-to-walk-away",
       "futures-the-bet-that-settles-every-single-day",
       "forwards-the-same-bet-without-the-safety-net",
+      "options-the-right-to-walk-away",
       "swaps-the-number-that-never-moves",
       "bonds-the-fixed-deposit-you-can-sell",
       "duration-why-a-30-year-bond-moves-more-than-a-1-year-bond",
@@ -135,6 +135,77 @@ export const essaySeries: EssaySeries[] = [
   },
 ];
 
+/**
+ * A cross-arc link between two essays that share a mechanism rather than a
+ * reading order. These are hand-authored on purpose — frontmatter tags are far
+ * too sparse to infer them (32 distinct combinations across 42 essays, nearly
+ * all singletons).
+ *
+ * Both endpoints must sit in *different* series: an edge between two parts of
+ * the same arc is already drawn by the arc itself. `validateBridges` enforces it.
+ */
+export interface EssayBridge {
+  from: string;
+  to: string;
+  /** Why the two connect — surfaced on the interchange in the concept map. */
+  label: string;
+}
+
+export const essayBridges: EssayBridge[] = [
+  {
+    from: "what-a-trade-lifecycle-actually-looks-like",
+    to: "implementation-shortfall-the-cost-of-time-between-deciding-and-doing",
+    label: "Implementation Shortfall grades this whole lifecycle",
+  },
+  {
+    from: "implementation-shortfall-the-cost-of-time-between-deciding-and-doing",
+    to: "opportunity-cost-is-the-only-cost-that-matters",
+    label:
+      "The cost of time between deciding and doing is opportunity cost, priced in basis points",
+  },
+  {
+    from: "what-spoofing-actually-looks-like",
+    to: "people-respond-to-incentives-not-instructions",
+    label:
+      "Manipulation is what happens when the reward attaches to the appearance of intent",
+  },
+  {
+    from: "margin-how-a-clearinghouse-turns-fear-into-collateral",
+    to: "futures-the-bet-that-settles-every-single-day",
+    label: "Daily mark-to-market is margin collected one day in advance",
+  },
+  {
+    from: "a-good-decision-can-still-lose",
+    to: "arrival-price-the-clock-that-starts-when-you-decide",
+    label: "A benchmark grades the outcome. This grades the decision.",
+  },
+  {
+    from: "forwards-the-same-bet-without-the-safety-net",
+    to: "novation-how-a-clearinghouse-becomes-everyones-counterparty",
+    label: "The named counterparty a forward can't escape is exactly what novation removes",
+  },
+  {
+    from: "bonds-the-fixed-deposit-you-can-sell",
+    to: "opportunity-cost-is-the-only-cost-that-matters",
+    label: "A bond's price is opportunity cost, quoted as a number",
+  },
+  {
+    from: "the-money-factory-how-banks-create-money",
+    to: "netting-how-finance-cancels-a-mountain-of-debt-into-a-pebble",
+    label: "Same compression logic as Netting: gross numbers rarely move in full",
+  },
+  {
+    from: "why-llms-hallucinate",
+    to: "the-base-rate-is-usually-the-whole-answer",
+    label: "Same confidence-vs-truth problem as The Base Rate",
+  },
+  {
+    from: "what-happens-between-a-jira-ticket-and-a-test-case",
+    to: "the-learning-dividend",
+    label: "The pipeline runs whether a human runs it or an agent does",
+  },
+];
+
 const seriesBySlug = new Map<string, { series: EssaySeries; order: number }>();
 for (const series of essaySeries) {
   series.slugs.forEach((slug, index) => {
@@ -149,4 +220,18 @@ export function getSeriesForSlug(slug: string) {
 
 export function getSeriesById(id: string) {
   return essaySeries.find((series) => series.id === id);
+}
+
+// Fails the build rather than silently drawing a bridge the map can't place.
+// A standalone essay has no series id, so it never collides with a real arc.
+for (const bridge of essayBridges) {
+  const from = seriesBySlug.get(bridge.from);
+  const to = seriesBySlug.get(bridge.to);
+
+  if (from && to && from.series.id === to.series.id) {
+    throw new Error(
+      `Bridge "${bridge.from}" → "${bridge.to}" links two parts of ${from.series.id}. ` +
+        `The arc already draws that edge — remove the bridge or move an endpoint.`,
+    );
+  }
 }

@@ -7,7 +7,7 @@ import { X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/layout/logo";
-import { navLinks } from "@/lib/nav-links";
+import { navLinks, seriesLinks } from "@/lib/nav-links";
 import { cn } from "@/lib/utils";
 
 interface MobileDrawerProps {
@@ -55,12 +55,60 @@ function MobileDrawer({ open, onOpenChange }: MobileDrawerProps) {
               </Button>
             </div>
             <nav className="flex flex-col gap-1">
-              {navLinks.map((link, index) => (
+              {navLinks.slice(0, 2).map((link, index) => (
                 <motion.div
                   key={link.href}
                   initial={{ opacity: 0, x: 16 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.05 * index + 0.1 }}
+                >
+                  <Link
+                    href={link.href}
+                    aria-current={pathname === link.href ? "page" : undefined}
+                    className={cn(
+                      "block rounded-md px-3 py-2 font-heading text-lg text-foreground/80 transition-colors hover:bg-muted hover:text-foreground",
+                      pathname === link.href && "text-brand",
+                    )}
+                  >
+                    {link.label}
+                  </Link>
+                </motion.div>
+              ))}
+
+              <motion.p
+                initial={{ opacity: 0, x: 16 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.05 * 2 + 0.1 }}
+                className="px-3 pt-3 pb-1 text-xs font-medium tracking-wide text-muted-foreground uppercase"
+              >
+                Series
+              </motion.p>
+              {seriesLinks.map((link, index) => (
+                <motion.div
+                  key={link.href}
+                  initial={{ opacity: 0, x: 16 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.05 * (index + 3) + 0.1 }}
+                >
+                  <Link
+                    href={link.href}
+                    aria-current={pathname === link.href ? "page" : undefined}
+                    className={cn(
+                      "block rounded-md px-3 py-2 font-heading text-lg text-foreground/80 transition-colors hover:bg-muted hover:text-foreground",
+                      pathname === link.href && "text-brand",
+                    )}
+                  >
+                    {link.label}
+                  </Link>
+                </motion.div>
+              ))}
+
+              {navLinks.slice(2).map((link, index) => (
+                <motion.div
+                  key={link.href}
+                  initial={{ opacity: 0, x: 16 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.05 * (index + 3 + seriesLinks.length) + 0.1 }}
                 >
                   <Link
                     href={link.href}

@@ -624,6 +624,102 @@ export const seoLearningPages: SeoLearningPage[] = [
       },
     ],
   },
+  {
+    slug: "indian-markets",
+    eyebrow: "Domain guide",
+    title: "How Indian Capital Markets Work",
+    description:
+      "The exchanges, clearing corporations, depositories, and regulator behind every trade on the NSE and BSE — and how an order becomes a settled holding.",
+    seoTitle: "How Indian Capital Markets Work",
+    seoDescription:
+      "A plain-English guide to Indian capital markets: NSE and BSE, SEBI, clearing corporations, NSDL and CDSL depositories, and how equity trades clear and settle.",
+    intro: [
+      "Indian capital markets run on the same machinery as any other major market — an order book that matches buyers and sellers, a clearing corporation that stands between them, and a settlement system that moves securities and cash. What differs is the institutions that perform each step, and a settlement cycle that is among the fastest in the world.",
+      "This guide walks through the parts in the order a trade actually meets them, then points to essays that go deeper on each mechanism.",
+    ],
+    sections: [
+      {
+        title: "Who does what",
+        paragraphs: [
+          "Four kinds of institution sit behind every Indian equity trade, and they are frequently confused with one another because their names all sound similar.",
+        ],
+        items: [
+          "Exchanges — the NSE and BSE run the order books where buyers and sellers meet and trades are matched",
+          "Clearing corporations — NSE Clearing and Indian Clearing Corporation step between the two sides so neither faces the other's credit risk",
+          "Depositories — NSDL and CDSL hold shares in dematerialised form, so settlement is a book entry rather than a paper certificate",
+          "SEBI — the regulator that sets the rules on disclosure, margin, market conduct, and surveillance",
+        ],
+      },
+      {
+        title: "How an equity trade moves",
+        items: [
+          "An order reaches the exchange through a broker, which checks limits and margin before releasing it",
+          "The exchange's order book matches it against the best available price on the other side",
+          "The clearing corporation novates the trade, becoming buyer to the seller and seller to the buyer",
+          "Obligations are netted, so only the net position per member has to move",
+          "Securities move between demat accounts at the depository and funds move through the banking system, on a T+1 cycle for Indian equities",
+        ],
+      },
+      {
+        title: "What is distinctive about the Indian market",
+        items: [
+          "Settlement is fast — India completed its move to a T+1 equity settlement cycle ahead of most major markets",
+          "Holdings are dematerialised by default, so there is no physical certificate to reconcile against",
+          "Retail participation is unusually high, and a large share of it arrives through mobile-first brokers",
+          "Margin requirements are prescribed closely by the regulator rather than left to broker discretion",
+          "Index derivatives volumes are very large relative to cash market turnover",
+        ],
+      },
+      {
+        title: "Where to start reading",
+        items: [
+          "Start with the order book — it is the structure every later mechanism assumes",
+          "Then follow one order end to end through execution, clearing, and settlement",
+          "Then read novation and margin, which explain what the clearing corporation is actually absorbing",
+          "Then settlement finality, which explains the point at which a trade stops being reversible",
+        ],
+      },
+    ],
+    related: [
+      {
+        label: "How Order Books Actually Work",
+        href: "/essays/how-order-books-work",
+        description: "The two stacks of intent behind every price on an NSE ticker.",
+      },
+      {
+        label: "Shiv Pressed Buy",
+        href: "/essays/shiv-pressed-buy-trade-execution",
+        description: "One order followed end to end across an Indian and a US market.",
+      },
+      {
+        label: "The Essay Concept Map",
+        href: "/essays/map",
+        description: "Every essay as one network, with the reading order for each arc.",
+      },
+      {
+        label: "Capital Markets Business Analyst",
+        href: "/capital-markets-business-analyst",
+        description: "How this domain knowledge maps onto a BA role.",
+      },
+    ],
+    faqs: [
+      {
+        question: "What is the difference between NSE and BSE?",
+        answer:
+          "Both are stock exchanges running order books in Indian securities. The BSE is the older institution and the NSE carries the larger share of equity and derivatives turnover, but the mechanism on each is the same: orders are matched by price and then time priority.",
+      },
+      {
+        question: "What is the difference between a depository and a clearing corporation?",
+        answer:
+          "A clearing corporation manages the obligation created by a trade — it becomes the counterparty to both sides, collects margin, and nets what has to move. A depository holds the securities themselves, so settlement is a change of entry in an account rather than a physical delivery. NSDL and CDSL are depositories; NSE Clearing and ICCL are clearing corporations.",
+      },
+      {
+        question: "What does T+1 settlement mean?",
+        answer:
+          "The trade is settled one working day after it is executed: securities reach the buyer's demat account and funds reach the seller on the next day, rather than two or three days later. A shorter cycle reduces the window in which either side can fail.",
+      },
+    ],
+  },
 ];
 
 export function getSeoLearningPage(slug: string) {

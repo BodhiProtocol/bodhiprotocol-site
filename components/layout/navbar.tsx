@@ -3,15 +3,25 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ChevronDownIcon } from "lucide-react";
 
 import { CommandMenu } from "@/components/layout/command-menu";
 import { Logo } from "@/components/layout/logo";
 import { MobileNav } from "@/components/layout/mobile-nav";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { Container } from "@/components/ui/container";
-import { navLinks } from "@/lib/nav-links";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuLinkItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { navLinks, seriesLinks } from "@/lib/nav-links";
 import type { SearchItem } from "@/lib/search-index";
 import { cn } from "@/lib/utils";
+
+const navLinkClassName =
+  "rounded-full px-2.5 py-1.5 text-sm font-medium text-foreground/70 transition-colors duration-200 hover:bg-muted hover:text-foreground";
 
 function Navbar({ searchItems }: { searchItems: SearchItem[] }) {
   const [scrolled, setScrolled] = React.useState(false);
@@ -47,13 +57,52 @@ function Navbar({ searchItems }: { searchItems: SearchItem[] }) {
           <Logo className={pathname === "/" ? "hero-enter" : undefined} />
 
           <nav className="hidden items-center gap-0.5 lg:flex">
-            {navLinks.map((link) => (
+            {navLinks.slice(0, 2).map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 aria-current={pathname === link.href ? "page" : undefined}
                 className={cn(
-                  "rounded-full px-2.5 py-1.5 text-sm font-medium text-foreground/70 transition-colors duration-200 hover:bg-muted hover:text-foreground",
+                  navLinkClassName,
+                  pathname === link.href && "text-foreground",
+                )}
+              >
+                {link.label}
+              </Link>
+            ))}
+
+            <DropdownMenu>
+              <DropdownMenuTrigger
+                className={cn(
+                  navLinkClassName,
+                  "inline-flex items-center gap-1",
+                  seriesLinks.some((link) => pathname === link.href) &&
+                    "text-foreground",
+                )}
+              >
+                Series
+                <ChevronDownIcon className="size-3.5" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                {seriesLinks.map((link) => (
+                  <DropdownMenuLinkItem
+                    key={link.href}
+                    render={<Link href={link.href} />}
+                    aria-current={pathname === link.href ? "page" : undefined}
+                  >
+                    {link.label}
+                  </DropdownMenuLinkItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            {navLinks.slice(2).map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={pathname === link.href ? "page" : undefined}
+                className={cn(
+                  navLinkClassName,
                   pathname === link.href && "text-foreground",
                 )}
               >

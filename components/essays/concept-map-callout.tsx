@@ -1,15 +1,14 @@
-import { ArrowUpRight, Waypoints } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Waypoints } from "lucide-react";
 
 import { Card } from "@/components/ui/card";
 import { Muted } from "@/components/ui/typography";
 
 function ConceptMapCallout({ essayCount }: { essayCount: number }) {
   return (
-    <a
-      href="https://bodhiprotocol.github.io/essay-concept-map/"
-      target="_blank"
-      rel="noreferrer"
-      aria-label="Explore the Essay Concept Map"
+    <Link
+      href="/essays/map"
+      aria-label="Explore the essay concept map"
       className="group block"
     >
       <Card
@@ -25,16 +24,17 @@ function ConceptMapCallout({ essayCount }: { essayCount: number }) {
               All {essayCount} essays as one connected map
             </span>
             <Muted className="text-sm">
-              See how they build on each other in the Essay Concept Map
+              Seven reading lines, and the interchanges where one idea reappears
+              inside another
             </Muted>
           </span>
         </div>
         <span className="flex shrink-0 items-center gap-1 text-xs font-semibold text-brand">
           Explore the map
-          <ArrowUpRight className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
         </span>
       </Card>
-    </a>
+    </Link>
   );
 }
 

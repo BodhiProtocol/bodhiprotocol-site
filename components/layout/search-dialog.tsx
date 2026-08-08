@@ -14,7 +14,7 @@ import {
   CommandList,
 } from "@/components/ui/command";
 import { HighlightedText } from "@/components/shared/highlighted-text";
-import { navLinks } from "@/lib/nav-links";
+import { navLinks, seriesLinks } from "@/lib/nav-links";
 import type { SearchItem, SearchItemType } from "@/lib/search-index";
 
 const GROUP_CONFIG: Record<SearchItemType, { label: string; icon: typeof BookOpen }> = {
@@ -141,7 +141,7 @@ function SearchDialog({ items, open, onOpenChange }: SearchDialogProps) {
           })
         ) : (
           <CommandGroup heading="Navigate">
-            {navLinks.map((link) => (
+            {[...navLinks, ...seriesLinks].map((link) => (
               <CommandItem
                 key={link.href}
                 value={link.label}

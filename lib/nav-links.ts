@@ -11,3 +11,8 @@ export const navLinks: NavLink[] = [
   { href: "/library", label: "Library" },
   { href: "/about", label: "About" },
 ];
+
+export const seriesLinks: NavLink[] = [
+  { href: "/invisible-businesses", label: "Invisible Businesses" },
+  { href: "/great-minds", label: "Great Minds" },
+];

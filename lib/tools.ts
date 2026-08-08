@@ -133,18 +133,6 @@ export const tools: Lab[] = [
     githubUrl: "https://github.com/BodhiProtocol/finance-blueprint-explorer",
     roadmap: ["Sync directly with this site's Project Lighthouse content"],
   },
-  {
-    slug: "essay-concept-map",
-    title: "Essay Concept Map",
-    description: "41 BodhiProtocol essays grouped into 8 threads that show how they build on each other, with a clickable overview map.",
-    technology: ["HTML", "JS"],
-    status: "live",
-    difficulty: "beginner",
-    category: "Capital Markets",
-    liveUrl: "https://bodhiprotocol.github.io/essay-concept-map/",
-    githubUrl: "https://github.com/BodhiProtocol/essay-concept-map",
-    roadmap: ["Re-sync automatically whenever new essays are published"],
-  },
 ];
 
 export function getAllTools(): Lab[] {

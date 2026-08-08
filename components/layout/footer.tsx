@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { Container } from "@/components/ui/container";
 import { Logo } from "@/components/layout/logo";
 import { NewsletterForm } from "@/components/newsletter/newsletter-form";
-import { navLinks } from "@/lib/nav-links";
+import { navLinks, seriesLinks } from "@/lib/nav-links";
 
 function Footer() {
   const pathname = usePathname();
@@ -23,7 +23,7 @@ function Footer() {
           </p>
         </div>
         <nav className="flex flex-wrap gap-x-6 gap-y-2">
-          {navLinks.map((link) => (
+          {[...navLinks, ...seriesLinks].map((link) => (
             <Link
               key={link.href}
               href={link.href}

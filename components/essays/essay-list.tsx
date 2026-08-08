@@ -140,9 +140,17 @@ function EssayList({ essays }: { essays: Essay[] }) {
       {visibleStandalone.length > 0 ? (
         <div className="flex flex-col gap-4">
           <h2 className="font-heading text-lg leading-snug font-medium">
-            Standalone essays
+            {visibleStandalone.length === 1 ? "Standalone essay" : "Standalone essays"}
           </h2>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {/* Most essays now belong to an arc, so this can be a single card —
+              don't strand it in a three-column grid. */}
+          <div
+            className={
+              visibleStandalone.length === 1
+                ? "grid gap-6 sm:max-w-md"
+                : "grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+            }
+          >
             {visibleStandalone.map((essay) => (
               <ArticleCard key={essay.slug} essay={essay} />
             ))}
