@@ -6,6 +6,7 @@ import { requirementElicitationPlaybook } from "@/content/ba-playbooks/requireme
 import { acceptanceCriteriaPlaybook } from "@/content/ba-playbooks/acceptance-criteria-playbook";
 import { firstTimeWorkingWithAnApi } from "@/content/ba-playbooks/first-time-working-with-an-api";
 import { twoSystemsShowDifferentNumbers } from "@/content/ba-playbooks/two-systems-show-different-numbers";
+import { firstTimeWritingAUserStory } from "@/content/ba-playbooks/first-time-writing-a-user-story";
 
 // Playbooks are structured card data (numbered hacks with before/after,
 // templates, etc.) rather than prose, so each playbook is a typed data module
@@ -17,6 +18,7 @@ const playbookEntries: Omit<Playbook, "readingTime">[] = [
   acceptanceCriteriaPlaybook,
   firstTimeWorkingWithAnApi,
   twoSystemsShowDifferentNumbers,
+  firstTimeWritingAUserStory,
 ];
 
 function withReadingTime(guide: Omit<Playbook, "readingTime">): Playbook {
