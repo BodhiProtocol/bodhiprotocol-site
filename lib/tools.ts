@@ -38,7 +38,7 @@ export const tools: Lab[] = [
     category: "Business Analysis",
     liveUrl: "https://requirements-translator.bodhiprotocol.com/",
     githubUrl: "https://github.com/BodhiProtocol/requirements-translator",
-    roadmap: ["Add edge-case / acceptance-criteria prompts"],
+    roadmap: ["Broaden role detection beyond the current 12-keyword list"],
   },
   {
     slug: "business-analysis-blueprint-explorer",
