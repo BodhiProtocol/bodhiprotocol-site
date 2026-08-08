@@ -238,3 +238,87 @@ export interface Lab {
   githubUrl?: string;
   roadmap?: string[];
 }
+
+/** A small labeled flow of steps, e.g. ["Comment thread", "Decision made", "Update requirement"]. */
+export interface PlaybookVisual {
+  steps: string[];
+}
+
+/** Two related-but-distinct concepts shown neutrally side by side (not a right/wrong comparison). */
+export interface PlaybookComparison {
+  leftLabel: string;
+  left: string;
+  rightLabel: string;
+  right: string;
+}
+
+export interface PlaybookTemplate {
+  label: string;
+  value: string;
+}
+
+export interface PlaybookHack {
+  number: number;
+  title: string;
+  /** One-line payoff, always visible on the collapsed card. */
+  insight: string;
+  /** Expanded explanation, shown when the card opens. */
+  explanation?: string;
+  visual?: PlaybookVisual;
+  /** A before-state (or states) contrasted with `after`. */
+  before?: string | string[];
+  /** A single after-state, or an ordered list of steps replacing the before-state. */
+  after?: string | string[];
+  /** Two distinct-but-related concepts shown neutrally, e.g. business rule vs. acceptance criterion. */
+  compare?: PlaybookComparison;
+  /** A plain, non-sequential bullet list (e.g. dashboard widgets). */
+  list?: string[];
+  /** A checkbox-style readiness list. */
+  checklist?: string[];
+  whyItHelps: string;
+  whenToUse?: string;
+  /** Copyable snippet rendered in a CopyTemplate block. */
+  template?: string;
+  /** Overrides CopyTemplate's default "Copy template" button label. */
+  templateLabel?: string;
+  /** Multiple named copyable snippets (e.g. several saved JQL filters), each with its own copy button. */
+  templates?: PlaybookTemplate[];
+  proTip?: string;
+}
+
+export interface Playbook {
+  slug: string;
+  title: string;
+  description: string;
+  /** Longer one-sentence summary used on the landing page's featured card and as the SEO description fallback. Falls back to the first `intro` paragraph when omitted. */
+  summary?: string;
+  category: string;
+  tags: string[];
+  author: string;
+  date: string;
+  readingTime: string;
+  /** Short framing paragraphs shown under the hero, before the first hack. */
+  intro?: string[];
+  /** Who this guide is written for, e.g. ["Business Analysts", "QA professionals"]. */
+  audience?: string[];
+  /** Highlighted on the /ba-playbooks landing page. At most one guide should set this. */
+  featured?: boolean;
+  hacks: PlaybookHack[];
+  /** Word shown on each card's numbered badge (e.g. "Hack", "Move", "Step"). Defaults to "Hack". */
+  itemLabel?: string;
+  /** Two-line closing statement heading, e.g. ["You don't need more Jira.", "You need clearer Jira."]. */
+  closingHeading?: string[];
+  closingBody?: string;
+  /** Template text offered as a quick "Copy the template" action in the closing section. */
+  closingTemplate?: string;
+  /** Feature name shown above the closing template preview, e.g. "BA Jira Story Template". Falls back to "Reusable template" when omitted. */
+  closingTemplateName?: string;
+  /** Roadmap topics (not live pages) shown as inert "Coming soon" cards under Related BA Playbooks. */
+  relatedTopics?: string[];
+  /** Hand-picked slugs of genuinely related live playbooks, in order. Overrides the automatic category/tag scoring in getRelatedPlaybooks when present. */
+  relatedPlaybookSlugs?: string[];
+  /** Overrides the default `<title>` for this guide's page. */
+  seoTitle?: string;
+  /** Overrides the default meta/OG description for this guide's page. */
+  seoDescription?: string;
+}

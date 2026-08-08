@@ -88,3 +88,24 @@ export async function recordHeartbeat(params: HeartbeatParams): Promise<void> {
     WHERE id = ${params.pageViewId}::bigint AND session_id = ${params.sessionId}
   `;
 }
+
+export type EventParams = {
+  sessionId: string | null;
+  name: string;
+  path: string | null;
+  metadata: Record<string, unknown> | null;
+};
+
+/** Records one named product event (e.g. a template copy or a cross-link click). */
+export async function recordEvent(params: EventParams): Promise<void> {
+  const sql = await getSql();
+  await sql`
+    INSERT INTO events (session_id, name, path, metadata)
+    VALUES (
+      ${params.sessionId},
+      ${params.name},
+      ${params.path},
+      ${params.metadata ? JSON.stringify(params.metadata) : null}::jsonb
+    )
+  `;
+}

@@ -16,7 +16,7 @@ import {
   DropdownMenuLinkItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { navLinks, seriesLinks } from "@/lib/nav-links";
+import { isNavLinkActive, navLinks, seriesLinks } from "@/lib/nav-links";
 import type { SearchItem } from "@/lib/search-index";
 import { cn } from "@/lib/utils";
 
@@ -61,10 +61,10 @@ function Navbar({ searchItems }: { searchItems: SearchItem[] }) {
               <Link
                 key={link.href}
                 href={link.href}
-                aria-current={pathname === link.href ? "page" : undefined}
+                aria-current={isNavLinkActive(pathname, link.href) ? "page" : undefined}
                 className={cn(
                   navLinkClassName,
-                  pathname === link.href && "text-foreground",
+                  isNavLinkActive(pathname, link.href) && "text-foreground",
                 )}
               >
                 {link.label}
@@ -76,7 +76,7 @@ function Navbar({ searchItems }: { searchItems: SearchItem[] }) {
                 className={cn(
                   navLinkClassName,
                   "inline-flex items-center gap-1",
-                  seriesLinks.some((link) => pathname === link.href) &&
+                  seriesLinks.some((link) => isNavLinkActive(pathname, link.href)) &&
                     "text-foreground",
                 )}
               >
@@ -88,7 +88,7 @@ function Navbar({ searchItems }: { searchItems: SearchItem[] }) {
                   <DropdownMenuLinkItem
                     key={link.href}
                     render={<Link href={link.href} />}
-                    aria-current={pathname === link.href ? "page" : undefined}
+                    aria-current={isNavLinkActive(pathname, link.href) ? "page" : undefined}
                   >
                     {link.label}
                   </DropdownMenuLinkItem>
@@ -100,10 +100,10 @@ function Navbar({ searchItems }: { searchItems: SearchItem[] }) {
               <Link
                 key={link.href}
                 href={link.href}
-                aria-current={pathname === link.href ? "page" : undefined}
+                aria-current={isNavLinkActive(pathname, link.href) ? "page" : undefined}
                 className={cn(
                   navLinkClassName,
-                  pathname === link.href && "text-foreground",
+                  isNavLinkActive(pathname, link.href) && "text-foreground",
                 )}
               >
                 {link.label}

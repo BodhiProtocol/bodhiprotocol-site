@@ -45,3 +45,19 @@ CREATE TABLE IF NOT EXISTS page_views (
 CREATE INDEX IF NOT EXISTS page_views_session_id_idx ON page_views (session_id);
 CREATE INDEX IF NOT EXISTS page_views_path_idx ON page_views (path);
 CREATE INDEX IF NOT EXISTS page_views_viewed_at_idx ON page_views (viewed_at);
+
+-- One row per named product event (e.g. "ba_playbook_template_copied"), for
+-- interactions a raw pageview can't capture. session_id is nullable -- an event
+-- firing before a session cookie exists yet is still worth keeping.
+CREATE TABLE IF NOT EXISTS events (
+  id BIGSERIAL PRIMARY KEY,
+  session_id TEXT REFERENCES sessions (id),
+  name TEXT NOT NULL,
+  path TEXT,
+  metadata JSONB,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS events_name_idx ON events (name);
+CREATE INDEX IF NOT EXISTS events_session_id_idx ON events (session_id);
+CREATE INDEX IF NOT EXISTS events_created_at_idx ON events (created_at);

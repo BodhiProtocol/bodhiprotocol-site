@@ -10,10 +10,12 @@ import { H1 } from "@/components/ui/typography";
 import { Divider } from "@/components/ui/divider";
 import { EssayMeta } from "@/components/essays/essay-meta";
 import { ContentNav } from "@/components/shared/content-nav";
+import { ContentRecommendationList } from "@/components/shared/content-recommendation";
 import { ReadNextEssays } from "@/components/essays/read-next-essays";
 import { RelatedEssays } from "@/components/essays/related-essays";
 import { TableOfContents } from "@/components/shared/table-of-contents";
 import { JsonLd } from "@/components/shared/json-ld";
+import { essayRecommendations } from "@/lib/content-relations";
 import {
   BrokerValidationFlow,
   ContinueLearning,
@@ -205,6 +207,10 @@ export default async function EssayPage({ params }: EssayPageProps) {
                 components={essayMdxComponents}
               />
             </div>
+            <ContentRecommendationList
+              items={essayRecommendations[essay.slug] ?? []}
+              analyticsEvent="essay_related_playbook_clicked"
+            />
             <Divider />
             <ReadNextEssays essays={readNext} />
             <RelatedEssays essays={related} />

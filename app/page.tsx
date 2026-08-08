@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Hero } from "@/components/layout/hero";
 import { FeaturedEssays } from "@/components/home/featured-essays";
+import { PlaybooksTeaser } from "@/components/home/playbooks-teaser";
 import { NewsletterSignup } from "@/components/home/newsletter-signup";
 import { SuggestedPathTeaser } from "@/components/home/suggested-path-teaser";
 import { FeaturedBlueprints } from "@/components/home/featured-blueprints";
@@ -50,7 +51,7 @@ export default function Home() {
       <Hero
         eyebrow="BodhiProtocol"
         title="Learn capital markets and business analysis visually."
-        description="Roadmaps, essays, tools, and simulators for business analysts who want to understand markets, requirements, trade lifecycle, and AI systems."
+        description="Roadmaps, essays, BA Playbooks, tools, and simulators for business analysts who want to understand markets, requirements, trade lifecycle, and AI systems."
         actions={
           <>
             <Button
@@ -114,6 +115,7 @@ export default function Home() {
         </Container>
       </Section>
       <FeaturedEssays />
+      <PlaybooksTeaser />
       <NewsletterSignup />
       <SuggestedPathTeaser />
       <FeaturedBlueprints />

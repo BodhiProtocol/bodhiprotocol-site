@@ -3,7 +3,16 @@
 import * as React from "react";
 import { useRouter } from "next/navigation";
 import Fuse, { type FuseResultMatch } from "fuse.js";
-import { BookOpen, Compass, FlaskConical, Library, Sparkles, Users, Waypoints } from "lucide-react";
+import {
+  BookOpen,
+  ClipboardList,
+  Compass,
+  FlaskConical,
+  Library,
+  Sparkles,
+  Users,
+  Waypoints,
+} from "lucide-react";
 
 import {
   CommandDialog,
@@ -22,6 +31,7 @@ const GROUP_CONFIG: Record<SearchItemType, { label: string; icon: typeof BookOpe
   invisibleBusiness: { label: "Invisible Businesses", icon: Sparkles },
   greatMind: { label: "Great Minds", icon: Users },
   blueprint: { label: "Project Lighthouse", icon: Compass },
+  playbook: { label: "BA Playbooks", icon: ClipboardList },
   tool: { label: "Tools", icon: FlaskConical },
   resource: { label: "Library", icon: Library },
   simulator: { label: "Simulators", icon: Waypoints },
@@ -69,6 +79,7 @@ function SearchDialog({ items, open, onOpenChange }: SearchDialogProps) {
       invisibleBusiness: [],
       greatMind: [],
       blueprint: [],
+      playbook: [],
       tool: [],
       resource: [],
       simulator: [],

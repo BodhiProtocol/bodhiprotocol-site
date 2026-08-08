@@ -1,5 +1,6 @@
 import { getAllBlueprints } from "@/lib/blueprints";
 import { getAllEssays } from "@/lib/essays";
+import { getAllPlaybooks } from "@/lib/ba-playbooks";
 import { getAllGreatMinds } from "@/lib/great-minds";
 import { getAllInvisibleBusinesses } from "@/lib/invisible-businesses";
 import { getAllTools } from "@/lib/tools";
@@ -10,6 +11,7 @@ export type SearchItemType =
   | "invisibleBusiness"
   | "greatMind"
   | "blueprint"
+  | "playbook"
   | "tool"
   | "resource"
   | "simulator";
@@ -63,6 +65,16 @@ export function getSearchIndex(): SearchItem[] {
     tags: [...blueprint.tags, blueprint.season],
     content: blueprint.content,
     href: `/lighthouse/${blueprint.slug}`,
+  }));
+
+  const playbooks: SearchItem[] = getAllPlaybooks().map((guide) => ({
+    type: "playbook",
+    title: guide.title,
+    description: guide.description,
+    category: guide.category,
+    tags: guide.tags,
+    content: guide.hacks.map((hack) => `${hack.title} ${hack.insight}`).join(" "),
+    href: `/ba-playbooks/${guide.slug}`,
   }));
 
   const tools: SearchItem[] = getAllTools().map((tool) => ({
@@ -124,5 +136,14 @@ export function getSearchIndex(): SearchItem[] {
     },
   ];
 
-  return [...essays, ...invisibleBusinesses, ...greatMinds, ...blueprints, ...tools, ...resources, ...simulators];
+  return [
+    ...essays,
+    ...invisibleBusinesses,
+    ...greatMinds,
+    ...blueprints,
+    ...playbooks,
+    ...tools,
+    ...resources,
+    ...simulators,
+  ];
 }

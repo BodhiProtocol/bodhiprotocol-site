@@ -17,7 +17,7 @@ export const siteConfig = {
   url: siteUrl,
   title: "BodhiProtocol - Capital Markets and BA Learning",
   description:
-    "Visual roadmaps, essays, tools, and simulators for business analysts learning capital markets, trade lifecycle, requirements, decision-making, and AI systems.",
+    "Visual roadmaps, essays, BA Playbooks, tools, and simulators for business analysts learning capital markets, trade lifecycle, requirements, decision-making, and AI systems.",
   sameAs: [
     "https://github.com/BodhiProtocol",
     "https://www.linkedin.com/in/surya-singh-7b6ab144/",

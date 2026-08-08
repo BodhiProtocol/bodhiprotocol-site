@@ -7,7 +7,7 @@ import { X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/layout/logo";
-import { navLinks, seriesLinks } from "@/lib/nav-links";
+import { isNavLinkActive, navLinks, seriesLinks } from "@/lib/nav-links";
 import { cn } from "@/lib/utils";
 
 interface MobileDrawerProps {
@@ -64,10 +64,10 @@ function MobileDrawer({ open, onOpenChange }: MobileDrawerProps) {
                 >
                   <Link
                     href={link.href}
-                    aria-current={pathname === link.href ? "page" : undefined}
+                    aria-current={isNavLinkActive(pathname, link.href) ? "page" : undefined}
                     className={cn(
                       "block rounded-md px-3 py-2 font-heading text-lg text-foreground/80 transition-colors hover:bg-muted hover:text-foreground",
-                      pathname === link.href && "text-brand",
+                      isNavLinkActive(pathname, link.href) && "text-brand",
                     )}
                   >
                     {link.label}
@@ -92,10 +92,10 @@ function MobileDrawer({ open, onOpenChange }: MobileDrawerProps) {
                 >
                   <Link
                     href={link.href}
-                    aria-current={pathname === link.href ? "page" : undefined}
+                    aria-current={isNavLinkActive(pathname, link.href) ? "page" : undefined}
                     className={cn(
                       "block rounded-md px-3 py-2 font-heading text-lg text-foreground/80 transition-colors hover:bg-muted hover:text-foreground",
-                      pathname === link.href && "text-brand",
+                      isNavLinkActive(pathname, link.href) && "text-brand",
                     )}
                   >
                     {link.label}
@@ -112,10 +112,10 @@ function MobileDrawer({ open, onOpenChange }: MobileDrawerProps) {
                 >
                   <Link
                     href={link.href}
-                    aria-current={pathname === link.href ? "page" : undefined}
+                    aria-current={isNavLinkActive(pathname, link.href) ? "page" : undefined}
                     className={cn(
                       "block rounded-md px-3 py-2 font-heading text-lg text-foreground/80 transition-colors hover:bg-muted hover:text-foreground",
-                      pathname === link.href && "text-brand",
+                      isNavLinkActive(pathname, link.href) && "text-brand",
                     )}
                   >
                     {link.label}

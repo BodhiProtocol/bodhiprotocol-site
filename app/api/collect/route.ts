@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { recordPageview, recordHeartbeat } from "@/lib/analytics/ingest";
+import { recordPageview, recordHeartbeat, recordEvent } from "@/lib/analytics/ingest";
 import { markSessionLive } from "@/lib/analytics/kv";
 import { ADMIN_COOKIE_NAME, verifyAdminSessionToken } from "@/lib/auth/admin";
 
@@ -74,6 +74,22 @@ export async function POST(request: NextRequest) {
       const response = new NextResponse(null, { status: 204 });
       setCookie(response, SESSION_COOKIE, sessionId, SESSION_MAX_AGE_SECONDS);
       return response;
+    }
+
+    if (body.type === "event") {
+      if (typeof body.name !== "string" || !body.name) {
+        return new NextResponse(null, { status: 204 });
+      }
+
+      await recordEvent({
+        sessionId: request.cookies.get(SESSION_COOKIE)?.value ?? null,
+        name: body.name,
+        path: typeof body.path === "string" ? body.path : null,
+        metadata:
+          body.metadata && typeof body.metadata === "object" ? body.metadata : null,
+      });
+
+      return new NextResponse(null, { status: 204 });
     }
   } catch {
     // Analytics not configured yet (no DATABASE_URL) or a transient DB error --
