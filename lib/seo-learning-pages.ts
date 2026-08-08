@@ -90,6 +90,12 @@ export const seoLearningPages: SeoLearningPage[] = [
     ],
     related: [
       {
+        label: "How to Start a BA Career From Scratch",
+        href: "/essays/how-to-start-a-business-analyst-career-from-scratch",
+        description:
+          "No experience? Build evidence instead: a practical roadmap and a free portfolio project template.",
+      },
+      {
         label: "How Trade Execution Actually Works",
         href: "/essays/shiv-pressed-buy-trade-execution",
         description:
@@ -184,6 +190,12 @@ export const seoLearningPages: SeoLearningPage[] = [
       },
     ],
     related: [
+      {
+        label: "How to Start a BA Career From Scratch",
+        href: "/essays/how-to-start-a-business-analyst-career-from-scratch",
+        description:
+          "No experience? Build evidence instead: a practical roadmap and a free portfolio project template.",
+      },
       {
         label: "Capital Markets Business Analyst Roadmap",
         href: "/capital-markets-business-analyst",
