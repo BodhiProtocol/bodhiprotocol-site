@@ -36,7 +36,10 @@ function TagButton({ className, active, type = "button", ...props }: TagButtonPr
       aria-pressed={active}
       type={type}
       className={tagClassName(
-        cn("cursor-pointer hover:border-foreground/30 hover:text-foreground", className),
+        cn(
+          "cursor-pointer outline-none hover:border-foreground/30 hover:text-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50",
+          className,
+        ),
       )}
       {...props}
     />

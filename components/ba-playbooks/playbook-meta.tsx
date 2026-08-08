@@ -16,10 +16,7 @@ function PlaybookMeta({ guide }: { guide: Playbook }) {
         {guide.author} · {formattedDate} · {guide.readingTime} · {guide.hacks.length} practices
       </Muted>
       <div className="flex flex-wrap gap-2">
-        <Tag active>{guide.category}</Tag>
-        {guide.tags.map((tag) => (
-          <Tag key={tag}>{tag}</Tag>
-        ))}
+        <Tag active>{guide.tags[0]}</Tag>
       </div>
     </div>
   );

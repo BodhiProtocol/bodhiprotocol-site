@@ -10,6 +10,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
   const { slug } = await params;
   const guide = getPlaybookBySlug(slug);
   const accent = (guide && categoryColors[guide.category]) || defaultCategoryColor;
+  const primaryTag = guide?.tags[0];
 
   return new ImageResponse(
     (
@@ -47,7 +48,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
                   border: `2px solid ${accent}`,
                 }}
               >
-                BA Playbook · {guide.category}
+                BA Playbook · {primaryTag}
               </div>
             ) : null}
             <div style={{ display: "flex", fontSize: 56, fontWeight: 600, lineHeight: 1.2 }}>

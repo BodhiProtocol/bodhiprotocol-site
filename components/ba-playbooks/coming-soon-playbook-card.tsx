@@ -1,22 +1,20 @@
-import { Compass } from "lucide-react";
-
 import { Card } from "@/components/ui/card";
 import { Muted } from "@/components/ui/typography";
 
 // Roadmap topic with no page yet — visually inert (not a link) so it reads as
-// "on the way" rather than a broken or fake destination.
+// "on the way" rather than a broken or fake destination. Deliberately quieter
+// than a live PlaybookCard (smaller text, no icon, softer border) so the live
+// library stays the visually dominant thing on the page.
 function ComingSoonPlaybookCard({ title }: { title: string }) {
   return (
-    <Card className="h-full gap-3 border border-dashed border-border px-(--card-spacing) opacity-70 ring-0">
-      <div className="flex items-start justify-between gap-2">
-        <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground">
-          <Compass className="size-4.5" />
-        </span>
-      </div>
-      <h3 className="font-heading text-lg leading-snug font-medium text-balance text-foreground/80">
+    <Card
+      size="sm"
+      className="h-full justify-center gap-1.5 border-dashed border-border/60 px-(--card-spacing) opacity-60 ring-0"
+    >
+      <h3 className="font-heading text-sm leading-snug font-medium text-balance text-foreground/70">
         {title}
       </h3>
-      <Muted className="mt-auto font-mono text-xs tracking-wide uppercase">Coming soon</Muted>
+      <Muted className="font-mono text-[0.65rem] tracking-wide uppercase">Coming soon</Muted>
     </Card>
   );
 }

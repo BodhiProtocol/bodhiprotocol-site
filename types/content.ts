@@ -269,6 +269,8 @@ export interface PlaybookHack {
   before?: string | string[];
   /** A single after-state, or an ordered list of steps replacing the before-state. */
   after?: string | string[];
+  /** Overrides the before/after block's default "The shift" caption. Pass "" to omit it when the before/after is self-explanatory. */
+  shiftLabel?: string;
   /** Two distinct-but-related concepts shown neutrally, e.g. business rule vs. acceptance criterion. */
   compare?: PlaybookComparison;
   /** A plain, non-sequential bullet list (e.g. dashboard widgets). */
@@ -284,6 +286,8 @@ export interface PlaybookHack {
   /** Multiple named copyable snippets (e.g. several saved JQL filters), each with its own copy button. */
   templates?: PlaybookTemplate[];
   proTip?: string;
+  /** Jump link to another section on the same page (e.g. pointing at the closing template instead of repeating it). */
+  anchorLink?: { label: string; href: string };
 }
 
 export interface Playbook {

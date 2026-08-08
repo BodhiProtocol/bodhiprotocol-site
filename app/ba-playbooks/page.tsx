@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
-import { Eyebrow, H1, H2, Lead, Muted } from "@/components/ui/typography";
+import { Eyebrow, H1, H2, Lead } from "@/components/ui/typography";
 import { FeaturedPlaybookCard } from "@/components/ba-playbooks/featured-playbook-card";
 import { PlaybookGrid } from "@/components/ba-playbooks/playbook-grid";
 import { getAllPlaybooks, getFeaturedPlaybook, plannedPlaybooks } from "@/lib/ba-playbooks";
@@ -40,9 +40,6 @@ export default function PlaybooksPage() {
               The work nobody really teaches you.
             </p>
             <Lead>{description}</Lead>
-            <Muted>
-              Requirements, Jira, UAT, APIs, data, stakeholders, delivery and capital markets.
-            </Muted>
           </div>
         </Container>
       </Section>

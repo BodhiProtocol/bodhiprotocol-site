@@ -64,12 +64,9 @@ export const jiraHacksForBusinessAnalysts: Omit<Playbook, "readingTime"> = {
   ],
   audience: [
     "Business Analysts",
-    "Senior Business Analysts",
-    "Functional Analysts",
     "Product Owners",
     "QA professionals",
     "Developers working closely with BAs",
-    "Students learning practical BA work",
   ],
   featured: true,
   seoTitle: "Jira Hacks for Business Analysts — 12 Practical Tips",
@@ -87,6 +84,7 @@ export const jiraHacksForBusinessAnalysts: Omit<Playbook, "readingTime"> = {
       number: 1,
       title: "Stop writing recurring tickets from scratch",
       insight: "If the structure already works, reuse it.",
+      shiftLabel: "",
       before: "Create a completely new Jira ticket every time.",
       after: [
         "Clone the closest matching ticket",
@@ -257,11 +255,23 @@ export const jiraHacksForBusinessAnalysts: Omit<Playbook, "readingTime"> = {
     {
       number: 12,
       title: "Build one reusable BA story template",
-      insight: "Every hack in this guide fits into one reusable ticket skeleton.",
+      insight: "Every hack in this guide eventually comes back to one thing.",
+      explanation: "Start every ticket with a structure that reminds you what to think about.",
+      list: [
+        "Context",
+        "Business Problem",
+        "User Story",
+        "Business Rules",
+        "Acceptance Criteria",
+        "Data Requirements",
+        "Dependencies",
+        "Out of Scope",
+        "Open Questions",
+        "Decisions",
+      ],
       whyItHelps:
         "A single master template means every new ticket starts from the same complete structure instead of a blank page.",
-      template: masterStoryTemplate,
-      templateLabel: "Copy Jira Story Template",
+      anchorLink: { label: "Jump to the full template", href: "#closing-template" },
     },
   ],
 };

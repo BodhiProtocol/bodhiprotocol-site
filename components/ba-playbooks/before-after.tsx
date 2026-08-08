@@ -14,7 +14,7 @@ function BeforeAfter({ before, after, label = "The shift" }: BeforeAfterProps) {
 
   return (
     <div className="not-prose flex flex-col items-stretch gap-2">
-      <FieldLabel>{label}</FieldLabel>
+      {label ? <FieldLabel>{label}</FieldLabel> : null}
       <div className="flex flex-col gap-1.5 rounded-lg border border-destructive/25 bg-destructive/5 px-3 py-2.5 text-sm">
         {beforeLines.map((line) => (
           <div key={line} className="flex items-start gap-2">

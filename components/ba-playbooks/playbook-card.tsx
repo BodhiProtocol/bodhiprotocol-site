@@ -22,7 +22,7 @@ function PlaybookCard({ guide }: { guide: Playbook }) {
       <Card className="h-full transition-[transform,box-shadow] duration-300 group-hover:-translate-y-1 group-hover:shadow-lg group-hover:shadow-brand/15 group-hover:ring-brand/60">
         <div className="flex flex-1 flex-col gap-3 px-(--card-spacing)">
           <div className="flex items-start justify-between gap-2">
-            <Tag>{guide.category}</Tag>
+            <Tag>{guide.tags[0]}</Tag>
             {Icon ? (
               <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-brand/10 text-brand">
                 <Icon className="size-4.5" />

@@ -1,4 +1,4 @@
-import { ChevronDown } from "lucide-react";
+import { ArrowDown, ChevronDown } from "lucide-react";
 
 import { BeforeAfter } from "@/components/ba-playbooks/before-after";
 import { BulletList } from "@/components/ba-playbooks/bullet-list";
@@ -43,7 +43,9 @@ function HackCard({ hack, itemLabel = "Hack" }: { hack: PlaybookHack; itemLabel?
           <p className="text-sm leading-relaxed text-foreground/85">{hack.explanation}</p>
         ) : null}
         {hack.visual ? <MiniDiagram steps={hack.visual.steps} /> : null}
-        {hack.before && hack.after ? <BeforeAfter before={hack.before} after={hack.after} /> : null}
+        {hack.before && hack.after ? (
+          <BeforeAfter before={hack.before} after={hack.after} label={hack.shiftLabel} />
+        ) : null}
         {hack.compare ? <SideBySide {...hack.compare} /> : null}
         {hack.list ? <BulletList items={hack.list} /> : null}
         {hack.checklist ? <Checklist items={hack.checklist} /> : null}
@@ -64,6 +66,15 @@ function HackCard({ hack, itemLabel = "Hack" }: { hack: PlaybookHack; itemLabel?
         ) : null}
         {hack.templates?.length ? <TemplateList templates={hack.templates} /> : null}
         {hack.proTip ? <ProTip>{hack.proTip}</ProTip> : null}
+        {hack.anchorLink ? (
+          <a
+            href={hack.anchorLink.href}
+            className="inline-flex w-fit items-center gap-1.5 text-sm font-medium text-brand hover:underline"
+          >
+            {hack.anchorLink.label}
+            <ArrowDown className="size-3.5" aria-hidden="true" />
+          </a>
+        ) : null}
       </div>
     </details>
   );

@@ -5,6 +5,7 @@ import * as React from "react";
 import { CategoryFilter } from "@/components/ba-playbooks/category-filter";
 import { ComingSoonPlaybookCard } from "@/components/ba-playbooks/coming-soon-playbook-card";
 import { PlaybookCard } from "@/components/ba-playbooks/playbook-card";
+import { Muted } from "@/components/ui/typography";
 import { trackEvent } from "@/lib/analytics/track-event";
 import type { Playbook } from "@/types/content";
 
@@ -44,11 +45,20 @@ function PlaybookGrid({ guides, planned }: PlaybookGridProps) {
           {filtered.map((guide) => (
             <PlaybookCard key={guide.slug} guide={guide} />
           ))}
-          {category === "All"
-            ? planned.map((title) => <ComingSoonPlaybookCard key={title} title={title} />)
-            : null}
         </div>
       )}
+      {category === "All" && planned.length > 0 ? (
+        <div className="flex flex-col gap-4 border-t border-border pt-8">
+          <Muted className="font-mono text-xs font-medium tracking-[0.14em] uppercase">
+            Coming next
+          </Muted>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {planned.map((title) => (
+              <ComingSoonPlaybookCard key={title} title={title} />
+            ))}
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }

@@ -48,7 +48,10 @@ function PlaybookEnding({ guide, url }: PlaybookEndingProps) {
       ) : null}
 
       {guide.closingTemplate ? (
-        <div className="flex flex-col gap-4 rounded-2xl border border-border bg-muted/30 p-6 sm:p-8">
+        <div
+          id="closing-template"
+          className="flex scroll-mt-28 flex-col gap-4 rounded-2xl border border-brand/25 bg-brand/[0.04] p-6 sm:p-8"
+        >
           <div className="flex flex-col gap-1.5">
             <Eyebrow className="text-brand">Take this with you</Eyebrow>
             <H3>{guide.closingTemplateName ?? "Reusable template"}</H3>
