@@ -308,6 +308,8 @@ export interface Playbook {
   /** Highlighted on the /ba-playbooks landing page. At most one guide should set this. */
   featured?: boolean;
   hacks: PlaybookHack[];
+  /** Raw prose driving reading-time calculation for playbooks whose body is a bespoke narrative component (not rendered from `hacks`) rather than structured card data. Omitted for standard card-based playbooks. */
+  bodyText?: string;
   /** Word shown on each card's numbered badge (e.g. "Hack", "Move", "Step"). Defaults to "Hack". */
   itemLabel?: string;
   /** Two-line closing statement heading, e.g. ["You don't need more Jira.", "You need clearer Jira."]. */

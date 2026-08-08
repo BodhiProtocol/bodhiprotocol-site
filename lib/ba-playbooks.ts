@@ -7,6 +7,7 @@ import { acceptanceCriteriaPlaybook } from "@/content/ba-playbooks/acceptance-cr
 import { firstTimeWorkingWithAnApi } from "@/content/ba-playbooks/first-time-working-with-an-api";
 import { twoSystemsShowDifferentNumbers } from "@/content/ba-playbooks/two-systems-show-different-numbers";
 import { firstTimeWritingAUserStory } from "@/content/ba-playbooks/first-time-writing-a-user-story";
+import { storyCarriedOverFourSprints } from "@/content/ba-playbooks/story-carried-over-four-sprints";
 
 // Playbooks are structured card data (numbered hacks with before/after,
 // templates, etc.) rather than prose, so each playbook is a typed data module
@@ -19,11 +20,13 @@ const playbookEntries: Omit<Playbook, "readingTime">[] = [
   firstTimeWorkingWithAnApi,
   twoSystemsShowDifferentNumbers,
   firstTimeWritingAUserStory,
+  storyCarriedOverFourSprints,
 ];
 
 function withReadingTime(guide: Omit<Playbook, "readingTime">): Playbook {
   const text = [
     ...(guide.intro ?? []),
+    guide.bodyText ?? "",
     guide.closingBody ?? "",
     ...guide.hacks.flatMap((hack) => [
       hack.title,
