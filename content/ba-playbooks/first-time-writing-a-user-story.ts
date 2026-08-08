@@ -160,6 +160,7 @@ export const firstTimeWritingAUserStory: Omit<Playbook, "readingTime"> = {
     "requirement-elicitation-playbook",
     "acceptance-criteria-playbook",
     "jira-hacks-for-business-analysts",
+    "story-carried-over-four-sprints",
   ],
   hacks: [
     {
