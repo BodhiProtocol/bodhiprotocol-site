@@ -8,6 +8,7 @@ import { firstTimeWorkingWithAnApi } from "@/content/ba-playbooks/first-time-wor
 import { twoSystemsShowDifferentNumbers } from "@/content/ba-playbooks/two-systems-show-different-numbers";
 import { firstTimeWritingAUserStory } from "@/content/ba-playbooks/first-time-writing-a-user-story";
 import { storyCarriedOverFourSprints } from "@/content/ba-playbooks/story-carried-over-four-sprints";
+import { whoOwnsTheRequirement } from "@/content/ba-playbooks/who-owns-the-requirement";
 
 // Playbooks are structured card data (numbered hacks with before/after,
 // templates, etc.) rather than prose, so each playbook is a typed data module
@@ -21,6 +22,7 @@ const playbookEntries: Omit<Playbook, "readingTime">[] = [
   twoSystemsShowDifferentNumbers,
   firstTimeWritingAUserStory,
   storyCarriedOverFourSprints,
+  whoOwnsTheRequirement,
 ];
 
 function withReadingTime(guide: Omit<Playbook, "readingTime">): Playbook {

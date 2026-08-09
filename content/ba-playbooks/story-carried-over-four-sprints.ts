@@ -102,6 +102,7 @@ export const storyCarriedOverFourSprints: Omit<Playbook, "readingTime"> = {
     "first-time-writing-a-user-story",
     "acceptance-criteria-playbook",
     "jira-hacks-for-business-analysts",
+    "who-owns-the-requirement",
   ],
   hacks: [
     {

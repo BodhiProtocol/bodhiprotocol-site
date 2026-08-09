@@ -14,6 +14,7 @@ import { HackCard } from "@/components/ba-playbooks/hack-card";
 import { PlaybookEnding } from "@/components/ba-playbooks/playbook-ending";
 import { RelatedPlaybooks } from "@/components/ba-playbooks/related-playbooks";
 import { StoryCarriedOverBody } from "@/components/ba-playbooks/story-carried-over-body";
+import { WhoOwnsTheRequirementBody } from "@/components/ba-playbooks/who-owns-the-requirement-body";
 import { ContentNav } from "@/components/shared/content-nav";
 import { ContentRecommendationList } from "@/components/shared/content-recommendation";
 import { JsonLd } from "@/components/shared/json-ld";
@@ -35,6 +36,7 @@ interface PlaybookPageProps {
 // same slug-keyed registry pattern used for bespoke Invisible Businesses episodes.
 const customPlaybookBodies: Partial<Record<string, () => ReactNode>> = {
   "story-carried-over-four-sprints": StoryCarriedOverBody,
+  "who-owns-the-requirement": WhoOwnsTheRequirementBody,
 };
 
 export function generateStaticParams() {
