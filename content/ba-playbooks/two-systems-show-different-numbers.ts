@@ -48,7 +48,7 @@ export const twoSystemsShowDifferentNumbers: Omit<Playbook, "readingTime"> = {
     "Most data mismatches resolve into a one-sentence answer once someone traces a handful of records instead of arguing about the totals. The totals are a symptom. The definition, timing or status gap underneath them is the actual finding.",
   closingTemplate: investigationChecklist,
   closingTemplateName: "Data Mismatch Investigation Checklist",
-  relatedTopics: ["Trade Lifecycle Playbook", "Front-to-Back Trade Trace Guide"],
+  relatedTopics: ["Front-to-Back Trade Trace Guide"],
   hacks: [
     {
       number: 1,
