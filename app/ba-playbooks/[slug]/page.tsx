@@ -86,7 +86,6 @@ export default async function PlaybookPage({ params }: PlaybookPageProps) {
   const { previous, next } = getAdjacentPlaybooks(slug);
   const related = getRelatedPlaybooks(guide);
   const guideUrl = `${siteConfig.url}/ba-playbooks/${guide.slug}`;
-  const number = getAllPlaybooks().findIndex((entry) => entry.slug === guide.slug) + 1;
   const CustomBody = customPlaybookBodies[guide.slug];
 
   const articleJsonLd = {
@@ -125,7 +124,7 @@ export default async function PlaybookPage({ params }: PlaybookPageProps) {
       <Container>
         <div className={CustomBody ? "flex justify-center" : "grid gap-12 lg:grid-cols-[1fr_240px]"}>
           <article className={CustomBody ? "flex min-w-0 max-w-3xl flex-col gap-8" : "flex min-w-0 flex-col gap-8"}>
-            <PlaybookHero guide={guide} number={number} />
+            <PlaybookHero guide={guide} />
             <div className="flex max-w-2xl flex-col gap-3">
               <PlaybookMeta guide={guide} />
               {guide.audience?.length ? <AudienceList audience={guide.audience} /> : null}
