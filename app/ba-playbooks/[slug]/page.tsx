@@ -16,6 +16,7 @@ import { RelatedPlaybooks } from "@/components/ba-playbooks/related-playbooks";
 import { StoryCarriedOverBody } from "@/components/ba-playbooks/story-carried-over-body";
 import { WhoOwnsTheRequirementBody } from "@/components/ba-playbooks/who-owns-the-requirement-body";
 import { BusinessAnalystUserStoryTemplateBody } from "@/components/ba-playbooks/business-analyst-user-story-template-body";
+import { FrontOfficeMiddleOfficeBackOfficeBody } from "@/components/ba-playbooks/front-office-middle-office-back-office-body";
 import { ContentNav } from "@/components/shared/content-nav";
 import { ContentRecommendationList } from "@/components/shared/content-recommendation";
 import { JsonLd } from "@/components/shared/json-ld";
@@ -39,6 +40,7 @@ const customPlaybookBodies: Partial<Record<string, () => ReactNode>> = {
   "story-carried-over-four-sprints": StoryCarriedOverBody,
   "who-owns-the-requirement": WhoOwnsTheRequirementBody,
   "business-analyst-user-story-template": BusinessAnalystUserStoryTemplateBody,
+  "front-office-middle-office-back-office": FrontOfficeMiddleOfficeBackOfficeBody,
 };
 
 export function generateStaticParams() {
