@@ -6,15 +6,13 @@ import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { Muted } from "@/components/ui/typography";
-import { getAllPlaybooks, getFeaturedPlaybook } from "@/lib/ba-playbooks";
+import { getFeaturedPlaybook } from "@/lib/ba-playbooks";
 
 // Compact, editorial homepage slot for BA Playbooks -- one featured card, not
 // a grid, so it stays quieter than the hero and doesn't compete with it.
 function PlaybooksTeaser() {
   const featured = getFeaturedPlaybook();
   if (!featured) return null;
-
-  const number = getAllPlaybooks().findIndex((entry) => entry.slug === featured.slug) + 1;
 
   return (
     <Section className="bg-muted/30">
@@ -41,11 +39,7 @@ function PlaybooksTeaser() {
             <ArrowRight className="size-4 transition-transform duration-200 ease-out group-hover/button:translate-x-1" />
           </Button>
         </div>
-        <FeaturedPlaybookCard
-          guide={featured}
-          number={number}
-          analyticsEvent="ba_playbooks_homepage_clicked"
-        />
+        <FeaturedPlaybookCard guide={featured} analyticsEvent="ba_playbooks_homepage_clicked" />
       </Container>
     </Section>
   );

@@ -27,7 +27,6 @@ export default function PlaybooksPage() {
   const guides = getAllPlaybooks();
   const featured = getFeaturedPlaybook();
   const otherGuides = guides.filter((guide) => guide.slug !== featured?.slug);
-  const featuredNumber = featured ? guides.findIndex((guide) => guide.slug === featured.slug) + 1 : 0;
 
   return (
     <>
@@ -47,7 +46,7 @@ export default function PlaybooksPage() {
       {featured ? (
         <Section className="pt-10 pb-0 sm:pt-14">
           <Container>
-            <FeaturedPlaybookCard guide={featured} number={featuredNumber} />
+            <FeaturedPlaybookCard guide={featured} />
           </Container>
         </Section>
       ) : null}
