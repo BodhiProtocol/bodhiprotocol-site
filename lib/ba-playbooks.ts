@@ -9,11 +9,17 @@ import { twoSystemsShowDifferentNumbers } from "@/content/ba-playbooks/two-syste
 import { firstTimeWritingAUserStory } from "@/content/ba-playbooks/first-time-writing-a-user-story";
 import { storyCarriedOverFourSprints } from "@/content/ba-playbooks/story-carried-over-four-sprints";
 import { whoOwnsTheRequirement } from "@/content/ba-playbooks/who-owns-the-requirement";
+import { businessAnalystUserStoryTemplate } from "@/content/ba-playbooks/business-analyst-user-story-template";
 
 // Playbooks are structured card data (numbered hacks with before/after,
 // templates, etc.) rather than prose, so each playbook is a typed data module
 // under content/ba-playbooks/ instead of an .mdx file. To add a new playbook:
 // write a new content/ba-playbooks/<slug>.ts module and add it here.
+//
+// Numbering (see PlaybookHero) is derived from position in getAllPlaybooks(),
+// which sorts by date descending — new entries dated the same as the rest tie
+// on date, so a stable sort keeps them in the array order below. Append new
+// playbooks at the end of this array to get the next sequential number.
 const playbookEntries: Omit<Playbook, "readingTime">[] = [
   jiraHacksForBusinessAnalysts,
   requirementElicitationPlaybook,
@@ -23,6 +29,7 @@ const playbookEntries: Omit<Playbook, "readingTime">[] = [
   firstTimeWritingAUserStory,
   storyCarriedOverFourSprints,
   whoOwnsTheRequirement,
+  businessAnalystUserStoryTemplate,
 ];
 
 function withReadingTime(guide: Omit<Playbook, "readingTime">): Playbook {
@@ -82,7 +89,6 @@ export function getFeaturedPlaybook(): Playbook | undefined {
 // the landing page. Not routes: add a content/ba-playbooks/<slug>.ts module
 // and an entry above (in playbookEntries) to turn one of these into a real playbook.
 export const plannedPlaybooks: string[] = [
-  "Business Analyst User Story Template",
   "Impact Analysis Template",
   "Trade Lifecycle Playbook",
   "Front-to-Back Trade Trace Guide",
