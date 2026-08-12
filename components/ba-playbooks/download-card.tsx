@@ -46,7 +46,13 @@ function DownloadCard({
           href={href}
           download={filename}
           onClick={() => trackEvent(analyticsEvent, { file: filename })}
-          className="inline-flex w-fit items-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-xs font-medium transition-colors hover:border-brand/60 hover:bg-brand/5 hover:text-brand focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
+          // A plain `text-foreground` class loses to an unlayered global rule
+          // that pins interactive elements to the light-mode foreground color
+          // in dark mode (confirmed on the shared Button primitive and
+          // CopyButton/ShareButton too — pre-existing and site-wide, not
+          // something new here). `!` forces the utility important so it wins;
+          // the hover variant needs the same treatment or it can't override it.
+          className="inline-flex w-fit items-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-xs font-medium !text-foreground transition-colors hover:border-brand/60 hover:bg-brand/5 hover:!text-brand focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
         >
           <Download className="size-3.5" aria-hidden="true" />
           {cta}
