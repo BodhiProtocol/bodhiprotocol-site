@@ -52,8 +52,8 @@ function FrontOfficeMiddleOfficeBackOfficeBody() {
         <Image
           src="/images/ba-playbooks/journey-of-a-trade-infographic.png"
           alt="Infographic explaining the journey of a trade from order to settlement across Market Data, Reference Data, Front Office, Middle Office, Back Office and Risk, with Indian and global examples."
-          width={1456}
-          height={1090}
+          width={1448}
+          height={1086}
           loading="lazy"
           sizes="(min-width: 1024px) 768px, 100vw"
           className="h-auto w-full rounded-2xl border border-border"
