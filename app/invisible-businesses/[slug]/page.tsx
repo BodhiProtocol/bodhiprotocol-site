@@ -45,6 +45,7 @@ import { AsianPaintsEpisodeBody } from "@/components/invisible-businesses/asian-
 import { StripeEpisodeBody } from "@/components/invisible-businesses/stripe-episode-body";
 import { NoiceEpisodeBody } from "@/components/invisible-businesses/noice-episode-body";
 import { UrbanCompanyEpisodeBody } from "@/components/invisible-businesses/urban-company-episode-body";
+import { BajajFinanceEpisodeBody } from "@/components/invisible-businesses/bajaj-finance-episode-body";
 import { BigIdeaCard } from "@/components/invisible-businesses/big-idea-card";
 import { FlywheelDiagram } from "@/components/invisible-businesses/flywheel-diagram";
 import { InsightGrid } from "@/components/invisible-businesses/insight-grid";
@@ -101,6 +102,7 @@ const customEpisodeBodies: Record<
   "stripes-real-business-is-the-fraud-graph": StripeEpisodeBody,
   "noice-doesnt-sell-snacks": NoiceEpisodeBody,
   "urban-company-real-business-is-certification": UrbanCompanyEpisodeBody,
+  "bajaj-finances-real-business-is-the-second-loan": BajajFinanceEpisodeBody,
 };
 
 interface IBPageProps {
