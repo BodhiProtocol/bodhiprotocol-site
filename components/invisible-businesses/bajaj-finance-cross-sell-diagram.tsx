@@ -82,11 +82,20 @@ function BajajFinanceCrossSellDiagram() {
             );
           })}
         </div>
+
+        <motion.span
+          className="text-[10px] text-muted-foreground"
+          initial={{ opacity: 0 }}
+          animate={played ? { opacity: 1 } : {}}
+          transition={{ duration: 0.35, delay: reducedMotion ? 0 : 1.05 }}
+        >
+          Shown: 4 of 26 product lines this data feeds into
+        </motion.span>
       </div>
 
       <div className="flex justify-center">
         <span className="rounded-full bg-brand/10 px-4 py-1.5 text-center font-mono text-[11px] font-semibold tracking-[0.15em] text-brand uppercase">
-          2.52 Loan Products Per Customer, On Average
+          2.94 Loan Products Per Customer, On Average
         </span>
       </div>
     </div>
