@@ -113,9 +113,9 @@ export const uatPassedProductionFailed: Omit<Playbook, "readingTime"> = {
   closingTemplate: investigationChecklist,
   closingTemplateName: "UAT-to-Production Investigation Checklist",
   relatedPlaybookSlugs: [
+    "nobody-can-reproduce-the-production-issue",
     "two-systems-show-different-numbers",
     "story-carried-over-four-sprints",
-    "acceptance-criteria-playbook",
   ],
   hacks: [
     {
