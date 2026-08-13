@@ -63,7 +63,7 @@ export const frontToBackTradeTraceGuide: Omit<Playbook, "readingTime"> = {
   description: "Follow one ID, front to back, until the story stops matching.",
   summary:
     "A five-step trace framework — Tag, Route, Ask, Compare, Explain — for finding exactly where a trade, order, claim or ticket broke, using one Reliance trade and matching examples from e-commerce, insurance, healthcare and lending, plus a free trace log template.",
-  category: "Business Analysis",
+  category: "Capital Markets",
   tags: ["Investigation", "Trade Lifecycle", "root-cause"],
   author: "Surya",
   date: "2026-08-13",
