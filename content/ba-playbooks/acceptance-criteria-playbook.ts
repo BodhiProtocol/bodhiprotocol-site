@@ -49,7 +49,7 @@ export const acceptanceCriteriaPlaybook: Omit<Playbook, "readingTime"> = {
     "jira-hacks-for-business-analysts",
     "first-time-writing-a-user-story",
   ],
-  relatedTopics: ["Business Analyst User Story Template", "Impact Analysis Template"],
+  relatedTopics: ["Business Analyst User Story Template"],
   hacks: [
     {
       number: 1,

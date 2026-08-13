@@ -82,7 +82,7 @@ export const jiraHacksForBusinessAnalysts: Omit<Playbook, "readingTime"> = {
     "requirement-elicitation-playbook",
     "first-time-writing-a-user-story",
   ],
-  relatedTopics: ["Business Analyst User Story Template", "Impact Analysis Template"],
+  relatedTopics: ["Business Analyst User Story Template"],
   hacks: [
     {
       number: 1,
