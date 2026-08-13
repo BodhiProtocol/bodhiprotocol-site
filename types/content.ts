@@ -290,6 +290,29 @@ export interface PlaybookHack {
   anchorLink?: { label: string; href: string };
 }
 
+export interface PlaybookToolkitFile {
+  /** Selects which lucide icon represents this file in ToolkitCard's secondary link row. */
+  icon: "checklist" | "template" | "examples";
+  label: string;
+  href: string;
+  filename: string;
+}
+
+/** A downloadable bundle (PDF checklist, editable template, worked examples, all zipped) offered via the generic ToolkitCard in the closing section. */
+export interface PlaybookToolkit {
+  heading: string;
+  /** Shown only in the full (non-compact) card. */
+  tagline: string;
+  description: string;
+  /** Shown only in the compact reminder card. */
+  compactDescription: string;
+  zipHref: string;
+  zipFilename: string;
+  files: PlaybookToolkitFile[];
+  /** Prefix for analytics event names, e.g. "front_to_back_trace". Combined with "_toolkit_downloaded" / "_checklist_downloaded" etc. */
+  analyticsPrefix: string;
+}
+
 export interface Playbook {
   slug: string;
   title: string;
@@ -327,4 +350,6 @@ export interface Playbook {
   seoTitle?: string;
   /** Overrides the default meta/OG description for this guide's page. */
   seoDescription?: string;
+  /** Free downloadable PDF/zip bundle, rendered via the generic ToolkitCard in the closing section (hacks-driven playbooks only — bespoke narrative bodies render ToolkitCard directly instead). */
+  toolkit?: PlaybookToolkit;
 }

@@ -10,6 +10,22 @@ import { CopyTemplate } from "@/components/ba-playbooks/copy-template";
 import { FieldLabel } from "@/components/ba-playbooks/field-label";
 import { MiniDiagram } from "@/components/ba-playbooks/mini-diagram";
 import { ToolkitCard } from "@/components/ba-playbooks/toolkit-card";
+import type { PlaybookToolkit } from "@/types/content";
+
+const impactAnalysisToolkit: PlaybookToolkit = {
+  heading: "Free Impact Analysis Toolkit",
+  tagline: "The requirement may be one sentence. The impact rarely is.",
+  description: "Get the printable checklist, editable template and two completed examples.",
+  compactDescription: "Download the checklist, template and completed examples in one practical toolkit.",
+  zipHref: "/downloads/impact-analysis-toolkit.zip",
+  zipFilename: "impact-analysis-toolkit.zip",
+  analyticsPrefix: "impact_analysis",
+  files: [
+    { icon: "checklist", label: "Checklist — PDF", href: "/downloads/impact-analysis-checklist.pdf", filename: "impact-analysis-checklist.pdf" },
+    { icon: "template", label: "Editable Template — Markdown", href: "/downloads/impact-analysis-template.md", filename: "impact-analysis-template.md" },
+    { icon: "examples", label: "Completed Examples — Markdown", href: "/downloads/impact-analysis-completed-examples.md", filename: "impact-analysis-completed-examples.md" },
+  ],
+};
 
 const copyPasteTemplate = `## Change summary
 
@@ -657,7 +673,7 @@ function ImpactAnalysisTemplateBody() {
         <KeyInsight>Release is not the last line of the ticket. It is part of the change.</KeyInsight>
       </div>
 
-      <ToolkitCard />
+      <ToolkitCard toolkit={impactAnalysisToolkit} />
 
       <div className="flex flex-col gap-4">
         <h2 className="font-heading text-xl leading-snug font-medium text-balance sm:text-2xl">
@@ -696,7 +712,7 @@ function ImpactAnalysisTemplateBody() {
         </p>
       </div>
 
-      <ToolkitCard compact />
+      <ToolkitCard toolkit={impactAnalysisToolkit} compact />
     </div>
   );
 }
