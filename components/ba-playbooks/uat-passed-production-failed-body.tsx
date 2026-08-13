@@ -1,4 +1,5 @@
 import { FileSearch } from "lucide-react";
+import Image from "next/image";
 import type { ReactNode } from "react";
 
 import { Checklist } from "@/components/ba-playbooks/checklist";
@@ -80,6 +81,21 @@ function UatPassedProductionFailedBody(): ReactNode {
         <strong>Same code does not mean the same system.</strong>
       </blockquote>
       <p>Let&rsquo;s investigate one incident together.</p>
+
+      <figure className="not-prose my-10 flex flex-col items-center gap-3">
+        <Image
+          src="/images/ba-playbooks/uat-passed-production-failed-infographic.png"
+          alt="Infographic summarising the investigation: what changes between UAT and production, the five-step evidence trail (protect, capture, compare, trace, fix), what to compare and classify, and the reminder that UAT tests what you knew while production exposes what you missed."
+          width={1448}
+          height={1086}
+          loading="lazy"
+          sizes="(min-width: 1024px) 768px, 100vw"
+          className="h-auto w-full rounded-2xl border border-border"
+        />
+        <figcaption className="max-w-xl text-center text-sm text-muted-foreground">
+          Same code does not mean the same system — the five-step trail from one failing order to a fixed rule.
+        </figcaption>
+      </figure>
 
       <h2>Here&rsquo;s the requirement</h2>
       <p>An Indian e-commerce company introduces self-service order cancellation.</p>
