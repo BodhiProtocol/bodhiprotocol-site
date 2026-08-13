@@ -5,7 +5,12 @@ import { Section } from "@/components/ui/section";
 import { Eyebrow, H1, H2, Lead } from "@/components/ui/typography";
 import { FeaturedPlaybookCard } from "@/components/ba-playbooks/featured-playbook-card";
 import { PlaybookGrid } from "@/components/ba-playbooks/playbook-grid";
-import { getAllPlaybooks, getFeaturedPlaybook, plannedPlaybooks } from "@/lib/ba-playbooks";
+import {
+  getAllPlaybooks,
+  getFeaturedPlaybook,
+  getPlaybookCategories,
+  plannedPlaybooks,
+} from "@/lib/ba-playbooks";
 
 const description =
   "Practical Business Analyst playbooks for Jira, requirements, UAT, APIs, data, stakeholders, delivery and capital markets.";
@@ -27,6 +32,7 @@ export default function PlaybooksPage() {
   const guides = getAllPlaybooks();
   const featured = getFeaturedPlaybook();
   const otherGuides = guides.filter((guide) => guide.slug !== featured?.slug);
+  const categories = getPlaybookCategories();
 
   return (
     <>
@@ -54,7 +60,7 @@ export default function PlaybooksPage() {
       <Section>
         <Container className="flex flex-col gap-8">
           <H2 className="text-2xl sm:text-3xl">Explore BA Playbooks</H2>
-          <PlaybookGrid guides={otherGuides} planned={plannedPlaybooks} />
+          <PlaybookGrid guides={otherGuides} planned={plannedPlaybooks} categories={categories} />
         </Container>
       </Section>
 
