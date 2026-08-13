@@ -19,6 +19,7 @@ import { BusinessAnalystUserStoryTemplateBody } from "@/components/ba-playbooks/
 import { FrontOfficeMiddleOfficeBackOfficeBody } from "@/components/ba-playbooks/front-office-middle-office-back-office-body";
 import { UatPassedProductionFailedBody } from "@/components/ba-playbooks/uat-passed-production-failed-body";
 import { ImpactAnalysisTemplateBody } from "@/components/ba-playbooks/impact-analysis-template-body";
+import { NewProjectDiscoveryPlaybookBody } from "@/components/ba-playbooks/new-project-discovery-playbook-body";
 import { ContentNav } from "@/components/shared/content-nav";
 import { ContentRecommendationList } from "@/components/shared/content-recommendation";
 import { JsonLd } from "@/components/shared/json-ld";
@@ -45,6 +46,7 @@ const customPlaybookBodies: Partial<Record<string, () => ReactNode>> = {
   "front-office-middle-office-back-office": FrontOfficeMiddleOfficeBackOfficeBody,
   "uat-passed-production-failed": UatPassedProductionFailedBody,
   "impact-analysis-template": ImpactAnalysisTemplateBody,
+  "new-project-discovery-playbook": NewProjectDiscoveryPlaybookBody,
 };
 
 export function generateStaticParams() {

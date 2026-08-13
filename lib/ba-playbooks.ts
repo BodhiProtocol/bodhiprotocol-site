@@ -13,6 +13,7 @@ import { businessAnalystUserStoryTemplate } from "@/content/ba-playbooks/busines
 import { frontOfficeMiddleOfficeBackOffice } from "@/content/ba-playbooks/front-office-middle-office-back-office";
 import { uatPassedProductionFailed } from "@/content/ba-playbooks/uat-passed-production-failed";
 import { impactAnalysisTemplate } from "@/content/ba-playbooks/impact-analysis-template";
+import { newProjectDiscoveryPlaybook } from "@/content/ba-playbooks/new-project-discovery-playbook";
 
 // Playbooks are structured card data (numbered hacks with before/after,
 // templates, etc.) rather than prose, so each playbook is a typed data module
@@ -36,6 +37,7 @@ const playbookEntries: Omit<Playbook, "readingTime">[] = [
   frontOfficeMiddleOfficeBackOffice,
   uatPassedProductionFailed,
   impactAnalysisTemplate,
+  newProjectDiscoveryPlaybook,
 ];
 
 function withReadingTime(guide: Omit<Playbook, "readingTime">): Playbook {
@@ -94,10 +96,7 @@ export function getFeaturedPlaybook(): Playbook | undefined {
 // Roadmap topics with no page yet — rendered as inert "Coming soon" cards on
 // the landing page. Not routes: add a content/ba-playbooks/<slug>.ts module
 // and an entry above (in playbookEntries) to turn one of these into a real playbook.
-export const plannedPlaybooks: string[] = [
-  "Front-to-Back Trade Trace Guide",
-  "New Project Discovery Playbook",
-];
+export const plannedPlaybooks: string[] = ["Front-to-Back Trade Trace Guide"];
 
 export function getRelatedPlaybooks(guide: Playbook, limit = 3): Playbook[] {
   if (guide.relatedPlaybookSlugs?.length) {
