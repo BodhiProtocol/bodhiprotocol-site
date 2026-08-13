@@ -104,7 +104,7 @@ const customEpisodeBodies: Record<
   "noice-doesnt-sell-snacks": NoiceEpisodeBody,
   "urban-company-real-business-is-certification": UrbanCompanyEpisodeBody,
   "bajaj-finances-real-business-is-the-second-loan": BajajFinanceEpisodeBody,
-  "dmarts-real-business-is-the-deed": DmartEpisodeBody,
+  "the-rent-dmart-never-pays": DmartEpisodeBody,
 };
 
 interface IBPageProps {
