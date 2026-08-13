@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 
 import { Container } from "@/components/ui/container";
@@ -142,6 +143,24 @@ export default async function PlaybookPage({ params }: PlaybookPageProps) {
               <CustomBody />
             ) : (
               <>
+                {guide.image ? (
+                  <figure className="not-prose flex flex-col items-center gap-3">
+                    <Image
+                      src={guide.image.src}
+                      alt={guide.image.alt}
+                      width={guide.image.width}
+                      height={guide.image.height}
+                      loading="lazy"
+                      sizes="(min-width: 1024px) 640px, 100vw"
+                      className="h-auto w-full max-w-xl rounded-2xl border border-border"
+                    />
+                    {guide.image.caption ? (
+                      <figcaption className="max-w-xl text-center text-sm text-muted-foreground">
+                        {guide.image.caption}
+                      </figcaption>
+                    ) : null}
+                  </figure>
+                ) : null}
                 <PlaybookProgressBar hacks={guide.hacks} />
                 <div className="flex flex-col gap-4">
                   {guide.hacks.map((hack) => (
