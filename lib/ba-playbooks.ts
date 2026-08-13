@@ -11,6 +11,7 @@ import { storyCarriedOverFourSprints } from "@/content/ba-playbooks/story-carrie
 import { whoOwnsTheRequirement } from "@/content/ba-playbooks/who-owns-the-requirement";
 import { businessAnalystUserStoryTemplate } from "@/content/ba-playbooks/business-analyst-user-story-template";
 import { frontOfficeMiddleOfficeBackOffice } from "@/content/ba-playbooks/front-office-middle-office-back-office";
+import { impactAnalysisTemplate } from "@/content/ba-playbooks/impact-analysis-template";
 
 // Playbooks are structured card data (numbered hacks with before/after,
 // templates, etc.) rather than prose, so each playbook is a typed data module
@@ -32,6 +33,7 @@ const playbookEntries: Omit<Playbook, "readingTime">[] = [
   whoOwnsTheRequirement,
   businessAnalystUserStoryTemplate,
   frontOfficeMiddleOfficeBackOffice,
+  impactAnalysisTemplate,
 ];
 
 function withReadingTime(guide: Omit<Playbook, "readingTime">): Playbook {
@@ -91,7 +93,6 @@ export function getFeaturedPlaybook(): Playbook | undefined {
 // the landing page. Not routes: add a content/ba-playbooks/<slug>.ts module
 // and an entry above (in playbookEntries) to turn one of these into a real playbook.
 export const plannedPlaybooks: string[] = [
-  "Impact Analysis Template",
   "Front-to-Back Trade Trace Guide",
   "New Project Discovery Playbook",
 ];
