@@ -352,4 +352,12 @@ export interface Playbook {
   seoDescription?: string;
   /** Free downloadable PDF/zip bundle, rendered via the generic ToolkitCard in the closing section (hacks-driven playbooks only — bespoke narrative bodies render ToolkitCard directly instead). */
   toolkit?: PlaybookToolkit;
+  /** Full-width infographic shown between the intro and the numbered hacks (hacks-driven playbooks only — bespoke narrative bodies embed their own <figure> inline instead). */
+  image?: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+    caption?: string;
+  };
 }
