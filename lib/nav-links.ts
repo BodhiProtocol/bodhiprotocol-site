@@ -7,6 +7,7 @@ export const navLinks: NavLink[] = [
   { href: "/capital-markets-business-analyst", label: "Start Here" },
   { href: "/essays", label: "Essays" },
   { href: "/ba-playbooks", label: "BA Playbooks" },
+  { href: "/lighthouse", label: "Lighthouse" },
   { href: "/tools", label: "Tools" },
   { href: "/simulators", label: "Simulators" },
   { href: "/library", label: "Library" },
