@@ -11,6 +11,7 @@ import { storyCarriedOverFourSprints } from "@/content/ba-playbooks/story-carrie
 import { whoOwnsTheRequirement } from "@/content/ba-playbooks/who-owns-the-requirement";
 import { businessAnalystUserStoryTemplate } from "@/content/ba-playbooks/business-analyst-user-story-template";
 import { frontOfficeMiddleOfficeBackOffice } from "@/content/ba-playbooks/front-office-middle-office-back-office";
+import { uatPassedProductionFailed } from "@/content/ba-playbooks/uat-passed-production-failed";
 
 // Playbooks are structured card data (numbered hacks with before/after,
 // templates, etc.) rather than prose, so each playbook is a typed data module
@@ -32,6 +33,7 @@ const playbookEntries: Omit<Playbook, "readingTime">[] = [
   whoOwnsTheRequirement,
   businessAnalystUserStoryTemplate,
   frontOfficeMiddleOfficeBackOffice,
+  uatPassedProductionFailed,
 ];
 
 function withReadingTime(guide: Omit<Playbook, "readingTime">): Playbook {
