@@ -72,6 +72,13 @@ export function getPlaybookSlugs(): string[] {
   return playbookEntries.map((guide) => guide.slug);
 }
 
+// Drives the /ba-playbooks category filter chips directly from the
+// categories actually in use, so a chip can never go stale or omit a
+// category a playbook was tagged with.
+export function getPlaybookCategories(): string[] {
+  return Array.from(new Set(playbookEntries.map((guide) => guide.category))).sort();
+}
+
 export function getPlaybookBySlug(slug: string): Playbook | undefined {
   const entry = playbookEntries.find((guide) => guide.slug === slug);
   return entry ? withReadingTime(entry) : undefined;
