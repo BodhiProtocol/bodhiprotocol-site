@@ -85,6 +85,8 @@ import { MurthyFollowTheSunDiagram } from "@/components/great-minds/murthy-follo
 import { MurthyHeroBackground } from "@/components/great-minds/murthy-hero-background";
 import { BuffettFloatEngineDiagram } from "@/components/great-minds/buffett-float-engine-diagram";
 import { BuffettHeroBackground } from "@/components/great-minds/buffett-hero-background";
+import { MungerInversionDiagram } from "@/components/great-minds/munger-inversion-diagram";
+import { MungerHeroBackground } from "@/components/great-minds/munger-hero-background";
 import { MindGraphProvider } from "@/components/great-minds/mind-graph-context";
 import { getAllGreatMinds, getGreatMindBySlug, type GreatMindWithContent } from "@/lib/great-minds";
 import { mdxOptions } from "@/lib/mdx-options";
@@ -125,6 +127,7 @@ const heroDiagrams: Record<string, (mind: GreatMindWithContent) => ReactNode> = 
   "dhirubhai-ambani": (mind) => <AmbaniReverseChainDiagram nodes={mind.wheel} />,
   "narayana-murthy": (mind) => <MurthyFollowTheSunDiagram nodes={mind.wheel} />,
   "warren-buffett": (mind) => <BuffettFloatEngineDiagram nodes={mind.wheel} />,
+  "charlie-munger": (mind) => <MungerInversionDiagram nodes={mind.wheel} />,
 };
 
 const heroBackgrounds: Record<string, ReactNode> = {
@@ -159,6 +162,7 @@ const heroBackgrounds: Record<string, ReactNode> = {
   "dhirubhai-ambani": <AmbaniHeroBackground />,
   "narayana-murthy": <MurthyHeroBackground />,
   "warren-buffett": <BuffettHeroBackground />,
+  "charlie-munger": <MungerHeroBackground />,
 };
 
 interface GreatMindPageProps {

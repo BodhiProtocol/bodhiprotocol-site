@@ -17,6 +17,7 @@ import { StoryCarriedOverBody } from "@/components/ba-playbooks/story-carried-ov
 import { WhoOwnsTheRequirementBody } from "@/components/ba-playbooks/who-owns-the-requirement-body";
 import { BusinessAnalystUserStoryTemplateBody } from "@/components/ba-playbooks/business-analyst-user-story-template-body";
 import { FrontOfficeMiddleOfficeBackOfficeBody } from "@/components/ba-playbooks/front-office-middle-office-back-office-body";
+import { UatPassedProductionFailedBody } from "@/components/ba-playbooks/uat-passed-production-failed-body";
 import { ImpactAnalysisTemplateBody } from "@/components/ba-playbooks/impact-analysis-template-body";
 import { ContentNav } from "@/components/shared/content-nav";
 import { ContentRecommendationList } from "@/components/shared/content-recommendation";
@@ -42,6 +43,7 @@ const customPlaybookBodies: Partial<Record<string, () => ReactNode>> = {
   "who-owns-the-requirement": WhoOwnsTheRequirementBody,
   "business-analyst-user-story-template": BusinessAnalystUserStoryTemplateBody,
   "front-office-middle-office-back-office": FrontOfficeMiddleOfficeBackOfficeBody,
+  "uat-passed-production-failed": UatPassedProductionFailedBody,
   "impact-analysis-template": ImpactAnalysisTemplateBody,
 };
 

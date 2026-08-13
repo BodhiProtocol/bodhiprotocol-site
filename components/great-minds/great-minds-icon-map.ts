@@ -22,6 +22,7 @@ import {
   MapPin,
   Plane,
   Radio,
+  RotateCw,
   Scale,
   Shield,
   ShieldCheck,
@@ -70,6 +71,7 @@ const GREAT_MINDS_ICON_MAP: Record<string, LucideIcon> = {
   Building2,
   FlaskConical,
   Fuel,
+  RotateCw,
 };
 
 export { GREAT_MINDS_ICON_MAP };
