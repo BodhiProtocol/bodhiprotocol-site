@@ -8,7 +8,10 @@
 // prose. The DiscoveryMapDiagram is this playbook's one bespoke visual —
 // per CLAUDE.md's "bespoke, not templatized" rule, it's grounded in the
 // article's own six-question map, not a reused generic template.
+import { Map } from "lucide-react";
+
 import { Checklist } from "@/components/ba-playbooks/checklist";
+import { DownloadCard } from "@/components/ba-playbooks/download-card";
 import { FieldLabel } from "@/components/ba-playbooks/field-label";
 import { MiniDiagram } from "@/components/ba-playbooks/mini-diagram";
 
@@ -747,6 +750,34 @@ function NewProjectDiscoveryPlaybookBody() {
           If you cannot answer one of these, you have not failed discovery.
         </p>
         <p className="text-sm text-foreground/80">You have found where discovery needs to go next.</p>
+      </div>
+
+      <div className="not-prose flex flex-col gap-4 rounded-2xl border border-brand/25 bg-brand/[0.04] p-6 sm:p-8">
+        <div className="flex flex-col gap-1.5">
+          <p className="font-mono text-xs font-medium tracking-[0.14em] text-brand uppercase">
+            Take this into week one
+          </p>
+          <h3 className="font-heading text-lg leading-snug font-medium text-balance sm:text-xl">
+            New Project Discovery Canvas
+          </h3>
+          <p className="text-sm leading-relaxed text-foreground/80">
+            All nine sections from this playbook in one editable document — project purpose,
+            people and decisions, current process, systems and data, scope, risks and your
+            first-30-day priorities.
+          </p>
+        </div>
+        <div className="sm:max-w-xs">
+          <DownloadCard
+            icon={<Map className="size-4.5" aria-hidden="true" />}
+            title="New Project Discovery Canvas"
+            description="Copy-paste into Confluence, Notion or Word and build it out over your first 30 days."
+            href="/downloads/New_Project_Discovery_Canvas.md"
+            filename="New_Project_Discovery_Canvas.md"
+            meta="Markdown · Copy-paste ready"
+            cta="Download the Canvas"
+            analyticsEvent="new_project_discovery_canvas_downloaded"
+          />
+        </div>
       </div>
     </div>
   );
