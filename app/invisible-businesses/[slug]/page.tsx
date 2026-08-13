@@ -103,7 +103,7 @@ const customEpisodeBodies: Record<
   "stripes-real-business-is-the-fraud-graph": StripeEpisodeBody,
   "noice-doesnt-sell-snacks": NoiceEpisodeBody,
   "urban-company-real-business-is-certification": UrbanCompanyEpisodeBody,
-  "bajaj-finances-real-business-is-the-second-loan": BajajFinanceEpisodeBody,
+  "the-loan-bajaj-finance-barely-profits-from": BajajFinanceEpisodeBody,
   "the-rent-dmart-never-pays": DmartEpisodeBody,
 };
 

@@ -82,6 +82,15 @@ function BajajFinanceCrossSellDiagram() {
             );
           })}
         </div>
+
+        <motion.span
+          className="text-[10px] text-muted-foreground"
+          initial={{ opacity: 0 }}
+          animate={played ? { opacity: 1 } : {}}
+          transition={{ duration: 0.35, delay: reducedMotion ? 0 : 1.05 }}
+        >
+          Shown: 4 of 26 product lines this data feeds into
+        </motion.span>
       </div>
 
       <div className="flex justify-center">
