@@ -95,7 +95,7 @@ function BajajFinanceCrossSellDiagram() {
 
       <div className="flex justify-center">
         <span className="rounded-full bg-brand/10 px-4 py-1.5 text-center font-mono text-[11px] font-semibold tracking-[0.15em] text-brand uppercase">
-          2.52 Loan Products Per Customer, On Average
+          2.94 Loan Products Per Customer, On Average
         </span>
       </div>
     </div>
