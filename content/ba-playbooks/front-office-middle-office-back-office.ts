@@ -74,11 +74,10 @@ export const frontOfficeMiddleOfficeBackOffice: Omit<Playbook, "readingTime"> = 
     "Next time someone says \"that's a Front Office issue\" or \"Middle Office should investigate,\" don't ask which department that is. Ask what is happening to the trade at this point — that question gets you a lot closer to the answer.",
   closingTemplate: tradeLifecycleQuickReference,
   closingTemplateName: "Trade Lifecycle Quick Reference",
-  relatedTopics: ["Front-to-Back Trade Trace Guide"],
   relatedPlaybookSlugs: [
+    "front-to-back-trade-trace-guide",
     "two-systems-show-different-numbers",
     "business-analyst-user-story-template",
-    "who-owns-the-requirement",
   ],
   hacks: [
     {
