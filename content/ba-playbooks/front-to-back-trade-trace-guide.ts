@@ -87,6 +87,20 @@ export const frontToBackTradeTraceGuide: Omit<Playbook, "readingTime"> = {
     "Tag the ID, route the journey, ask what came in and went out at each stop, compare the data instead of the status, and name the exact point where the story stopped matching. That's the whole method — on a trade, an order, a claim or a ticket.",
   closingTemplate: traceLog,
   closingTemplateName: "Front-to-Back Trace Log",
+  toolkit: {
+    heading: "Free Front-to-Back Trace Toolkit",
+    tagline: "Five steps. One page. Every industry.",
+    description: "Get the printable TRACE checklist, editable trace log template and two completed examples.",
+    compactDescription: "Download the checklist, template and completed examples in one practical toolkit.",
+    zipHref: "/downloads/front-to-back-trace-toolkit.zip",
+    zipFilename: "front-to-back-trace-toolkit.zip",
+    analyticsPrefix: "front_to_back_trace",
+    files: [
+      { icon: "checklist", label: "Checklist — PDF", href: "/downloads/front-to-back-trace-checklist.pdf", filename: "front-to-back-trace-checklist.pdf" },
+      { icon: "template", label: "Editable Trace Log — Markdown", href: "/downloads/front-to-back-trace-log-template.md", filename: "front-to-back-trace-log-template.md" },
+      { icon: "examples", label: "Completed Examples — Markdown", href: "/downloads/front-to-back-trace-completed-example.md", filename: "front-to-back-trace-completed-example.md" },
+    ],
+  },
   relatedPlaybookSlugs: [
     "two-systems-show-different-numbers",
     "front-office-middle-office-back-office",
