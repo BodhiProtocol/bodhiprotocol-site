@@ -1,10 +1,19 @@
+import { BookOpen, FileText, ListChecks } from "lucide-react";
+
 import { CopyTemplate } from "@/components/ba-playbooks/copy-template";
+import { DownloadCard } from "@/components/ba-playbooks/download-card";
 import { SavePlaybookButton } from "@/components/ba-playbooks/save-playbook-button";
 import { ShareButton } from "@/components/ba-playbooks/share-button";
 import { ToolkitCard } from "@/components/ba-playbooks/toolkit-card";
 import { NewsletterForm } from "@/components/newsletter/newsletter-form";
 import { Eyebrow, H3 } from "@/components/ui/typography";
 import type { Playbook } from "@/types/content";
+
+const DOWNLOAD_ICONS = {
+  checklist: <ListChecks className="size-4.5" aria-hidden="true" />,
+  template: <FileText className="size-4.5" aria-hidden="true" />,
+  examples: <BookOpen className="size-4.5" aria-hidden="true" />,
+} as const;
 
 interface PlaybookEndingProps {
   guide: Playbook;
@@ -14,7 +23,8 @@ interface PlaybookEndingProps {
 // Closing tagline + quick actions, then (if the playbook has one) a featured
 // "take this with you" template block, then the newsletter capture.
 function PlaybookEnding({ guide, url }: PlaybookEndingProps) {
-  if (!guide.closingHeading && !guide.closingBody && !guide.closingTemplate && !guide.toolkit) return null;
+  if (!guide.closingHeading && !guide.closingBody && !guide.closingTemplate && !guide.toolkit && !guide.download)
+    return null;
 
   return (
     <div className="not-prose flex flex-col gap-10 border-t border-border py-10">
@@ -60,6 +70,20 @@ function PlaybookEnding({ guide, url }: PlaybookEndingProps) {
             <H3>{guide.closingTemplateName ?? "Reusable template"}</H3>
           </div>
           <CopyTemplate template={guide.closingTemplate} label="Copy template" scrollable />
+          {guide.download && !guide.toolkit ? (
+            <div className="sm:max-w-xs">
+              <DownloadCard
+                icon={DOWNLOAD_ICONS[guide.download.icon]}
+                title={guide.download.title}
+                description={guide.download.description}
+                href={guide.download.href}
+                filename={guide.download.filename}
+                meta={guide.download.meta}
+                cta={guide.download.cta}
+                analyticsEvent={guide.download.analyticsEvent}
+              />
+            </div>
+          ) : null}
         </div>
       ) : null}
 

@@ -15,9 +15,12 @@ import { uatPassedProductionFailed } from "@/content/ba-playbooks/uat-passed-pro
 import { impactAnalysisTemplate } from "@/content/ba-playbooks/impact-analysis-template";
 import { newProjectDiscoveryPlaybook } from "@/content/ba-playbooks/new-project-discovery-playbook";
 import { frontToBackTradeTraceGuide } from "@/content/ba-playbooks/front-to-back-trade-trace-guide";
+import { releaseTomorrowRequirementChangedToday } from "@/content/ba-playbooks/release-tomorrow-requirement-changed-today";
 import { requirementChangedMidSprint } from "@/content/ba-playbooks/requirement-changed-mid-sprint";
 import { batchRanSuccessfullyDataMissing } from "@/content/ba-playbooks/batch-ran-successfully-data-missing";
 import { preUatReadinessChecklist } from "@/content/ba-playbooks/pre-uat-readiness-checklist";
+import { storyIsDoneWhyCantWeReleaseIt } from "@/content/ba-playbooks/story-is-done-why-cant-we-release-it";
+import { nobodyCanReproduceTheProductionIssue } from "@/content/ba-playbooks/nobody-can-reproduce-the-production-issue";
 
 // Playbooks are structured card data (numbered hacks with before/after,
 // templates, etc.) rather than prose, so each playbook is a typed data module
@@ -43,9 +46,12 @@ const playbookEntries: Omit<Playbook, "readingTime">[] = [
   impactAnalysisTemplate,
   newProjectDiscoveryPlaybook,
   frontToBackTradeTraceGuide,
+  releaseTomorrowRequirementChangedToday,
   requirementChangedMidSprint,
   batchRanSuccessfullyDataMissing,
   preUatReadinessChecklist,
+  storyIsDoneWhyCantWeReleaseIt,
+  nobodyCanReproduceTheProductionIssue,
 ];
 
 function withReadingTime(guide: Omit<Playbook, "readingTime">): Playbook {
