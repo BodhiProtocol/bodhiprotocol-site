@@ -17,6 +17,7 @@ import { newProjectDiscoveryPlaybook } from "@/content/ba-playbooks/new-project-
 import { frontToBackTradeTraceGuide } from "@/content/ba-playbooks/front-to-back-trade-trace-guide";
 import { requirementChangedMidSprint } from "@/content/ba-playbooks/requirement-changed-mid-sprint";
 import { batchRanSuccessfullyDataMissing } from "@/content/ba-playbooks/batch-ran-successfully-data-missing";
+import { storyIsDoneWhyCantWeReleaseIt } from "@/content/ba-playbooks/story-is-done-why-cant-we-release-it";
 import { nobodyCanReproduceTheProductionIssue } from "@/content/ba-playbooks/nobody-can-reproduce-the-production-issue";
 
 // Playbooks are structured card data (numbered hacks with before/after,
@@ -45,6 +46,7 @@ const playbookEntries: Omit<Playbook, "readingTime">[] = [
   frontToBackTradeTraceGuide,
   requirementChangedMidSprint,
   batchRanSuccessfullyDataMissing,
+  storyIsDoneWhyCantWeReleaseIt,
   nobodyCanReproduceTheProductionIssue,
 ];
 
