@@ -15,6 +15,7 @@ import { uatPassedProductionFailed } from "@/content/ba-playbooks/uat-passed-pro
 import { impactAnalysisTemplate } from "@/content/ba-playbooks/impact-analysis-template";
 import { newProjectDiscoveryPlaybook } from "@/content/ba-playbooks/new-project-discovery-playbook";
 import { frontToBackTradeTraceGuide } from "@/content/ba-playbooks/front-to-back-trade-trace-guide";
+import { releaseTomorrowRequirementChangedToday } from "@/content/ba-playbooks/release-tomorrow-requirement-changed-today";
 import { requirementChangedMidSprint } from "@/content/ba-playbooks/requirement-changed-mid-sprint";
 import { batchRanSuccessfullyDataMissing } from "@/content/ba-playbooks/batch-ran-successfully-data-missing";
 import { storyIsDoneWhyCantWeReleaseIt } from "@/content/ba-playbooks/story-is-done-why-cant-we-release-it";
@@ -44,6 +45,7 @@ const playbookEntries: Omit<Playbook, "readingTime">[] = [
   impactAnalysisTemplate,
   newProjectDiscoveryPlaybook,
   frontToBackTradeTraceGuide,
+  releaseTomorrowRequirementChangedToday,
   requirementChangedMidSprint,
   batchRanSuccessfullyDataMissing,
   storyIsDoneWhyCantWeReleaseIt,
