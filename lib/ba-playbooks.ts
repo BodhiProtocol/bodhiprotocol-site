@@ -15,6 +15,8 @@ import { uatPassedProductionFailed } from "@/content/ba-playbooks/uat-passed-pro
 import { impactAnalysisTemplate } from "@/content/ba-playbooks/impact-analysis-template";
 import { newProjectDiscoveryPlaybook } from "@/content/ba-playbooks/new-project-discovery-playbook";
 import { frontToBackTradeTraceGuide } from "@/content/ba-playbooks/front-to-back-trade-trace-guide";
+import { requirementChangedMidSprint } from "@/content/ba-playbooks/requirement-changed-mid-sprint";
+import { batchRanSuccessfullyDataMissing } from "@/content/ba-playbooks/batch-ran-successfully-data-missing";
 import { nobodyCanReproduceTheProductionIssue } from "@/content/ba-playbooks/nobody-can-reproduce-the-production-issue";
 
 // Playbooks are structured card data (numbered hacks with before/after,
@@ -41,6 +43,8 @@ const playbookEntries: Omit<Playbook, "readingTime">[] = [
   impactAnalysisTemplate,
   newProjectDiscoveryPlaybook,
   frontToBackTradeTraceGuide,
+  requirementChangedMidSprint,
+  batchRanSuccessfullyDataMissing,
   nobodyCanReproduceTheProductionIssue,
 ];
 
