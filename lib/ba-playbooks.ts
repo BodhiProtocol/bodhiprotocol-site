@@ -17,6 +17,7 @@ import { newProjectDiscoveryPlaybook } from "@/content/ba-playbooks/new-project-
 import { frontToBackTradeTraceGuide } from "@/content/ba-playbooks/front-to-back-trade-trace-guide";
 import { requirementChangedMidSprint } from "@/content/ba-playbooks/requirement-changed-mid-sprint";
 import { batchRanSuccessfullyDataMissing } from "@/content/ba-playbooks/batch-ran-successfully-data-missing";
+import { preUatReadinessChecklist } from "@/content/ba-playbooks/pre-uat-readiness-checklist";
 
 // Playbooks are structured card data (numbered hacks with before/after,
 // templates, etc.) rather than prose, so each playbook is a typed data module
@@ -44,6 +45,7 @@ const playbookEntries: Omit<Playbook, "readingTime">[] = [
   frontToBackTradeTraceGuide,
   requirementChangedMidSprint,
   batchRanSuccessfullyDataMissing,
+  preUatReadinessChecklist,
 ];
 
 function withReadingTime(guide: Omit<Playbook, "readingTime">): Playbook {
