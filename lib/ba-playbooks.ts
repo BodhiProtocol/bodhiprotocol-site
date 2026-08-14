@@ -16,6 +16,9 @@ import { impactAnalysisTemplate } from "@/content/ba-playbooks/impact-analysis-t
 import { newProjectDiscoveryPlaybook } from "@/content/ba-playbooks/new-project-discovery-playbook";
 import { frontToBackTradeTraceGuide } from "@/content/ba-playbooks/front-to-back-trade-trace-guide";
 import { releaseTomorrowRequirementChangedToday } from "@/content/ba-playbooks/release-tomorrow-requirement-changed-today";
+import { requirementChangedMidSprint } from "@/content/ba-playbooks/requirement-changed-mid-sprint";
+import { batchRanSuccessfullyDataMissing } from "@/content/ba-playbooks/batch-ran-successfully-data-missing";
+import { storyIsDoneWhyCantWeReleaseIt } from "@/content/ba-playbooks/story-is-done-why-cant-we-release-it";
 
 // Playbooks are structured card data (numbered hacks with before/after,
 // templates, etc.) rather than prose, so each playbook is a typed data module
@@ -42,6 +45,9 @@ const playbookEntries: Omit<Playbook, "readingTime">[] = [
   newProjectDiscoveryPlaybook,
   frontToBackTradeTraceGuide,
   releaseTomorrowRequirementChangedToday,
+  requirementChangedMidSprint,
+  batchRanSuccessfullyDataMissing,
+  storyIsDoneWhyCantWeReleaseIt,
 ];
 
 function withReadingTime(guide: Omit<Playbook, "readingTime">): Playbook {
@@ -72,6 +78,13 @@ export function getAllPlaybooks(): Playbook[] {
 
 export function getPlaybookSlugs(): string[] {
   return playbookEntries.map((guide) => guide.slug);
+}
+
+// Drives the /ba-playbooks category filter chips directly from the
+// categories actually in use, so a chip can never go stale or omit a
+// category a playbook was tagged with.
+export function getPlaybookCategories(): string[] {
+  return Array.from(new Set(playbookEntries.map((guide) => guide.category))).sort();
 }
 
 export function getPlaybookBySlug(slug: string): Playbook | undefined {

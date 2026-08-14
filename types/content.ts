@@ -352,4 +352,23 @@ export interface Playbook {
   seoDescription?: string;
   /** Free downloadable PDF/zip bundle, rendered via the generic ToolkitCard in the closing section (hacks-driven playbooks only — bespoke narrative bodies render ToolkitCard directly instead). */
   toolkit?: PlaybookToolkit;
+  /** Free downloadable single-file resource (e.g. one printable PDF) rendered via DownloadCard next to the closing template — for playbooks with one deliverable rather than a full toolkit bundle. Ignored when `toolkit` is also set. */
+  download?: {
+    icon: "checklist" | "template" | "examples";
+    title: string;
+    description: string;
+    href: string;
+    filename: string;
+    meta: string;
+    cta: string;
+    analyticsEvent: string;
+  };
+  /** Full-width infographic shown between the intro and the numbered hacks (hacks-driven playbooks only — bespoke narrative bodies embed their own <figure> inline instead). */
+  image?: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+    caption?: string;
+  };
 }
