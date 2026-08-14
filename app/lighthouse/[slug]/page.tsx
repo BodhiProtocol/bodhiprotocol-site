@@ -104,7 +104,7 @@ export default async function BlueprintPage({ params }: BlueprintPageProps) {
                 <Illustration />
               </div>
             ) : null}
-            <div className="prose prose-neutral dark:prose-invert max-w-none prose-headings:font-heading prose-a:text-brand">
+            <div className="prose prose-neutral dark:prose-invert max-w-none prose-headings:font-heading prose-a:text-brand [&_:where(h1,h2,h3,h4,h5,h6)_a]:text-inherit [&_:where(h1,h2,h3,h4,h5,h6)_a]:no-underline">
               <MDXRemote
                 source={blueprint.content}
                 options={mdxOptions}
