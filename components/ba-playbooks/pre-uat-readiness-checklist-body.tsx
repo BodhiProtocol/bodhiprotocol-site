@@ -134,7 +134,16 @@ function PreUatReadinessChecklistBody(): ReactNode {
       <p>Actually validate it. Use approved masked or synthetic data where required.</p>
 
       <h2>4. Environment — is it stable enough to trust the result?</h2>
-      <p>A bad environment can make a good feature look broken. Check:</p>
+      <p>A bad environment can make a good feature look broken.</p>
+      <p>
+        For the beneficiary-verification flow, that means confirming the UAT build actually
+        matches the release QA signed off &mdash; not a build two commits behind it. It means
+        checking that the verification service&rsquo;s UAT endpoint calls the real rules engine,
+        not a stub that always returns &ldquo;verified&rdquo; regardless of amount. And it means
+        confirming last night&rsquo;s data refresh didn&rsquo;t quietly wipe out the customer
+        accounts the test cases depend on.
+      </p>
+      <p>More generally, check:</p>
       <ul>
         <li>Correct build deployed, environment accessible, database available</li>
         <li>Required services running, no known blocking outage</li>
@@ -143,27 +152,38 @@ function PreUatReadinessChecklistBody(): ReactNode {
       </ul>
       <p>The environment doesn&rsquo;t need to be perfect. It needs to be stable enough that:</p>
       <blockquote>
-        <strong>failure means something.</strong>
+        <strong>failure means something</strong> &mdash; not that the &#8377;2 lakh transfer failed
+        because the environment reset overnight.
       </blockquote>
 
       <h2>5. Access &amp; Roles — can the testers actually test?</h2>
-      <p>Never assume:</p>
+      <p>
+        The testers for this flow are branch relationship managers and operations staff &mdash;
+        not developers. Never assume:
+      </p>
       <blockquote>&ldquo;They had access last time.&rdquo;</blockquote>
-      <p>Before Day 1, check:</p>
+      <p>Before Day 1, check whether their UAT accounts can actually originate a transfer above &#8377;2 lakh &mdash; not just view one &mdash; whether the maker-checker workflow is configured for that amount, and whether their role includes the specific permission tied to this new step. More generally:</p>
       <ul>
         <li>Are users created, and can they log in?</li>
         <li>Are roles and permissions correct?</li>
         <li>Can they access dependent systems?</li>
         <li>Is MFA/VPN working, and are segregation-of-duties rules respected?</li>
       </ul>
-      <p>Eight business users discovering an access problem during the UAT call is not testing.</p>
+      <p>Eight relationship managers discovering their login can&rsquo;t originate a transfer during the UAT call is not testing.</p>
       <p>It&rsquo;s troubleshooting.</p>
 
       <h2>6. Integrations — can the whole journey complete?</h2>
       <p>Your feature may work perfectly. But UAT usually tests a <strong>journey</strong>.</p>
-      <p>For example:</p>
-      <blockquote>Portal &rarr; Verification API &rarr; Core System &rarr; Notification Service</blockquote>
-      <p>If the notification service isn&rsquo;t connected, the journey isn&rsquo;t ready.</p>
+      <p>For the beneficiary-verification flow, that journey looks like:</p>
+      <blockquote>
+        Transfer Initiation &rarr; Verification API &rarr; Core Banking Ledger &rarr; Fraud/Risk
+        Screening &rarr; SMS/Notification Gateway
+      </blockquote>
+      <p>
+        If the SMS gateway in UAT is a mock that never actually fires, a tester can &ldquo;pass&rdquo;
+        a scenario that would leave a real customer staring at a screen waiting for an OTP that
+        never arrives.
+      </p>
       <p>Ask:</p>
       <blockquote>
         <strong>&ldquo;What other system must work for this scenario to finish?&rdquo;</strong>
@@ -171,17 +191,29 @@ function PreUatReadinessChecklistBody(): ReactNode {
       <p>Check critical upstream and downstream dependencies before testers arrive.</p>
 
       <h2>7. Configuration — does UAT reflect the intended business setup?</h2>
-      <p>Configuration can quietly invalidate otherwise perfect testing. Check:</p>
+      <p>Configuration can quietly invalidate otherwise perfect testing.</p>
+      <p>
+        Suppose the requirement says verification above &#8377;2 lakh, but UAT is configured for
+        &#8377;5 lakh. The code may be perfect. The test will still tell the wrong story. The same
+        goes for a feature flag that&rsquo;s still off, an OTP retry limit set differently than
+        production, or an NRI-account threshold that was never updated to match the new rule.
+      </p>
+      <p>More generally, check:</p>
       <ul>
         <li>Feature flags, thresholds, business rules</li>
         <li>Product configuration, reference data, routing</li>
         <li>Currencies/countries, dates/calendars, user entitlements</li>
       </ul>
-      <p>Suppose the requirement says verification above &#8377;2 lakh, but UAT is configured for &#8377;5 lakh.</p>
-      <p>The code may be perfect. The test will still tell the wrong story.</p>
 
       <h2>8. Stakeholders — does everyone know how UAT will work?</h2>
-      <p>Technology can be ready while UAT still fails operationally. Before starting, everyone should know:</p>
+      <p>Technology can be ready while UAT still fails operationally.</p>
+      <p>
+        For this flow specifically, the branch operations lead, the fraud and risk owner, the
+        release manager and the BA all need to agree, before Day 1, on what a passing scenario
+        looks like, who raises a defect if a real &#8377;2 lakh transfer wrongly skips
+        verification, and who has the authority to call a No-Go if the verification service turns
+        out not to be reliable enough to trust. More generally, everyone should know:
+      </p>
       <ul>
         <li>What are we testing, and who is testing what?</li>
         <li>Where are results recorded, and how are defects raised?</li>
