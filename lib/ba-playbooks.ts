@@ -21,6 +21,7 @@ import { batchRanSuccessfullyDataMissing } from "@/content/ba-playbooks/batch-ra
 import { preUatReadinessChecklist } from "@/content/ba-playbooks/pre-uat-readiness-checklist";
 import { storyIsDoneWhyCantWeReleaseIt } from "@/content/ba-playbooks/story-is-done-why-cant-we-release-it";
 import { nobodyCanReproduceTheProductionIssue } from "@/content/ba-playbooks/nobody-can-reproduce-the-production-issue";
+import { defectVsExpectedBehaviour } from "@/content/ba-playbooks/defect-vs-expected-behaviour";
 
 // Playbooks are structured card data (numbered hacks with before/after,
 // templates, etc.) rather than prose, so each playbook is a typed data module
@@ -52,6 +53,7 @@ const playbookEntries: Omit<Playbook, "readingTime">[] = [
   preUatReadinessChecklist,
   storyIsDoneWhyCantWeReleaseIt,
   nobodyCanReproduceTheProductionIssue,
+  defectVsExpectedBehaviour,
 ];
 
 function withReadingTime(guide: Omit<Playbook, "readingTime">): Playbook {
