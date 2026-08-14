@@ -21,6 +21,7 @@ import { FrontOfficeMiddleOfficeBackOfficeBody } from "@/components/ba-playbooks
 import { UatPassedProductionFailedBody } from "@/components/ba-playbooks/uat-passed-production-failed-body";
 import { ImpactAnalysisTemplateBody } from "@/components/ba-playbooks/impact-analysis-template-body";
 import { NewProjectDiscoveryPlaybookBody } from "@/components/ba-playbooks/new-project-discovery-playbook-body";
+import { PreUatReadinessChecklistBody } from "@/components/ba-playbooks/pre-uat-readiness-checklist-body";
 import { ReleaseTomorrowRequirementChangedTodayBody } from "@/components/ba-playbooks/release-tomorrow-requirement-changed-today-body";
 import { NobodyCanReproduceTheProductionIssueBody } from "@/components/ba-playbooks/nobody-can-reproduce-the-production-issue-body";
 import { ContentNav } from "@/components/shared/content-nav";
@@ -50,6 +51,7 @@ const customPlaybookBodies: Partial<Record<string, () => ReactNode>> = {
   "uat-passed-production-failed": UatPassedProductionFailedBody,
   "impact-analysis-template": ImpactAnalysisTemplateBody,
   "new-project-discovery-playbook": NewProjectDiscoveryPlaybookBody,
+  "pre-uat-readiness-checklist": PreUatReadinessChecklistBody,
   "release-tomorrow-requirement-changed-today": ReleaseTomorrowRequirementChangedTodayBody,
   "nobody-can-reproduce-the-production-issue": NobodyCanReproduceTheProductionIssueBody,
 };
