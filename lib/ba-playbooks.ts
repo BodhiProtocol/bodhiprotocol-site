@@ -18,6 +18,7 @@ import { frontToBackTradeTraceGuide } from "@/content/ba-playbooks/front-to-back
 import { requirementChangedMidSprint } from "@/content/ba-playbooks/requirement-changed-mid-sprint";
 import { batchRanSuccessfullyDataMissing } from "@/content/ba-playbooks/batch-ran-successfully-data-missing";
 import { storyIsDoneWhyCantWeReleaseIt } from "@/content/ba-playbooks/story-is-done-why-cant-we-release-it";
+import { nobodyCanReproduceTheProductionIssue } from "@/content/ba-playbooks/nobody-can-reproduce-the-production-issue";
 
 // Playbooks are structured card data (numbered hacks with before/after,
 // templates, etc.) rather than prose, so each playbook is a typed data module
@@ -46,6 +47,7 @@ const playbookEntries: Omit<Playbook, "readingTime">[] = [
   requirementChangedMidSprint,
   batchRanSuccessfullyDataMissing,
   storyIsDoneWhyCantWeReleaseIt,
+  nobodyCanReproduceTheProductionIssue,
 ];
 
 function withReadingTime(guide: Omit<Playbook, "readingTime">): Playbook {
