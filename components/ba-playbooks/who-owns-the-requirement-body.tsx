@@ -1,5 +1,23 @@
 import Image from "next/image";
 
+import { ToolkitCard } from "@/components/ba-playbooks/toolkit-card";
+import type { PlaybookToolkit } from "@/types/content";
+
+const ownershipToolkit: PlaybookToolkit = {
+  heading: "Free Requirement Ownership Toolkit",
+  tagline: "Three roles. One real test. Every requirement.",
+  description: "Get the printable checklist, editable ownership check template and two completed examples.",
+  compactDescription: "Download the checklist, template and completed examples in one practical toolkit.",
+  zipHref: "/downloads/requirement-ownership-toolkit.zip",
+  zipFilename: "requirement-ownership-toolkit.zip",
+  analyticsPrefix: "requirement_ownership",
+  files: [
+    { icon: "checklist", label: "Checklist — PDF", href: "/downloads/requirement-ownership-checklist.pdf", filename: "requirement-ownership-checklist.pdf" },
+    { icon: "template", label: "Ownership Check — Markdown", href: "/downloads/requirement-ownership-check-template.md", filename: "requirement-ownership-check-template.md" },
+    { icon: "examples", label: "Completed Examples — Markdown", href: "/downloads/requirement-ownership-completed-examples.md", filename: "requirement-ownership-completed-examples.md" },
+  ],
+};
+
 // This playbook is a narrative walkthrough of one requirement, not a list of
 // standalone tips — so unlike most other BA Playbooks it renders as flowing
 // prose instead of numbered hack cards. See app/ba-playbooks/[slug]/page.tsx's
@@ -206,6 +224,8 @@ function WhoOwnsTheRequirementBody() {
 
       <p>That last question is the important one.</p>
       <p>If nobody can answer it clearly, you probably haven&rsquo;t found the owner yet.</p>
+
+      <ToolkitCard toolkit={ownershipToolkit} />
 
       <h2>What happened to REQ-218?</h2>
       <p>The Head of Client Risk Controls finally makes the call:</p>

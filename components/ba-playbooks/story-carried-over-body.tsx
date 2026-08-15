@@ -1,6 +1,23 @@
 import Image from "next/image";
 
 import { MiniDiagram } from "@/components/ba-playbooks/mini-diagram";
+import { ToolkitCard } from "@/components/ba-playbooks/toolkit-card";
+import type { PlaybookToolkit } from "@/types/content";
+
+const carryOverToolkit: PlaybookToolkit = {
+  heading: "Free Carry-Over Diagnostic Toolkit",
+  tagline: "Six kinds of unfinished. One five-minute test.",
+  description: "Get the printable checklist, editable diagnostic template and two completed examples.",
+  compactDescription: "Download the checklist, template and completed examples in one practical toolkit.",
+  zipHref: "/downloads/carry-over-toolkit.zip",
+  zipFilename: "carry-over-toolkit.zip",
+  analyticsPrefix: "carry_over",
+  files: [
+    { icon: "checklist", label: "Checklist — PDF", href: "/downloads/carry-over-diagnostic-checklist.pdf", filename: "carry-over-diagnostic-checklist.pdf" },
+    { icon: "template", label: "Stuck Story Diagnostic — Markdown", href: "/downloads/stuck-story-diagnostic-template.md", filename: "stuck-story-diagnostic-template.md" },
+    { icon: "examples", label: "Completed Examples — Markdown", href: "/downloads/carry-over-completed-examples.md", filename: "carry-over-completed-examples.md" },
+  ],
+};
 
 // This playbook is a narrative walkthrough of one ticket, not a list of
 // standalone tips — so unlike every other BA Playbook it renders as flowing
@@ -411,6 +428,8 @@ function StoryCarriedOverBody() {
       <p>Something real.</p>
       <blockquote>&ldquo;Risk Operations to confirm fail-vs-continue behaviour by Tuesday.&rdquo;</blockquote>
       <p>Now you can actually manage it.</p>
+
+      <ToolkitCard toolkit={carryOverToolkit} />
 
       <h2>What happened to ABC-142?</h2>
       <p>Risk Operations eventually confirms:</p>

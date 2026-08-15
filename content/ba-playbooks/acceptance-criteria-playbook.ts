@@ -44,6 +44,20 @@ export const acceptanceCriteriaPlaybook: Omit<Playbook, "readingTime"> = {
     "Every acceptance criterion should survive one test: could two engineers, working alone, build the same thing from it? If the answer depends on both of them guessing the same way, it isn't finished yet.",
   closingTemplate: qualityChecklist,
   closingTemplateName: "Acceptance Criteria Quality Checklist",
+  toolkit: {
+    heading: "Free Acceptance Criteria Toolkit",
+    tagline: "8 rewrite patterns. One quality checklist. Every criterion.",
+    description: "Get the printable checklist, editable quality checklist and three completed bad-to-better rewrites.",
+    compactDescription: "Download the checklist, template and completed examples in one practical toolkit.",
+    zipHref: "/downloads/acceptance-criteria-toolkit.zip",
+    zipFilename: "acceptance-criteria-toolkit.zip",
+    analyticsPrefix: "acceptance_criteria",
+    files: [
+      { icon: "checklist", label: "Checklist — PDF", href: "/downloads/acceptance-criteria-checklist.pdf", filename: "acceptance-criteria-checklist.pdf" },
+      { icon: "template", label: "Quality Checklist — Markdown", href: "/downloads/acceptance-criteria-quality-checklist.md", filename: "acceptance-criteria-quality-checklist.md" },
+      { icon: "examples", label: "Completed Examples — Markdown", href: "/downloads/acceptance-criteria-completed-examples.md", filename: "acceptance-criteria-completed-examples.md" },
+    ],
+  },
   relatedPlaybookSlugs: [
     "requirement-elicitation-playbook",
     "jira-hacks-for-business-analysts",

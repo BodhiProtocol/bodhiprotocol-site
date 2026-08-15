@@ -156,6 +156,20 @@ export const firstTimeWritingAUserStory: Omit<Playbook, "readingTime"> = {
     "A user story is not something you invent. It is something you uncover. Writing \"As a... I want... So that...\" takes twenty seconds. Everything before it is the actual work.",
   closingTemplate: starterStoryTemplate,
   closingTemplateName: "Starter User Story Template",
+  toolkit: {
+    heading: "Free First User Story Toolkit",
+    tagline: "You don't invent a story. You uncover one.",
+    description: "Get the printable checklist, editable starter template and two more fully worked examples.",
+    compactDescription: "Download the checklist, template and completed examples in one practical toolkit.",
+    zipHref: "/downloads/first-user-story-toolkit.zip",
+    zipFilename: "first-user-story-toolkit.zip",
+    analyticsPrefix: "first_user_story",
+    files: [
+      { icon: "checklist", label: "Checklist — PDF", href: "/downloads/first-user-story-checklist.pdf", filename: "first-user-story-checklist.pdf" },
+      { icon: "template", label: "Starter Template — Markdown", href: "/downloads/starter-user-story-template.md", filename: "starter-user-story-template.md" },
+      { icon: "examples", label: "Completed Examples — Markdown", href: "/downloads/first-user-story-completed-examples.md", filename: "first-user-story-completed-examples.md" },
+    ],
+  },
   relatedPlaybookSlugs: [
     "requirement-elicitation-playbook",
     "acceptance-criteria-playbook",

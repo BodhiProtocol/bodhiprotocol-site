@@ -101,6 +101,20 @@ export const firstTimeWorkingWithAnApi: Omit<Playbook, "readingTime"> = {
     "Every API requirement reduces to the same handful of questions: what's being asked for, what comes back, what happens when it fails, and who else is depending on the answer staying the same.",
   closingTemplate: apiChecklist,
   closingTemplateName: "BA API Requirement Checklist",
+  toolkit: {
+    heading: "Free BA API Toolkit",
+    tagline: "The questions that matter. Not the jargon.",
+    description: "Get the printable checklist, editable requirement checklist and two completed worked examples.",
+    compactDescription: "Download the checklist, template and completed examples in one practical toolkit.",
+    zipHref: "/downloads/api-requirement-toolkit.zip",
+    zipFilename: "api-requirement-toolkit.zip",
+    analyticsPrefix: "api_requirement",
+    files: [
+      { icon: "checklist", label: "Checklist — PDF", href: "/downloads/api-requirement-checklist.pdf", filename: "api-requirement-checklist.pdf" },
+      { icon: "template", label: "Requirement Checklist — Markdown", href: "/downloads/ba-api-requirement-checklist.md", filename: "ba-api-requirement-checklist.md" },
+      { icon: "examples", label: "Completed Examples — Markdown", href: "/downloads/api-requirement-completed-examples.md", filename: "api-requirement-completed-examples.md" },
+    ],
+  },
   relatedTopics: ["Trade Lifecycle Playbook", "Front-to-Back Trade Trace Guide"],
   hacks: [
     {

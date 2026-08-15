@@ -98,6 +98,20 @@ export const requirementElicitationPlaybook: Omit<Playbook, "readingTime"> = {
     "Every discovery conversation eventually reduces to the same shape: a stated ask, a real problem underneath it, and a set of questions that connects the two. The export button might still be the right answer. Now you'll know that for a reason, not by default.",
   closingTemplate: questionBank,
   closingTemplateName: "Requirement Elicitation Question Bank",
+  toolkit: {
+    heading: "Free Requirement Elicitation Toolkit",
+    tagline: "The button might be right. Now you'll know why.",
+    description: "Get the printable checklist, editable question bank and two completed discovery examples.",
+    compactDescription: "Download the checklist, template and completed examples in one practical toolkit.",
+    zipHref: "/downloads/requirement-elicitation-toolkit.zip",
+    zipFilename: "requirement-elicitation-toolkit.zip",
+    analyticsPrefix: "requirement_elicitation",
+    files: [
+      { icon: "checklist", label: "Checklist — PDF", href: "/downloads/requirement-elicitation-checklist.pdf", filename: "requirement-elicitation-checklist.pdf" },
+      { icon: "template", label: "Question Bank — Markdown", href: "/downloads/requirement-elicitation-question-bank.md", filename: "requirement-elicitation-question-bank.md" },
+      { icon: "examples", label: "Completed Examples — Markdown", href: "/downloads/requirement-elicitation-completed-examples.md", filename: "requirement-elicitation-completed-examples.md" },
+    ],
+  },
   relatedPlaybookSlugs: [
     "acceptance-criteria-playbook",
     "first-time-writing-a-user-story",

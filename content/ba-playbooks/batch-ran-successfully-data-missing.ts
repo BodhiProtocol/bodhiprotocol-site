@@ -58,6 +58,20 @@ export const batchRanSuccessfullyDataMissing: Omit<Playbook, "readingTime"> = {
     "Next time a batch reports SUCCESS but the numbers don't add up, don't stop at the scheduler. Trace the count through Source, Extract, Transform, Validate, Load, Reconcile and Consume, and find the first checkpoint where expected stops matching actual. That's where the investigation actually starts — and reconciling counts at every checkpoint is how you make sure it doesn't happen quietly again.",
   closingTemplate: investigationChecklist,
   closingTemplateName: "Missing Data / Batch Investigation Checklist",
+  toolkit: {
+    heading: "Free Batch Investigation Toolkit",
+    tagline: "Seven checkpoints. One reconciliation. Every batch.",
+    description: "Get the printable checklist, editable investigation template and two completed examples.",
+    compactDescription: "Download the checklist, template and completed examples in one practical toolkit.",
+    zipHref: "/downloads/batch-investigation-toolkit.zip",
+    zipFilename: "batch-investigation-toolkit.zip",
+    analyticsPrefix: "batch_investigation",
+    files: [
+      { icon: "checklist", label: "Checklist — PDF", href: "/downloads/batch-investigation-checklist.pdf", filename: "batch-investigation-checklist.pdf" },
+      { icon: "template", label: "Investigation Template — Markdown", href: "/downloads/batch-investigation-template.md", filename: "batch-investigation-template.md" },
+      { icon: "examples", label: "Completed Examples — Markdown", href: "/downloads/batch-investigation-completed-examples.md", filename: "batch-investigation-completed-examples.md" },
+    ],
+  },
   relatedPlaybookSlugs: ["two-systems-show-different-numbers", "front-to-back-trade-trace-guide", "impact-analysis-template"],
   image: {
     src: "/images/ba-playbooks/batch-ran-successfully-data-missing-infographic.png",

@@ -48,6 +48,20 @@ export const twoSystemsShowDifferentNumbers: Omit<Playbook, "readingTime"> = {
     "Most data mismatches resolve into a one-sentence answer once someone traces a handful of records instead of arguing about the totals. The totals are a symptom. The definition, timing or status gap underneath them is the actual finding.",
   closingTemplate: investigationChecklist,
   closingTemplateName: "Data Mismatch Investigation Checklist",
+  toolkit: {
+    heading: "Free Data Mismatch Toolkit",
+    tagline: "Confirm you're comparing the same thing.",
+    description: "Get the printable checklist, editable investigation worksheet and two completed examples.",
+    compactDescription: "Download the checklist, template and completed examples in one practical toolkit.",
+    zipHref: "/downloads/data-mismatch-toolkit.zip",
+    zipFilename: "data-mismatch-toolkit.zip",
+    analyticsPrefix: "data_mismatch",
+    files: [
+      { icon: "checklist", label: "Checklist — PDF", href: "/downloads/data-mismatch-checklist.pdf", filename: "data-mismatch-checklist.pdf" },
+      { icon: "template", label: "Investigation Worksheet — Markdown", href: "/downloads/data-mismatch-investigation-template.md", filename: "data-mismatch-investigation-template.md" },
+      { icon: "examples", label: "Completed Examples — Markdown", href: "/downloads/data-mismatch-completed-examples.md", filename: "data-mismatch-completed-examples.md" },
+    ],
+  },
   relatedPlaybookSlugs: [
     "front-to-back-trade-trace-guide",
     "front-office-middle-office-back-office",
