@@ -91,6 +91,16 @@ function ConfuciusOrderRingsDiagram({ nodes }: { nodes: GreatMindWheelNode[] }) 
     setVisited((prev) => (prev.has(index) ? prev : new Set(prev).add(index)));
   }
 
+  // Click pins/unpins a ring independently of hover, matching the toggle
+  // behavior on Chanakya's and Marcus Aurelius's diagrams — without this, a
+  // second click on the same ring re-set the identical state instead of
+  // releasing it, leaving touch and keyboard users with no way to close a
+  // pinned ring except clicking a different one.
+  function handleClick(index: number) {
+    setActiveIndex((current) => (current === index ? null : index));
+    setVisited((prev) => (prev.has(index) ? prev : new Set(prev).add(index)));
+  }
+
   return (
     <div ref={ref} className="flex w-full flex-col items-center gap-5">
       <div className="relative aspect-square w-full max-w-md sm:max-w-lg">
@@ -190,7 +200,7 @@ function ConfuciusOrderRingsDiagram({ nodes }: { nodes: GreatMindWheelNode[] }) 
               onMouseLeave={() => setActiveIndex(null)}
               onFocus={() => markVisited(ring.index)}
               onBlur={() => setActiveIndex(null)}
-              onClick={() => markVisited(ring.index)}
+              onClick={() => handleClick(ring.index)}
               aria-pressed={isActive}
               aria-describedby="confucius-rings-detail"
             >
