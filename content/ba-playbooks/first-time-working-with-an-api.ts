@@ -101,7 +101,7 @@ export const firstTimeWorkingWithAnApi: Omit<Playbook, "readingTime"> = {
     "Every API requirement reduces to the same handful of questions: what's being asked for, what comes back, what happens when it fails, and who else is depending on the answer staying the same.",
   closingTemplate: apiChecklist,
   closingTemplateName: "BA API Requirement Checklist",
-  relatedTopics: ["Trade Lifecycle Playbook", "Front-to-Back Trade Trace Guide"],
+  relatedPlaybookSlugs: ["trade-lifecycle-playbook", "front-to-back-trade-trace-guide"],
   hacks: [
     {
       number: 1,
