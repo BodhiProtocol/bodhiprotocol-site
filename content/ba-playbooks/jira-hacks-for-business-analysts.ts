@@ -77,6 +77,20 @@ export const jiraHacksForBusinessAnalysts: Omit<Playbook, "readingTime"> = {
     "Most Jira problems are not really Jira problems. They are information-design problems. Clear context, explicit decisions, visible dependencies, and testable acceptance criteria make the tool much easier to work with.",
   closingTemplate: masterStoryTemplate,
   closingTemplateName: "BA Jira Story Template",
+  toolkit: {
+    heading: "Free BA Jira Toolkit",
+    tagline: "12 habits. One master template. Every ticket.",
+    description: "Get the printable checklist, editable story template and two completed examples.",
+    compactDescription: "Download the checklist, template and completed examples in one practical toolkit.",
+    zipHref: "/downloads/jira-hacks-toolkit.zip",
+    zipFilename: "jira-hacks-toolkit.zip",
+    analyticsPrefix: "jira_hacks",
+    files: [
+      { icon: "checklist", label: "Checklist — PDF", href: "/downloads/jira-hacks-checklist.pdf", filename: "jira-hacks-checklist.pdf" },
+      { icon: "template", label: "Editable Story Template — Markdown", href: "/downloads/ba-jira-story-template.md", filename: "ba-jira-story-template.md" },
+      { icon: "examples", label: "Completed Examples — Markdown", href: "/downloads/jira-hacks-completed-examples.md", filename: "jira-hacks-completed-examples.md" },
+    ],
+  },
   relatedPlaybookSlugs: [
     "acceptance-criteria-playbook",
     "requirement-elicitation-playbook",
