@@ -59,12 +59,31 @@ const customPlaybookBodies: Partial<Record<string, () => ReactNode>> = {
   "everyone-wants-something-different": EveryoneWantsSomethingDifferentBody,
 };
 
-const continuationPilotTargets: Record<string, string> = {
+// One editorially chosen next step for each playbook. These are intentionally
+// based on skill progression / problem adjacency rather than publish order.
+const continuationTargets: Record<string, string> = {
   "jira-hacks-for-business-analysts": "acceptance-criteria-playbook",
-  "impact-analysis-template": "release-tomorrow-requirement-changed-today",
+  "requirement-elicitation-playbook": "everyone-wants-something-different",
+  "acceptance-criteria-playbook": "first-time-writing-a-user-story",
+  "first-time-working-with-an-api": "front-to-back-trade-trace-guide",
+  "two-systems-show-different-numbers": "batch-ran-successfully-data-missing",
+  "first-time-writing-a-user-story": "business-analyst-user-story-template",
+  "story-carried-over-four-sprints": "requirement-changed-mid-sprint",
+  "who-owns-the-requirement": "everyone-wants-something-different",
+  "business-analyst-user-story-template": "acceptance-criteria-playbook",
+  "front-office-middle-office-back-office": "front-to-back-trade-trace-guide",
   "uat-passed-production-failed": "nobody-can-reproduce-the-production-issue",
+  "impact-analysis-template": "release-tomorrow-requirement-changed-today",
+  "new-project-discovery-playbook": "requirement-elicitation-playbook",
+  "front-to-back-trade-trace-guide": "two-systems-show-different-numbers",
   "release-tomorrow-requirement-changed-today": "impact-analysis-template",
+  "requirement-changed-mid-sprint": "impact-analysis-template",
+  "batch-ran-successfully-data-missing": "two-systems-show-different-numbers",
+  "pre-uat-readiness-checklist": "uat-passed-production-failed",
+  "story-is-done-why-cant-we-release-it": "pre-uat-readiness-checklist",
   "nobody-can-reproduce-the-production-issue": "uat-passed-production-failed",
+  "defect-vs-expected-behaviour": "acceptance-criteria-playbook",
+  "everyone-wants-something-different": "who-owns-the-requirement",
 };
 
 export function generateStaticParams() {
@@ -111,7 +130,7 @@ export default async function PlaybookPage({ params }: PlaybookPageProps) {
   const related = getRelatedPlaybooks(guide);
   const guideUrl = `${siteConfig.url}/ba-playbooks/${guide.slug}`;
   const CustomBody = customPlaybookBodies[guide.slug];
-  const continuationTargetSlug = continuationPilotTargets[guide.slug];
+  const continuationTargetSlug = continuationTargets[guide.slug];
   const continuationTarget = continuationTargetSlug ? getPlaybookBySlug(continuationTargetSlug) : undefined;
 
   const articleJsonLd = {
