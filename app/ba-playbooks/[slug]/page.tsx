@@ -25,6 +25,7 @@ import { NewProjectDiscoveryPlaybookBody } from "@/components/ba-playbooks/new-p
 import { PreUatReadinessChecklistBody } from "@/components/ba-playbooks/pre-uat-readiness-checklist-body";
 import { ReleaseTomorrowRequirementChangedTodayBody } from "@/components/ba-playbooks/release-tomorrow-requirement-changed-today-body";
 import { NobodyCanReproduceTheProductionIssueBody } from "@/components/ba-playbooks/nobody-can-reproduce-the-production-issue-body";
+import { EveryoneWantsSomethingDifferentBody } from "@/components/ba-playbooks/everyone-wants-something-different-body";
 import { ContentNav } from "@/components/shared/content-nav";
 import { ContentRecommendationList } from "@/components/shared/content-recommendation";
 import { JsonLd } from "@/components/shared/json-ld";
@@ -55,6 +56,7 @@ const customPlaybookBodies: Partial<Record<string, () => ReactNode>> = {
   "pre-uat-readiness-checklist": PreUatReadinessChecklistBody,
   "release-tomorrow-requirement-changed-today": ReleaseTomorrowRequirementChangedTodayBody,
   "nobody-can-reproduce-the-production-issue": NobodyCanReproduceTheProductionIssueBody,
+  "everyone-wants-something-different": EveryoneWantsSomethingDifferentBody,
 };
 
 const continuationPilotTargets: Record<string, string> = {
