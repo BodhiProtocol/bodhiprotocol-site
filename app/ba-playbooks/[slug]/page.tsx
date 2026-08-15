@@ -84,6 +84,7 @@ const continuationTargets: Record<string, string> = {
   "nobody-can-reproduce-the-production-issue": "uat-passed-production-failed",
   "defect-vs-expected-behaviour": "acceptance-criteria-playbook",
   "everyone-wants-something-different": "who-owns-the-requirement",
+  "regulatory-change-requirement-playbook": "acceptance-criteria-playbook",
 };
 
 export function generateStaticParams() {
