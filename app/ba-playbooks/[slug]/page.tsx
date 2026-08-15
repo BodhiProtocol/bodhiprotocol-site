@@ -13,6 +13,7 @@ import { PlaybookMeta } from "@/components/ba-playbooks/playbook-meta";
 import { PlaybookProgress, PlaybookProgressBar } from "@/components/ba-playbooks/playbook-progress";
 import { HackCard } from "@/components/ba-playbooks/hack-card";
 import { PlaybookEnding } from "@/components/ba-playbooks/playbook-ending";
+import { PlaybookContinuation } from "@/components/ba-playbooks/playbook-continuation";
 import { RelatedPlaybooks } from "@/components/ba-playbooks/related-playbooks";
 import { StoryCarriedOverBody } from "@/components/ba-playbooks/story-carried-over-body";
 import { WhoOwnsTheRequirementBody } from "@/components/ba-playbooks/who-owns-the-requirement-body";
@@ -54,6 +55,14 @@ const customPlaybookBodies: Partial<Record<string, () => ReactNode>> = {
   "pre-uat-readiness-checklist": PreUatReadinessChecklistBody,
   "release-tomorrow-requirement-changed-today": ReleaseTomorrowRequirementChangedTodayBody,
   "nobody-can-reproduce-the-production-issue": NobodyCanReproduceTheProductionIssueBody,
+};
+
+const continuationPilotTargets: Record<string, string> = {
+  "jira-hacks-for-business-analysts": "acceptance-criteria-playbook",
+  "impact-analysis-template": "release-tomorrow-requirement-changed-today",
+  "uat-passed-production-failed": "nobody-can-reproduce-the-production-issue",
+  "release-tomorrow-requirement-changed-today": "impact-analysis-template",
+  "nobody-can-reproduce-the-production-issue": "uat-passed-production-failed",
 };
 
 export function generateStaticParams() {
@@ -100,6 +109,8 @@ export default async function PlaybookPage({ params }: PlaybookPageProps) {
   const related = getRelatedPlaybooks(guide);
   const guideUrl = `${siteConfig.url}/ba-playbooks/${guide.slug}`;
   const CustomBody = customPlaybookBodies[guide.slug];
+  const continuationTargetSlug = continuationPilotTargets[guide.slug];
+  const continuationTarget = continuationTargetSlug ? getPlaybookBySlug(continuationTargetSlug) : undefined;
 
   const articleJsonLd = {
     "@context": "https://schema.org",
@@ -177,12 +188,18 @@ export default async function PlaybookPage({ params }: PlaybookPageProps) {
             )}
             <Divider />
             <PlaybookEnding guide={guide} url={guideUrl} />
-            <ContentRecommendationList
-              items={playbookRecommendations[guide.slug] ?? []}
-              analyticsEvent="ba_playbook_related_essay_clicked"
-            />
-            <RelatedPlaybooks guides={related} comingSoon={guide.relatedTopics} />
-            <ContentNav previous={previous} next={next} basePath="/ba-playbooks" />
+            {continuationTarget ? (
+              <PlaybookContinuation guide={continuationTarget} />
+            ) : (
+              <>
+                <ContentRecommendationList
+                  items={playbookRecommendations[guide.slug] ?? []}
+                  analyticsEvent="ba_playbook_related_essay_clicked"
+                />
+                <RelatedPlaybooks guides={related} comingSoon={guide.relatedTopics} />
+                <ContentNav previous={previous} next={next} basePath="/ba-playbooks" />
+              </>
+            )}
           </article>
           {!CustomBody ? (
             <aside className="hidden lg:block">
