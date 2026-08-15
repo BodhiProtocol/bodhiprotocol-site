@@ -22,6 +22,7 @@ import { preUatReadinessChecklist } from "@/content/ba-playbooks/pre-uat-readine
 import { storyIsDoneWhyCantWeReleaseIt } from "@/content/ba-playbooks/story-is-done-why-cant-we-release-it";
 import { nobodyCanReproduceTheProductionIssue } from "@/content/ba-playbooks/nobody-can-reproduce-the-production-issue";
 import { defectVsExpectedBehaviour } from "@/content/ba-playbooks/defect-vs-expected-behaviour";
+import { everyoneWantsSomethingDifferent } from "@/content/ba-playbooks/everyone-wants-something-different";
 
 // Playbooks are structured card data (numbered hacks with before/after,
 // templates, etc.) rather than prose, so each playbook is a typed data module
@@ -54,6 +55,7 @@ const playbookEntries: Omit<Playbook, "readingTime">[] = [
   storyIsDoneWhyCantWeReleaseIt,
   nobodyCanReproduceTheProductionIssue,
   defectVsExpectedBehaviour,
+  everyoneWantsSomethingDifferent,
 ];
 
 function withReadingTime(guide: Omit<Playbook, "readingTime">): Playbook {
