@@ -22,6 +22,7 @@ import { preUatReadinessChecklist } from "@/content/ba-playbooks/pre-uat-readine
 import { storyIsDoneWhyCantWeReleaseIt } from "@/content/ba-playbooks/story-is-done-why-cant-we-release-it";
 import { nobodyCanReproduceTheProductionIssue } from "@/content/ba-playbooks/nobody-can-reproduce-the-production-issue";
 import { defectVsExpectedBehaviour } from "@/content/ba-playbooks/defect-vs-expected-behaviour";
+import { everyoneWantsSomethingDifferent } from "@/content/ba-playbooks/everyone-wants-something-different";
 import { tradeLifecyclePlaybook } from "@/content/ba-playbooks/trade-lifecycle-playbook";
 
 // Playbooks are structured card data (numbered hacks with before/after,
@@ -55,6 +56,7 @@ const playbookEntries: Omit<Playbook, "readingTime">[] = [
   storyIsDoneWhyCantWeReleaseIt,
   nobodyCanReproduceTheProductionIssue,
   defectVsExpectedBehaviour,
+  everyoneWantsSomethingDifferent,
   tradeLifecyclePlaybook,
 ];
 
