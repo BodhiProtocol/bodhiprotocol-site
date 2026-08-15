@@ -16,11 +16,11 @@ import { H2, H3, Muted } from "@/components/ui/typography";
 
 const startHere = [
   {
-    eyebrow: "Career path",
-    title: "Become a capital markets BA",
+    eyebrow: "Guided learning",
+    title: "Follow a Bodhi Path",
     description:
-      "Learn trade lifecycle, requirements, user stories, acceptance criteria, and interview-ready domain concepts.",
-    href: "/capital-markets-business-analyst",
+      "Choose your goal and follow a curated sequence instead of figuring out what to read next.",
+    href: "/paths",
   },
   {
     eyebrow: "Core BA skills",
@@ -56,10 +56,10 @@ export default function Home() {
           <>
             <Button
               nativeButton={false}
-              render={<Link href="/capital-markets-business-analyst" />}
+              render={<Link href="/paths" />}
               className="h-11 rounded-full px-7 shadow-sm duration-200 ease-out hover:-translate-y-0.5 hover:shadow-lg"
             >
-              Start the BA Roadmap
+              Choose your path
             </Button>
             <Button
               variant="ghost"
