@@ -16,7 +16,7 @@ function PlaybookContinuation({ guide }: PlaybookContinuationProps) {
   return (
     <div className="not-prose border-t border-border pt-8">
       <p className="mb-3 font-mono text-[11px] font-medium tracking-[0.14em] text-muted-foreground uppercase">
-        Continue
+        Continue your BA journey
       </p>
       <Link
         href={`/ba-playbooks/${guide.slug}`}
@@ -27,7 +27,7 @@ function PlaybookContinuation({ guide }: PlaybookContinuationProps) {
           <ArrowRight className="size-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-1" />
         </span>
         <span className="text-sm leading-relaxed text-muted-foreground">
-          {guide.summary ?? guide.description}
+          {guide.description}
         </span>
       </Link>
     </div>
