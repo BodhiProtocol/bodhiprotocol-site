@@ -4,12 +4,20 @@ import Link from "next/link";
 import { Card } from "@/components/ui/card";
 import { Tag } from "@/components/ui/tag";
 import { Muted } from "@/components/ui/typography";
+import { HighlightedText, type MatchIndices } from "@/components/shared/highlighted-text";
 import { categoryIcons } from "@/lib/category-icons";
 import { essayIllustrations } from "@/lib/essay-illustrations";
 import { getEssayHook } from "@/lib/essay-hooks";
 import type { Essay } from "@/types/content";
 
-function ArticleCard({ essay }: { essay: Essay }) {
+interface ArticleCardProps {
+  essay: Essay;
+  /** Fuse.js match indices — highlights the matched span when this card renders a search result. */
+  titleMatch?: MatchIndices;
+  descriptionMatch?: MatchIndices;
+}
+
+function ArticleCard({ essay, titleMatch, descriptionMatch }: ArticleCardProps) {
   const Icon = categoryIcons[essay.category];
   const Illustration = essayIllustrations[essay.slug];
   const hook = getEssayHook(essay);
@@ -46,12 +54,14 @@ function ArticleCard({ essay }: { essay: Essay }) {
             </div>
           ) : null}
           <h3 className="font-heading text-lg leading-snug font-medium text-balance group-hover:text-brand">
-            {essay.title}
+            <HighlightedText text={essay.title} indices={titleMatch} />
           </h3>
           <p className="font-heading text-sm leading-snug font-medium text-foreground/85 text-balance">
             {hook}
           </p>
-          <Muted className="line-clamp-2">{essay.description}</Muted>
+          <Muted className="line-clamp-2">
+            <HighlightedText text={essay.description} indices={descriptionMatch} />
+          </Muted>
           <Muted className="mt-auto font-mono text-xs">
             {essay.author} · {essay.readingTime}
           </Muted>
