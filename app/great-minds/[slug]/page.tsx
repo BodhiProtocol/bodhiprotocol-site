@@ -89,6 +89,8 @@ import { MungerInversionDiagram } from "@/components/great-minds/munger-inversio
 import { MungerHeroBackground } from "@/components/great-minds/munger-hero-background";
 import { ConfuciusOrderRingsDiagram } from "@/components/great-minds/confucius-order-rings-diagram";
 import { ConfuciusHeroBackground } from "@/components/great-minds/confucius-hero-background";
+import { BhabhaRelayDiagram } from "@/components/great-minds/bhabha-relay-diagram";
+import { BhabhaHeroBackground } from "@/components/great-minds/bhabha-hero-background";
 import { MindGraphProvider } from "@/components/great-minds/mind-graph-context";
 import { getAllGreatMinds, getGreatMindBySlug, type GreatMindWithContent } from "@/lib/great-minds";
 import { mdxOptions } from "@/lib/mdx-options";
@@ -131,6 +133,7 @@ const heroDiagrams: Record<string, (mind: GreatMindWithContent) => ReactNode> = 
   "warren-buffett": (mind) => <BuffettFloatEngineDiagram nodes={mind.wheel} />,
   "charlie-munger": (mind) => <MungerInversionDiagram nodes={mind.wheel} />,
   confucius: (mind) => <ConfuciusOrderRingsDiagram nodes={mind.wheel} />,
+  "homi-bhabha": (mind) => <BhabhaRelayDiagram nodes={mind.wheel} />,
 };
 
 const heroBackgrounds: Record<string, ReactNode> = {
@@ -167,6 +170,7 @@ const heroBackgrounds: Record<string, ReactNode> = {
   "warren-buffett": <BuffettHeroBackground />,
   "charlie-munger": <MungerHeroBackground />,
   confucius: <ConfuciusHeroBackground />,
+  "homi-bhabha": <BhabhaHeroBackground />,
 };
 
 interface GreatMindPageProps {
