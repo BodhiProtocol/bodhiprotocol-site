@@ -1,4 +1,4 @@
-type MatchIndices = ReadonlyArray<readonly [number, number]>;
+export type MatchIndices = ReadonlyArray<readonly [number, number]>;
 
 function HighlightedText({ text, indices }: { text: string; indices?: MatchIndices }) {
   if (!indices || indices.length === 0) return <>{text}</>;
