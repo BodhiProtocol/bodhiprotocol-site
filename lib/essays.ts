@@ -22,6 +22,8 @@ interface EssayFrontmatter {
   author: string;
   date: string;
   coverImage?: string;
+  seoTitle?: string;
+  seoDescription?: string;
 }
 
 function readEssayFile(filename: string): EssayWithContent {
@@ -43,6 +45,8 @@ function readEssayFile(filename: string): EssayWithContent {
     author: frontmatter.author,
     date: frontmatter.date,
     coverImage: frontmatter.coverImage,
+    seoTitle: frontmatter.seoTitle,
+    seoDescription: frontmatter.seoDescription,
     readingTime: readingTime(content).text,
     content,
   };
