@@ -193,6 +193,13 @@ export const regulatoryChangeRequirementPlaybook: Omit<Playbook, "readingTime"> 
       number: 10,
       title: "Close with a documented sign-off, not a \"looks good\"",
       insight: "A verbal nod from Compliance isn't evidence. A dated, attributed sign-off is.",
+      compare: {
+        leftLabel: "\"Looks good\"",
+        left: "A nod in a meeting, or a thumbs-up on a Slack thread. Nothing an auditor can find six months later.",
+        rightLabel: "Documented sign-off",
+        right:
+          "A dated, attributed approval against the scope, the interpretation decisions, and the MVP boundary — filed where the next person to touch this can find it.",
+      },
       whyItHelps:
         "Before build starts, get the regulatory owner's sign-off in writing against the scope, the interpretation decisions, and the MVP boundary — the same artifact that answers every later question about why this was built the way it was.",
       proTip:
