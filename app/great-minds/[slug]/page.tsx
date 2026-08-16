@@ -93,6 +93,8 @@ import { BhabhaRelayDiagram } from "@/components/great-minds/bhabha-relay-diagra
 import { BhabhaHeroBackground } from "@/components/great-minds/bhabha-hero-background";
 import { GandhiCharkhaDiagram } from "@/components/great-minds/gandhi-charkha-diagram";
 import { GandhiHeroBackground } from "@/components/great-minds/gandhi-hero-background";
+import { KurienOwnershipPyramidDiagram } from "@/components/great-minds/kurien-ownership-pyramid-diagram";
+import { KurienHeroBackground } from "@/components/great-minds/kurien-hero-background";
 import { MindGraphProvider } from "@/components/great-minds/mind-graph-context";
 import { getAllGreatMinds, getGreatMindBySlug, type GreatMindWithContent } from "@/lib/great-minds";
 import { mdxOptions } from "@/lib/mdx-options";
@@ -137,6 +139,7 @@ const heroDiagrams: Record<string, (mind: GreatMindWithContent) => ReactNode> = 
   confucius: (mind) => <ConfuciusOrderRingsDiagram nodes={mind.wheel} />,
   "homi-bhabha": (mind) => <BhabhaRelayDiagram nodes={mind.wheel} />,
   "mahatma-gandhi": (mind) => <GandhiCharkhaDiagram nodes={mind.wheel} />,
+  "verghese-kurien": (mind) => <KurienOwnershipPyramidDiagram nodes={mind.wheel} />,
 };
 
 const heroBackgrounds: Record<string, ReactNode> = {
@@ -175,6 +178,7 @@ const heroBackgrounds: Record<string, ReactNode> = {
   confucius: <ConfuciusHeroBackground />,
   "homi-bhabha": <BhabhaHeroBackground />,
   "mahatma-gandhi": <GandhiHeroBackground />,
+  "verghese-kurien": <KurienHeroBackground />,
 };
 
 interface GreatMindPageProps {
