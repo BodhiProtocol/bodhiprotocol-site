@@ -22,7 +22,13 @@ const funnelWidths = ["100%", "88%", "76%", "64%", "52%", "42%"];
 
 function VivekanandaConversionFunnelDiagram({ nodes }: { nodes: GreatMindWheelNode[] }) {
   const { ref, played, reducedMotion } = useRevealOnScroll();
-  const [activeIndex, setActiveIndex] = React.useState<number | null>(null);
+  // Hover is ephemeral; a click pins independently of it — reading a click's
+  // toggle off the same activeIndex a mouseenter had just set would race,
+  // since every click is necessarily preceded by a mouseenter, and the very
+  // first click on any node would silently cancel itself back out.
+  const [hoverIndex, setHoverIndex] = React.useState<number | null>(null);
+  const [pinnedIndex, setPinnedIndex] = React.useState<number | null>(null);
+  const activeIndex = pinnedIndex ?? hoverIndex;
   const active = activeIndex !== null ? nodes[activeIndex] : null;
 
   return (
@@ -65,11 +71,11 @@ function VivekanandaConversionFunnelDiagram({ nodes }: { nodes: GreatMindWheelNo
                   initial={{ opacity: 0, y: -8 }}
                   animate={played ? { opacity: isDimmed ? 0.46 : 1, y: 0 } : {}}
                   transition={{ duration: 0.35, delay: reducedMotion ? 0 : 0.15 + index * 0.09 }}
-                  onMouseEnter={() => setActiveIndex(index)}
-                  onMouseLeave={() => setActiveIndex(null)}
-                  onFocus={() => setActiveIndex(index)}
-                  onBlur={() => setActiveIndex(null)}
-                  onClick={() => setActiveIndex(isActive ? null : index)}
+                  onMouseEnter={() => setHoverIndex(index)}
+                  onMouseLeave={() => setHoverIndex(null)}
+                  onFocus={() => setHoverIndex(index)}
+                  onBlur={() => setHoverIndex(null)}
+                  onClick={() => setPinnedIndex((current) => (current === index ? null : index))}
                   aria-pressed={isActive}
                   aria-describedby="vivekananda-node-detail"
                   className={cn(

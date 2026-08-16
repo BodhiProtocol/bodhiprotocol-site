@@ -30,7 +30,13 @@ const STAGE_INDICES = new Set([1, 3, 5]);
 
 function BhabhaRelayDiagram({ nodes }: { nodes: GreatMindWheelNode[] }) {
   const { ref, played, reducedMotion } = useRevealOnScroll();
-  const [activeIndex, setActiveIndex] = React.useState<number | null>(null);
+  // Hover is ephemeral; a click pins independently of it — reading a click's
+  // toggle off the same activeIndex a mouseenter had just set would race,
+  // since every click is necessarily preceded by a mouseenter, and the very
+  // first click on any node would silently cancel itself back out.
+  const [hoverIndex, setHoverIndex] = React.useState<number | null>(null);
+  const [pinnedIndex, setPinnedIndex] = React.useState<number | null>(null);
+  const activeIndex = pinnedIndex ?? hoverIndex;
   const [pelletDone, setPelletDone] = React.useState(false);
   const demoFiredRef = React.useRef(false);
 
@@ -44,7 +50,7 @@ function BhabhaRelayDiagram({ nodes }: { nodes: GreatMindWheelNode[] }) {
   }, [played, reducedMotion, nodes.length]);
 
   function handleClick(index: number) {
-    setActiveIndex((current) => (current === index ? null : index));
+    setPinnedIndex((current) => (current === index ? null : index));
   }
 
   return (
@@ -91,10 +97,10 @@ function BhabhaRelayDiagram({ nodes }: { nodes: GreatMindWheelNode[] }) {
                 initial={{ opacity: 0, y: 12 }}
                 animate={played ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: reducedMotion ? 0 : 0.4, delay: reducedMotion ? 0 : entranceDelay }}
-                onMouseEnter={() => setActiveIndex(index)}
-                onMouseLeave={() => setActiveIndex(null)}
-                onFocus={() => setActiveIndex(index)}
-                onBlur={() => setActiveIndex(null)}
+                onMouseEnter={() => setHoverIndex(index)}
+                onMouseLeave={() => setHoverIndex(null)}
+                onFocus={() => setHoverIndex(index)}
+                onBlur={() => setHoverIndex(null)}
                 onClick={() => handleClick(index)}
                 aria-pressed={isActive}
                 aria-describedby="bhabha-relay-detail"

@@ -25,7 +25,14 @@ const DEMO_DURATION_MS = 1600;
 
 function MarcusAureliusCitadelDiagram({ nodes }: { nodes: GreatMindWheelNode[] }) {
   const { ref, played, reducedMotion } = useRevealOnScroll();
-  const [activeIndex, setActiveIndex] = React.useState<number | null>(null);
+  // Hover is ephemeral; a click pins independently of it — reading a click's
+  // toggle off the same activeIndex a mouseenter had just set would race,
+  // since every click is necessarily preceded by a mouseenter, and the very
+  // first click on any node would silently cancel itself back out. The
+  // auto-demo below drives hoverIndex too (a temporary preview), not a pin.
+  const [hoverIndex, setHoverIndex] = React.useState<number | null>(null);
+  const [pinnedIndex, setPinnedIndex] = React.useState<number | null>(null);
+  const activeIndex = pinnedIndex ?? hoverIndex;
   const demoFiredRef = React.useRef(false);
 
   const center = 50;
@@ -56,8 +63,8 @@ function MarcusAureliusCitadelDiagram({ nodes }: { nodes: GreatMindWheelNode[] }
     const demoNodeIndex = points.findIndex((p) => p.label === DEMO_LABEL);
     if (demoNodeIndex < 0) return;
 
-    const start = setTimeout(() => setActiveIndex(demoNodeIndex), DEMO_DELAY_MS);
-    const end = setTimeout(() => setActiveIndex((current) => (current === demoNodeIndex ? null : current)), DEMO_DELAY_MS + DEMO_DURATION_MS);
+    const start = setTimeout(() => setHoverIndex(demoNodeIndex), DEMO_DELAY_MS);
+    const end = setTimeout(() => setHoverIndex((current) => (current === demoNodeIndex ? null : current)), DEMO_DELAY_MS + DEMO_DURATION_MS);
     return () => {
       clearTimeout(start);
       clearTimeout(end);
@@ -67,13 +74,13 @@ function MarcusAureliusCitadelDiagram({ nodes }: { nodes: GreatMindWheelNode[] }
   }, [played, reducedMotion]);
 
   function handleEnter(index: number) {
-    setActiveIndex(index);
+    setHoverIndex(index);
   }
   function handleLeave() {
-    setActiveIndex(null);
+    setHoverIndex(null);
   }
   function handleClick(index: number) {
-    setActiveIndex((current) => (current === index ? null : index));
+    setPinnedIndex((current) => (current === index ? null : index));
   }
 
   return (

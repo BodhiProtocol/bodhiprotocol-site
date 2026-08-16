@@ -37,7 +37,13 @@ const ICON_COLUMN_X = 64;
 
 function KurienOwnershipPyramidDiagram({ nodes }: { nodes: GreatMindWheelNode[] }) {
   const { ref, played, reducedMotion } = useRevealOnScroll();
-  const [activeIndex, setActiveIndex] = React.useState<number | null>(null);
+  // Hover is ephemeral; a click pins independently of it — reading a click's
+  // toggle off the same activeIndex a mouseenter had just set would race,
+  // since every click is necessarily preceded by a mouseenter, and the very
+  // first click on any tier would silently cancel itself back out.
+  const [hoverIndex, setHoverIndex] = React.useState<number | null>(null);
+  const [pinnedIndex, setPinnedIndex] = React.useState<number | null>(null);
+  const activeIndex = pinnedIndex ?? hoverIndex;
   const demoFiredRef = React.useRef(false);
   const [pulseDone, setPulseDone] = React.useState(false);
 
@@ -58,7 +64,7 @@ function KurienOwnershipPyramidDiagram({ nodes }: { nodes: GreatMindWheelNode[] 
   }, [played, reducedMotion]);
 
   function handleClick(index: number) {
-    setActiveIndex((current) => (current === index ? null : index));
+    setPinnedIndex((current) => (current === index ? null : index));
   }
 
   const bottomY = TOP_MARGIN + STACK_HEIGHT - BAND_HEIGHT / 2;
@@ -136,10 +142,10 @@ function KurienOwnershipPyramidDiagram({ nodes }: { nodes: GreatMindWheelNode[] 
               initial={{ opacity: 0 }}
               animate={played ? { opacity: 1 } : {}}
               transition={{ duration: reducedMotion ? 0 : 0.4, delay: reducedMotion ? 0 : entranceDelay }}
-              onMouseEnter={() => setActiveIndex(band.index)}
-              onMouseLeave={() => setActiveIndex(null)}
-              onFocus={() => setActiveIndex(band.index)}
-              onBlur={() => setActiveIndex(null)}
+              onMouseEnter={() => setHoverIndex(band.index)}
+              onMouseLeave={() => setHoverIndex(null)}
+              onFocus={() => setHoverIndex(band.index)}
+              onBlur={() => setHoverIndex(null)}
               onClick={() => handleClick(band.index)}
               aria-pressed={isActive}
               aria-describedby="kurien-pyramid-detail"

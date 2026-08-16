@@ -23,7 +23,13 @@ const RING_ANGLES = [-90, 0, 90, 180]; // top, right, bottom, left
 
 function ChanakyaMandalaDiagram({ nodes }: { nodes: GreatMindWheelNode[] }) {
   const { ref, played, reducedMotion } = useRevealOnScroll();
-  const [activeIndex, setActiveIndex] = React.useState<number | null>(null);
+  // Hover is ephemeral; a click pins independently of it — reading a click's
+  // toggle off the same activeIndex a mouseenter had just set would race,
+  // since every click is necessarily preceded by a mouseenter, and the very
+  // first click on any node would silently cancel itself back out.
+  const [hoverIndex, setHoverIndex] = React.useState<number | null>(null);
+  const [pinnedIndex, setPinnedIndex] = React.useState<number | null>(null);
+  const activeIndex = pinnedIndex ?? hoverIndex;
 
   const center = 50;
   const active = activeIndex !== null ? nodes[activeIndex] : null;
@@ -41,13 +47,13 @@ function ChanakyaMandalaDiagram({ nodes }: { nodes: GreatMindWheelNode[] }) {
   });
 
   function handleEnter(index: number) {
-    setActiveIndex(index);
+    setHoverIndex(index);
   }
   function handleLeave() {
-    setActiveIndex(null);
+    setHoverIndex(null);
   }
   function handleClick(index: number) {
-    setActiveIndex((current) => (current === index ? null : index));
+    setPinnedIndex((current) => (current === index ? null : index));
   }
 
   return (
