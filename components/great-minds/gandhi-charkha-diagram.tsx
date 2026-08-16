@@ -35,7 +35,13 @@ const HUB_TICK_COUNT = 12;
 
 function GandhiCharkhaDiagram({ nodes }: { nodes: GreatMindWheelNode[] }) {
   const { ref, played, reducedMotion } = useRevealOnScroll();
-  const [activeIndex, setActiveIndex] = React.useState<number | null>(null);
+  // Hover is ephemeral; a click pins independently of it — reading a click's
+  // toggle off the same activeIndex a mouseenter had just set would race,
+  // since every click is necessarily preceded by a mouseenter, and the very
+  // first click on any spoke would silently cancel itself back out.
+  const [hoverIndex, setHoverIndex] = React.useState<number | null>(null);
+  const [pinnedIndex, setPinnedIndex] = React.useState<number | null>(null);
+  const activeIndex = pinnedIndex ?? hoverIndex;
   const [visited, setVisited] = React.useState<Set<number>>(new Set());
 
   const cycleComplete = visited.size >= nodes.length;
@@ -57,12 +63,12 @@ function GandhiCharkhaDiagram({ nodes }: { nodes: GreatMindWheelNode[] }) {
   const hubTicks = Array.from({ length: HUB_TICK_COUNT }, (_, index) => (360 / HUB_TICK_COUNT) * index);
 
   function markVisited(index: number) {
-    setActiveIndex(index);
+    setHoverIndex(index);
     setVisited((prev) => (prev.has(index) ? prev : new Set(prev).add(index)));
   }
 
   function handleClick(index: number) {
-    setActiveIndex((current) => (current === index ? null : index));
+    setPinnedIndex((current) => (current === index ? null : index));
     setVisited((prev) => (prev.has(index) ? prev : new Set(prev).add(index)));
   }
 
@@ -181,9 +187,9 @@ function GandhiCharkhaDiagram({ nodes }: { nodes: GreatMindWheelNode[] }) {
                 scale: { duration: reducedMotion ? 0 : 0.3, ease: "easeInOut" },
               }}
               onMouseEnter={() => markVisited(spoke.index)}
-              onMouseLeave={() => setActiveIndex(null)}
+              onMouseLeave={() => setHoverIndex(null)}
               onFocus={() => markVisited(spoke.index)}
-              onBlur={() => setActiveIndex(null)}
+              onBlur={() => setHoverIndex(null)}
               onClick={() => handleClick(spoke.index)}
               aria-pressed={isActive}
               aria-describedby="gandhi-charkha-detail"
