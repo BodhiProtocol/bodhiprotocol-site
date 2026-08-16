@@ -138,8 +138,8 @@ export const essaySeries: EssaySeries[] = [
 /**
  * A cross-arc link between two essays that share a mechanism rather than a
  * reading order. These are hand-authored on purpose — frontmatter tags are far
- * too sparse to infer them (32 distinct combinations across 42 essays, nearly
- * all singletons).
+ * too sparse to infer them (most tag combinations across all essays are
+ * singletons).
  *
  * Both endpoints must sit in *different* series: an edge between two parts of
  * the same arc is already drawn by the arc itself. `validateBridges` enforces it.

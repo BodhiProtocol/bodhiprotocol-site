@@ -90,14 +90,8 @@ export async function generateMetadata({ params }: EssayPageProps): Promise<Meta
   const essay = getEssayBySlug(slug);
   if (!essay) return {};
 
-  const seoTitle =
-    essay.slug === "shiv-pressed-buy-trade-execution"
-      ? "Shiv Pressed Buy: How Trade Execution Actually Works"
-      : essay.title;
-  const seoDescription =
-    essay.slug === "shiv-pressed-buy-trade-execution"
-      ? "Follow a fictional Reliance order in India and Apple order in the US to understand brokers, order books, matching, partial fills and settlement."
-      : essay.description;
+  const seoTitle = essay.seoTitle ?? essay.title;
+  const seoDescription = essay.seoDescription ?? essay.description;
 
   return {
     title: seoTitle,

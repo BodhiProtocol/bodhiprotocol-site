@@ -6,7 +6,7 @@ import type { Essay } from "@/types/content";
 
 /**
  * Only the fields a station needs to render. The map is a client component, so
- * projecting here keeps 42 essays' worth of MDX bodies out of the RSC payload.
+ * projecting here keeps every essay's MDX body out of the RSC payload.
  */
 export interface ConceptStation {
   slug: string;

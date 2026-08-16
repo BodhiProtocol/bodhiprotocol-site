@@ -14,6 +14,10 @@ export interface Essay {
   series?: string;
   /** 1-based position within that series. */
   seriesOrder?: number;
+  /** Overrides the default `<title>`/OG/Twitter title for this essay's page. */
+  seoTitle?: string;
+  /** Overrides the default meta/OG/Twitter description for this essay's page. */
+  seoDescription?: string;
 }
 
 export interface Blueprint {
