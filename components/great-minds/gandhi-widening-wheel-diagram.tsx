@@ -26,10 +26,15 @@ const iconMap: Record<string, LucideIcon> = {
 // carries the same claim the text does: same technique, wider turn.
 const CENTER = 50;
 const TURNS = 1.35;
-const START_RADIUS = 9;
+// START_RADIUS is deliberately well clear of the hub (a size-16 circle,
+// ~6-7% of container radius) — the innermost node's label sits below its
+// icon, toward the hub, so too tight a start radius collides label text
+// with the hub circle at narrow (mobile) container widths even though it
+// has room to spare on a wide desktop hero.
+const START_RADIUS = 16;
 const END_RADIUS = 45;
 const PATH_STEPS = 100;
-const NODE_T = [0.03, 0.22, 0.42, 0.6, 0.78, 0.96];
+const NODE_T = [0.08, 0.24, 0.42, 0.6, 0.78, 0.96];
 const NODE_SIZE = [
   "size-7 sm:size-8",
   "size-8 sm:size-9",
@@ -59,19 +64,28 @@ const SPIRAL_PATH = buildSpiralPath();
 
 function GandhiWideningWheelDiagram({ nodes }: { nodes: GreatMindWheelNode[] }) {
   const { ref, played, reducedMotion } = useRevealOnScroll();
-  const [activeIndex, setActiveIndex] = React.useState<number | null>(null);
+  // Hover/focus is ephemeral (hoverIndex); a click "pins" a node (pinnedIndex)
+  // independently of it. Reading a click's toggle off the same activeIndex
+  // that hover had just set would race with the mouseenter every click
+  // necessarily fires first — the first click on any node would silently
+  // cancel itself out, and only a second click would visibly pin it.
+  // Keeping the two separate means click always pins/unpins correctly on
+  // the very first press, on both mouse and touch.
+  const [hoverIndex, setHoverIndex] = React.useState<number | null>(null);
+  const [pinnedIndex, setPinnedIndex] = React.useState<number | null>(null);
+  const activeIndex = pinnedIndex ?? hoverIndex;
 
   const points = nodes.map((node, index) => ({ ...node, index, ...pointOnSpiral(NODE_T[index] ?? 0.5) }));
   const active = activeIndex !== null ? points[activeIndex] : null;
 
   function handleEnter(index: number) {
-    setActiveIndex(index);
+    setHoverIndex(index);
   }
   function handleLeave() {
-    setActiveIndex(null);
+    setHoverIndex(null);
   }
   function handleClick(index: number) {
-    setActiveIndex(activeIndex === index ? null : index);
+    setPinnedIndex((current) => (current === index ? null : index));
   }
 
   return (
