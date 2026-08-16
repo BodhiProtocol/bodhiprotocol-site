@@ -19,7 +19,13 @@ const iconMap: Record<string, LucideIcon> = {
 
 function NewtonChainDiagram({ nodes }: { nodes: GreatMindWheelNode[] }) {
   const { ref, played, reducedMotion } = useRevealOnScroll();
-  const [activeIndex, setActiveIndex] = React.useState<number | null>(null);
+  // Hover is ephemeral; a click pins independently of it — reading a click's
+  // toggle off the same activeIndex a mouseenter had just set would race,
+  // since every click is necessarily preceded by a mouseenter, and the very
+  // first click on any node would silently cancel itself back out.
+  const [hoverIndex, setHoverIndex] = React.useState<number | null>(null);
+  const [pinnedIndex, setPinnedIndex] = React.useState<number | null>(null);
+  const activeIndex = pinnedIndex ?? hoverIndex;
 
   const active = activeIndex !== null ? nodes[activeIndex] : null;
 
@@ -56,11 +62,11 @@ function NewtonChainDiagram({ nodes }: { nodes: GreatMindWheelNode[] }) {
                 initial={{ opacity: 0, y: 10 }}
                 animate={played ? { opacity: isDimmed ? 0.45 : 1, y: 0 } : {}}
                 transition={{ duration: 0.4, delay: reducedMotion ? 0 : delay }}
-                onMouseEnter={() => setActiveIndex(index)}
-                onMouseLeave={() => setActiveIndex(null)}
-                onFocus={() => setActiveIndex(index)}
-                onBlur={() => setActiveIndex(null)}
-                onClick={() => setActiveIndex(isActive ? null : index)}
+                onMouseEnter={() => setHoverIndex(index)}
+                onMouseLeave={() => setHoverIndex(null)}
+                onFocus={() => setHoverIndex(index)}
+                onBlur={() => setHoverIndex(null)}
+                onClick={() => setPinnedIndex((current) => (current === index ? null : index))}
                 aria-pressed={isActive}
                 aria-describedby="chain-node-detail"
               >

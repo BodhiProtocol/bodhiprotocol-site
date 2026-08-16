@@ -28,7 +28,13 @@ const BAND_WIDTHS = ["46%", "58%", "70%", "82%", "94%"];
 
 function KalamIgnitionDiagram({ nodes }: { nodes: GreatMindWheelNode[] }) {
   const { ref, played, reducedMotion } = useRevealOnScroll();
-  const [activeIndex, setActiveIndex] = React.useState<number | null>(null);
+  // Hover is ephemeral; a click pins independently of it — reading a click's
+  // toggle off the same activeIndex a mouseenter had just set would race,
+  // since every click is necessarily preceded by a mouseenter, and the very
+  // first click on any node would silently cancel itself back out.
+  const [hoverIndex, setHoverIndex] = React.useState<number | null>(null);
+  const [pinnedIndex, setPinnedIndex] = React.useState<number | null>(null);
+  const activeIndex = pinnedIndex ?? hoverIndex;
 
   const active = activeIndex !== null ? nodes[activeIndex] : null;
   const isThrusting = activeIndex === THRUST;
@@ -73,11 +79,11 @@ function KalamIgnitionDiagram({ nodes }: { nodes: GreatMindWheelNode[] }) {
                 initial={{ opacity: 0, y: -10 }}
                 animate={played ? { opacity: isDimmed ? 0.45 : 1, y: 0 } : {}}
                 transition={{ duration: 0.4, delay: reducedMotion ? 0 : delay }}
-                onMouseEnter={() => setActiveIndex(originalIndex)}
-                onMouseLeave={() => setActiveIndex(null)}
-                onFocus={() => setActiveIndex(originalIndex)}
-                onBlur={() => setActiveIndex(null)}
-                onClick={() => setActiveIndex(isActive ? null : originalIndex)}
+                onMouseEnter={() => setHoverIndex(originalIndex)}
+                onMouseLeave={() => setHoverIndex(null)}
+                onFocus={() => setHoverIndex(originalIndex)}
+                onBlur={() => setHoverIndex(null)}
+                onClick={() => setPinnedIndex((current) => (current === originalIndex ? null : originalIndex))}
                 aria-pressed={isActive}
                 aria-describedby="kalam-node-detail"
               >

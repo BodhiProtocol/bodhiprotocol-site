@@ -22,7 +22,21 @@ const iconMap: Record<string, LucideIcon> = {
 
 function LeonardoWheelDiagram({ nodes }: { nodes: GreatMindWheelNode[] }) {
   const { ref, played, reducedMotion } = useRevealOnScroll();
-  const { active, setActive } = useMindGraph();
+  const { setActive } = useMindGraph();
+  // Hover is ephemeral; a click pins independently of it — reading a click's
+  // toggle off the same shared "active" node a mouseenter had just set would
+  // race, since every click is necessarily preceded by a mouseenter, and the
+  // very first click on any node would silently cancel itself back out. Kept
+  // local rather than in MindGraphContext (which only models one active
+  // node) and synced into it below, so the background/secondary-quote
+  // consumers that read the context still see one combined value.
+  const [hoverNode, setHoverNode] = React.useState<GreatMindWheelNode | null>(null);
+  const [pinnedNode, setPinnedNode] = React.useState<GreatMindWheelNode | null>(null);
+  const active = pinnedNode ?? hoverNode;
+
+  React.useEffect(() => {
+    setActive(active);
+  }, [active, setActive]);
 
   // The per-node stagger delay below exists only for the one-time entrance
   // reveal. Once that's had time to finish, hover-driven dim/undim should
@@ -64,13 +78,13 @@ function LeonardoWheelDiagram({ nodes }: { nodes: GreatMindWheelNode[] }) {
     : [];
 
   function handleEnter(node: GreatMindWheelNode) {
-    setActive(node);
+    setHoverNode(node);
   }
   function handleLeave() {
-    setActive(null);
+    setHoverNode(null);
   }
   function handleClick(node: GreatMindWheelNode) {
-    setActive(active?.label === node.label ? null : node);
+    setPinnedNode((current) => (current?.label === node.label ? null : node));
   }
 
   const idle = activeIndex < 0;

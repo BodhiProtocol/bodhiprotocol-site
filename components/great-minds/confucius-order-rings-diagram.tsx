@@ -42,7 +42,14 @@ const DEMO_STEP_MS = 480;
 
 function ConfuciusOrderRingsDiagram({ nodes }: { nodes: GreatMindWheelNode[] }) {
   const { ref, played, reducedMotion } = useRevealOnScroll();
-  const [activeIndex, setActiveIndex] = React.useState<number | null>(null);
+  // Hover is ephemeral; a click pins independently of it — reading a click's
+  // toggle off the same activeIndex a mouseenter had just set would race,
+  // since every click is necessarily preceded by a mouseenter, and the very
+  // first click on any node would silently cancel itself back out. The
+  // auto-demo below drives hoverIndex too (a temporary preview), not a pin.
+  const [hoverIndex, setHoverIndex] = React.useState<number | null>(null);
+  const [pinnedIndex, setPinnedIndex] = React.useState<number | null>(null);
+  const activeIndex = pinnedIndex ?? hoverIndex;
   const [visited, setVisited] = React.useState<Set<number>>(new Set());
   const demoFiredRef = React.useRef(false);
 
@@ -73,11 +80,11 @@ function ConfuciusOrderRingsDiagram({ nodes }: { nodes: GreatMindWheelNode[] }) 
     demoFiredRef.current = true;
     const timers: ReturnType<typeof setTimeout>[] = [];
     nodes.forEach((_, index) => {
-      timers.push(setTimeout(() => setActiveIndex(index), DEMO_DELAY_MS + index * DEMO_STEP_MS));
+      timers.push(setTimeout(() => setHoverIndex(index), DEMO_DELAY_MS + index * DEMO_STEP_MS));
     });
     timers.push(
       setTimeout(
-        () => setActiveIndex((current) => (current === nodes.length - 1 ? null : current)),
+        () => setHoverIndex((current) => (current === nodes.length - 1 ? null : current)),
         DEMO_DELAY_MS + nodes.length * DEMO_STEP_MS + 300,
       ),
     );
@@ -87,7 +94,7 @@ function ConfuciusOrderRingsDiagram({ nodes }: { nodes: GreatMindWheelNode[] }) 
   }, [played, reducedMotion]);
 
   function markVisited(index: number) {
-    setActiveIndex(index);
+    setHoverIndex(index);
     setVisited((prev) => (prev.has(index) ? prev : new Set(prev).add(index)));
   }
 
@@ -97,7 +104,7 @@ function ConfuciusOrderRingsDiagram({ nodes }: { nodes: GreatMindWheelNode[] }) 
   // releasing it, leaving touch and keyboard users with no way to close a
   // pinned ring except clicking a different one.
   function handleClick(index: number) {
-    setActiveIndex((current) => (current === index ? null : index));
+    setPinnedIndex((current) => (current === index ? null : index));
     setVisited((prev) => (prev.has(index) ? prev : new Set(prev).add(index)));
   }
 
@@ -197,9 +204,9 @@ function ConfuciusOrderRingsDiagram({ nodes }: { nodes: GreatMindWheelNode[] }) 
                 scale: { duration: reducedMotion ? 0 : 0.3, ease: "easeInOut" },
               }}
               onMouseEnter={() => markVisited(ring.index)}
-              onMouseLeave={() => setActiveIndex(null)}
+              onMouseLeave={() => setHoverIndex(null)}
               onFocus={() => markVisited(ring.index)}
-              onBlur={() => setActiveIndex(null)}
+              onBlur={() => setHoverIndex(null)}
               onClick={() => handleClick(ring.index)}
               aria-pressed={isActive}
               aria-describedby="confucius-rings-detail"
