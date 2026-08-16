@@ -202,7 +202,7 @@ function GandhiCharkhaDiagram({ nodes }: { nodes: GreatMindWheelNode[] }) {
               </span>
               <span
                 className={cn(
-                  "font-mono text-[8px] font-semibold tracking-[0.06em] whitespace-nowrap uppercase transition-colors sm:text-[9px]",
+                  "w-16 text-center font-mono text-[8px] font-semibold tracking-[0.06em] uppercase transition-colors sm:w-20 sm:text-[9px]",
                   isActive ? "text-brand" : "text-muted-foreground",
                 )}
               >
