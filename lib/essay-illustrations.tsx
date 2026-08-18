@@ -1,5 +1,6 @@
 import type { ComponentType } from "react";
 
+import { AllocationIllustration } from "@/components/essays/allocation-illustration";
 import { AmlLadderIllustration } from "@/components/essays/aml-ladder-illustration";
 import { ArrivalPriceIllustration } from "@/components/essays/arrival-price-illustration";
 import { CapitalMarketPathsIllustration } from "@/components/essays/capital-market-paths-illustration";
@@ -42,6 +43,7 @@ import { TwapIllustration } from "@/components/essays/twap-illustration";
 import { VwapIllustration } from "@/components/essays/vwap-illustration";
 
 export const essayIllustrations: Record<string, ComponentType> = {
+  "allocation-one-block-trade-many-owners": AllocationIllustration,
   "weve-seen-this-movie-before": CarriagePhaseIllustration,
   "how-order-books-work": OrderBookIllustration,
   "why-llms-hallucinate": ConfidenceIllustration,

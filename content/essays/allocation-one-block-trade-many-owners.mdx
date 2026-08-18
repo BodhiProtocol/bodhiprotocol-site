@@ -1,0 +1,129 @@
+---
+title: "Allocation: One Block Trade, Many Owners"
+description: "A broker rarely executes one client's order at a time. It executes one block, then decides afterward who actually owns which piece — and that decision is where fairness either holds or quietly breaks."
+hook: "One order fills. Then someone decides who actually gets it."
+category: "Capital Markets"
+tags: ["markets", "trade-lifecycle", "allocation"]
+author: "Surya"
+date: "2026-08-18"
+---
+
+A fund manager wants to buy the same stock for twelve different client accounts.
+
+She does not place twelve orders.
+
+She places one.
+
+The exchange doesn't know or care that twelve accounts are behind it. It just fills a block: say, 120,000 shares, at a handful of different prices as the order works through the market.
+
+Now someone has to answer a question the exchange never asked: which shares, at which price, belong to which client?
+
+That question — and the process that answers it — is allocation.
+
+**Execution decides what got bought. Allocation decides who actually owns it.**
+
+## The dangerous gap
+
+Imagine the fund manager's 120,000-share block fills in three pieces, at three slightly different prices, over four minutes.
+
+The first piece fills cheapest. The last piece fills at the worst price of the day.
+
+Now imagine allocation isn't decided until after all three fills are in — and the person deciding which client gets which piece can see, at that moment, which fills were cheap and which were expensive.
+
+Nothing stops them from routing the cheap shares to one account and the expensive shares to another.
+
+No exchange rule was broken. No trade was faked. The block genuinely traded at those prices.
+
+The unfairness lives entirely in a decision made *after* the market outcome was already known — a decision most clients never see, on a step most clients don't even know exists.
+
+This is the dangerous gap. Execution is public and timestamped. Allocation, left unsupervised, is private and after-the-fact.
+
+## Why one execution needs many owners
+
+Block trading exists because it's efficient. A desk buying for fifty accounts at once gets better pricing, faster fills, and lower market impact than fifty accounts each placing their own order and tipping the market to what's coming.
+
+But that efficiency creates a structural problem the single-order world doesn't have: the market only ever sees one trade. Ownership of the pieces inside it is not a market fact. It's a bookkeeping decision, made by the same institution that executed the block.
+
+That's the whole tension in one sentence: **the party best positioned to allocate fairly is also the party with every private incentive not to.**
+
+A retail investor buying ten shares never faces this problem — there's nothing to allocate. Allocation only exists at the exact point where markets get large enough to need aggregation, and that's precisely where oversight gets hardest.
+
+## The mechanic, step by step
+
+Take a simplified version of what actually happens after a block fills.
+
+Before the order is even placed, the desk records an *allocation instruction* — which accounts, in what proportion, are meant to receive the trade. This step matters enormously: deciding proportions **before** you know the fill prices is what makes allocation fair. Deciding them **after** is what makes cherry-picking possible.
+
+The block executes across the day, filling at several prices.
+
+An average price (or a documented pro-rata method) is calculated across the fills.
+
+Each client account receives its slice at that average price — not whichever fill happened to land on it — so no account is quietly stuck holding only the worst execution.
+
+The allocation is confirmed, timestamped, and matched against the executing broker's records, typically the same day.
+
+Only after that confirmation does the trade move forward into clearing.
+
+The entire discipline of good allocation is really one rule enforced at every step: **decide who owns what before you can see how it turns out, and prove you did.**
+
+## Example 1: India — a written policy, not a gentleman's agreement
+
+India's mutual fund regulator didn't leave trade allocation to trust.
+
+SEBI's circular on mutual funds (SEBI/HO/IMD/DF2/CIR/P/2020/175), effective from January 1, 2021, requires every asset management company to maintain a written-down policy covering exactly who does what in order placement, execution, and — explicitly — the allocation of trades among schemes, so that all schemes and their investors are treated fairly and equitably.
+
+The circular goes further than just requiring a policy on paper. It requires a system-based monitoring mechanism: an audit trail with time-stamping of order placement, execution, and allocation, so a regulator can reconstruct, after the fact, exactly when an allocation decision was made relative to the fills it was allocating.
+
+That timestamp is the whole point. It's the difference between "we allocated before we knew the prices" and "we allocated after" — made provable instead of merely claimed.
+
+## Example 2: United States — what it looks like when the gap gets exploited
+
+In June 2025, the SEC settled charges against a Minnesota-registered investment adviser, North East Asset Management Group, and its principal, Gregory Zandlo, for an eighteen-month cherry-picking scheme.
+
+The pattern was exactly the dangerous gap described above, run for profit. Trades were placed in a block, and only allocated to specific accounts afterward — once it was clear which trades were profitable and which weren't.
+
+The numbers make the mechanism impossible to miss: 91 percent of trades allocated to the adviser's own account, his family's accounts, and the firm's proprietary account were profitable. Only 31 percent of trades allocated to the firm's 78 other advisory clients were.
+
+Same market. Same day. Two completely different hit rates — explained entirely by who got to see the outcome before the ownership was assigned.
+
+This is why "allocate before you know the price" isn't a technicality. It's the one rule that makes the other 364 days of honest trading actually mean something.
+
+## Example 3: Global infrastructure — allocation under a shrinking clock
+
+Allocation isn't just a compliance rule. It's also a plumbing problem, and the plumbing is under more pressure every year as settlement cycles compress.
+
+DTCC's Central Trade Manager (CTM) runs what the industry calls a Block Allocation Confirmation Workflow: the buy-side investment manager and the sell-side executing broker each submit block and allocation messages — often over the FIX protocol — into a central matching platform, which confirms and affirms them in one straight-through process instead of a chain of phone calls and faxed instructions.
+
+DTCC has been explicit that adopting this kind of automated allocation workflow is a critical enabler of the US market's move to T+1 settlement. When settlement happens one business day after the trade instead of two, there is far less room for an allocation to still be unresolved when clearing needs an answer. A manual allocation process that used to have a full day of slack now has almost none.
+
+Faster settlement doesn't just compress clearing and delivery. It compresses every stage that happens before them — and allocation is usually the first one to feel it.
+
+## Why allocation matters for systems
+
+For a business analyst, product manager, or engineer, allocation is a data-integrity problem wearing a compliance costume.
+
+A system needs to know, unambiguously, that an allocation instruction existed *before* execution fills came back — not reconstruct one after the fact from whichever accounts happen to be open. That means the allocation instruction needs its own timestamp, separate from and earlier than the fill timestamps, stored somewhere that can't be quietly edited later.
+
+It means building an exception queue for the case that actually happens constantly in practice: a block that doesn't divide evenly across accounts, a partial fill, a late-arriving instruction. Every one of those needs a defined, auditable resolution path — not an ad hoc judgment call made under time pressure.
+
+And it means treating the average-price (or documented pro-rata) calculation as a control, not a convenience: if a system can't show *why* an account received the price it received, it can't prove the allocation was fair, even if it genuinely was.
+
+Get this wrong, and the failure doesn't look like a crash. It looks like a regulator, a year later, asking why one set of accounts always seems to do a little better than another — and a firm discovering it can't actually answer.
+
+## Lighthouse insight
+
+Execution answers what happened in the market.
+
+Allocation answers who it happened to.
+
+The market only ever sees the first answer. The second one is decided in private, by the same institution with every reason to answer it selfishly — which is exactly why every serious market wraps it in the same three things: a written policy, a timestamp that comes before the outcome, and an audit trail that can prove it.
+
+One block trade. Many owners. The whole discipline is making sure that decision gets made in the right order.
+
+## Reference anchors
+
+- [SEBI Circular: Mutual Funds — trade execution and allocation policy (SEBI/HO/IMD/DF2/CIR/P/2020/175)](https://www.sebi.gov.in/legal/circulars/sep-2020/circular-on-mutual-funds_47574.html)
+- [SEC: North East Asset Management Group and Gregory A. Zandlo — cherry-picking order](https://www.sec.gov/files/litigation/admin/2025/34-103173.pdf)
+- [SEC: Administrative proceeding summary, North East Asset Management Group](https://www.sec.gov/enforcement-litigation/administrative-proceedings/34-103173-s)
+- [DTCC: Central Trade Manager (CTM) — institutional trade processing](https://www.dtcc.com/institutional-trade-processing/itp/ctm)
+- [DTCC: CTM adoption as a critical enabler of T+1 settlement](https://www.securitiesfinancetimes.com/securitieslendingnews/industryarticle.php?article_id=225082)
