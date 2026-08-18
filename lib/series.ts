@@ -80,6 +80,7 @@ export const essaySeries: EssaySeries[] = [
       "A clearinghouse steps in, takes collateral, declares it final — and what happens when a member fails anyway.",
     icon: Network,
     slugs: [
+      "allocation-one-block-trade-many-owners",
       "novation-how-a-clearinghouse-becomes-everyones-counterparty",
       "margin-how-a-clearinghouse-turns-fear-into-collateral",
       "wrong-way-risk-the-hedge-that-fails-when-you-need-it",
@@ -156,6 +157,11 @@ export const essayBridges: EssayBridge[] = [
     from: "what-a-trade-lifecycle-actually-looks-like",
     to: "implementation-shortfall-the-cost-of-time-between-deciding-and-doing",
     label: "Implementation Shortfall grades this whole lifecycle",
+  },
+  {
+    from: "what-a-trade-lifecycle-actually-looks-like",
+    to: "allocation-one-block-trade-many-owners",
+    label: "Client account is the field Capture & Enrichment adds — Allocation is how it gets decided",
   },
   {
     from: "implementation-shortfall-the-cost-of-time-between-deciding-and-doing",
