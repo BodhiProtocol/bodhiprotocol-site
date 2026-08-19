@@ -18,7 +18,7 @@ const essayHooks: Record<string, string> = {
     "A futures gain isn't paper profit. It was already paid to you yesterday.",
   "swaps-the-number-that-never-moves":
     "Ten crore changes nothing hands. Two and a half lakh does.",
-  "credit-default-swaps-insurance-you-dont-need-to-own-anything-to-buy":
+  "credit-default-swaps-protection-nobody-has-to-own":
     "The bond never changes hands. The default risk does — and so can anyone's opinion of it.",
   "settlement-finality-when-a-trade-stops-being-a-promise":
     "At some point, a trade must stop being reversible.",

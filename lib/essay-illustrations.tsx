@@ -87,6 +87,6 @@ export const essayIllustrations: Record<string, ComponentType> = {
   "options-the-right-to-walk-away": OptionsPayoffIllustration,
   "futures-the-bet-that-settles-every-single-day": FuturesMarkToMarketIllustration,
   "swaps-the-number-that-never-moves": SwapsNetSettlementIllustration,
-  "credit-default-swaps-insurance-you-dont-need-to-own-anything-to-buy":
+  "credit-default-swaps-protection-nobody-has-to-own":
     CdsProtectionIllustration,
 };

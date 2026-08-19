@@ -69,7 +69,7 @@ export const essaySeries: EssaySeries[] = [
       "yield-curve-why-short-rates-and-long-rates-never-move-together",
       "convexity-why-the-bond-fell-less-than-duration-predicted",
       "credit-spread-the-extra-yield-thats-not-about-interest-rates",
-      "credit-default-swaps-insurance-you-dont-need-to-own-anything-to-buy",
+      "credit-default-swaps-protection-nobody-has-to-own",
       "repo-the-overnight-loan-thats-legally-two-trades",
     ],
     nextSeriesId: "clearing-and-counterparty-risk",
@@ -212,7 +212,7 @@ export const essayBridges: EssayBridge[] = [
     label: "The pipeline runs whether a human runs it or an agent does",
   },
   {
-    from: "credit-default-swaps-insurance-you-dont-need-to-own-anything-to-buy",
+    from: "credit-default-swaps-protection-nobody-has-to-own",
     to: "wrong-way-risk-the-hedge-that-fails-when-you-need-it",
     label: "AIG is the protection seller whose own credit collapsed with the risk it insured",
   },
