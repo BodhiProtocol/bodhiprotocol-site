@@ -41,6 +41,7 @@ Mirror the existing pattern (Invisible Businesses / Great Minds):
 - **Verifying a deploy is live**: don't trust a single `curl`/fetch immediately after push — Vercel builds take 30s–2min and a check mid-build reads as a false negative. Poll instead.
 - **AI-generated product imagery**: if using a photorealistic AI mockup of a real branded product (e.g. an iPhone render with visible logo), flag the trademark distinction vs. a generic icon before building it in, even if the image is clean — this has come up before and was reverted once already.
 - Floating-arrow connector animation (small looping drift, staggered delay, gated on scroll-reveal + reduced-motion check) is the standard treatment wherever two diagram nodes connect in a row/loop.
+- **Essays "Why markets needed this" section**: pair one Indian example with one international example, not just one or the other (e.g. an MCX gold futures hedge next to an ICE coffee futures hedge; RBI's insurable-interest rule for CDS next to the pre-2008 naked-CDS US market). Indian example first, then international, is the established order. This is load-bearing for the site's positioning — don't drop to a single-market example for a new essay.
 
 ## Working style / approval process
 
