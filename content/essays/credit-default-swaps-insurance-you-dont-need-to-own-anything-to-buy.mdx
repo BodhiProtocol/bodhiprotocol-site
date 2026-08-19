@@ -1,0 +1,51 @@
+---
+title: "Credit Default Swaps: Insurance You Don't Need to Own Anything to Buy"
+description: "A credit default swap looks like insurance on a bond — a premium now, a payout if the borrower defaults. Real insurance requires you to actually own the thing you're insuring. A CDS never checks. That single missing requirement is where a market for hedging credit risk quietly became a market for betting on it."
+hook: "The bond never changes hands. The default risk does — and so can anyone's opinion of it."
+category: "Capital Markets"
+tags: ["markets", "derivatives", "credit"]
+author: "Surya"
+date: "2026-08-19"
+---
+
+Go back to the BBB-rated NBFC bond from the last essay — ₹1,000 face value, 5-year maturity, yielding 9.50% against a Government of India bond's 7.20%. A mutual fund holds ₹50 crore of it, earning that extra 230 basis points for carrying the NBFC's default risk to maturity.
+
+Six months in, the fund's credit desk gets nervous. Not enough to sell — the bond is illiquid in size, and dumping ₹50 crore into a thin market would crush the price it gets. It wants to keep the bond, keep the coupon, and stop carrying the risk that the NBFC doesn't pay it back.
+
+So it buys a credit default swap. Not on the bond. On the NBFC.
+
+## What a credit default swap actually is
+
+A CDS is a contract between two parties, referencing a third: some company or government whose default risk is being traded. The protection buyer pays the protection seller a periodic premium, quoted in basis points on a notional amount, for a fixed term. In exchange, if the referenced borrower has a "credit event" — default, bankruptcy, or a restructuring that impairs a lender's claim, terms defined precisely enough that an industry body has to rule on whether one occurred — the protection seller pays the buyer for the loss.
+
+Nothing about that contract requires the protection buyer to hold the NBFC's bond. It only requires the two parties to agree on a reference entity, a notional, and a spread.
+
+## The two legs, and why one of them almost never pays
+
+The fund's CDS references ₹50 crore of NBFC exposure, priced at a spread of 280 basis points — close to what the bond market itself is charging for that same risk. That's the premium leg: ₹50 crore × 2.80%, paid quarterly, roughly ₹35 lakh every three months, for as long as the contract runs.
+
+The protection leg is different in kind, not just size. It isn't a matching periodic payment the way a swap's floating leg is — it's contingent, and it either pays nothing across the entire five years or it pays once, in full, the moment a credit event is confirmed. Say the NBFC eventually defaults, and its bonds recover 40 paise on the rupee in the workout that follows. The protection seller owes the buyer the other 60: ₹50 crore × 60% = ₹30 crore, in one payment.
+
+Every quarter before that, the fund pays ₹35 lakh for a coin flip it hopes never lands. A futures contract settles every day. A swap settles every period, in both directions. A CDS settles on one specific event, in one direction, or it never settles at all.
+
+## The insurance policy that doesn't check what you own
+
+Ordinary insurance runs on a principle called insurable interest: you can only insure a warehouse you actually own, because otherwise the contract stops being protection and starts being a bet on the warehouse burning down. Regulators require it precisely to keep insurance from turning into that bet.
+
+A CDS has no such requirement. Anyone can buy protection on the NBFC — the fund that owns ₹50 crore of its bonds, or a hedge fund that has never held a rupee of NBFC debt and simply believes the company is going to default. Both pay the same 280 basis points. Both collect the same payout if the credit event happens. The contract can't tell the two apart, because nothing in it asks.
+
+This is what "naked" CDS means, and it's the entire reason the market grew far larger than the debt it referenced. Ahead of the 2008 crisis, hedge funds that owned none of the underlying subprime mortgage bonds bought CDS protection against them anyway, in size — a bet that the bonds would fail, paid for at a fraction of what shorting the bonds directly would have cost. When the bonds did fail, the payouts owed on those contracts had nothing to do with any real loss on any real bond someone actually held. The insurance metaphor breaks down exactly there: a real insurer's total payout is capped by the value of the property that actually exists. A CDS market's total payout is capped only by how many contracts two willing parties agreed to write.
+
+## Why this matters for a Business Analyst
+
+"The desk is flat on NBFC bond risk — they've hedged it with CDS."
+
+That sentence hides a question a requirement has to force into the open: hedged against what, exactly, and paid by whom? A CDS payout is only as good as the protection seller's ability to pay it, at the moment it's owed — and that moment, a credit event, is often precisely when credit markets are under the most stress and least willing to make good on promises. A system that nets "bond exposure" against "CDS protection" into a single flat number, without separately tracking the protection seller's own creditworthiness, can report a hedged book that is one downgrade away from being unhedged. That's the exact mechanism that put AIG's protection sellers at risk in 2008, and it's the reason counterparty credit risk on a derivative has to be modeled as its own number, never assumed away by the existence of the hedge.
+
+## Lighthouse Insight
+
+Go back to the fund holding the NBFC bond.
+
+It never sold the bond. Never called the NBFC. Never told a single bondholder that anything had changed. What it bought was the right to be paid if a specific, precisely defined event ever happened to a company it never had to own a single share or bond of in the first place — a right anyone else could have bought too, for the same price, with no bond in sight.
+
+A bond transfers money in exchange for a promise to repay it. A CDS transfers nothing except an opinion about whether that promise gets kept — priced, traded, and settled as if the opinion itself were the asset. For the fund that actually holds the bond, that opinion is a hedge. For everyone else who buys the identical contract, it's a wager wearing a hedge's clothes.

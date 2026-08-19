@@ -5,6 +5,7 @@ import { AmlLadderIllustration } from "@/components/essays/aml-ladder-illustrati
 import { ArrivalPriceIllustration } from "@/components/essays/arrival-price-illustration";
 import { CapitalMarketPathsIllustration } from "@/components/essays/capital-market-paths-illustration";
 import { CarriagePhaseIllustration } from "@/components/essays/carriage-phase-illustration";
+import { CdsProtectionIllustration } from "@/components/essays/cds-protection-illustration";
 import { CobraEffectIllustration } from "@/components/essays/cobra-effect-illustration";
 import { ConfidenceIllustration } from "@/components/essays/confidence-illustration";
 import { ContextWindowIllustration } from "@/components/essays/context-window-illustration";
@@ -86,4 +87,6 @@ export const essayIllustrations: Record<string, ComponentType> = {
   "options-the-right-to-walk-away": OptionsPayoffIllustration,
   "futures-the-bet-that-settles-every-single-day": FuturesMarkToMarketIllustration,
   "swaps-the-number-that-never-moves": SwapsNetSettlementIllustration,
+  "credit-default-swaps-insurance-you-dont-need-to-own-anything-to-buy":
+    CdsProtectionIllustration,
 };
