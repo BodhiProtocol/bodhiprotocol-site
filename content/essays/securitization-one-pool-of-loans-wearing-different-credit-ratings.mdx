@@ -1,0 +1,61 @@
+---
+title: "Securitization: One Pool of Loans, Wearing Different Credit Ratings"
+description: "Securitization pools ordinary loans into a legally separate vehicle and slices the cash flows into tranches — senior, mezzanine, equity — that get paid in a fixed order. The same pool of loans can back a AAA-rated slice and a junk-rated slice at once, because the rating describes the slice's place in the payment order, not the loans underneath it. What securitization actually is, why that structure worked exactly as designed for decades before 2008 broke the one assumption it depended on, and what changed in the rules afterward — with paired Indian and international examples throughout."
+hook: "Same loans. Same pool. One slice rated AAA, one slice rated junk — paid from exactly the same cash."
+category: "Capital Markets"
+tags: ["markets", "securitization", "credit"]
+author: "Surya"
+date: "2026-08-20"
+---
+
+You've probably seen a champagne tower at a wedding — one bottle poured into the glass on top, and gravity doing the rest. The top glass fills first. Only once it's full and overflowing does the next tier start to fill. Pour a full bottle, and every glass ends up brimming. Pour half a bottle instead, and the top tier is still full while the bottom row stays dry — nobody spilled champagne on the bottom row on purpose. There simply wasn't enough left by the time it got there.
+
+Securitization does the same thing to loan repayments instead of champagne.
+
+[The FICC essay](/essays/ficc-the-business-line-where-nothing-is-priced-off-one-company) mentioned this in passing, as a fifth desk some banks fold into FICC: "bundles of loans, like mortgages, repackaged into tradable bonds... a stream of promised payments, sliced up and sold." Here's what slicing actually means — and why the same pool of ordinary loans can back one investor rated AAA and another rated junk, from the exact same cash.
+
+## What securitization actually is
+
+An originator — a bank, an NBFC, a housing finance company — pools hundreds or thousands of individual loans and sells that pool into a legally separate entity, a special purpose vehicle, built specifically to be bankruptcy-remote: if the originator itself later fails, the pool inside the SPV isn't touched by that failure. It belongs to the SPV, not to the originator anymore.
+
+The SPV funds that purchase by issuing securities against the pool's future cash flows — not one bond, but several, ranked in a fixed order:
+
+- **Senior tranche** — paid first, out of every rupee of interest and principal that comes in, until it's current.
+- **Mezzanine tranche** — paid next, only once the senior tranche's claim for that period is satisfied.
+- **Equity tranche** (sometimes called the first-loss piece) — paid last, out of whatever remains.
+
+Losses run the tower in reverse. The equity tranche absorbs every rupee of default first. Only once it's wiped out completely does a mezzanine investor lose anything. Only once mezzanine is wiped out too does a senior investor see a single rupee of loss.
+
+## Why the same pool can wear different credit ratings
+
+Run a small pool through the arithmetic. ₹100 crore of loans, split into a ₹80 crore senior tranche, a ₹15 crore mezzanine tranche, and a ₹5 crore equity tranche.
+
+If 4% of the pool defaults — ₹4 crore — the equity tranche absorbs the entire loss and is left holding ₹1 crore. Mezzanine and senior are untouched; every rupee owed to them still arrives, in full, on schedule. Push defaults to 15% — ₹15 crore — and equity is wiped out entirely, mezzanine absorbs the remaining ₹10 crore and is left holding ₹5 crore, and senior is still untouched. Only once losses cross 20% of the entire pool does a senior investor lose a single rupee.
+
+That's the whole mechanism behind a senior tranche earning a rating like AAA while sitting on top of loans that, individually, were never rated anywhere close to that safe. The rating was never really describing the loans. It was describing the *tranche's* distance from the first rupee of loss — a distance the structure itself created, out of the same ordinary pool underneath every slice.
+
+## Why markets needed this
+
+An Indian housing finance company holding thousands of home loans on its books has money tied up for fifteen, twenty years at a time — cash it can't lend to anyone else until those loans mature. Securitizing a pool of them into Pass-Through Certificates lets it sell that future cash flow today, in slices rated to suit different investors' risk appetite, and immediately frees up capital to originate the next round of home loans. The loans don't disappear. They move into an SPV, get sliced, and get sold — the same idea the champagne tower runs on, applied to a balance sheet instead of a glass.
+
+The exact same tool, applied to millions of US subprime mortgages through the 2000s, ran into the one assumption its tranching math had quietly depended on: that defaults across the pool would be scattered and largely unrelated to each other — one borrower losing a job here, another borrower's marriage ending there, spread across a country and a decade in ways that mostly cancel out. The 20%-loss cushion protecting that hypothetical senior tranche above only means something if defaults arrive that way — a handful of unrelated borrowers failing at a time, not the whole pool moving together.
+
+Nationwide house prices had never fallen in the historical data most of these deals were priced against. When they did, in 2008, mortgage defaults across the entire country rose together, all at once, for the same underlying reason — the correlation the tranching math had assumed away turned out to be the single most important number in the entire structure. Senior tranches sized to survive scattered, independent defaults were never built to survive a correlated national crash, and plenty of them didn't.
+
+## Why this matters for a Business Analyst
+
+### Think of pouring from the wrong bottle
+
+A champagne tower poured correctly looks effortless — gravity does the ordering for you. Pour from the wrong angle, or straight into a middle tier instead of the top, and the "order" collapses instantly: glasses that were supposed to fill last are suddenly full while the top sits empty, no matter how carefully the tower itself was built.
+
+A securitization's payment waterfall needs the same discipline from the system actually running it. "Senior gets paid first" is a rule written into deal documents, but it's a *servicing* system — the software applying each month's collections — that has to enforce it, payment by payment, for the life of the deal. A servicing error that applies collections to mezzanine before senior's claim for that period is fully satisfied doesn't just misstate one number. It silently breaks the entire promised order the structure was rated on, for every investor downstream of the mistake — the same kind of ordering failure [this site's other waterfall](/essays/default-waterfall-who-pays-when-a-clearing-member-fails) exists to prevent, in a clearinghouse instead of a servicer.
+
+The second failure sits earlier, in what a system tracks about the originator itself. After 2008, both India and the US wrote a "skin in the game" rule directly into securitization regulation: the RBI's Master Direction requires an originator to retain a minimum 5% of the pool's value for shorter-tenor loans, 10% for longer ones, held by the originating lender itself, not a group entity. The US Dodd-Frank Act's risk retention rule requires the same 5% floor. Both exist for an identical reason — an originator that sells 100% of a pool and keeps none of the risk has every incentive to underwrite loosely, since someone else absorbs the consequences. A reporting system that tracks "loans securitized" as fully off the originator's book, without separately flagging the retained slice the rule requires it to keep, is misstating exactly the exposure the rule was written to make visible.
+
+## Lighthouse Insight
+
+Go back to the champagne tower.
+
+Every glass in it held the same champagne. What separated the top tier from the bottom was never the liquid — it was distance from the pour running out. A securitization's tranches are the identical trick, run on cash instead of champagne: the same pool of ordinary loans, sliced by how much loss has to happen before a given slice feels it at all.
+
+That structure isn't a flaw waiting to be exposed. It's exactly what it was built to do, for exactly as long as losses arrive the scattered, independent way the math assumed they would. 2008 didn't reveal that the champagne tower was rigged. It revealed what happens when the bottle empties from the bottom up instead — all at once, for one shared reason, in a shape the tower was never poured to survive.
