@@ -1,0 +1,74 @@
+---
+title: "Currency Derivatives: The Gap Arbitrage Was Supposed to Close"
+description: "Covered interest rate parity says a currency's forward rate is pure arithmetic — spot, adjusted for the interest-rate gap between two currencies, nothing more. Since 2008, the actual market price has quietly disagreed, by an amount called the cross-currency basis. What FX forwards, FX swaps, cross-currency swaps and currency options actually are, why that gap should have been arbitraged away and wasn't, and why it blows widest open exactly when a country needs dollar funding most — with paired Indian and international examples throughout."
+hook: "Two banks price the same dollar-for-rupee swap off the same numbers — and quote two different rates anyway."
+category: "Capital Markets"
+tags: ["markets", "derivatives", "fx"]
+author: "Surya"
+date: "2026-08-20"
+---
+
+You've probably compared exchange rates at two counters in the same airport and found one quietly worse than the other, for no reason you could name. Different counter, same currency, same day — and somehow not the same price.
+
+For most of what a currency market prices, that shouldn't be possible. Two currencies' exchange rate a year from now isn't a guess anyone gets to have an opinion on — it's arithmetic, derivable today from numbers everyone can already see. Any bank quoting something else is either wrong, or about to be arbitraged into agreeing.
+
+Except for one specific corner of that market — converting into or out of US dollars — that "should be impossible" gap has been real, priced, and tradable for close to two decades. It's called the cross-currency basis. And in June 2026, it got expensive enough that the Reserve Bank of India stepped in as a counterparty itself, offering Indian public-sector borrowers a fixed swap rate the open market wasn't offering on its own.
+
+## What a currency derivative actually is
+
+Every generic contract type this series has already covered has a currency-specific version — and two of them get confused for each other constantly, because they look almost identical on a term sheet.
+
+| Instrument | Built from | What it actually does | Indian example | International example |
+| --- | --- | --- | --- | --- |
+| **FX forward** | [Forwards](/essays/forwards-the-same-bet-without-the-safety-net) | Locks a single future exchange rate, one settlement, no interim cash flow | A pharma company fixing today the rupee cost of a euro payment due in March | A US importer fixing today the dollar cost of a yen invoice due in six months |
+| **FX swap** | A spot deal, paired with a forward reversing it | Swaps one currency for another *today*, reverses it on a set date — pure short-term funding, no periodic interest exchanged | RBI's USD/INR sell-buy swap auctions, used to add or drain dollar and rupee liquidity | Central bank liquidity swap lines, covered later in this essay |
+| **Cross-currency swap** | [Swaps](/essays/swaps-the-number-that-never-moves) | Exchanges a stream of interest payments in one currency for a stream in another, for years, principal usually exchanged at both ends | An Indian company swapping dollar-denominated debt back into rupee payments, [walked through in the FICC essay](/essays/ficc-the-business-line-where-nothing-is-priced-off-one-company) | A Japanese company funding US operations by swapping yen debt into dollar interest payments |
+| **Currency option** | [Options](/essays/options-the-right-to-walk-away) | The right, not the obligation, to convert at a fixed rate by a set date | An IT exporter's [rupee-strengthening hedge](/essays/options-the-right-to-walk-away) | A US importer capping the cost of a future euro invoice |
+
+An FX swap and a cross-currency swap sound like the same product wearing two names. They aren't. One is a short-dated funding tool with no interest exchanged at all — just currency out, currency back, on a schedule. The other runs for years and swaps real interest payments the whole way through. Confusing the two in a system is confusing a bridge loan with a mortgage.
+
+## The arithmetic two currencies are supposed to obey
+
+[The forwards essay](/essays/forwards-the-same-bet-without-the-safety-net) already made the general case: a forward price isn't a forecast, it's the spot price adjusted for the cost of carrying the asset to delivery. For a currency, the "cost of carry" is simply the interest rate gap between the two currencies involved — a rule with its own name, covered interest rate parity.
+
+Run the numbers. Spot is ₹83 to the dollar. Rupee interest rates sit at 7%, dollar rates at 5%. A one-year forward should price at roughly ₹83 × (1.07 / 1.05) ≈ ₹84.58 — the extra ₹1.58 is exactly what a rupee lender needs to be paid to be indifferent between holding rupees at 7% or dollars at 5%, converted back a year later. Quote anything materially different, and an arbitrageur borrows in the cheap currency, converts, invests in the other, locks in the forward to convert back, and pockets a riskless profit until enough trades push the price back to ₹84.58.
+
+That's the whole promise of covered interest rate parity: no free lunch, because arbitrage always closes the gap.
+
+## The gap that shouldn't exist
+
+For swapping into US dollars specifically, arbitrage stopped fully closing that gap in 2008 — and never went back to closing it completely.
+
+The market's actual price for converting into dollars via a swap has, since then, persistently cost more than the interest-rate-parity arithmetic says it should. That persistent extra cost is the cross-currency basis, quoted directly as its own spread in the swap market — commonly negative for the dollar, meaning obtaining dollars this way is more expensive than the "pure" interest-rate math predicts.
+
+The arbitrage that should erase it doesn't, because closing it isn't free anymore. After 2008, bank regulation — particularly the Basel III leverage ratio, which caps how much balance sheet a bank can run regardless of how safe a trade looks — made the trade that closes this gap expensive to hold, even when it's a sure profit on paper. Banks have the trade available. They don't have unlimited balance sheet to run it at the size that would fully close the gap. So the gap stays open, wider in ordinary times, and dramatically wider whenever dollar funding gets scarce — which is precisely when a slowing economy makes everyone want dollars at once.
+
+## Why markets needed this
+
+Every ECB — an External Commercial Borrowing, dollar debt an Indian company raises abroad because it's cheaper than borrowing rupees at home — eventually needs converting back into rupees. Ordinarily, an Indian borrower does that through the open cross-currency swap market, paying whatever basis the market is charging that day.
+
+By mid-2026, with the rupee under sustained pressure, that market price had widened enough that the RBI intervened directly. In June 2026, it opened a US Dollar-Rupee Forex Swap Facility for public-sector ECB and overseas foreign-currency borrowers — eligible banks could sell dollars to the RBI and swap them back into rupees at a fixed rate of 1.5% per annum, for tenors running up to five years, instead of paying whatever the open market's basis happened to be that week. ECB and OFCB borrowers alone routed over $3 billion through that window in its first six weeks — a fraction of the scheme's broader $20-billion-plus inflows, most of which arrived through a parallel deposit window aimed at NRI savers rather than corporate borrowers, but real dollar debt, converting at a rate the RBI had set rather than the one the market was quoting. The RBI wasn't rewriting the arithmetic of interest rate parity. It was underwriting the gap the open market was charging on top of it, because that gap had become expensive enough to threaten the borrowing it was meant to support.
+
+The world's reserve-currency issuer faced the identical stress from the other side in March 2020. As COVID-19 sent investors scrambling for dollar-denominated safety, the same cross-currency basis blew out globally — dollars abroad became sharply more expensive to obtain than domestic dollar rates implied they should be. The US Federal Reserve responded the way a lender of last resort responds to a funding shortage, not a rate problem: it enhanced its standing dollar swap lines with five major central banks and opened new temporary lines with nine more, lending dollars directly to foreign central banks so they could relend them domestically, bypassing the market's own strained pricing entirely.
+
+Neither central bank was correcting a market that had mispriced risk. Both were stepping into a market where the price of dollar funding itself had become the risk — proof that the basis isn't a rounding error economists argue about. It's a real cost, paid in real dollars, that gets sharply worse exactly when a slowing economy needs dollar credit the most.
+
+## Why this matters for a Business Analyst
+
+### Think of a fare quoted from distance and fuel price alone
+
+Two people pricing the same flight using only distance and today's fuel cost will agree with each other — and be wrong together. Neither number contains landing fees, slot charges, or airport taxes, and the airline still collects every one of them. The fare clears above what distance and fuel alone would predict, for reasons that have nothing to do with either input.
+
+"We've valued the cross-currency swap off the FX rate and the two interest-rate curves."
+
+That sentence is the distance-and-fuel fare. Spot FX and two OIS-style curves are exactly what covered interest rate parity needs — and covered interest rate parity is exactly the model that's been quietly wrong since 2008. A cross-currency swap's actual market value needs a third input the textbook formula never had a slot for: the basis spread curve, quoted separately, moving on its own schedule, and moving hardest in precisely the funding-stress moments — a recession, a dollar shortage — when getting the valuation right matters most.
+
+A risk system that reprices a cross-currency swap book from FX and two rate curves alone isn't missing a rounding error. It's missing the one input that made the June 2026 swap facility and the March 2020 swap lines necessary in the first place — and it will report that book as flat exactly when the basis is moving the most.
+
+## Lighthouse Insight
+
+Go back to the airport counter.
+
+The unexplained gap wasn't a markup one counter invented out of nowhere. It was the honest price of something the "fair" formula never had a line item for — and the same is true, at a scale of trillions of dollars, in the market that prices currencies against each other every day.
+
+Covered interest rate parity was never wrong as arithmetic. It was just missing a cost nobody could see until 2008 made banks start pricing their own balance sheets like the scarce thing they'd always secretly been. The cross-currency basis isn't the exception to that arithmetic. It's the bill for the part the arithmetic left out — due fastest, and highest, exactly when the world wants dollars all at once.
