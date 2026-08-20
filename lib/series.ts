@@ -1,4 +1,4 @@
-import { Boxes, Brain, Cpu, Layers, Network, Route, Workflow } from "lucide-react";
+import { Activity, Boxes, Brain, Cpu, Layers, Network, Route, Workflow } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 export interface EssaySeries {
@@ -94,6 +94,14 @@ export const essaySeries: EssaySeries[] = [
       "default-waterfall-who-pays-when-a-clearing-member-fails",
       "the-financial-dominoes-why-one-default-rarely-stays-one-default",
     ],
+  },
+  {
+    id: "the-equities-desk",
+    title: "The Equities Desk",
+    blurb:
+      "The pieces inside Equities, one at a time — starting with the asset volatility itself became.",
+    icon: Activity,
+    slugs: ["volatility-the-fear-that-moves-faster-than-the-calm"],
   },
   {
     id: "decisions-under-uncertainty",
