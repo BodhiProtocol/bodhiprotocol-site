@@ -73,6 +73,7 @@ export const essaySeries: EssaySeries[] = [
       "credit-default-swaps-protection-nobody-has-to-own",
       "currency-derivatives-the-gap-arbitrage-was-supposed-to-close",
       "commodity-derivatives-the-barrel-that-cost-less-than-nothing",
+      "securitization-one-pool-of-loans-wearing-different-credit-ratings",
       "repo-the-overnight-loan-thats-legally-two-trades",
     ],
     nextSeriesId: "clearing-and-counterparty-risk",
@@ -218,6 +219,11 @@ export const essayBridges: EssayBridge[] = [
     from: "credit-default-swaps-protection-nobody-has-to-own",
     to: "wrong-way-risk-the-hedge-that-fails-when-you-need-it",
     label: "AIG is the protection seller whose own credit collapsed with the risk it insured",
+  },
+  {
+    from: "securitization-one-pool-of-loans-wearing-different-credit-ratings",
+    to: "default-waterfall-who-pays-when-a-clearing-member-fails",
+    label: "Two different waterfalls, same discipline: a pre-written order for who gets paid first",
   },
 ];
 
