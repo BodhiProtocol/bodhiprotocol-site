@@ -1,0 +1,70 @@
+---
+title: "Commodity Derivatives: The Barrel That Cost Less Than Nothing"
+description: "A commodity derivative prices something every other derivative in this series doesn't have to worry about: a physical thing that has to be stored somewhere until delivery. That single fact is why, on 20 April 2020, a barrel of oil traded below zero — first in the US, then in India, for a different reason six hours later. What commodity forwards, futures, options and swaps actually are, why storage cost and convenience yield bend the forward curve in ways interest rates never do, and what a settlement-price system built on the wrong assumption looks like when it breaks — with paired Indian and international examples throughout."
+hook: "A stock has never traded below zero. On 20 April 2020, a barrel of oil did — in the US, then in India, six hours later, for a different reason entirely."
+category: "Capital Markets"
+tags: ["markets", "derivatives", "commodities"]
+author: "Surya"
+date: "2026-08-20"
+---
+
+You've probably heard of paying someone to haul away an old sofa nobody wants — not because the sofa is worthless, but because the space it's sitting in is worth more than the sofa is. The moment storage becomes scarcer than the thing being stored, the thing's price can fall below zero without anything being physically wrong with it.
+
+Every derivative covered in this series so far prices something that never has that problem. An interest rate, a currency, a company's default risk — none of it needs a warehouse. A commodity derivative prices the one thing that does.
+
+On 20 April 2020, that difference stopped being theoretical. The May contract for West Texas Intermediate crude oil — the most-watched oil benchmark in the world — fell $55.90 in a single session and closed at **−$37.63 a barrel**. Six hours later, on the other side of the world, India's Multi Commodity Exchange settled its own April crude contract at **−₹2,884 a barrel** — for a reason that had nothing to do with oversupply, and everything to do with a clock.
+
+## What a commodity derivative actually is
+
+Every generic contract type this series has covered has a commodity-specific version, same as it did for rates and currencies — the difference is what sits underneath it.
+
+| Instrument | Built from | What it actually does | Indian example | International example |
+| --- | --- | --- | --- | --- |
+| **Commodity forward** | [Forwards](/essays/forwards-the-same-bet-without-the-safety-net) | Locks a price for physical delivery on a fixed future date, off-exchange | A jeweller locking today's gold price for a wedding-season order months out | [An Illinois corn farmer locking this harvest's price with the local grain elevator](/essays/forwards-the-same-bet-without-the-safety-net) |
+| **Commodity futures** | [Futures](/essays/futures-the-bet-that-settles-every-single-day) | The same lock, standardised and exchange-traded, margined daily | MCX crude oil, NCDEX guar seed and cotton contracts | CME and NYMEX crude, corn, and gold contracts |
+| **Commodity option** | [Options](/essays/options-the-right-to-walk-away) | The right, not the obligation, to buy or sell at a fixed price by a set date | An MCX gold call option, capping a jeweller's cost without giving up a price drop | An airline buying a call option to cap jet fuel cost, the way [the FICC essay's US carrier hedges a year out](/essays/ficc-the-business-line-where-nothing-is-priced-off-one-company) |
+| **Commodity swap** | [Swaps](/essays/swaps-the-number-that-never-moves) | Exchanges a floating commodity price for a fixed one, cash-settled, no physical delivery at all | An Indian airline swapping its floating jet fuel cost for a fixed number with a bank | A US utility swapping floating natural gas prices for a fixed one to budget a winter's heating costs |
+
+Every one of those instruments still has to answer a question a bond, a rate, or a currency never has to: where does the actual barrel, tonne, or ounce sit until delivery, and what does sitting there cost?
+
+## The cost of carry, with a physical wrinkle
+
+[The forwards essay](/essays/forwards-the-same-bet-without-the-safety-net) already established the rule: a forward price is spot, adjusted for the cost of carrying the thing to delivery. For a bond or a currency, that carry cost is just foregone interest — pure arithmetic, no physical world involved.
+
+For a barrel of oil, carry cost is real: rent for the storage tank, insurance, the risk of the thing degrading while it waits. That should make every commodity forward curve slope upward, the same way a normal yield curve does — further-dated contracts pricing in more accumulated storage cost the longer they wait.
+
+### Think of paying extra to keep a seat, not to use it
+
+A concert-goer who buys a ticket today for a show next year isn't just paying for the seat — they're effectively paying to have that seat held, unused, for twelve months, when they could instead buy closer to the date and keep their money free until then. Now imagine the opposite: a fan who'd pay *more* to walk in tonight than to lock in the same seat for later, because tonight is the only night the band is actually playing.
+
+A commodity forward curve carries both of those forces at once. Storage cost pushes it to slope upward, the concert-ticket-held-for-later way. But holding the *physical* commodity right now also has its own value — a refiner that has oil in its tank today doesn't stall its plant if tomorrow brings a supply shock, in a way a refiner holding only a paper contract for next month can't match. That value has a name: convenience yield. When it's high — genuine near-term scarcity — it can outweigh storage cost entirely and bend the curve the other way, near-dated contracts pricing *above* far-dated ones. Traders call that backwardation. The ordinary, storage-cost-dominated slope is called contango, and it shows up hardest exactly when an economy is producing more of something than it currently needs — the kind of demand collapse a recession delivers.
+
+## When storage itself runs out
+
+By April 2020, contango in oil wasn't a curve shape anymore. It was a physical constraint closing in.
+
+COVID-19 lockdowns had gutted demand for fuel worldwide, while production kept flowing. Between mid-March and May 1, crude inventories at Cushing, Oklahoma — the physical delivery point for the WTI contract — rose 27 million barrels, reaching 83% of the hub's working storage capacity. The May futures contract expired on 21 April; anyone still holding it on expiry owed physical delivery, into tanks that were running out of room. Nobody wanted the oil. Everybody wanted out of the obligation to take it. The price fell below zero because paying someone else to take the barrel had become cheaper than finding somewhere to put it.
+
+India's exchange hit the same wall a few hours later, for a compounding reason. SEBI had shortened commodity trading hours to 5 PM IST during the COVID lockdown — a public health measure, not a market one. WTI, however, kept trading in New York and didn't finish crashing into negative territory until roughly 11 PM IST. Indian traders holding MCX's April crude contract had no market open in which to react once WTI's collapse actually happened — their own exchange had already closed for the day. MCX settled that contract against the WTI close anyway: **−₹2,884 a barrel**. Three major Indian brokerages took the exchange and SEBI to the Bombay High Court over it; the court ultimately let the settlement stand.
+
+Two negative prices, one root cause and a second, entirely separate one layered on top: a global storage shortage in the US, and a settlement clock in India that had stopped ticking hours before the number it was waiting on had finished moving.
+
+## Why this matters for a Business Analyst
+
+### Think of being graded off an answer key printed after the exam ended
+
+A student who hands in a paper at noon has no way to react to an answer key published at six that evening — not because the grading is unfair in principle, but because the two events were never on the same clock. Whatever changes between noon and six, the student has already lost the ability to respond to it.
+
+That's exactly the structural gap MCX's traders sat in on 20 April 2020. "Settlement price equals the benchmark's closing print" is a perfectly reasonable rule — right up until the benchmark and the local market stop sharing a trading session. A requirement that says "settle against WTI's close" without separately specifying *whose* close, on *whose* clock, with *what* window for local positions to react, is a rule that works every ordinary day and fails catastrophically on the one day it's tested hardest.
+
+The second failure sat one layer beneath that. Long before 20 April, exchanges including CME had to warn clearing members and vendors that a negative crude price was becoming possible, because plenty of trading and risk systems had never been built to represent one — price fields typed as unsigned numbers, margin formulas that assumed a floor at zero, P&L screens that silently clamped a negative print to zero instead of displaying it. "Price cannot be negative" wasn't a business rule anyone had written down. It was a physical assumption that had simply always held for a commodity — right up until a storage tank in Oklahoma ran out of room.
+
+Neither failure was a market malfunction. Both were engineering decisions nobody remembered making, discovered only once reality stopped agreeing with them.
+
+## Lighthouse Insight
+
+Go back to the sofa nobody wants.
+
+Its price didn't fall because it broke, or because someone forgot how to value it. It fell because the assumption underneath its price — that space to keep it always costs less than the thing itself — quietly stopped being true.
+
+Every commodity derivative in this essay prices something with exactly that assumption sitting underneath it, unstated, for as long as it happens to hold. Oil traded below zero on 20 April 2020 not because the market broke, but because the physical world it was pricing — a finite tank, a finite trading session, a finite window to react — finally disagreed with a rule nobody had thought to write down as conditional in the first place.

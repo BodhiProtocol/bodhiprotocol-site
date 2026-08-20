@@ -72,6 +72,7 @@ export const essaySeries: EssaySeries[] = [
       "credit-spread-the-extra-yield-thats-not-about-interest-rates",
       "credit-default-swaps-protection-nobody-has-to-own",
       "currency-derivatives-the-gap-arbitrage-was-supposed-to-close",
+      "commodity-derivatives-the-barrel-that-cost-less-than-nothing",
       "repo-the-overnight-loan-thats-legally-two-trades",
     ],
     nextSeriesId: "clearing-and-counterparty-risk",
