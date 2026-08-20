@@ -1,0 +1,70 @@
+---
+title: "Interest Rate Derivatives: The Cut the Market Already Priced In"
+description: "Interest rate derivatives are contracts whose payoff comes from a rate benchmark itself — not a bond, not a loan, not a company. They're FICC's largest single product family by notional, and the one a Rates desk reaches for whenever a central bank is about to move, especially into a slowdown. What FRAs, interest rate swaps, rate futures, caps, floors and swaptions actually are, how they sit inside FICC, and why the market usually finishes trading a rate cut months before the committee that decides it ever meets — with paired Indian and international examples throughout."
+hook: "By the time a central bank cuts, the market has usually finished trading the cut months earlier."
+category: "Capital Markets"
+tags: ["markets", "derivatives", "fixed-income"]
+author: "Surya"
+date: "2026-08-20"
+---
+
+You've probably watched a match where the crowd groans before the ball even hits the stumps — the shape of the delivery already told everyone in the stadium what the replay is about to confirm. Nobody needed the umpire's finger to go up first.
+
+Interest rate markets run on the same instinct, except the gap between "everyone already knows" and "the committee just announced it" isn't half a second. It's usually weeks, sometimes months.
+
+Through the first half of 2025, as India's growth cooled, the RBI's Monetary Policy Committee cut the repo rate three times — 25 basis points in February, 25 more in April, then 50 in June, taking it from 6.50% down to 5.50% in five months. None of those three announcements was news to a bank's Rates desk by the time it was read out. The desk had been trading each cut for weeks beforehand, in a market that never once mentions a bond, a company, or a loan.
+
+That market trades one thing only: what an interest rate itself is going to be worth.
+
+## What an interest rate derivative actually is
+
+Every derivative covered so far in this series derives its value from something you could, in principle, hold — a stock, a bond, a barrel of oil. An interest rate derivative derives its value from a number nobody holds at all: a published benchmark rate, like RBI's overnight rate or the US SOFR rate, on a specific future date.
+
+That's the whole category. Two parties agree today on what they'll do with a rate that hasn't happened yet — pay each other the difference, exercise a right, or settle a contract — without either of them owning a rupee or a dollar of the underlying loan the rate happens to describe.
+
+## The family, and where each piece comes from
+
+Every generic contract type already covered in this series has an interest-rate-specific version. None of them is a new mechanism — each is one you've already seen, aimed at a rate instead of a price.
+
+| Instrument | Built from | What it actually locks in | Indian venue/benchmark | International venue/benchmark |
+| --- | --- | --- | --- | --- |
+| **FRA** (forward rate agreement) | [Forwards](/essays/forwards-the-same-bet-without-the-safety-net) | A single future borrowing period's rate, cash-settled, no principal exchanged | Rare as a standalone product; the same forward-rate arithmetic sits inside bond and swap pricing | Interbank FRA market on SOFR, €STR |
+| **Interest rate swap (IRS)** | [Swaps](/essays/swaps-the-number-that-never-moves) | Fixed cash flows exchanged for floating ones, over years | The Overnight Indexed Swap (OIS) market, referencing RBI's overnight rate | USD SOFR swaps — the single largest derivatives market in the world by notional |
+| **Interest rate futures** | [Futures](/essays/futures-the-bet-that-settles-every-single-day) | An exchange-listed, standardised bet on a rate or bond price, margined daily | NSE's Government of India bond futures | CME's SOFR futures and Fed Funds futures |
+| **Caps, floors, swaptions** | [Options](/essays/options-the-right-to-walk-away) | The right, not the obligation, to a rate ceiling, a rate floor, or entry into a swap | Traded, but shallow — mostly bank-to-corporate over the counter | A standard, liquid hedge in the US leveraged loan market |
+
+Nothing in that table is a new idea. It's the same four contract shapes, all pointed at the one number every other financial contract is quietly built on top of: the cost of money itself.
+
+## Where this sits inside FICC
+
+Go back to the Rates desk from [the FICC essay](/essays/ficc-the-business-line-where-nothing-is-priced-off-one-company) — the one pricing "the cost of borrowing money." Interest rate derivatives are most of what that desk actually trades, day to day. Bond inventory sits on the balance sheet; the swaps, futures and options against it are how the desk hedges that inventory and expresses a view without buying or selling a single bond.
+
+Measured by outstanding notional, interest rate derivatives are, by a wide margin, the largest corner of the entire global OTC derivatives market — several times the size of the FX derivatives market, and dwarfing credit derivatives like the [CDS](/essays/credit-default-swaps-protection-nobody-has-to-own) market entirely, according to the Bank for International Settlements' regular survey of the space. Every bank, insurer, pension fund and government debt office that has ever borrowed, lent or invested for longer than overnight has some exposure to where rates go next. This is the product family built to trade exactly that exposure, separately from whatever actually created it.
+
+## Why markets needed this
+
+Go back to that RBI cutting cycle. It wasn't just a headline for a Rates desk — it was a live margin problem for a bank.
+
+An Indian bank's home loan book is mostly tied to the External Benchmark Lending Rate, which resets straight off the repo rate. The moment RBI cuts, every EBLR loan on that bank's book reprices down almost immediately. Its funding side doesn't move nearly as fast — fixed deposits taken a year earlier keep paying their locked-in rate until they mature, one at a time, over the following months. For a few quarters, the bank's lending income falls faster than its funding cost does, and its net interest margin gets squeezed from the side it can't control.
+
+The bank hedges that gap with an OIS: it agrees to receive a fixed rate and pay the floating overnight rate, on a notional roughly matching the loan book that's about to reprice. When RBI cuts, the floating leg it owes falls too — so what it pays out on the swap shrinks in exactly the quarters its loan income is shrinking, offsetting the squeeze without touching a single customer's loan.
+
+A US company facing the same cutting cycle from the borrower's side runs the opposite trade. A private-equity-owned firm with a SOFR-linked leveraged loan wants to keep benefiting if the Fed keeps cutting into a slowdown — the way the Fed did cut, by 50 basis points, in September 2024 — but its lenders' covenants require some protection in case rates rise unexpectedly instead. It buys an interest rate cap: a fixed premium upfront, for the right to be paid if SOFR ever rises above an agreed strike. If the Fed keeps cutting as expected, the cap simply expires worthless and the company enjoys the full benefit of cheaper floating debt. If rates rise instead, the cap pays out and caps the damage — the exact asymmetry [the options essay](/essays/options-the-right-to-walk-away) describes, aimed at a rate instead of a stock.
+
+Neither the Indian bank nor the US borrower waited for the announcement to act. Both were positioned before the committee's microphone turned on — which is the entire point of a market that trades the rate itself, not the announcement about it.
+
+## Why this matters for a Business Analyst
+
+"The book is hedged — rate risk is flat."
+
+That sentence hides a question a requirement has to force into the open: hedged against exactly which rate, reset on exactly which dates, using exactly what day-count convention? An OIS pays off the RBI's overnight rate, compounded daily. A bank's loan book might reprice off EBLR, off MCLR, or off a mix of both, on reset dates that don't line up with the swap's fixing dates at all. A hedge and an exposure can point at "interest rates" in general and still not cancel out — because the specific benchmark, the reset frequency, or the compounding convention differs by a few basis points that only show up when the position is stress-tested.
+
+This is exactly the failure mode the global LIBOR exit exposed at scale, in India and abroad alike. India's own MIFOR benchmark — used to price years of rupee derivatives — was itself built on top of LIBOR, so it couldn't survive LIBOR's discontinuation unchanged. FBIL now publishes two separate replacement curves: an Adjusted MIFOR for legacy contracts, and a Modified MIFOR for new ones, both rebuilt on SOFR plus a spread meant to approximate — not replicate — MIFOR's old relationship to LIBOR. A hedge still referencing the legacy Adjusted curve and a fresh trade booked on the Modified one can look identical in a system that only checks "is this MIFOR risk," while carrying a small, permanent basis gap between the two curves that never nets to zero. The US ran the same exercise on its own domestic loans: legacy LIBOR contracts converted to SOFR plus a fixed credit spread adjustment, chosen the same approximate way. A hedge booked against the old benchmark and an exposure now sitting on the new one can look perfectly matched in a system that only checks "is this rate risk," while carrying that same permanent gap underneath. A risk system that flags a book as "flat" without separately validating benchmark, reset date and convention on both legs is reporting a hedge that's flat in name and not in cash — in Mumbai or in New York, for the identical reason.
+
+## Lighthouse Insight
+
+Go back to that five-month stretch in 2025.
+
+The RBI's committee met three times, and three times, the number it announced was one the OIS market had already been quoting, almost to the basis point, for weeks beforehand. Not because anyone leaked the decision — because thousands of desks were independently doing the same arithmetic [the yield curve](/essays/yield-curve-why-short-rates-and-long-rates-never-move-together) already runs on: today's short rate, plus what the economy's slowing down enough to make likely next.
+
+A forward rate was never a prediction pulled from nowhere. It's arithmetic, done today, on information already public. An interest rate derivative is simply what happens when that arithmetic stops being a number on a curve you can only read — and becomes a contract you can trade, hedge, and settle against, days or months before the committee that "decides" it ever sits down.
