@@ -59,9 +59,11 @@ Markets need both. A hedger wants certainty. A speculator supplies it, for a pri
 
 Imagine depositing a sack of wheat at a certified warehouse and getting a paper receipt back, saying exactly how much wheat is sitting there, checked and graded. From that point on, you can sell the *receipt* without ever moving the actual wheat — whoever ends up holding it can walk into that warehouse and claim it.
 
-That's roughly how physical delivery works on Indian agricultural commodity exchanges, overseen by the Warehousing Development and Regulatory Authority. It's also why India's commodities market has a genuinely different character from a market like crude oil: gold and agriculture dominate Indian volumes, shaped by festivals, weddings, and monsoons — while global commodities trading skews harder toward energy and industrial metals, shaped by OPEC+ decisions, war, and industrial demand. Same mechanism, very different goods driving it.
+That's roughly how physical delivery works on Indian agricultural commodity exchanges. A government body called the Warehousing Development and Regulatory Authority is the one making sure the receipt is telling the truth — that the wheat it describes is really sitting there, really that quality, really that quantity — the same way a ticket-checker makes sure a train ticket matches a real seat.
 
-SEBI has regulated commodity derivatives in India since 2015, the same regulatory shift covered in the FICC essay — one more piece of the FICC business that answers to a different regulator in India than it does almost anywhere else.
+It's also why India's commodities market has a genuinely different character from a market like crude oil: gold and agriculture dominate Indian volumes, shaped by festivals, weddings, and monsoons — while global commodities trading skews harder toward energy and industrial metals, shaped by decisions from OPEC+ (the group of oil-exporting countries that decides how much oil the world gets to buy), war, and industrial demand. Same mechanism, very different goods driving it.
+
+SEBI — India's markets regulator — has overseen commodity derivatives since 2015, the same regulatory shift covered in the FICC essay. One more piece of the FICC business that answers to a different regulator in India than it does almost anywhere else.
 
 ## Why the price moves on things that have nothing to do with markets
 
@@ -79,11 +81,15 @@ A weak monsoon in India can spike onion and wheat prices nationwide within weeks
 
 ## Why this matters for a Business Analyst
 
-A bond trade settles in money. A share trade settles in money and a book-entry ownership change. A commodities trade can settle in a truck showing up.
+A bond trade settles in money. A share trade settles in money, and a record somewhere updating to say you now own the shares. A commodities trade can settle in a truck showing up.
 
 That's the operational wrinkle nothing else on the floor has. A cash-settled contract behaves like any other financial trade — money moves, done. A physically-settled one adds quality inspection, warehouse logistics, transport, and insurance, all of which can go wrong in ways a spreadsheet doesn't anticipate: wheat arrives below the contracted grade, a shipment is delayed past the delivery window, a warehouse receipt turns out to be for a location nobody expected.
 
-There's a second wrinkle worth knowing the name of: **basis risk** — the gap between the futures price a hedger locked in and the actual local price they face when the real transaction happens, because of location, quality or timing differences between the two. An Indian refiner hedging with a global crude benchmark is protected from the broad price move, but not from the local premium or discount that shows up at its specific port. The hedge is real. It's just never perfectly exact.
+### Think of ordering a pizza at the price shown online
+
+The app shows one price for a large pizza. But the price you actually pay depends on which branch delivers to you — the one across town might charge more for delivery, or run out of your topping and substitute a slightly different one. Same pizza, same app, still a slightly different real bill depending on exactly where and how it reaches you.
+
+That gap — between the clean price you saw and the messier one you actually paid — is what professionals call **basis risk**: the difference between the futures price a hedger locked in and the actual local price they face when the real transaction happens, caused by location, quality or timing differences between the two. An Indian refiner hedging with a global crude benchmark is protected from the broad price move, but not from the local premium or discount that shows up at its specific port. The hedge is real. It's just never perfectly exact.
 
 ## Lighthouse Insight
 
