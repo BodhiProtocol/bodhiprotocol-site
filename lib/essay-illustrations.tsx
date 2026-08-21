@@ -3,6 +3,7 @@ import type { ComponentType } from "react";
 import { AllocationIllustration } from "@/components/essays/allocation-illustration";
 import { AmlLadderIllustration } from "@/components/essays/aml-ladder-illustration";
 import { ArrivalPriceIllustration } from "@/components/essays/arrival-price-illustration";
+import { BlockTradingIllustration } from "@/components/essays/block-trading-illustration";
 import { CapitalMarketPathsIllustration } from "@/components/essays/capital-market-paths-illustration";
 import { CarriagePhaseIllustration } from "@/components/essays/carriage-phase-illustration";
 import { CdsProtectionIllustration } from "@/components/essays/cds-protection-illustration";
@@ -45,6 +46,7 @@ import { VwapIllustration } from "@/components/essays/vwap-illustration";
 
 export const essayIllustrations: Record<string, ComponentType> = {
   "allocation-one-block-trade-many-owners": AllocationIllustration,
+  "block-trading-one-price-negotiated-before-the-market-moves": BlockTradingIllustration,
   "weve-seen-this-movie-before": CarriagePhaseIllustration,
   "how-order-books-work": OrderBookIllustration,
   "why-llms-hallucinate": ConfidenceIllustration,
