@@ -1,0 +1,51 @@
+---
+title: "Payment for Order Flow: The Free Trade Someone Still Paid For"
+description: "A US retail broker's zero-commission trade and an Indian discount broker's flat-fee trade look like the same idea, priced two different ways. They're not funded the same way at all — one runs on payment for order flow, a practice India's market structure barely lets exist and the EU banned outright in 2024. What PFOF actually is, why it created a real conflict of interest regulators had to act on, and why the same problem can't even arise the same way in India — with paired examples throughout."
+hook: "You paid zero commission on that US trade. Somebody still paid for it — just not you, and not anywhere the confirmation screen shows."
+category: "Capital Markets"
+tags: ["markets", "equities", "market-structure"]
+author: "Surya"
+date: "2026-08-20"
+---
+
+You've probably ridden a shuttle bus a shopping mall runs for free — a real, comfortable, no-cost ride, funded entirely by the mall wanting you inside its stores rather than a rival's. The ride is genuinely free. Where it takes you was never entirely up to you.
+
+A "zero commission" trade on a US retail brokerage app runs on a similar arrangement, just harder to see. The broker isn't charging you anything to place the order — and a market maker is often paying the broker for the right to be the one who fills it, rather than the order going to whichever venue happened to offer the single best price at that instant.
+
+That arrangement has a name: payment for order flow, or PFOF. And in December 2020, it cost one of the biggest names in retail trading $65 million to settle charges that it hadn't been straight with customers about how the arrangement actually worked.
+
+## What payment for order flow actually is
+
+A retail broker doesn't have to send a customer's order straight to a public exchange. In the US, it can route that order instead to a wholesale market maker — a firm like Citadel Securities or Virtu — which fills the order itself, out of its own inventory, at a price at least as good as the exchange's best quote. In exchange for that steady stream of retail orders, the market maker pays the broker a small amount per share.
+
+Nothing about that arrangement is inherently dishonest — the market maker profits from a tiny bid-ask spread on enormous volume, retail orders are generally easier and cheaper to fill than large institutional ones, and the payments the broker collects are exactly what makes "zero commission" trading financially possible at all. The tension sits one layer beneath that: a broker with a legal duty to seek the best reasonably available execution for its customer also has a direct financial incentive to route orders toward whichever market maker pays the most for them. Those two incentives don't have to conflict — but nothing about the arrangement guarantees they won't.
+
+## Why markets needed this — and why one market barely could
+
+An Indian discount broker's flat, near-zero brokerage fee looks like the identical idea from the customer's side of the screen. It isn't funded the same way at all. SEBI's market structure requires client orders to be routed to a recognised stock exchange — the NSE or BSE — for execution, without the fragmented ecosystem of competing off-exchange wholesale market makers that gives a US broker somewhere else to send an order in the first place. There's no comparable stream of "pay us for your customers' orders" offers for an Indian broker to accept, because the structure that PFOF depends on — multiple competing execution venues bidding for the right to internalise retail flow — was never built into how Indian equities trade. Zerodha's flat-fee model and a US app's zero-commission model solve the same customer-facing problem from two structurally different starting points, one of which simply has no room for PFOF to exist in it.
+
+The US had to solve the conflict the arrangement does create, after the fact. In December 2020, the SEC charged Robinhood with misleading customers between 2015 and 2018 about payment for order flow being its largest source of revenue, and with failing its duty to seek the best available execution — customers, the SEC found, had received measurably worse fill prices than competitors would have offered, a gap in some larger orders that exceeded what a standard commission would have cost outright. Robinhood paid $65 million to settle the charges without admitting wrongdoing.
+
+The EU and UK went further than a settlement. Revised EU securities rules, finalised in March 2024, banned payment for order flow outright for retail orders — Article 39a of the amended MiFIR regulation — on the reasoning that the conflict of interest PFOF creates can't be fully resolved by disclosure alone, however clearly the payments are reported. Germany negotiated a temporary carve-out while its own market adjusted; that exemption expired on 30 June 2026, meaning the EU is, as of this year, fully PFOF-free. The US, meanwhile, still allows the practice, and it remains central to how commission-free trading works there today.
+
+Three regulators, three different verdicts on the same arrangement: India's market structure barely lets it exist, the US disclosed and fined its way to living with it, and the EU decided disclosure was never going to be enough.
+
+## Why this matters for a Business Analyst
+
+### Think of a delivery log that only records arrival time
+
+A delivery log that notes when a package arrived, but never which route the driver took or why, can confirm the package showed up. It can't answer the one question that actually matters when something goes wrong: was that the fastest available route, or just the one that paid the driver's employer the most to prefer it?
+
+"The trade executed at a fair price" is the arrival-time entry — and how much that entry needs to prove depends entirely on how many roads the driver had to choose from.
+
+An Indian broker's audit trail starts from the simpler case: the routing decision it has to justify is narrow by construction, since there's no competing off-exchange venue whose payment could have shaped it in the first place. That's not a reason to skip logging the routing decision anyway — it's a reminder that "best execution" means something different, and needs a different depth of audit trail, depending on how many venues a market's own structure lets an order choose between.
+
+A US broker's audit trail carries the harder version of the same duty. Its best-execution obligation, and the audits and regulatory reviews built around it, depend on a system logging something the fill price alone never shows: which venue the order was routed to, what alternatives were available at that instant, and whether the routing decision was driven by price and speed or by which market maker's payment made that venue the default. A trade-capture system that stores only the executed price and calls that "proof" of best execution is building exactly the delivery log that couldn't answer why the driver took the route he did — which is precisely the gap Robinhood's $65 million settlement turned on.
+
+## Lighthouse Insight
+
+Go back to the shuttle bus.
+
+The ride really was free. The mall really did pay for it. And the place it dropped you was never a coincidence — it was the entire reason the bus existed in the first place, running a route someone else was funding toward a destination someone else had already chosen.
+
+A zero-commission trade works the same way, just with the payment moved somewhere the receipt never shows it. The commission wasn't eliminated. It was relocated — to a market maker's ledger, priced into a fill you were never shown the alternative to, on a route somebody else was paying to keep you on.

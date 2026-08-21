@@ -105,6 +105,8 @@ export const essaySeries: EssaySeries[] = [
       "volatility-the-fear-that-moves-faster-than-the-calm",
       "the-greenshoe-option-the-bank-that-shorts-the-stock-it-just-sold",
       "theta-the-cost-of-being-right-too-late",
+      "securities-lending-the-share-sold-short-more-than-once",
+      "payment-for-order-flow-the-free-trade-someone-still-paid-for",
     ],
   },
   {
