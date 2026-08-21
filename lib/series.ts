@@ -104,6 +104,7 @@ export const essaySeries: EssaySeries[] = [
     slugs: [
       "volatility-the-fear-that-moves-faster-than-the-calm",
       "the-greenshoe-option-the-bank-that-shorts-the-stock-it-just-sold",
+      "theta-the-cost-of-being-right-too-late",
     ],
   },
   {
