@@ -4,6 +4,7 @@ import { AllocationIllustration } from "@/components/essays/allocation-illustrat
 import { AmlLadderIllustration } from "@/components/essays/aml-ladder-illustration";
 import { ArrivalPriceIllustration } from "@/components/essays/arrival-price-illustration";
 import { BlockTradingIllustration } from "@/components/essays/block-trading-illustration";
+import { CalendarSpreadIllustration } from "@/components/essays/calendar-spread-illustration";
 import { CapitalMarketPathsIllustration } from "@/components/essays/capital-market-paths-illustration";
 import { CarriagePhaseIllustration } from "@/components/essays/carriage-phase-illustration";
 import { CdsProtectionIllustration } from "@/components/essays/cds-protection-illustration";
@@ -88,6 +89,7 @@ export const essayIllustrations: Record<string, ComponentType> = {
   "a-bank-trading-floor-is-a-marketplace-for-risk": TradingDesksIllustration,
   "options-the-right-to-walk-away": OptionsPayoffIllustration,
   "futures-the-bet-that-settles-every-single-day": FuturesMarkToMarketIllustration,
+  "calendar-spread-the-order-that-bets-on-time-not-direction": CalendarSpreadIllustration,
   "swaps-the-number-that-never-moves": SwapsNetSettlementIllustration,
   "credit-default-swaps-protection-nobody-has-to-own":
     CdsProtectionIllustration,

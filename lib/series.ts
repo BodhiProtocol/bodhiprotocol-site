@@ -63,6 +63,7 @@ export const essaySeries: EssaySeries[] = [
       "futures-the-bet-that-settles-every-single-day",
       "forwards-the-same-bet-without-the-safety-net",
       "options-the-right-to-walk-away",
+      "calendar-spread-the-order-that-bets-on-time-not-direction",
       "swaps-the-number-that-never-moves",
       "bonds-the-fixed-deposit-you-can-sell",
       "duration-why-a-30-year-bond-moves-more-than-a-1-year-bond",
@@ -243,6 +244,11 @@ export const essayBridges: EssayBridge[] = [
     from: "block-trading-one-price-negotiated-before-the-market-moves",
     to: "allocation-one-block-trade-many-owners",
     label: "The block executes as one negotiated trade — allocation decides who owns which piece of it",
+  },
+  {
+    from: "calendar-spread-the-order-that-bets-on-time-not-direction",
+    to: "theta-the-cost-of-being-right-too-late",
+    label: "The spread's engine is the same accelerating decay Theta names directly",
   },
 ];
 
