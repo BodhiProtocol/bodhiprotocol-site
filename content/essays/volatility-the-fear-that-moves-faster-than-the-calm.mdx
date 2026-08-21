@@ -50,6 +50,8 @@ A room can read a perfectly comfortable 22°C on a thermostat that only measures
 
 Delta measures how a position's value moves with the underlying's price — the thermostat's one number. It says nothing about how that position's value moves when the market's *expected volatility* changes instead, a separate sensitivity options traders call vega. A book built from options can be constructed to have zero delta — no net exposure to the index moving up or down — while still carrying enormous vega, meaning it gains or loses heavily the moment implied volatility itself spikes, regardless of which way the index actually goes.
 
+An options desk running a Nifty book ahead of a scheduled event — a Union Budget announcement, an RBI policy day — can flatten its delta by balancing calls and puts precisely, and still walk in carrying enormous vega: every option in that book gets more valuable the instant uncertainty about the event itself spikes, regardless of which way Nifty actually moves once the announcement lands. A US options desk running the same trade ahead of a Federal Reserve decision carries the identical exposure, dressed in a different index.
+
 A risk system that reports "delta-neutral" as "hedged," without separately surfacing vega, is exactly the thermostat that never checks humidity. And the moment that matters most — a VIX spike toward its historical extremes — is precisely the moment a book like that finds out what it was actually carrying all along.
 
 ## Lighthouse Insight

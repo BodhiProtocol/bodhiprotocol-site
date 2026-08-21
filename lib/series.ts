@@ -101,7 +101,10 @@ export const essaySeries: EssaySeries[] = [
     blurb:
       "The pieces inside Equities, one at a time — starting with the asset volatility itself became.",
     icon: Activity,
-    slugs: ["volatility-the-fear-that-moves-faster-than-the-calm"],
+    slugs: [
+      "volatility-the-fear-that-moves-faster-than-the-calm",
+      "the-greenshoe-option-the-bank-that-shorts-the-stock-it-just-sold",
+    ],
   },
   {
     id: "decisions-under-uncertainty",
