@@ -1,0 +1,57 @@
+---
+title: "Position Sizing: The One Rule Every Trading Book Agrees On"
+description: "Trading books disagree on almost everything — chart patterns, macro calls, which stocks to buy. On how much to risk on any single trade, they all say the same thing. Almost nobody actually does it."
+hook: "The books don't disagree on how much to bet. Traders just don't listen to that part."
+category: "Capital Markets"
+tags: ["markets", "trading", "risk"]
+author: "Surya"
+date: "2026-08-21"
+---
+
+Think of a friend who hands you ₹1,000 and offers you a bet, ten times over: call a coin flip correctly and you double your stake, call it wrong and you lose it. You choose how much of your ₹1,000 to stake each round.
+
+Bet the whole ₹1,000 on the first flip, and you're either done in one round or lucky enough to keep playing on borrowed time. Bet ₹50 a round instead, and even five wrong calls in a row barely dents you — you're still at the table long enough for your skill, if you have any, to actually show up in the results.
+
+Nothing about the coin changed between those two choices. Only the size of the bet did.
+
+That's position sizing. And it's the one idea that survives, almost word for word, across nearly every trading book ever written — even though most readers finish the book remembering the war stories instead.
+
+## What position sizing actually is
+
+Formally: the fraction of your capital you risk on any single trade, fixed in advance, independent of how confident you feel about that particular trade.
+
+Not "how much can I afford to lose overall." How much of that total you commit to *this one bet*, this one time — set before you place it, not adjusted upward because this one feels like a sure thing.
+
+Professional desks and disciplined independent traders alike tend to land on a number that looks almost boringly small next to the "big call" mythology trading carries in popular culture: something like 1–2% of capital per trade. Not because that figure is magic, but because it's small enough that a run of ten wrong calls in a row — which happens to everyone eventually, including people who are right more often than they're wrong — doesn't end the game.
+
+## Why this is different from "picking the right trade"
+
+Ask someone what a trading book teaches and they'll usually describe a method for being right more often: reading a chart, spotting a pattern, calling a direction before the crowd does.
+
+That's not actually where these books agree. Chart-reading philosophies contradict each other constantly — one trader's confirmed breakout is another's obvious trap. What doesn't contradict, from a 1920s Wall Street speculator's memoir to a modern hedge-fund manager's interview, is this: you will be wrong often, wrongness is unpredictable in timing, and the only variable fully under your control is how much any single wrong call costs you.
+
+Being right slightly more than half the time is a real edge. It's also worthless if one oversized bet against you wipes out the gains from the previous twenty.
+
+## Why markets needed this
+
+SEBI's study of individual traders in India's equity futures and options segment found that roughly nine out of ten of them lost money over the study period — not because they lacked market views, but because a small number of oversized, undiversified bets did more damage than a much larger number of small, disciplined ones ever recovered from. The traders weren't uniformly bad at predicting direction. They were uniformly bad at deciding how much to risk when they were wrong.
+
+*Reminiscences of a Stock Operator*, published in 1923 and still the most-quoted trading book in print, tells the same story from the other side of the world and a century earlier. It follows Jesse Livermore, a speculator who built and lost several fortunes across his career — bankrupt more than once, despite having, by every account, a genuinely rare read on price action. Livermore himself wrote the very rules modern risk managers still quote: cut losses fast, never risk more than you can afford to lose. He also broke them, repeatedly, when conviction ran high. Knowing the rule and having a system that enforces it when you don't want it enforced turned out to be two entirely different skills — and the gap between them is what the book is actually about, underneath the market calls that make it a good story.
+
+Neither case is really about market prediction. Both are about what happens the moment sizing discipline is the one thing skipped.
+
+## Why this matters for a Business Analyst
+
+"The desk manages risk within its limits" sounds like a settled statement. Whether it's true depends entirely on how — and where — position sizing gets enforced.
+
+A trading system that lets a trader place any order size and checks exposure afterward is trusting willpower to do what Livermore's own memoir shows willpower reliably fails to do under pressure. A system with a pre-trade risk check — a hard block on any single order that would breach a position or exposure limit — enforces the discipline structurally, before the trade exists, not after the loss does.
+
+That distinction is a requirements decision, not an implementation detail: does the limit check run *before* the order reaches the market, or does it run as a report *after*? Get that sequencing wrong in a spec, and the system inherits exactly the failure mode the books have been warning about for a century.
+
+## Lighthouse Insight
+
+Strip away the market calls, the war stories, and the charts, and the actual convergent lesson across a century of trading literature — from a bankrupt 1920s speculator's memoir to a government regulator's study of retail losses a hundred years later — isn't about predicting markets at all.
+
+It's about how much of what you have you're willing to put behind any one guess, decided before you know if the guess was right.
+
+Every book says it. Almost no one builds the system that makes them actually do it.

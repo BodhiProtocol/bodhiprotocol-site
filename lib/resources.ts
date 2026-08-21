@@ -124,6 +124,36 @@ export const resources: Resource[] = [
     why: "The central banks' central bank on what's actually moving in global markets. Denser than financial press, and correspondingly less wrong.",
     free: true,
   },
+  {
+    title: "Reminiscences of a Stock Operator",
+    author: "Edwin Lefèvre",
+    year: "1923",
+    kind: "book",
+    category: "Capital Markets",
+    url: "https://en.wikipedia.org/wiki/Reminiscences_of_a_Stock_Operator",
+    why: "A novelization of Jesse Livermore's career, and still the sharpest account of trader psychology ever written. Livermore went bankrupt more than once despite writing the very risk rules he broke — read it for the gap between knowing a rule and having a system that enforces it, not just the market calls.",
+    free: true,
+  },
+  {
+    title: "Market Wizards",
+    author: "Jack D. Schwager",
+    year: "1989",
+    kind: "book",
+    category: "Capital Markets",
+    url: "https://en.wikipedia.org/wiki/Market_Wizards",
+    why: "Interviews with the era's best traders, who agree on almost nothing about method — except risk control. If one thread survives every chapter, it's that position sizing matters more than being right.",
+    free: false,
+  },
+  {
+    title: "The Intelligent Investor",
+    author: "Benjamin Graham",
+    year: "1949",
+    kind: "book",
+    category: "Capital Markets",
+    url: "https://en.wikipedia.org/wiki/The_Intelligent_Investor",
+    why: "Graham's 'margin of safety' is the value-investing cousin of the same idea traders call position sizing: size the bet to survive being wrong, not just to profit from being right. Buffett has called it the best book on investing ever written.",
+    free: false,
+  },
 
   // --------------------------------------------------- Business Analysis
   {
