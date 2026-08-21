@@ -237,6 +237,11 @@ export const essayBridges: EssayBridge[] = [
     to: "default-waterfall-who-pays-when-a-clearing-member-fails",
     label: "Two different waterfalls, same discipline: a pre-written order for who gets paid first",
   },
+  {
+    from: "block-trading-one-price-negotiated-before-the-market-moves",
+    to: "allocation-one-block-trade-many-owners",
+    label: "The block executes as one negotiated trade — allocation decides who owns which piece of it",
+  },
 ];
 
 const seriesBySlug = new Map<string, { series: EssaySeries; order: number }>();

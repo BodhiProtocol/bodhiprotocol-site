@@ -1,0 +1,97 @@
+---
+title: "Block Trading: One Price, Negotiated Before the Market Moves"
+description: "Every other trade finds its price by colliding two orders in public. A block trade agrees on the price first, in private, then tells the market what happened afterward — and where a market draws that line between private and public is one of the biggest differences between how India and the US actually trade."
+hook: "Every other order finds its price by fighting for it in public. A block trade agrees on the price before the market even finds out."
+category: "Capital Markets"
+tags: ["markets", "trade-lifecycle", "block-trading"]
+author: "Surya"
+date: "2026-08-21"
+---
+
+Think of a shopkeeper selling chocolates one piece at a time. You want fifty pieces. You buy the first one at ₹10. The shopkeeper notices someone is buying a lot today and quietly raises the price. By the fortieth piece, you're paying ₹18 for the same chocolate you started at ₹10 — not because the chocolate changed, but because *you* told the shopkeeper, one purchase at a time, exactly how badly you wanted it.
+
+Now imagine you'd instead walked in, found the shopkeeper before opening hours, and said: "I want all fifty. Name one price for the whole box." No other customer sees the negotiation happening. No other customer gets to react to it while it's in progress. The box changes hands at one agreed price — and only afterward does the shop tell everyone what happened.
+
+That second version is a block trade. Scale the chocolate box up to fifty million shares of a company like Infosys or Apple, rename the shopkeeper "the market," and you have the entire reason block trading exists as its own separate mechanism, sitting outside the normal way stocks change hands.
+
+## The rule block trading breaks
+
+A normal trade is a collision. A buyer's bid and a seller's ask meet in a public order book, and the moment they cross, a trade prints — instantly visible to everyone watching. That's how price discovery works: thousands of small, public collisions, each one slightly updating what the market believes a share is worth.
+
+A block trade breaks that rule on purpose. Instead of colliding in public, a large buyer and a large seller find each other privately, agree on a price for the *entire* quantity before either side commits, and only then let the trade become part of the market's official record.
+
+**A normal trade discovers its price in public. A block trade agrees on its price in private, then reports it.**
+
+## Why it exists: the cost of doing it the normal way
+
+Nothing stops a fund managing ₹5,000 crore from just placing one enormous order on the open market. The order book will happily fill it — at a price. The problem is which price.
+
+The moment a large order starts eating through the order book, every subsequent seller sees demand accelerating and raises their ask. By the time the order finishes filling, the average price paid can be meaningfully worse than the price quoted when the order started — a cost traders call **market impact**. Worse, once other market participants notice a large buyer working through the book, some of them will front-run the rest of the order, buying ahead of it purely to sell back to it at a markup.
+
+Two families of solutions exist for this problem. Algorithms like TWAP, VWAP, and iceberg orders disguise a large order by feeding it into the public market slowly, in small disguised pieces, over time. Block trading solves the same problem a completely different way: it never lets the size touch the public book at all until the price is already locked in.
+
+## The mechanic, step by step
+
+Strip away the jurisdiction-specific rules and every block trade follows the same skeleton.
+
+A buyer and seller — usually institutions, connected through a broker's dedicated block-trading ("upstairs") desk or a private matching venue — find each other away from the public order book, each side already committed to the full size before anything is agreed.
+
+They negotiate one price for the entire quantity, almost always anchored to the prevailing public market price and constrained to sit within a permitted band around it, so the private price can never drift arbitrarily far from what the lit market says the stock is actually worth.
+
+The trade executes as a single print, for the full quantity, at that one negotiated price — not the dozens of prices a comparable order would have paid working through the open book.
+
+Only after execution does the trade get reported to the exchange or regulator, entering the public record and the day's official volume and price data.
+
+From there, it flows into the same downstream machinery every trade eventually reaches — allocation across client accounts, clearing, and settlement — just having skipped the part where its own size was allowed to move the price against it.
+
+## Example 1: India — one public window, no dark corners
+
+India answers the "how much can stay private, and for how long" question about as narrowly as any major market does: almost nothing, and only for minutes.
+
+Under SEBI's revised block deal framework (Circular SEBI/HO/MRD/POD-III/CIR/P/2025/134, dated October 8, 2025), a block deal on the NSE or BSE can only happen inside two defined windows each trading day: a morning window from 8:45 a.m. to 9:00 a.m., referenced against the previous day's closing price, and an afternoon window from 2:05 p.m. to 2:20 p.m., referenced against the volume-weighted average price of trades between 1:45 p.m. and 2:00 p.m.
+
+Every order inside those windows must sit within ±3% of that reference price, must be for at least ₹25 crore, and must result in actual delivery of shares — no squaring off, no reversing the trade later. Once the window closes, the exchange discloses the scrip, the client's name, the quantity, and the price to the public after market hours.
+
+There is no dark pool sitting quietly in the background where a fund can shop for a counterparty unseen. The negotiation itself is still private — two institutions still have to find each other before the window opens — but the window, the price band, and the after-hours disclosure make sure that private conversation has almost nowhere to hide once it becomes a trade.
+
+## Example 2: International — a private room, then a public receipt
+
+The United States draws the same line in a very different place.
+
+NYSE Rule 127.10 defines a block as at least 10,000 shares, or a market value of $200,000, whichever is smaller — a threshold most real block trades clear many times over. Institutional block trades in the US typically get negotiated through a broker's upstairs desk or executed inside a dark pool: a private trading venue, registered with the SEC as an Alternative Trading System, where buy and sell interest is matched without displaying prices or sizes to the rest of the market beforehand. Dark pools aren't a fringe curiosity — they and other off-exchange venues now handle something like 40–45% of all US equity trading volume.
+
+The trade-off is explicit, not accidental: pre-trade information stays hidden inside the venue, but post-trade transparency is still mandatory. Every execution must be reported to a Trade Reporting Facility within 10 seconds and flows into the same public consolidated tape that lit-exchange trades appear on.
+
+Put the two markets side by side and the contrast is the whole story: India makes the *negotiation window itself* public and time-boxed, so there is nowhere private for a block to hide even briefly. The US lets the *matching itself* stay private indefinitely, inside a licensed venue, and recovers transparency entirely after the fact, through mandatory reporting. Same underlying problem — move a lot of stock without moving the price against yourself — answered with two structurally opposite philosophies about how much darkness a market can tolerate before it needs light.
+
+## Example 3: What happens when the private room bends its own rules
+
+The American model's whole trust structure rests on one assumption: that everyone inside a dark venue is playing by the rules the venue actually published. In January 2015, the SEC showed what happens when that assumption is false.
+
+The SEC charged UBS Securities LLC over its dark pool, alleging the firm had marketed and sold a special order type called PrimaryPegPlus almost exclusively to market makers and high-frequency trading firms — without properly disclosing its existence to the rest of its subscribers. The order type let those select subscribers price orders in fractions of a cent, a pricing edge ordinary institutional clients placing block-sized orders in the same pool didn't know existed and couldn't compete against. UBS settled, paying more than $14.4 million, including a $12 million penalty — at the time, the largest the SEC had ever levied against an Alternative Trading System.
+
+Nobody outside the pool could see this happening in real time; that opacity is the entire design of a dark pool. The violation wasn't that UBS ran a private venue — that's legal and exactly what such venues are for. It was that UBS quietly gave some participants a rule the others were never told about, inside a room everyone had agreed, by definition, not to be able to watch.
+
+## Why block trading matters for systems
+
+For a business analyst, product manager, or engineer, a block trade cannot travel through the same workflow as a normal order — it needs to be recognized as a distinct order type from the moment it's captured.
+
+A block order needs its own reference-price and timestamp fields, captured at the moment of negotiation, so a system can later prove the agreed price actually sat inside whatever band a regulator requires — the same discipline India's ±3% rule and the US's reference-to-lit-price convention both depend on. It needs a settlement flag distinct from an ordinary trade wherever "delivery only, no squaring off" is a rule rather than a convention, so downstream clearing systems don't quietly allow a reversal that the regulator has already forbidden. And it needs a hard-coded link to whatever mandatory disclosure or reporting deadline applies — a same-day after-hours feed in India, a 10-second Trade Reporting Facility submission in the US — because a block trade that executes correctly but reports late is still a compliance failure.
+
+None of that is where a block trade's system journey ends, either. The moment it prints, it becomes exactly the input the [Allocation](/essays/allocation-one-block-trade-many-owners) process was built to handle: one execution, needing to become many client accounts' worth of ownership, fairly and provably in that order.
+
+## Lighthouse insight
+
+Every other trade in a market answers the question "what is this worth?" by letting a crowd fight it out in public, one small collision at a time.
+
+A block trade asks a narrower, calmer question first — "what is this worth to exactly the two of us, right now, for all of it?" — and only exposes the answer to the crowd after it's already settled.
+
+Where a market chooses to draw the line between that private question and the public record — a fifteen-minute window everyone can watch open and close, or a private room whose results surface only after the fact — turns out to be one of the clearest signals of how that market thinks about transparency itself.
+
+## Reference anchors
+
+- [SEBI Circular: Review of Block Deal Framework (SEBI/HO/MRD/POD-III/CIR/P/2025/134)](https://www.sebi.gov.in/legal/circulars/oct-2025/review-of-block-deal-framework_97145.html)
+- [SEC Press Release 2015-7: SEC Charges UBS Subsidiary With Disclosure Violations and Other Regulatory Failures in Operating Dark Pool](https://www.sec.gov/news/pressrelease/2015-7.html)
+- [SEC Administrative Order: In the Matter of UBS Securities LLC (File No. 3-16338)](https://www.sec.gov/files/litigation/admin/2015/33-9697.pdf)
+- [FINRA: Can You Swim in a Dark Pool?](https://www.finra.org/investors/insights/can-you-swim-dark-pool)
+- [Wikipedia: Block trade](https://en.wikipedia.org/wiki/Block_trade)
