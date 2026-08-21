@@ -1,6 +1,6 @@
 ---
 title: "Block Trading: One Price, Negotiated Before the Market Moves"
-description: "Every other trade finds its price by colliding two orders in public. A block trade agrees on the price first, in private, then tells the market what happened afterward — and where a market draws that line between private and public is one of the biggest differences between how India and the US actually trade."
+description: "Every other trade finds its price by colliding two orders in public. A block trade agrees on the price first, in private, then tells the market what happened afterward — and both India's fully-lit window and the US's dark pools share the exact same weak point: the moment before the window opens, when a human being already knows the order is coming."
 hook: "Every other order finds its price by fighting for it in public. A block trade agrees on the price before the market even finds out."
 category: "Capital Markets"
 tags: ["markets", "trade-lifecycle", "block-trading"]
@@ -26,9 +26,11 @@ A block trade breaks that rule on purpose. Instead of colliding in public, a lar
 
 Nothing stops a fund managing ₹5,000 crore from just placing one enormous order on the open market. The order book will happily fill it — at a price. The problem is which price.
 
-The moment a large order starts eating through the order book, every subsequent seller sees demand accelerating and raises their ask. By the time the order finishes filling, the average price paid can be meaningfully worse than the price quoted when the order started — a cost traders call **market impact**. Worse, once other market participants notice a large buyer working through the book, some of them will front-run the rest of the order, buying ahead of it purely to sell back to it at a markup.
+Go back to the chocolate shop. The moment the shopkeeper senses you want fifty pieces, every remaining piece gets pricier — not because the chocolate changed, but because your own buying just told the shopkeeper how badly you want it. Scale that up: the moment a large stock order starts eating through the order book, every subsequent seller sees demand accelerating and raises their ask. By the time the order finishes filling, the average price paid can be meaningfully worse than the price quoted when the order started. Traders have a name for that self-inflicted price creep: **market impact**.
 
-Two families of solutions exist for this problem. Algorithms like TWAP, VWAP, and iceberg orders disguise a large order by feeding it into the public market slowly, in small disguised pieces, over time. Block trading solves the same problem a completely different way: it never lets the size touch the public book at all until the price is already locked in.
+There's a second cost, and it's nastier. Imagine another kid in line watches you buy nine chocolates in a row and guesses you're good for a lot more — so he sprints ahead, buys up the rest of the tray himself, and waits to resell it to you at a markup once you show up still wanting more. In the market, that's called **front-running**: other participants spotting a large order working through the book and trading ahead of it, purely to sell back into it later.
+
+Two families of solutions exist for this problem. Algorithms like TWAP, VWAP, and iceberg orders disguise a large order by feeding it into the public market slowly, in small pieces, so no one watching can tell how much is really behind it. Block trading solves the same problem a completely different way: it never lets the size touch the public book at all until the price is already locked in.
 
 ## The mechanic, step by step
 
@@ -36,7 +38,7 @@ Strip away the jurisdiction-specific rules and every block trade follows the sam
 
 A buyer and seller — usually institutions, connected through a broker's dedicated block-trading ("upstairs") desk or a private matching venue — find each other away from the public order book, each side already committed to the full size before anything is agreed.
 
-They negotiate one price for the entire quantity, almost always anchored to the prevailing public market price and constrained to sit within a permitted band around it, so the private price can never drift arbitrarily far from what the lit market says the stock is actually worth.
+They negotiate one price for the entire quantity — but not with a free hand. Regulators keep that private price on a leash: anchored to the prevailing public market price and constrained to sit within a permitted band around it, long enough to negotiate freely but short enough that the private number can never drift far from what the lit market says the stock is actually worth.
 
 The trade executes as a single print, for the full quantity, at that one negotiated price — not the dozens of prices a comparable order would have paid working through the open book.
 
@@ -58,25 +60,31 @@ There is no dark pool sitting quietly in the background where a fund can shop fo
 
 The United States draws the same line in a very different place.
 
-NYSE Rule 127.10 defines a block as at least 10,000 shares, or a market value of $200,000, whichever is smaller — a threshold most real block trades clear many times over. Institutional block trades in the US typically get negotiated through a broker's upstairs desk or executed inside a dark pool: a private trading venue, registered with the SEC as an Alternative Trading System, where buy and sell interest is matched without displaying prices or sizes to the rest of the market beforehand. Dark pools aren't a fringe curiosity — they and other off-exchange venues now handle something like 40–45% of all US equity trading volume.
+Imagine the chocolate shop has a back room, shutters down: buyers and sellers can still meet inside it and agree a price, but nobody outside can see who's in there, or for how much, until a receipt gets taped to the front window afterward. In market terms, that back room is called a **dark pool** — a private trading venue, registered with the SEC as an Alternative Trading System, where buy and sell interest is matched without displaying prices or sizes to the rest of the market beforehand. Dark pools aren't a fringe curiosity — they and other off-exchange venues now handle something like 40–45% of all US equity trading volume. NYSE Rule 127.10 defines the block trades that typically move through this world as at least 10,000 shares, or a market value of $200,000, whichever is smaller — a threshold most real institutional block trades clear many times over, usually negotiated through a broker's dedicated upstairs desk before ever touching a pool.
 
-The trade-off is explicit, not accidental: pre-trade information stays hidden inside the venue, but post-trade transparency is still mandatory. Every execution must be reported to a Trade Reporting Facility within 10 seconds and flows into the same public consolidated tape that lit-exchange trades appear on.
+The trade-off is explicit, not accidental: pre-trade information stays hidden inside the back room, but the receipt still has to go up. Every execution must be reported to a Trade Reporting Facility within 10 seconds and flows into the **consolidated tape** — the one shared, public receipt book every US trade eventually gets written into, no matter which door, lit or dark, it walked through.
 
 Put the two markets side by side and the contrast is the whole story: India makes the *negotiation window itself* public and time-boxed, so there is nowhere private for a block to hide even briefly. The US lets the *matching itself* stay private indefinitely, inside a licensed venue, and recovers transparency entirely after the fact, through mandatory reporting. Same underlying problem — move a lot of stock without moving the price against yourself — answered with two structurally opposite philosophies about how much darkness a market can tolerate before it needs light.
 
-## Example 3: What happens when the private room bends its own rules
+## Example 3: What happens when someone inside the room leaks the order
 
-The American model's whole trust structure rests on one assumption: that everyone inside a dark venue is playing by the rules the venue actually published. In January 2015, the SEC showed what happens when that assumption is false.
+India's model keeps almost everything on a public window. The US model keeps the room dark until the receipt prints. Both designs share one weak point neither actually fixes: the moment *before* the window opens or the receipt gets taped up, when a human being already knows a large order is coming and everyone else doesn't.
 
-The SEC charged UBS Securities LLC over its dark pool, alleging the firm had marketed and sold a special order type called PrimaryPegPlus almost exclusively to market makers and high-frequency trading firms — without properly disclosing its existence to the rest of its subscribers. The order type let those select subscribers price orders in fractions of a cent, a pricing edge ordinary institutional clients placing block-sized orders in the same pool didn't know existed and couldn't compete against. UBS settled, paying more than $14.4 million, including a $12 million penalty — at the time, the largest the SEC had ever levied against an Alternative Trading System.
+**India.** In July 2026, SEBI issued a 146-page final order in a case it had been building since a February 2023 show-cause notice: Viresh Joshi, then chief dealer at Axis Mutual Fund, had been leaking non-public information about the fund's impending large trades to a Dubai-based trader, Prijesh Kurani, who ran the resulting front-running through a network of conduit accounts. The pattern SEBI reconstructed was almost mechanical — positions built immediately before Axis Mutual Fund's big trades hit the market, then squared off right after those trades moved the price, over and over, between September 2021 and March 2022. SEBI barred Joshi from the securities market for seven years, fined him ₹3 crore personally, and ordered ₹30.55 crore in disgorgement across 21 entities involved.
 
-Nobody outside the pool could see this happening in real time; that opacity is the entire design of a dark pool. The violation wasn't that UBS ran a private venue — that's legal and exactly what such venues are for. It was that UBS quietly gave some participants a rule the others were never told about, inside a room everyone had agreed, by definition, not to be able to watch.
+None of that required a dark pool. India doesn't have one. It required exactly one person standing at the one point in the process a public window can never reach: the moment an order is decided but not yet public.
+
+**International.** The American model's whole trust structure rests on a parallel assumption — that everyone inside a dark venue is playing by the rules the venue actually published. In January 2015, the SEC charged UBS Securities LLC over its dark pool, alleging the firm had marketed a special order type called PrimaryPegPlus almost exclusively to market makers and high-frequency trading firms, without properly disclosing its existence to the rest of its subscribers. The order type let those select subscribers price orders in fractions of a cent — a pricing edge ordinary institutional clients placing block-sized orders in the same pool didn't know existed and couldn't compete against. UBS settled, paying more than $14.4 million, including a $12 million penalty — at the time, the largest the SEC had ever levied against an Alternative Trading System.
+
+Two opposite designs for how public a block trade should be, and in both cases the actual failure was never the architecture. It was someone who could see the order before the market could, deciding to sell that head start to someone else.
 
 ## Why block trading matters for systems
 
 For a business analyst, product manager, or engineer, a block trade cannot travel through the same workflow as a normal order — it needs to be recognized as a distinct order type from the moment it's captured.
 
 A block order needs its own reference-price and timestamp fields, captured at the moment of negotiation, so a system can later prove the agreed price actually sat inside whatever band a regulator requires — the same discipline India's ±3% rule and the US's reference-to-lit-price convention both depend on. It needs a settlement flag distinct from an ordinary trade wherever "delivery only, no squaring off" is a rule rather than a convention, so downstream clearing systems don't quietly allow a reversal that the regulator has already forbidden. And it needs a hard-coded link to whatever mandatory disclosure or reporting deadline applies — a same-day after-hours feed in India, a 10-second Trade Reporting Facility submission in the US — because a block trade that executes correctly but reports late is still a compliance failure.
+
+Example 3 points at one more field that's easy to skip and expensive to skip: an access log for who could see an impending block order, and exactly when. That log is the only thing that lets a firm — or a regulator, years later — reconstruct whether a leak happened at all, since neither a public window nor a dark pool's own architecture will ever show it.
 
 None of that is where a block trade's system journey ends, either. The moment it prints, it becomes exactly the input the [Allocation](/essays/allocation-one-block-trade-many-owners) process was built to handle: one execution, needing to become many client accounts' worth of ownership, fairly and provably in that order.
 
@@ -88,10 +96,13 @@ A block trade asks a narrower, calmer question first — "what is this worth to 
 
 Where a market chooses to draw the line between that private question and the public record — a fifteen-minute window everyone can watch open and close, or a private room whose results surface only after the fact — turns out to be one of the clearest signals of how that market thinks about transparency itself.
 
+But draw that line wherever you like, one moment stays outside it either way: the instant an order is decided but not yet public. Every design covered here polices everything *around* that instant carefully — the price band, the reporting deadline, the venue's rulebook. Almost none of them can watch the instant itself. That's not a flaw unique to one country's approach. It's the one part of a block trade no window, public or dark, was ever built to see.
+
 ## Reference anchors
 
 - [SEBI Circular: Review of Block Deal Framework (SEBI/HO/MRD/POD-III/CIR/P/2025/134)](https://www.sebi.gov.in/legal/circulars/oct-2025/review-of-block-deal-framework_97145.html)
+- [SEBI: Interim Order-cum-Show Cause Notice in the matter of Front Running of the Trades of Axis Mutual Fund](https://www.sebi.gov.in/enforcement/orders/feb-2023/interim-order-cum-show-cause-notice-in-the-matter-of-front-running-of-the-trades-of-axis-mutual-fund_68546.html)
+- [Business Standard: Axis MF front-running case — Sebi bars Viresh Joshi for 7 years in final order](https://www.business-standard.com/markets/news/axis-mf-front-running-case-sebi-bars-viresh-joshi-for-7-yrs-in-final-order-126072401215_1.html)
 - [SEC Press Release 2015-7: SEC Charges UBS Subsidiary With Disclosure Violations and Other Regulatory Failures in Operating Dark Pool](https://www.sec.gov/news/pressrelease/2015-7.html)
 - [SEC Administrative Order: In the Matter of UBS Securities LLC (File No. 3-16338)](https://www.sec.gov/files/litigation/admin/2015/33-9697.pdf)
 - [FINRA: Can You Swim in a Dark Pool?](https://www.finra.org/investors/insights/can-you-swim-dark-pool)
-- [Wikipedia: Block trade](https://en.wikipedia.org/wiki/Block_trade)
