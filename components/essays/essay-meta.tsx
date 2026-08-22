@@ -1,6 +1,11 @@
+import Link from "next/link";
+
 import { Tag } from "@/components/ui/tag";
 import { Muted } from "@/components/ui/typography";
+import { slugifyTerm } from "@/lib/essays";
 import type { Essay } from "@/types/content";
+
+const linkedTagClassName = "transition-colors hover:border-brand hover:text-brand";
 
 function EssayMeta({ essay }: { essay: Essay }) {
   return (
@@ -9,9 +14,15 @@ function EssayMeta({ essay }: { essay: Essay }) {
         {essay.author} · {essay.readingTime}
       </Muted>
       <div className="flex flex-wrap gap-2">
-        <Tag active>{essay.category}</Tag>
+        <Link href={`/essays/category/${slugifyTerm(essay.category)}`}>
+          <Tag active className={linkedTagClassName}>
+            {essay.category}
+          </Tag>
+        </Link>
         {essay.tags.map((tag) => (
-          <Tag key={tag}>{tag}</Tag>
+          <Link key={tag} href={`/essays/tag/${slugifyTerm(tag)}`}>
+            <Tag className={linkedTagClassName}>{tag}</Tag>
+          </Link>
         ))}
       </div>
     </div>

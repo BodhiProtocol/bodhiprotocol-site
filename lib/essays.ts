@@ -134,6 +134,46 @@ export function getSeriesNav(slug: string) {
   };
 }
 
+/** URL-safe form of a tag or category, e.g. "Order Types" -> "order-types". */
+export function slugifyTerm(term: string): string {
+  return term.trim().toLowerCase().replace(/\s+/g, "-");
+}
+
+export function getAllTags(): string[] {
+  const tags = new Set<string>();
+  for (const essay of getAllEssays()) {
+    for (const tag of essay.tags) tags.add(tag);
+  }
+  return Array.from(tags).sort();
+}
+
+export function getAllCategories(): string[] {
+  const categories = new Set(getAllEssays().map((essay) => essay.category));
+  return Array.from(categories).sort();
+}
+
+export function getEssaysByTag(
+  tagSlug: string,
+): { tag: string; essays: EssayWithContent[] } | undefined {
+  const essays = getAllEssays().filter((essay) =>
+    essay.tags.some((tag) => slugifyTerm(tag) === tagSlug),
+  );
+  const tag = essays[0]?.tags.find((candidate) => slugifyTerm(candidate) === tagSlug);
+  if (!tag) return undefined;
+  return { tag, essays };
+}
+
+export function getEssaysByCategory(
+  categorySlug: string,
+): { category: string; essays: EssayWithContent[] } | undefined {
+  const essays = getAllEssays().filter(
+    (essay) => slugifyTerm(essay.category) === categorySlug,
+  );
+  const category = essays[0]?.category;
+  if (!category) return undefined;
+  return { category, essays };
+}
+
 export function getRelatedEssays(essay: Essay, limit = 3): Essay[] {
   return getAllEssays()
     .filter((candidate) => candidate.slug !== essay.slug)

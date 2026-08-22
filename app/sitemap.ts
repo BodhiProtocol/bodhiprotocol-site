@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 import { getAllBlueprints } from "@/lib/blueprints";
-import { getAllEssays } from "@/lib/essays";
+import { getAllCategories, getAllEssays, getAllTags, slugifyTerm } from "@/lib/essays";
 import { getAllPlaybooks } from "@/lib/ba-playbooks";
 import { getAllGreatMinds } from "@/lib/great-minds";
 import { getAllInvisibleBusinesses } from "@/lib/invisible-businesses";
@@ -43,6 +43,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(essay.date),
   }));
 
+  const essayTagRoutes: MetadataRoute.Sitemap = getAllTags().map((tag) => ({
+    url: `${siteConfig.url}/essays/tag/${slugifyTerm(tag)}`,
+    lastModified: new Date(),
+  }));
+
+  const essayCategoryRoutes: MetadataRoute.Sitemap = getAllCategories().map(
+    (category) => ({
+      url: `${siteConfig.url}/essays/category/${slugifyTerm(category)}`,
+      lastModified: new Date(),
+    }),
+  );
+
   const invisibleBusinessRoutes: MetadataRoute.Sitemap = getAllInvisibleBusinesses().map(
     (episode) => ({
       url: `${siteConfig.url}/invisible-businesses/${episode.slug}`,
@@ -69,6 +81,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...staticRoutes,
     ...seoLearningRoutes,
     ...essayRoutes,
+    ...essayTagRoutes,
+    ...essayCategoryRoutes,
     ...invisibleBusinessRoutes,
     ...greatMindRoutes,
     ...blueprintRoutes,
