@@ -194,7 +194,7 @@ export default async function EssayPage({ params }: EssayPageProps) {
                 <Illustration />
               </div>
             ) : null}
-            <div className="prose prose-neutral dark:prose-invert prose-headings:font-heading prose-a:text-brand max-w-none">
+            <div className="prose prose-neutral dark:prose-invert prose-headings:font-heading prose-a:text-brand max-w-none [&_:where(h1,h2,h3,h4,h5,h6)_a]:text-inherit [&_:where(h1,h2,h3,h4,h5,h6)_a]:no-underline">
               <MDXRemote
                 source={essay.content}
                 options={mdxOptions}
