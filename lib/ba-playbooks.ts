@@ -25,6 +25,8 @@ import { defectVsExpectedBehaviour } from "@/content/ba-playbooks/defect-vs-expe
 import { everyoneWantsSomethingDifferent } from "@/content/ba-playbooks/everyone-wants-something-different";
 import { regulatoryChangeRequirementPlaybook } from "@/content/ba-playbooks/regulatory-change-requirement-playbook";
 import { tradeLifecyclePlaybook } from "@/content/ba-playbooks/trade-lifecycle-playbook";
+import { stakeholderWentQuietMidUat } from "@/content/ba-playbooks/stakeholder-went-quiet-mid-uat";
+import { twoPmsTwoDifferentPriorities } from "@/content/ba-playbooks/two-pms-two-different-priorities";
 
 // Playbooks are structured card data (numbered hacks with before/after,
 // templates, etc.) rather than prose, so each playbook is a typed data module
@@ -60,6 +62,8 @@ const playbookEntries: Omit<Playbook, "readingTime">[] = [
   everyoneWantsSomethingDifferent,
   regulatoryChangeRequirementPlaybook,
   tradeLifecyclePlaybook,
+  stakeholderWentQuietMidUat,
+  twoPmsTwoDifferentPriorities,
 ];
 
 function withReadingTime(guide: Omit<Playbook, "readingTime">): Playbook {
