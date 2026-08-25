@@ -22,6 +22,8 @@ const essayHooks: Record<string, string> = {
     "The bond never changes hands. The default risk does — and so can anyone's opinion of it.",
   "settlement-finality-when-a-trade-stops-being-a-promise":
     "At some point, a trade must stop being reversible.",
+  "off-market-transfer-the-share-that-moves-without-a-trade":
+    "Not every share that changes hands was ever bought or sold.",
   "default-waterfall-who-pays-when-a-clearing-member-fails":
     "When a member fails, losses travel through a pre-built staircase.",
   "how-order-books-work":

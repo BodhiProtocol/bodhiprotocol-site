@@ -91,6 +91,7 @@ export const essaySeries: EssaySeries[] = [
       "wrong-way-risk-the-hedge-that-fails-when-you-need-it",
       "netting-how-finance-cancels-a-mountain-of-debt-into-a-pebble",
       "settlement-finality-when-a-trade-stops-being-a-promise",
+      "off-market-transfer-the-share-that-moves-without-a-trade",
       "default-waterfall-who-pays-when-a-clearing-member-fails",
       "the-financial-dominoes-why-one-default-rarely-stays-one-default",
     ],
