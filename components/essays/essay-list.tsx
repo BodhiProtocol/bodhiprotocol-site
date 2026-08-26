@@ -20,6 +20,7 @@ const activeChipClassName =
 
 const categoryOrder = [
   "Capital Markets",
+  "Market Abuse",
   "Business Analysis",
   "Artificial Intelligence",
   "Economics",
