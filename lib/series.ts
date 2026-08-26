@@ -108,6 +108,8 @@ export const essaySeries: EssaySeries[] = [
       "theta-the-cost-of-being-right-too-late",
       "delta-the-gear-ratio-between-an-option-and-its-stock",
       "gamma-the-feedback-loop-hiding-inside-every-delta-hedge",
+      "vega-the-price-of-not-knowing-what-happens-next",
+      "rho-the-greek-that-only-shows-up-when-you-wait-long-enough",
       "securities-lending-the-share-sold-short-more-than-once",
       "payment-for-order-flow-the-free-trade-someone-still-paid-for",
       "internalization-the-book-to-book-trade-that-skips-the-exchange",
