@@ -14,9 +14,17 @@ Spoofing is the same trick, played inside a stock exchange's order book instead 
 
 Spoofing has a clean legal definition: placing an order you never intend to fill, to create a false impression of supply or demand. Read that sentence and it sounds obvious — of course regulators can catch that. In practice, spoofing is invisible in a definition and only becomes obvious when you watch the order lifecycle unfold, order by order, against the clock.
 
+## Two markets, the same trick
+
+In April 2025, India's SEBI ordered a broker called Patel Wealth Advisors Pvt Ltd — and its four directors — to disgorge ₹3.22 crore in illegal gains for running this exact pattern across 173 stocks on the NSE, on top of banning the firm from trading through its own account and barring the directors from the market entirely. NSE had already flagged the firm and opened proceedings back in May 2023; the spoofing continued anyway.
+
+Fifteen years earlier, on the other side of the planet, the US CFTC and DOJ built a case against a single trader working out of his parents' house in suburban London. Navinder Singh Sarao ran a layering algorithm on E-mini S&P 500 futures continuously for over two hours before the market plunged on May 6, 2010 — the "Flash Crash" — piling on nearly $200 million of one-sided pressure that regulators later said contributed to the order-book imbalance behind the crash.
+
+Different country, different asset class, fifteen years apart, no connection between the two cases whatsoever — and the mechanic underneath both is identical. Here's what it actually looks like, order by order.
+
 ## Five orders build a wall that isn't there
 
-A simulated episode: five bid-side orders land in quick succession — 4,000 shares at 99.97, 7,000 at 99.95, 5,500 at 99.93, 6,500 at 99.91, 3,800 at 99.89. None of these are large enough alone to look suspicious; a real buyer places orders like this constantly. Together, they add 26,800 shares of apparent buying depth stacked just below the market — a wall that makes the book look like real demand is building underneath the current price, exactly when a very different order is about to need that impression to hold.
+A simulated episode, built to show the mechanic both cases above ran on: five bid-side orders land in quick succession — 4,000 shares at 99.97, 7,000 at 99.95, 5,500 at 99.93, 6,500 at 99.91, 3,800 at 99.89. None of these are large enough alone to look suspicious; a real buyer places orders like this constantly. Together, they add 26,800 shares of apparent buying depth stacked just below the market — a wall that makes the book look like real demand is building underneath the current price, exactly when a very different order is about to need that impression to hold.
 
 ## One genuine order is the entire point
 
@@ -29,6 +37,12 @@ Here's the part a definition can't show you: within moments of that genuine fill
 ## Why four regulators wrote the same rule independently
 
 India's SEBI (Prohibition of Fraudulent and Unfair Trade Practices relating to Securities Market) Regulations, 2003, Regulation 4, MAS's Securities and Futures Act s197 (false trading), the CFTC's anti-spoofing statute (7 U.S.C. §6c(a)(5)(C)), and the EU's Market Abuse Regulation Article 12(1)(a) come from four different legal systems, drafted at different times, by regulators who don't share a rulebook. All four define the violation around the same structural signal: an order with no genuine intent to trade, that rests briefly, adds one-sided depth, and is pulled within moments of the opposing genuine order filling. The convergence isn't a coincidence — it's because the tell isn't a legal technicality specific to one jurisdiction, it's a pattern in the data itself, visible the same way no matter which regulator is looking at it.
+
+## What happened to both of them
+
+Sarao pleaded guilty to spoofing and wire fraud in 2016, forfeited $12.9 million in ill-gotten gains, and was sentenced in January 2020 to a year of supervised release — including home confinement — rather than prison, a call the judge tied to his diagnosed Asperger's and his cooperation with prosecutors after his arrest. Patel Wealth Advisors got the SEBI-side equivalent of the same outcome: the firm banned from its own proprietary account, its four directors barred from the securities market outright, and the ₹3.22 crore ordered back.
+
+Neither case was built on a smoking-gun memo that said "I intend to fake demand." Both were built the same way regulators build every spoofing case — from the order-by-order timing pattern above.
 
 ## The one-question check
 

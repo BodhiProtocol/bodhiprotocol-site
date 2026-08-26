@@ -38,7 +38,7 @@ Some traders take the stop-loss idea one step further and add a price condition 
 
 Priya's limit order for Tata Motors filled the same afternoon. But she's also had her eye on Reliance for a week, waiting for it to dip to ₹1,480 — and she doesn't want to keep re-entering that order every single morning.
 
-Most orders are **day orders** by default — if they don't fill by market close, they just die, and you're starting over tomorrow. Priya doesn't want that. So she sets a **GTT** — good-till-triggered, Zerodha's version of a standing order — and it just sits in the background for weeks, watching Reliance, ready to fire the moment it touches ₹1,480. Internationally the same idea goes by **GTC**, good-till-cancelled. Same patience, different acronym.
+Most orders are **day orders** by default — if they don't fill by market close, they just die, and you're starting over tomorrow. Priya doesn't want that. So she sets a **GTT** — good-till-triggered, Zerodha's version of a standing order — and it just sits in the background for weeks, watching Reliance, ready to fire the moment it touches ₹1,480. NSE gives it a long leash: a GTT stays alive for up to 365 days before it expires untriggered. Internationally the same idea goes by **GTC**, good-till-cancelled — Jake sets one on Robinhood for Tesla at $200, except his leash is shorter. Robinhood cancels any GTC order that hasn't filled within 90 days. Same patience, different budget for it.
 
 ## When "some of it" isn't good enough
 
@@ -46,11 +46,21 @@ A different problem shows up for institutional money, not individual investors l
 
 A trading desk that wants to buy 50,000 shares right now, all at once or not at all, uses a **fill-or-kill (FOK)** order — the whole thing executes immediately, or the whole thing is cancelled. Nothing sits around half-done. A slightly looser cousin, **immediate-or-cancel (IOC)**, will take whatever quantity is available right now and cancel the rest — no lingering partial order left waiting in the book.
 
-And when that same desk wants to buy something big without spooking the market — because showing "buyer wants 50,000 shares" would make every seller raise their price — they use an **iceberg order**. It only displays a small slice, say 500 shares, in the public order book. The moment that slice fills, another 500 quietly appears behind it, until the full size is done. Everyone else in the market just sees a steady trickle of 500-share trades, never the whale behind them.
+And when that same desk wants to buy something big without spooking the market — because showing "buyer wants 50,000 shares" would make every seller raise their price — they use an **iceberg order**. It only displays a slice of the total, and on NSE that slice can't be just anything: the rules require the "disclosed quantity" to be at least 10% of the full order, so for 50,000 shares the smallest sliver they're allowed to show is 5,000. The moment that slice fills, another 5,000 quietly appears behind it, until the full size is done. Everyone else in the market just sees a steady trickle of 5,000-share trades, never the 50,000-share whale behind them. US venues run the same trick under a different name — a **reserve order** — but regulate the visible piece differently: instead of India's percentage floor, NASDAQ sets a flat minimum display size, so an equally large US order can legally show a much thinner sliver of itself than an Indian one ever could.
 
 ## Automating the whole decision
 
 Back to Priya. A few weeks in, she's tired of placing three separate orders every time she wants to trade intraday — one to enter, one for the target, one for the stop-loss. So she starts using a **bracket order**: she sets all three at once — buy at ₹950, sell at ₹970 if it goes her way, sell at ₹940 if it doesn't. She places it once in the morning and doesn't touch her phone again until one side triggers.
+
+## What the exchange does after you hit submit
+
+Priya's limit order doesn't just sit there waiting — from the moment she taps submit, it's alive inside the exchange's matching engine, moving through a small set of states whether she checks her phone again or not: acknowledged, then partially filled, fully filled, cancelled, rejected, or expired if nothing happens in time. Every broker's order-history screen — Kite, Robinhood, doesn't matter which — is really just a window into which of those states an order currently sits in.
+
+Two rules decide what happens inside that engine, and they're the same two rules on every exchange in the world.
+
+The first is **price-time priority**: at any given price, whoever got there first gets filled first. Think of a queue at a ticket counter — a better price cuts the line entirely, but among orders sitting at the identical price, it's strictly first-come-first-served. Priya's ₹950 order sits behind everyone else who already offered ₹950, however long ago they placed it.
+
+The second only matters when a trader — more realistically, a firm running several algorithms at once — accidentally sends a buy order and a sell order for the same stock at the same time. Left alone, those two orders would trade against each other: a wash trade, and both India and the US have rules against letting it happen by accident. NSE runs a **PAN-based Self-Trade Prevention Check**: if an incoming order would match a resting order under the same PAN, the incoming order is cancelled automatically, no exceptions. NASDAQ's version, **Self Match Prevention**, gives the firm more choice — cancel the older resting order, cancel the newer one, or shrink both by the overlapping size — but the worry underneath is identical: two orders from the same hand shouldn't quietly trade with each other and rack up two sets of fees for no real trade.
 
 ## Same instincts, two markets
 
