@@ -1,0 +1,51 @@
+---
+title: "Vega: The Price of Not Knowing What Happens Next"
+description: "On 4 June 2024, India's VIX spiked 51% in a single session and the Nifty fell nearly 6% on Lok Sabha election counting day — while six years earlier and a market away, a $1.9 billion fund built on the opposite bet shrank to $63 million in one afternoon. Vega is the Greek that measures an option's exposure not to which way the market moves, but to how much the market suddenly expects it might. What vega actually measures, who is structurally exposed on each side of it, and why both a crash and a collapse trace back to the same mechanic — with paired Indian and international examples throughout."
+hook: "India's VIX jumped 51% in one session on election counting day 2024. Six years earlier, a $1.9 billion fund betting the opposite way shrank to $63 million in an afternoon. Same mechanic, both times: vega."
+category: "Capital Markets"
+tags: ["markets", "derivatives", "equities"]
+author: "Surya"
+date: "2026-08-26"
+---
+
+An insurance company selling umbrella policies doesn't reprice them because it started raining. It reprices them the moment the forecast merely shifts — from a 10% chance of rain to a 60% chance — hours before a single drop falls, or fails to. The price of protection moves with the *probability* of the storm, not the storm itself.
+
+An [option](/essays/options-the-right-to-walk-away) carries the same kind of price tag, and it moves for the same reason. Separate from [how far the stock has moved](/essays/delta-the-gear-ratio-between-an-option-and-its-stock) and [how fast that sensitivity itself changes](/essays/gamma-the-feedback-loop-hiding-inside-every-delta-hedge), every option has a third exposure: to how much movement the market suddenly expects, whether or not that movement ever shows up. The name for that exposure is vega, and on 4 June 2024, it cost and made fortunes on the same trading day, on the same exchange, without the underlying index needing to do anything except become eleven percentage points scarier to hold.
+
+## What vega actually measures
+
+Vega measures how much an option's price changes for every one-percentage-point move in *implied volatility* — the market's live, priced-in estimate of how much a stock or index is likely to swing before expiry, distinct from how much it actually ends up swinging. A stock that's expected to stay calm carries options priced cheaply; the identical stock, expected to swing wildly, carries options priced far higher — even before it moves an inch, purely because the range of outcomes the market is pricing for just got wider.
+
+That produces a genuinely strange result once you sit with it: an option's price can rise or fall with nobody's view on *direction* changing at all. A trader can be certain a stock is headed nowhere in particular and still watch the calls and puts they're holding both gain value, simultaneously, the moment the market decides the outcome is less certain than it assumed yesterday. Vega is the only one of the major Greeks that isn't about the underlying moving — it's about how much moving the market has started pricing for.
+
+It also inverts a pattern established earlier in this series. [Gamma and theta](/essays/theta-the-cost-of-being-right-too-late) both peak in an option's final days, when there's the least time left. Vega runs the opposite way — it's largest in options with the most time left to expiry, because a long-dated option has the most days remaining in which that repriced uncertainty could still matter. The same option-chain Greeks panel that surfaced delta and gamma earlier in this series — Sensibull's overlay on Zerodha in India, thinkorswim's option chain in the US — shows vega too, usually sitting right next to implied volatility itself, because the two move together almost by definition.
+
+## Who's structurally exposed on each side
+
+Every option buyer is long vega, whether they know to call it that or not: a call or a put both gain value when implied volatility rises, because both are bets on a wider range of outcomes becoming more likely. An Indian portfolio manager buying Nifty puts ahead of a Union Budget, purely to cap downside, is long vega without necessarily framing it that way — the hedge gets more valuable the moment the market grows nervous about the Budget, even before the Finance Minister has said a word. A US pension fund buying S&P 500 puts ahead of a Federal Reserve rate decision is running the identical trade, dressed in a different index.
+
+The other side of that trade — sellers of options, running short vega — are compensated for it the same way an insurer is compensated for writing policies: implied volatility tends, on average, to run a little richer than the volatility that actually shows up once the event has passed, a gap traders call the volatility risk premium. Indian proprietary desks selling Nifty and Bank Nifty weekly options into calm weeks, and their algorithmic counterparts overseas systematically shorting VIX futures, are both harvesting the same structural gap — a small, steady collection that looks like skill for as long as the nervousness they're betting against doesn't actually arrive.
+
+## Why markets needed this
+
+That collection stops looking steady the moment implied volatility itself lurches, and both sides of the world have a case study exact enough to set a clock by.
+
+India's came on 4 June 2024, Lok Sabha election counting day. Through the campaign, India VIX had already climbed nearly 80% as the outcome stayed genuinely contested, then eased somewhat once exit polls on 1 June pointed toward a comfortable NDA majority. Counting day itself reversed that calm within hours: early trends showed a far tighter race than the exit polls had suggested, and India VIX spiked 51% in a single session while the Nifty fell 1,379 points — 5.93% — one of the steepest single-day falls in the index's history. Anyone short options into that morning on the strength of the exit-poll consensus was hit twice over: the index moved sharply against them, and separately, independently, the market's own estimate of how much *more* it might still move had just repriced 51% higher under their position. Anyone long puts as tail-risk protection, precisely because they hadn't trusted the exit polls, was paid for both the fall and the fear in the same session — and gave much of the vega piece back over the following days, as a coalition government's shape firmed up and India VIX eased again.
+
+The US version needed no election at all — just years of the volatility risk premium being harvested at scale, and one day of implied volatility repricing all at once. By early 2018, exchange-traded notes like XIV and SVXY had grown to billions of dollars in assets doing exactly what those Indian and overseas desks do routinely: staying structurally short VIX futures, collecting the steady gap between implied and realized volatility as income. On 5 February 2018 — a day traders now call "Volmageddon" — the VIX itself jumped from 17.31 to 37.32 in a single session, a 116% spike, as a modest equity selloff forced those short-volatility notes to buy back into their own rising exposure, a feedback loop that amplified the spike further. XIV lost close to 96% of its value that one day, its assets falling from roughly $1.9 billion to $63 million by the close; Credit Suisse announced the note's termination the very next morning.
+
+Same mechanic, opposite instruments, five thousand miles and six years apart: implied volatility repricing sharply punishes whoever is short vega and rewards whoever is long it, entirely apart from whether the underlying itself moved the way anyone actually expected.
+
+## Why this matters for a Business Analyst
+
+### Think of an insurance company that reprices policies off the forecast, not the weather
+
+A homeowner's premium can jump the week a hurricane watch is issued, days before any storm makes landfall — and can fall right back once the watch is lifted, even if it never rains at all. Nothing about the house changed either time. Only the insurer's estimate of how much trouble it might be in changed, and that estimate alone moved the price.
+
+"The book is delta-neutral, and gamma's small going into the Budget" reads, on a risk report, like a book that's been fully hedged. It hasn't been. A book built from options can carry zero net exposure to the index moving up or down while still carrying enormous vega — value that swings hard the instant implied volatility itself spikes or crushes, regardless of which way the index goes once the announcement lands. A BA specifying or reviewing a risk dashboard for an options desk has to make sure vega gets its own line, distinct from delta and gamma, especially in the days around a known scheduled event — a Budget, an RBI policy day, an election, a Fed meeting — because that's precisely when the market's estimate of how much it might move is guaranteed to change, whether or not anything actually does.
+
+## Lighthouse Insight
+
+Go back to the insurance company. It never needed the storm to arrive to make or lose money on the policy — it only needed the forecast to change. Vega runs on that same logic: the option doesn't need the stock to move. It only needs the market's opinion of how much the stock *might* move to shift, and the price moves with it, immediately, before a single rupee or dollar of the underlying has changed hands.
+
+That's what cost short options positions dearly on a single June morning in Mumbai, when a tighter-than-expected count sent India's fear gauge up 51% before lunch — and what quietly erased $1.8 billion from a New York-listed note on a February afternoon six years earlier, built entirely on the bet that the forecast would stay calm forever. Neither market needed to be wrong about direction to lose. Both needed only to be wrong about how much uncertainty was coming — and vega was the number that was keeping score the whole time.
