@@ -44,7 +44,7 @@ function BlockTradingIllustration() {
           </span>
           <span className="text-destructive">visible the whole way</span>
         </div>
-        <div className="grid grid-cols-4 gap-1.5">
+        <div className="grid grid-cols-2 gap-1.5 sm:grid-cols-4">
           {openBookFills.map((fill) => (
             <div
               key={fill.label}

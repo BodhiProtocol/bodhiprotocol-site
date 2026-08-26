@@ -24,7 +24,7 @@ function DmartCostTimelineDiagram() {
           <span className="font-mono text-[10px] font-semibold tracking-[0.15em] text-muted-foreground uppercase">
             Leased Competitor
           </span>
-          <div className="grid grid-cols-5 gap-2">
+          <div className="grid grid-cols-3 gap-2 sm:grid-cols-5">
             {years.map((year, index) => (
               <motion.div
                 key={year}
@@ -45,7 +45,7 @@ function DmartCostTimelineDiagram() {
           <span className="font-mono text-[10px] font-semibold tracking-[0.15em] text-brand uppercase">
             DMart (Owned)
           </span>
-          <div className="grid grid-cols-5 gap-2">
+          <div className="grid grid-cols-3 gap-2 sm:grid-cols-5">
             {years.map((year, index) => {
               const isFirstYear = index === 0;
               return (
