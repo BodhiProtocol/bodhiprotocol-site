@@ -1,0 +1,31 @@
+---
+title: "Fine-Tuning vs. Prompting"
+summary: "One changes what you ask the model this time. The other changes what it does every time, for every conversation after."
+module: "Artificial Intelligence"
+season: "Season 1"
+tags: ["llm", "prompting"]
+author: "Surya"
+date: "2026-08-27"
+---
+
+**Core question:** when should you change what you ask a model, versus changing the model itself?
+
+## The metaphor: a cheat sheet vs. a training program
+
+Hand a new employee a cheat sheet before their shift, and they'll follow it for that shift — tomorrow, without the sheet, they're back to guessing. Send them through a training program instead, and the change sticks: it reshapes how they work on every shift after, whether or not anyone hands them anything. Prompting is the cheat sheet — instructions attached to one conversation. Fine-tuning is the training program — it changes the model's default behavior going forward, for every conversation, not just this one.
+
+<Callout type="insight" title="Fast and reversible vs. slow and durable">
+Prompting is nearly free to change: edit the next message, and the instruction is gone or replaced. Fine-tuning costs real time and money to run, and you can't undo it by typing something different — you have to retrain to change it again.
+</Callout>
+
+## The real question is durability, not difficulty
+
+Both can get a model to behave a specific way. The difference that actually matters is how long the fix needs to last. A one-off task, an instruction that changes often, or something you're still figuring out the right phrasing for — that's a prompting problem, because you want to be able to change your mind cheaply. A correction you find yourself repeating in the same form, conversation after conversation, project after project — that's a signal the fix belongs in the model itself, not in every single prompt that calls it.
+
+<Callout type="question">
+Before fine-tuning, ask: could a better prompt fix this instead? Before repeating the same prompt fix for the hundredth time, ask: should this just be baked in?
+</Callout>
+
+## Why this matters
+
+Teams that reach for fine-tuning too early pay for something slow and expensive to iterate on, when a sharper prompt would have worked and stayed easy to change. Teams that never reach for it pay a different, quieter cost — the same correction, typed into the same kind of prompt, forever, because the fix never got promoted from a one-off instruction into something the model just does by default.
