@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 const sections = [
   { id: "the-invisible-business", label: "The Invisible Business" },
   { id: "where-the-money-actually-comes-from", label: "Where The Money Actually Comes From" },
-  { id: "the-real-revenue-split", label: "The Real Revenue Split" },
+  { id: "one-app-four-companies", label: "One App, Four Companies" },
   { id: "the-law-just-cracked-a-little", label: "The Law Just Cracked, A Little" },
   { id: "key-takeaways", label: "Key Takeaways" },
 ];

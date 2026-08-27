@@ -4,7 +4,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 
 import { PhonepeOutcomeSidebar } from "@/components/invisible-businesses/phonepe-outcome-sidebar";
 import { PhonepePageToc } from "@/components/invisible-businesses/phonepe-page-toc";
-import { PhonepeRailsDiagram } from "@/components/invisible-businesses/phonepe-rails-diagram";
+import { PhonepeLicenseStackDiagram } from "@/components/invisible-businesses/phonepe-license-stack-diagram";
 import { GlassCard } from "@/components/invisible-businesses/glass-card";
 import { IBArticleHero } from "@/components/invisible-businesses/ib-article-hero";
 import { InsightGrid } from "@/components/invisible-businesses/insight-grid";
@@ -68,8 +68,8 @@ function PhonepeEpisodeBody({ episode }: { episode: InvisibleBusinessWithContent
               <MDXRemote source={episode.content} options={mdxOptions} components={mdxComponents} />
             </div>
 
-            <div id="the-real-revenue-split">
-              <PhonepeRailsDiagram />
+            <div id="one-app-four-companies">
+              <PhonepeLicenseStackDiagram />
             </div>
 
             <div id="key-takeaways">
@@ -81,10 +81,15 @@ function PhonepeEpisodeBody({ episode }: { episode: InvisibleBusinessWithContent
             <NextEpisodeCta nextEpisode={episode.nextEpisode} />
 
             <p className="text-xs text-muted-foreground">
-              Financial and market-share figures are based on PhonePe&apos;s FY25 financial
-              disclosures, public reporting on the August 2026 Taxation and Other Laws (Amendment)
-              Bill, and third-party UPI market-share trackers. Figures are rounded for readability
-              and may shift as PhonePe finalizes its IPO filings.
+              FY25 revenue and profit figures are drawn from PhonePe&apos;s consolidated filings
+              with India&apos;s Registrar of Companies, as reported by financial-filing trackers
+              Entrackr and YourStory. The zero-MDR mandate traces to Section 10A of the Payment
+              and Settlement Systems Act, 2007 and the government&apos;s Digital Payments
+              Incentive Scheme, both via Press Information Bureau releases; the August 2026
+              amendment is per PIB&apos;s release on the Taxation and Other Laws (Amendment) Bill,
+              2026. Licensing details (IRDAI Reg. No. 766; SEBI Reg. No. INA000017860) and lending
+              partner names are from PhonePe&apos;s own press releases. Figures are rounded for
+              readability and may shift as PhonePe finalizes its IPO filings.
             </p>
           </article>
 
