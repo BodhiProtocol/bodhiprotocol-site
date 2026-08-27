@@ -313,7 +313,7 @@ export default async function GreatMindPage({ params }: GreatMindPageProps) {
         <Container>
           <div className="grid gap-12 lg:grid-cols-[1fr_240px]">
             <article className="flex min-w-0 flex-col gap-16">
-              <div className="prose prose-neutral dark:prose-invert max-w-none prose-headings:font-heading prose-a:text-brand first:prose-p:font-serif first:prose-p:text-xl first:prose-p:leading-relaxed first:prose-p:text-foreground">
+              <div className="prose prose-neutral dark:prose-invert max-w-none prose-headings:font-heading prose-a:text-brand first:prose-p:font-serif first:prose-p:text-xl first:prose-p:leading-relaxed first:prose-p:text-foreground [&_:where(h1,h2,h3,h4,h5,h6)_a]:text-inherit [&_:where(h1,h2,h3,h4,h5,h6)_a]:no-underline">
                 <MDXRemote source={mind.content} options={mdxOptions} />
               </div>
               <GreatMindsCentralThesis thesis={mind.centralThesis} />
