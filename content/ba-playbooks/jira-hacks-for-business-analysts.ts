@@ -83,6 +83,13 @@ export const jiraHacksForBusinessAnalysts: Omit<Playbook, "readingTime"> = {
     "first-time-writing-a-user-story",
   ],
   relatedTopics: ["Business Analyst User Story Template"],
+  image: {
+    src: "/images/ba-playbooks/jira-hacks-for-business-analysts-infographic.png",
+    alt: "Infographic titled Jira for Business Analysts: From Requirement to Done, showing the Business Need to Done journey, the Epic/Story/Task/Sub-task/Bug basics, a worked payment-retry story example with acceptance criteria, business rules, context and dependencies, the BA's role through backlog refinement, development, requirement changes, UAT and bugs, a reminder that Jira status is not the same as reality, three useful JQL filters, a nine-point story readiness checklist, and a bad-ticket vs good-ticket comparison.",
+    width: 2184,
+    height: 1963,
+    caption: "The whole habit, on one page — from a vague business need to a ticket a developer and QA can both act on.",
+  },
   hacks: [
     {
       number: 1,
