@@ -91,6 +91,7 @@ export const essaySeries: EssaySeries[] = [
       "wrong-way-risk-the-hedge-that-fails-when-you-need-it",
       "netting-how-finance-cancels-a-mountain-of-debt-into-a-pebble",
       "settlement-finality-when-a-trade-stops-being-a-promise",
+      "settlement-fails-what-happens-when-a-trade-refuses-to-deliver",
       "off-market-transfer-the-share-that-moves-without-a-trade",
       "default-waterfall-who-pays-when-a-clearing-member-fails",
       "the-financial-dominoes-why-one-default-rarely-stays-one-default",
@@ -249,6 +250,11 @@ export const essayBridges: EssayBridge[] = [
     from: "block-trading-one-price-negotiated-before-the-market-moves",
     to: "allocation-one-block-trade-many-owners",
     label: "The block executes as one negotiated trade — allocation decides who owns which piece of it",
+  },
+  {
+    from: "what-a-trade-lifecycle-actually-looks-like",
+    to: "settlement-fails-what-happens-when-a-trade-refuses-to-deliver",
+    label: "Every fail traces back to one specific stage of this same six-stage walk",
   },
 ];
 

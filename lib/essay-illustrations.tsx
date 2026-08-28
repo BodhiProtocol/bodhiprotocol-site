@@ -32,6 +32,7 @@ import { PovIllustration } from "@/components/essays/pov-illustration";
 import { RepoIllustration } from "@/components/essays/repo-illustration";
 import { RequirementIllustration } from "@/components/essays/requirement-illustration";
 import { RequirementsTranslatorIllustration } from "@/components/essays/requirements-translator-illustration";
+import { SettlementFailIllustration } from "@/components/essays/settlement-fail-illustration";
 import { SettlementFinalityIllustration } from "@/components/essays/settlement-finality-illustration";
 import { SniperIllustration } from "@/components/essays/sniper-illustration";
 import { SpoofingTimelineIllustration } from "@/components/essays/spoofing-timeline-illustration";
@@ -73,6 +74,8 @@ export const essayIllustrations: Record<string, ComponentType> = {
   "netting-how-finance-cancels-a-mountain-of-debt-into-a-pebble": NettingIllustration,
   "settlement-finality-when-a-trade-stops-being-a-promise":
     SettlementFinalityIllustration,
+  "settlement-fails-what-happens-when-a-trade-refuses-to-deliver":
+    SettlementFailIllustration,
   "repo-the-overnight-loan-thats-legally-two-trades": RepoIllustration,
   "the-decisions-that-never-stopped-billing": SubscriptionBillingIllustration,
   "capital-market-system-two-paths-one-market": CapitalMarketPathsIllustration,

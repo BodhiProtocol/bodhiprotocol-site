@@ -23,6 +23,16 @@ export const essayRecommendations: Record<string, ContentRecommendation[]> = {
       cta: "Open the BA Playbook",
     },
   ],
+  "settlement-fails-what-happens-when-a-trade-refuses-to-deliver": [
+    {
+      eyebrow: "See it live",
+      title: "Reconciliation Break Finder",
+      description:
+        "Most fails start as an unnoticed mismatch between two records of the same trade. Find the break before it becomes a missed settlement deadline.",
+      href: "/simulators/reconciliation-break-finder",
+      cta: "Open the Simulator",
+    },
+  ],
 };
 
 // BA Playbook slug -> what to read next (usually the essay behind the "why").
