@@ -1,0 +1,88 @@
+---
+title: "Settlement Fails: What Happens When a Trade Refuses to Deliver"
+description: "An executed trade is a promise, not a delivery. When one side can't keep that promise by settlement date — a missing instruction, a share that hasn't arrived yet, or simply not having what it sold — a market has to have already decided what happens next. India guarantees the buyer through auction and close-out. The US makes the defaulting broker fix it under threat of losing short-sale privileges. Europe mostly just sends a bill. Three different judgments about what actually deters a broken promise."
+hook: "A trade can execute perfectly and still not actually happen."
+category: "Capital Markets"
+tags: ["markets", "trade-lifecycle", "settlement"]
+author: "Surya"
+date: "2026-08-28"
+---
+
+Think of two friends striking a deal. One hands over ₹2,000 in cash today. The other promises to hand over a signed cricket bat — but doesn't have it on him right now, so he says "next Tuesday." The deal is agreed today. The actual swap happens later.
+
+Now ask the obvious question nobody asks at the moment of agreeing: what happens if Tuesday comes and the bat doesn't show up?
+
+Maybe he genuinely forgot which shelf it's on. Maybe he already sold it to someone else last week and is scrambling to buy an identical one back. Maybe he never had it at all.
+
+A trade works exactly the same way, at a scale of millions of shares and crores of rupees a day. **Execution says two sides agreed. Settlement says the agreement was actually kept. A trade that executes but is never delivered on time has a precise name in every market on earth: a fail — and long before it ever happens, every market has already had to decide exactly what happens next.**
+
+## The gap nobody draws a diagram for
+
+Most people who've never worked in markets assume a trade is finished the moment it executes — buy button pressed, done. The [trade lifecycle](/essays/what-a-trade-lifecycle-actually-looks-like) says otherwise: execution is stage two of six. Between it and the moment securities and cash actually change hands sits Capture & Enrichment, Clearing, and finally Settlement itself — and only Settlement is where the promise gets kept or broken.
+
+On India's NSE and the US's exchanges alike, that gap is now just one business day (T+1). It used to be longer everywhere. But "shorter" doesn't mean "zero" — and inside even one day, a genuine number of trades, every single session, in every serious market in the world, fail to settle on time. Almost none of them are fraud. Most are cleared up within a day or two and nobody outside the back office ever hears about it. But a fail is never nothing — it's the one moment where a market has to prove, in public, whether its own safety net actually works.
+
+## Where a fail actually starts
+
+A fail isn't usually one dramatic thing. It's almost always one of four boring things going wrong upstream, each traceable to a specific stage of the lifecycle:
+
+- **A bad or missing settlement instruction.** At Capture & Enrichment, a trade needs to know exactly which custodian account the shares should land in. Get that Standing Settlement Instruction wrong — an FPI custodian in Mumbai holding a stale account code, or a US custodian routing to an account that closed last quarter — and the trade has nowhere valid to go, no matter how correctly it executed.
+- **A mismatch nobody caught at confirmation.** Both sides are supposed to independently record the same trade — same price, same quantity, same date. When their two records disagree and nobody reconciles it before settlement, the trade arrives at settlement day with two different stories about what was actually agreed.
+- **The seller doesn't actually have what they sold — yet.** Maybe the shares are still in transit from an earlier trade that itself hasn't settled. Maybe it's a short sale, and the borrowed shares needed to cover it haven't been located. This is the cause regulators worry about most, because at its edge it shades into a **naked short** — selling something you never arranged to actually deliver at all.
+- **A corporate action lands mid-settlement.** A stock split or dividend record date falling inside the settlement window can change exactly what "one share" now means, and a system that didn't adjust for it in time sends the wrong quantity to the wrong side.
+
+Every one of those is a specific, fixable failure at a specific stage — which is exactly why a business analyst who actually understands the lifecycle can trace a fail back to its stage instead of treating it as an unexplained system error.
+
+## Three different answers to the same broken promise
+
+Here's the part that surprises people: markets don't agree on what should happen when a fail occurs. Three of the world's largest ones answer with three genuinely different philosophies about what actually stops someone from failing to deliver.
+
+## Example 1: India — the exchange fixes it for you, then sends the bill
+
+India's answer is the most protective of the buyer, and the fastest.
+
+If a seller doesn't deliver the promised shares by the T+1 pay-in deadline, NSE Clearing (NSCCL) doesn't wait and doesn't ask questions — it runs a **buy-in auction** that same day. Other market participants who hold the stock and are willing to sell are invited to fill the shortfall, at a price kept within a defined band (around ±20% of the previous close), and the shares reach the original buyer by T+2. Think of it like a courier company that, if your parcel goes missing, doesn't file a complaint and wait — it walks into the nearest shop selling the same item, buys one at whatever it costs, and delivers that instead.
+
+If the auction genuinely can't source the shares — nobody willing to sell — NSE Clearing closes the position out in cash instead, at whichever is higher: the highest price the stock traded at anywhere between the original trade day and the auction day, or 20% above the auction day's official closing price. Either way, the buyer is made whole. The defaulting seller pays the full difference, plus penalties, to the clearing corporation. The guarantee sits with the exchange, not with hoping the other side eventually shows up.
+
+**The case that shows what happens when the thing being sold was never real.** In July 2013, India's National Spot Exchange (NSEL) suspended trading after 24 members failed to meet their pay-in obligations on what were called "paired contracts" — clients selling short-dated commodity contracts and simultaneously buying longer-dated ones, with NSEL representing that every position was backed by an actual, warehouse-verified quantity of the underlying commodity. It wasn't. When the settlement chain finally seized, roughly ₹5,400–5,600 crore in trades across more than 5,600 investors simply couldn't be paid out — because the inventory the whole structure assumed was sitting in a warehouse was, in large part, never there to begin with. Unlike a normal short delivery, there was no auction that could fix this: you cannot buy-in shares of a commodity that was fictional on the exchange's own books. Twelve years, a Supreme Court transfer of the criminal case to the Economic Offences Wing, and multiple settlement schemes later, the NCLT approved a ₹1,950 crore one-time settlement for affected traders in 2025 — a fraction of what was owed, arriving over a decade after the fail.
+
+NSEL is the extreme case precisely because it breaks the assumption every close-out and auction mechanism depends on: that the thing which failed to deliver was real, and someone, somewhere, could eventually be made to produce it.
+
+## Example 2: International — a chase versus a bill
+
+The US and the European Union both inherited the same underlying problem and reached for structurally different tools.
+
+**The United States** puts the obligation to fix a fail squarely on the party that caused it. Under Regulation SHO Rule 204, a broker-dealer whose short sale results in a fail must close it out — by buying or borrowing the shares — no later than the beginning of trading on the settlement day immediately after the fail. Miss that deadline, and the penalty isn't just a fine: the broker is barred from placing any further short sale in that same stock unless shares are actually pre-borrowed first, no more relying on an easy "locate." It's less like a courier fixing your delivery for you, and more like a landlord telling a late tenant: fix this by tomorrow morning, or you lose the privilege of renting from us on credit again.
+
+**The European Union** chose the opposite instinct: a bill, not a chase. Since February 2022, CSDR's Settlement Discipline Regime has charged automatic daily cash penalties to whichever side caused a fail — calculated and collected centrally by the CSD, with the money redistributed to the party that didn't get paid on time. The sharper tool the regulation originally promised — a **mandatory buy-in**, forcing the failing party's counterparty to go source the securities elsewhere at the defaulter's expense, much like India's auction — was supposed to go live alongside the penalties in 2022. It never has. ESMA has postponed it repeatedly, and under the 2024 CSDR Refit, mandatory buy-ins were redesigned into a discretionary last resort: the European Commission can activate them for a specific instrument only if settlement fails are already running high enough to threaten financial stability. As of today, Europe's entire settlement-discipline regime still runs on cash penalties alone.
+
+**The case that shows what happens when failing stops costing anything.** In September 2008, Lehman Brothers collapsed, and the Federal Reserve cut short-term interest rates toward zero in response. That sounds unrelated to settlement fails — until you know how the US Treasury market's old convention worked: if a seller failed to deliver a Treasury bond, the buyer's only real recourse was to simply wait, interest-free, for delivery whenever it eventually came. The economic bar to failing was tied to prevailing short-term rates — and when those rates crashed toward zero, so did the cost of failing to deliver on time. Traders had almost nothing to lose by not bothering to fix a fail quickly. Settlement fails in the world's most trusted bond market exploded to unprecedented levels, spreading across an enormous number of securities and persisting for months — precisely the kind of quiet erosion that threatens a market built entirely on the idea that a Treasury settles like clockwork. In May 2009, the Treasury Market Practices Group introduced an explicit **fails charge** — a real, calculated cost for failing regardless of where rates sat — and the incidence of fails fell considerably almost immediately after.
+
+Put the three side by side and the real lesson isn't which country is strictest on paper. It's that a fail-handling regime only works when the cost of failing is actually felt by whoever caused it — an auction that guarantees the buyer, a rule that personally chases the defaulter, or a penalty that's priced correctly enough to matter even at zero interest rates. Get the incentive wrong, as Treasury markets briefly did in 2008, and the paperwork keeps running while the discipline underneath it quietly disappears.
+
+## Why fails matter for systems
+
+For a business analyst or engineer, a settlement fail is not an exception to design around later — it's a state every trade-processing system has to be able to represent from day one. A trade needs a status field that can say "matched but not yet settled" as distinctly from "settled," because treating the two as the same value is exactly how a fail goes unnoticed until it's already overdue.
+
+It also needs an aging view: how many hours has this specific trade sat unsettled, and against which deadline — India's same-day auction trigger, the US's next-settlement-day close-out clock, or the EU's daily penalty cycle. A system that can't answer "how close is this to breaching its own market's deadline" can't actually prevent the fail it's supposed to be tracking; it can only report on it after the fact.
+
+That's exactly the gap the [Reconciliation Break Finder](/simulators/reconciliation-break-finder) simulator makes concrete — most fails start life as an unnoticed mismatch between two records of the same trade, long before the settlement deadline itself arrives. And once a fail is understood as a lifecycle-stage problem rather than a mystery, it becomes a natural extension of the checklist in the [Trade Lifecycle Playbook](/ba-playbooks/trade-lifecycle-playbook): the same "which stage does this actually belong to" question, asked one stage later, about the promise that stage was supposed to keep.
+
+## Lighthouse insight
+
+Every market eventually has to answer the same uncomfortable question: what happens when someone doesn't keep their word? India answers it by refusing to let the buyer ever feel the difference — the exchange fixes it and sends the bill afterward. The US answers it by making the fix personally uncomfortable for whoever caused it. Europe, for now, answers it with a price tag and trusts that most participants would rather pay on time than pay the penalty.
+
+None of these are theoretical designs. Each one exists because, at some point, a market discovered exactly what happens when its assumption about "someone will eventually deliver" turned out to be wrong — a warehouse that was never full, or an interest rate that made waiting free. A settlement fail is small and routine almost every single day it happens. The rare day it isn't routine is the day that reveals whether the safety net a market built for itself was ever actually load-bearing.
+
+## Reference anchors
+
+- [NSE Clearing: Shortages Handling](https://www.nseclearing.in/clearing-settlement/capital-market/shortages-handling)
+- [What is the close-out procedure during an auction? (Geojit)](https://support.geojit.com/support/solutions/articles/89000007418-what-is-the-close-out-procedure-during-an-auction-)
+- [SEC: Responses to Frequently Asked Questions Concerning Rule 204 of Regulation SHO](https://www.sec.gov/rules-regulations/staff-guidance/trading-markets-frequently-asked-questions-8)
+- [ESMA: ESMA publishes technical standards to suspend the CSDR buy-in regime](https://www.esma.europa.eu/press-news/esma-news/esma-publishes-technical-standards-suspend-csdr-buy-in-regime)
+- [ESMA: ESMA recommends to European Commission to delay buy-in rules](https://www.esma.europa.eu/press-news/esma-news/esma-recommends-european-commission-delay-buy-in-rules)
+- [Madhyam: The NSEL Payment Crisis — The Price of Poor Regulation](https://www.madhyam.org.in/wp-content/uploads/2014/07/The-NSEL-Payment-Crisis.pdf)
+- [Moneylife: NSEL Crisis — Relief for 5,682 Traders as NCLT Approves ₹1,950-crore One-time Settlement](https://www.moneylife.in/article/nsel-crisis-relief-for-5682-traders-as-nclt-approves-rs1950crore-onetime-settlement/78986.html)
+- [Federal Reserve Bank of New York: The Introduction of the TMPG Fails Charge for U.S. Treasury Securities](https://www.newyorkfed.org/medialibrary/media/research/epr/10v16n2/1010garb.pdf)
+- [Liberty Street Economics: Measuring Settlement Fails](https://libertystreeteconomics.newyorkfed.org/2014/09/measuring-settlement-fails/)
