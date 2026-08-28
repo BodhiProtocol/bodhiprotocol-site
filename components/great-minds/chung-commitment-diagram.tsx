@@ -16,6 +16,18 @@ const iconMap: Record<string, LucideIcon> = {
   Flag,
 };
 
+// What actually filled the gap between commitment and delivery, per node —
+// keeps the "Chung's order" mini-diagram from repeating the same generic
+// "Capability" label five times in a row. Indexed to this figure's fixed
+// five-node wheel order (see chung-ju-yung.mdx).
+const GAP_DETAILS = [
+  { label: "Rebuilds anyway", duration: "20 days" },
+  { label: "Learns the trade abroad", duration: "under contract" },
+  { label: "428 km gets built", duration: "2 yr 5 mo" },
+  { label: "Yard and hull rise together", duration: "3 years" },
+  { label: "The host city gets built", duration: "7 years" },
+];
+
 // Every other Great Minds diagram positions nodes to show a structure
 // (a wheel, a chain, a column). This one positions them along a timeline —
 // but three of his five bets (1965, 1968, 1971) land within six years of
@@ -177,13 +189,20 @@ function ChungCommitmentDiagram({ nodes }: { nodes: GreatMindWheelNode[] }) {
                 animate={active ? { scaleX: 1 } : { scaleX: 0.3 }}
                 transition={{ duration: 0.35 }}
               />
-              <span
-                className={cn(
-                  "rounded border px-1.5 py-0.5 font-mono text-[7px] font-semibold whitespace-nowrap transition-colors sm:text-[8px]",
-                  active ? "border-brand bg-brand text-brand-foreground" : "border-brand/30 text-brand/70",
-                )}
-              >
-                Capability
+              <span className="flex flex-col items-center gap-0.5">
+                <span
+                  className={cn(
+                    "rounded border px-1.5 py-0.5 font-mono text-[7px] font-semibold whitespace-nowrap transition-colors sm:text-[8px]",
+                    active ? "border-brand bg-brand text-brand-foreground" : "border-brand/30 text-brand/70",
+                  )}
+                >
+                  {activeIndex !== null ? GAP_DETAILS[activeIndex]?.label : "Capability"}
+                </span>
+                {activeIndex !== null ? (
+                  <span className="font-mono text-[6px] whitespace-nowrap text-brand/70 sm:text-[7px]">
+                    {GAP_DETAILS[activeIndex]?.duration}
+                  </span>
+                ) : null}
               </span>
               <motion.span
                 className="h-px flex-1 origin-left border-t border-brand/60"
