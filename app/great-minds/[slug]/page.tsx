@@ -99,6 +99,8 @@ import { RamanScatterDiagram } from "@/components/great-minds/raman-scatter-diag
 import { RamanHeroBackground } from "@/components/great-minds/raman-hero-background";
 import { LynchCategorySortDiagram } from "@/components/great-minds/lynch-category-sort-diagram";
 import { LynchHeroBackground } from "@/components/great-minds/lynch-hero-background";
+import { ChungCommitmentDiagram } from "@/components/great-minds/chung-commitment-diagram";
+import { ChungHeroBackground } from "@/components/great-minds/chung-hero-background";
 import { MindGraphProvider } from "@/components/great-minds/mind-graph-context";
 import { getAllGreatMinds, getGreatMindBySlug, type GreatMindWithContent } from "@/lib/great-minds";
 import { mdxOptions } from "@/lib/mdx-options";
@@ -146,6 +148,7 @@ const heroDiagrams: Record<string, (mind: GreatMindWithContent) => ReactNode> = 
   "verghese-kurien": (mind) => <KurienOwnershipPyramidDiagram nodes={mind.wheel} />,
   "cv-raman": (mind) => <RamanScatterDiagram nodes={mind.wheel} />,
   "peter-lynch": (mind) => <LynchCategorySortDiagram nodes={mind.wheel} />,
+  "chung-ju-yung": (mind) => <ChungCommitmentDiagram nodes={mind.wheel} />,
 };
 
 const heroBackgrounds: Record<string, ReactNode> = {
@@ -187,6 +190,7 @@ const heroBackgrounds: Record<string, ReactNode> = {
   "verghese-kurien": <KurienHeroBackground />,
   "cv-raman": <RamanHeroBackground />,
   "peter-lynch": <LynchHeroBackground />,
+  "chung-ju-yung": <ChungHeroBackground />,
 };
 
 interface GreatMindPageProps {
