@@ -14,9 +14,14 @@ const toneClasses: Record<(typeof levels)[number]["tone"], string> = {
   destructive: "border-destructive/40 bg-destructive/10 text-destructive",
 };
 
-const markets = [
-  { place: "India", index: "Nifty / Sensex", reopens: "Pre-open auction" },
-  { place: "United States", index: "S&P 500", reopens: "Reopens at 3:25pm cutoff" },
+const marketWide = [
+  { place: "India", spec: "10% · 15% · 20%", note: "Pre-open auction" },
+  { place: "United States", spec: "7% · 13% · 20%", note: "Halt to 3:25pm cutoff" },
+];
+
+const singleStock = [
+  { place: "India", spec: "Price band, 2–20%", note: "Freezes at the band" },
+  { place: "United States", spec: "LULD, 5/10/20%", note: "Blocks the trade, then pauses" },
 ];
 
 function CircuitBreakerIllustration() {
@@ -66,32 +71,39 @@ function CircuitBreakerIllustration() {
           THE EARLIER THE BREACH, THE LONGER THE PAUSE
         </div>
 
-        <div
-          className="mt-3 flex items-center gap-2 rounded-lg border border-brand/30 bg-brand/10 p-2.5"
-          style={reveal(520)}
-        >
-          <div className="rounded-md border border-brand/40 bg-card px-1.5 py-1 text-center text-[8px] font-bold tracking-wide text-brand">
-            1 STOCK
-          </div>
-          <div className="flex-1">
-            <div className="text-[9.5px] font-bold tracking-wide text-card-foreground">Its own switch, own band</div>
-            <div className="mt-0.5 text-[8px] font-bold tracking-wide text-muted-foreground">
-              Only that name pauses. Everything else keeps trading.
-            </div>
-          </div>
+        <div className="mt-4 text-[8px] font-bold tracking-wide text-muted-foreground" style={reveal(500)}>
+          MARKET-WIDE — EVERY STOCK PAUSES
         </div>
-
-        <div className="mt-3 space-y-1.5">
-          {markets.map((row, index) => (
+        <div className="mt-1.5 space-y-1.5">
+          {marketWide.map((row, index) => (
             <div
               key={row.place}
               className="grid grid-cols-[100px_1fr_auto] items-center gap-2 rounded-lg border border-border bg-card p-2.5 text-card-foreground"
-              style={reveal(640 + index * 100)}
+              style={reveal(560 + index * 100)}
             >
               <span className="text-[9px] font-bold tracking-wide text-muted-foreground">{row.place}</span>
-              <span className="text-[9px] font-bold tracking-wide">{row.index}</span>
+              <span className="text-[9px] font-bold tracking-wide">{row.spec}</span>
               <span className="justify-self-end rounded-full border border-border px-1.5 py-0.5 text-[8px] font-bold tracking-wide text-muted-foreground">
-                {row.reopens}
+                {row.note}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-3 text-[8px] font-bold tracking-wide text-muted-foreground" style={reveal(780)}>
+          SINGLE-STOCK — ONLY THAT NAME PAUSES
+        </div>
+        <div className="mt-1.5 space-y-1.5">
+          {singleStock.map((row, index) => (
+            <div
+              key={row.place}
+              className="grid grid-cols-[100px_1fr_auto] items-center gap-2 rounded-lg border border-brand/30 bg-brand/10 p-2.5 text-card-foreground"
+              style={reveal(840 + index * 100)}
+            >
+              <span className="text-[9px] font-bold tracking-wide text-muted-foreground">{row.place}</span>
+              <span className="text-[9px] font-bold tracking-wide text-brand">{row.spec}</span>
+              <span className="justify-self-end rounded-full border border-brand/30 px-1.5 py-0.5 text-[8px] font-bold tracking-wide text-muted-foreground">
+                {row.note}
               </span>
             </div>
           ))}
