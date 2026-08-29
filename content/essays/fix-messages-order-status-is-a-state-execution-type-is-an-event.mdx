@@ -1,0 +1,102 @@
+---
+title: "FIX Messages: Order Status Is a State, Execution Type Is an Event"
+description: "Every FIX ExecutionReport carries two fields that sound like they answer the same question — OrdStatus (39) and ExecType (150). They don't. One is a snapshot of where the order stands right now; the other is what just happened to produce that snapshot. Confusing them is the single most common mistake a new BA or QA engineer makes reading their first execution report — and NSE's refusal to annul a ₹51 crore fat-finger trade in 2012 versus the US market's decision to bust trades in the 2010 Flash Crash shows exactly why the industry needed two separate fields, not one."
+hook: "Two fields on the exact same FIX message answer two completely different questions — and conflating them is the single most common mistake a new BA makes reading an execution report."
+category: "Capital Markets"
+tags: ["markets", "infrastructure", "FIX protocol"]
+author: "Surya"
+date: "2026-08-29"
+---
+
+Open Swiggy or Zomato while your food is on the way and you'll see two different things on the same screen. A status ribbon at the top — Preparing, Picked Up, Out for Delivery — tells you where things stand *right now*. A separate stream of notifications tells you what *just happened*: "the restaurant accepted your order," "your rider has picked it up." DoorDash and Uber Eats do the exact same split in the US. The ribbon and the notification are answering two different questions, even though every notification is what caused the ribbon to change.
+
+A FIX **ExecutionReport** — the message an exchange or broker sends back every time something happens to an order — carries the same split, built into two fields with numbers instead of names: **OrdStatus (tag 39)** is the ribbon. **ExecType (tag 150)** is the notification. New BAs and QA engineers read them as if they're saying the same thing in two formats. They aren't, and the gap between them is exactly where a lot of production defects and half-written test cases live.
+
+## One message, two questions
+
+FIX — the Financial Information eXchange protocol — is the language an [OMS, EMS, and exchange gateway](/essays/infrastructure-the-nine-systems-behind-every-trade) all speak to each other regardless of who built each one. When you submit an order, you send `NewOrderSingle` (MsgType `35=D`). Everything that happens to that order afterward — accepted, partly filled, fully filled, cancelled, rejected — comes back as an `ExecutionReport` (`35=8`), and every single one of those reports carries both fields at once:
+
+- **OrdStatus (39)** answers *"what is this order's current state, considered as a whole?"* It's cumulative. It only describes the order.
+- **ExecType (150)** answers *"what specific event just caused this message to be sent?"* It's momentary. It describes the report.
+
+Early FIX usage leaned on order status alone to carry both meanings, which worked until a single order could be partially filled by five separate trades over the course of a day — at which point "the order's status" and "what specific thing just happened to it" stopped being answerable with one field. The protocol split them so a system could always tell the difference between the order's shape and the event that just reshaped it.
+
+## OrdStatus (39): the ribbon
+
+| Value | Meaning | What it tells you |
+|---|---|---|
+| 0 | New | Order is live, nothing filled yet |
+| 1 | Partially Filled | Some quantity has traded; the rest is still resting |
+| 2 | Filled | The entire order quantity has traded |
+| 4 | Canceled | The resting order was withdrawn before it could trade |
+| 6 | Pending Cancel | A cancel request was sent; the order hasn't confirmed cancellation yet |
+| 8 | Rejected | The order itself was never accepted onto the book |
+| C | Expired | The order's time-in-force ran out before it filled |
+| E | Pending Replace | An amendment was sent; the order hasn't confirmed the change yet |
+
+## ExecType (150): the notification
+
+| Value | Meaning | What it tells you |
+|---|---|---|
+| 0 | New | The order was just acknowledged by the exchange |
+| F | Trade | A fill just happened — partial or full, the field doesn't distinguish which |
+| 4 | Canceled | A cancel request just succeeded |
+| 5 | Replaced | An amend request just succeeded |
+| 8 | Rejected | The new order itself was just rejected |
+| C | Expired | The order just timed out |
+| D | Restated | The exchange unilaterally changed the order's terms, with no request from the client |
+| G | Trade Correct | A previously reported fill's details were just corrected |
+| H | Trade Cancel | A previously reported fill was just reversed entirely |
+
+Look closely at row `F` in the second table. **Trade** covers both a partial fill and a full fill — the same ExecType. What tells you which one happened is OrdStatus sitting right next to it on the identical message. That pairing is the whole essay in one line: the event can repeat identically while the state it produces keeps moving forward.
+
+## Watching one order live
+
+A trader buys 500 shares of Infosys at ₹1,550, limit order. Three ExecutionReports arrive over the next few minutes, and only the state field changes:
+
+1. **Acknowledged.** `ExecType=0 (New)`, `OrdStatus=0 (New)`, CumQty 0, LeavesQty 500. The order exists on the book; nothing has traded.
+2. **First fill.** `ExecType=F (Trade)`, `OrdStatus=1 (Partially Filled)`, LastQty 200, CumQty 200, LeavesQty 300. An event — a trade — just happened.
+3. **Final fill.** `ExecType=F (Trade)`, `OrdStatus=2 (Filled)`, LastQty 300, CumQty 500, LeavesQty 0. The identical event as message 2 — another trade — but this time it exhausts the order, so the state field reads differently.
+
+Two messages, same ExecType, different OrdStatus. A system that only checks ExecType to decide "did the order finish?" gets message 2 and message 3 confused, because ExecType never says "finished" — only OrdStatus does. That single design fact is behind more mis-written reconciliation logic than any other FIX field pairing.
+
+## The state that never records the event
+
+Here's the nuance that separates a junior read of this from a senior one. Say the trader, watching that same order sit at 300 shares unfilled, sends an `OrderCancelRequest` — but the exchange fills the remaining 300 in the same instant the cancel arrives. The cancel loses the race.
+
+The exchange doesn't answer that failed cancel with an ExecutionReport at all. It sends a completely different message, `OrderCancelReject` (`35=9`), carrying its own reason code — "too late to cancel." Meanwhile a separate ExecutionReport reports the fill: `ExecType=F (Trade)`, `OrdStatus=2 (Filled)`.
+
+Notice what OrdStatus never says here: it never shows "cancel rejected." There's no such state, because a rejected cancel isn't something that happened *to the order* — it's an outcome of a *request* that failed to change anything. The order's actual state is exactly what it would have been if the cancel had never been sent at all. FIX keeps these separate on purpose: OrdStatus only ever describes the order, never the fate of a message that failed to touch it.
+
+## Example 1: India — the trade that stayed a trade
+
+On 5 October 2012, a dealer at Emkay Global Financial Services meant to place a Nifty basket order and instead entered the order's *value* into the field for *quantity*. The resulting order hit NSE's trading system as a basket many multiples too large, and in the span of seconds the Nifty index dropped more than 900 points before trading was halted for roughly fifteen minutes while the exchange sorted out the damage — roughly 59 trades worth over $125 million had already executed.
+
+Emkay asked NSE to annul the erroneous trades — India's term for what FIX calls a trade cancel. A disciplinary panel refused. Emkay appealed to the Securities Appellate Tribunal and lost there too. Every one of those erroneous fills stayed exactly what it was the moment it executed: `ExecType=F (Trade)`, and nothing downstream ever carried `ExecType=H (Trade Cancel)` for them. Emkay had to absorb the roughly ₹51 crore loss as a live position, not a voided one, because the exchange's decision — not any technical malfunction — was that a trade cancel was not going to happen here.
+
+## Example 2: International — the trades that got busted
+
+On 6 May 2010, US equity markets fell and partly recovered within about thirty-six minutes, a day now known simply as the Flash Crash. In the chaos, a large number of trades executed at prices wildly detached from anything resembling fair value — some individual stocks briefly traded for pennies or, at the other extreme, tens of thousands of dollars a share. After the close, the exchanges and FINRA jointly agreed to cancel every trade that had executed more than 60% away from its pre-crash reference price.
+
+Every one of those cancellations is exactly what `ExecType=H (Trade Cancel)` exists for: a fill that had already been reported, already confirmed, already sitting in somebody's position — reversed after the fact because the market itself judged the price it traded at to be indefensible. The event that produced the original fill (`ExecType=F`) and the event that later erased it (`ExecType=H`) are two entirely different messages, sent hours apart, about the same trade.
+
+Put the two cases side by side and the lesson isn't a technology lesson at all — it's that "can this execution be un-reported" is a market's discretionary call, made under pressure, and FIX simply needed a field that could carry either answer without disturbing anything else on the message.
+
+## Why it matters for a BA or QA
+
+A ticket that says "handle order cancellation" is really asking about at least three different message shapes: a successful cancel (`ExecType=4`, `OrdStatus=4`), a cancel that failed because the order already filled (`OrderCancelReject`, no ExecType involved at all), and a trade cancel that reverses a fill days later (`ExecType=H`, OrdStatus of the order likely unaffected). [Writing a requirement that survives contact with engineering](/essays/writing-requirements-that-survive-contact-with-engineering) means naming which of the three you actually mean — the same discipline [the acronym wall](/essays/the-acronym-wall-every-new-banking-ba-hits) demands of KYC versus CDD versus EDD: terms that sound adjacent are not interchangeable, and a requirement or test case that treats them as synonyms is the one that misses the defect its own system just produced.
+
+A test plan for an OMS reconciliation feature should never just say "verify a partial fill updates the position." It should specify: on receipt of `ExecType=F` with `OrdStatus=1`, LeavesQty must still be non-zero; on receipt of the *next* `ExecType=F` for the same ClOrdID, if LeavesQty reaches zero, OrdStatus must read `2`, not `1` again. That's the difference between a test case that would have caught the Emkay-style "did this really finish filling" ambiguity and one that only ever exercises the happy path.
+
+## Lighthouse insight
+
+A ribbon and a notification aren't competing for the same job — they're doing two different ones, and a food delivery app makes that obvious because you see both on one screen at once. A FIX ExecutionReport hides the same split behind two numeric tags on the same message, which is exactly why it's so easy for a new BA to read OrdStatus and ExecType as redundant. They're not describing the same thing twice. One is describing the order. The other is describing the message. Everything from a routine partial fill to a market's decision to bust a trade six years before Emkay's dealer made his mistake comes down to keeping those two questions separate — because the moment a system conflates them, it loses the ability to say what actually happened versus what is currently true.
+
+## Reference anchors
+
+- [FIX Trading Community — official FIX protocol standards body](https://www.fixtrading.org/)
+- [OnixS FIX Dictionary — OrdStatus (tag 39)](https://www.onixs.biz/fix-dictionary/4.4/tagnum_39.html)
+- [OnixS FIX Dictionary — ExecType (tag 150)](https://www.onixs.biz/fix-dictionary/4.4/tagnum_150.html)
+- [Business Standard: Emkay Global admits error in Nifty crash](https://www.business-standard.com/article/markets/emkay-global-admits-error-in-nifty-crash-112100900039_1.html)
+- [Business Standard: NSE rejects Emkay plea for cancellation of erroneous trade](https://www.business-standard.com/amp/article/markets/nse-rejects-emkay-plea-for-cancellation-of-erroneous-trade-113050200929_1.html)
+- [SEC & CFTC: Findings Regarding the Market Events of May 6, 2010](https://www.sec.gov/files/marketevents-report.pdf)
