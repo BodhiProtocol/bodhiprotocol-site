@@ -105,6 +105,7 @@ export const essaySeries: EssaySeries[] = [
     icon: Activity,
     slugs: [
       "volatility-the-fear-that-moves-faster-than-the-calm",
+      "circuit-breakers-the-pause-a-market-forces-on-itself",
       "the-greenshoe-option-the-bank-that-shorts-the-stock-it-just-sold",
       "theta-the-cost-of-being-right-too-late",
       "delta-the-gear-ratio-between-an-option-and-its-stock",
