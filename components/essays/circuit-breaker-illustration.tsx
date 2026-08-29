@@ -54,7 +54,7 @@ function CircuitBreakerIllustration() {
         </div>
         <div className="mt-3">
           <div className="text-[22px] font-bold leading-none tracking-tight text-card-foreground">
-            One index, three switches
+            Two indices, six switches
           </div>
           <div className="mt-1 text-[9px] font-bold tracking-wide text-muted-foreground">
             Each one buys more time. None of them fix the price.
