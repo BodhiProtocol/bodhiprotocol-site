@@ -1,4 +1,5 @@
 import {
+  Atom,
   Brain,
   BookOpen,
   Building2,
@@ -27,11 +28,15 @@ import {
   Scale,
   Shield,
   ShieldCheck,
+  Snowflake,
+  Sparkles,
   Sprout,
   Target,
   TrendingUp,
   UserCog,
   Users,
+  Waves,
+  Wrench,
   Zap,
   type LucideIcon,
 } from "lucide-react";
@@ -74,6 +79,11 @@ const GREAT_MINDS_ICON_MAP: Record<string, LucideIcon> = {
   FlaskConical,
   Fuel,
   RotateCw,
+  Atom,
+  Snowflake,
+  Sparkles,
+  Waves,
+  Wrench,
 };
 
 export { GREAT_MINDS_ICON_MAP };
