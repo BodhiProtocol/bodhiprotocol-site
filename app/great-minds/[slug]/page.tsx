@@ -105,6 +105,8 @@ import { MoritaShrinkingDiagram } from "@/components/great-minds/morita-shrinkin
 import { MoritaHeroBackground } from "@/components/great-minds/morita-hero-background";
 import { IbnKhaldunCycleDiagram } from "@/components/great-minds/ibn-khaldun-cycle-diagram";
 import { IbnKhaldunHeroBackground } from "@/components/great-minds/ibn-khaldun-hero-background";
+import { FeynmanPropagatorDiagram } from "@/components/great-minds/feynman-propagator-diagram";
+import { FeynmanHeroBackground } from "@/components/great-minds/feynman-hero-background";
 import { MindGraphProvider } from "@/components/great-minds/mind-graph-context";
 import { getAllGreatMinds, getGreatMindBySlug, type GreatMindWithContent } from "@/lib/great-minds";
 import { mdxOptions } from "@/lib/mdx-options";
@@ -155,6 +157,7 @@ const heroDiagrams: Record<string, (mind: GreatMindWithContent) => ReactNode> = 
   "chung-ju-yung": (mind) => <ChungCommitmentDiagram nodes={mind.wheel} />,
   "akio-morita": (mind) => <MoritaShrinkingDiagram nodes={mind.wheel} />,
   "ibn-khaldun": (mind) => <IbnKhaldunCycleDiagram nodes={mind.wheel} />,
+  "richard-feynman": (mind) => <FeynmanPropagatorDiagram nodes={mind.wheel} />,
 };
 
 const heroBackgrounds: Record<string, ReactNode> = {
@@ -199,6 +202,7 @@ const heroBackgrounds: Record<string, ReactNode> = {
   "chung-ju-yung": <ChungHeroBackground />,
   "akio-morita": <MoritaHeroBackground />,
   "ibn-khaldun": <IbnKhaldunHeroBackground />,
+  "richard-feynman": <FeynmanHeroBackground />,
 };
 
 interface GreatMindPageProps {

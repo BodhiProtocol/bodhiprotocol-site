@@ -29,6 +29,7 @@ export const essaySeries: EssaySeries[] = [
       "how-order-books-work",
       "what-a-trade-lifecycle-actually-looks-like",
       "infrastructure-the-nine-systems-behind-every-trade",
+      "fix-messages-order-status-is-a-state-execution-type-is-an-event",
       "a-bank-trading-floor-is-a-marketplace-for-risk",
       "capital-market-system-two-paths-one-market",
     ],
