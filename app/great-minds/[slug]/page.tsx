@@ -101,6 +101,8 @@ import { LynchCategorySortDiagram } from "@/components/great-minds/lynch-categor
 import { LynchHeroBackground } from "@/components/great-minds/lynch-hero-background";
 import { ChungCommitmentDiagram } from "@/components/great-minds/chung-commitment-diagram";
 import { ChungHeroBackground } from "@/components/great-minds/chung-hero-background";
+import { FeynmanPropagatorDiagram } from "@/components/great-minds/feynman-propagator-diagram";
+import { FeynmanHeroBackground } from "@/components/great-minds/feynman-hero-background";
 import { MindGraphProvider } from "@/components/great-minds/mind-graph-context";
 import { getAllGreatMinds, getGreatMindBySlug, type GreatMindWithContent } from "@/lib/great-minds";
 import { mdxOptions } from "@/lib/mdx-options";
@@ -149,6 +151,7 @@ const heroDiagrams: Record<string, (mind: GreatMindWithContent) => ReactNode> = 
   "cv-raman": (mind) => <RamanScatterDiagram nodes={mind.wheel} />,
   "peter-lynch": (mind) => <LynchCategorySortDiagram nodes={mind.wheel} />,
   "chung-ju-yung": (mind) => <ChungCommitmentDiagram nodes={mind.wheel} />,
+  "richard-feynman": (mind) => <FeynmanPropagatorDiagram nodes={mind.wheel} />,
 };
 
 const heroBackgrounds: Record<string, ReactNode> = {
@@ -191,6 +194,7 @@ const heroBackgrounds: Record<string, ReactNode> = {
   "cv-raman": <RamanHeroBackground />,
   "peter-lynch": <LynchHeroBackground />,
   "chung-ju-yung": <ChungHeroBackground />,
+  "richard-feynman": <FeynmanHeroBackground />,
 };
 
 interface GreatMindPageProps {
