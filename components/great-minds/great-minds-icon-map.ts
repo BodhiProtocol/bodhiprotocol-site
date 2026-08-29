@@ -23,13 +23,16 @@ import {
   Palette,
   Plane,
   Radio,
+  Headphones,
   RotateCw,
   Scale,
   Shield,
   ShieldCheck,
+  Shirt,
   Sprout,
   Target,
   TrendingUp,
+  Tv,
   UserCog,
   Users,
   Zap,
@@ -74,6 +77,9 @@ const GREAT_MINDS_ICON_MAP: Record<string, LucideIcon> = {
   FlaskConical,
   Fuel,
   RotateCw,
+  Shirt,
+  Tv,
+  Headphones,
 };
 
 export { GREAT_MINDS_ICON_MAP };
