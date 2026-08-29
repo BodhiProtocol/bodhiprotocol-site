@@ -1,12 +1,14 @@
 ---
 title: "FIX Messages: Order Status Is a State, Execution Type Is an Event"
 description: "Every FIX ExecutionReport carries two fields that sound like they answer the same question — OrdStatus (39) and ExecType (150). They don't. One is a snapshot of where the order stands right now; the other is what just happened to produce that snapshot. Confusing them is the single most common mistake a new BA or QA engineer makes reading their first execution report — and NSE's refusal to annul a ₹51 crore fat-finger trade in 2012 versus the US market's decision to bust trades in the 2010 Flash Crash shows exactly why the industry needed two separate fields, not one."
-hook: "Two fields on the exact same FIX message answer two completely different questions — and conflating them is the single most common mistake a new BA makes reading an execution report."
+hook: "The same event can happen to an order twice in a row — and the second time can mean something completely different."
 category: "Capital Markets"
 tags: ["markets", "infrastructure", "FIX protocol"]
 author: "Surya"
 date: "2026-08-29"
 ---
+
+Two messages can report the exact same event, back to back, on the exact same order — and only one of them means the order is actually done. That's not a paradox. It's how every trading system on earth is built to work, and almost nobody notices the field doing the work.
 
 Open Swiggy or Zomato while your food is on the way and you'll see two different things on the same screen. A status ribbon at the top — Preparing, Picked Up, Out for Delivery — tells you where things stand *right now*. A separate stream of notifications tells you what *just happened*: "the restaurant accepted your order," "your rider has picked it up." DoorDash and Uber Eats do the exact same split in the US. The ribbon and the notification are answering two different questions, even though every notification is what caused the ribbon to change.
 
@@ -14,7 +16,7 @@ A FIX **ExecutionReport** — the message an exchange or broker sends back every
 
 ## One message, two questions
 
-FIX — the Financial Information eXchange protocol — is the language an [OMS, EMS, and exchange gateway](/essays/infrastructure-the-nine-systems-behind-every-trade) all speak to each other regardless of who built each one. When you submit an order, you send `NewOrderSingle` (MsgType `35=D`). Everything that happens to that order afterward — accepted, partly filled, fully filled, cancelled, rejected — comes back as an `ExecutionReport` (`35=8`), and every single one of those reports carries both fields at once:
+FIX — the Financial Information eXchange protocol — is the language an [OMS, EMS, and exchange gateway](/essays/infrastructure-the-nine-systems-behind-every-trade) all speak to each other regardless of who built each one. When you submit an order, you send `NewOrderSingle` (MsgType `35=D`), tagging it with your own reference number, **ClOrdID (tag 11)** — think of it as the tracking number you keep on your side, so every reply the exchange sends back can be matched to the order that caused it. Everything that happens to that order afterward — accepted, partly filled, fully filled, cancelled, rejected — comes back as an `ExecutionReport` (`35=8`), and every single one of those reports carries both fields at once:
 
 - **OrdStatus (39)** answers *"what is this order's current state, considered as a whole?"* It's cumulative. It only describes the order.
 - **ExecType (150)** answers *"what specific event just caused this message to be sent?"* It's momentary. It describes the report.
@@ -48,6 +50,8 @@ Early FIX usage leaned on order status alone to carry both meanings, which worke
 | G | Trade Correct | A previously reported fill's details were just corrected |
 | H | Trade Cancel | A previously reported fill was just reversed entirely |
 
+Rows `G` and `H` need one more piece to be usable, not just readable: neither message stands alone. Every ExecutionReport carries a unique **ExecID (tag 17)** the moment it's sent. A later Trade Correct or Trade Cancel doesn't just declare "something's wrong" — it carries **ExecRefID (tag 19)**, pointing straight back at the ExecID of the specific fill it's correcting or reversing. Without that pointer, a system receiving a Trade Cancel would know *that* a fill got undone somewhere in this order's history, but not *which* one — and a position that's already been split across five partial fills can't be unwound by guessing.
+
 Look closely at row `F` in the second table. **Trade** covers both a partial fill and a full fill — the same ExecType. What tells you which one happened is OrdStatus sitting right next to it on the identical message. That pairing is the whole essay in one line: the event can repeat identically while the state it produces keeps moving forward.
 
 ## Watching one order live
@@ -59,6 +63,8 @@ A trader buys 500 shares of Infosys at ₹1,550, limit order. Three ExecutionRep
 3. **Final fill.** `ExecType=F (Trade)`, `OrdStatus=2 (Filled)`, LastQty 300, CumQty 500, LeavesQty 0. The identical event as message 2 — another trade — but this time it exhausts the order, so the state field reads differently.
 
 Two messages, same ExecType, different OrdStatus. A system that only checks ExecType to decide "did the order finish?" gets message 2 and message 3 confused, because ExecType never says "finished" — only OrdStatus does. That single design fact is behind more mis-written reconciliation logic than any other FIX field pairing.
+
+Run the identical sequence on a US order — 500 shares of Apple instead of Infosys, dollars instead of rupees — and nothing about the fields changes shape. `ExecType=F` still fires twice, `OrdStatus` still climbs from 1 to 2 on the second one. FIX doesn't have a regional dialect for this; a reconciliation engine built for NSE fills and one built for Nasdaq fills are checking the exact same two tags for the exact same reason.
 
 ## The state that never records the event
 
@@ -84,13 +90,13 @@ Put the two cases side by side and the lesson isn't a technology lesson at all �
 
 ## Why it matters for a BA or QA
 
-A ticket that says "handle order cancellation" is really asking about at least three different message shapes: a successful cancel (`ExecType=4`, `OrdStatus=4`), a cancel that failed because the order already filled (`OrderCancelReject`, no ExecType involved at all), and a trade cancel that reverses a fill days later (`ExecType=H`, OrdStatus of the order likely unaffected). [Writing a requirement that survives contact with engineering](/essays/writing-requirements-that-survive-contact-with-engineering) means naming which of the three you actually mean — the same discipline [the acronym wall](/essays/the-acronym-wall-every-new-banking-ba-hits) demands of KYC versus CDD versus EDD: terms that sound adjacent are not interchangeable, and a requirement or test case that treats them as synonyms is the one that misses the defect its own system just produced.
+A ticket that says "handle order cancellation" is really asking about at least three different message shapes: a successful cancel (`ExecType=4`, `OrdStatus=4`), a cancel that failed because the order already filled (`OrderCancelReject`, no ExecType involved at all), and a trade cancel that reverses a fill days later (`ExecType=H`, carrying an ExecRefID that must match the original fill's ExecID exactly, or the wrong position gets unwound). [Writing a requirement that survives contact with engineering](/essays/writing-requirements-that-survive-contact-with-engineering) means naming which of the three you actually mean — the same discipline [the acronym wall](/essays/the-acronym-wall-every-new-banking-ba-hits) demands of KYC versus CDD versus EDD: terms that sound adjacent are not interchangeable, and a requirement or test case that treats them as synonyms is the one that misses the defect its own system just produced.
 
 A test plan for an OMS reconciliation feature should never just say "verify a partial fill updates the position." It should specify: on receipt of `ExecType=F` with `OrdStatus=1`, LeavesQty must still be non-zero; on receipt of the *next* `ExecType=F` for the same ClOrdID, if LeavesQty reaches zero, OrdStatus must read `2`, not `1` again. That's the difference between a test case that would have caught the Emkay-style "did this really finish filling" ambiguity and one that only ever exercises the happy path.
 
 ## Lighthouse insight
 
-A ribbon and a notification aren't competing for the same job — they're doing two different ones, and a food delivery app makes that obvious because you see both on one screen at once. A FIX ExecutionReport hides the same split behind two numeric tags on the same message, which is exactly why it's so easy for a new BA to read OrdStatus and ExecType as redundant. They're not describing the same thing twice. One is describing the order. The other is describing the message. Everything from a routine partial fill to a market's decision to bust a trade, two years before an Emkay Global dealer made the reverse mistake in Mumbai, comes down to keeping those two questions separate — because the moment a system conflates them, it loses the ability to say what actually happened versus what is currently true.
+A ribbon and a notification aren't competing for the same job — they're doing two different ones, and a food delivery app makes that obvious because you see both on one screen at once. A FIX ExecutionReport hides the same split behind two numeric tags on the same message, which is exactly why it's so easy for a new BA to read OrdStatus and ExecType as redundant. They're not describing the same thing twice. One is describing the order. The other is describing the message. Everything from a routine partial fill to a market's decision to bust a trade — and, two years later in Mumbai, another market's decision not to — comes down to keeping those two questions separate — because the moment a system conflates them, it loses the ability to say what actually happened versus what is currently true.
 
 ## Reference anchors
 
