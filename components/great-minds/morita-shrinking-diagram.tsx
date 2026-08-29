@@ -45,28 +45,37 @@ function MoritaShrinkingDiagram({ nodes }: { nodes: GreatMindWheelNode[] }) {
   return (
     <div ref={ref} className="flex w-full flex-col items-center gap-5">
       <div className="flex w-full max-w-xl flex-col gap-3">
-        <div className="flex items-end justify-center gap-3 px-2 sm:gap-4">
+        <div className="flex items-end justify-center gap-2 px-2 sm:gap-4">
           {nodes.map((node, index) => {
             const Icon = iconMap[node.icon] ?? Radio;
             const step = SIZE_STEPS[index] ?? SIZE_STEPS[SIZE_STEPS.length - 1];
             const isActive = activeIndex === index;
             const isDimmed = activeIndex !== null && !isActive;
             const isVisited = visited.has(index);
-            const iconSize = Math.max(12, Math.round(step.box * 0.42));
+            // Fixed pixel boxes would force this five-box row past a phone's
+            // viewport width (the sizes are unequal, so Tailwind's usual
+            // size-9 sm:size-11 breakpoint trick doesn't fit five different
+            // targets at once). clamp() shrinks every box — and its icon, at
+            // the same ratio — together on narrow screens, while both still
+            // hit their exact size above sm.
+            const clampSize = (ratio: number) =>
+              `clamp(${Math.round(step.box * 0.58 * ratio)}px, calc(15vw * ${ratio}), ${Math.round(step.box * ratio)}px)`;
+            const boxSize = clampSize(1);
+            const iconSize = clampSize(0.42);
 
             return (
               <div key={node.label} className="flex flex-col items-center gap-2">
                 <motion.button
                   type="button"
                   className={cn(
-                    "flex shrink-0 items-center justify-center rounded-lg border bg-card shadow-sm outline-none transition-colors duration-200",
+                    "flex items-center justify-center rounded-lg border bg-card shadow-sm outline-none transition-colors duration-200",
                     isActive
                       ? "border-brand bg-brand text-brand-foreground shadow-md shadow-brand/25"
                       : isVisited
                         ? "border-brand/40 text-brand"
                         : "border-brand/20 text-brand/80",
                   )}
-                  style={{ width: step.box, height: step.box }}
+                  style={{ width: boxSize, height: boxSize }}
                   initial={{ opacity: 0, scale: 0.6 }}
                   animate={played ? { opacity: isDimmed ? 0.45 : 1, scale: 1 } : {}}
                   transition={{
