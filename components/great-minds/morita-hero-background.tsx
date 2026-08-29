@@ -1,6 +1,9 @@
 // Decorative, geometry-only motif: a telescoping row of frames shrinking
 // left to right, evoking the product line's shrinking form factor without
-// reproducing the hero diagram.
+// reproducing the hero diagram. Kept to a compact footprint on the right
+// side of the canvas (mirroring how the other Great Minds hero backgrounds
+// stay clear of the text column once xMidYMid-slice scales the viewBox up
+// to cover a wide hero) rather than spanning the full width.
 function MoritaHeroBackground() {
   return (
     <svg
@@ -9,25 +12,25 @@ function MoritaHeroBackground() {
       className="pointer-events-none absolute inset-0 h-full w-full text-brand/[0.08]"
       preserveAspectRatio="xMidYMid slice"
     >
-      <line x1="0" y1="400" x2="800" y2="400" stroke="currentColor" strokeWidth="0.75" />
+      <line x1="540" y1="442" x2="780" y2="442" stroke="currentColor" strokeWidth="0.6" />
 
-      <rect x="60" y="220" width="180" height="180" rx="6" fill="none" stroke="currentColor" strokeWidth="1" />
-      <rect x="270" y="270" width="120" height="130" rx="5" fill="none" stroke="currentColor" strokeWidth="0.9" />
-      <rect x="420" y="310" width="80" height="90" rx="4" fill="none" stroke="currentColor" strokeWidth="0.8" />
-      <rect x="530" y="345" width="50" height="55" rx="3" fill="none" stroke="currentColor" strokeWidth="0.7" />
-      <rect x="610" y="368" width="26" height="32" rx="2" fill="none" stroke="currentColor" strokeWidth="0.6" />
+      <rect x="555" y="400" width="55" height="42" rx="4" fill="none" stroke="currentColor" strokeWidth="0.8" />
+      <rect x="615" y="413" width="38" height="29" rx="3" fill="none" stroke="currentColor" strokeWidth="0.7" />
+      <rect x="658" y="424" width="24" height="18" rx="2" fill="none" stroke="currentColor" strokeWidth="0.6" />
+      <rect x="687" y="431" width="14" height="11" rx="1.5" fill="none" stroke="currentColor" strokeWidth="0.5" />
+      <rect x="706" y="435" width="7" height="7" fill="none" stroke="currentColor" strokeWidth="0.5" />
 
-      {Array.from({ length: 4 }, (_, i) => (
+      {Array.from({ length: 3 }, (_, i) => (
         <circle
           key={`wave-${i}`}
-          cx="720"
-          cy="384"
-          r={20 + i * 16}
+          cx="740"
+          cy="438"
+          r={6 + i * 7}
           fill="none"
           stroke="currentColor"
           strokeWidth="0.5"
           strokeDasharray="3 5"
-          opacity={0.55 - i * 0.1}
+          opacity={0.55 - i * 0.12}
         />
       ))}
 
@@ -41,7 +44,7 @@ function MoritaHeroBackground() {
           stroke="currentColor"
           strokeWidth="0.4"
           strokeDasharray="10 14"
-          opacity={0.45 - i * 0.06}
+          opacity={0.4 - i * 0.05}
         />
       ))}
     </svg>
