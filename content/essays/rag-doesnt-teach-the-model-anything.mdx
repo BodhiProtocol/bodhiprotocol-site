@@ -1,0 +1,35 @@
+---
+title: "RAG Doesn't Teach the Model Anything"
+description: "Retrieval-Augmented Generation gets described as if the model absorbed your documents. It didn't. The weights never move — RAG hands the model a few relevant passages fresh on every single query, and forgets them just as completely the moment that query ends."
+hook: "\"We RAG'd our documents into the AI\" makes it sound permanent. It isn't — it never touches the model at all."
+category: "Artificial Intelligence"
+tags: ["ai", "llm", "rag"]
+author: "Surya"
+date: "2026-08-30"
+---
+
+A substitute teacher walks into a classroom she's never seen, for a subject she doesn't teach, and somehow gets through the lesson without embarrassing herself. Not because she secretly knows physics — because someone handed her a folder of sticky notes five minutes before the bell: today's topic, the key terms, the three examples the regular teacher always uses. She reads them, uses them well, and by tomorrow, teaching a different class, she remembers none of it. Not because she forgot — because she never actually learned it. She read notes, once, for one specific hour.
+
+That's what Retrieval-Augmented Generation — RAG — actually does to a language model. It's also exactly the part most quick descriptions of RAG get wrong.
+
+## What happens on each query
+
+A RAG system doesn't send your question straight to the model. It first turns the question into an [embedding](/lighthouse/embedding) — a set of coordinates on a map of meaning — and searches a document store for whichever passages land closest to it on that map. Only those specific passages, usually a handful of paragraphs, get inserted into the model's context window alongside the actual question. The model then answers using text that arrived seconds earlier, from a source it has no standing relationship with at all.
+
+## The weights never move
+
+This is the part that gets lost in casual phrasing like "we RAG'd our internal wiki into the AI," which makes it sound like the model absorbed the company's knowledge the way a new employee does after a few months on the job. Nothing was absorbed. Training a model updates its weights — the internal parameters that encode what it knows — through a slow process measured in GPU-hours. RAG updates none of them. Add a new document to the store, and it's searchable on the very next query, but that's a property of the search index, not of the model, which is exactly as unchanged as it was before the document existed.
+
+Delete the document store mid-conversation, and the model doesn't gradually forget the facts it had been using — it simply stops having access to them, starting with the next query, nothing in between. That's the same hard, binary cutoff as [a context window running out](/essays/context-windows-arent-memory) — not because it's the same mechanism, but because the same misleading word, "memory," gets reached for in both cases, and it's wrong for the same reason both times: real memory fades. This doesn't fade. A fact was either retrieved this query, or it never existed to the model at all.
+
+## Why teams reach for it instead of retraining
+
+Set the mechanism aside for a moment, because this is the practical reason RAG won the argument for anything that changes often, or that shouldn't be baked into a model permanently: retraining a model to learn a new policy document takes a training run; adding that same document to a retrieval index takes an upload. A compliance team that updates its KYC procedures on a Tuesday needs the AI answering questions about the new version on Wednesday, not after the next fine-tuning cycle. RAG also leaves a paper trail retraining doesn't — every answer can point back to the exact passage it came from, which matters the moment "the AI said so" stops being good enough and someone needs to know *where* the claim came from.
+
+## Where it breaks
+
+The failure mode isn't the model refusing to answer. It's the model [answering fluently and confidently](/essays/why-llms-hallucinate) from whatever got retrieved, even when the search step pulled the wrong passage. Ask a badly phrased or ambiguous question, and a weak retrieval step can hand the model three paragraphs about a related-but-wrong policy; the model has no way of knowing the notes it received are the wrong notes, so it answers as if they're correct. Retrieval is the real bottleneck in most RAG systems, and it fails silently — nobody sees a search-error message, they just see a wrong answer delivered with the model's usual, uniform confidence.
+
+## The one-question check
+
+Before assuming "we RAG'd our documents in" means the model now knows your business, ask: **if the document store went offline right now, would the model still know any of this on the next question?** If the honest answer is no, nothing was learned. It was looked up, once, for one query — and the model's actual knowledge of your business, the instant that lookup ends, is exactly what it was before anyone built the pipeline: zero.
