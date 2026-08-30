@@ -1,0 +1,33 @@
+---
+title: "Agents Aren't a Smarter Model"
+description: "\"Agentic AI\" gets pitched as a more powerful brain. It usually isn't. Most of what makes something an agent instead of a chatbot is a loop — the same model, given permission to check its own work and act on what it finds, instead of stopping after one answer."
+hook: "An agent isn't a bigger brain answering harder questions. It's the same model, wrapped in a loop that won't let it stop after one guess."
+category: "Artificial Intelligence"
+tags: ["ai", "agents", "automation"]
+author: "Surya"
+date: "2026-08-30"
+---
+
+Ask someone for directions once, and you get one answer — turn left, then straight for two miles — delivered with total confidence whether or not it's right, with no way to know until you're already lost. A GPS does something structurally different. It gives you a turn, watches whether you actually took it, and the instant you don't, it doesn't repeat the old answer louder — it recalculates, using where you actually are now, and keeps doing that all the way to the destination. It doesn't stop because it said something plausible. It stops because you arrived.
+
+That's the entire distance between a chatbot and an **agent**, and it has almost nothing to do with the model getting smarter.
+
+## The loop is the whole mechanism
+
+A single-response model reads your question, produces its best answer, and stops — it never finds out whether that answer was right, because nothing reports back to it. An agent runs the same kind of model through a different shape: it takes an action — calling a tool, running a query, editing a file — reads what comes back, decides what to do next based on that result, and repeats until some condition says the task is done. This reason-act-observe cycle is often called **ReAct** (short for Reasoning and Acting), and some version of it sits underneath most agent frameworks built since. Swap in a bigger or smaller model and the loop still works the same way; swap the loop out for a single response and no model, however capable, becomes an agent.
+
+## A working example already on this site
+
+The [pipeline that turns a Jira ticket into a tested spec](/essays/what-happens-between-a-jira-ticket-and-a-test-case) is exactly this shape, made concrete: three separate passes gather context, a draft gets checked against two different review gates, and the whole thing runs on a shared retry budget — a maximum of two regenerations — before it stops looping and escalates to a person instead of trying a third time. That retry budget is doing something specific: it's the termination condition, the part of the loop that decides when to stop. An agent without one doesn't fail loudly. It just keeps going, one plausible-sounding step after another, until someone notices.
+
+## Every extra step is a fresh chance to go wrong
+
+A single-response model can [hallucinate](/essays/why-llms-hallucinate) once, in one answer, and you catch it or you don't. An agent hallucinates once per step, and every step after that one reasons from whatever the previous step produced — including the wrong parts. A model that confidently misreads a tool's output on step two doesn't get corrected on step three; step three just builds on step two's mistake with the same fluent, unbothered confidence the model uses for everything else. That's why agent failures tend to look less like an obviously wrong answer and more like a plausible five-step process that quietly drifted off course somewhere around step two, and nobody was watching closely enough at the time to notice.
+
+## Why the word gets stretched past what it means
+
+"Agentic" has become a label a product can claim by wrapping a single model call in a nicer interface, with no loop, no tool use, and no step where the system checks its own output against anything. That's not a smaller version of an agent. It's the same one-shot response the GPS analogy started with, given a name that implies it recalculates when it never actually does. Here's the tell: ask what happens when the first attempt is wrong, and a real agent has an answer — it observes, it retries, it escalates. A relabeled chatbot just gives you that wrong answer again, more confidently, because nothing in it was ever built to notice.
+
+## The one-question check
+
+Before calling something an agent, ask: **does it ever look at the result of its own action and decide what to do next, or does it produce one answer and stop?** If the honest answer is the second, it's a well-dressed single response, not an agent — no matter how the loop was described in the pitch deck.
