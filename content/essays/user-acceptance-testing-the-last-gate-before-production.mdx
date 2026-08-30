@@ -1,0 +1,42 @@
+---
+title: "User Acceptance Testing: The Last Gate Before Production"
+seoTitle: "UAT: Why the Last Testing Gate Is Different"
+description: "Every test before UAT asks whether the software was built correctly. UAT is the only gate that asks whether it's the right software — and a British bank and an Indian tax portal both found out what happens when that gate gets rubber-stamped instead of run."
+hook: "Every test before UAT asks 'does it work.' UAT is the only one that asks 'is this what the business actually needed.'"
+category: "Business Analysis"
+tags: ["testing", "requirements"]
+author: "Surya"
+date: "2026-08-30"
+---
+
+A project manager tells the team: "Code's done, QA signed off, now it just needs UAT before we go live." A junior BA on the call assumes that's a formality — QA already tested it, so what's UAT supposed to catch that QA didn't? Then business users run their own scenarios against the same build, and a third of them fail — not because the code is broken, but because nobody who tested it before UAT had ever actually run payroll for forty thousand employees, or closed a trading book at month-end, or reconciled a day with three failed settlements sitting in it.
+
+Think of it like a bookshelf built to someone's exact instructions. An inspector checks that the shelves are level, the joints are solid, and nothing wobbles when you push it — a completely real check, and the bookshelf passes. Only when the person who actually asked for it tries to load it with the books they own does anyone discover the shelves are two inches too short for a hardcover atlas. The inspector was testing whether the bookshelf was *built right*. The owner is testing whether it's the *right bookshelf*.
+
+**UAT is the owner's check, not the inspector's — and it's the only gate in the entire testing pipeline built to ask that specific question.**
+
+## Every gate before UAT asks a version of "does it work"
+
+A unit test asks whether one function does what its own code says it should, in isolation. An integration test — often called SIT, System Integration Testing, in a banking or capital-markets project — asks whether the pieces talk to each other correctly: does the payment engine correctly hand off to the ledger, does the order management system correctly send an execution report to the clearing house. A regression test asks whether fixing one thing silently broke three other things that used to work.
+
+All three of those can be answered by someone who never once talks to the business. A skilled engineer or QA analyst, armed with nothing but the requirements document and the code, can verify every one of them without picking up the phone. UAT is different by design. It can only be run by the person who is actually going to use the system, testing it against real business scenarios — because "does this match what we actually needed" isn't a question code can answer about itself.
+
+## Where a rubber-stamped UAT actually cost people
+
+In April 2018, TSB Bank in the UK migrated its customers off its former parent Lloyds' banking platform onto a new system built by its Spanish parent, Sabadell. The migration went live over a weekend; by Monday, customers were locked out of online and mobile banking, some briefly seeing other customers' account details, and the disruption stretched on for weeks. Regulators — the Financial Conduct Authority and the Prudential Regulation Authority — jointly fined TSB roughly £48.65 million in 2022, and an independent review commissioned by TSB's own board found that its testing regime, including performance and volume testing ahead of go-live, had fallen well short of what a migration at that scale required. The system had passed its functional tests. It had never been proven under anything close to a real production day.
+
+India's version played out on a smaller physical scale but in full public view. When the Income Tax Department's redesigned e-filing portal — built and maintained by Infosys — launched in June 2021, it buckled almost immediately: taxpayers couldn't log in, forms failed to load, and previously filed data went missing for some users. The Finance Minister summoned Infosys's leadership and said publicly that the rollout reflected inadequate testing before launch; Parliament's Standing Committee on Finance later reached a similar conclusion in its own review. Nobody disputed that the portal had features that worked individually. What it had never been tested against was what actually happens when tens of millions of real taxpayers, carrying years of real, messy filing history, hit it at once.
+
+Same failure shape, two very different systems: each had been tested for correctness, and neither had been properly tested for reality.
+
+## What separates a real UAT from a rubber stamp
+
+The single most common way UAT quietly fails is the most boring one: under deadline pressure, someone reruns the SIT test cases and puts a business stakeholder's name on the sign-off email. The signature says the business validated the system. What actually happened is the same technical check running twice.
+
+A UAT cycle that's actually doing its job looks different on a few specific points. **Business users write and run the scripts themselves**, off real job scenarios rather than off the tickets engineering already tested against. **The data looks like production**, not a hand-picked clean dataset — real transaction volumes, duplicate customer records, part-filled orders, the account with three linked profiles that never behaves the way the schema assumes it will. **The environment mirrors production** closely enough that a passing test actually means something: the same integrations, the same batch timing, load that resembles a real day rather than a quiet sandbox. And **exit criteria get defined before UAT starts, not improvised in the final week** — something concrete like "every critical-path scenario passes, zero open Severity 1 defects, no more than two open Severity 2s" — so that "UAT complete" can't quietly turn into "we ran out of time and called it done."
+
+None of this makes UAT slower for its own sake. It makes UAT the one gate in the pipeline that's actually testing the thing everyone assumed had already been tested.
+
+## The one-question check
+
+Before you accept a UAT sign-off, ask: **"Did a business user test this with data and volume that looks like a real production day, or did we just rerun the SIT scripts with a different name on the email?"** If the honest answer is the second one, the sign-off exists. The gate it was supposed to guard doesn't.
