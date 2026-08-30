@@ -7,6 +7,7 @@ import { BlockTradingIllustration } from "@/components/essays/block-trading-illu
 import { CapitalMarketPathsIllustration } from "@/components/essays/capital-market-paths-illustration";
 import { CarriagePhaseIllustration } from "@/components/essays/carriage-phase-illustration";
 import { CdsProtectionIllustration } from "@/components/essays/cds-protection-illustration";
+import { CircuitBreakerIllustration } from "@/components/essays/circuit-breaker-illustration";
 import { CobraEffectIllustration } from "@/components/essays/cobra-effect-illustration";
 import { ConfidenceIllustration } from "@/components/essays/confidence-illustration";
 import { ContextWindowIllustration } from "@/components/essays/context-window-illustration";
@@ -94,4 +95,5 @@ export const essayIllustrations: Record<string, ComponentType> = {
   "swaps-the-number-that-never-moves": SwapsNetSettlementIllustration,
   "credit-default-swaps-protection-nobody-has-to-own":
     CdsProtectionIllustration,
+  "circuit-breakers-the-pause-a-market-forces-on-itself": CircuitBreakerIllustration,
 };

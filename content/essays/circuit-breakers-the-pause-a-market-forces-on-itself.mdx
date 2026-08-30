@@ -1,0 +1,70 @@
+---
+title: "Circuit Breakers: The Pause a Market Forces on Itself"
+description: "A circuit breaker doesn't lower a falling price — it stops trading from continuing while the price is still falling. India halts the entire market the moment its own index breaks down. The US built that same idea in 1988, then discovered forty years later that a single runaway stock needed a completely different version of it. Two mechanisms, two different things they're built to protect, with the crash that proved each one was necessary."
+seoDescription: "How market-wide circuit breakers and single-stock trading halts actually work on India's NSE/BSE and the US markets, and the crashes that built each one."
+hook: "The fastest way to stop a market from panicking is to stop the market."
+category: "Capital Markets"
+tags: ["markets", "equities", "volatility", "market-structure"]
+author: "Surya"
+date: "2026-08-29"
+---
+
+Think of the circuit breaker in your own house. A short circuit doesn't trip it because the wiring "decided" the current was dangerous — it trips because past a certain amperage, the breaker's whole job is to stop being clever and just cut the power, before the wire gets hot enough to start a fire. Nobody asks the breaker to fix the short. It only buys you the minutes it takes to walk over, find the actual problem, and decide what to do next.
+
+A stock market's circuit breaker is the same idea, borrowed on purpose. **It cannot lower a falling price, and it isn't trying to. What it does is stop trading from continuing while the price is still falling — buying a market the one thing a free fall never has enough of on its own: time to figure out whether the fall is actual news or a feedback loop feeding on itself.**
+
+## Two circuits, protecting two different things
+
+Before the examples, one distinction that trips up almost everyone new to markets: "circuit breaker" gets used for two mechanisms that look similar but exist to catch entirely different failures.
+
+A **market-wide circuit breaker** watches the index — Nifty, Sensex, the S&P 500 — and halts *every* stock on the exchange at once when the whole market is falling too fast for anyone to be trading rationally. It's built for the scenario where the danger is genuinely systemic: a war headline, a pandemic, a rate shock — something real enough that the entire market is repricing at once and needs a shared pause to absorb it.
+
+A **single-stock mechanism** watches one stock at a time and stops *only that stock* from trading outside a price band around its own recent price. It's built for the opposite scenario: nothing is wrong with the market — a fat-fingered order, a broken algorithm, or a moment of illiquidity has just sent one name somewhere its own price history says it shouldn't be, and the rest of the market doesn't need to know or care.
+
+Confusing the two is a real bug class, not a pedantic distinction: a system that halts all trading because one stock hit its band, or that lets the whole market keep trading through an index-level breach because no single stock individually triggered anything, has modeled the wrong mechanism for the failure that actually happened.
+
+## Example 1: India — the index trips first, then the individual stock
+
+India runs both mechanisms, and keeps them visibly separate.
+
+The **market-wide index-based circuit breaker**, in place since July 2001 and revised in 2013, watches whichever of the Nifty 50 or the Sensex moves first, against three thresholds: 10%, 15%, and 20% from the previous day's close. Breach 10% before 1:00 pm and NSE and BSE halt *all* trading, on both exchanges, for 45 minutes. Breach 15% before 1:00 pm and the halt runs 1 hour 45 minutes. A 20% breach, at any time of day, ends trading for the rest of the session outright. The earlier in the day the breach happens, the longer the enforced pause — a 10% move at the opening bell gets treated as more dangerous than the identical move an hour before close, because there's more of the trading day left for panic to compound.
+
+Trading doesn't just resume when the halt ends, either. Think of an auction house where a shouting match breaks out over a lot — the auctioneer doesn't just let the shouting continue where it left off. The room is cleared, everyone writes down their actual bid on a slip of paper in silence, and only once every slip is in does the auctioneer read out the one price that matches the most buyers to the most sellers. India's **pre-open call auction** does exactly that: for the few minutes before continuous trading restarts, the exchange collects buy and sell orders without executing a single one, then computes one reopening price — instead of dropping the market straight back into open shouting at whatever price the panic left it at.
+
+Separately, every individual stock carries its own **price band** — 2%, 5%, 10%, or 20% around yesterday's close, depending on how liquid and heavily traded that specific stock is. Hit the band and that one stock simply can't trade beyond it for the rest of the day; nothing else on the exchange is affected. Stocks with listed derivatives don't get a fixed band at all — NSE instead runs a **dynamic price range**, starting at 10% and "flexing" outward by 5% at a time as the price presses against it, on the reasoning that a stock actively priced in the futures and options market has already got a second, independent market telling everyone what it's actually worth.
+
+**The case that shows the mechanism working exactly as designed.** On 13 March 2020, minutes after the opening bell, both the Nifty and the Sensex fell more than 10% as COVID-19 fear hit Indian markets in earnest — the Nifty dropping over 966 points to 8,625 within the first twenty minutes of trading. NSE and BSE halted the entire market for 45 minutes, the first time the index-based breaker had fired in over a decade. For that entire stretch, no trade could execute on an Indian stock exchange at any price, for any stock — an investor staring at a screen that morning could refresh it as many times as they wanted and watch nothing happen at all. By the time the pre-open auction finally cleared, the worst of the morning's panic-selling had already been forced to sit with itself for three-quarters of an hour — and the index actually closed the day in the green.
+
+## Example 2: International — the crash that built it, then the crash that proved it wasn't enough
+
+The US didn't design its circuit breaker system in one sitting. It built it in two separate steps, forty years apart, because two different crashes exposed two different gaps.
+
+**Step one: the market-wide breaker, built after 1987.** On Black Monday, 19 October 1987, the Dow Jones Industrial Average fell 22.6% in a single session — still the largest one-day percentage drop in the index's history. The Brady Commission, convened to work out what had let a crash cascade that fast, recommended trading halts tied directly to how far the market had fallen. The SEC approved the first circuit breakers in 1988, originally pegged to raw point declines in the Dow. They were rebuilt in 2013 as **Rule 80B**, now measured against the broader S&P 500 in three tiers — Level 1 at a 7% drop, Level 2 at 13%, Level 3 at 20% — with Level 1 and 2 triggering a market-wide 15-minute halt any time before 3:25 pm ET, and a Level 3 breach ending the trading day outright, at any hour. Same logic as India's version: an index-wide fall gets an index-wide pause.
+
+**Step two: the single-stock mechanism, built after 2010 — because the market-wide breaker never fires on a single-stock failure.** On 6 May 2010, the Dow lost about 1,000 points intraday in a matter of minutes and clawed most of it back just as fast — the **Flash Crash**, triggered by a large automated sell program interacting badly with high-frequency trading algorithms. The index itself never fell far enough to trip Rule 80B. Individual stocks did something far stranger: shares of Accenture briefly traded for a single cent, and Apple briefly traded near $100,000, because normal market-making had evaporated in specific names for a few seconds and there was no mechanism watching any one stock at all. The market-wide breaker had nothing to say about a failure that never touched the index.
+
+The SEC's first response was single-stock circuit breakers — the same idea as India's price bands, pausing a stock once a *trade* printed outside its range. That's a referee who waits for the foul, then blows the whistle after the damage is already on the scoreboard. In 2012, the SEC replaced it with **Limit Up-Limit Down (LULD)** — a referee who instead draws a chalk line around the play before it happens and simply won't let a goal count from outside it. LULD sets a continuously updating price band — 5%, 10%, or 20%, depending on the stock — around its own average price over the preceding five minutes, and requires every trading venue to refuse orders that would execute outside that band in the first place, rather than letting the bad trade print and cleaning it up afterward. If the real price can't naturally return inside the band within 15 seconds anyway, the stock gets a five-minute trading pause. The shift from "stop the damage after a bad trade" to "prevent the bad trade from printing at all" is the entire lesson 2010 taught: watching the index was never going to catch a failure that happened one stock at a time.
+
+**The case that shows both layers were needed, and both worked.** During the COVID crash of March 2020, the S&P 500's Level 1 breaker fired four separate times within ten trading days — 9, 12, 16, and 18 March — a frequency the market-wide rule had never seen since being adopted. At the same time, LULD was pausing individual, unrelated stocks across the market on ordinary trading days that quarter, for reasons that had nothing to do with the index at all. Neither mechanism was standing in for the other. Each was catching exactly the failure it was built to catch.
+
+## Why the distinction matters for systems
+
+For a business analyst or engineer building anything that touches an order management or execution system, "the market is halted" is not one state — it's at least three, and conflating them produces real defects. A market-wide halt means every instrument on that exchange is frozen and no order anywhere should be routed there. A single-stock LULD pause means exactly one instrument is frozen while everything else keeps trading normally. And a stock sitting at its price band in India isn't halted at all in the market-wide sense — it's still trading, just locked at a ceiling or floor price until the band itself moves the next day.
+
+The order-handling question underneath all three is the same one that matters to the trader waiting on the other side: what happens to an order that was already resting when the halt began? In practice, none of these mechanisms cancel it. A limit order sitting in the book when a market-wide halt begins is still live when the pre-open auction starts collecting orders again — the system needs a status that means "accepted, not currently executable" as distinct from both "filled" and "rejected," or every halt looks to a downstream system like a wave of order failures that never actually happened. That's the same lesson [Settlement Fails](/essays/settlement-fails-what-happens-when-a-trade-refuses-to-deliver) already teaches from the other end of a trade's life: a system that can't represent an in-between state ends up lying about which state it's actually in.
+
+## Lighthouse insight
+
+A circuit breaker is a strange kind of safety mechanism, because it doesn't fix anything. It doesn't lower the price, catch the falling knife, or tell anyone whether the news is real. All it does is force a gap — forty-five minutes, five minutes, fifteen seconds — into a process that would otherwise keep running on pure momentum, and bet that most of what looks unstoppable in the first thirty seconds looks different once somebody's actually had time to think.
+
+India built the market-wide half of that bet in 2001 and has needed it exactly once in a crisis this decade. The US built the same bet in 1988, discovered in 2010 that an index-level pause says nothing about a single stock trading at one cent, and spent two more years building the version that does. Neither system claims to prevent a crash. Both are built on the same quieter claim: that panic, given no minutes at all, compounds — and given even a few, it usually doesn't.
+
+## Reference anchors
+
+- [NSE India: Equity Market Circuit Breakers](https://www.nseindia.com/products-services/equity-market-circuit-breakers)
+- [NSE India: Price Bands](https://www.nseindia.com/static/products-services/equity-market-price-bands)
+- [Upstox: How Circuit Breakers on Nifty and Sensex Work](https://upstox.com/learning-center/online-trading/how-circuit-breakers-on-nifty-and-sensex-work/article-1579/)
+- [Investor.gov: Stock Market Circuit Breakers](https://www.investor.gov/introduction-investing/investing-basics/glossary/stock-market-circuit-breakers)
+- [Harvard Law School Forum on Corporate Governance: "Limit Up-Limit Down" Plan and Circuit Breakers Approved](https://corpgov.law.harvard.edu/2012/06/13/limit-up-limit-down-plan-and-circuit-breakers-approved/)
+- [Federal Reserve History: Stock Market Crash of 1987](https://www.federalreservehistory.org/essays/stock-market-crash-of-1987)
+- [NPR: How Stock Market Circuit Breakers Work](https://www.npr.org/2020/03/09/813682567/how-stock-market-circuit-breakers-work)
