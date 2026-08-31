@@ -133,11 +133,11 @@ const storySplitCompare = {
 
 export const primeiraUserStory: Omit<Playbook, "readingTime"> = {
   slug: "primeira-user-story",
-  title: "Primeira User Story? Guia Completo do Pedido Vago até o Jira",
+  title: "Primeira User Story? Guia Completo da Solicitação Vaga até o Jira",
   description:
-    "Como transformar um pedido vago em uma User Story que o time consegue construir e testar de verdade.",
+    "Como transformar uma solicitação vaga em uma User Story que o time consegue construir e testar de verdade.",
   summary:
-    "Um exemplo completo de como transformar \"precisamos de um botão de download\" em uma User Story pronta para o Jira — as perguntas que revelam o problema, o usuário, as regras de negócio, quando dividir a story, e tudo o que uma story de três linhas deixa de fora.",
+    "Um exemplo completo de como transformar \"precisamos de um botão de download\" em uma User Story pronta para o Jira — as perguntas que revelam o problema, o usuário, as regras de negócio, quando dividir a story e tudo o que uma story de três linhas deixa de fora.",
   category: "Requirements",
   tags: ["Requisitos", "User Story", "Jira"],
   author: "Surya",
@@ -147,17 +147,17 @@ export const primeiraUserStory: Omit<Playbook, "readingTime"> = {
     "Alguém diz: \"Você consegue criar uma story no Jira pra isso?\" Você diz que sim. Aí você abre o Jira. Caixa de descrição em branco. E uma pergunta muito simples fica surpreendentemente difícil: o que exatamente eu devo escrever aqui?",
     "Se essa é sua primeira User Story, comece por aqui. Porque o maior erro é achar que você precisa inventar algo brilhante. Você não precisa.",
     "Aqui vai a única coisa que você precisa lembrar antes de tudo: uma story está pronta quando outra pessoa consegue entendê-la sem você sentado do lado explicando. Tudo o que vem a seguir existe para te levar até esse ponto — é o teste que você está construindo, não só mais um item de checklist no final.",
-    "E a parte mecânica — \"Como... eu quero... para que...\" — leva vinte segundos para escrever. Tudo o resto é o trabalho de verdade: descobrir o que essa frase deveria dizer. Uma User Story não é algo que você inventa. É algo que você descobre. Vamos fazer uma juntos, de um pedido vago até uma story completa que um desenvolvedor e um testador conseguem usar para trabalhar.",
+    "E a parte mecânica — \"Como... eu quero... para que...\" — leva vinte segundos para escrever. Tudo o resto é o trabalho de verdade: descobrir o que essa frase deveria dizer. Uma User Story não é algo que você inventa. É algo que você descobre. Vamos fazer uma juntos, de uma solicitação vaga até uma story completa que um desenvolvedor e um testador conseguem usar para trabalhar.",
   ],
   audience: [
     "BAs iniciantes escrevendo sua primeira User Story",
-    "BAs júnior ainda encontrando seu processo",
+    "BAs juniores ainda encontrando seu processo",
     "Product Owners escrevendo suas próprias User Stories",
     "Membros do time de entrega aprendendo como requisitos são escritos",
   ],
   seoTitle: "Primeira User Story? Guia Prático para Analistas de Negócio (BA)",
   seoDescription:
-    "Um guia prático passo a passo para Analistas de Negócio (BAs) transformarem um pedido vago em uma User Story clara, testável e pronta para o Jira — incluindo quando dividir a história.",
+    "Um guia prático passo a passo para Analistas de Negócio (BAs) transformarem uma solicitação vaga em uma User Story clara, testável e pronta para o Jira — incluindo quando dividir a história.",
   closingHeading: [
     "A caixa em branco do Jira fica mais fácil quando você para de perguntar \"o que eu devo escrever?\"",
     "e passa a perguntar \"o que eu ainda preciso entender?\"",
@@ -169,27 +169,27 @@ export const primeiraUserStory: Omit<Playbook, "readingTime"> = {
   hacks: [
     {
       number: 1,
-      title: "O pedido que já parece uma story",
+      title: "A solicitação que já parece uma story",
       insight:
         "\"Precisamos de um botão de download para os extratos mensais\" é fácil de reescrever como story. Essa é a armadilha.",
       visual: {
         steps: [
-          "Pedido de negócio",
+          "Solicitação de negócio",
           "Perguntas",
           "User Story",
           "Regras de negócio",
           "Critérios de aceitação",
-          "Story completa no Jira",
+          "User Story completa no Jira",
         ],
       },
       compare: {
         leftLabel: "O que você poderia escrever de imediato",
         left: "Como cliente, eu quero um botão de download, para que eu possa baixar meu extrato.",
         rightLabel: "O que é verdade, na prática",
-        right: "Ainda não entendemos o requisito — trate o pedido como uma pista, não como uma especificação.",
+        right: "Ainda não entendemos o requisito — trate a solicitação como uma pista, não como uma especificação.",
       },
       whyItHelps:
-        "Tecnicamente, essa primeira versão até parece uma User Story. Só que ainda não é uma. Não escreva isso até ter feito algumas perguntas antes.",
+        "Tecnicamente, essa primeira versão até parece uma User Story. Só que ainda não é uma. Não escreva isso antes de fazer algumas perguntas.",
     },
     {
       number: 2,
@@ -199,12 +199,12 @@ export const primeiraUserStory: Omit<Playbook, "readingTime"> = {
       after: "Clientes não conseguem acessar extratos anteriores sem entrar em contato com o suporte.",
       shiftLabel: "A mudança",
       whyItHelps:
-        "Stakeholders propõem soluções porque é a linguagem que eles têm — \"precisamos de um botão\" é mais fácil de dizer do que \"precisamos de um processo.\" Seu trabalho é encontrar o problema por trás da proposta.",
+        "Stakeholders propõem soluções porque é a linguagem que eles conhecem — \"precisamos de um botão\" é mais fácil de dizer do que \"precisamos de um processo.\" Seu trabalho é encontrar o problema por trás da proposta.",
     },
     {
       number: 3,
       title: "Nomeie o usuário específico",
-      insight: "\"Clientes\" ainda é genérico demais para desenhar a solução. Não é \"usuários\" — é quais usuários.",
+      insight: "\"Clientes\" ainda é genérico demais para desenhar a solução. Não é sobre \"usuários\" — é sobre quais usuários.",
       list: [
         "Clientes de varejo?",
         "Clientes corporativos?",
@@ -212,21 +212,21 @@ export const primeiraUserStory: Omit<Playbook, "readingTime"> = {
         "Usuários internos de operações?",
       ],
       whyItHelps:
-        "Um cliente de varejo consultando o próprio extrato tem necessidades diferentes de um atendente de suporte consultando em nome de outra pessoa. Tipos de usuário vagos produzem stories vagas — suponha que a resposta seja \"clientes de varejo usando o internet banking\": agora você sabe para quem está desenhando.",
+        "Um cliente de varejo consultando o próprio extrato tem necessidades diferentes de um atendente de suporte consultando em nome de outra pessoa. Usuários mal definidos geram stories vagas — suponha que a resposta seja \"clientes de varejo usando o internet banking\": agora você sabe para quem está desenhando.",
     },
     {
       number: 4,
       title: "Defina o resultado real",
       insight: "O que o usuário leva quando isso funciona?",
       explanation:
-        "No caso do botão de download, não é \"um download\" — é \"uma cópia do meu extrato para os meus registros.\" Essa diferença molda formato, retenção e regras de acesso mais adiante. Talvez a resposta completa seja: \"Eles precisam guardar cópias dos extratos mensais para fins fiscais, de empréstimo e de registro pessoal.\" Agora você tem o valor — e a User Story básica praticamente se escreve sozinha.",
+        "No caso do botão de download, não é \"um download\" — é \"uma cópia do meu extrato para os meus registros.\" Essa diferença define o formato, a retenção e as regras de acesso mais adiante. Talvez a resposta completa seja: \"Eles precisam guardar cópias dos extratos mensais para declarar imposto de renda, solicitar empréstimos e manter como registro pessoal.\" Agora você tem o valor — e a User Story básica praticamente se escreve sozinha.",
       whyItHelps:
-        "Uma story sem um resultado real por trás dela é só um pedido de funcionalidade reescrito. É essa peça que torna a linha \"para que\" verdadeira, e não apenas decorativa.",
+        "Uma story sem um resultado real por trás dela é só uma solicitação de funcionalidade reescrita. É essa peça que torna a linha \"para que\" verdadeira, e não apenas decorativa.",
     },
     {
       number: 5,
       title: "Escreva a primeira versão — e saiba que ainda não terminou",
-      insight: "A story de três linhas é a manchete. O requisito útil vive por baixo dela.",
+      insight: "A story de três linhas é a manchete. O requisito útil mora por baixo dela.",
       template: firstDraftStory,
       templateLabel: "Copiar o primeiro rascunho",
       whyItHelps:
@@ -259,9 +259,9 @@ export const primeiraUserStory: Omit<Playbook, "readingTime"> = {
       title: "Escreva critérios de aceitação que realmente se sustentam",
       insight: "É aqui que a maioria das stories falha na prática, então trate isso como uma disciplina própria, não como uma formalidade.",
       checklist: [
-        "Uma afirmação por critério — se o \"Então\" junta dois resultados sem relação com um \"e\", divida em dois CAs",
+        "Uma afirmação por critério — se o \"Então\" junta dois resultados diferentes com um \"e\", divida em dois CAs",
         "Torne o \"Então\" observável e testável, não aspiracional",
-        "Escreva os casos negativos e de limite, não só o caminho feliz",
+        "Escreva os casos negativos e de limite, não só o fluxo principal",
         "Evite transformar decisões de interface em critério de aceitação, a menos que a própria interação seja o requisito",
       ],
       list: [
@@ -274,7 +274,7 @@ export const primeiraUserStory: Omit<Playbook, "readingTime"> = {
     },
     {
       number: 9,
-      title: "Escreva os caminhos infelizes",
+      title: "Escreva os cenários de exceção",
       insight: "É aqui que stories de iniciantes costumam parar cedo demais.",
       checklist: [
         "E se o extrato ainda não tiver sido gerado?",
@@ -300,7 +300,7 @@ export const primeiraUserStory: Omit<Playbook, "readingTime"> = {
         "Status de disponibilidade do extrato",
       ],
       whyItHelps:
-        "Você não está tentando desenhar o banco de dados. Você está garantindo que todo mundo concorde sobre quais informações a funcionalidade depende.",
+        "Você não está tentando desenhar o banco de dados. Você está garantindo que todo mundo concorde sobre quais informações a funcionalidade realmente precisa.",
     },
     {
       number: 11,
@@ -317,7 +317,7 @@ export const primeiraUserStory: Omit<Playbook, "readingTime"> = {
     },
     {
       number: 12,
-      title: "Desenhe o limite de escopo de forma explícita",
+      title: "Deixe claro o limite de escopo",
       insight: "Isso leva trinta segundos e evita uma quantidade surpreendente de confusão depois.",
       list: [
         "Envio de extratos por e-mail",
@@ -326,7 +326,7 @@ export const primeiraUserStory: Omit<Playbook, "readingTime"> = {
         "Geração de extratos avulsa",
       ],
       whyItHelps:
-        "Agora, se alguém disser depois \"eu achei que também íamos enviar por e-mail\", você tem para onde apontar.",
+        "Agora, se alguém disser depois \"eu achei que também íamos enviar por e-mail\", você sabe exatamente para onde apontar.",
     },
     {
       number: 13,
@@ -334,10 +334,10 @@ export const primeiraUserStory: Omit<Playbook, "readingTime"> = {
       insight: "Uma story que não consegue ser entregue como uma única unidade de trabalho não é uma story só — são várias disfarçadas de uma.",
       compare: storySplitCompare,
       checklist: [
-        "Por variação de regra — a mesma ação se comporta diferente sob regras de negócio diferentes?",
+        "Por variação de regra — a mesma ação se comporta de forma diferente sob regras de negócio diferentes?",
         "Por fonte de dados — se parte da story depende de um dado ou sistema que ainda não está pronto, essa parte é uma story separada",
         "Por interface — um fluxo web e um fluxo mobile para o mesmo resultado geralmente são duas stories",
-        "Por caminho feliz vs. tratamento de exceção — tratamento de exceção complexo que precisa da sua própria conversa de design deveria ser separado",
+        "Por fluxo principal vs. tratamento de exceção — tratamento de exceção complexo que precisa da sua própria conversa de design deveria ser separado",
       ],
       whyItHelps:
         "O teste rápido: se você não consegue descrever os critérios de aceitação em menos de um minuto, ou a story tem mais de cinco a sete CAs, é bem provável que sejam duas stories.",
@@ -363,7 +363,7 @@ export const primeiraUserStory: Omit<Playbook, "readingTime"> = {
       template: completeJiraStory,
       templateLabel: "Copiar a story completa",
       whyItHelps:
-        "O modelo ajuda. Mas são as perguntas que criam o requisito — essa é a diferença entre reescrever um pedido e realmente entendê-lo.",
+        "O modelo ajuda. Mas são as perguntas que criam o requisito — essa é a diferença entre reescrever uma solicitação e realmente entendê-la.",
     },
     {
       number: 16,
@@ -373,12 +373,12 @@ export const primeiraUserStory: Omit<Playbook, "readingTime"> = {
         "Escrever a solução como se fosse o requisito — pare e pergunte o que eles realmente estão tentando alcançar.",
         "Deixar a story enorme — se ela não pode ser razoavelmente construída, testada e entendida como uma única mudança, divida.",
         "Escrever a implementação técnica cedo demais — descreva o comportamento de negócio, deixe a conversa de implementação acontecer com quem vai construir.",
-        "Esquecer o caminho infeliz — uma story que só descreve o sucesso ainda não descreveu a funcionalidade.",
+        "Esquecer os cenários de exceção — uma story que só descreve o sucesso ainda não descreveu a funcionalidade.",
         "Assumir que todo mundo entende sua story — entregue para alguém que não estava na reunião e veja se a interpretação bate com a sua.",
         "Escrever critérios de aceitação que descrevem uma sensação — \"intuitivo\" ou \"fácil\" não é testável; descreva o resultado observável em vez disso.",
       ],
       whyItHelps:
-        "A maioria desses erros não é difícil de corrigir. Eles só são fáceis de passar despercebidos nas suas primeiras stories, antes de pegá-los virar um hábito.",
+        "A maioria desses erros não é difícil de corrigir. Eles só são fáceis de passar despercebidos nas suas primeiras stories, até que identificá-los vire hábito.",
     },
     {
       number: 17,

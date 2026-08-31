@@ -12,14 +12,21 @@ function Footer() {
   const pathname = usePathname();
   if (pathname?.startsWith("/admin")) return null;
 
+  // Nav link labels stay in English everywhere — they're the site's branded
+  // section names (Essays, BA Playbooks, Tools...) and every link still
+  // points at English content except the BA Playbooks pt-br hub itself.
+  // Only the surrounding interface copy switches for the pt-br experience.
+  const isPtBr = pathname?.startsWith("/pt-br") ?? false;
+
   return (
     <footer className="border-t border-border">
       <Container className="flex flex-col gap-8 py-12 sm:flex-row sm:items-start sm:justify-between">
         <div className="flex flex-col gap-2">
           <Logo />
           <p className="max-w-xs text-sm text-muted-foreground">
-            Visual roadmaps, essays, BA Playbooks, tools, and simulators for
-            business analysts learning capital markets and complex systems.
+            {isPtBr
+              ? "Roteiros visuais, Essays, BA Playbooks, Tools e Simulators para analistas de negócio que estão aprendendo mercado de capitais e sistemas complexos."
+              : "Visual roadmaps, essays, BA Playbooks, tools, and simulators for business analysts learning capital markets and complex systems."}
           </p>
         </div>
         <nav className="flex flex-wrap gap-x-6 gap-y-2">
@@ -34,13 +41,27 @@ function Footer() {
           ))}
         </nav>
         <div className="flex flex-col gap-2 sm:w-64">
-          <p className="text-sm font-medium">Weekly briefing</p>
-          <NewsletterForm source="footer" />
+          <p className="text-sm font-medium">{isPtBr ? "Boletim semanal" : "Weekly briefing"}</p>
+          <NewsletterForm
+            source="footer"
+            {...(isPtBr
+              ? {
+                  placeholder: "voce@email.com",
+                  ariaLabel: "Endereço de e-mail",
+                  buttonLabel: "Assinar",
+                  loadingLabel: "Enviando...",
+                  successMessage: "Você está na lista.",
+                  errorFallback: "Algo deu errado. Tente novamente.",
+                }
+              : {})}
+          />
         </div>
       </Container>
       <Container className="flex flex-col gap-2 border-t border-border py-6 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-xs text-muted-foreground">
-          © {new Date().getFullYear()} BodhiProtocol. All rights reserved.
+          {isPtBr
+            ? `© ${new Date().getFullYear()} BodhiProtocol. Todos os direitos reservados.`
+            : `© ${new Date().getFullYear()} BodhiProtocol. All rights reserved.`}
         </p>
         <a
           href="https://github.com/BodhiProtocol"

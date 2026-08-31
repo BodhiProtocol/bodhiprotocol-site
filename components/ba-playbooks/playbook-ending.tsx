@@ -25,6 +25,12 @@ interface PlaybookEndingLabels {
   copiedLabel?: string;
   copiedSrLabel?: string;
   hideNewsletter?: boolean;
+  newsletterPlaceholder?: string;
+  newsletterAriaLabel?: string;
+  newsletterButtonLabel?: string;
+  newsletterLoadingLabel?: string;
+  newsletterSuccessMessage?: string;
+  newsletterErrorFallback?: string;
 }
 
 interface PlaybookEndingProps {
@@ -46,6 +52,12 @@ function PlaybookEnding({ guide, url, labels = {} }: PlaybookEndingProps) {
     copiedLabel,
     copiedSrLabel,
     hideNewsletter = false,
+    newsletterPlaceholder,
+    newsletterAriaLabel,
+    newsletterButtonLabel,
+    newsletterLoadingLabel,
+    newsletterSuccessMessage,
+    newsletterErrorFallback,
   } = labels;
   if (!guide.closingHeading && !guide.closingBody && !guide.closingTemplate && !guide.toolkit && !guide.download)
     return null;
@@ -120,7 +132,16 @@ function PlaybookEnding({ guide, url, labels = {} }: PlaybookEndingProps) {
       {!hideNewsletter ? (
         <div className="flex w-full max-w-xs flex-col items-center gap-2 self-center border-t border-border pt-6">
           <p className="text-xs text-muted-foreground">{newsletterCta}</p>
-          <NewsletterForm source="ba-playbook" className="w-full" />
+          <NewsletterForm
+            source="ba-playbook"
+            className="w-full"
+            {...(newsletterPlaceholder ? { placeholder: newsletterPlaceholder } : {})}
+            {...(newsletterAriaLabel ? { ariaLabel: newsletterAriaLabel } : {})}
+            {...(newsletterButtonLabel ? { buttonLabel: newsletterButtonLabel } : {})}
+            {...(newsletterLoadingLabel ? { loadingLabel: newsletterLoadingLabel } : {})}
+            {...(newsletterSuccessMessage ? { successMessage: newsletterSuccessMessage } : {})}
+            {...(newsletterErrorFallback ? { errorFallback: newsletterErrorFallback } : {})}
+          />
         </div>
       ) : null}
     </div>

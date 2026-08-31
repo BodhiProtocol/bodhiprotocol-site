@@ -11,9 +11,24 @@ interface NewsletterFormProps {
   /** Where on the site this form was rendered, stored alongside the email. */
   source: string;
   className?: string;
+  placeholder?: string;
+  ariaLabel?: string;
+  buttonLabel?: string;
+  loadingLabel?: string;
+  successMessage?: string;
+  errorFallback?: string;
 }
 
-function NewsletterForm({ source, className }: NewsletterFormProps) {
+function NewsletterForm({
+  source,
+  className,
+  placeholder = "you@email.com",
+  ariaLabel = "Email address",
+  buttonLabel = "Subscribe",
+  loadingLabel = "Subscribing...",
+  successMessage = "You're on the list.",
+  errorFallback = "Something went wrong. Try again.",
+}: NewsletterFormProps) {
   const [email, setEmail] = useState("");
   const [website, setWebsite] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -33,13 +48,13 @@ function NewsletterForm({ source, className }: NewsletterFormProps) {
       });
       const data = await response.json().catch(() => ({}));
       if (!response.ok) {
-        setError(data.error ?? "Something went wrong. Try again.");
+        setError(data.error ?? errorFallback);
         setStatus("error");
         return;
       }
       setStatus("success");
     } catch {
-      setError("Something went wrong. Try again.");
+      setError(errorFallback);
       setStatus("error");
     }
   }
@@ -48,7 +63,7 @@ function NewsletterForm({ source, className }: NewsletterFormProps) {
     return (
       <p className={cn("flex items-center gap-2 text-sm font-medium text-brand", className)}>
         <Check className="size-4" />
-        You&apos;re on the list.
+        {successMessage}
       </p>
     );
   }
@@ -61,8 +76,8 @@ function NewsletterForm({ source, className }: NewsletterFormProps) {
           required
           value={email}
           onChange={(event) => setEmail(event.target.value)}
-          placeholder="you@email.com"
-          aria-label="Email address"
+          placeholder={placeholder}
+          aria-label={ariaLabel}
           disabled={status === "loading"}
           className="h-10 flex-1"
         />
@@ -77,7 +92,7 @@ function NewsletterForm({ source, className }: NewsletterFormProps) {
           aria-hidden="true"
         />
         <Button type="submit" disabled={status === "loading"} className="h-10 shrink-0 px-5">
-          {status === "loading" ? "Subscribing..." : "Subscribe"}
+          {status === "loading" ? loadingLabel : buttonLabel}
         </Button>
       </div>
       {error && <p className="text-xs text-destructive">{error}</p>}

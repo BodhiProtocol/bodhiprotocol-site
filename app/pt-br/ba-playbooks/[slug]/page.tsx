@@ -145,11 +145,17 @@ export default async function PlaybookPtBrPage({ params }: PlaybookPtBrPageProps
                 eyebrow: "Leve isso com você",
                 reusableTemplate: "Modelo reutilizável",
                 copyTemplate: "Copiar modelo",
+                newsletterCta: "Receba novos guias em primeira mão.",
                 saveButton: "Salvar este BA Playbook",
                 shareLabel: "Compartilhar playbook",
                 copiedLabel: "Link copiado",
                 copiedSrLabel: "Link copiado para a área de transferência",
-                hideNewsletter: true,
+                newsletterPlaceholder: "voce@email.com",
+                newsletterAriaLabel: "Endereço de e-mail",
+                newsletterButtonLabel: "Assinar",
+                newsletterLoadingLabel: "Enviando...",
+                newsletterSuccessMessage: "Você está na lista.",
+                newsletterErrorFallback: "Algo deu errado. Tente novamente.",
               }}
             />
           </article>
