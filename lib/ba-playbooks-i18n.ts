@@ -15,6 +15,11 @@ export const playbookTranslations: PlaybookTranslationPair[] = [
     enSlug: "first-time-writing-a-user-story",
     ptBrSlug: "como-escrever-sua-primeira-user-story",
   },
+  {
+    id: "acceptance-criteria",
+    enSlug: "acceptance-criteria-playbook",
+    ptBrSlug: "como-escrever-criterios-de-aceitacao",
+  },
 ];
 
 export function getPtBrSlugForEnSlug(enSlug: string): string | undefined {
