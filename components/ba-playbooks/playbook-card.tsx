@@ -9,7 +9,12 @@ import { Muted } from "@/components/ui/typography";
 import { categoryIcons } from "@/lib/category-icons";
 import type { Playbook } from "@/types/content";
 
-function PlaybookCard({ guide }: { guide: Playbook }) {
+interface PlaybookCardProps {
+  guide: Playbook;
+  practicesLabel?: string;
+}
+
+function PlaybookCard({ guide, practicesLabel = "practices" }: PlaybookCardProps) {
   const Icon = categoryIcons[guide.category];
 
   return (
@@ -34,7 +39,7 @@ function PlaybookCard({ guide }: { guide: Playbook }) {
           </h3>
           <Muted className="line-clamp-2">{guide.description}</Muted>
           <Muted className="mt-auto font-mono text-xs">
-            {guide.hacks.length} practices · {guide.readingTime}
+            {guide.hacks.length} {practicesLabel} · {guide.readingTime}
           </Muted>
         </div>
       </Card>

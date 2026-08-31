@@ -3,6 +3,7 @@ import type { MetadataRoute } from "next";
 import { getAllBlueprints } from "@/lib/blueprints";
 import { getAllCategories, getAllEssays, getAllTags, slugifyTerm } from "@/lib/essays";
 import { getAllPlaybooks } from "@/lib/ba-playbooks";
+import { getAllPlaybooksPtBr } from "@/lib/ba-playbooks-pt-br";
 import { getAllGreatMinds } from "@/lib/great-minds";
 import { getAllInvisibleBusinesses } from "@/lib/invisible-businesses";
 import { seoLearningPages } from "@/lib/seo-learning-pages";
@@ -14,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/essays",
     "/essays/map",
     "/ba-playbooks",
+    "/pt-br/ba-playbooks",
     "/great-minds",
     "/invisible-businesses",
     "/simulators",
@@ -72,6 +74,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(guide.date),
   }));
 
+  const playbookPtBrRoutes: MetadataRoute.Sitemap = getAllPlaybooksPtBr().map((guide) => ({
+    url: `${siteConfig.url}/pt-br/ba-playbooks/${guide.slug}`,
+    lastModified: new Date(guide.date),
+  }));
+
   const greatMindRoutes: MetadataRoute.Sitemap = getAllGreatMinds().map((mind) => ({
     url: `${siteConfig.url}/great-minds/${mind.slug}`,
     lastModified: new Date(mind.date),
@@ -87,5 +94,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...greatMindRoutes,
     ...blueprintRoutes,
     ...playbookRoutes,
+    ...playbookPtBrRoutes,
   ];
 }

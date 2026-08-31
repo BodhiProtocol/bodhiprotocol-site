@@ -6,17 +6,18 @@ import type { PlaybookHack } from "@/types/content";
 
 interface PlaybookProgressProps {
   hacks: Pick<PlaybookHack, "number" | "title">[];
+  label?: string;
 }
 
 // Desktop sticky sidebar — same slot Table of Contents occupies on essays.
 // Doubles as a progress indicator: the active hack highlights as the reader scrolls.
-function PlaybookProgress({ hacks }: PlaybookProgressProps) {
+function PlaybookProgress({ hacks, label = "In this playbook" }: PlaybookProgressProps) {
   const { active, jumpTo } = useActiveHack(hacks);
 
   return (
     <nav aria-label="Playbook progress" className="flex flex-col gap-2 text-sm">
       <p className="font-mono text-xs tracking-[0.2em] text-muted-foreground uppercase">
-        In this playbook
+        {label}
       </p>
       <ul className="flex flex-col gap-1">
         {hacks.map((hack) => (
@@ -42,8 +43,14 @@ function PlaybookProgress({ hacks }: PlaybookProgressProps) {
   );
 }
 
+interface PlaybookProgressBarProps extends PlaybookProgressProps {
+  jumpAriaPrefix?: string;
+}
+
 // Mobile sticky strip beneath the navbar — same active-hack state, condensed to numbered chips.
-function PlaybookProgressBar({ hacks }: PlaybookProgressProps) {
+// jumpAriaPrefix is a plain string (not a function) so this prop stays serializable
+// across the server/client boundary when the page component passes it in.
+function PlaybookProgressBar({ hacks, jumpAriaPrefix = "Jump to hack" }: PlaybookProgressBarProps) {
   const { active, jumpTo } = useActiveHack(hacks);
 
   return (
@@ -55,7 +62,7 @@ function PlaybookProgressBar({ hacks }: PlaybookProgressProps) {
             type="button"
             onClick={() => jumpTo(hack.number)}
             aria-current={active === hack.number}
-            aria-label={`Jump to hack ${hack.number}: ${hack.title}`}
+            aria-label={`${jumpAriaPrefix} ${hack.number}: ${hack.title}`}
             className={cn(
               "flex size-7 shrink-0 items-center justify-center rounded-full border font-mono text-xs font-medium transition-colors",
               active === hack.number

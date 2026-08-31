@@ -15,14 +15,50 @@ const DOWNLOAD_ICONS = {
   examples: <BookOpen className="size-4.5" aria-hidden="true" />,
 } as const;
 
+interface PlaybookEndingLabels {
+  eyebrow?: string;
+  reusableTemplate?: string;
+  copyTemplate?: string;
+  newsletterCta?: string;
+  saveButton?: string;
+  shareLabel?: string;
+  copiedLabel?: string;
+  copiedSrLabel?: string;
+  hideNewsletter?: boolean;
+  newsletterPlaceholder?: string;
+  newsletterAriaLabel?: string;
+  newsletterButtonLabel?: string;
+  newsletterLoadingLabel?: string;
+  newsletterSuccessMessage?: string;
+  newsletterErrorFallback?: string;
+}
+
 interface PlaybookEndingProps {
   guide: Playbook;
   url: string;
+  labels?: PlaybookEndingLabels;
 }
 
 // Closing tagline + quick actions, then (if the playbook has one) a featured
 // "take this with you" template block, then the newsletter capture.
-function PlaybookEnding({ guide, url }: PlaybookEndingProps) {
+function PlaybookEnding({ guide, url, labels = {} }: PlaybookEndingProps) {
+  const {
+    eyebrow = "Take this with you",
+    reusableTemplate = "Reusable template",
+    copyTemplate = "Copy template",
+    newsletterCta = "Get new playbooks first.",
+    saveButton,
+    shareLabel,
+    copiedLabel,
+    copiedSrLabel,
+    hideNewsletter = false,
+    newsletterPlaceholder,
+    newsletterAriaLabel,
+    newsletterButtonLabel,
+    newsletterLoadingLabel,
+    newsletterSuccessMessage,
+    newsletterErrorFallback,
+  } = labels;
   if (!guide.closingHeading && !guide.closingBody && !guide.closingTemplate && !guide.toolkit && !guide.download)
     return null;
 
@@ -52,8 +88,14 @@ function PlaybookEnding({ guide, url }: PlaybookEndingProps) {
             </p>
           ) : null}
           <div className="flex flex-wrap items-center justify-center gap-2 pt-1">
-            <SavePlaybookButton />
-            <ShareButton title={guide.title} url={url} />
+            <SavePlaybookButton {...(saveButton ? { label: saveButton } : {})} />
+            <ShareButton
+              title={guide.title}
+              url={url}
+              {...(shareLabel ? { shareLabel } : {})}
+              {...(copiedLabel ? { copiedLabel } : {})}
+              {...(copiedSrLabel ? { copiedSrLabel } : {})}
+            />
           </div>
         </div>
       ) : null}
@@ -66,10 +108,10 @@ function PlaybookEnding({ guide, url }: PlaybookEndingProps) {
           className="flex scroll-mt-28 flex-col gap-4 rounded-2xl border border-brand/25 bg-brand/[0.04] p-6 sm:p-8"
         >
           <div className="flex flex-col gap-1.5">
-            <Eyebrow className="text-brand">Take this with you</Eyebrow>
-            <H3>{guide.closingTemplateName ?? "Reusable template"}</H3>
+            <Eyebrow className="text-brand">{eyebrow}</Eyebrow>
+            <H3>{guide.closingTemplateName ?? reusableTemplate}</H3>
           </div>
-          <CopyTemplate template={guide.closingTemplate} label="Copy template" scrollable />
+          <CopyTemplate template={guide.closingTemplate} label={copyTemplate} scrollable />
           {guide.download && !guide.toolkit ? (
             <div className="sm:max-w-xs">
               <DownloadCard
@@ -87,10 +129,21 @@ function PlaybookEnding({ guide, url }: PlaybookEndingProps) {
         </div>
       ) : null}
 
-      <div className="flex w-full max-w-xs flex-col items-center gap-2 self-center border-t border-border pt-6">
-        <p className="text-xs text-muted-foreground">Get new playbooks first.</p>
-        <NewsletterForm source="ba-playbook" className="w-full" />
-      </div>
+      {!hideNewsletter ? (
+        <div className="flex w-full max-w-xs flex-col items-center gap-2 self-center border-t border-border pt-6">
+          <p className="text-xs text-muted-foreground">{newsletterCta}</p>
+          <NewsletterForm
+            source="ba-playbook"
+            className="w-full"
+            {...(newsletterPlaceholder ? { placeholder: newsletterPlaceholder } : {})}
+            {...(newsletterAriaLabel ? { ariaLabel: newsletterAriaLabel } : {})}
+            {...(newsletterButtonLabel ? { buttonLabel: newsletterButtonLabel } : {})}
+            {...(newsletterLoadingLabel ? { loadingLabel: newsletterLoadingLabel } : {})}
+            {...(newsletterSuccessMessage ? { successMessage: newsletterSuccessMessage } : {})}
+            {...(newsletterErrorFallback ? { errorFallback: newsletterErrorFallback } : {})}
+          />
+        </div>
+      ) : null}
     </div>
   );
 }
