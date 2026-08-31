@@ -13,6 +13,10 @@ export const metadata: Metadata = {
   title: "Search",
   description: "Search BodhiProtocol essays, Lighthouse blueprints, tools, simulators, and learning resources.",
   alternates: { canonical: "/search" },
+  // Internal search results are per-query and thin — keep them crawlable (so
+  // Google can see this tag) but out of the index, per Google's own guidance
+  // on site search result pages.
+  robots: { index: false, follow: true },
 };
 
 interface SearchPageProps {
