@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { ChevronDownIcon } from "lucide-react";
 
 import { CommandMenu } from "@/components/layout/command-menu";
+import { LanguageSwitcher } from "@/components/layout/language-switcher";
 import { Logo } from "@/components/layout/logo";
 import { MobileNav } from "@/components/layout/mobile-nav";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
@@ -112,6 +113,7 @@ function Navbar({ searchItems }: { searchItems: SearchItem[] }) {
           </nav>
 
           <div className="flex items-center gap-1.5">
+            <LanguageSwitcher className="hidden lg:inline-flex" />
             <CommandMenu items={searchItems} />
             <ThemeToggle />
             <MobileNav />

@@ -13,9 +13,25 @@ import type { PlaybookHack } from "@/types/content";
 
 const LONG_TEMPLATE_LINE_THRESHOLD = 10;
 
+interface HackCardLabels {
+  flow?: string;
+  compare?: string;
+  checklist?: string;
+  bulletList?: string;
+  whyItHelps?: string;
+  whenToUse?: string;
+  proTipPrefix?: string;
+}
+
+interface HackCardProps {
+  hack: PlaybookHack;
+  itemLabel?: string;
+  labels?: HackCardLabels;
+}
+
 // Uses a native <details>/<summary> disclosure — free keyboard support and no
 // client-side state, matching the same pattern used for Great Minds timeline entries.
-function HackCard({ hack, itemLabel = "Hack" }: { hack: PlaybookHack; itemLabel?: string }) {
+function HackCard({ hack, itemLabel = "Hack", labels = {} }: HackCardProps) {
   const paddedNumber = String(hack.number).padStart(2, "0");
 
   return (
@@ -42,20 +58,34 @@ function HackCard({ hack, itemLabel = "Hack" }: { hack: PlaybookHack; itemLabel?
         {hack.explanation ? (
           <p className="text-sm leading-relaxed text-foreground/85">{hack.explanation}</p>
         ) : null}
-        {hack.visual ? <MiniDiagram steps={hack.visual.steps} /> : null}
+        {hack.visual ? (
+          <MiniDiagram steps={hack.visual.steps} {...(labels.flow ? { label: labels.flow } : {})} />
+        ) : null}
         {hack.before && hack.after ? (
           <BeforeAfter before={hack.before} after={hack.after} label={hack.shiftLabel} />
         ) : null}
-        {hack.compare ? <SideBySide {...hack.compare} /> : null}
-        {hack.list ? <BulletList items={hack.list} /> : null}
-        {hack.checklist ? <Checklist items={hack.checklist} /> : null}
+        {hack.compare ? (
+          <SideBySide {...hack.compare} {...(labels.compare ? { label: labels.compare } : {})} />
+        ) : null}
+        {hack.list ? (
+          <BulletList items={hack.list} {...(labels.bulletList ? { label: labels.bulletList } : {})} />
+        ) : null}
+        {hack.checklist ? (
+          <Checklist items={hack.checklist} {...(labels.checklist ? { label: labels.checklist } : {})} />
+        ) : null}
         {hack.whenToUse ? (
           <div className="grid gap-5 sm:grid-cols-2">
-            <WhyItHelps>{hack.whyItHelps}</WhyItHelps>
-            <WhenToUse>{hack.whenToUse}</WhenToUse>
+            <WhyItHelps {...(labels.whyItHelps ? { label: labels.whyItHelps } : {})}>
+              {hack.whyItHelps}
+            </WhyItHelps>
+            <WhenToUse {...(labels.whenToUse ? { label: labels.whenToUse } : {})}>
+              {hack.whenToUse}
+            </WhenToUse>
           </div>
         ) : (
-          <WhyItHelps>{hack.whyItHelps}</WhyItHelps>
+          <WhyItHelps {...(labels.whyItHelps ? { label: labels.whyItHelps } : {})}>
+            {hack.whyItHelps}
+          </WhyItHelps>
         )}
         {hack.template ? (
           <CopyTemplate
@@ -65,7 +95,9 @@ function HackCard({ hack, itemLabel = "Hack" }: { hack: PlaybookHack; itemLabel?
           />
         ) : null}
         {hack.templates?.length ? <TemplateList templates={hack.templates} /> : null}
-        {hack.proTip ? <ProTip>{hack.proTip}</ProTip> : null}
+        {hack.proTip ? (
+          <ProTip {...(labels.proTipPrefix ? { prefix: labels.proTipPrefix } : {})}>{hack.proTip}</ProTip>
+        ) : null}
         {hack.anchorLink ? (
           <a
             href={hack.anchorLink.href}

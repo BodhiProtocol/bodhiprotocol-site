@@ -10,12 +10,22 @@ interface ShareButtonProps {
   title: string;
   url: string;
   className?: string;
+  shareLabel?: string;
+  copiedLabel?: string;
+  copiedSrLabel?: string;
 }
 
 // Uses the Web Share API where the browser supports it (mobile Safari/Chrome);
 // falls back to copying the link, since there's no reliable cross-browser
 // share sheet otherwise. Never fakes a share it can't actually perform.
-function ShareButton({ title, url, className }: ShareButtonProps) {
+function ShareButton({
+  title,
+  url,
+  className,
+  shareLabel = "Share playbook",
+  copiedLabel = "Link copied",
+  copiedSrLabel = "Link copied to clipboard",
+}: ShareButtonProps) {
   const [state, setState] = React.useState<"idle" | "copied">("idle");
   const canNativeShare = typeof navigator !== "undefined" && typeof navigator.share === "function";
 
@@ -61,9 +71,9 @@ function ShareButton({ title, url, className }: ShareButtonProps) {
       ) : (
         <Link2 className="size-3.5" />
       )}
-      {state === "copied" ? "Link copied" : "Share playbook"}
+      {state === "copied" ? copiedLabel : shareLabel}
       <span role="status" aria-live="polite" className="sr-only">
-        {state === "copied" ? "Link copied to clipboard" : ""}
+        {state === "copied" ? copiedSrLabel : ""}
       </span>
     </button>
   );

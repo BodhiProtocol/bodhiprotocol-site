@@ -20,17 +20,17 @@ function ExamplePanel({ label, icon, children, className }: ExamplePanelProps) {
   );
 }
 
-function WhyItHelps({ children }: { children: React.ReactNode }) {
+function WhyItHelps({ children, label = "Why it helps" }: { children: React.ReactNode; label?: string }) {
   return (
-    <ExamplePanel label="Why it helps" icon={Lightbulb}>
+    <ExamplePanel label={label} icon={Lightbulb}>
       {children}
     </ExamplePanel>
   );
 }
 
-function WhenToUse({ children }: { children: React.ReactNode }) {
+function WhenToUse({ children, label = "When to use" }: { children: React.ReactNode; label?: string }) {
   return (
-    <ExamplePanel label="When to use" icon={Target}>
+    <ExamplePanel label={label} icon={Target}>
       {children}
     </ExamplePanel>
   );

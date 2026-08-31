@@ -18,7 +18,14 @@ const description =
 export const metadata: Metadata = {
   title: "BA Playbooks — Practical Guides for Business Analysts",
   description,
-  alternates: { canonical: "/ba-playbooks" },
+  alternates: {
+    canonical: "/ba-playbooks",
+    languages: {
+      en: "/ba-playbooks",
+      "pt-BR": "/pt-br/ba-playbooks",
+      "x-default": "/ba-playbooks",
+    },
+  },
   openGraph: {
     type: "website",
     title: "BA Playbooks — Practical Guides for Business Analysts",

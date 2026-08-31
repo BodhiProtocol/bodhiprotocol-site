@@ -36,6 +36,7 @@ import {
   getRelatedPlaybooks,
 } from "@/lib/ba-playbooks";
 import { playbookRecommendations } from "@/lib/content-relations";
+import { getPtBrSlugForEnSlug } from "@/lib/ba-playbooks-i18n";
 import { siteConfig } from "@/lib/site-config";
 
 interface PlaybookPageProps {
@@ -98,12 +99,22 @@ export async function generateMetadata({ params }: PlaybookPageProps): Promise<M
 
   const seoTitle = guide.seoTitle ?? guide.title;
   const seoDescription = guide.seoDescription ?? guide.description;
+  const ptBrSlug = getPtBrSlugForEnSlug(guide.slug);
 
   return {
     title: seoTitle,
     description: seoDescription,
     authors: [{ name: guide.author }],
-    alternates: { canonical: `/ba-playbooks/${guide.slug}` },
+    alternates: {
+      canonical: `/ba-playbooks/${guide.slug}`,
+      languages: ptBrSlug
+        ? {
+            en: `/ba-playbooks/${guide.slug}`,
+            "pt-BR": `/pt-br/ba-playbooks/${ptBrSlug}`,
+            "x-default": `/ba-playbooks/${guide.slug}`,
+          }
+        : undefined,
+    },
     openGraph: {
       title: seoTitle,
       description: seoDescription,
