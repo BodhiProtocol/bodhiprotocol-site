@@ -258,6 +258,11 @@ export const essayBridges: EssayBridge[] = [
     to: "settlement-fails-what-happens-when-a-trade-refuses-to-deliver",
     label: "Every fail traces back to one specific stage of this same six-stage walk",
   },
+  {
+    from: "capital-market-system-two-paths-one-market",
+    to: "buy-side-sell-side-one-trade-two-different-jobs",
+    label: "Trader and portfolio manager are both jobs that live inside the buy-side half of this split",
+  },
 ];
 
 const seriesBySlug = new Map<string, { series: EssaySeries; order: number }>();
