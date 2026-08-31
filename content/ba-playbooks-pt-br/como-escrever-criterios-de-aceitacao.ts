@@ -20,15 +20,15 @@ export const comoEscreverCriteriosDeAceitacao: Omit<Playbook, "readingTime"> = {
   title: "Critérios de aceitação: do vago ao testável",
   description: "Como escrever critérios de aceitação que o time realmente consegue construir e testar.",
   summary:
-    "Reescritas de exemplos ruins para bons dos critérios de aceitação que parecem certos à primeira vista — Dado/Quando/Então, cenários negativos, condições de limite e os adjetivos vagos que tornam um critério impossível de testar.",
+    "Reescritas, do ruim para o bom, de critérios de aceitação que parecem certos à primeira vista — Dado/Quando/Então, cenários negativos, condições de limite e os adjetivos vagos que tornam um critério impossível de testar.",
   category: "Business Analysis",
   tags: ["Requisitos", "Critérios de Aceitação", "Testes"],
   author: "Surya",
   date: "2026-08-08",
   itemLabel: "Ajuste",
   intro: [
-    "\"O sistema deve processar a operação corretamente.\" Parece certo numa primeira leitura. Aí o desenvolvimento pergunta o que \"corretamente\" significa, o QA pergunta como vai provar isso, e a frase para de parecer certa — passa a soar como algo que três pessoas estão prestes a interpretar de três jeitos diferentes.",
-    "Critérios de aceitação existem para eliminar exatamente esse tipo de interpretação. Não é descrever a intenção de forma bonita. É descrever o comportamento com precisão suficiente para que dois desenvolvedores, trabalhando sozinhos, construam a mesma coisa a partir da mesma frase.",
+    "\"O sistema deve processar a operação corretamente.\" Parece certo numa primeira leitura. Aí o dev pergunta o que \"corretamente\" significa, o QA pergunta como vai provar isso, e a frase para de parecer certa — passa a soar como algo que três pessoas estão prestes a interpretar de três jeitos diferentes.",
+    "Critérios de aceitação existem para eliminar exatamente esse tipo de interpretação. Não é sobre descrever a intenção de forma bonita. É sobre descrever o comportamento com precisão suficiente para que dois desenvolvedores, trabalhando sozinhos, construam a mesma coisa a partir da mesma frase.",
   ],
   audience: [
     "Business Analysts",
@@ -38,7 +38,7 @@ export const comoEscreverCriteriosDeAceitacao: Omit<Playbook, "readingTime"> = {
   ],
   seoTitle: "Como escrever critérios de aceitação — guia com exemplos",
   seoDescription:
-    "Guia prático de critérios de aceitação: exemplos ruins reescritos para bons, Dado/Quando/Então, cenários negativos e as palavras vagas que quebram a testabilidade.",
+    "Guia prático de critérios de aceitação: exemplos reescritos do ruim para o bom, Dado/Quando/Então, cenários negativos e os adjetivos vagos que quebram a testabilidade.",
   closingHeading: ["\"Corretamente\" não é um requisito.", "É a promessa de um."],
   closingBody:
     "Todo critério de aceitação deve passar por um teste: dois desenvolvedores, trabalhando sozinhos, construiriam a mesma coisa a partir dele? Se a resposta depende dos dois chutarem do mesmo jeito, ainda não está pronto.",
@@ -61,11 +61,11 @@ export const comoEscreverCriteriosDeAceitacao: Omit<Playbook, "readingTime"> = {
       insight: "Cada parte cumpre uma função específica. Pule uma delas e o critério deixa de ser testável.",
       visual: { steps: ["Dado — a condição inicial", "Quando — a ação que dispara", "Então — o resultado observável"] },
       whyItHelps:
-        "A maioria dos critérios vagos está sem uma dessas três partes, geralmente o \"Dado\". Sem uma condição inicial, \"quando X acontece, então Y\" pode significar quase qualquer coisa.",
+        "A maioria dos critérios vagos não tem uma dessas três partes, geralmente o \"Dado\". Sem uma condição inicial, \"quando X acontece, então Y\" pode significar quase qualquer coisa.",
     },
     {
       number: 3,
-      title: "Escreva o cenário negativo, não só o de sucesso",
+      title: "Escreva o fluxo negativo, não só o fluxo principal",
       insight: "Um critério que só descreve o sucesso não disse a ninguém como é o fracasso.",
       before: "O sistema deve exibir a mensagem de erro apropriada.",
       after: [
@@ -89,7 +89,7 @@ export const comoEscreverCriteriosDeAceitacao: Omit<Playbook, "readingTime"> = {
         "O que acontece em zero, vazio ou nulo?",
       ],
       whyItHelps:
-        "\"Ordens acima de R$1 milhão precisam de aprovação\" parece completo até alguém perguntar sobre uma ordem de exatamente R$1.000.000,00. Essa pergunta deveria vir de você, não de um chamado de defeito.",
+        "\"Ordens acima de R$1 milhão precisam de aprovação\" parece completo até alguém perguntar sobre uma ordem de exatamente R$1.000.000,00. Essa pergunta deveria vir de você, não de um bug aberto em produção.",
     },
     {
       number: 5,
@@ -110,14 +110,14 @@ export const comoEscreverCriteriosDeAceitacao: Omit<Playbook, "readingTime"> = {
       number: 6,
       title: "Uma regra de negócio e um critério de aceitação não são a mesma frase",
       insight: "Uma descreve como o negócio funciona. A outra descreve como o sistema prova isso.",
-      before: "\"Ordens acima de R$1 milhão exigem aprovação, então garanta que isso funcione\".",
+      before: "Ordens acima de R$1 milhão exigem aprovação, então garanta que isso funcione.",
       after: [
-        "Regra de negócio — como o negócio funciona: ordens acima de R$1 milhão exigem aprovação da supervisão.",
+        "Regra de negócio — como o negócio funciona: ordens acima de R$1 milhão exigem aprovação de um supervisor.",
         "Critério de aceitação — como o sistema se comporta: dado um valor de ordem acima de R$1 milhão, quando o trader a envia, então a ordem entra no status Pendente de Aprovação.",
       ],
       shiftLabel: "A diferença",
       whyItHelps:
-        "Misturar os dois torna ambos mais difíceis de manter. Quando o limite mudar no ano que vem, você vai querer atualizar uma regra — não caçar em scripts de teste toda frase que mencionou isso.",
+        "Misturar os dois torna ambos mais difíceis de manter. Quando o limite mudar no ano que vem, você vai querer atualizar uma regra — não vasculhar scripts de teste atrás de cada frase que mencionou isso.",
     },
     {
       number: 7,
@@ -134,7 +134,7 @@ export const comoEscreverCriteriosDeAceitacao: Omit<Playbook, "readingTime"> = {
       title: "Deixe a implementação para quem vai implementar",
       insight: "Um critério que especifica tecnologia geralmente parou de especificar comportamento de negócio.",
       before: "Use um cache Redis com TTL de 5 minutos para que a consulta de sessão seja rápida.",
-      after: "Dado uma sessão ativa, quando o usuário age dentro de 5 minutos da última ação, então ele continua logado.",
+      after: "Dado uma sessão ativa, quando o usuário realiza qualquer ação em até 5 minutos após a última interação, então ele continua logado.",
       shiftLabel: "A reescrita",
       whyItHelps:
         "A regra dos 5 minutos é decisão do negócio. O Redis não é. Nomear a tecnologia no critério só garante que ele vai estar errado no dia em que a engenharia escolher outra.",
@@ -148,7 +148,7 @@ export const comoEscreverCriteriosDeAceitacao: Omit<Playbook, "readingTime"> = {
       after: [
         "CA1 — Dado uma operação válida, quando enviada, então é validada.",
         "CA2 — Dado uma operação validada, quando registrada, então uma confirmação é gerada.",
-        "CA3 — Dado uma confirmação de registro, quando criada, então o razão é atualizado.",
+        "CA3 — Dado uma confirmação, quando criada, então o razão é atualizado.",
       ],
       shiftLabel: "A reescrita",
       whyItHelps:
@@ -157,7 +157,7 @@ export const comoEscreverCriteriosDeAceitacao: Omit<Playbook, "readingTime"> = {
     {
       number: 10,
       title: "Envolva o QA na conversa enquanto você ainda está escrevendo",
-      insight: "A pessoa que vai ter que provar que um critério é falso é quem melhor sabe se isso é possível.",
+      insight: "A pessoa que vai ter que provar que um critério falha é quem melhor sabe se isso é possível.",
       whyItHelps:
         "Um critério que sobrevive a uma leitura do QA antes da sprint começar é um critério que não vai voltar como pergunta de esclarecimento no meio da sprint, quando custa mais caro responder.",
       proTip:
