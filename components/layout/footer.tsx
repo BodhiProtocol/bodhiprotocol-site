@@ -25,7 +25,7 @@ function Footer() {
           <Logo />
           <p className="max-w-xs text-sm text-muted-foreground">
             {isPtBr
-              ? "Roteiros visuais, Essays, BA Playbooks, Tools e Simulators para analistas de negócio que estão aprendendo mercado de capitais e sistemas complexos."
+              ? "Roteiros visuais, Essays, BA Playbooks, Tools e Simulators para BAs que estão aprendendo mercado de capitais e sistemas complexos."
               : "Visual roadmaps, essays, BA Playbooks, tools, and simulators for business analysts learning capital markets and complex systems."}
           </p>
         </div>

@@ -11,7 +11,7 @@ const description =
   "Guias práticos para quem trabalha com requisitos, Jira, User Stories, APIs, processos, dados e stakeholders.";
 
 export const metadata: Metadata = {
-  title: "BA Playbooks em Português — Guias Práticos para Analistas de Negócio",
+  title: "BA Playbooks em Português — Guias Práticos para BAs",
   description,
   alternates: {
     canonical: "/pt-br/ba-playbooks",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    title: "BA Playbooks em Português — Guias Práticos para Analistas de Negócio",
+    title: "BA Playbooks em Português — Guias Práticos para BAs",
     description,
     url: "/pt-br/ba-playbooks",
     locale: "pt_BR",

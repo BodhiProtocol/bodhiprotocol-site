@@ -1,10 +1,10 @@
 import type { Playbook } from "@/types/content";
 
 const firstDraftStory = `Como cliente de banco de varejo,
-eu quero baixar meus extratos mensais da conta,
+eu quero baixar os extratos mensais da minha conta,
 para que eu possa guardar cópias para meus registros pessoais.`;
 
-const contextParagraph = `Atualmente, os clientes conseguem ver a movimentação recente da conta online, mas extratos mensais mais antigos precisam ser solicitados via atendimento ao cliente.
+const contextParagraph = `Atualmente, os clientes conseguem ver a movimentação recente da conta online, mas extratos mais antigos precisam ser solicitados via atendimento ao cliente.
 
 Isso gera chamados de suporte desnecessários e atrasa clientes que precisam dos extratos para guardar registros.`;
 
@@ -12,25 +12,25 @@ const completeJiraStory = `TÍTULO
 Permitir que clientes baixem extratos mensais da conta
 
 CONTEXTO
-Atualmente, os clientes conseguem ver a movimentação recente da conta online, mas extratos mensais mais antigos precisam ser solicitados via atendimento ao cliente.
+Atualmente, os clientes conseguem ver a movimentação recente da conta online, mas extratos mais antigos precisam ser solicitados via atendimento ao cliente.
 
 PROBLEMA DE NEGÓCIO
-Clientes não conseguem acessar extratos mensais anteriores de forma independente, gerando chamados de suporte desnecessários e atrasos.
+Clientes não conseguem acessar extratos anteriores sozinhos, gerando chamados de suporte desnecessários e atrasos.
 
 USER STORY
 Como cliente de banco de varejo,
-eu quero baixar meus extratos mensais da conta,
+eu quero baixar os extratos mensais da minha conta,
 para que eu possa guardar cópias para meus registros pessoais.
 
 REGRAS DE NEGÓCIO
-1. Extratos ficam disponíveis para os últimos 24 meses.
+1. Extratos ficam disponíveis pelos últimos 24 meses.
 2. Somente extratos pertencentes ao cliente autenticado podem ser acessados.
 3. Extratos são disponibilizados em formato PDF.
 4. Extratos são gerados mensalmente.
 
 CRITÉRIOS DE ACEITAÇÃO
 CA1
-Dado que o cliente está logado
+Dado que o cliente está autenticado
 Quando ele abre a seção de Extratos
 Então os extratos mensais disponíveis dos últimos 24 meses são exibidos.
 
@@ -133,7 +133,7 @@ const storySplitCompare = {
 
 export const primeiraUserStory: Omit<Playbook, "readingTime"> = {
   slug: "como-escrever-sua-primeira-user-story",
-  title: "Primeira User Story? Guia Completo da Solicitação Vaga até o Jira",
+  title: "Primeira User Story? Guia completo: da solicitação vaga até o Jira",
   description:
     "Como transformar uma solicitação vaga em uma User Story que o time consegue construir e testar de verdade.",
   summary:
@@ -147,15 +147,15 @@ export const primeiraUserStory: Omit<Playbook, "readingTime"> = {
     "Alguém diz: \"Você consegue criar uma story no Jira pra isso?\" Você diz que sim. Aí você abre o Jira. Caixa de descrição em branco. E uma pergunta muito simples fica surpreendentemente difícil: o que exatamente eu devo escrever aqui?",
     "Se essa é sua primeira User Story, comece por aqui. Porque o maior erro é achar que você precisa inventar algo brilhante. Você não precisa.",
     "Aqui vai a única coisa que você precisa lembrar antes de tudo: uma story está pronta quando outra pessoa consegue entendê-la sem você sentado do lado explicando. Tudo o que vem a seguir existe para te levar até esse ponto — é o teste que você está construindo, não só mais um item de checklist no final.",
-    "E a parte mecânica — \"Como... eu quero... para que...\" — leva vinte segundos para escrever. Tudo o resto é o trabalho de verdade: descobrir o que essa frase deveria dizer. Uma User Story não é algo que você inventa. É algo que você descobre. Vamos fazer uma juntos, de uma solicitação vaga até uma story completa que um desenvolvedor e um testador conseguem usar para trabalhar.",
+    "E a parte mecânica — \"Como... eu quero... para que...\" — leva vinte segundos para escrever. Tudo o resto é o trabalho de verdade: descobrir o que essa frase deveria dizer. Uma User Story não é algo que você inventa. É algo que você descobre. Vamos fazer uma juntos, de uma solicitação vaga até uma story completa que um desenvolvedor e um testador conseguem colocar em prática.",
   ],
   audience: [
     "BAs iniciantes escrevendo sua primeira User Story",
-    "BAs juniores ainda encontrando seu processo",
+    "BAs juniores ainda ajustando o próprio processo",
     "Product Owners escrevendo suas próprias User Stories",
     "Membros do time de entrega aprendendo como requisitos são escritos",
   ],
-  seoTitle: "Como Escrever sua Primeira User Story — Exemplo Completo no Jira",
+  seoTitle: "Como escrever sua primeira User Story — exemplo completo no Jira",
   seoDescription:
     "Guia passo a passo para escrever sua primeira User Story: da solicitação vaga até uma story completa no Jira, com exemplo real, critérios de aceitação e quando dividir a story.",
   closingHeading: [
@@ -165,7 +165,7 @@ export const primeiraUserStory: Omit<Playbook, "readingTime"> = {
   closingBody:
     "Uma User Story não é algo que você inventa. É algo que você descobre. Escrever \"Como... eu quero... para que...\" leva vinte segundos. Tudo antes disso é o trabalho de verdade.",
   closingTemplate: starterStoryTemplate,
-  closingTemplateName: "Modelo Inicial de User Story",
+  closingTemplateName: "Modelo inicial de User Story",
   hacks: [
     {
       number: 1,
@@ -199,7 +199,7 @@ export const primeiraUserStory: Omit<Playbook, "readingTime"> = {
       after: "Clientes não conseguem acessar extratos anteriores sem entrar em contato com o suporte.",
       shiftLabel: "A mudança",
       whyItHelps:
-        "Stakeholders propõem soluções porque é a linguagem que eles conhecem — \"precisamos de um botão\" é mais fácil de dizer do que \"precisamos de um processo.\" Seu trabalho é encontrar o problema por trás da proposta.",
+        "Stakeholders propõem soluções porque é a linguagem que eles conhecem — \"precisamos de um botão\" é mais fácil de dizer do que \"precisamos de um processo\". Seu trabalho é encontrar o problema por trás da proposta.",
     },
     {
       number: 3,
@@ -217,9 +217,9 @@ export const primeiraUserStory: Omit<Playbook, "readingTime"> = {
     {
       number: 4,
       title: "Defina o resultado real",
-      insight: "O que o usuário leva quando isso funciona?",
+      insight: "O que o usuário ganha quando isso funciona?",
       explanation:
-        "No caso do botão de download, não é \"um download\" — é \"uma cópia do meu extrato para os meus registros.\" Essa diferença define o formato, a retenção e as regras de acesso mais adiante. Talvez a resposta completa seja: \"Eles precisam guardar cópias dos extratos mensais para declarar imposto de renda, solicitar empréstimos e manter como registro pessoal.\" Agora você tem o valor — e a User Story básica praticamente se escreve sozinha.",
+        "No caso do botão de download, não é \"um download\" — é \"uma cópia do meu extrato para os meus registros\". Essa diferença define o formato, a retenção e as regras de acesso mais adiante. Talvez a resposta completa seja: \"Eles precisam guardar cópias dos extratos mensais para declarar imposto de renda, solicitar empréstimos e manter como registro pessoal\". Agora você tem o valor — e a User Story básica praticamente se escreve sozinha.",
       whyItHelps:
         "Uma story sem um resultado real por trás dela é só uma solicitação de funcionalidade reescrita. É essa peça que torna a linha \"para que\" verdadeira, e não apenas decorativa.",
     },
@@ -252,7 +252,7 @@ export const primeiraUserStory: Omit<Playbook, "readingTime"> = {
         "Extratos ficam disponíveis em arquivos PDF.",
       ],
       whyItHelps:
-        "Nada disso apareceu em \"precisamos de um botão de download.\" É por isso que a conversa importa mais do que o formulário — um formulário só captura aquilo que você lembrou de perguntar.",
+        "Nada disso apareceu em \"precisamos de um botão de download\". É por isso que a conversa importa mais do que o formulário — um formulário só captura aquilo que você lembrou de perguntar.",
     },
     {
       number: 8,
@@ -304,11 +304,11 @@ export const primeiraUserStory: Omit<Playbook, "readingTime"> = {
     },
     {
       number: 11,
-      title: "Exponha as dependências",
+      title: "Deixe as dependências visíveis",
       insight: "A tela pode ser simples. A funcionalidade pode não ser.",
       list: [
         "Serviço de Gestão de Documentos",
-        "Autenticação do cliente",
+        "Serviço de Autenticação",
         "Processo de geração de extratos",
         "API de recuperação de extratos",
       ],
@@ -322,7 +322,7 @@ export const primeiraUserStory: Omit<Playbook, "readingTime"> = {
       list: [
         "Envio de extratos por e-mail",
         "Extratos com mais de 24 meses",
-        "Mudança no formato do PDF do extrato",
+        "Redesenho do PDF do extrato",
         "Geração de extratos avulsa",
       ],
       whyItHelps:
@@ -334,13 +334,13 @@ export const primeiraUserStory: Omit<Playbook, "readingTime"> = {
       insight: "Uma story que não consegue ser entregue como uma única unidade de trabalho não é uma story só — são várias disfarçadas de uma.",
       compare: storySplitCompare,
       checklist: [
-        "Por variação de regra — a mesma ação se comporta de forma diferente sob regras de negócio diferentes?",
+        "Por variação de regra — a mesma ação se comporta de forma diferente conforme a regra de negócio?",
         "Por fonte de dados — se parte da story depende de um dado ou sistema que ainda não está pronto, essa parte é uma story separada",
         "Por interface — um fluxo web e um fluxo mobile para o mesmo resultado geralmente são duas stories",
         "Por fluxo principal vs. tratamento de exceção — tratamento de exceção complexo que precisa da sua própria conversa de design deveria ser separado",
       ],
       whyItHelps:
-        "O teste rápido: se você não consegue descrever os critérios de aceitação em menos de um minuto, ou a story tem mais de cinco a sete CAs, é bem provável que sejam duas stories.",
+        "O teste rápido: se você não consegue descrever os critérios de aceitação em menos de um minuto, ou a story tem mais de sete CAs, é bem provável que sejam duas stories.",
     },
     {
       number: 14,
@@ -367,7 +367,7 @@ export const primeiraUserStory: Omit<Playbook, "readingTime"> = {
     },
     {
       number: 16,
-      title: "Seis erros comuns numa primeira user story",
+      title: "Seis erros comuns numa primeira User Story",
       insight: "Todos os seis aparecem o tempo todo, e todos os seis são fáceis de pegar antes de ir para produção.",
       list: [
         "Escrever a solução como se fosse o requisito — pare e pergunte o que eles realmente estão tentando alcançar.",
@@ -399,7 +399,7 @@ export const primeiraUserStory: Omit<Playbook, "readingTime"> = {
         "Alguém consegue entender essa story sem mim na sala",
       ],
       template: firstStoryChecklist,
-      templateLabel: "Copiar Checklist",
+      templateLabel: "Copiar checklist",
       whyItHelps:
         "Uma story que passa por essa lista é uma story que qualquer pessoa consegue pegar, construir e testar sem precisar de você na sala.",
     },
