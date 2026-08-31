@@ -132,7 +132,7 @@ const storySplitCompare = {
 };
 
 export const primeiraUserStory: Omit<Playbook, "readingTime"> = {
-  slug: "primeira-user-story",
+  slug: "como-escrever-sua-primeira-user-story",
   title: "Primeira User Story? Guia Completo da Solicitação Vaga até o Jira",
   description:
     "Como transformar uma solicitação vaga em uma User Story que o time consegue construir e testar de verdade.",
@@ -155,9 +155,9 @@ export const primeiraUserStory: Omit<Playbook, "readingTime"> = {
     "Product Owners escrevendo suas próprias User Stories",
     "Membros do time de entrega aprendendo como requisitos são escritos",
   ],
-  seoTitle: "Primeira User Story? Guia Prático para Analistas de Negócio (BA)",
+  seoTitle: "Como Escrever sua Primeira User Story — Exemplo Completo no Jira",
   seoDescription:
-    "Um guia prático passo a passo para Analistas de Negócio (BAs) transformarem uma solicitação vaga em uma User Story clara, testável e pronta para o Jira — incluindo quando dividir a história.",
+    "Guia passo a passo para escrever sua primeira User Story: da solicitação vaga até uma story completa no Jira, com exemplo real, critérios de aceitação e quando dividir a story.",
   closingHeading: [
     "A caixa em branco do Jira fica mais fácil quando você para de perguntar \"o que eu devo escrever?\"",
     "e passa a perguntar \"o que eu ainda preciso entender?\"",
@@ -367,7 +367,7 @@ export const primeiraUserStory: Omit<Playbook, "readingTime"> = {
     },
     {
       number: 16,
-      title: "Seis erros que eu evitaria numa primeira story",
+      title: "Seis erros comuns numa primeira user story",
       insight: "Todos os seis aparecem o tempo todo, e todos os seis são fáceis de pegar antes de ir para produção.",
       list: [
         "Escrever a solução como se fosse o requisito — pare e pergunte o que eles realmente estão tentando alcançar.",

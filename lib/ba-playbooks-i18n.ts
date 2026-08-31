@@ -13,7 +13,7 @@ export const playbookTranslations: PlaybookTranslationPair[] = [
   {
     id: "first-user-story",
     enSlug: "first-time-writing-a-user-story",
-    ptBrSlug: "primeira-user-story",
+    ptBrSlug: "como-escrever-sua-primeira-user-story",
   },
 ];
 
