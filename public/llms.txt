@@ -1,0 +1,38 @@
+# BodhiProtocol
+
+> BodhiProtocol is a learning site for business analysts and capital markets professionals, built and directed with AI by Surya, a non-technical IT business analyst. It teaches trade lifecycle, requirements writing, market mechanics, and AI systems through visual essays, structured playbooks, and interactive simulators — no CMS, all content is written and version-controlled directly.
+
+Content is organized into a small number of series, each with its own landing page and individual entries. Use the sitemap at /sitemap.xml for the complete, current list of URLs; this file is a curated map of the main sections.
+
+## Learning paths
+
+- [Capital Markets Business Analyst Roadmap](https://bodhiprotocol.com/capital-markets-business-analyst): career path into capital markets BA roles — trade lifecycle, requirements, interview prep.
+- [Business Analyst Roadmap](https://bodhiprotocol.com/business-analyst-roadmap): general BA fundamentals — stakeholder analysis, requirements writing, core tools.
+- [Trade Lifecycle for Business Analysts](https://bodhiprotocol.com/trade-lifecycle-business-analyst): a trade's journey from order and execution through settlement and reconciliation.
+- [Capital Markets for Business Analysts](https://bodhiprotocol.com/capital-markets-for-business-analysts): plain-English capital markets concepts — order books, clearing, settlement, repo.
+- [How Indian Capital Markets Work](https://bodhiprotocol.com/indian-markets): NSE/BSE, SEBI, clearing corporations, depositories, and T+1 settlement.
+- [Business Analyst Interview Questions](https://bodhiprotocol.com/business-analyst-interview-questions): practice questions for general and capital markets BA interviews.
+- [Acceptance Criteria Examples](https://bodhiprotocol.com/acceptance-criteria-examples): Given/When/Then examples for BA requirements.
+- [User Story Examples](https://bodhiprotocol.com/user-story-examples-business-analyst): practical user story examples for operations, reporting, and capital markets.
+
+## Essays
+
+- [Essays](https://bodhiprotocol.com/essays): visual essays on AI, capital markets, business analysis, and economics, pairing an Indian example with an international one throughout.
+- [Essay Concept Map](https://bodhiprotocol.com/essays/map): every essay shown as one connected network, with reading order.
+
+## Series
+
+- [Invisible Businesses](https://bodhiprotocol.com/invisible-businesses): the hidden mechanics behind companies like Amazon, NVIDIA, Visa, and Disney, each with a bespoke diagram of its actual business mechanic.
+- [Great Minds](https://bodhiprotocol.com/great-minds): how history's great thinkers actually thought, through bespoke visual breakdowns of their mental models.
+- [Project Lighthouse](https://bodhiprotocol.com/lighthouse): a blueprint curriculum connecting concepts into a guided learning path.
+- [BA Playbooks](https://bodhiprotocol.com/ba-playbooks): practical, scenario-driven guides for real BA situations (also available in Portuguese at /pt-br/ba-playbooks).
+
+## Tools and practice
+
+- [Tools](https://bodhiprotocol.com/tools): catalog of standalone BodhiProtocol tools (regulatory acronym map, requirements translator, and others).
+- [Simulators](https://bodhiprotocol.com/simulators): interactive labs for order books, trade lifecycle, supply and demand, network effects, and more.
+- [Library](https://bodhiprotocol.com/library): curated books, papers, and resources for capital markets and business analysis.
+
+## About
+
+- [About](https://bodhiprotocol.com/about): who built this, and why — an IT business analyst proving what's shippable by directing AI, without a formal coding background.
