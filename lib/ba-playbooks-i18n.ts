@@ -30,6 +30,11 @@ export const playbookTranslations: PlaybookTranslationPair[] = [
     enSlug: "two-systems-show-different-numbers",
     ptBrSlug: "dois-sistemas-mostram-numeros-diferentes",
   },
+  {
+    id: "first-time-api",
+    enSlug: "first-time-working-with-an-api",
+    ptBrSlug: "primeira-vez-trabalhando-com-uma-api",
+  },
 ];
 
 export function getPtBrSlugForEnSlug(enSlug: string): string | undefined {
