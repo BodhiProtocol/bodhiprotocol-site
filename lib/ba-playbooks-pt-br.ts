@@ -3,11 +3,16 @@ import readingTime from "reading-time";
 import type { Playbook } from "@/types/content";
 import { primeiraUserStory } from "@/content/ba-playbooks-pt-br/primeira-user-story";
 import { comoEscreverCriteriosDeAceitacao } from "@/content/ba-playbooks-pt-br/como-escrever-criterios-de-aceitacao";
+import { cicloDeVidaDaOperacao } from "@/content/ba-playbooks-pt-br/ciclo-de-vida-da-operacao";
 
 // Same array-of-modules pattern as lib/ba-playbooks.ts. Add a new
 // content/ba-playbooks-pt-br/<slug>.ts module and an entry here once a
 // translation is ready to publish; pair it in lib/ba-playbooks-i18n.ts too.
-const playbookEntries: Omit<Playbook, "readingTime">[] = [primeiraUserStory, comoEscreverCriteriosDeAceitacao];
+const playbookEntries: Omit<Playbook, "readingTime">[] = [
+  primeiraUserStory,
+  comoEscreverCriteriosDeAceitacao,
+  cicloDeVidaDaOperacao,
+];
 
 function withReadingTime(guide: Omit<Playbook, "readingTime">): Playbook {
   const text = [

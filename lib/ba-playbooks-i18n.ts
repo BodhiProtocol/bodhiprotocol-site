@@ -20,6 +20,11 @@ export const playbookTranslations: PlaybookTranslationPair[] = [
     enSlug: "acceptance-criteria-playbook",
     ptBrSlug: "como-escrever-criterios-de-aceitacao",
   },
+  {
+    id: "trade-lifecycle",
+    enSlug: "trade-lifecycle-playbook",
+    ptBrSlug: "ciclo-de-vida-da-operacao",
+  },
 ];
 
 export function getPtBrSlugForEnSlug(enSlug: string): string | undefined {
