@@ -1,6 +1,6 @@
 import type { Playbook } from "@/types/content";
 
-const checklistApi = `CHECKLIST DE REQUISITO DE API PARA BAS
+const checklistApi = `CHECKLIST DE REQUISITO DE API PARA BA
 
 PROPÓSITO
 Para que serve essa API, em uma frase?
@@ -46,7 +46,7 @@ O que acontece se a resposta demorar demais?
 RETRY
 A requisição pode ser reenviada com segurança?
 
-DUPLICATAS
+DUPLICIDADE
 O que acontece se a mesma requisição chegar duas vezes?
 
 CONSUMIDORES A JUSANTE
@@ -89,7 +89,7 @@ export const primeiraVezTrabalhandoComUmaApi: Omit<Playbook, "readingTime"> = {
   ],
   audience: [
     "Business Analysts novos em trabalho de integração",
-    "BAs escrevendo um requisito relacionado a API pela primeira vez",
+    "BAs escrevendo um requisito relacionado a uma API pela primeira vez",
     "Product Owners trabalhando de perto com times técnicos",
     "Qualquer pessoa que assente com a cabeça quando ouve \"endpoint\" e \"payload\" sem perguntar nada",
   ],
@@ -98,7 +98,7 @@ export const primeiraVezTrabalhandoComUmaApi: Omit<Playbook, "readingTime"> = {
     "Os conceitos de API que uma BA realmente precisa — endpoints, requisições, códigos de status, autenticação vs. autorização, retries e idempotência, explicados sem jargão, com um exemplo real.",
   closingHeading: ["Você não precisa construir a API.", "Você precisa saber o que perguntar sobre ela."],
   closingBody:
-    "Todo requisito de API se resume ao mesmo punhado de perguntas: o que está sendo pedido, o que volta como resposta, o que acontece quando falha, e quem mais depende de a resposta continuar sendo a mesma.",
+    "Todo requisito de API se resume ao mesmo punhado de perguntas: o que está sendo pedido, o que volta como resposta, o que acontece quando falha, e quem mais depende da resposta continuar sendo a mesma.",
   closingTemplate: checklistApi,
   closingTemplateName: "Checklist de requisito de API para BAs",
   hacks: [
@@ -141,7 +141,7 @@ export const primeiraVezTrabalhandoComUmaApi: Omit<Playbook, "readingTime"> = {
       title: "Códigos de status são o sistema contando o que aconteceu",
       insight: "Você não precisa decorar isso. Você precisa reconhecer a diferença entre alguns deles.",
       list: [
-        "200 — funcionou, aqui está seu dado",
+        "200 — funcionou, aqui estão seus dados",
         "201 — criado com sucesso",
         "400 — a própria requisição estava errada",
         "401 — você não está autenticado",
@@ -177,7 +177,7 @@ export const primeiraVezTrabalhandoComUmaApi: Omit<Playbook, "readingTime"> = {
     },
     {
       number: 7,
-      title: "Retries e duplicatas são uma conversa de requisito, não só uma conversa técnica",
+      title: "Retries e duplicidade são uma conversa de requisito, não só uma conversa técnica",
       insight: "\"É só mandar de novo\" é uma decisão, mesmo quando ninguém quis que fosse.",
       list: [
         "Essa requisição pode ser reenviada com segurança se der timeout?",
