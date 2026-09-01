@@ -4,6 +4,7 @@ import type { Playbook } from "@/types/content";
 import { primeiraUserStory } from "@/content/ba-playbooks-pt-br/primeira-user-story";
 import { comoEscreverCriteriosDeAceitacao } from "@/content/ba-playbooks-pt-br/como-escrever-criterios-de-aceitacao";
 import { cicloDeVidaDaOperacao } from "@/content/ba-playbooks-pt-br/ciclo-de-vida-da-operacao";
+import { doisSistemasMostramNumerosDiferentes } from "@/content/ba-playbooks-pt-br/dois-sistemas-mostram-numeros-diferentes";
 
 // Same array-of-modules pattern as lib/ba-playbooks.ts. Add a new
 // content/ba-playbooks-pt-br/<slug>.ts module and an entry here once a
@@ -12,6 +13,7 @@ const playbookEntries: Omit<Playbook, "readingTime">[] = [
   primeiraUserStory,
   comoEscreverCriteriosDeAceitacao,
   cicloDeVidaDaOperacao,
+  doisSistemasMostramNumerosDiferentes,
 ];
 
 function withReadingTime(guide: Omit<Playbook, "readingTime">): Playbook {

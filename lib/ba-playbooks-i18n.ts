@@ -25,6 +25,11 @@ export const playbookTranslations: PlaybookTranslationPair[] = [
     enSlug: "trade-lifecycle-playbook",
     ptBrSlug: "ciclo-de-vida-da-operacao",
   },
+  {
+    id: "two-systems-different-numbers",
+    enSlug: "two-systems-show-different-numbers",
+    ptBrSlug: "dois-sistemas-mostram-numeros-diferentes",
+  },
 ];
 
 export function getPtBrSlugForEnSlug(enSlug: string): string | undefined {
