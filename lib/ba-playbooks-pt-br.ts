@@ -3,11 +3,22 @@ import readingTime from "reading-time";
 import type { Playbook } from "@/types/content";
 import { primeiraUserStory } from "@/content/ba-playbooks-pt-br/primeira-user-story";
 import { comoEscreverCriteriosDeAceitacao } from "@/content/ba-playbooks-pt-br/como-escrever-criterios-de-aceitacao";
+import { dicasDeJiraParaAnalistasDeNegocios } from "@/content/ba-playbooks-pt-br/dicas-de-jira-para-analistas-de-negocios";
+import { guiaDeLevantamentoDeRequisitos } from "@/content/ba-playbooks-pt-br/guia-de-levantamento-de-requisitos";
+import { primeiraVezTrabalhandoComUmaApi } from "@/content/ba-playbooks-pt-br/primeira-vez-trabalhando-com-uma-api";
+import { doisSistemasMostramNumerosDiferentes } from "@/content/ba-playbooks-pt-br/dois-sistemas-mostram-numeros-diferentes";
 
 // Same array-of-modules pattern as lib/ba-playbooks.ts. Add a new
 // content/ba-playbooks-pt-br/<slug>.ts module and an entry here once a
 // translation is ready to publish; pair it in lib/ba-playbooks-i18n.ts too.
-const playbookEntries: Omit<Playbook, "readingTime">[] = [primeiraUserStory, comoEscreverCriteriosDeAceitacao];
+const playbookEntries: Omit<Playbook, "readingTime">[] = [
+  primeiraUserStory,
+  comoEscreverCriteriosDeAceitacao,
+  dicasDeJiraParaAnalistasDeNegocios,
+  guiaDeLevantamentoDeRequisitos,
+  primeiraVezTrabalhandoComUmaApi,
+  doisSistemasMostramNumerosDiferentes,
+];
 
 function withReadingTime(guide: Omit<Playbook, "readingTime">): Playbook {
   const text = [
