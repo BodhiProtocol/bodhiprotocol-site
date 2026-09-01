@@ -67,7 +67,7 @@ export const doisSistemasMostramNumerosDiferentes: Omit<Playbook, "readingTime">
       number: 3,
       title: "Confirme a população",
       insight: "Antes de comparar contagens, confirme que os dois lados estão contando o mesmo recorte do mundo.",
-      list: ["Mercado?", "Região?", "Cliente?", "Produto?", "Praça?", "Status?"],
+      list: ["Mercado?", "Região?", "Cliente?", "Produto?", "Praça de negociação?", "Status?"],
       whyItHelps: "Um sistema com escopo na EMEA e outro com escopo global nunca vão bater, e nenhum dos dois está com defeito.",
     },
     {
@@ -76,7 +76,7 @@ export const doisSistemasMostramNumerosDiferentes: Omit<Playbook, "readingTime">
       insight: "Nem todo número vem do mesmo lugar, mesmo quando a tela parece igual.",
       list: ["Banco de dados ao vivo?", "API?", "Relatório agendado?", "Cache?", "Warehouse?"],
       explanation:
-        "Um relatório em cache que fica atrás do banco de dados ao vivo por design não é um bug. Vale a pena saber disso antes de alguém passar a tarde inteira caçando isso como se fosse um.",
+        "Um relatório em cache que fica atrás do banco de dados ao vivo de propósito não é um bug. Vale a pena saber disso antes de alguém passar a tarde inteira caçando isso como se fosse um.",
       whyItHelps: "A fonte diz o quão atualizado o número pode ser — o que, às vezes, já explica a lacuna sozinho.",
     },
     {
