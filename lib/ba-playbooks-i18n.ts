@@ -20,6 +20,26 @@ export const playbookTranslations: PlaybookTranslationPair[] = [
     enSlug: "acceptance-criteria-playbook",
     ptBrSlug: "como-escrever-criterios-de-aceitacao",
   },
+  {
+    id: "jira-hacks",
+    enSlug: "jira-hacks-for-business-analysts",
+    ptBrSlug: "dicas-de-jira-para-analistas-de-negocios",
+  },
+  {
+    id: "requirement-elicitation",
+    enSlug: "requirement-elicitation-playbook",
+    ptBrSlug: "guia-de-levantamento-de-requisitos",
+  },
+  {
+    id: "first-time-api",
+    enSlug: "first-time-working-with-an-api",
+    ptBrSlug: "primeira-vez-trabalhando-com-uma-api",
+  },
+  {
+    id: "two-systems-different-numbers",
+    enSlug: "two-systems-show-different-numbers",
+    ptBrSlug: "dois-sistemas-mostram-numeros-diferentes",
+  },
 ];
 
 export function getPtBrSlugForEnSlug(enSlug: string): string | undefined {
