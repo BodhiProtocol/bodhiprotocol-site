@@ -38,7 +38,7 @@ O que acontece se o processamento tiver sucesso parcial?
 DADOS
 De onde vem o dado?
 Quem é o dono dele?
-Quais campos são obrigatórios, e quais são opcionais?
+Quais campos são obrigatórios e quais são opcionais?
 
 DEPENDÊNCIAS
 De quais outros sistemas, times ou requisitos isso depende?
@@ -50,7 +50,7 @@ Existem restrições de jurisdição ou de perfil de acesso?
 
 RELATÓRIOS
 Isso precisa ser reportado?
-Para quem, e com que frequência?
+Para quem e com que frequência?
 
 AUDITORIA
 Essa ação precisa ser rastreável depois?
@@ -95,7 +95,7 @@ export const guiaDeLevantamentoDeRequisitos: Omit<Playbook, "readingTime"> = {
     "Um guia prático de levantamento de requisitos para Analistas de Negócios — as perguntas de descoberta que separam um pedido declarado da necessidade de negócio por trás dele, cobrindo estado atual, gatilhos, exceções e regras de negócio.",
   closingHeading: ["O requisito nunca foi o botão.", "Era o problema por baixo dele."],
   closingBody:
-    "Toda conversa de descoberta acaba se reduzindo ao mesmo formato: um pedido declarado, um problema real por baixo dele, e um conjunto de perguntas que conecta os dois. O botão de exportar ainda pode ser a resposta certa. Agora você vai saber disso por um motivo, não por padrão.",
+    "Toda conversa de descoberta acaba se reduzindo ao mesmo formato: um pedido declarado, um problema real por baixo dele e um conjunto de perguntas que conecta os dois. O botão de exportar ainda pode ser a resposta certa. Agora você vai saber disso por um motivo, não por padrão.",
   closingTemplate: questionBank,
   closingTemplateName: "Banco de Perguntas de Levantamento de Requisitos",
   hacks: [
@@ -163,7 +163,7 @@ export const guiaDeLevantamentoDeRequisitos: Omit<Playbook, "readingTime"> = {
       title: "Regras de negócio se escondem dentro de frases comuns",
       insight: "Um stakeholder raramente diz \"aqui está uma regra de negócio.\" Ele só diz a frase.",
       list: [
-        "\"Operações acima de R$1 milhão precisam de aprovação da supervisão.\"",
+        "\"Operações acima de R$1 milhão precisam de aprovação de um supervisor.\"",
         "\"Clientes em jurisdições restritas não deveriam ver esse relatório.\"",
         "\"Ordens canceladas não passam pela mesma checagem que as executadas.\"",
       ],
@@ -177,7 +177,7 @@ export const guiaDeLevantamentoDeRequisitos: Omit<Playbook, "readingTime"> = {
       list: [
         "De onde esse dado realmente vem?",
         "Quem é dono desse sistema, e dá para confiar nele?",
-        "Quais campos são realmente obrigatórios, e quais só parecem que deveriam ser?",
+        "Quais campos são realmente obrigatórios e quais só parecem que deveriam ser?",
       ],
       whyItHelps:
         "Desenhar a tela antes de confirmar que o dado existe, no formato certo, num sistema que você realmente consegue acessar, é como requisitos acabam sendo refeitos três sprints depois.",
@@ -207,7 +207,7 @@ export const guiaDeLevantamentoDeRequisitos: Omit<Playbook, "readingTime"> = {
       number: 10,
       title: "Escreva as questões em aberto em vez de decidi-las sozinho, em silêncio",
       insight: "Uma pergunta sem resposta que você decidiu sozinho agora é uma suposição escondida vestida de requisito.",
-      before: "BA assume que a notificação por e-mail está ok, não menciona isso, e segue em frente.",
+      before: "BA assume que a notificação por e-mail está ok, não menciona isso e segue em frente.",
       after: [
         "Questão em aberto registrada: canal de notificação — e-mail ou in-app — ainda não confirmado",
         "Sinalizada diretamente ao stakeholder, com uma data para fechar",

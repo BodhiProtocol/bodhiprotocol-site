@@ -54,13 +54,13 @@ export const dicasDeJiraParaAnalistasDeNegocios: Omit<Playbook, "readingTime"> =
   summary:
     "Formas práticas de escrever tickets mais claros, registrar decisões, expor dependências e tornar os requisitos mais fáceis de usar para desenvolvedores e QA.",
   category: "Business Analysis",
-  tags: ["Jira", "Requisitos", "Ticketing"],
+  tags: ["Jira", "Requisitos", "Gestão de Tickets"],
   author: "Surya",
   date: "2026-08-08",
   intro: [
     "O Jira fica doloroso quando vira um lugar onde informação é despejada em vez de estruturada.",
     "Isso não são truques de administração nem dicas de certificação em Jira.",
-    "São pequenos hábitos de trabalho que ajudam Analistas de Negócio a deixar requisitos mais claros, decisões mais fáceis de rastrear, e tickets mais fáceis de usar para desenvolvedores e QA.",
+    "São pequenos hábitos de trabalho que ajudam Analistas de Negócios a deixar requisitos mais claros, decisões mais fáceis de rastrear e tickets mais fáceis de usar para desenvolvedores e QA.",
   ],
   audience: [
     "Business Analysts",
@@ -70,10 +70,10 @@ export const dicasDeJiraParaAnalistasDeNegocios: Omit<Playbook, "readingTime"> =
   ],
   seoTitle: "Dicas de Jira para Analistas de Negócios — 12 Dicas Práticas",
   seoDescription:
-    "12 hábitos práticos de Jira para Analistas de Negócios cobrindo user stories, critérios de aceitação, dependências, decisões, dashboards, JQL e modelos reutilizáveis.",
+    "12 hábitos práticos de Jira para Analistas de Negócios cobrindo User Stories, critérios de aceitação, dependências, decisões, dashboards, JQL e modelos reutilizáveis.",
   closingHeading: ["Você não precisa de mais Jira.", "Você precisa de um Jira mais claro."],
   closingBody:
-    "A maioria dos problemas de Jira não são problemas de Jira, na verdade. São problemas de design de informação. Contexto claro, decisões explícitas, dependências visíveis e critérios de aceitação testáveis tornam a ferramenta muito mais fácil de usar.",
+    "Na verdade, a maioria dos problemas de Jira não são problemas de Jira. São problemas de design de informação. Contexto claro, decisões explícitas, dependências visíveis e critérios de aceitação testáveis tornam a ferramenta muito mais fácil de usar.",
   closingTemplate: masterStoryTemplate,
   closingTemplateName: "Modelo Mestre de Story para BAs",
   hacks: [
@@ -95,7 +95,7 @@ export const dicasDeJiraParaAnalistasDeNegocios: Omit<Playbook, "readingTime"> =
     },
     {
       number: 2,
-      title: "Coloque o contexto antes da user story",
+      title: "Coloque o contexto antes da User Story",
       insight: "Um desenvolvedor deveria entender o problema antes de ler a solução.",
       visual: {
         steps: [
@@ -144,7 +144,7 @@ export const dicasDeJiraParaAnalistasDeNegocios: Omit<Playbook, "readingTime"> =
         "Regras descrevem como o negócio funciona. Critérios de aceitação descrevem como o sistema deve se comportar.",
       compare: {
         leftLabel: "Regra de Negócio",
-        left: "Ordens acima de R$1 milhão exigem aprovação da supervisão.",
+        left: "Ordens acima de R$1 milhão exigem aprovação de um supervisor.",
         rightLabel: "Critério de Aceitação",
         right:
           "Dado um valor de ordem acima de R$1 milhão, quando o trader envia a ordem, então a ordem entra em status Pendente de Aprovação.",

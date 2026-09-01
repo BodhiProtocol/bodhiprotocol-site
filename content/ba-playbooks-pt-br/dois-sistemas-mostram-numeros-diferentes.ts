@@ -53,14 +53,14 @@ export const doisSistemasMostramNumerosDiferentes: Omit<Playbook, "readingTime">
       number: 1,
       title: "Confirme a métrica",
       insight: "\"Operações\" sozinho ainda não é uma definição compartilhada.",
-      list: ["Operação?", "Ordem?", "Execução?", "Registro (booking)?", "Bruto ou líquido?"],
+      list: ["Operação?", "Ordem?", "Execução?", "Registro?", "Bruto ou líquido?"],
       whyItHelps: "Dois times podem estar certos e mesmo assim discordar, se um está contando ordens e o outro está contando execuções.",
     },
     {
       number: 2,
       title: "Confirme a janela de tempo",
       insight: "O mesmo dia pode significar três coisas diferentes para três sistemas diferentes.",
-      list: ["Data de negócio, ou data de calendário?", "Qual fuso horário?", "Qual é o corte (cut-off)?", "A que horas o batch realmente roda?"],
+      list: ["Data de negócio, ou data de calendário?", "Qual fuso horário?", "Qual é o corte?", "A que horas o batch realmente roda?"],
       whyItHelps: "Uma operação registrada às 23h58 pode cair em \"hoje\" ou \"amanhã\" dependendo de qual dessas quatro respostas o sistema usa.",
     },
     {
@@ -68,14 +68,14 @@ export const doisSistemasMostramNumerosDiferentes: Omit<Playbook, "readingTime">
       title: "Confirme a população",
       insight: "Antes de comparar contagens, confirme que os dois lados estão contando a mesma fatia do mundo.",
       list: ["Mercado?", "Região?", "Cliente?", "Produto?", "Praça?", "Status?"],
-      whyItHelps: "Um sistema restrito à EMEA e outro global nunca vão bater, e nenhum dos dois está com defeito.",
+      whyItHelps: "Um sistema restrito a EMEA e outro global nunca vão bater, e nenhum dos dois está com defeito.",
     },
     {
       number: 4,
       title: "Confirme a origem",
       insight: "Nem todo número vem do mesmo lugar, mesmo quando a tela parece igual.",
-      list: ["Banco de dados ao vivo?", "API?", "Relatório agendado?", "Cache?", "Data warehouse?"],
-      explanation: "Um relatório em cache atrasado em relação ao banco ao vivo, por design, não é um bug. Vale a pena saber disso antes de alguém passar a tarde perseguindo isso como se fosse um.",
+      list: ["Banco de dados em produção?", "API?", "Relatório agendado?", "Cache?", "Data warehouse?"],
+      explanation: "Um relatório em cache que fica atrasado em relação ao banco de produção, por definição do sistema, não é um bug. Vale a pena saber disso antes de alguém passar a tarde perseguindo isso como se fosse um.",
       whyItHelps: "A origem diz o quão atualizado o número tem permissão para estar — o que às vezes já explica toda a diferença sozinho.",
     },
     {
@@ -102,7 +102,7 @@ export const doisSistemasMostramNumerosDiferentes: Omit<Playbook, "readingTime">
       title: "Verifique os filtros",
       insight: "Alguém, em algum momento, provavelmente aplicou um filtro e esqueceu dele.",
       list: ["Um filtro de tela deixado ligado", "Padrões de relatório que ninguém lembra de ter configurado", "Condições WHERE de SQL embutidas na query", "Status excluídos por padrão"],
-      whyItHelps: "Esse único passo resolve mais divergências do que qualquer um dos outros, e é o mais fácil de pular porque parece simples demais para ser a resposta.",
+      whyItHelps: "Esse único passo resolve mais divergências do que qualquer um dos outros e é o mais fácil de pular porque parece simples demais para ser a resposta.",
     },
     {
       number: 8,

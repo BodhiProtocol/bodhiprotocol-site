@@ -91,14 +91,14 @@ export const primeiraVezTrabalhandoComUmaApi: Omit<Playbook, "readingTime"> = {
     "Business Analysts novos em trabalho de integração",
     "BAs escrevendo um requisito relacionado a API pela primeira vez",
     "Product Owners que trabalham de perto com times técnicos",
-    "Qualquer um que balança a cabeça diante de \"endpoint\" e \"payload\" sem perguntar",
+    "Qualquer um que finge entender \"endpoint\" e \"payload\" sem perguntar",
   ],
   seoTitle: "Guia de API para Analistas de Negócios — Primeira Vez Trabalhando com APIs",
   seoDescription:
     "Os conceitos de API que um Analista de Negócios realmente precisa — endpoints, requisições, códigos de status, autenticação vs. autorização, retries e idempotência, explicados em português claro com um exemplo real.",
   closingHeading: ["Você não precisa construir a API.", "Você precisa saber o que perguntar sobre ela."],
   closingBody:
-    "Todo requisito de API se reduz ao mesmo punhado de perguntas: o que está sendo pedido, o que volta, o que acontece quando falha, e quem mais depende de essa resposta continuar igual.",
+    "Todo requisito de API se reduz ao mesmo punhado de perguntas: o que está sendo pedido, o que volta, o que acontece quando falha e quem mais depende dessa resposta continuar igual.",
   closingTemplate: apiChecklist,
   closingTemplateName: "Checklist de Requisito de API para BAs",
   hacks: [
@@ -120,7 +120,7 @@ export const primeiraVezTrabalhandoComUmaApi: Omit<Playbook, "readingTime"> = {
       list: [
         "Endpoint — o endereço específico que você está chamando",
         "Requisição — o que você envia, incluindo o que você está pedindo",
-        "Resposta — o que volta, e o que isso significa",
+        "Resposta — o que volta e o que isso significa",
       ],
       whyItHelps: "Quando uma conversa começa a afundar em siglas, essas três palavras geralmente bastam para trazer ela de volta para algo que você consegue acompanhar.",
     },
