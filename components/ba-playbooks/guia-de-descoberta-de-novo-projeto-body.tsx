@@ -168,7 +168,7 @@ function DecisionLogTable() {
       decision: "A IA vai classificar documentos",
       status: "Proposta",
       owner: "Sem responsável",
-      reason: "Esperado reduzir triagem manual — nenhuma aprovação encontrada",
+      reason: "Esperava-se que reduzisse a triagem manual — nenhuma aprovação encontrada",
     },
   ];
 
@@ -256,7 +256,7 @@ function GlobalExampleTable() {
 // estrutura "Por quê / Quem / Como / O quê / Qual / Onde" do próprio artigo.
 function DiscoveryMapDiagram() {
   const dimensions = [
-    { letter: "Por quê", label: "o projeto existe" },
+    { letter: "Porquê", label: "o projeto existe" },
     { letter: "Quem", label: "é afetado, quem decide" },
     { letter: "Como", label: "o processo funciona hoje" },
     { letter: "O quê", label: "se espera que mude" },
@@ -367,7 +367,7 @@ function GuiaDeDescobertaDeNovoProjetoBody() {
       </div>
 
       <div className="flex flex-col gap-4">
-        <SectionHeading number={1} title="Comece por por que o projeto existe" />
+        <SectionHeading number={1} title="Comece entendendo por que o projeto existe" />
         <p className="text-sm text-foreground/80">
           Antes de estudar telas, stories ou APIs, entenda o motivo pelo qual dinheiro e pessoas
           foram alocados nesse trabalho. Pergunte que problema estamos tentando resolver, quem
@@ -409,7 +409,7 @@ function GuiaDeDescobertaDeNovoProjetoBody() {
           <p>
             Estamos melhorando o envio e a validação inicial de sinistros para segurados e a
             Operação de Sinistros porque envios incompletos por e-mail criam atrasos evitáveis,
-            para que mais sinistros cheguem prontos para avaliação e os clientes consigam ver o
+            para que mais sinistros cheguem prontos para avaliação, e os clientes consigam ver o
             que acontece a seguir.
           </p>
         </LabeledPanel>
