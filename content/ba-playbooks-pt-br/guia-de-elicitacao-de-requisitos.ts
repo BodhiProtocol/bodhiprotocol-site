@@ -72,7 +72,7 @@ export const guiaDeElicitacaoDeRequisitos: Omit<Playbook, "readingTime"> = {
   title: "Guia de elicitação de requisitos",
   description: "Como sair de \"a gente precisa disso\" para o que o negócio realmente precisa.",
   summary:
-    "Um guia orientado a descoberta com as perguntas que separam um pedido declarado do requisito real por trás dele — estado atual, gatilhos, exceções, regras de negócio e as perguntas que ninguém pensa em fazer.",
+    "Um guia orientado à descoberta com as perguntas que separam um pedido declarado do requisito real por trás dele — estado atual, gatilhos, exceções, regras de negócio e as perguntas que ninguém pensa em fazer.",
   category: "Business Analysis",
   tags: ["Requisitos", "Elicitação", "Descoberta"],
   author: "Surya",
@@ -110,7 +110,7 @@ export const guiaDeElicitacaoDeRequisitos: Omit<Playbook, "readingTime"> = {
         right: "Uma forma de levar os dados da operação para a ferramenta de conciliação sem ter que redigitar tudo à mão toda manhã.",
       },
       whyItHelps:
-        "Um botão é fácil de construir e fácil de fazer errado. Se a necessidade real é dados se movendo entre dois sistemas, um botão de exportação é uma resposta possível entre várias — e talvez não seja a melhor.",
+        "Um botão é fácil de construir e fácil de errar. Se a necessidade real é dados se movendo entre dois sistemas, um botão de exportação é uma resposta possível entre várias — e talvez não seja a melhor.",
       proTip: "Pergunte o que a pessoa vai fazer com isso assim que conseguir. Essa resposta geralmente é o requisito real.",
     },
     {
@@ -119,7 +119,7 @@ export const guiaDeElicitacaoDeRequisitos: Omit<Playbook, "readingTime"> = {
       insight: "Você não consegue desenhar um processo melhor sem saber como é o atual de verdade.",
       list: [
         "Quem faz isso hoje?",
-        "Qual sistema, ou sistemas, estão envolvidos?",
+        "Quais sistemas estão envolvidos?",
         "Qual parte é manual?",
         "Onde costuma dar errado?",
         "Já existe uma solução alternativa em uso?",
@@ -187,7 +187,7 @@ export const guiaDeElicitacaoDeRequisitos: Omit<Playbook, "readingTime"> = {
       insight: "Um requisito raramente é autossuficiente. Descubra em que ele está apoiado.",
       visual: { steps: ["Esse requisito", "→ precisa de acesso à API", "→ precisa de uma migração de dados", "→ precisa da aprovação do Risco"] },
       whyItHelps:
-        "Dependências descobertas durante a elicitação são um insumo de planejamento. Dependências descobertas na sprint dois são um atraso com o seu nome do lado.",
+        "Dependências descobertas durante a elicitação são um insumo de planejamento. Dependências descobertas na sprint dois são um atraso que vai ficar no seu nome.",
     },
     {
       number: 9,
@@ -208,8 +208,8 @@ export const guiaDeElicitacaoDeRequisitos: Omit<Playbook, "readingTime"> = {
       insight: "Uma pergunta sem resposta que você decidiu sozinho agora é uma suposição escondida vestida de requisito.",
       before: "A BA assume que a notificação por e-mail está ok, não menciona isso, e segue em frente.",
       after: [
-        "Pergunta em aberto registrada: canal de notificação — e-mail ou no aplicativo — ainda não confirmado",
-        "Sinalizada diretamente ao stakeholder, com uma data para ser resolvida",
+        "Pergunta em aberto registrada: canal de notificação — por e-mail ou no aplicativo — ainda não confirmado",
+        "Sinalizada diretamente ao stakeholder, com uma data-limite para resposta",
         "Premissa documentada e visível até ser respondida",
       ],
       whyItHelps: "A versão cara desse erro aparece no UAT, quando \"obviamente e-mail\" se revela ter sido óbvio para exatamente uma pessoa.",
