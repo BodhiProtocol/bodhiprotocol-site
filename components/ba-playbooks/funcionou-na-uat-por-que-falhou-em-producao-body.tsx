@@ -59,7 +59,7 @@ function FuncionouNaUatPorQueFalhouEmProducaoBody(): ReactNode {
       <p>Tudo passa.</p>
       <p>A funcionalidade vai ao ar.</p>
       <p>
-        Depois um cliente tenta cancelar um pedido de tênis de <strong>R$ 499,90</strong>. O pedido
+        Depois um cliente tenta cancelar um pedido de tênis de <strong>&#8377;2.499</strong>. O pedido
         não foi despachado, mas o botão <strong>Cancelar pedido</strong> está faltando.
       </p>
       <p>Então o que aconteceu?</p>
@@ -118,7 +118,7 @@ function FuncionouNaUatPorQueFalhouEmProducaoBody(): ReactNode {
       <blockquote>&ldquo;O cancelamento está quebrado.&rdquo;</blockquote>
       <p>Comece com:</p>
       <blockquote>
-        &ldquo;Para o pedido IN-48217, às 10:42 no horário de Brasília, o cliente não conseguiu
+        &ldquo;Para o pedido IN-48217, às 10:42 no horário da Índia, o cliente não conseguiu
         cancelar pelo app Android mesmo com o pedido ainda não despachado.&rdquo;
       </blockquote>
       <p>Agora o time tem algo que consegue rastrear.</p>
@@ -161,7 +161,7 @@ function FuncionouNaUatPorQueFalhouEmProducaoBody(): ReactNode {
           { cells: ["Status do pedido", "READY_TO_PACK", "ALLOCATED", "Sim"] },
           { cells: ["Integração de armazém", "Stub de teste", "Plataforma de armazém real", "Sim"] },
           { cells: ["Regra de cancelamento", "Status conhecidos permitidos", "Mesma lista configurada", "Não"] },
-          { cells: ["Papel do cliente", "Cliente de teste", "Cliente varejo", "Não"] },
+          { cells: ["Papel do cliente", "Cliente de teste", "Cliente de varejo", "Não"] },
           { cells: ["Canal", "Web e Android", "Android", "Não"] },
           { cells: ["Feature flag", "Habilitada", "Habilitada", "Não"] },
           { cells: ["Versão da release", "5.8.0", "5.8.0", "Não"] },
@@ -209,7 +209,7 @@ function FuncionouNaUatPorQueFalhouEmProducaoBody(): ReactNode {
         ou atualização concorrente.
       </p>
       <p>
-        Um pagamento processado às 23:58 no horário de Brasília e um pagamento internacional
+        Um pagamento indiano processado às 23:58 no horário da Índia e um pagamento internacional
         processado perto de uma mudança de horário de verão podem expor suposições de timing que a
         UAT comum durante o dia nunca tocou.
       </p>
