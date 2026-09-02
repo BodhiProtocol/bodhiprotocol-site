@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -11,6 +12,8 @@ import { PlaybookMeta } from "@/components/ba-playbooks/playbook-meta";
 import { PlaybookProgress, PlaybookProgressBar } from "@/components/ba-playbooks/playbook-progress";
 import { HackCard } from "@/components/ba-playbooks/hack-card";
 import { PlaybookEnding } from "@/components/ba-playbooks/playbook-ending";
+import { QuemEODonoDoRequisitoBody } from "@/components/ba-playbooks/quem-e-o-dono-do-requisito-body";
+import { ReleaseEAmanhaORequisitoMudouHojeBody } from "@/components/ba-playbooks/a-release-e-amanha-o-requisito-mudou-hoje-body";
 import { JsonLd } from "@/components/shared/json-ld";
 import { getPlaybookPtBrBySlug, getPlaybookPtBrSlugs } from "@/lib/ba-playbooks-pt-br";
 import { getEnSlugForPtBrSlug } from "@/lib/ba-playbooks-i18n";
@@ -19,6 +22,14 @@ import { siteConfig } from "@/lib/site-config";
 interface PlaybookPtBrPageProps {
   params: Promise<{ slug: string }>;
 }
+
+// Playbooks whose body is a narrative walkthrough rather than standalone
+// numbered hacks render bespoke prose here instead of the hacks card list —
+// mirrors the customPlaybookBodies registry in app/ba-playbooks/[slug]/page.tsx.
+const customPlaybookBodies: Partial<Record<string, () => ReactNode>> = {
+  "quem-e-o-dono-do-requisito": QuemEODonoDoRequisitoBody,
+  "a-release-e-amanha-o-requisito-mudou-hoje": ReleaseEAmanhaORequisitoMudouHojeBody,
+};
 
 export function generateStaticParams() {
   return getPlaybookPtBrSlugs().map((slug) => ({ slug }));
@@ -72,6 +83,7 @@ export default async function PlaybookPtBrPage({ params }: PlaybookPtBrPageProps
   if (!guide) notFound();
 
   const guideUrl = `${siteConfig.url}/pt-br/ba-playbooks/${guide.slug}`;
+  const CustomBody = customPlaybookBodies[guide.slug];
 
   const articleJsonLd = {
     "@context": "https://schema.org",
@@ -108,35 +120,43 @@ export default async function PlaybookPtBrPage({ params }: PlaybookPtBrPageProps
       <JsonLd data={articleJsonLd} />
       <JsonLd data={breadcrumbJsonLd} />
       <Container>
-        <div className="grid gap-12 lg:grid-cols-[1fr_240px]">
-          <article className="flex min-w-0 flex-col gap-8">
+        <div className={CustomBody ? "flex justify-center" : "grid gap-12 lg:grid-cols-[1fr_240px]"}>
+          <article className={CustomBody ? "flex min-w-0 max-w-3xl flex-col gap-8" : "flex min-w-0 flex-col gap-8"}>
             <PlaybookHero guide={guide} eyebrow="Guia BA" />
             <div className="flex max-w-2xl flex-col gap-3">
               <PlaybookMeta guide={guide} locale="pt-BR" practicesLabel="práticas" />
               {guide.audience?.length ? (
                 <AudienceList audience={guide.audience} prefix="Para " andWord="e" />
               ) : null}
-              {guide.intro?.length ? <P className="text-muted-foreground">{guide.intro.join(" ")}</P> : null}
+              {!CustomBody && guide.intro?.length ? (
+                <P className="text-muted-foreground">{guide.intro.join(" ")}</P>
+              ) : null}
             </div>
-            <PlaybookProgressBar hacks={guide.hacks} jumpAriaPrefix="Ir para o passo" />
-            <div className="flex flex-col gap-4">
-              {guide.hacks.map((hack) => (
-                <HackCard
-                  key={hack.number}
-                  hack={hack}
-                  itemLabel={guide.itemLabel}
-                  labels={{
-                    flow: "O fluxo",
-                    compare: "Comparação",
-                    checklist: "Checklist",
-                    bulletList: "Resumo",
-                    whyItHelps: "Por que isso ajuda",
-                    whenToUse: "Quando usar",
-                    proTipPrefix: "Dica — ",
-                  }}
-                />
-              ))}
-            </div>
+            {CustomBody ? (
+              <CustomBody />
+            ) : (
+              <>
+                <PlaybookProgressBar hacks={guide.hacks} jumpAriaPrefix="Ir para o passo" />
+                <div className="flex flex-col gap-4">
+                  {guide.hacks.map((hack) => (
+                    <HackCard
+                      key={hack.number}
+                      hack={hack}
+                      itemLabel={guide.itemLabel}
+                      labels={{
+                        flow: "O fluxo",
+                        compare: "Comparação",
+                        checklist: "Checklist",
+                        bulletList: "Resumo",
+                        whyItHelps: "Por que isso ajuda",
+                        whenToUse: "Quando usar",
+                        proTipPrefix: "Dica — ",
+                      }}
+                    />
+                  ))}
+                </div>
+              </>
+            )}
             <Divider />
             <PlaybookEnding
               guide={guide}
@@ -159,11 +179,13 @@ export default async function PlaybookPtBrPage({ params }: PlaybookPtBrPageProps
               }}
             />
           </article>
-          <aside className="hidden lg:block">
-            <div className="sticky top-24">
-              <PlaybookProgress hacks={guide.hacks} label="Neste guia" />
-            </div>
-          </aside>
+          {!CustomBody ? (
+            <aside className="hidden lg:block">
+              <div className="sticky top-24">
+                <PlaybookProgress hacks={guide.hacks} label="Neste guia" />
+              </div>
+            </aside>
+          ) : null}
         </div>
       </Container>
     </Section>

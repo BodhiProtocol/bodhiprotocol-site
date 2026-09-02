@@ -7,6 +7,17 @@ import { dicasDeJiraParaAnalistasDeNegocios } from "@/content/ba-playbooks-pt-br
 import { guiaDeLevantamentoDeRequisitos } from "@/content/ba-playbooks-pt-br/guia-de-levantamento-de-requisitos";
 import { primeiraVezTrabalhandoComUmaApi } from "@/content/ba-playbooks-pt-br/primeira-vez-trabalhando-com-uma-api";
 import { doisSistemasMostramNumerosDiferentes } from "@/content/ba-playbooks-pt-br/dois-sistemas-mostram-numeros-diferentes";
+import { requisitoParaMudancaRegulatoria } from "@/content/ba-playbooks-pt-br/requisito-para-mudanca-regulatoria";
+import { cicloDeVidaDaOperacao } from "@/content/ba-playbooks-pt-br/ciclo-de-vida-da-operacao";
+import { oStakeholderSumiuNoMeioDaUat } from "@/content/ba-playbooks-pt-br/o-stakeholder-sumiu-no-meio-da-uat";
+import { doisPmsDuasPrioridadesDiferentes } from "@/content/ba-playbooks-pt-br/dois-pms-duas-prioridades-diferentes";
+import { guiaDeRastreamentoFrontToBack } from "@/content/ba-playbooks-pt-br/guia-de-rastreamento-front-to-back";
+import { oRequisitoMudouNoMeioDaSprint } from "@/content/ba-playbooks-pt-br/o-requisito-mudou-no-meio-da-sprint";
+import { oBatchRodouComSucessoPorQueOsDadosSumiram } from "@/content/ba-playbooks-pt-br/o-batch-rodou-com-sucesso-por-que-os-dados-sumiram";
+import { aStoryEstaProntaPorQueNaoConseguimosLiberar } from "@/content/ba-playbooks-pt-br/a-story-esta-pronta-por-que-nao-conseguimos-liberar";
+import { defeitoOuComportamentoEsperado } from "@/content/ba-playbooks-pt-br/defeito-ou-comportamento-esperado";
+import { quemEODonoDoRequisito } from "@/content/ba-playbooks-pt-br/quem-e-o-dono-do-requisito";
+import { releaseEAmanhaORequisitoMudouHoje } from "@/content/ba-playbooks-pt-br/a-release-e-amanha-o-requisito-mudou-hoje";
 
 // Same array-of-modules pattern as lib/ba-playbooks.ts. Add a new
 // content/ba-playbooks-pt-br/<slug>.ts module and an entry here once a
@@ -18,6 +29,17 @@ const playbookEntries: Omit<Playbook, "readingTime">[] = [
   guiaDeLevantamentoDeRequisitos,
   primeiraVezTrabalhandoComUmaApi,
   doisSistemasMostramNumerosDiferentes,
+  requisitoParaMudancaRegulatoria,
+  cicloDeVidaDaOperacao,
+  oStakeholderSumiuNoMeioDaUat,
+  doisPmsDuasPrioridadesDiferentes,
+  guiaDeRastreamentoFrontToBack,
+  oRequisitoMudouNoMeioDaSprint,
+  oBatchRodouComSucessoPorQueOsDadosSumiram,
+  aStoryEstaProntaPorQueNaoConseguimosLiberar,
+  defeitoOuComportamentoEsperado,
+  quemEODonoDoRequisito,
+  releaseEAmanhaORequisitoMudouHoje,
 ];
 
 function withReadingTime(guide: Omit<Playbook, "readingTime">): Playbook {
