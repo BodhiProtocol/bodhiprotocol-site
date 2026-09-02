@@ -79,13 +79,13 @@ export const guiaDeElicitacaoDeRequisitos: Omit<Playbook, "readingTime"> = {
   date: "2026-09-04",
   itemLabel: "Jogada",
   intro: [
-    "Um stakeholder te diz: \"a gente precisa de um botão de exportação.\" O caminho fácil é escrever o chamado exatamente assim — Adicionar botão de exportação — e mover para o backlog. Na maioria das vezes, esse também é o caminho errado, porque a parte interessante do trabalho ainda nem começou.",
+    "Um stakeholder te diz: \"a gente precisa de um botão de exportação\". O caminho fácil é escrever o chamado exatamente assim — Adicionar botão de exportação — e mover para o backlog. Na maioria das vezes, esse também é o caminho errado, porque a parte interessante do trabalho ainda nem começou.",
     "Por que precisam da exportação? O que acontece com o arquivo depois que a pessoa tem ele em mãos? Quem realmente abre esse arquivo? Com que frequência? O que fazem hoje em vez disso? As respostas para essas perguntas geralmente são onde o requisito real está escondido — e nem sempre é um botão.",
     "Boa elicitação não é sobre fazer mais perguntas. É sobre encontrar o pequeno número de perguntas que expõe o que está realmente acontecendo.",
   ],
   audience: [
     "Business Analysts",
-    "Analistas de Requisitos",
+    "Analistas de requisitos",
     "Product Owners conduzindo descoberta",
     "BAs mais novos em conversas com stakeholders",
     "Qualquer pessoa que já escreveu um ticket exatamente como foi pedido e se arrependeu",
@@ -105,7 +105,7 @@ export const guiaDeElicitacaoDeRequisitos: Omit<Playbook, "readingTime"> = {
       insight: "A solução pedida é uma pista. Raramente é o requisito.",
       compare: {
         leftLabel: "O que disseram",
-        left: "\"A gente precisa de um botão de exportação.\"",
+        left: "\"A gente precisa de um botão de exportação\".",
         rightLabel: "O que talvez realmente precisem",
         right: "Uma forma de levar os dados da operação para a ferramenta de conciliação sem ter que redigitar tudo à mão toda manhã.",
       },
@@ -160,11 +160,11 @@ export const guiaDeElicitacaoDeRequisitos: Omit<Playbook, "readingTime"> = {
     {
       number: 6,
       title: "Regras de negócio se escondem dentro de frases comuns",
-      insight: "Um stakeholder raramente diz \"aqui está uma regra de negócio.\" Ele só fala a frase.",
+      insight: "Um stakeholder raramente diz \"aqui está uma regra de negócio\". Ele só fala a frase.",
       list: [
-        "\"Operações acima de R$ 1 milhão precisam de aprovação da supervisão.\"",
-        "\"Clientes em jurisdições restritas não deveriam ver esse relatório.\"",
-        "\"Ordens canceladas não passam pela mesma verificação que as executadas.\"",
+        "\"Operações acima de R$1 milhão precisam de aprovação da supervisão\".",
+        "\"Clientes em jurisdições restritas não deveriam ver esse relatório\".",
+        "\"Ordens canceladas não passam pela mesma verificação que as executadas\".",
       ],
       whyItHelps:
         "Cada uma dessas frases parece um comentário passageiro. Cada uma é uma condição que seu requisito precisa considerar explicitamente, não inferir depois a partir de um relatório de bug.",
@@ -184,7 +184,7 @@ export const guiaDeElicitacaoDeRequisitos: Omit<Playbook, "readingTime"> = {
     {
       number: 8,
       title: "Encontre as dependências antes de se comprometer com uma data",
-      insight: "Um requisito raramente é autossuficiente. Descubra sobre o que ele está apoiado.",
+      insight: "Um requisito raramente é autossuficiente. Descubra em que ele está apoiado.",
       visual: { steps: ["Esse requisito", "→ precisa de acesso à API", "→ precisa de uma migração de dados", "→ precisa da aprovação do Risco"] },
       whyItHelps:
         "Dependências descobertas durante a elicitação são um insumo de planejamento. Dependências descobertas na sprint dois são um atraso com o seu nome do lado.",
@@ -195,9 +195,9 @@ export const guiaDeElicitacaoDeRequisitos: Omit<Playbook, "readingTime"> = {
       insight: "Se ninguém consegue dizer como é \"melhor\", ninguém consegue dizer quando parar.",
       compare: {
         leftLabel: "Meta vaga",
-        left: "\"Deixar o processo de conciliação mais rápido.\"",
+        left: "\"Deixar o processo de conciliação mais rápido\".",
         rightLabel: "Meta mensurável",
-        right: "\"Reduzir o tempo de conciliação manual de 45 minutos para menos de 10, por dia útil.\"",
+        right: "\"Reduzir o tempo de conciliação manual de 45 minutos para menos de 10, por dia útil\".",
       },
       whyItHelps:
         "Sem isso, uma entrega tecnicamente correta ainda pode ser recebida como uma decepção, porque ninguém combinou antes como seria vencer.",
@@ -216,8 +216,8 @@ export const guiaDeElicitacaoDeRequisitos: Omit<Playbook, "readingTime"> = {
     },
     {
       number: 11,
-      title: "Repita o requisito de volta antes de alguém construí-lo",
-      insight: "Fale de volta em linguagem simples e observe o rosto da pessoa, não só as palavras.",
+      title: "Parafraseie o requisito antes de alguém construí-lo",
+      insight: "Repita o que você entendeu, em linguagem simples, e observe o rosto da pessoa, não só as palavras.",
       whyItHelps:
         "Parafrasear pega mais mal-entendidos do que mais uma rodada de perguntas de esclarecimento, porque força os dois lados a concordarem com a mesma frase, em vez de duas imagens mentais diferentes dela.",
       proTip: "Se o stakeholder hesitar antes de concordar, essa hesitação é um dado. Pergunte o que causou a hesitação.",
