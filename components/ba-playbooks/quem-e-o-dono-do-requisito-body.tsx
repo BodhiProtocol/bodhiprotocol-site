@@ -179,7 +179,7 @@ function QuemEODonoDoRequisitoBody() {
       <p>Os dois importam.</p>
       <p>Mas não são a mesma coisa.</p>
 
-      <h2>O teste de responsabilidade de 5 minutos</h2>
+      <h2>O teste de responsabilidade de cinco minutos</h2>
       <p>Escolha um requisito importante.</p>
       <p>Pergunte:</p>
 

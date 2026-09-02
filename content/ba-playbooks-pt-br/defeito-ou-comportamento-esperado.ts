@@ -120,7 +120,7 @@ export const defeitoOuComportamentoEsperado: Omit<Playbook, "readingTime"> = {
         "Defeito — o comportamento difere do requisito/CA acordado (o requisito permite 7 dias, o sistema rejeita 5).",
         "Comportamento esperado — o comportamento bate com a regra acordada (o requisito permite 7 dias, o sistema rejeita 10) — embora isso não signifique que nada deva mudar; agora pode ser uma solicitação de mudança em vez de uma correção de defeito.",
         "Lacuna de requisito — o cenário nunca foi claramente definido (o requisito diz \"sinistros podem ser retroagidos\", sem limite, sem exceção, sem fronteira) — o time precisa de uma decisão.",
-        "Problema de configuração ou dado — a lógica está correta mas a configuração não está (o requisito diz 7 dias, a configuração diz 3) — o sintoma parece um defeito, mas a causa raiz está em outro lugar.",
+        "Problema de configuração ou dado — a lógica está correta, mas a configuração não está (o requisito diz 7 dias, a configuração diz 3) — o sintoma parece um defeito, mas a causa raiz está em outro lugar.",
       ],
       whyItHelps: "Cada classificação aponta para uma ação seguinte diferente — corrigir código, atualizar um requisito, conseguir uma decisão ou corrigir uma config. Errar isso manda a correção para o time errado.",
     },

@@ -132,8 +132,8 @@ export const oRequisitoMudouNoMeioDaSprint: Omit<Playbook, "readingTime"> = {
       list: [
         "Absorver — a mudança é pequena, entendida e cabe com segurança na sprint. Faça agora.",
         "Dividir — mantenha o escopo original e crie uma story separada para o comportamento novo. Entregue de forma incremental.",
-        "Trocar — a mudança importa mas adiciona esforço. Remova outra coisa de esforço parecido. Proteja a capacidade.",
-        "Adiar — a mudança é válida mas não urgente o suficiente para perturbar a entrega atual. Mova para a próxima sprint.",
+        "Trocar — a mudança importa, mas adiciona esforço. Remova outra coisa de esforço parecido. Proteja a capacidade.",
+        "Adiar — a mudança é válida, mas não urgente o suficiente para perturbar a entrega atual. Mova para a próxima sprint.",
         "Parar e Refazer — o requisito novo torna o trabalho atual errado, inseguro ou inútil. Pare, reavalie e refaça.",
       ],
       whyItHelps: "O BA pode não tomar a decisão final. Mas o BA deveria tornar as opções e as consequências visíveis.",

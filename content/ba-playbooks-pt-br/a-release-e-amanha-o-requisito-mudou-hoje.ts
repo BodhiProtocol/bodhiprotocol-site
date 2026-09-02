@@ -69,7 +69,7 @@ Impacto rápido: rastreie o caminho útil mais curto do requisito pela UI, API, 
 
 Verifique o tempo até estar pronto para release. "A gente codifica isso em duas horas" não é o mesmo que "a gente consegue liberar isso com segurança em duas horas." Uma mudança pode precisar de desenvolvimento, revisão, build, deploy, teste de integração, regressão e aprovação final. Pergunte quanto tempo até isso estar pronto para release, não só codificado. Uma mudança de código de duas horas pode virar uma mudança de release de oito horas.
 
-Apresente opções em vez de forçar uma decisão binária. Absorva quando o impacto for pequeno, a implementação for entendida, os testes puderem terminar e o risco for aceitável. Troque escopo quando a mudança importa mas o tempo é fixo — troque escopo em vez de fingir que capacidade apareceu do nada. Use feature flag ou configuração quando a arquitetura já suporta habilitação controlada. Adie para a próxima release quando a estabilidade importa mais do que apressar. Não inclua quando o tempo não sustenta implementação e teste seguros — isso é uma recomendação baseada em risco, não uma rejeição.
+Apresente opções em vez de forçar uma decisão binária. Absorva quando o impacto for pequeno, a implementação for entendida, os testes puderem terminar e o risco for aceitável. Troque escopo quando a mudança importa, mas o tempo é fixo — troque escopo em vez de fingir que capacidade apareceu do nada. Use feature flag ou configuração quando a arquitetura já suporta habilitação controlada. Adie para a próxima release quando a estabilidade importa mais do que apressar. Não inclua quando o tempo não sustenta implementação e teste seguros — isso é uma recomendação baseada em risco, não uma rejeição.
 
 Comunique: reúna quem decide. Essa não é uma decisão só do BA. Reúna prioridade de negócio, impacto técnico, risco de qualidade, impacto de release e impacto operacional. O trabalho do BA é garantir que todo mundo esteja decidindo a partir dos mesmos fatos. O BA informa a decisão. O responsável de negócio/release toma a decisão final de ir ou não ir.
 
@@ -120,7 +120,7 @@ export const releaseEAmanhaORequisitoMudouHoje: Omit<Playbook, "readingTime"> = 
     {
       number: 2,
       title: "Entenda",
-      insight: "O que mudou, e por que agora?",
+      insight: "O que mudou e por que agora?",
       explanation:
         "Esclareça escopo, comportamento, momento e risco. \"Adicionar verificação de endereço\" não basta — uma frase vaga pode esconder várias decisões de negócio.",
       whyItHelps: "Amanhã é um péssimo dia para descobrir uma decisão escondida que você nem sabia que estava tomando.",

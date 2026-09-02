@@ -125,13 +125,13 @@ function ReleaseEAmanhaORequisitoMudouHojeBody(): ReactNode {
       <p>Inclua a mudança amanhã quando o impacto for pequeno, a implementação for entendida, os testes puderem terminar e o risco for aceitável.</p>
 
       <h3>Opção B — Trocar escopo</h3>
-      <p>Se a mudança importa mas o tempo é fixo, remova ou reduza outra coisa.</p>
+      <p>Se a mudança importa, mas o tempo é fixo, remova ou reduza outra coisa.</p>
       <blockquote>
         <strong>Troque escopo em vez de fingir que capacidade apareceu do nada.</strong>
       </blockquote>
 
       <h3>Opção C — Feature flag / configuração</h3>
-      <p>Implemente a capacidade mas mantenha ela controlada ou desabilitada até estar pronta.</p>
+      <p>Implemente a capacidade, mas mantenha-a controlada ou desabilitada até estar pronta.</p>
       <p>Só use isso quando a arquitetura já suporta.</p>
 
       <h3>Opção D — Adiar</h3>
