@@ -58,7 +58,7 @@ function TodoMundoQuerUmaCoisaDiferenteBody() {
       </p>
       <p>Agora a discordância fica mais precisa.</p>
       <p>
-        O Comercial talvez não queira <strong>nenhum controle</strong>. A Operação talvez não queira{" "}
+        O Comercial talvez não queira ficar <strong>totalmente sem controles</strong>. A Operação talvez não queira{" "}
         <strong>aprovação em tudo</strong>.
       </p>
       <p>Essas eram posições. As necessidades por baixo delas podem ser compatíveis.</p>
