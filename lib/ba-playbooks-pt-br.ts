@@ -22,6 +22,8 @@ import { todoMundoQuerUmaCoisaDiferente } from "@/content/ba-playbooks-pt-br/tod
 import { oQueOBaDeveChecarAntesDaUat } from "@/content/ba-playbooks-pt-br/o-que-o-ba-deve-checar-antes-da-uat";
 import { aStoryFoiArrastadaPorQuatroSprints } from "@/content/ba-playbooks-pt-br/a-story-foi-arrastada-por-quatro-sprints";
 import { oQueFrontOfficeMiddleOfficeEBackOfficeFazem } from "@/content/ba-playbooks-pt-br/o-que-front-office-middle-office-e-back-office-fazem";
+import { ninguemConsegueReproduzirOProblemaEmProducao } from "@/content/ba-playbooks-pt-br/ninguem-consegue-reproduzir-o-problema-em-producao";
+import { funcionouNaUatPorQueFalhouEmProducao } from "@/content/ba-playbooks-pt-br/funcionou-na-uat-por-que-falhou-em-producao";
 
 // Same array-of-modules pattern as lib/ba-playbooks.ts. Add a new
 // content/ba-playbooks-pt-br/<slug>.ts module and an entry here once a
@@ -48,6 +50,8 @@ const playbookEntries: Omit<Playbook, "readingTime">[] = [
   oQueOBaDeveChecarAntesDaUat,
   aStoryFoiArrastadaPorQuatroSprints,
   oQueFrontOfficeMiddleOfficeEBackOfficeFazem,
+  ninguemConsegueReproduzirOProblemaEmProducao,
+  funcionouNaUatPorQueFalhouEmProducao,
 ];
 
 function withReadingTime(guide: Omit<Playbook, "readingTime">): Playbook {
