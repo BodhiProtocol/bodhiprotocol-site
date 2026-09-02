@@ -95,6 +95,16 @@ export const playbookTranslations: PlaybookTranslationPair[] = [
     enSlug: "release-tomorrow-requirement-changed-today",
     ptBrSlug: "a-release-e-amanha-o-requisito-mudou-hoje",
   },
+  {
+    id: "everyone-wants-something-different",
+    enSlug: "everyone-wants-something-different",
+    ptBrSlug: "todo-mundo-quer-uma-coisa-diferente",
+  },
+  {
+    id: "pre-uat-readiness-checklist",
+    enSlug: "pre-uat-readiness-checklist",
+    ptBrSlug: "o-que-o-ba-deve-checar-antes-da-uat",
+  },
 ];
 
 export function getPtBrSlugForEnSlug(enSlug: string): string | undefined {

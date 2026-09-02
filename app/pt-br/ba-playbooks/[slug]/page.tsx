@@ -14,6 +14,8 @@ import { HackCard } from "@/components/ba-playbooks/hack-card";
 import { PlaybookEnding } from "@/components/ba-playbooks/playbook-ending";
 import { QuemEODonoDoRequisitoBody } from "@/components/ba-playbooks/quem-e-o-dono-do-requisito-body";
 import { ReleaseEAmanhaORequisitoMudouHojeBody } from "@/components/ba-playbooks/a-release-e-amanha-o-requisito-mudou-hoje-body";
+import { TodoMundoQuerUmaCoisaDiferenteBody } from "@/components/ba-playbooks/todo-mundo-quer-uma-coisa-diferente-body";
+import { OQueOBaDeveChecarAntesDaUatBody } from "@/components/ba-playbooks/o-que-o-ba-deve-checar-antes-da-uat-body";
 import { JsonLd } from "@/components/shared/json-ld";
 import { getPlaybookPtBrBySlug, getPlaybookPtBrSlugs } from "@/lib/ba-playbooks-pt-br";
 import { getEnSlugForPtBrSlug } from "@/lib/ba-playbooks-i18n";
@@ -29,6 +31,8 @@ interface PlaybookPtBrPageProps {
 const customPlaybookBodies: Partial<Record<string, () => ReactNode>> = {
   "quem-e-o-dono-do-requisito": QuemEODonoDoRequisitoBody,
   "a-release-e-amanha-o-requisito-mudou-hoje": ReleaseEAmanhaORequisitoMudouHojeBody,
+  "todo-mundo-quer-uma-coisa-diferente": TodoMundoQuerUmaCoisaDiferenteBody,
+  "o-que-o-ba-deve-checar-antes-da-uat": OQueOBaDeveChecarAntesDaUatBody,
 };
 
 export function generateStaticParams() {

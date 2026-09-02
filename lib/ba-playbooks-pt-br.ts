@@ -18,6 +18,8 @@ import { aStoryEstaProntaPorQueNaoConseguimosLiberar } from "@/content/ba-playbo
 import { defeitoOuComportamentoEsperado } from "@/content/ba-playbooks-pt-br/defeito-ou-comportamento-esperado";
 import { quemEODonoDoRequisito } from "@/content/ba-playbooks-pt-br/quem-e-o-dono-do-requisito";
 import { releaseEAmanhaORequisitoMudouHoje } from "@/content/ba-playbooks-pt-br/a-release-e-amanha-o-requisito-mudou-hoje";
+import { todoMundoQuerUmaCoisaDiferente } from "@/content/ba-playbooks-pt-br/todo-mundo-quer-uma-coisa-diferente";
+import { oQueOBaDeveChecarAntesDaUat } from "@/content/ba-playbooks-pt-br/o-que-o-ba-deve-checar-antes-da-uat";
 
 // Same array-of-modules pattern as lib/ba-playbooks.ts. Add a new
 // content/ba-playbooks-pt-br/<slug>.ts module and an entry here once a
@@ -40,6 +42,8 @@ const playbookEntries: Omit<Playbook, "readingTime">[] = [
   defeitoOuComportamentoEsperado,
   quemEODonoDoRequisito,
   releaseEAmanhaORequisitoMudouHoje,
+  todoMundoQuerUmaCoisaDiferente,
+  oQueOBaDeveChecarAntesDaUat,
 ];
 
 function withReadingTime(guide: Omit<Playbook, "readingTime">): Playbook {
