@@ -11,6 +11,11 @@ import { requisitoParaMudancaRegulatoria } from "@/content/ba-playbooks-pt-br/re
 import { cicloDeVidaDaOperacao } from "@/content/ba-playbooks-pt-br/ciclo-de-vida-da-operacao";
 import { oStakeholderSumiuNoMeioDaUat } from "@/content/ba-playbooks-pt-br/o-stakeholder-sumiu-no-meio-da-uat";
 import { doisPmsDuasPrioridadesDiferentes } from "@/content/ba-playbooks-pt-br/dois-pms-duas-prioridades-diferentes";
+import { guiaDeRastreamentoFrontToBack } from "@/content/ba-playbooks-pt-br/guia-de-rastreamento-front-to-back";
+import { oRequisitoMudouNoMeioDaSprint } from "@/content/ba-playbooks-pt-br/o-requisito-mudou-no-meio-da-sprint";
+import { oBatchRodouComSucessoPorQueOsDadosSumiram } from "@/content/ba-playbooks-pt-br/o-batch-rodou-com-sucesso-por-que-os-dados-sumiram";
+import { aStoryEstaProntaPorQueNaoConseguimosLiberar } from "@/content/ba-playbooks-pt-br/a-story-esta-pronta-por-que-nao-conseguimos-liberar";
+import { defeitoOuComportamentoEsperado } from "@/content/ba-playbooks-pt-br/defeito-ou-comportamento-esperado";
 
 // Same array-of-modules pattern as lib/ba-playbooks.ts. Add a new
 // content/ba-playbooks-pt-br/<slug>.ts module and an entry here once a
@@ -26,6 +31,11 @@ const playbookEntries: Omit<Playbook, "readingTime">[] = [
   cicloDeVidaDaOperacao,
   oStakeholderSumiuNoMeioDaUat,
   doisPmsDuasPrioridadesDiferentes,
+  guiaDeRastreamentoFrontToBack,
+  oRequisitoMudouNoMeioDaSprint,
+  oBatchRodouComSucessoPorQueOsDadosSumiram,
+  aStoryEstaProntaPorQueNaoConseguimosLiberar,
+  defeitoOuComportamentoEsperado,
 ];
 
 function withReadingTime(guide: Omit<Playbook, "readingTime">): Playbook {

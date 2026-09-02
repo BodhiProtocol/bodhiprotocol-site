@@ -60,6 +60,31 @@ export const playbookTranslations: PlaybookTranslationPair[] = [
     enSlug: "two-pms-two-different-priorities",
     ptBrSlug: "dois-pms-duas-prioridades-diferentes",
   },
+  {
+    id: "front-to-back-trade-trace",
+    enSlug: "front-to-back-trade-trace-guide",
+    ptBrSlug: "guia-de-rastreamento-front-to-back",
+  },
+  {
+    id: "requirement-changed-mid-sprint",
+    enSlug: "requirement-changed-mid-sprint",
+    ptBrSlug: "o-requisito-mudou-no-meio-da-sprint",
+  },
+  {
+    id: "batch-ran-successfully-data-missing",
+    enSlug: "batch-ran-successfully-data-missing",
+    ptBrSlug: "o-batch-rodou-com-sucesso-por-que-os-dados-sumiram",
+  },
+  {
+    id: "story-is-done-why-cant-release",
+    enSlug: "story-is-done-why-cant-we-release-it",
+    ptBrSlug: "a-story-esta-pronta-por-que-nao-conseguimos-liberar",
+  },
+  {
+    id: "defect-vs-expected-behaviour",
+    enSlug: "defect-vs-expected-behaviour",
+    ptBrSlug: "defeito-ou-comportamento-esperado",
+  },
 ];
 
 export function getPtBrSlugForEnSlug(enSlug: string): string | undefined {
