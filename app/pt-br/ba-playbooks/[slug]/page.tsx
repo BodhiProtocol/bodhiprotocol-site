@@ -22,6 +22,7 @@ import { NinguemConsegueReproduzirOProblemaEmProducaoBody } from "@/components/b
 import { FuncionouNaUatPorQueFalhouEmProducaoBody } from "@/components/ba-playbooks/funcionou-na-uat-por-que-falhou-em-producao-body";
 import { ModeloDeUserStoryParaBusinessAnalystBody } from "@/components/ba-playbooks/modelo-de-user-story-para-business-analyst-body";
 import { ModeloDeAnaliseDeImpactoBody } from "@/components/ba-playbooks/modelo-de-analise-de-impacto-body";
+import { GuiaDeDescobertaDeNovoProjetoBody } from "@/components/ba-playbooks/guia-de-descoberta-de-novo-projeto-body";
 import { JsonLd } from "@/components/shared/json-ld";
 import { getPlaybookPtBrBySlug, getPlaybookPtBrSlugs } from "@/lib/ba-playbooks-pt-br";
 import { getEnSlugForPtBrSlug } from "@/lib/ba-playbooks-i18n";
@@ -45,6 +46,7 @@ const customPlaybookBodies: Partial<Record<string, () => ReactNode>> = {
   "funcionou-na-uat-por-que-falhou-em-producao": FuncionouNaUatPorQueFalhouEmProducaoBody,
   "modelo-de-user-story-para-business-analyst": ModeloDeUserStoryParaBusinessAnalystBody,
   "modelo-de-analise-de-impacto": ModeloDeAnaliseDeImpactoBody,
+  "guia-de-descoberta-de-novo-projeto": GuiaDeDescobertaDeNovoProjetoBody,
 };
 
 export function generateStaticParams() {

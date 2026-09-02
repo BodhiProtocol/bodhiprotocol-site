@@ -26,6 +26,7 @@ import { ninguemConsegueReproduzirOProblemaEmProducao } from "@/content/ba-playb
 import { funcionouNaUatPorQueFalhouEmProducao } from "@/content/ba-playbooks-pt-br/funcionou-na-uat-por-que-falhou-em-producao";
 import { modeloDeUserStoryParaBusinessAnalyst } from "@/content/ba-playbooks-pt-br/modelo-de-user-story-para-business-analyst";
 import { modeloDeAnaliseDeImpacto } from "@/content/ba-playbooks-pt-br/modelo-de-analise-de-impacto";
+import { guiaDeDescobertaDeNovoProjeto } from "@/content/ba-playbooks-pt-br/guia-de-descoberta-de-novo-projeto";
 
 // Same array-of-modules pattern as lib/ba-playbooks.ts. Add a new
 // content/ba-playbooks-pt-br/<slug>.ts module and an entry here once a
@@ -56,6 +57,7 @@ const playbookEntries: Omit<Playbook, "readingTime">[] = [
   funcionouNaUatPorQueFalhouEmProducao,
   modeloDeUserStoryParaBusinessAnalyst,
   modeloDeAnaliseDeImpacto,
+  guiaDeDescobertaDeNovoProjeto,
 ];
 
 function withReadingTime(guide: Omit<Playbook, "readingTime">): Playbook {
