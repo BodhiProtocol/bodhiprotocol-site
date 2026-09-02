@@ -35,7 +35,7 @@ export const oStakeholderSumiuNoMeioDaUat: Omit<Playbook, "readingTime"> = {
   description:
     "A aprovação da UAT depende da palavra de uma pessoa, e essa pessoa parou de responder três dias antes do go-live. Um guia prático para manter uma release andando sem quem decide na sala — sem deixar o silêncio virar aprovação em silêncio.",
   summary:
-    "Um guia prático para uma aprovação de UAT travada — descobrindo por que o stakeholder realmente sumiu, localizando um delegado nomeado, separando o escopo que genuinamente precisa do julgamento dele do que não precisa, escalando com uma decisão pronta para aprovar, e documentando quem aceitou o risco se a release tiver que seguir sem assinatura.",
+    "Um guia prático para uma aprovação de UAT travada — descobrindo por que o stakeholder realmente sumiu, localizando um delegado nomeado, separando o escopo que genuinamente precisa do julgamento dele do que não precisa, escalando com uma decisão pronta para aprovar e documentando quem aceitou o risco se a release tiver que seguir sem assinatura.",
   category: "UAT",
   tags: ["UAT", "Stakeholders", "Aprovação"],
   author: "Surya",
@@ -43,7 +43,7 @@ export const oStakeholderSumiuNoMeioDaUat: Omit<Playbook, "readingTime"> = {
   itemLabel: "Passo",
   intro: [
     "Os testes acabaram. Os defeitos foram triados e fechados. A única coisa entre o time e o go-live é um e-mail: a aprovação formal de UAT do stakeholder de negócio. Essa pessoa não responde há três dias, e a data da release não vai se mover pela caixa de entrada de ninguém.",
-    "Isso não é um problema de teste, e persegui-lo como se fosse um — mais um e-mail de lembrete, mais um \"só passando para acompanhar\" — geralmente só atrasa descobrir por que a pessoa realmente sumiu. É um problema de disponibilidade vestido de pedido de aprovação, e precisa de um movimento diferente.",
+    "Isso não é um problema de teste, e persegui-lo como se fosse um — mais um e-mail de lembrete, mais um \"só passando para acompanhar\" — geralmente só atrasa descobrir por que a pessoa realmente sumiu. É um problema de disponibilidade vestido de pedido de aprovação e precisa de um movimento diferente.",
     "Nada disso significa pular a aprovação. Significa tirar uma decisão real dessa situação, tomada por alguém com autoridade para tomá-la, documentada o suficiente para que ninguém precise adivinhar depois por que a release saiu do jeito que saiu.",
   ],
   audience: [
@@ -54,13 +54,13 @@ export const oStakeholderSumiuNoMeioDaUat: Omit<Playbook, "readingTime"> = {
   ],
   seoTitle: "O Stakeholder Sumiu no Meio da UAT — Um Guia de BA",
   seoDescription:
-    "Um guia prático de Business Analyst para uma aprovação de UAT travada — encontrando um delegado, separando o escopo genuinamente bloqueado do que não está, escalando com uma decisão pronta, e documentando o risco se a release tiver que seguir sem assinatura.",
+    "Um guia prático de Business Analyst para uma aprovação de UAT travada — encontrando um delegado, separando o escopo genuinamente bloqueado do que não está, escalando com uma decisão pronta e documentando o risco se a release tiver que seguir sem assinatura.",
   closingHeading: [
     "Uma release não espera alguém checar a caixa de entrada.",
     "Mas ela não deveria acontecer em silêncio só porque a pessoa não checou.",
   ],
   closingBody:
-    "Um stakeholder em silêncio é um problema de disponibilidade, não de teste — e precisa de um caminho de escalação, um delegado nomeado, e uma decisão documentada, não de um quarto e-mail de lembrete. Descubra por que a pessoa sumiu, separe o que está realmente bloqueado do que só parece bloqueado, e se o prazo realmente não puder esperar, garanta que o risco de seguir sem assinatura foi aceito por alguém com autoridade para aceitá-lo.",
+    "Um stakeholder em silêncio é um problema de disponibilidade, não de teste — e precisa de um caminho de escalação, um delegado nomeado e uma decisão documentada, não de um quarto e-mail de lembrete. Descubra por que a pessoa sumiu, separe o que está realmente bloqueado do que só parece bloqueado, e se o prazo realmente não puder esperar, garanta que o risco de seguir sem assinatura foi aceito por alguém com autoridade para aceitá-lo.",
   closingTemplate: escalationRiskLog,
   closingTemplateName: "Log de Escalação e Risco de Aprovação de UAT",
   hacks: [
@@ -75,7 +75,7 @@ export const oStakeholderSumiuNoMeioDaUat: Omit<Playbook, "readingTime"> = {
     {
       number: 2,
       title: "Descubra por que a pessoa está em silêncio antes de presumir que está te ignorando",
-      insight: "\"De licença\", \"realocado\", \"sobrecarregado\", e \"não entende o que está aprovando\" são quatro problemas diferentes.",
+      insight: "\"De licença\", \"realocado\", \"sobrecarregado\" e \"não entende o que está aprovando\" são quatro problemas diferentes.",
       list: [
         "De licença ou genuinamente indisponível — precisa de um delegado, não de insistência",
         "Realocado ou não é mais o responsável certo — precisa que a aprovação seja redirecionada para quem assumiu o lugar",
@@ -99,7 +99,7 @@ export const oStakeholderSumiuNoMeioDaUat: Omit<Playbook, "readingTime"> = {
       before: "Um prazo implícito de aprovação-por-silêncio, definido unilateralmente e nunca confirmado com quem tem autoridade para defini-lo.",
       after: [
         "Uma escalação explícita, enviada a um responsável nomeado",
-        "Um prazo declarado para uma resposta real — aprovação, rejeição, ou delegação",
+        "Um prazo declarado para uma resposta real — aprovação, rejeição ou delegação",
         "Um padrão documentado, só se esse padrão em si foi aprovado por alguém sênior o suficiente para assumi-lo",
       ],
       whyItHelps: "Se algo quebrar em produção, \"presumimos que silêncio significava sim\" não é uma aprovação que ninguém consegue apontar.",
@@ -111,7 +111,7 @@ export const oStakeholderSumiuNoMeioDaUat: Omit<Playbook, "readingTime"> = {
       checklist: [
         "Quais cenários de teste ou defeitos genuinamente precisam do julgamento de negócio desse stakeholder?",
         "Quais já foram acordados e só estão esperando por uma formalidade?",
-        "O escopo já acordado pode seguir, ou ir para produção numa release faseada, sozinho?",
+        "O escopo já acordado pode seguir sozinho, ou ir para produção numa release faseada?",
         "A parte bloqueada é pequena o suficiente para segurar separadamente, em vez de atrasar tudo?",
       ],
       whyItHelps: "Uma release não precisa ser tudo ou nada só porque uma pessoa está inacessível — muitas vezes só uma fração do escopo realmente precisa dela.",
@@ -148,7 +148,7 @@ export const oStakeholderSumiuNoMeioDaUat: Omit<Playbook, "readingTime"> = {
       title: "Feche o ciclo depois do go-live, não só antes",
       insight: "O stakeholder reaparecendo depois da release não é o fim da história — é quando a aprovação vira real de verdade.",
       explanation:
-        "Consiga uma confirmação retroativa registrada assim que a pessoa voltar, e use o intervalo que você acabou de viver para adicionar um delegado nomeado ao RACI, para que a próxima release não fique travada na agenda de uma única pessoa de novo.",
+        "Consiga uma confirmação retroativa registrada assim que a pessoa voltar e use o intervalo que você acabou de viver para adicionar um delegado nomeado ao RACI, para que a próxima release não fique travada na agenda de uma única pessoa de novo.",
       whyItHelps: "Sem esse passo, a mesma escalação exata acontece de novo na próxima release — nada sobre a lacuna que causou isso foi realmente corrigido.",
     },
   ],

@@ -8,7 +8,7 @@ ESTÁGIO 1 — ORDEM
 Isso toca a instrução antes de ela ser casada (compra/venda, quantidade, tipo de ordem, conta)?
 
 ESTÁGIO 2 — EXECUÇÃO
-Isso toca a operação casada em si — uma ordem, ou uma de várias execuções parciais?
+Isso toca a operação casada em si — uma ordem ou uma de várias execuções parciais?
 
 ESTÁGIO 3 — ENRIQUECIMENTO E CONFIRMAÇÃO
 Isso toca os detalhes adicionados depois da execução (conta, moeda, instruções de liquidação) ou a confirmação com a contraparte?
@@ -21,15 +21,15 @@ Isso toca a movimentação real de ativos e caixa na data de liquidação?
 
 A qual estágio isso realmente pertence?
 
-"Operação completa", aqui, quer dizer executada, ou liquidada?
+"Operação completa", aqui, quer dizer executada ou liquidada?
 `;
 
 export const cicloDeVidaDaOperacao: Omit<Playbook, "readingTime"> = {
   slug: "ciclo-de-vida-da-operacao",
   title: "Guia do Ciclo de Vida da Operação",
-  description: "Os cinco estágios que uma operação atravessa, e o que um BA verifica em cada um.",
+  description: "Os cinco estágios que uma operação atravessa e o que um BA verifica em cada um.",
   summary:
-    "Uma passagem estágio a estágio por uma operação, da Ordem até a Liquidação — Ordem, Execução, Enriquecimento & Confirmação, Clearing, Liquidação — com o que realmente acontece em cada estágio, onde requisitos quebram em silêncio, e um modelo gratuito de checklist de estágio.",
+    "Uma passagem estágio a estágio por uma operação, da Ordem até a Liquidação — Ordem, Execução, Enriquecimento & Confirmação, Clearing, Liquidação — com o que realmente acontece em cada estágio, onde requisitos quebram em silêncio e um modelo gratuito de checklist de estágio.",
   category: "Capital Markets",
   tags: ["Ciclo de Vida da Operação", "Capital Markets", "Liquidação"],
   author: "Surya",
@@ -38,7 +38,7 @@ export const cicloDeVidaDaOperacao: Omit<Playbook, "readingTime"> = {
   intro: [
     "Seu gestor diz que a mudança está \"no estágio de liquidação\". Você concorda com a cabeça. Mas você não sabe de verdade quantos estágios vêm antes da liquidação, nem o que acontece em cada um — então você não consegue dizer se essa mudança sequer pertence ali.",
     "Uma operação não é um evento só. Do momento em que um cliente diz \"comprar\" até o momento em que ativos e caixa realmente trocam de mãos, ela passa fisicamente por cinco estágios distintos — cada um produzindo um registro diferente, num sistema diferente, sob responsabilidade de um time diferente.",
-    "Front Office, Middle Office e Back Office dizem quem é responsável (veja o outro guia para essa perspectiva). Este aqui é a mecânica — o que entra em cada estágio, o que muda dentro dele, e o que você está realmente confirmando antes de a operação poder avançar para o próximo.",
+    "Front Office, Middle Office e Back Office dizem quem é responsável (veja o outro guia para essa perspectiva). Este aqui é a mecânica — o que entra em cada estágio, o que muda dentro dele e o que você está realmente confirmando antes de a operação poder avançar para o próximo.",
   ],
   audience: [
     "Estagiários e BAs começando seu primeiro projeto de Capital Markets ou ciclo de vida da operação",
@@ -69,7 +69,7 @@ export const cicloDeVidaDaOperacao: Omit<Playbook, "readingTime"> = {
       title: "Ordem — a instrução, antes de qualquer casamento",
       insight: "O ciclo de vida começa com uma instrução, não com uma operação.",
       explanation:
-        "Um cliente instrui um corretor a comprar ou vender — instrumento, quantidade, tipo de ordem (a mercado ou limitada), conta. Essa instrução é uma ordem. Ela ainda não foi casada com ninguém, e talvez nunca seja totalmente casada: pode ser parcialmente executada, cancelada, ou expirar sem execução.",
+        "Um cliente instrui um corretor a comprar ou vender — instrumento, quantidade, tipo de ordem (a mercado ou limitada), conta. Essa instrução é uma ordem. Ela ainda não foi casada com ninguém e talvez nunca seja totalmente casada: pode ser parcialmente executada, cancelada ou expirar sem execução.",
       compare: {
         leftLabel: "Ordem",
         left: "Uma instrução para comprar ou vender. Ainda não executada. Pode ser parcialmente executada, cancelada ou expirar.",
@@ -134,10 +134,10 @@ export const cicloDeVidaDaOperacao: Omit<Playbook, "readingTime"> = {
       insight: "Elas funcionam em praticamente qualquer requisito, defeito ou investigação de processamento de operações.",
       checklist: [
         "A qual estágio isso realmente toca — Ordem, Execução, Enriquecimento & Confirmação, Clearing ou Liquidação?",
-        "Isso é um único registro de operação, ou pode ser vários (execuções parciais, obrigações líquidas)?",
+        "Isso é um único registro de operação ou pode ser vários (execuções parciais, obrigações líquidas)?",
         "Qual é a data de liquidação desse instrumento, e o requisito presume que é no mesmo dia?",
-        "Depois do clearing, de quem é essa obrigação — da contraparte original, ou da câmara de compensação?",
-        "\"Operação completa\", neste requisito, significa executada, ou liquidada?",
+        "Depois do clearing, de quem é essa obrigação — da contraparte original ou da câmara de compensação?",
+        "\"Operação completa\", neste requisito, significa executada ou liquidada?",
       ],
       whyItHelps: "Fazer essas perguntas antes de escrever ou revisar um requisito pega uma lacuna de escopo antes de um desenvolvedor construir contra o estágio errado.",
     },

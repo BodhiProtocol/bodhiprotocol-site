@@ -44,16 +44,16 @@ export const doisPmsDuasPrioridadesDiferentes: Omit<Playbook, "readingTime"> = {
   slug: "dois-pms-duas-prioridades-diferentes",
   title: "Dois PMs, Duas Prioridades Diferentes. Mesma Sprint.",
   description:
-    "Dois product managers, um time compartilhado, e os dois convencidos de que o próprio item é o mais urgente desta sprint. Um guia prático para transformar uma briga por capacidade numa decisão de sequenciamento — sem o BA virar o desempatador acidental.",
+    "Dois product managers, um time compartilhado e os dois convencidos de que o próprio item é o mais urgente desta sprint. Um guia prático para transformar uma briga por capacidade numa decisão de sequenciamento — sem o BA virar o desempatador acidental.",
   summary:
-    "Um guia prático para reconciliar as prioridades concorrentes de dois product managers num único time compartilhado — colocando os dois pedidos no mesmo documento, precificando o custo de não fazer cada um, testando se o conflito é real, e propondo uma opção de sequenciamento em vez de forçar uma escolha binária.",
+    "Um guia prático para reconciliar as prioridades concorrentes de dois product managers num único time compartilhado — colocando os dois pedidos no mesmo documento, precificando o custo de não fazer cada um, testando se o conflito é real e propondo uma opção de sequenciamento em vez de forçar uma escolha binária.",
   category: "Business Analysis",
   tags: ["Stakeholders", "Priorização", "Capacidade"],
   author: "Surya",
   date: "2026-08-22",
   itemLabel: "Passo",
   intro: [
-    "Dois product managers compartilham o mesmo time de entrega. Cada um tem seu próprio backlog, seus próprios stakeholders, e seu próprio item que decidiram ser a prioridade máxima desta sprint — e o time só tem capacidade para um dos dois, talvez.",
+    "Dois product managers compartilham o mesmo time de entrega. Cada um tem seu próprio backlog, seus próprios stakeholders e seu próprio item que decidiram ser a prioridade máxima desta sprint — e o time só tem capacidade para um dos dois, talvez.",
     "Cada PM tem conversado com o BA separadamente, em reuniões separadas, defendendo o próprio caso. Nenhum dos dois ouviu o do outro. Esse costuma ser o problema real — não que as duas prioridades sejam irreconciliáveis, mas que ninguém as comparou contra o mesmo número, na mesma sala, ao mesmo tempo.",
     "O BA entre dois PMs não está ali para escolher um vencedor. O trabalho é tornar o trade-off visível o suficiente para que a pessoa certa — às vezes são os dois PMs juntos, às vezes é para quem os dois se reportam — consiga realmente tomar a decisão.",
   ],
@@ -65,13 +65,13 @@ export const doisPmsDuasPrioridadesDiferentes: Omit<Playbook, "readingTime"> = {
   ],
   seoTitle: "Dois PMs, Duas Prioridades Diferentes — Um Guia de BA",
   seoDescription:
-    "Um guia prático de Business Analyst para dois product managers competindo pela mesma capacidade de sprint — comparando os dois pedidos contra o mesmo número, testando se o conflito é real, e propondo uma opção de sequenciamento em vez de uma escolha binária.",
+    "Um guia prático de Business Analyst para dois product managers competindo pela mesma capacidade de sprint — comparando os dois pedidos contra o mesmo número, testando se o conflito é real e propondo uma opção de sequenciamento em vez de uma escolha binária.",
   closingHeading: [
     "O trabalho do BA não é decidir qual prioridade vence.",
     "É garantir que o trade-off fique visível antes de alguém precisar decidir.",
   ],
   closingBody:
-    "Dois PMs raramente precisam de um árbitro — precisam dos dois pedidos lado a lado contra o mesmo número de capacidade, na mesma conversa, em vez de duas separadas. Precifique o custo de não fazer cada item, verifique se o conflito é real, e ofereça uma opção de sequenciamento antes de forçar alguém a uma escolha binária. Se ainda assim continuar genuinamente sem solução, escale para quem os dois PMs se reportam — isso é uma decisão de prioridade organizacional, não uma decisão do BA.",
+    "Dois PMs raramente precisam de um árbitro — precisam dos dois pedidos lado a lado contra o mesmo número de capacidade, na mesma conversa, em vez de duas separadas. Precifique o custo de não fazer cada item, verifique se o conflito é real e ofereça uma opção de sequenciamento antes de forçar alguém a uma escolha binária. Se ainda assim continuar genuinamente sem solução, escale para quem os dois PMs se reportam — isso é uma decisão de prioridade organizacional, não uma decisão do BA.",
   closingTemplate: capacityReconciliationSheet,
   closingTemplateName: "Planilha de Reconciliação de Capacidade e Prioridade Entre Dois PMs",
   hacks: [
@@ -100,10 +100,10 @@ export const doisPmsDuasPrioridadesDiferentes: Omit<Playbook, "readingTime"> = {
       title: "Verifique se o conflito é real antes de tratá-lo como um",
       insight: "Às vezes duas prioridades \"concorrentes\" nem tocam a mesma capacidade quando você olha de perto.",
       list: [
-        "Os dois itens precisam dos mesmos engenheiros, ou de engenheiros diferentes?",
-        "Eles tocam o mesmo sistema, ou sistemas genuinamente separados?",
+        "Os dois itens precisam dos mesmos engenheiros ou de engenheiros diferentes?",
+        "Eles tocam o mesmo sistema ou sistemas genuinamente separados?",
         "Um poderia rodar nesta sprint e o outro na próxima, sem perda real para nenhum dos dois?",
-        "O desacordo é sobre sequenciamento, ou sobre algo que só soa como um conflito de recursos?",
+        "O desacordo é sobre sequenciamento ou sobre algo que só soa como um conflito de recursos?",
       ],
       whyItHelps: "Um conflito fabricado, resolvido como se fosse real, só ensina os dois PMs a escalar mais forte da próxima vez.",
     },
@@ -111,7 +111,7 @@ export const doisPmsDuasPrioridadesDiferentes: Omit<Playbook, "readingTime"> = {
       number: 4,
       title: "Coloque a restrição de capacidade na frente dos dois PMs ao mesmo tempo",
       insight: "Dois 1:1s separados deixam cada PM acreditar que o item do outro é essencialmente de graça.",
-      before: "O BA ouve a Prioridade A numa reunião e a Prioridade B em outra, e depois tenta reconciliá-las sozinho.",
+      before: "O BA ouve a Prioridade A numa reunião e a Prioridade B em outra e depois tenta reconciliá-las sozinho.",
       after: [
         "Uma conversa compartilhada, com os dois PMs presentes",
         "Um número de capacidade declarado claramente: \"Esta sprint tem 40 pontos. Só esses dois backlogs pedem 65.\"",
@@ -144,7 +144,7 @@ export const doisPmsDuasPrioridadesDiferentes: Omit<Playbook, "readingTime"> = {
       number: 7,
       title: "Registre a decisão onde os dois PMs consigam ver — e por quê",
       insight: "Uma decisão de sequenciamento não documentada é silenciosamente rediscutida no momento em que qualquer um dos PMs esquece o raciocínio.",
-      whyItHelps: "Uma nota curta e compartilhada de justificativa — o que foi decidido, e por quê — é o que impede a mesma briga de ressurgir palavra por palavra na próxima sprint.",
+      whyItHelps: "Uma nota curta e compartilhada de justificativa — o que foi decidido e por quê — é o que impede a mesma briga de ressurgir palavra por palavra na próxima sprint.",
       whenToUse: "No momento em que uma decisão de sequenciamento é tomada, antes de qualquer um dos PMs seguir para o próximo pedido.",
     },
     {
