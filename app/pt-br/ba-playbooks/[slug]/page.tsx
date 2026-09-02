@@ -16,6 +16,8 @@ import { QuemEODonoDoRequisitoBody } from "@/components/ba-playbooks/quem-e-o-do
 import { ReleaseEAmanhaORequisitoMudouHojeBody } from "@/components/ba-playbooks/a-release-e-amanha-o-requisito-mudou-hoje-body";
 import { TodoMundoQuerUmaCoisaDiferenteBody } from "@/components/ba-playbooks/todo-mundo-quer-uma-coisa-diferente-body";
 import { OQueOBaDeveChecarAntesDaUatBody } from "@/components/ba-playbooks/o-que-o-ba-deve-checar-antes-da-uat-body";
+import { AStoryFoiArrastadaPorQuatroSprintsBody } from "@/components/ba-playbooks/a-story-foi-arrastada-por-quatro-sprints-body";
+import { OQueFrontOfficeMiddleOfficeEBackOfficeFazemBody } from "@/components/ba-playbooks/o-que-front-office-middle-office-e-back-office-fazem-body";
 import { JsonLd } from "@/components/shared/json-ld";
 import { getPlaybookPtBrBySlug, getPlaybookPtBrSlugs } from "@/lib/ba-playbooks-pt-br";
 import { getEnSlugForPtBrSlug } from "@/lib/ba-playbooks-i18n";
@@ -33,6 +35,8 @@ const customPlaybookBodies: Partial<Record<string, () => ReactNode>> = {
   "a-release-e-amanha-o-requisito-mudou-hoje": ReleaseEAmanhaORequisitoMudouHojeBody,
   "todo-mundo-quer-uma-coisa-diferente": TodoMundoQuerUmaCoisaDiferenteBody,
   "o-que-o-ba-deve-checar-antes-da-uat": OQueOBaDeveChecarAntesDaUatBody,
+  "a-story-foi-arrastada-por-quatro-sprints": AStoryFoiArrastadaPorQuatroSprintsBody,
+  "o-que-front-office-middle-office-e-back-office-fazem": OQueFrontOfficeMiddleOfficeEBackOfficeFazemBody,
 };
 
 export function generateStaticParams() {

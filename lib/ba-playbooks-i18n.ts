@@ -105,6 +105,16 @@ export const playbookTranslations: PlaybookTranslationPair[] = [
     enSlug: "pre-uat-readiness-checklist",
     ptBrSlug: "o-que-o-ba-deve-checar-antes-da-uat",
   },
+  {
+    id: "story-carried-over-four-sprints",
+    enSlug: "story-carried-over-four-sprints",
+    ptBrSlug: "a-story-foi-arrastada-por-quatro-sprints",
+  },
+  {
+    id: "front-office-middle-office-back-office",
+    enSlug: "front-office-middle-office-back-office",
+    ptBrSlug: "o-que-front-office-middle-office-e-back-office-fazem",
+  },
 ];
 
 export function getPtBrSlugForEnSlug(enSlug: string): string | undefined {
