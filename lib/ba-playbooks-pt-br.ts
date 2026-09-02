@@ -16,6 +16,8 @@ import { oRequisitoMudouNoMeioDaSprint } from "@/content/ba-playbooks-pt-br/o-re
 import { oBatchRodouComSucessoPorQueOsDadosSumiram } from "@/content/ba-playbooks-pt-br/o-batch-rodou-com-sucesso-por-que-os-dados-sumiram";
 import { aStoryEstaProntaPorQueNaoConseguimosLiberar } from "@/content/ba-playbooks-pt-br/a-story-esta-pronta-por-que-nao-conseguimos-liberar";
 import { defeitoOuComportamentoEsperado } from "@/content/ba-playbooks-pt-br/defeito-ou-comportamento-esperado";
+import { quemEODonoDoRequisito } from "@/content/ba-playbooks-pt-br/quem-e-o-dono-do-requisito";
+import { releaseEAmanhaORequisitoMudouHoje } from "@/content/ba-playbooks-pt-br/a-release-e-amanha-o-requisito-mudou-hoje";
 
 // Same array-of-modules pattern as lib/ba-playbooks.ts. Add a new
 // content/ba-playbooks-pt-br/<slug>.ts module and an entry here once a
@@ -36,6 +38,8 @@ const playbookEntries: Omit<Playbook, "readingTime">[] = [
   oBatchRodouComSucessoPorQueOsDadosSumiram,
   aStoryEstaProntaPorQueNaoConseguimosLiberar,
   defeitoOuComportamentoEsperado,
+  quemEODonoDoRequisito,
+  releaseEAmanhaORequisitoMudouHoje,
 ];
 
 function withReadingTime(guide: Omit<Playbook, "readingTime">): Playbook {

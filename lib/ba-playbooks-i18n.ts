@@ -85,6 +85,16 @@ export const playbookTranslations: PlaybookTranslationPair[] = [
     enSlug: "defect-vs-expected-behaviour",
     ptBrSlug: "defeito-ou-comportamento-esperado",
   },
+  {
+    id: "who-owns-the-requirement",
+    enSlug: "who-owns-the-requirement",
+    ptBrSlug: "quem-e-o-dono-do-requisito",
+  },
+  {
+    id: "release-tomorrow-requirement-changed-today",
+    enSlug: "release-tomorrow-requirement-changed-today",
+    ptBrSlug: "a-release-e-amanha-o-requisito-mudou-hoje",
+  },
 ];
 
 export function getPtBrSlugForEnSlug(enSlug: string): string | undefined {
