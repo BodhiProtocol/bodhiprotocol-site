@@ -6,6 +6,7 @@ import { comoEscreverCriteriosDeAceitacao } from "@/content/ba-playbooks-pt-br/c
 import { cicloDeVidaDaOperacao } from "@/content/ba-playbooks-pt-br/ciclo-de-vida-da-operacao";
 import { doisSistemasMostramNumerosDiferentes } from "@/content/ba-playbooks-pt-br/dois-sistemas-mostram-numeros-diferentes";
 import { primeiraVezTrabalhandoComUmaApi } from "@/content/ba-playbooks-pt-br/primeira-vez-trabalhando-com-uma-api";
+import { guiaDeElicitacaoDeRequisitos } from "@/content/ba-playbooks-pt-br/guia-de-elicitacao-de-requisitos";
 
 // Same array-of-modules pattern as lib/ba-playbooks.ts. Add a new
 // content/ba-playbooks-pt-br/<slug>.ts module and an entry here once a
@@ -16,6 +17,7 @@ const playbookEntries: Omit<Playbook, "readingTime">[] = [
   cicloDeVidaDaOperacao,
   doisSistemasMostramNumerosDiferentes,
   primeiraVezTrabalhandoComUmaApi,
+  guiaDeElicitacaoDeRequisitos,
 ];
 
 function withReadingTime(guide: Omit<Playbook, "readingTime">): Playbook {

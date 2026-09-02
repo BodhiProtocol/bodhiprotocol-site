@@ -35,6 +35,11 @@ export const playbookTranslations: PlaybookTranslationPair[] = [
     enSlug: "first-time-working-with-an-api",
     ptBrSlug: "primeira-vez-trabalhando-com-uma-api",
   },
+  {
+    id: "requirement-elicitation",
+    enSlug: "requirement-elicitation-playbook",
+    ptBrSlug: "guia-de-elicitacao-de-requisitos",
+  },
 ];
 
 export function getPtBrSlugForEnSlug(enSlug: string): string | undefined {
