@@ -7,6 +7,10 @@ import { dicasDeJiraParaAnalistasDeNegocios } from "@/content/ba-playbooks-pt-br
 import { guiaDeLevantamentoDeRequisitos } from "@/content/ba-playbooks-pt-br/guia-de-levantamento-de-requisitos";
 import { primeiraVezTrabalhandoComUmaApi } from "@/content/ba-playbooks-pt-br/primeira-vez-trabalhando-com-uma-api";
 import { doisSistemasMostramNumerosDiferentes } from "@/content/ba-playbooks-pt-br/dois-sistemas-mostram-numeros-diferentes";
+import { requisitoParaMudancaRegulatoria } from "@/content/ba-playbooks-pt-br/requisito-para-mudanca-regulatoria";
+import { cicloDeVidaDaOperacao } from "@/content/ba-playbooks-pt-br/ciclo-de-vida-da-operacao";
+import { oStakeholderSumiuNoMeioDaUat } from "@/content/ba-playbooks-pt-br/o-stakeholder-sumiu-no-meio-da-uat";
+import { doisPmsDuasPrioridadesDiferentes } from "@/content/ba-playbooks-pt-br/dois-pms-duas-prioridades-diferentes";
 
 // Same array-of-modules pattern as lib/ba-playbooks.ts. Add a new
 // content/ba-playbooks-pt-br/<slug>.ts module and an entry here once a
@@ -18,6 +22,10 @@ const playbookEntries: Omit<Playbook, "readingTime">[] = [
   guiaDeLevantamentoDeRequisitos,
   primeiraVezTrabalhandoComUmaApi,
   doisSistemasMostramNumerosDiferentes,
+  requisitoParaMudancaRegulatoria,
+  cicloDeVidaDaOperacao,
+  oStakeholderSumiuNoMeioDaUat,
+  doisPmsDuasPrioridadesDiferentes,
 ];
 
 function withReadingTime(guide: Omit<Playbook, "readingTime">): Playbook {

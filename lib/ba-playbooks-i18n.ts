@@ -40,6 +40,26 @@ export const playbookTranslations: PlaybookTranslationPair[] = [
     enSlug: "two-systems-show-different-numbers",
     ptBrSlug: "dois-sistemas-mostram-numeros-diferentes",
   },
+  {
+    id: "regulatory-change-requirement",
+    enSlug: "regulatory-change-requirement-playbook",
+    ptBrSlug: "requisito-para-mudanca-regulatoria",
+  },
+  {
+    id: "trade-lifecycle",
+    enSlug: "trade-lifecycle-playbook",
+    ptBrSlug: "ciclo-de-vida-da-operacao",
+  },
+  {
+    id: "stakeholder-quiet-mid-uat",
+    enSlug: "stakeholder-went-quiet-mid-uat",
+    ptBrSlug: "o-stakeholder-sumiu-no-meio-da-uat",
+  },
+  {
+    id: "two-pms-two-priorities",
+    enSlug: "two-pms-two-different-priorities",
+    ptBrSlug: "dois-pms-duas-prioridades-diferentes",
+  },
 ];
 
 export function getPtBrSlugForEnSlug(enSlug: string): string | undefined {
