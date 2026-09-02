@@ -125,6 +125,21 @@ export const playbookTranslations: PlaybookTranslationPair[] = [
     enSlug: "uat-passed-production-failed",
     ptBrSlug: "funcionou-na-uat-por-que-falhou-em-producao",
   },
+  {
+    id: "business-analyst-user-story-template",
+    enSlug: "business-analyst-user-story-template",
+    ptBrSlug: "modelo-de-user-story-para-business-analyst",
+  },
+  {
+    id: "impact-analysis-template",
+    enSlug: "impact-analysis-template",
+    ptBrSlug: "modelo-de-analise-de-impacto",
+  },
+  {
+    id: "new-project-discovery-playbook",
+    enSlug: "new-project-discovery-playbook",
+    ptBrSlug: "guia-de-descoberta-de-novo-projeto",
+  },
 ];
 
 export function getPtBrSlugForEnSlug(enSlug: string): string | undefined {

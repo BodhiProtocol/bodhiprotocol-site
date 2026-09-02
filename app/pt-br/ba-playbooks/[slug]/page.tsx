@@ -20,6 +20,9 @@ import { AStoryFoiArrastadaPorQuatroSprintsBody } from "@/components/ba-playbook
 import { OQueFrontOfficeMiddleOfficeEBackOfficeFazemBody } from "@/components/ba-playbooks/o-que-front-office-middle-office-e-back-office-fazem-body";
 import { NinguemConsegueReproduzirOProblemaEmProducaoBody } from "@/components/ba-playbooks/ninguem-consegue-reproduzir-o-problema-em-producao-body";
 import { FuncionouNaUatPorQueFalhouEmProducaoBody } from "@/components/ba-playbooks/funcionou-na-uat-por-que-falhou-em-producao-body";
+import { ModeloDeUserStoryParaBusinessAnalystBody } from "@/components/ba-playbooks/modelo-de-user-story-para-business-analyst-body";
+import { ModeloDeAnaliseDeImpactoBody } from "@/components/ba-playbooks/modelo-de-analise-de-impacto-body";
+import { GuiaDeDescobertaDeNovoProjetoBody } from "@/components/ba-playbooks/guia-de-descoberta-de-novo-projeto-body";
 import { JsonLd } from "@/components/shared/json-ld";
 import { getPlaybookPtBrBySlug, getPlaybookPtBrSlugs } from "@/lib/ba-playbooks-pt-br";
 import { getEnSlugForPtBrSlug } from "@/lib/ba-playbooks-i18n";
@@ -41,6 +44,9 @@ const customPlaybookBodies: Partial<Record<string, () => ReactNode>> = {
   "o-que-front-office-middle-office-e-back-office-fazem": OQueFrontOfficeMiddleOfficeEBackOfficeFazemBody,
   "ninguem-consegue-reproduzir-o-problema-em-producao": NinguemConsegueReproduzirOProblemaEmProducaoBody,
   "funcionou-na-uat-por-que-falhou-em-producao": FuncionouNaUatPorQueFalhouEmProducaoBody,
+  "modelo-de-user-story-para-business-analyst": ModeloDeUserStoryParaBusinessAnalystBody,
+  "modelo-de-analise-de-impacto": ModeloDeAnaliseDeImpactoBody,
+  "guia-de-descoberta-de-novo-projeto": GuiaDeDescobertaDeNovoProjetoBody,
 };
 
 export function generateStaticParams() {
