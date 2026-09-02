@@ -102,7 +102,7 @@ export const oStakeholderSumiuNoMeioDaUat: Omit<Playbook, "readingTime"> = {
         "Um prazo declarado para uma resposta real — aprovação, rejeição ou delegação",
         "Um padrão documentado, só se esse padrão em si foi aprovado por alguém sênior o suficiente para assumi-lo",
       ],
-      whyItHelps: "Se algo quebrar em produção, \"presumimos que silêncio significava sim\" não é uma aprovação que ninguém consegue apontar.",
+      whyItHelps: "Se algo quebrar em produção, \"presumimos que silêncio significava sim\" não é uma aprovação que alguém consiga apontar.",
     },
     {
       number: 5,
@@ -111,7 +111,7 @@ export const oStakeholderSumiuNoMeioDaUat: Omit<Playbook, "readingTime"> = {
       checklist: [
         "Quais cenários de teste ou defeitos genuinamente precisam do julgamento de negócio desse stakeholder?",
         "Quais já foram acordados e só estão esperando por uma formalidade?",
-        "O escopo já acordado pode seguir sozinho, ou ir para produção numa release faseada?",
+        "O escopo já acordado pode seguir sozinho ou ir para produção numa release faseada?",
         "A parte bloqueada é pequena o suficiente para segurar separadamente, em vez de atrasar tudo?",
       ],
       whyItHelps: "Uma release não precisa ser tudo ou nada só porque uma pessoa está inacessível — muitas vezes só uma fração do escopo realmente precisa dela.",
@@ -140,13 +140,13 @@ export const oStakeholderSumiuNoMeioDaUat: Omit<Playbook, "readingTime"> = {
           "→ Consiga a aceitação datada e por escrito",
         ],
       },
-      whyItHelps: "Um BA decidindo sozinho, em silêncio, liberar sem aprovação é um único ponto de culpa esperando para acontecer. Um risco documentado e aceito por alguém sênior é uma decisão de negócio.",
+      whyItHelps: "Um BA que decide, sozinho e em silêncio, liberar sem aprovação é um único ponto de culpa esperando para acontecer. Um risco documentado e aceito por alguém sênior é uma decisão de negócio.",
       proTip: "Escreva o risco em termos de impacto de negócio, não de processo — \"clientes podem ver X no cenário Y\" chega mais rápido a quem decide do que \"a aprovação de UAT está pendente\".",
     },
     {
       number: 8,
       title: "Feche o ciclo depois do go-live, não só antes",
-      insight: "O stakeholder reaparecendo depois da release não é o fim da história — é quando a aprovação vira real de verdade.",
+      insight: "O stakeholder reaparecendo depois da release não é o fim da história — é quando a aprovação vira realidade.",
       explanation:
         "Consiga uma confirmação retroativa registrada assim que a pessoa voltar e use o intervalo que você acabou de viver para adicionar um delegado nomeado ao RACI, para que a próxima release não fique travada na agenda de uma única pessoa de novo.",
       whyItHelps: "Sem esse passo, a mesma escalação exata acontece de novo na próxima release — nada sobre a lacuna que causou isso foi realmente corrigido.",

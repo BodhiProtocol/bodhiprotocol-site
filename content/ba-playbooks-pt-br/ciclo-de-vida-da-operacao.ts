@@ -10,7 +10,7 @@ Isso toca a instrução antes de ela ser casada (compra/venda, quantidade, tipo 
 ESTÁGIO 2 — EXECUÇÃO
 Isso toca a operação casada em si — uma ordem ou uma de várias execuções parciais?
 
-ESTÁGIO 3 — ENRIQUECIMENTO E CONFIRMAÇÃO
+ESTÁGIO 3 — ENRIQUECIMENTO & CONFIRMAÇÃO
 Isso toca os detalhes adicionados depois da execução (conta, moeda, instruções de liquidação) ou a confirmação com a contraparte?
 
 ESTÁGIO 4 — CLEARING
@@ -36,13 +36,13 @@ export const cicloDeVidaDaOperacao: Omit<Playbook, "readingTime"> = {
   date: "2026-08-15",
   itemLabel: "Estágio",
   intro: [
-    "Seu gestor diz que a mudança está \"no estágio de liquidação\". Você concorda com a cabeça. Mas você não sabe de verdade quantos estágios vêm antes da liquidação, nem o que acontece em cada um — então você não consegue dizer se essa mudança sequer pertence ali.",
+    "Seu gestor diz que a mudança está \"no estágio de liquidação\". Você acena com a cabeça. Mas você não sabe de verdade quantos estágios vêm antes da liquidação, nem o que acontece em cada um — então você não consegue dizer se essa mudança sequer pertence ali.",
     "Uma operação não é um evento só. Do momento em que um cliente diz \"comprar\" até o momento em que ativos e caixa realmente trocam de mãos, ela passa fisicamente por cinco estágios distintos — cada um produzindo um registro diferente, num sistema diferente, sob responsabilidade de um time diferente.",
     "Front Office, Middle Office e Back Office dizem quem é responsável (veja o outro guia para essa perspectiva). Este aqui é a mecânica — o que entra em cada estágio, o que muda dentro dele e o que você está realmente confirmando antes de a operação poder avançar para o próximo.",
   ],
   audience: [
-    "Estagiários e BAs começando seu primeiro projeto de Capital Markets ou ciclo de vida da operação",
-    "BAs que conhecem as responsabilidades de Front/Middle/Back Office mas não sabem o que acontece dentro de cada estágio",
+    "Recém-formados e BAs começando seu primeiro projeto de Capital Markets ou ciclo de vida da operação",
+    "BAs que conhecem as responsabilidades de Front/Middle/Back Office, mas não sabem o que acontece dentro de cada estágio",
     "QAs e desenvolvedores tentando descobrir a qual estágio um defeito realmente pertence",
     "Qualquer um prestes a escrever um requisito que toca o processamento de operações",
   ],
@@ -88,7 +88,7 @@ export const cicloDeVidaDaOperacao: Omit<Playbook, "readingTime"> = {
     },
     {
       number: 4,
-      title: "Enriquecimento e Confirmação — a operação recebe o que precisa para liquidar",
+      title: "Enriquecimento & Confirmação — a operação recebe o que precisa para liquidar",
       insight: "Uma operação recém-executada ainda não carrega o que a liquidação precisa — isso é adicionado logo depois.",
       explanation:
         "A execução só produz instrumento, quantidade, preço e contraparte. O Middle Office enriquece essa operação bruta com dados de referência — conta do comprador, moeda, instruções padrão de liquidação — e então confirma que esses detalhes batem com a contraparte antes de qualquer um se comprometer a liquidar.",
@@ -110,9 +110,9 @@ export const cicloDeVidaDaOperacao: Omit<Playbook, "readingTime"> = {
       title: "Liquidação — ativos e caixa realmente trocam de mãos",
       insight: "Esse é o único estágio em que algo se move fisicamente.",
       explanation:
-        "Na data de liquidação, a depositária (NSDL ou CDSL na Índia; no Brasil, a B3) move os ativos do vendedor para o comprador enquanto o caixa se move na direção oposta — feito junto, como Entrega contra Pagamento (DvP), para que nenhum dos lados entregue a sua parte sem receber a do outro. A data de liquidação não é o mesmo dia da execução; para ações à vista na Índia, costuma ser o próximo dia útil (T+1).",
+        "Na data de liquidação, a depositária (NSDL ou CDSL na Índia; no Brasil, a B3) move os ativos do vendedor para o comprador enquanto o caixa se move na direção oposta — feito junto, como Entrega contra Pagamento (DvP), para que nenhum dos lados entregue a sua parte sem receber a do outro. A data de liquidação não é o mesmo dia da execução; para ações à vista na Índia, costuma ser o próximo dia de pregão (T+1).",
       before: "Painel: \"Operação completa\" (significa: executada).",
-      after: "Painel: \"Operação liquidada\" (significa: ativos creditados na conta do comprador, caixa debitado e creditado entre os custodiantes).",
+      after: "Painel: \"Operação liquidada\" (significa: ativos creditados na conta demat do comprador, caixa debitado e creditado entre os custodiantes).",
       whyItHelps: "\"Operação completa\" numa tela de front-end costuma significar executada, não liquidada — e o intervalo entre as duas pode ser um dia inteiro ou mais, que é exatamente a janela onde falhas de liquidação moram.",
     },
     {

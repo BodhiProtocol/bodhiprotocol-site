@@ -111,7 +111,7 @@ export const doisPmsDuasPrioridadesDiferentes: Omit<Playbook, "readingTime"> = {
       number: 4,
       title: "Coloque a restrição de capacidade na frente dos dois PMs ao mesmo tempo",
       insight: "Dois 1:1s separados deixam cada PM acreditar que o item do outro é essencialmente de graça.",
-      before: "O BA ouve a Prioridade A numa reunião e a Prioridade B em outra e depois tenta reconciliá-las sozinho.",
+      before: "O BA ouve a Prioridade A numa reunião e a Prioridade B em outra, e depois tenta reconciliá-las sozinho.",
       after: [
         "Uma conversa compartilhada, com os dois PMs presentes",
         "Um número de capacidade declarado claramente: \"Esta sprint tem 40 pontos. Só esses dois backlogs pedem 65.\"",

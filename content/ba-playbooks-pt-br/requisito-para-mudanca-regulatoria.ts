@@ -104,7 +104,7 @@ export const requisitoParaMudancaRegulatoria: Omit<Playbook, "readingTime"> = {
       insight: "O vocabulário do regulamento raramente bate com o que a Operação chama a mesma coisa no dia a dia.",
       list: [
         "\"Operação Reportável\" — inclui novações, terminações parciais, alocações?",
-        "\"Execução\" — data da operação, horário da confirmação ou horário de registro no sistema de referência?",
+        "\"Execução\" — data da operação, horário da confirmação ou horário registrado no sistema-fonte?",
         "\"Contraparte\" — a entidade legal na confirmação ou a controladora final?",
         "\"Dia útil\" — o calendário de quem e em qual fuso horário?",
       ],
