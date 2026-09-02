@@ -18,7 +18,7 @@ function AStoryFoiArrastadaPorQuatroSprintsBody() {
         <strong>ABC-142.</strong>
       </p>
       <p>Mesmo título.</p>
-      <p>Mesma pontuação.</p>
+      <p>Mesma pontuação de story.</p>
       <p>Mesma sensação levemente incômoda quando alguém pergunta:</p>
       <blockquote>&ldquo;O que falta nessa aí?&rdquo;</blockquote>
       <p>Alguém diz:</p>
