@@ -18,6 +18,8 @@ import { TodoMundoQuerUmaCoisaDiferenteBody } from "@/components/ba-playbooks/to
 import { OQueOBaDeveChecarAntesDaUatBody } from "@/components/ba-playbooks/o-que-o-ba-deve-checar-antes-da-uat-body";
 import { AStoryFoiArrastadaPorQuatroSprintsBody } from "@/components/ba-playbooks/a-story-foi-arrastada-por-quatro-sprints-body";
 import { OQueFrontOfficeMiddleOfficeEBackOfficeFazemBody } from "@/components/ba-playbooks/o-que-front-office-middle-office-e-back-office-fazem-body";
+import { NinguemConsegueReproduzirOProblemaEmProducaoBody } from "@/components/ba-playbooks/ninguem-consegue-reproduzir-o-problema-em-producao-body";
+import { FuncionouNaUatPorQueFalhouEmProducaoBody } from "@/components/ba-playbooks/funcionou-na-uat-por-que-falhou-em-producao-body";
 import { JsonLd } from "@/components/shared/json-ld";
 import { getPlaybookPtBrBySlug, getPlaybookPtBrSlugs } from "@/lib/ba-playbooks-pt-br";
 import { getEnSlugForPtBrSlug } from "@/lib/ba-playbooks-i18n";
@@ -37,6 +39,8 @@ const customPlaybookBodies: Partial<Record<string, () => ReactNode>> = {
   "o-que-o-ba-deve-checar-antes-da-uat": OQueOBaDeveChecarAntesDaUatBody,
   "a-story-foi-arrastada-por-quatro-sprints": AStoryFoiArrastadaPorQuatroSprintsBody,
   "o-que-front-office-middle-office-e-back-office-fazem": OQueFrontOfficeMiddleOfficeEBackOfficeFazemBody,
+  "ninguem-consegue-reproduzir-o-problema-em-producao": NinguemConsegueReproduzirOProblemaEmProducaoBody,
+  "funcionou-na-uat-por-que-falhou-em-producao": FuncionouNaUatPorQueFalhouEmProducaoBody,
 };
 
 export function generateStaticParams() {

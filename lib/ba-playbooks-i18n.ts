@@ -115,6 +115,16 @@ export const playbookTranslations: PlaybookTranslationPair[] = [
     enSlug: "front-office-middle-office-back-office",
     ptBrSlug: "o-que-front-office-middle-office-e-back-office-fazem",
   },
+  {
+    id: "nobody-can-reproduce-the-production-issue",
+    enSlug: "nobody-can-reproduce-the-production-issue",
+    ptBrSlug: "ninguem-consegue-reproduzir-o-problema-em-producao",
+  },
+  {
+    id: "uat-passed-production-failed",
+    enSlug: "uat-passed-production-failed",
+    ptBrSlug: "funcionou-na-uat-por-que-falhou-em-producao",
+  },
 ];
 
 export function getPtBrSlugForEnSlug(enSlug: string): string | undefined {
