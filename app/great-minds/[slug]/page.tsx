@@ -109,6 +109,8 @@ import { FeynmanPropagatorDiagram } from "@/components/great-minds/feynman-propa
 import { FeynmanHeroBackground } from "@/components/great-minds/feynman-hero-background";
 import { SreedharanReverseTimelineDiagram } from "@/components/great-minds/sreedharan-reverse-timeline-diagram";
 import { SreedharanHeroBackground } from "@/components/great-minds/sreedharan-hero-background";
+import { PatelIntegrationDiagram } from "@/components/great-minds/patel-integration-diagram";
+import { PatelHeroBackground } from "@/components/great-minds/patel-hero-background";
 import { MindGraphProvider } from "@/components/great-minds/mind-graph-context";
 import { getAllGreatMinds, getGreatMindBySlug, type GreatMindWithContent } from "@/lib/great-minds";
 import { mdxOptions } from "@/lib/mdx-options";
@@ -161,6 +163,7 @@ const heroDiagrams: Record<string, (mind: GreatMindWithContent) => ReactNode> = 
   "ibn-khaldun": (mind) => <IbnKhaldunCycleDiagram nodes={mind.wheel} />,
   "richard-feynman": (mind) => <FeynmanPropagatorDiagram nodes={mind.wheel} />,
   "e-sreedharan": (mind) => <SreedharanReverseTimelineDiagram nodes={mind.wheel} />,
+  "sardar-vallabhbhai-patel": (mind) => <PatelIntegrationDiagram nodes={mind.wheel} />,
 };
 
 const heroBackgrounds: Record<string, ReactNode> = {
@@ -207,6 +210,7 @@ const heroBackgrounds: Record<string, ReactNode> = {
   "ibn-khaldun": <IbnKhaldunHeroBackground />,
   "richard-feynman": <FeynmanHeroBackground />,
   "e-sreedharan": <SreedharanHeroBackground />,
+  "sardar-vallabhbhai-patel": <PatelHeroBackground />,
 };
 
 interface GreatMindPageProps {
