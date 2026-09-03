@@ -9,6 +9,7 @@ import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/layout/logo";
 import { useLanguageTargets } from "@/components/layout/language-switcher";
+import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { isNavLinkActive, navLinks, seriesLinks } from "@/lib/nav-links";
 import { cn } from "@/lib/utils";
 
@@ -52,15 +53,18 @@ function MobileDrawer({ open, onOpenChange }: MobileDrawerProps) {
           >
             <div className="flex items-center justify-between">
               <Logo />
-              <Button
-                variant="ghost"
-                size="icon"
-                aria-label="Close menu"
-                autoFocus
-                onClick={() => onOpenChange(false)}
-              >
-                <X className="size-5" />
-              </Button>
+              <div className="flex items-center gap-1">
+                <ThemeToggle />
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  aria-label="Close menu"
+                  autoFocus
+                  onClick={() => onOpenChange(false)}
+                >
+                  <X className="size-5" />
+                </Button>
+              </div>
             </div>
             <nav className="flex flex-col gap-1">
               {navLinks.slice(0, 2).map((link, index) => (
