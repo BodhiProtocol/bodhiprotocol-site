@@ -123,6 +123,8 @@ import { NightingaleRoseDiagram } from "@/components/great-minds/nightingale-ros
 import { NightingaleHeroBackground } from "@/components/great-minds/nightingale-hero-background";
 import { OhnoPullSystemDiagram } from "@/components/great-minds/ohno-pull-system-diagram";
 import { OhnoHeroBackground } from "@/components/great-minds/ohno-hero-background";
+import { HopperCompilerDiagram } from "@/components/great-minds/hopper-compiler-diagram";
+import { HopperHeroBackground } from "@/components/great-minds/hopper-hero-background";
 import { MindGraphProvider } from "@/components/great-minds/mind-graph-context";
 import { getAllGreatMinds, getGreatMindBySlug, type GreatMindWithContent } from "@/lib/great-minds";
 import { mdxOptions } from "@/lib/mdx-options";
@@ -182,6 +184,7 @@ const heroDiagrams: Record<string, (mind: GreatMindWithContent) => ReactNode> = 
   "alexander-graham-bell": (mind) => <BellPhotoFinishDiagram nodes={mind.wheel} />,
   "florence-nightingale": (mind) => <NightingaleRoseDiagram nodes={mind.wheel} />,
   "taiichi-ohno": (mind) => <OhnoPullSystemDiagram nodes={mind.wheel} />,
+  "grace-hopper": (mind) => <HopperCompilerDiagram nodes={mind.wheel} />,
 };
 
 const heroBackgrounds: Record<string, ReactNode> = {
@@ -235,6 +238,7 @@ const heroBackgrounds: Record<string, ReactNode> = {
   "alexander-graham-bell": <BellHeroBackground />,
   "florence-nightingale": <NightingaleHeroBackground />,
   "taiichi-ohno": <OhnoHeroBackground />,
+  "grace-hopper": <HopperHeroBackground />,
 };
 
 interface GreatMindPageProps {
