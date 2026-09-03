@@ -115,6 +115,8 @@ import { AmbedkarPillarsDiagram } from "@/components/great-minds/ambedkar-pillar
 import { AmbedkarHeroBackground } from "@/components/great-minds/ambedkar-hero-background";
 import { BismarckRestraintLineDiagram } from "@/components/great-minds/bismarck-restraint-line-diagram";
 import { BismarckHeroBackground } from "@/components/great-minds/bismarck-hero-background";
+import { MadisonCheckingTriangleDiagram } from "@/components/great-minds/madison-checking-triangle-diagram";
+import { MadisonHeroBackground } from "@/components/great-minds/madison-hero-background";
 import { MindGraphProvider } from "@/components/great-minds/mind-graph-context";
 import { getAllGreatMinds, getGreatMindBySlug, type GreatMindWithContent } from "@/lib/great-minds";
 import { mdxOptions } from "@/lib/mdx-options";
@@ -170,6 +172,7 @@ const heroDiagrams: Record<string, (mind: GreatMindWithContent) => ReactNode> = 
   "sardar-vallabhbhai-patel": (mind) => <PatelIntegrationDiagram nodes={mind.wheel} />,
   "br-ambedkar": (mind) => <AmbedkarPillarsDiagram nodes={mind.wheel} />,
   "otto-von-bismarck": (mind) => <BismarckRestraintLineDiagram nodes={mind.wheel} />,
+  "james-madison": (mind) => <MadisonCheckingTriangleDiagram nodes={mind.wheel} />,
 };
 
 const heroBackgrounds: Record<string, ReactNode> = {
@@ -219,6 +222,7 @@ const heroBackgrounds: Record<string, ReactNode> = {
   "sardar-vallabhbhai-patel": <PatelHeroBackground />,
   "br-ambedkar": <AmbedkarHeroBackground />,
   "otto-von-bismarck": <BismarckHeroBackground />,
+  "james-madison": <MadisonHeroBackground />,
 };
 
 interface GreatMindPageProps {
