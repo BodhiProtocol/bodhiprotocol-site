@@ -107,6 +107,24 @@ import { IbnKhaldunCycleDiagram } from "@/components/great-minds/ibn-khaldun-cyc
 import { IbnKhaldunHeroBackground } from "@/components/great-minds/ibn-khaldun-hero-background";
 import { FeynmanPropagatorDiagram } from "@/components/great-minds/feynman-propagator-diagram";
 import { FeynmanHeroBackground } from "@/components/great-minds/feynman-hero-background";
+import { SreedharanReverseTimelineDiagram } from "@/components/great-minds/sreedharan-reverse-timeline-diagram";
+import { SreedharanHeroBackground } from "@/components/great-minds/sreedharan-hero-background";
+import { PatelIntegrationDiagram } from "@/components/great-minds/patel-integration-diagram";
+import { PatelHeroBackground } from "@/components/great-minds/patel-hero-background";
+import { AmbedkarPillarsDiagram } from "@/components/great-minds/ambedkar-pillars-diagram";
+import { AmbedkarHeroBackground } from "@/components/great-minds/ambedkar-hero-background";
+import { BismarckRestraintLineDiagram } from "@/components/great-minds/bismarck-restraint-line-diagram";
+import { BismarckHeroBackground } from "@/components/great-minds/bismarck-hero-background";
+import { MadisonCheckingTriangleDiagram } from "@/components/great-minds/madison-checking-triangle-diagram";
+import { MadisonHeroBackground } from "@/components/great-minds/madison-hero-background";
+import { BellPhotoFinishDiagram } from "@/components/great-minds/bell-photo-finish-diagram";
+import { BellHeroBackground } from "@/components/great-minds/bell-hero-background";
+import { NightingaleRoseDiagram } from "@/components/great-minds/nightingale-rose-diagram";
+import { NightingaleHeroBackground } from "@/components/great-minds/nightingale-hero-background";
+import { OhnoPullSystemDiagram } from "@/components/great-minds/ohno-pull-system-diagram";
+import { OhnoHeroBackground } from "@/components/great-minds/ohno-hero-background";
+import { HopperCompilerDiagram } from "@/components/great-minds/hopper-compiler-diagram";
+import { HopperHeroBackground } from "@/components/great-minds/hopper-hero-background";
 import { MindGraphProvider } from "@/components/great-minds/mind-graph-context";
 import { getAllGreatMinds, getGreatMindBySlug, type GreatMindWithContent } from "@/lib/great-minds";
 import { mdxOptions } from "@/lib/mdx-options";
@@ -158,6 +176,15 @@ const heroDiagrams: Record<string, (mind: GreatMindWithContent) => ReactNode> = 
   "akio-morita": (mind) => <MoritaShrinkingDiagram nodes={mind.wheel} />,
   "ibn-khaldun": (mind) => <IbnKhaldunCycleDiagram nodes={mind.wheel} />,
   "richard-feynman": (mind) => <FeynmanPropagatorDiagram nodes={mind.wheel} />,
+  "e-sreedharan": (mind) => <SreedharanReverseTimelineDiagram nodes={mind.wheel} />,
+  "sardar-vallabhbhai-patel": (mind) => <PatelIntegrationDiagram nodes={mind.wheel} />,
+  "br-ambedkar": (mind) => <AmbedkarPillarsDiagram nodes={mind.wheel} />,
+  "otto-von-bismarck": (mind) => <BismarckRestraintLineDiagram nodes={mind.wheel} />,
+  "james-madison": (mind) => <MadisonCheckingTriangleDiagram nodes={mind.wheel} />,
+  "alexander-graham-bell": (mind) => <BellPhotoFinishDiagram nodes={mind.wheel} />,
+  "florence-nightingale": (mind) => <NightingaleRoseDiagram nodes={mind.wheel} />,
+  "taiichi-ohno": (mind) => <OhnoPullSystemDiagram nodes={mind.wheel} />,
+  "grace-hopper": (mind) => <HopperCompilerDiagram nodes={mind.wheel} />,
 };
 
 const heroBackgrounds: Record<string, ReactNode> = {
@@ -203,6 +230,15 @@ const heroBackgrounds: Record<string, ReactNode> = {
   "akio-morita": <MoritaHeroBackground />,
   "ibn-khaldun": <IbnKhaldunHeroBackground />,
   "richard-feynman": <FeynmanHeroBackground />,
+  "e-sreedharan": <SreedharanHeroBackground />,
+  "sardar-vallabhbhai-patel": <PatelHeroBackground />,
+  "br-ambedkar": <AmbedkarHeroBackground />,
+  "otto-von-bismarck": <BismarckHeroBackground />,
+  "james-madison": <MadisonHeroBackground />,
+  "alexander-graham-bell": <BellHeroBackground />,
+  "florence-nightingale": <NightingaleHeroBackground />,
+  "taiichi-ohno": <OhnoHeroBackground />,
+  "grace-hopper": <HopperHeroBackground />,
 };
 
 interface GreatMindPageProps {
