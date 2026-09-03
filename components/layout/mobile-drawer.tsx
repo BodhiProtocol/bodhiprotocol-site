@@ -7,6 +7,7 @@ import { X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/layout/logo";
+import { useLanguageTargets } from "@/components/layout/language-switcher";
 import { isNavLinkActive, navLinks, seriesLinks } from "@/lib/nav-links";
 import { cn } from "@/lib/utils";
 
@@ -17,6 +18,7 @@ interface MobileDrawerProps {
 
 function MobileDrawer({ open, onOpenChange }: MobileDrawerProps) {
   const pathname = usePathname();
+  const { isPtBr, enHref, ptBrHref } = useLanguageTargets();
 
   return (
     <AnimatePresence>
@@ -122,6 +124,42 @@ function MobileDrawer({ open, onOpenChange }: MobileDrawerProps) {
                   </Link>
                 </motion.div>
               ))}
+
+              <motion.p
+                initial={{ opacity: 0, x: 16 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.05 * (navLinks.length + seriesLinks.length) + 0.1 }}
+                className="px-3 pt-3 pb-1 text-xs font-medium tracking-wide text-muted-foreground uppercase"
+              >
+                Language
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, x: 16 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.05 * (navLinks.length + seriesLinks.length + 1) + 0.1 }}
+                className="flex gap-1 px-3"
+              >
+                <Link
+                  href={enHref}
+                  aria-current={!isPtBr ? "page" : undefined}
+                  className={cn(
+                    "rounded-full border border-border px-3 py-1.5 text-sm font-medium text-foreground/80 transition-colors hover:bg-muted hover:text-foreground",
+                    !isPtBr && "border-brand text-brand",
+                  )}
+                >
+                  English
+                </Link>
+                <Link
+                  href={ptBrHref}
+                  aria-current={isPtBr ? "page" : undefined}
+                  className={cn(
+                    "rounded-full border border-border px-3 py-1.5 text-sm font-medium text-foreground/80 transition-colors hover:bg-muted hover:text-foreground",
+                    isPtBr && "border-brand text-brand",
+                  )}
+                >
+                  Português (Brasil)
+                </Link>
+              </motion.div>
             </nav>
           </motion.div>
         </>
