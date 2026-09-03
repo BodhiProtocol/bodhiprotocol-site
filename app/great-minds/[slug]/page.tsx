@@ -111,6 +111,8 @@ import { SreedharanReverseTimelineDiagram } from "@/components/great-minds/sreed
 import { SreedharanHeroBackground } from "@/components/great-minds/sreedharan-hero-background";
 import { PatelIntegrationDiagram } from "@/components/great-minds/patel-integration-diagram";
 import { PatelHeroBackground } from "@/components/great-minds/patel-hero-background";
+import { AmbedkarPillarsDiagram } from "@/components/great-minds/ambedkar-pillars-diagram";
+import { AmbedkarHeroBackground } from "@/components/great-minds/ambedkar-hero-background";
 import { MindGraphProvider } from "@/components/great-minds/mind-graph-context";
 import { getAllGreatMinds, getGreatMindBySlug, type GreatMindWithContent } from "@/lib/great-minds";
 import { mdxOptions } from "@/lib/mdx-options";
@@ -164,6 +166,7 @@ const heroDiagrams: Record<string, (mind: GreatMindWithContent) => ReactNode> = 
   "richard-feynman": (mind) => <FeynmanPropagatorDiagram nodes={mind.wheel} />,
   "e-sreedharan": (mind) => <SreedharanReverseTimelineDiagram nodes={mind.wheel} />,
   "sardar-vallabhbhai-patel": (mind) => <PatelIntegrationDiagram nodes={mind.wheel} />,
+  "br-ambedkar": (mind) => <AmbedkarPillarsDiagram nodes={mind.wheel} />,
 };
 
 const heroBackgrounds: Record<string, ReactNode> = {
@@ -211,6 +214,7 @@ const heroBackgrounds: Record<string, ReactNode> = {
   "richard-feynman": <FeynmanHeroBackground />,
   "e-sreedharan": <SreedharanHeroBackground />,
   "sardar-vallabhbhai-patel": <PatelHeroBackground />,
+  "br-ambedkar": <AmbedkarHeroBackground />,
 };
 
 interface GreatMindPageProps {
