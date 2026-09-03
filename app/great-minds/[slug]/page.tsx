@@ -121,6 +121,8 @@ import { BellPhotoFinishDiagram } from "@/components/great-minds/bell-photo-fini
 import { BellHeroBackground } from "@/components/great-minds/bell-hero-background";
 import { NightingaleRoseDiagram } from "@/components/great-minds/nightingale-rose-diagram";
 import { NightingaleHeroBackground } from "@/components/great-minds/nightingale-hero-background";
+import { OhnoPullSystemDiagram } from "@/components/great-minds/ohno-pull-system-diagram";
+import { OhnoHeroBackground } from "@/components/great-minds/ohno-hero-background";
 import { MindGraphProvider } from "@/components/great-minds/mind-graph-context";
 import { getAllGreatMinds, getGreatMindBySlug, type GreatMindWithContent } from "@/lib/great-minds";
 import { mdxOptions } from "@/lib/mdx-options";
@@ -179,6 +181,7 @@ const heroDiagrams: Record<string, (mind: GreatMindWithContent) => ReactNode> = 
   "james-madison": (mind) => <MadisonCheckingTriangleDiagram nodes={mind.wheel} />,
   "alexander-graham-bell": (mind) => <BellPhotoFinishDiagram nodes={mind.wheel} />,
   "florence-nightingale": (mind) => <NightingaleRoseDiagram nodes={mind.wheel} />,
+  "taiichi-ohno": (mind) => <OhnoPullSystemDiagram nodes={mind.wheel} />,
 };
 
 const heroBackgrounds: Record<string, ReactNode> = {
@@ -231,6 +234,7 @@ const heroBackgrounds: Record<string, ReactNode> = {
   "james-madison": <MadisonHeroBackground />,
   "alexander-graham-bell": <BellHeroBackground />,
   "florence-nightingale": <NightingaleHeroBackground />,
+  "taiichi-ohno": <OhnoHeroBackground />,
 };
 
 interface GreatMindPageProps {
