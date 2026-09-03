@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
 
@@ -20,7 +21,12 @@ function MobileDrawer({ open, onOpenChange }: MobileDrawerProps) {
   const pathname = usePathname();
   const { isPtBr, enHref, ptBrHref } = useLanguageTargets();
 
-  return (
+  // Portaled to document.body: the drawer must stay fixed to the viewport,
+  // but the navbar it lives under gets backdrop-blur once scrolled, and
+  // backdrop-filter on an ancestor creates a new containing block for
+  // position:fixed descendants — without the portal the drawer ends up
+  // pinned to the header's box and scrolls away with the page instead.
+  return createPortal(
     <AnimatePresence>
       {open ? (
         <>
@@ -164,7 +170,8 @@ function MobileDrawer({ open, onOpenChange }: MobileDrawerProps) {
           </motion.div>
         </>
       ) : null}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body,
   );
 }
 
