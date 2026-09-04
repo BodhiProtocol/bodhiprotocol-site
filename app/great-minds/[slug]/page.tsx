@@ -254,21 +254,24 @@ export async function generateMetadata({ params }: GreatMindPageProps): Promise<
   const mind = getGreatMindBySlug(slug);
   if (!mind) return {};
 
+  const seoTitle = mind.seoTitle ?? mind.name;
+  const seoDescription = mind.seoDescription ?? mind.description;
+
   return {
-    title: mind.name,
-    description: mind.description,
+    title: seoTitle,
+    description: seoDescription,
     alternates: { canonical: `/great-minds/${mind.slug}` },
     openGraph: {
-      title: mind.name,
-      description: mind.description,
+      title: seoTitle,
+      description: seoDescription,
       type: "article",
       publishedTime: mind.date,
       url: `/great-minds/${mind.slug}`,
     },
     twitter: {
       card: "summary_large_image",
-      title: mind.name,
-      description: mind.description,
+      title: seoTitle,
+      description: seoDescription,
     },
   };
 }

@@ -193,6 +193,10 @@ export interface GreatMind {
   era: string;
   roles: string[];
   description: string;
+  /** Overrides the default `<title>`/OG/Twitter title for this mind's page. */
+  seoTitle?: string;
+  /** Overrides the default meta/OG/Twitter description for this mind's page. */
+  seoDescription?: string;
   date: string;
   draft?: boolean;
   wheel: GreatMindWheelNode[];
