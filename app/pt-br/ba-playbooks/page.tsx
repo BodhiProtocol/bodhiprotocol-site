@@ -55,8 +55,8 @@ export default function PlaybooksPtBrPage() {
             ))}
           </div>
           <p className="text-sm text-muted-foreground">
-            Estamos publicando os guias em português aos poucos, começando por este piloto — mais
-            guias chegam em breve. Enquanto isso, a biblioteca completa está disponível{" "}
+            Todos os guias do BA Playbooks estão disponíveis em português. Se preferir, a mesma
+            biblioteca também está disponível{" "}
             <Link href="/ba-playbooks" className="font-medium text-brand hover:underline">
               em inglês
             </Link>
