@@ -1,0 +1,81 @@
+---
+title: "Rogue Trading: When the Person Trading Is Also the Person Checking the Trade"
+description: "A rogue trader isn't usually a criminal mastermind on day one. It's someone with real trading authority who also controls — or can quietly bypass — the one system meant to check their own work. Two banks, thirteen years and 6,500 miles apart, collapsed the exact same way."
+hook: "The fraud wasn't hidden from the control. The person committing it was the control."
+category: "Capital Markets"
+tags: ["markets", "risk", "controls"]
+author: "Surya"
+date: "2026-09-04"
+---
+
+Think of a shop with one cashier. She rings up every sale, puts the cash in the till, and — at closing time — counts the till herself and signs off that it matches the receipts.
+
+If she ever pockets a note, or rings up a sale that never happened, there is nobody left in the building to catch it. The person doing the work and the person checking the work are the same person. Whatever she reports at closing time simply becomes true, because nobody independent ever looks.
+
+Every serious business solves this with a rule so basic it barely gets a name: the person who does the work is never the person who verifies the work is correct. In a bank, that rule has an actual name — **segregation of duties** — and rogue trading is what happens, almost every single time, when that one rule quietly breaks down around a single person.
+
+## What rogue trading actually is
+
+Rogue trading is not the same thing as a trader losing money. Trading desks lose money constantly; that's the business. It's also not the same thing as market manipulation — [spoofing](/essays/what-spoofing-actually-looks-like), for instance, is about deceiving *other* market participants with orders you never intend to fill. Rogue trading is different again: a trader takes positions that exceed their authorized limit, or that were never authorized at all, and then **conceals** that fact from their own employer — usually by hiding the resulting loss somewhere it won't be checked, and hoping to trade their way back to even before anyone looks.
+
+That word "conceals" is the whole story. An authorized position that loses money is a bad trade. An authorized position that loses money and gets hidden from the bank's own books is rogue trading — and hiding a loss from a bank is structurally impossible unless the person doing the hiding also has some kind of access to, or control over, the system that's supposed to catch it.
+
+That's the mechanic underneath every rogue trading case on record, whether it ran for two hours or seven years: **authority to trade, a gap in the control that's supposed to check that trading, and enough time before someone forces a reconciliation.** Remove any one of those three and the fraud cannot grow past a single afternoon. Two of the largest rogue trading failures in modern banking history — one in India, one in Britain — show exactly how each piece falls into place, and how differently the concealment gap can be built.
+
+## Example 1: Punjab National Bank, 2011–2018
+
+Start with the plainer version, because it doesn't even require a trading desk — just a bank message and a database that didn't talk to each other.
+
+When an Indian bank guarantees an overseas buyer's credit for an importer — a routine, everyday instrument called a **Letter of Undertaking (LoU)** — it sends that guarantee to other banks abroad over SWIFT, the messaging network banks use to talk to each other internationally. Normally, that SWIFT message is only a courier. The actual, legally binding record of the guarantee is supposed to be logged in the bank's own **core banking system (CBS)** — the ledger everyone else in the bank, including auditors, can see.
+
+At Punjab National Bank's Brady House branch in Mumbai, the SWIFT terminal was never connected to the core banking system at all. A bank employee, Gokulnath Shetty, obtained unauthorized high-level SWIFT access and began issuing LoUs on behalf of companies linked to the jeweller Nirav Modi and his uncle Mehul Choksi — without posting a single one of them to the CBS, and without the collateral a genuine LoU is supposed to require. Because the CBS never saw the transaction, none of the bank's ordinary daily checks — the equivalent of the cashier's till count — had anything to reconcile against. Every LoU rolled over into a new one before it came due, for seven straight years, invisible to the one system built to catch it.
+
+The scheme unravelled only when Shetty retired in 2017 and a new employee, following the actual rulebook, asked Nirav Modi's firm for the collateral a fresh LoU is supposed to require. The firm couldn't produce it, because none of the previous ones had ever needed it. That single request pulled the thread: by the time the CBI and Enforcement Directorate finished tracing it, the fraud totalled roughly ₹14,357 crore — about $1.8 billion at 2018 exchange rates — and the Reserve Bank of India ordered every bank in the country to physically integrate SWIFT with its core banking system within weeks, closing the exact gap that had let seven years of unauthorized guarantees pass through unrecorded.
+
+## Example 2: Barings Bank, 1992–1995
+
+Now the classic case — the one that gave the phrase "rogue trader" its modern meaning, and the one where the concealment gap was built into a job title, not a missing cable.
+
+In 1992, Barings — Britain's oldest merchant bank, banker to the Crown itself for two centuries — sent Nick Leeson to Singapore as general manager of its new futures operation. Barings then made a decision that, in hindsight, guaranteed what came next: Leeson was put in charge of the trading desk *and* the back-office settlement function that was supposed to independently confirm and record his trades. The cashier was also asked to sign off on her own till.
+
+Leeson opened an internal "error account," numbered 88888, originally meant to hold small trade-processing mistakes until they were sorted out. He began using it instead to bury the losses from unauthorized positions on Nikkei 225 futures and options — positions Barings' London office had no idea existed, because the one function that would normally have flagged them answered to Leeson himself. By the end of 1993 the hidden loss in account 88888 had passed £20 million. By the end of 1994, more than £200 million. Rather than close the position, Leeson doubled down, betting the Nikkei would recover — and then the Great Hanshin earthquake struck Kobe on January 17, 1995, sending the index sharply lower and the hole in account 88888 much deeper.
+
+By the time Barings' management discovered what had been sitting in that account, the loss stood at £827 million — more than the bank's entire capital base — and rose to £927 million once the positions were finally unwound. Barings collapsed on February 26, 1995, and was sold to ING for a nominal £1 the following week: a 233-year-old institution, gone in three years, because one person held both halves of a check that was only ever meant to be held by two.
+
+The Bank of England's own Board of Banking Supervision inquiry, presented to Parliament that July, was blunt about where the fault lay: unauthorized and concealed trading by Leeson, yes — but also "a total management failure" at Barings that let one person occupy both roles for three straight years without anyone independently reconciling his numbers. Leeson was extradited from Germany to Singapore, pleaded guilty, and served roughly four years of a six-and-a-half-year sentence.
+
+## Why this keeps happening
+
+Neither Punjab National Bank nor Barings was a one-off. The same structural gap — trading authority paired with a way to bypass the check on that authority — recurred twice more within the following two decades, at two of the world's most sophisticated banks.
+
+At Société Générale in 2008, Jérôme Kerviel — who had previously worked in the bank's own back-office control function before moving to trading — used that inside knowledge of how confirmations worked to build a mountain of unauthorized futures positions and disguise them with fictitious offsetting trades that would cancel out on paper just long enough to survive each check. The loss, when SocGen finally unwound the position in January 2008, came to €4.9 billion. At UBS in 2011, Kweku Adoboli exceeded his risk limits on the bank's exchange-traded-funds desk and covered the gap with fabricated hedges the bank's own systems failed to flag for months; the loss reached $2.3 billion, and Britain's regulator later fined UBS £29.7 million specifically for the "poorly executed and ineffective" controls that let it happen.
+
+Four cases, four countries, four different instruments — futures, LoUs, derivatives, ETFs — and every one of them traces back to the identical structural fact: a person with real authority to create a financial obligation also had a way, whether by job design or by a system gap nobody had closed, to keep that obligation from ever reaching the eyes of someone independent. [People respond to incentives, not instructions](/essays/people-respond-to-incentives-not-instructions) explains why an individual reaches for this once a bonus or a career is riding on the number — but incentives alone don't create a scandal. The concealment gap is what turns a bad bet that incentives encouraged into a scandal that takes years to surface.
+
+## Why this matters for a Business Analyst
+
+"We have segregation of duties" is a sentence that means nothing until someone can show exactly which system enforces it, and how.
+
+A policy document that says a trader's positions must be independently confirmed by operations is not a control — it's an intention. The control is whichever piece of software makes it *technically impossible* for one login to both create a trade and confirm it, or that automatically halts a SWIFT message that has no matching entry in the core banking system within a set number of minutes, rather than a set number of years. Barings' failure wasn't a missing policy; Barings had rules about segregating trading and settlement, the same way most banks do. The failure was that nobody built a system that actually enforced the rule when one senior, trusted employee was assigned both roles anyway. PNB's failure wasn't a missing rule either — the RBI had told banks to strengthen SWIFT controls in circulars dated back to 2016. The failure was that SWIFT and the CBS were two separate systems that had never been made to talk to each other, so a message could leave one without ever touching the other.
+
+For a BA writing requirements around trade capture, settlement, or messaging systems, the PNB case in particular is close to a template: whenever two systems both hold a piece of the truth about the same transaction — an order management system and a risk system, a messaging gateway and a ledger, a trading desk and its own reconciliation — a hard, real-time, non-overridable link between them isn't a nice-to-have. It's the one requirement standing between "a control exists" and "a control exists on paper."
+
+## The hidden tradeoff
+
+None of this is free. Real-time reconciliation between every system that touches a trade, mandatory two-person entry above a threshold, and a strict, no-exceptions wall between the people who trade and the people who confirm trades all cost money and add friction to daily operations — friction that a growing, profitable desk will eventually ask to relax, because "he's senior, he's trusted, let him handle both" sounds like a reasonable efficiency gain right up until it's the exact sentence that describes Nick Leeson's job in Singapore.
+
+That's the honest tension every bank sits inside permanently: segregation of duties is at its most expensive to maintain in exactly the moment it looks least necessary — when the person on the other side of the exception is the one nobody in the building doubts.
+
+## Lighthouse Insight
+
+Go back to the cashier at the start. Nobody built that shop assuming she was dishonest. The rule that someone else counts the till exists precisely *because* honesty isn't the thing a control is supposed to test for — a control exists so that trust never has to be the only thing standing between a small, temporary, meant-to-be-fixed-tomorrow position and a loss too large for anyone to survive.
+
+Leeson didn't set out, in 1992, to bring down a 233-year-old bank. The PNB officials didn't set out to cost the bank $1.8 billion. Both began, almost certainly, with a smaller number they meant to quietly correct before anyone noticed — and both discovered that the one person meant to notice was them. That's not a story about a handful of unusually deceptive individuals. It's a story about what any honest system will eventually produce if it ever lets one person be both the trade and the truth about the trade.
+
+## Reference anchors
+
+- [Punjab National Bank Scam — case overview and CBI/ED findings](https://en.wikipedia.org/wiki/Punjab_National_Bank_Scam)
+- [RBI orders banks to integrate SWIFT with core banking systems after the PNB fraud, Business Standard](https://www.business-standard.com/article/finance/rbi-asks-banks-to-integrate-swift-in-core-banking-system-by-april-end-118022300438_1.html)
+- [UK Parliament, Hansard: House of Commons debate on the Board of Banking Supervision's report into the collapse of Barings, 18 July 1995](https://api.parliament.uk/historic-hansard/commons/1995/jul/18/barings)
+- [Financial Conduct Authority: Final Notice to UBS AG, 26 November 2012](https://www.fca.org.uk/publication/final-notices/ubs-ag.pdf)
+- [Euronews: French court cuts damages owed by rogue trader Jérôme Kerviel, 23 September 2016](https://www.euronews.com/business/2016/09/23/french-court-cuts-damages-owed-by-rogue-trader-jerome-kerviel)
