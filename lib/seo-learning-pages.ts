@@ -211,6 +211,11 @@ export const seoLearningPages: SeoLearningPage[] = [
         href: "/user-story-examples-business-analyst",
         description: "See practical user stories for BA workflows.",
       },
+      {
+        label: "SQL for Business Analysts",
+        href: "/sql-for-business-analysts",
+        description: "The one technical skill worth learning early.",
+      },
     ],
     faqs: [
       {
@@ -222,6 +227,112 @@ export const seoLearningPages: SeoLearningPage[] = [
         question: "How do I become a business analyst with no experience?",
         answer:
           "Practice requirements writing and user stories on realistic scenarios, learn the core BA tools, and build domain knowledge in an industry you're targeting. Many BAs move in from adjacent roles like QA, support, or operations.",
+      },
+    ],
+  },
+  {
+    slug: "sql-for-business-analysts",
+    eyebrow: "Core BA skill",
+    title: "SQL for Business Analysts",
+    description:
+      "The SQL a business analyst actually needs: SELECT, JOIN, GROUP BY, and how to use queries to verify claims instead of taking them on faith.",
+    seoTitle: "SQL for Business Analysts",
+    seoDescription:
+      "Learn the SQL a business analyst actually needs: SELECT, WHERE, JOIN, GROUP BY, and how to use queries to verify data and investigate production issues.",
+    intro: [
+      "A business analyst does not need to be a database developer. But not knowing any SQL means depending on someone else every time a claim needs to be checked — how many records match a rule, whether a reported defect is a real data problem, whether a UAT test actually produced the scenario it was supposed to.",
+      "SQL is consistently the most tested technical skill in BA interviews, and it is also one of the few technical skills that pays off almost immediately: a BA who can write a five-line query stops waiting on someone else to answer a question they could have answered themselves.",
+    ],
+    sections: [
+      {
+        title: "Why business analysts need SQL",
+        items: [
+          "Verify a stakeholder's claim instead of taking it on faith",
+          "Check whether a reported defect is a real data problem or a misunderstanding",
+          "Confirm UAT test data actually matches the scenario before signing off",
+          "Answer \"how many\" and \"which ones\" questions without waiting on a developer",
+          "Read an existing query well enough to explain what a system is actually doing",
+        ],
+      },
+      {
+        title: "The SQL a BA actually needs",
+        paragraphs: [
+          "Most day-to-day BA work uses a small, stable set of SQL. Database administration, indexing, and performance tuning are not part of the job.",
+        ],
+        items: [
+          "SELECT, FROM, WHERE — pull the rows that match a condition",
+          "JOIN (INNER and LEFT) — combine data that lives in more than one table, like trades and counterparties",
+          "GROUP BY with COUNT, SUM, AVG — turn a list of rows into a summary",
+          "ORDER BY and LIMIT — find the biggest, oldest, or most recent records",
+          "DISTINCT — check whether a field actually has duplicate values",
+          "IS NULL / IS NOT NULL — a huge source of \"the data looks wrong\" bugs",
+        ],
+      },
+      {
+        title: "Example: checking a stakeholder's claim",
+        paragraphs: [
+          "Stakeholder says: \"We have a lot of unmatched trades today, this is a big problem.\"",
+          "A BA who can query the database turns that into a specific, testable fact instead of an assumption.",
+        ],
+        items: [
+          "SELECT COUNT(*) FROM trades WHERE match_status = 'UNMATCHED' AND trade_date = CURRENT_DATE;",
+          "SELECT counterparty, COUNT(*) AS breaks FROM trades WHERE match_status = 'UNMATCHED' GROUP BY counterparty ORDER BY breaks DESC;",
+          "The first query answers how bad it is. The second answers where to focus first — usually the question stakeholders actually mean when they say a problem is big.",
+        ],
+      },
+      {
+        title: "SQL questions that come up in BA interviews",
+        items: [
+          "What is the difference between INNER JOIN and LEFT JOIN?",
+          "What is the difference between WHERE and HAVING?",
+          "What does GROUP BY actually do to the rows?",
+          "What is a primary key vs a foreign key?",
+          "How would you find duplicate records in a table?",
+          "How would you find records that exist in one table but not another?",
+        ],
+      },
+      {
+        title: "How to practice without a real database",
+        items: [
+          "Use a free browser SQL sandbox rather than waiting for company database access",
+          "Build a small practice schema that mirrors your domain — trades, counterparties, settlements, orders — instead of generic tutorial tables",
+          "Practice reading an unfamiliar query and explaining what it returns, not just writing new ones",
+          "Predict the row count before running a query, then check whether you were right",
+        ],
+      },
+    ],
+    related: [
+      {
+        label: "Business Analyst Roadmap",
+        href: "/business-analyst-roadmap",
+        description: "See where SQL fits alongside Jira, Confluence, and requirements skills.",
+      },
+      {
+        label: "Capital Markets BA Roadmap",
+        href: "/capital-markets-business-analyst",
+        description: "Apply querying skills to trade data, reconciliation, and reporting.",
+      },
+      {
+        label: "Business Analyst Interview Questions",
+        href: "/business-analyst-interview-questions",
+        description: "Practice explaining concepts simply before the SQL gets technical.",
+      },
+      {
+        label: "Reconciliation Break Finder",
+        href: "/simulators/reconciliation-break-finder",
+        description: "Practice the exact kind of investigation a GROUP BY query answers.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Do business analysts need to know SQL?",
+        answer:
+          "Not to the level of a database developer, but a working knowledge of SELECT, JOIN, and GROUP BY lets a BA verify claims, investigate defects, and check UAT data independently instead of waiting on someone else.",
+      },
+      {
+        question: "What SQL should I learn first as a BA?",
+        answer:
+          "Start with SELECT, WHERE, and JOIN, then GROUP BY with COUNT and SUM. That small set answers most of the \"how many\" and \"which ones\" questions a BA runs into day to day.",
       },
     ],
   },
@@ -475,6 +586,11 @@ export const seoLearningPages: SeoLearningPage[] = [
         label: "Acceptance Criteria Examples",
         href: "/acceptance-criteria-examples",
         description: "Practice testable interview examples.",
+      },
+      {
+        label: "SQL for Business Analysts",
+        href: "/sql-for-business-analysts",
+        description: "Prepare for the most commonly tested technical question.",
       },
     ],
     faqs: [
