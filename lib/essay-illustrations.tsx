@@ -9,6 +9,7 @@ import { CarriagePhaseIllustration } from "@/components/essays/carriage-phase-il
 import { CdsProtectionIllustration } from "@/components/essays/cds-protection-illustration";
 import { CircuitBreakerIllustration } from "@/components/essays/circuit-breaker-illustration";
 import { CobraEffectIllustration } from "@/components/essays/cobra-effect-illustration";
+import { ColocationIllustration } from "@/components/essays/colocation-illustration";
 import { ConfidenceIllustration } from "@/components/essays/confidence-illustration";
 import { ContextWindowIllustration } from "@/components/essays/context-window-illustration";
 import { DecisionOutcomeGridIllustration } from "@/components/essays/decision-outcome-grid-illustration";
@@ -18,6 +19,7 @@ import { FsdPipelineIllustration } from "@/components/essays/fsd-pipeline-illust
 import { FuturesMarkToMarketIllustration } from "@/components/essays/futures-mark-to-market-illustration";
 import { IcebergIllustration } from "@/components/essays/iceberg-illustration";
 import { ImplementationShortfallIllustration } from "@/components/essays/implementation-shortfall-illustration";
+import { InsiderTradingIllustration } from "@/components/essays/insider-trading-illustration";
 import { JargonWallIllustration } from "@/components/essays/jargon-wall-illustration";
 import { JiraBacklogIllustration } from "@/components/essays/jira-backlog-illustration";
 import { LearningDividendIllustration } from "@/components/essays/learning-dividend-illustration";
@@ -33,6 +35,7 @@ import { PovIllustration } from "@/components/essays/pov-illustration";
 import { RepoIllustration } from "@/components/essays/repo-illustration";
 import { RequirementIllustration } from "@/components/essays/requirement-illustration";
 import { RequirementsTranslatorIllustration } from "@/components/essays/requirements-translator-illustration";
+import { RogueTradingIllustration } from "@/components/essays/rogue-trading-illustration";
 import { SettlementFailIllustration } from "@/components/essays/settlement-fail-illustration";
 import { SettlementFinalityIllustration } from "@/components/essays/settlement-finality-illustration";
 import { SniperIllustration } from "@/components/essays/sniper-illustration";
@@ -96,4 +99,8 @@ export const essayIllustrations: Record<string, ComponentType> = {
   "credit-default-swaps-protection-nobody-has-to-own":
     CdsProtectionIllustration,
   "circuit-breakers-the-pause-a-market-forces-on-itself": CircuitBreakerIllustration,
+  "rogue-trading-when-the-person-trading-is-also-the-person-checking-the-trade":
+    RogueTradingIllustration,
+  "colocation-when-the-exchange-itself-decides-who-hears-first": ColocationIllustration,
+  "insider-trading-the-edge-that-isnt-skill-its-a-phone-call": InsiderTradingIllustration,
 };
