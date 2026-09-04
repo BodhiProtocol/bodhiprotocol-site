@@ -1,0 +1,68 @@
+---
+title: "Colocation: When the Exchange Itself Decides Who Hears First"
+description: "Renting server space next to an exchange's matching engine is a legitimate, widely sold product. Colocation becomes a scandal only when the exchange running that service quietly lets some paying customers hear the market before everyone else does — which is exactly what happened, twice, on two different continents, for two very different reasons."
+hook: "The unfair edge wasn't a hack. It was the wiring."
+category: "Market Abuse"
+tags: ["market-abuse", "market-structure"]
+author: "Surya"
+date: "2026-09-05"
+---
+
+Think of an exam hall with one invigilator reading the same question paper aloud to every student at once. Fair, because everyone hears it at the same moment — nobody's answer depends on when they heard the question, only on how well they answer it.
+
+Now imagine the invigilator has a favorite student sitting closest to the door, and — without telling anyone — reads that one student the question a half-second before turning to read it to the room. Nothing about the *answer* changed. But the room stopped being one exam. It became two: one for the student who heard first, and one for everyone still catching up.
+
+That, reduced to server racks and network cables, is what colocation scandals are about. Not a hack. Not stolen information. A market's own infrastructure quietly deciding some paying customers get to hear the market before everyone else does.
+
+## What colocation actually is — and where it turns into a violation
+
+Start with what it isn't: colocation itself is completely legitimate. Every major exchange in the world — the NSE, NYSE, Nasdaq, LSE — sells rack space inside or right next to its own data center, so a trading firm's servers sit physically closer to the exchange's matching engine. Signals travel at close to the speed of light either way, but light still takes measurably longer to travel from Mumbai's suburbs than from a rack fifty meters from the matching engine. Selling that proximity, openly, to anyone willing to pay for it, is a standard exchange revenue line — not a scandal.
+
+The violation shows up one layer beneath that: not *whether* an exchange sells speed, but *whether it then treats every customer who bought the same product identically*. This is a different failure from the two mechanisms in [what spoofing actually looks like](/essays/what-spoofing-actually-looks-like) and [rogue trading](/essays/rogue-trading-when-the-person-trading-is-also-the-person-checking-the-trade). Spoofing is one trader deceiving other traders with fake orders. Rogue trading is one trader hiding an unauthorized position from their own employer. This is neither — it's the exchange's own architecture, the thing every trader is supposed to be able to trust as neutral, quietly giving some customers a head start over others who paid for the identical service. Two real cases, in two different markets, show how differently that head start can get built — one through outright collusion, the other through nobody at the top noticing their own systems were doing it.
+
+## Example 1: The NSE's TBT architecture, 2010–2014
+
+The National Stock Exchange in Mumbai ran a tick-by-tick (TBT) data feed for its colocation customers — a stream of live order-book updates, disseminated sequentially rather than broadcast to everyone at once. Whoever's server connected to that feed first in a given dissemination cycle got the update first; the servers behind them in the queue got it a fraction of a second later.
+
+Sanjay Gupta, owner of a Delhi-based brokerage called OPG Securities, allegedly worked out — with the cooperation of NSE officials — how to consistently land at or near the front of that queue, connecting to the least-congested secondary servers before other colocated members even had a fair shot at the same slots. It wasn't a technical trick available to anyone who read the manual closely enough; it depended on knowing things about NSE's own server architecture that weren't disclosed to every colocated customer equally.
+
+The Securities and Exchange Board of India spent years investigating, and in April 2019 ordered the NSE itself — not just OPG — to disgorge ₹625 crore, plus 12% annual interest running from April 2014, for violating India's Stock Exchanges and Clearing Corporations (SECC) Regulations by failing to ensure fair, equal access to its own systems. NSE was barred from the securities market for six months. OPG Securities and its directors were separately barred for five years and ordered to disgorge more than ₹15 crore of their own gains. The CBI's later investigation went further up the chain, naming NSE's own leadership — including former managing director Chitra Ramkrishna — in a corruption case tied to the same colocation failures.
+
+## Example 2: The New York Stock Exchange, 2008–2012
+
+The American version needed no collusion at all — just an architecture nobody at the top had audited closely enough.
+
+Every US exchange is legally required to send its quote and trade data to a shared public feed — now called the Securities Information Processor (SIP) — the single feed every ordinary investor's broker actually prices trades off. Exchanges are also allowed to sell their *own* proprietary, richer data feeds directly to paying subscribers, at additional cost. The rule, under Regulation NMS, is that this is fine — as long as the exchange doesn't let the paid feed reach customers before the mandatory public one does.
+
+From June 2008 onward, NYSE's internal systems routed its proprietary real-time depth-of-book feed to paying customers through a faster internal path than the one used to send the same data to the public SIP. The gap wasn't announced, and it wasn't a one-time glitch — the SEC found it had been the exchange's ordinary operating architecture for years. In September 2012, the SEC fined NYSE Euronext $5 million for violating Rule 603(a) of Regulation NMS — the first monetary penalty the agency had ever imposed on an exchange. Nobody at NYSE was accused of bribing anyone, the way OPG was accused of colluding with NSE staff. The violation was structural: the exchange had simply never verified that its own two feeds — one free and mandatory, one paid and optional — actually left the building in the order the law required.
+
+## Why the difference between these two cases matters
+
+Put side by side, NSE and NYSE show two different ways the same failure can happen. NSE's version required someone on the inside actively steering an advantage toward a favored customer — a corruption case with named individuals. NYSE's version required nobody to do anything deliberately at all — just an internal data path built for speed that nobody checked against the one legal requirement that actually mattered: same information, same moment, for everyone who's supposed to get it at once.
+
+That second version is the one worth sitting with longer, because it's the one a system built by well-meaning engineers can produce entirely by accident. A team optimizing a proprietary feed for latency has no reason to think about the SIP's latency at all — those are two different projects, probably two different teams, and "make sure Team A's feed never beats Team B's feed to the door" is not a requirement either team was necessarily ever handed.
+
+## Why this matters for a Business Analyst
+
+"All customers get the same market data" is a requirement that sounds complete and isn't. The real requirement is comparative: *this* feed must never arrive before *that* one, under all conditions, not just the ones tested on a quiet Tuesday morning.
+
+That's a different kind of test case than most functional requirements produce. It's not "does the feed work" — both NYSE's feeds worked perfectly, technically, exactly as designed. It's "does feed A's arrival time ever beat feed B's arrival time, across every load condition, every network path, every priority queue in the stack." Writing that as an acceptance criterion means naming the exact ordering guarantee — "the public feed dispatch timestamp must be less than or equal to the proprietary feed dispatch timestamp on every message, verified by timestamp audit, not by architecture diagram" — instead of a policy sentence that assumes good design implies fair timing. India's SECC Regulations and the US's Reg NMS both exist because "we built it to be fair" and "we tested that it stays fair under load" turned out to be two very different claims.
+
+## The hidden tradeoff
+
+Colocation exists because physical distance genuinely changes outcomes at the speed modern markets trade, and pretending otherwise doesn't remove the advantage — it just leaves it undisclosed and unpriced instead of sold openly to anyone willing to pay for it. Banning colocation outright doesn't create equal markets; it just means the exchange stops earning revenue from an advantage that will exist anyway, since someone will always be physically closer to the matching engine than someone else.
+
+The honest tradeoff sits one level down: an exchange can sell speed transparently, at a published price, available to any customer who wants to buy it — that's a legitimate business. What it cannot do is let that speed differ *unequally among people who bought the identical product*, or leak ahead of the mandatory public feed it's legally required to serve everyone through. Getting that boundary right requires exactly the kind of continuous, adversarial systems audit NSE and NYSE both, in their own ways, failed to run on their own infrastructure.
+
+## Lighthouse Insight
+
+Go back to the exam hall. Nobody would call it fair if half the room got a five-second head start on a maths problem, even if every student in the room was equally capable of solving it once they'd heard the question.
+
+Speed isn't the violation. *Unequal* speed, sold or given without anyone checking, is. NSE's failure took an alleged conspiracy to happen. NYSE's failure took nothing but an unaudited assumption that two well-built systems, running side by side, would naturally arrive at the same door at the same time. They don't, unless someone actually checks — and that's the entire lesson underneath both cases: fairness in a market's infrastructure isn't the default state a well-engineered system settles into. It's a requirement someone has to write down, test for, and keep testing for, indefinitely.
+
+## Reference anchors
+
+- [SEBI order barring NSE from the securities market for six months in the co-location case, April 2019](https://www.business-standard.com/article/markets/sebi-bars-nse-from-securities-market-for-6-months-in-co-location-case-119050100034_1.html)
+- [SEC: NYSE charged for improper distribution of market data, press release, September 14, 2012](https://www.sec.gov/newsroom/press-releases/2012-2012-189htm)
+- [SEC administrative order, In the Matter of New York Stock Exchange LLC and NYSE Euronext](https://www.sec.gov/files/litigation/admin/2012/34-67857.pdf)
+- [SEBI penalises OPG Securities and three others in the NSE co-location case](https://www.business-standard.com/article/markets/nse-co-location-case-sebi-penalises-opg-securities-and-3-others-121021200023_1.html)

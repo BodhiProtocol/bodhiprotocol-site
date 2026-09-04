@@ -1,0 +1,70 @@
+---
+title: "Insider Trading: The Edge That Isn't Skill, It's a Phone Call"
+description: "Every legitimate edge in a market comes from working harder or seeing more clearly than everyone else — reading the filings nobody else bothered to read, building the model nobody else built. Insider trading is the one edge that isn't earned at all. It's handed over by someone who owed the market a duty not to hand it over."
+hook: "Every other edge in a market is earned. This one is borrowed from someone who owed you nothing."
+category: "Market Abuse"
+tags: ["market-abuse", "surveillance"]
+author: "Surya"
+date: "2026-09-06"
+---
+
+Studying hard for tomorrow's exam is an edge. Someone on the school staff slipping you the answer key tonight is not — even if you never open your textbook and just memorize their answers instead.
+
+The difference isn't how much you knew going in. It's where the knowledge came from, and what the person who gave it to you owed everyone else in the room.
+
+That's the whole architecture of insider trading law, in one sentence most people already understand instinctively long before they ever hear the term **material non-public information**. Trading on information nobody else has isn't automatically illegal — a skilled analyst who reads ten public filings more carefully than anyone else and draws a sharper conclusion is doing exactly what markets are supposed to reward. Trading on information somebody was *obligated to keep confidential*, obtained precisely because that obligation was broken, is a different thing entirely.
+
+## What insider trading actually is
+
+Regulators everywhere converge on roughly the same two-part test, whatever they call it locally. India's SEBI, under its Prohibition of Insider Trading (PIT) Regulations, calls the trigger **Unpublished Price Sensitive Information (UPSI)** — information that, if it became public, would be likely to materially affect the price of a security. US law, built up case by case under Rule 10b-5 rather than a single statute, arrives at nearly the same place through decades of Supreme Court rulings: **material non-public information**, obtained or passed on in breach of a duty of trust or confidence.
+
+Two conditions, both required. First, the information has to be *material* — genuinely capable of moving the price, not just interesting gossip. A board director's dinner reservation isn't material; the same director's advance knowledge that the company is about to announce an acquisition almost certainly is. Second, it has to reach the trader through a breach of duty — someone who owed the company, its shareholders, or the market a duty of confidentiality passed the information along, or traded on it themselves, instead of keeping it inside the room where it belonged.
+
+This is a different mechanism from either essay in this series so far. [Spoofing](/essays/what-spoofing-actually-looks-like) fabricates a signal the market doesn't actually have. [Rogue trading](/essays/rogue-trading-when-the-person-trading-is-also-the-person-checking-the-trade) hides a position the trader's own employer doesn't know exists. [Colocation failures](/essays/colocation-when-the-exchange-itself-decides-who-hears-first) hand some paying customers a timing edge over other paying customers. Insider trading doesn't touch the order book, the exchange's servers, or a bank's back office at all — the crime is complete the moment confidential information crosses from someone who owed a duty to someone who didn't, before the rest of the market ever gets a chance to price it in.
+
+## Example 1: Rakesh Jhunjhunwala and Aptech, 2016–2021
+
+India's best-known recent case involved one of its most famous investors — proof that the rule applies regardless of how skilled or well-regarded the trader otherwise is.
+
+Between March and September 2016, Aptech Limited, an education and training company, was sitting on Unpublished Price Sensitive Information about its own business performance. SEBI's investigation found that Rakesh Jhunjhunwala — widely known in Indian markets as the "Big Bull" — his wife Rekha Jhunjhunwala, fellow investor Ramesh Damani, an Aptech director named Madhu Jayakumar, and several others traded in Aptech shares between May and October 2016, inside that same window, while that information hadn't yet reached the public market.
+
+Rather than contest the charges through a full adjudication, the parties used a route available under Indian securities law that has no real US equivalent for a case this size: SEBI's **consent settlement** mechanism, which lets an alleged wrongdoer close an investigation by paying a settlement amount without formally admitting or denying guilt. Jhunjhunwala and Rekha filed their settlement application in January 2021; it was finalized in July 2021. Jhunjhunwala paid ₹18.5 crore, of which roughly ₹6 crore was the disgorgement of alleged illegal gains and the rest a settlement charge; Rekha paid ₹3.2 crore, Damani ₹6.2 crore, and Jayakumar ₹1.7 crore — ₹37 crore in total across all ten respondents. The case never went to trial, and no criminal conviction was ever recorded against any of them.
+
+## Example 2: Raj Rajaratnam, Rajat Gupta, and Galleon, 2008–2012
+
+The American case that defines the modern era of insider trading enforcement shows the other half of the mechanism: not just the person who trades on the tip, but the person who gives it.
+
+Raj Rajaratnam ran Galleon Group, at the time one of the largest hedge funds in the world. Rajat Gupta — the former global head of McKinsey & Company and a sitting board member of Goldman Sachs and Procter & Gamble — was, on paper, exactly the kind of person a market is supposed to be able to trust with material boardroom information: bound by fiduciary duty to keep it confidential until Goldman itself chose to disclose it. Prosecutors showed that Gupta repeatedly called Rajaratnam within minutes of learning material non-public information in Goldman board meetings — including, most famously, a 2008 call placed almost immediately after Gupta learned, on a board call, that Warren Buffett's Berkshire Hathaway was about to invest $5 billion in Goldman Sachs during the depths of the financial crisis. Rajaratnam bought Goldman shares before that news became public.
+
+The two men occupied two different roles in the same violation, and the distinction matters for anyone trying to understand where liability actually falls. Gupta was the **tipper** — the insider who broke his duty by passing along what he'd learned in trust. Rajaratnam was the **tippee** — someone who owed Goldman no duty directly, but who knew, or had every reason to know, that the information had come to him through someone else's broken duty, and traded on it anyway. Both are liable; "I never signed anything promising confidentiality myself" has never been a defense once a tippee knows, or should reasonably know, where the information actually came from.
+
+The case that broke it open was itself unusual: prosecutors built it substantially from wiretaps — over 18,000 recorded calls across sixteen months — the first time that investigative tool, normally associated with organized-crime cases, had been used at this scale in an insider trading prosecution. Rajaratnam was convicted on all 14 counts in May 2011 and sentenced to 11 years in prison, at the time the longest sentence ever imposed for insider trading, plus a $10 million fine. Gupta was convicted separately in 2012 and served two years, released in March 2016.
+
+## Why the two cases resolved so differently
+
+Put side by side, Jhunjhunwala's case and Rajaratnam's case show two entirely different legal architectures reaching for the same underlying wrong. The US path ran through a full criminal prosecution — wiretaps, a jury trial, prison sentences measured in years. The Indian path ran through a civil, negotiated settlement — no trial, no criminal conviction, a monetary payment closing the file. Both are legitimate enforcement tools inside their own systems; neither is automatically the "harsher" or "softer" one in every case. But the difference is exactly the kind of thing a compliance or surveillance system has to be built aware of: what "the case was resolved" actually means, and what obligations follow from it, is not the same fact in every jurisdiction a global firm operates in.
+
+## Why this matters for a Business Analyst
+
+Surveillance systems built to catch insider trading are trying to solve a genuinely harder detection problem than the other cases in this series. Spoofing leaves an order-book trail — timestamps, cancellations, fills, all inside a system that already logs everything. Insider trading's actual crime — the phone call, the corridor conversation, the information changing hands — usually happens completely outside any system a surveillance team can query. What the system *can* see is the downstream trade, so most real detection works backward: flag trades that are unusually well-timed relative to a later price-moving announcement, then build the human chain — who knew, who's connected to who, who traded when — around that flagged trade.
+
+That's why "restricted lists" and "information barriers" (commonly called Chinese walls) show up as functional requirements in almost every investment bank's systems, not just as HR policy. A restricted list has to update the moment a deal team gains access to material non-public information about a company, and every trading system across the firm has to check against it before executing, in real time — not as an end-of-day report that catches the violation a day after the trade already happened. Building that link between "who has access to what information, right now" and "what can be traded, right now" is the actual engineering answer to a problem that starts, invisibly, with nothing more than a conversation.
+
+## The hidden tradeoff
+
+None of this can be enforced by banning information asymmetry itself — markets run on it. A pharmaceutical analyst who reads clinical trial literature more carefully than a generalist fund manager has an edge nobody else in the room has, and rewarding that edge is the entire economic argument for research-driven investing. The line insider trading law draws isn't "does this person know something others don't" — it's "did that knowledge come from a broken duty of confidence, or from harder, legal work."
+
+That line gets genuinely blurry at the edges — the "mosaic theory" defense, where an analyst assembles many small legal public and semi-public data points into one non-public-feeling conclusion, sits right on top of it, and courts have spent decades drawing and redrawing exactly where legitimate synthesis ends and illegal tipping begins. A surveillance system doesn't get to skip that ambiguity — it has to flag the close calls for a human reviewer rather than pretend the line is a clean one a rule can resolve alone every time.
+
+## Lighthouse Insight
+
+Go back to the exam hall one more time. Nobody doubts that some students study harder, think faster, or simply understand the material better than others — and nobody wants to eliminate that gap. That gap is what makes a fair test worth taking at all.
+
+The gap insider trading law exists to close is the other one: the one where the questions themselves leaked out early, to a few people, through someone who was trusted to keep them locked in the drawer. Gupta didn't out-analyze Goldman's board; he was *on* it, and gave away what the seat itself was supposed to protect. Jhunjhunwala's settlement, decades of case law on tippee liability, and a wiretap operation built for organized crime all exist to answer the same question: not "who knew more," but "how did they come to know it, and what did they owe the people who didn't."
+
+## Reference anchors
+
+- [SEBI: Settlement Order in respect of Rakesh Jhunjhunwala and 6 others in the matter of Aptech Ltd, July 2021](https://www.sebi.gov.in/enforcement/orders/jul-2021/settlement-order-in-respect-of-rakesh-jhunjhunwala-and-6-others-in-the-matter-of-aptech-ltd-_51050.html)
+- [Rakesh Jhunjhunwala, wife Rekha, Ramesh Damani and others settle Aptech insider trading case with SEBI for ₹37 crore, Moneylife](https://www.moneylife.in/article/rakesh-jhunjhunwala-his-wife-rekha-ramesh-damani-and-7-others-asked-to-pay-rs37-crore-to-settle-aptech-insider-trading-case/64538.html)
+- [Wikipedia: Raj Rajaratnam, Galleon Group, Anil Kumar, and Rajat Gupta insider trading cases — case timeline and outcomes](https://en.wikipedia.org/wiki/Raj_Rajaratnam,_Galleon_Group,_Anil_Kumar,_and_Rajat_Gupta_insider_trading_cases)
+- [Rajat Gupta released from prison after two-year sentence, March 2016](https://caravanmagazine.in/vantage/rajat-gupta-release-insider-trading)
