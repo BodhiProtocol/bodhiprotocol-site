@@ -35,6 +35,8 @@ interface GreatMindFrontmatter {
   era: string;
   roles: string[];
   description: string;
+  seoTitle?: string;
+  seoDescription?: string;
   date: string;
   draft?: boolean;
   wheel: GreatMindWheelNode[];
@@ -76,6 +78,8 @@ function readGreatMindFile(filename: string): GreatMindWithContent {
     era: frontmatter.era,
     roles: frontmatter.roles ?? [],
     description: frontmatter.description,
+    seoTitle: frontmatter.seoTitle,
+    seoDescription: frontmatter.seoDescription,
     date: frontmatter.date,
     draft: frontmatter.draft ?? false,
     wheel: frontmatter.wheel ?? [],
