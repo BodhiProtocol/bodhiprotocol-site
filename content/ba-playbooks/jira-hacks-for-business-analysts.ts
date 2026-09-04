@@ -69,9 +69,9 @@ export const jiraHacksForBusinessAnalysts: Omit<Playbook, "readingTime"> = {
     "Developers working closely with BAs",
   ],
   featured: true,
-  seoTitle: "Jira Hacks for Business Analysts — 12 Practical Tips",
+  seoTitle: "Jira Tutorial for Business Analysts — 12 Practical Hacks",
   seoDescription:
-    "12 practical Jira habits for Business Analysts covering user stories, acceptance criteria, dependencies, decisions, dashboards, JQL and reusable templates.",
+    "A practical Jira tutorial for Business Analysts: 12 habits covering user stories, acceptance criteria, dependencies, decisions, dashboards, JQL and reusable templates.",
   closingHeading: ["You don't need more Jira.", "You need clearer Jira."],
   closingBody:
     "Most Jira problems are not really Jira problems. They are information-design problems. Clear context, explicit decisions, visible dependencies, and testable acceptance criteria make the tool much easier to work with.",
