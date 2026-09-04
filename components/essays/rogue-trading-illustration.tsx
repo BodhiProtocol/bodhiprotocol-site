@@ -46,17 +46,16 @@ function RogueTradingIllustration() {
           <span className="text-[8px] font-bold tracking-wide text-rose-600 dark:text-rose-500">
             COLLAPSED (WHAT FAILED)
           </span>
-          <span className="w-fit rounded-full bg-rose-600/10 px-1.5 py-0.5 text-[8px] font-bold tracking-wide text-rose-600 dark:text-rose-500">
-            MAKER + CHECKER
-          </span>
-          <span className="text-rose-600 dark:text-rose-500" aria-hidden="true">
-            ↺
-          </span>
-          <span className="w-fit rounded-full bg-rose-600/10 px-1.5 py-0.5 text-[8px] font-bold tracking-wide text-rose-600 dark:text-rose-500">
-            SAME LOGIN
-          </span>
+          <div className="flex w-fit flex-col overflow-hidden rounded-md border-2 border-rose-600/70 dark:border-rose-500/70">
+            <span className="px-3 py-1 text-center text-[8px] font-bold tracking-wide text-rose-600 dark:text-rose-500">
+              MAKER
+            </span>
+            <span className="border-t border-dashed border-rose-600/50 px-3 py-1 text-center text-[8px] font-bold tracking-wide text-rose-600 dark:border-rose-500/50 dark:text-rose-500">
+              CHECKER
+            </span>
+          </div>
           <span className="mt-1 text-[9px] font-bold text-rose-600 dark:text-rose-500" aria-hidden="true">
-            ✕ SELF-CHECKED
+            ✕ 1 LOGIN, BOTH ROLES
           </span>
         </div>
       </div>

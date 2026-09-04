@@ -51,7 +51,7 @@ function InsiderTradingIllustration() {
                 {!isLast ? (
                   <span
                     className={
-                      i === 0
+                      i === 1 || i === 2
                         ? "w-px flex-1 bg-rose-600/40 dark:bg-rose-500/40"
                         : "w-px flex-1 bg-border"
                     }
