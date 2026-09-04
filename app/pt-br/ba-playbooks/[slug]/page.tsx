@@ -72,6 +72,7 @@ export async function generateMetadata({ params }: PlaybookPtBrPageProps): Promi
         ? {
             en: `/ba-playbooks/${enSlug}`,
             "pt-BR": `/pt-br/ba-playbooks/${guide.slug}`,
+            pt: `/pt-br/ba-playbooks/${guide.slug}`,
             "x-default": `/ba-playbooks/${enSlug}`,
           }
         : undefined,

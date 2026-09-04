@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     languages: {
       en: "/ba-playbooks",
       "pt-BR": "/pt-br/ba-playbooks",
+      pt: "/pt-br/ba-playbooks",
       "x-default": "/ba-playbooks",
     },
   },
