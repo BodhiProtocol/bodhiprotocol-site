@@ -111,6 +111,7 @@ export async function generateMetadata({ params }: PlaybookPageProps): Promise<M
         ? {
             en: `/ba-playbooks/${guide.slug}`,
             "pt-BR": `/pt-br/ba-playbooks/${ptBrSlug}`,
+            pt: `/pt-br/ba-playbooks/${ptBrSlug}`,
             "x-default": `/ba-playbooks/${guide.slug}`,
           }
         : undefined,
