@@ -115,7 +115,7 @@ function Navbar({ searchItems }: { searchItems: SearchItem[] }) {
           <div className="flex items-center gap-1.5">
             <LanguageSwitcher className="hidden lg:inline-flex" />
             <CommandMenu items={searchItems} />
-            <ThemeToggle />
+            <ThemeToggle className="hidden lg:inline-flex" />
             <MobileNav />
           </div>
         </Container>

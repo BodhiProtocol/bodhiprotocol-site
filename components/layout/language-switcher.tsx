@@ -20,7 +20,7 @@ const EN_PLAYBOOKS_PREFIX = "/ba-playbooks";
 // straight to the translated article when one exists, otherwise to that
 // language's BA Playbooks hub (never a broken URL). BA Playbooks is the only
 // section with any Portuguese content today.
-function useLanguageTargets() {
+export function useLanguageTargets() {
   const pathname = usePathname() ?? "/";
   const isPtBr = pathname.startsWith(PT_BR_PLAYBOOKS_PREFIX);
 
