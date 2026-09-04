@@ -1,4 +1,14 @@
-import { Activity, Boxes, Brain, Cpu, Layers, Network, Route, Workflow } from "lucide-react";
+import {
+  Activity,
+  Boxes,
+  Brain,
+  Cpu,
+  Layers,
+  Network,
+  Route,
+  ShieldAlert,
+  Workflow,
+} from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 export interface EssaySeries {
@@ -147,6 +157,18 @@ export const essaySeries: EssaySeries[] = [
     ],
   },
   {
+    id: "market-abuse",
+    title: "Market Abuse",
+    blurb:
+      "Three ways trust breaks down inside a market: concealed from your own employer, built into the exchange's own wiring, or handed over by someone who owed the market a duty not to.",
+    icon: ShieldAlert,
+    slugs: [
+      "rogue-trading-when-the-person-trading-is-also-the-person-checking-the-trade",
+      "colocation-when-the-exchange-itself-decides-who-hears-first",
+      "insider-trading-the-edge-that-isnt-skill-its-a-phone-call",
+    ],
+  },
+  {
     id: "the-analysts-craft",
     title: "The Analyst's Craft",
     blurb:
@@ -262,6 +284,11 @@ export const essayBridges: EssayBridge[] = [
     from: "capital-market-system-two-paths-one-market",
     to: "buy-side-sell-side-one-trade-two-different-jobs",
     label: "Trader and portfolio manager are both jobs that live inside the buy-side half of this split",
+  },
+  {
+    from: "what-spoofing-actually-looks-like",
+    to: "rogue-trading-when-the-person-trading-is-also-the-person-checking-the-trade",
+    label: "Spoofing fakes a signal to other traders; rogue trading hides a position from your own employer",
   },
 ];
 
