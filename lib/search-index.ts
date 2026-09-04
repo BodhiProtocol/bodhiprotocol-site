@@ -1,6 +1,7 @@
 import { getAllBlueprints } from "@/lib/blueprints";
 import { getAllEssays } from "@/lib/essays";
 import { getAllPlaybooks } from "@/lib/ba-playbooks";
+import { getAllPlaybooksPtBr } from "@/lib/ba-playbooks-pt-br";
 import { getAllGreatMinds } from "@/lib/great-minds";
 import { getAllInvisibleBusinesses } from "@/lib/invisible-businesses";
 import { getAllTools } from "@/lib/tools";
@@ -77,6 +78,16 @@ export function getSearchIndex(): SearchItem[] {
     href: `/ba-playbooks/${guide.slug}`,
   }));
 
+  const playbooksPtBr: SearchItem[] = getAllPlaybooksPtBr().map((guide) => ({
+    type: "playbook",
+    title: guide.title,
+    description: guide.description,
+    category: guide.category,
+    tags: guide.tags,
+    content: guide.hacks.map((hack) => `${hack.title} ${hack.insight}`).join(" "),
+    href: `/pt-br/ba-playbooks/${guide.slug}`,
+  }));
+
   const tools: SearchItem[] = getAllTools().map((tool) => ({
     type: "tool",
     title: tool.title,
@@ -142,6 +153,7 @@ export function getSearchIndex(): SearchItem[] {
     ...greatMinds,
     ...blueprints,
     ...playbooks,
+    ...playbooksPtBr,
     ...tools,
     ...resources,
     ...simulators,
