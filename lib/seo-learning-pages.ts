@@ -240,8 +240,10 @@ export const seoLearningPages: SeoLearningPage[] = [
     seoDescription:
       "Learn the SQL a business analyst actually needs: SELECT, WHERE, JOIN, GROUP BY, and how to use queries to verify data and investigate production issues.",
     intro: [
-      "A business analyst does not need to be a database developer. But not knowing any SQL means depending on someone else every time a claim needs to be checked — how many records match a rule, whether a reported defect is a real data problem, whether a UAT test actually produced the scenario it was supposed to.",
-      "SQL is consistently the most tested technical skill in BA interviews, and it is also one of the few technical skills that pays off almost immediately: a BA who can write a five-line query stops waiting on someone else to answer a question they could have answered themselves.",
+      "9:14 AM. A message lands in your inbox: \"We have a LOT of unmatched trades today. This is bad.\" No number. No file. Just a feeling of alarm.",
+      "You have two options. Ask someone else to check, then wait. Or open the database yourself and have the real number before your coffee gets cold.",
+      "Think of a database table as one giant shared spreadsheet — except it is too big for anyone to scroll through, and it is split across many tabs that have to be matched up by hand. SQL is simply the question you type to that spreadsheet instead of scrolling: \"show me only the rows where this is true.\"",
+      "A business analyst does not need to be a database developer. But not knowing any SQL means depending on someone else every single time a claim needs to be checked. SQL is also consistently the most tested technical skill in BA interviews, and one of the few technical skills that pays off immediately — a BA who can write a five-line query stops waiting on someone else to answer a question they could have answered themselves.",
     ],
     sections: [
       {
@@ -257,38 +259,54 @@ export const seoLearningPages: SeoLearningPage[] = [
       {
         title: "The SQL a BA actually needs",
         paragraphs: [
-          "Most day-to-day BA work uses a small, stable set of SQL. Database administration, indexing, and performance tuning are not part of the job.",
+          "Most day-to-day BA work uses a small, stable set of SQL — roughly in the order you will actually reach for it. Database administration, indexing, and performance tuning are not part of the job.",
         ],
         items: [
-          "SELECT, FROM, WHERE — pull the rows that match a condition",
+          "SELECT, FROM, WHERE — pull only the rows that match a condition",
           "JOIN (INNER and LEFT) — combine data that lives in more than one table, like trades and counterparties",
           "GROUP BY with COUNT, SUM, AVG — turn a list of rows into a summary",
+          "HAVING — filter the summary itself, e.g. only counterparties with more than five breaks",
+          "CASE WHEN — turn a raw number or code into a business-friendly label, like turning \"days_open > 5\" into \"Aging\"",
           "ORDER BY and LIMIT — find the biggest, oldest, or most recent records",
           "DISTINCT — check whether a field actually has duplicate values",
-          "IS NULL / IS NOT NULL — a huge source of \"the data looks wrong\" bugs",
+          "IS NULL / IS NOT NULL — NULL means \"unknown,\" not zero or blank, which is why it needs its own operator and is a constant source of \"the data looks wrong\" bugs",
         ],
       },
       {
-        title: "Example: checking a stakeholder's claim",
+        title: "One message, three queries: a worked example",
         paragraphs: [
-          "Stakeholder says: \"We have a lot of unmatched trades today, this is a big problem.\"",
-          "A BA who can query the database turns that into a specific, testable fact instead of an assumption.",
+          "9:14 AM: \"We have a lot of unmatched trades today, this is a big problem.\" Here is what actually answering that looks like, one query at a time.",
         ],
         items: [
-          "SELECT COUNT(*) FROM trades WHERE match_status = 'UNMATCHED' AND trade_date = CURRENT_DATE;",
-          "SELECT counterparty, COUNT(*) AS breaks FROM trades WHERE match_status = 'UNMATCHED' GROUP BY counterparty ORDER BY breaks DESC;",
-          "The first query answers how bad it is. The second answers where to focus first — usually the question stakeholders actually mean when they say a problem is big.",
+          "Query 1 — how bad is it: SELECT COUNT(*) FROM trades WHERE match_status = 'UNMATCHED' AND trade_date = CURRENT_DATE;",
+          "Result: 340. Worse than yesterday's 60 — \"a lot\" is now a number, not a feeling.",
+          "Query 2 — where is it coming from: SELECT counterparty, COUNT(*) AS breaks FROM trades WHERE match_status = 'UNMATCHED' GROUP BY counterparty ORDER BY breaks DESC;",
+          "Result: one counterparty accounts for 310 of the 340. This is not a system-wide problem, it is one relationship having a bad day.",
+          "Query 3 — is it really 310 different trades: SELECT trade_id, COUNT(*) FROM trades WHERE counterparty = 'ACME-CORP' GROUP BY trade_id HAVING COUNT(*) > 1;",
+          "Result: empty. No trade_id appears more than once, so it is genuinely 310 distinct breaks, not one trade counted 310 times. That HAVING clause is also the direct answer to the classic interview question \"how would you find duplicates in a table.\"",
+          "The report you send back six minutes later: SELECT trade_id, CASE WHEN DATEDIFF(day, trade_date, CURRENT_DATE) > 2 THEN 'Aging' ELSE 'New' END AS status FROM trades WHERE counterparty = 'ACME-CORP' AND match_status = 'UNMATCHED';",
+          "That CASE WHEN turns a raw date difference into the two words a manager actually wants to see on a dashboard: Aging or New.",
         ],
       },
       {
-        title: "SQL questions that come up in BA interviews",
+        title: "One mistake that quietly changes your number",
+        paragraphs: [
+          "A COUNT(*) taken after a JOIN can be wrong in a specific, easy-to-miss way. If the table you joined to has more than one matching row for a key, the join duplicates the original row before anything gets counted — so a trade with three matching confirmation records gets counted three times, and the reported total looks worse than the real problem.",
+        ],
         items: [
-          "What is the difference between INNER JOIN and LEFT JOIN?",
-          "What is the difference between WHERE and HAVING?",
-          "What does GROUP BY actually do to the rows?",
-          "What is a primary key vs a foreign key?",
-          "How would you find duplicate records in a table?",
-          "How would you find records that exist in one table but not another?",
+          "Before trusting a count taken after a JOIN, ask: could either side of this join have more than one match per key?",
+          "If yes, count the distinct key instead — COUNT(DISTINCT trade_id) — or summarize the second table before joining it, not after.",
+        ],
+      },
+      {
+        title: "SQL interview questions, answered",
+        items: [
+          "INNER JOIN vs LEFT JOIN — INNER JOIN keeps only rows that match in both tables. LEFT JOIN keeps every row from the first table even with no match, filling the gap with NULL.",
+          "WHERE vs HAVING — WHERE filters individual rows before grouping happens. HAVING filters the groups after GROUP BY has already summarized them.",
+          "Primary key vs foreign key — a primary key uniquely identifies a row in its own table. A foreign key is a column pointing to a primary key in another table, which is what makes a JOIN possible.",
+          "How would you find duplicates? — GROUP BY the column that should be unique, then HAVING COUNT(*) > 1 (see the worked example above).",
+          "How would you find rows in one table but not another? — a LEFT JOIN plus WHERE the second table's key IS NULL, or a NOT EXISTS subquery.",
+          "What comes after these basics? — subqueries (a query nested inside another) and window functions (ranking or running totals across rows without collapsing them like GROUP BY does). Worth knowing they exist; not worth learning before the basics above are automatic.",
         ],
       },
       {
@@ -332,7 +350,12 @@ export const seoLearningPages: SeoLearningPage[] = [
       {
         question: "What SQL should I learn first as a BA?",
         answer:
-          "Start with SELECT, WHERE, and JOIN, then GROUP BY with COUNT and SUM. That small set answers most of the \"how many\" and \"which ones\" questions a BA runs into day to day.",
+          "Start with SELECT, WHERE, and JOIN, then GROUP BY with COUNT and SUM, then HAVING and CASE WHEN. That set answers almost every \"how many,\" \"which ones,\" and \"how should this look on a report\" question a BA runs into day to day.",
+      },
+      {
+        question: "What's a common SQL mistake business analysts make?",
+        answer:
+          "Trusting a COUNT(*) taken right after a JOIN. If the joined table has more than one matching row per key, the join duplicates rows before they're counted, inflating the total. Counting the distinct key, or summarizing before joining, avoids it.",
       },
     ],
   },
