@@ -51,6 +51,7 @@ function DisneyEpisodeBody({ episode }: { episode: InvisibleBusinessWithContent 
               author={episode.author}
               date={episode.date}
               readingTime={episode.readingTime}
+              slug={episode.slug}
             />
 
             <div id="the-franchise-machine">

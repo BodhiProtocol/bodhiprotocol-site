@@ -1,4 +1,6 @@
 import { Eyebrow } from "@/components/ui/typography";
+import { ShareButton } from "@/components/shared/share-button";
+import { siteConfig } from "@/lib/site-config";
 
 interface IBArticleHeroProps {
   episode: number;
@@ -7,6 +9,7 @@ interface IBArticleHeroProps {
   author: string;
   date: string;
   readingTime: string;
+  slug: string;
 }
 
 // Left-aligned hero that lives inside the article column of a bespoke episode
@@ -19,6 +22,7 @@ function IBArticleHero({
   author,
   date,
   readingTime,
+  slug,
 }: IBArticleHeroProps) {
   return (
     <header className="flex flex-col gap-4">
@@ -27,13 +31,21 @@ function IBArticleHero({
         {title}
       </h1>
       <p className="font-serif text-xl text-brand italic sm:text-2xl">{tagline}</p>
-      <div className="flex items-center gap-2.5">
-        <span className="flex size-7 items-center justify-center rounded-full bg-brand/10 text-xs font-bold text-brand">
-          {author.charAt(0)}
-        </span>
-        <span className="font-mono text-xs text-muted-foreground">
-          {author} · {date} · {readingTime}
-        </span>
+      <div className="flex flex-wrap items-center gap-3">
+        <div className="flex items-center gap-2.5">
+          <span className="flex size-7 items-center justify-center rounded-full bg-brand/10 text-xs font-bold text-brand">
+            {author.charAt(0)}
+          </span>
+          <span className="font-mono text-xs text-muted-foreground">
+            {author} · {date} · {readingTime}
+          </span>
+        </div>
+        <ShareButton
+          title={title}
+          url={`${siteConfig.url}/invisible-businesses/${slug}`}
+          shareLabel="Share this episode"
+          eventName="invisible_business_shared"
+        />
       </div>
     </header>
   );

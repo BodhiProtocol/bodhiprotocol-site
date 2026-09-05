@@ -3,7 +3,7 @@ import { BookOpen, FileText, ListChecks } from "lucide-react";
 import { CopyTemplate } from "@/components/ba-playbooks/copy-template";
 import { DownloadCard } from "@/components/ba-playbooks/download-card";
 import { SavePlaybookButton } from "@/components/ba-playbooks/save-playbook-button";
-import { ShareButton } from "@/components/ba-playbooks/share-button";
+import { ShareButton } from "@/components/shared/share-button";
 import { ToolkitCard } from "@/components/ba-playbooks/toolkit-card";
 import { NewsletterForm } from "@/components/newsletter/newsletter-form";
 import { Eyebrow, H3 } from "@/components/ui/typography";

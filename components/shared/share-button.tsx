@@ -13,6 +13,7 @@ interface ShareButtonProps {
   shareLabel?: string;
   copiedLabel?: string;
   copiedSrLabel?: string;
+  eventName?: string;
 }
 
 // Uses the Web Share API where the browser supports it (mobile Safari/Chrome);
@@ -25,6 +26,7 @@ function ShareButton({
   shareLabel = "Share playbook",
   copiedLabel = "Link copied",
   copiedSrLabel = "Link copied to clipboard",
+  eventName = "ba_playbook_shared",
 }: ShareButtonProps) {
   const [state, setState] = React.useState<"idle" | "copied">("idle");
   const canNativeShare = typeof navigator !== "undefined" && typeof navigator.share === "function";
@@ -39,7 +41,7 @@ function ShareButton({
     if (canNativeShare) {
       try {
         await navigator.share({ title, url });
-        trackEvent("ba_playbook_shared", { method: "web-share" });
+        trackEvent(eventName, { method: "web-share" });
         return;
       } catch {
         // User cancelled the native share sheet, or it failed — fall through to copy.
@@ -48,7 +50,7 @@ function ShareButton({
     try {
       await navigator.clipboard.writeText(url);
       setState("copied");
-      trackEvent("ba_playbook_shared", { method: "copy-link" });
+      trackEvent(eventName, { method: "copy-link" });
     } catch {
       // Clipboard permission denied — nothing else to do here.
     }

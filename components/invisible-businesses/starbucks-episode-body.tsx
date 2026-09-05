@@ -51,6 +51,7 @@ function StarbucksEpisodeBody({ episode }: { episode: InvisibleBusinessWithConte
               author={episode.author}
               date={episode.date}
               readingTime={episode.readingTime}
+              slug={episode.slug}
             />
 
             <div id="the-third-place">

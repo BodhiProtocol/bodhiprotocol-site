@@ -205,6 +205,7 @@ export default async function InvisibleBusinessPage({ params }: IBPageProps) {
         author={episode.author}
         date={episode.date}
         readingTime={episode.readingTime}
+        url={episodeUrl}
         illustration={Illustration ? <Illustration /> : undefined}
         illustrationWide={illustrationConfig?.wide}
       />

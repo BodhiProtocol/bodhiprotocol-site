@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 
 import { Eyebrow, Muted } from "@/components/ui/typography";
+import { ShareButton } from "@/components/shared/share-button";
 import { cn } from "@/lib/utils";
 
 interface IBHeroProps {
@@ -10,6 +11,7 @@ interface IBHeroProps {
   author: string;
   date: string;
   readingTime: string;
+  url: string;
   illustration?: ReactNode;
   illustrationWide?: boolean;
 }
@@ -21,6 +23,7 @@ function IBHero({
   author,
   date,
   readingTime,
+  url,
   illustration,
   illustrationWide,
 }: IBHeroProps) {
@@ -36,6 +39,12 @@ function IBHero({
       <Muted className="font-mono text-xs">
         {author} · {date} · {readingTime}
       </Muted>
+      <ShareButton
+        title={title}
+        url={url}
+        shareLabel="Share this episode"
+        eventName="invisible_business_shared"
+      />
       {illustration ? (
         <div className={cn("mt-6 w-full", illustrationWide ? "max-w-2xl" : "max-w-xs sm:max-w-sm")}>
           {illustration}

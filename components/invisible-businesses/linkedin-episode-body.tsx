@@ -51,6 +51,7 @@ function LinkedinEpisodeBody({ episode }: { episode: InvisibleBusinessWithConten
               author={episode.author}
               date={episode.date}
               readingTime={episode.readingTime}
+              slug={episode.slug}
             />
 
             <div id="the-reach-rings">

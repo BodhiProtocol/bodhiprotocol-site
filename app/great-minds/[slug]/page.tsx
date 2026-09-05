@@ -362,6 +362,7 @@ export default async function GreatMindPage({ params }: GreatMindPageProps) {
           roles={mind.roles}
           diagram={diagram}
           background={heroBackgrounds[mind.slug]}
+          url={mindUrl}
         />
       </MindGraphProvider>
       <Section>

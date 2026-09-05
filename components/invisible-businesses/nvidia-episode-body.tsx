@@ -29,6 +29,7 @@ function NvidiaEpisodeBody({ episode }: { episode: InvisibleBusinessWithContent 
               author={episode.author}
               date={episode.date}
               readingTime={episode.readingTime}
+              slug={episode.slug}
             />
 
             <GlassCard className="flex-row items-center justify-between gap-6">

@@ -4,6 +4,7 @@ import { Bookmark, Calendar, Landmark, Sparkles, Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { HeroSecondaryQuote } from "@/components/great-minds/hero-secondary-quote";
+import { ShareButton } from "@/components/shared/share-button";
 
 interface GreatMindsHeroProps {
   name: string;
@@ -15,6 +16,7 @@ interface GreatMindsHeroProps {
   roles: string[];
   diagram: ReactNode;
   background?: ReactNode;
+  url: string;
 }
 
 function GreatMindsHero({
@@ -27,6 +29,7 @@ function GreatMindsHero({
   roles,
   diagram,
   background,
+  url,
 }: GreatMindsHeroProps) {
   return (
     <div className="relative overflow-hidden border-b border-border">
@@ -77,13 +80,19 @@ function GreatMindsHero({
             </div>
           </dl>
 
-          <div className="flex items-center gap-3 pt-1">
+          <div className="flex flex-wrap items-center gap-3 pt-1">
             <Button size="lg" nativeButton={false} render={<a href="#core-philosophy" />}>
               Explore This Mind
             </Button>
             <Button size="icon-lg" variant="outline" aria-label={`Save ${name}`}>
               <Bookmark className="size-4" />
             </Button>
+            <ShareButton
+              title={name}
+              url={url}
+              shareLabel="Share"
+              eventName="great_mind_shared"
+            />
           </div>
         </div>
 
