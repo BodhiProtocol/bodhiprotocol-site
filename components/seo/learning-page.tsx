@@ -45,9 +45,19 @@ function LearningPage({ page }: { page: SeoLearningPage }) {
       }
     : null;
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
+      { "@type": "ListItem", position: 2, name: page.title, item: `${siteConfig.url}/${page.slug}` },
+    ],
+  };
+
   return (
     <>
       <JsonLd data={learningJsonLd} />
+      <JsonLd data={breadcrumbJsonLd} />
       {faqJsonLd ? <JsonLd data={faqJsonLd} /> : null}
       <PageHeader eyebrow={page.eyebrow} title={page.title} description={page.description} />
       <Section>
