@@ -62,6 +62,8 @@ const essayHooks: Record<string, string> = {
   "the-decisions-that-never-stopped-billing":
     "Some choices keep charging long after the purchase.",
   "weve-seen-this-movie-before": "New technology often repeats an old adoption pattern.",
+  "margin-options-two-ways-the-same-capital-disappears":
+    "Nine out of ten individual traders in India's F&O market lost money last year. They didn't all lose it the same way.",
 };
 
 function firstSentence(text: string) {
