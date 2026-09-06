@@ -38,6 +38,7 @@ export const essaySeries: EssaySeries[] = [
       "shiv-pressed-buy-trade-execution",
       "how-order-books-work",
       "what-a-trade-lifecycle-actually-looks-like",
+      "front-office-middle-office-back-office-three-clocks-on-one-trade",
       "infrastructure-the-nine-systems-behind-every-trade",
       "fix-messages-order-status-is-a-state-execution-type-is-an-event",
       "a-bank-trading-floor-is-a-marketplace-for-risk",
@@ -203,6 +204,11 @@ export interface EssayBridge {
 }
 
 export const essayBridges: EssayBridge[] = [
+  {
+    from: "front-office-middle-office-back-office-three-clocks-on-one-trade",
+    to: "rogue-trading-when-the-person-trading-is-also-the-person-checking-the-trade",
+    label: "This is why the three clocks stay apart. That's what happens when they don't.",
+  },
   {
     from: "what-a-trade-lifecycle-actually-looks-like",
     to: "implementation-shortfall-the-cost-of-time-between-deciding-and-doing",

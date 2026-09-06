@@ -43,6 +43,7 @@ import { SpoofingTimelineIllustration } from "@/components/essays/spoofing-timel
 import { SubscriptionBillingIllustration } from "@/components/essays/subscription-billing-illustration";
 import { SunkCostIllustration } from "@/components/essays/sunk-cost-illustration";
 import { SwapsNetSettlementIllustration } from "@/components/essays/swaps-net-settlement-illustration";
+import { ThreeClocksIllustration } from "@/components/essays/three-clocks-illustration";
 import { TradeExecutionCardIllustration } from "@/components/essays/trade-execution-essay";
 import { TradeLifecycleIllustration } from "@/components/essays/trade-lifecycle-illustration";
 import { TradingDesksIllustration } from "@/components/essays/trading-desks-illustration";
@@ -103,4 +104,5 @@ export const essayIllustrations: Record<string, ComponentType> = {
     RogueTradingIllustration,
   "colocation-when-the-exchange-itself-decides-who-hears-first": ColocationIllustration,
   "insider-trading-the-edge-that-isnt-skill-its-a-phone-call": InsiderTradingIllustration,
+  "front-office-middle-office-back-office-three-clocks-on-one-trade": ThreeClocksIllustration,
 };

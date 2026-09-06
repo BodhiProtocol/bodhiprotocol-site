@@ -33,6 +33,16 @@ export const essayRecommendations: Record<string, ContentRecommendation[]> = {
       cta: "Open the Simulator",
     },
   ],
+  "front-office-middle-office-back-office-three-clocks-on-one-trade": [
+    {
+      eyebrow: "Put it into practice",
+      title: "Front Office, Middle Office & Back Office — What Do They Actually Do?",
+      description:
+        "The reference version: one Reliance trade followed from order to settlement, showing exactly where Market Data, Reference Data, Front Office, Middle Office, Back Office and Risk each fit.",
+      href: "/ba-playbooks/front-office-middle-office-back-office",
+      cta: "Open the BA Playbook",
+    },
+  ],
 };
 
 // BA Playbook slug -> what to read next (usually the essay behind the "why").
@@ -44,6 +54,16 @@ export const playbookRecommendations: Record<string, ContentRecommendation[]> = 
       description:
         "A ticket usually does not become useless because it got old. It becomes useless because context, ownership and decisions disappear around it.",
       href: "/essays/why-jira-tickets-rot-in-backlog",
+      cta: "Read the Essay",
+    },
+  ],
+  "front-office-middle-office-back-office": [
+    {
+      eyebrow: "Understand the idea",
+      title: "Front Office, Middle Office, Back Office: Three Clocks on One Trade",
+      description:
+        "Why the three offices exist in the first place — three different, equally correct answers to the question \"is it done?\" — and why settlement cycles getting shorter made the middle one non-negotiable.",
+      href: "/essays/front-office-middle-office-back-office-three-clocks-on-one-trade",
       cta: "Read the Essay",
     },
   ],

@@ -1,0 +1,49 @@
+---
+title: "Front Office, Middle Office, Back Office: Three Clocks on One Trade"
+description: "Front Office, Middle Office and Back Office aren't three departments arguing about the same trade — they're three different, equally correct answers to the question \"is it done?\" Why the split exists, what each clock actually measures, and why settlement cycles getting shorter made the middle one non-negotiable."
+hook: "Your phone said \"Payment Successful.\" The two banks hadn't settled yet."
+category: "Capital Markets"
+tags: ["markets", "operations", "risk"]
+author: "Surya"
+date: "2026-09-06"
+---
+
+Pay a shopkeeper by UPI and your phone shows "Payment Successful" before you've even put your wallet away. That's real — the shopkeeper genuinely has the money, in the sense that matters to both of you right now. But the actual movement of funds between your bank and the shopkeeper's bank doesn't happen at that instant. NPCI, which runs UPI, settles the two banks up with each other only a handful of times a day — adding up everything every bank owes every other bank since the last round, and moving just that net difference between their accounts through the RBI. Your ₹200 landed in the shopkeeper's balance the moment you paid. The two banks haven't actually swapped it between themselves yet.
+
+Swipe a card at a store in the US and the same gap shows up wearing a different name. The terminal says "Approved" in under a second — that's the card network checking you have the money and putting a hold on it. The merchant doesn't actually have your money yet. It arrives a day or so later, after the network batches up every approved swipe from that store, matches it against what the bank agreed to pay, and settles the funds into the merchant's account.
+
+Neither the UPI app nor the card terminal is lying. "Payment Successful" and "Approved" are both true statements — about the thing they're built to measure. What's actually happened is a chain of three separate questions, answered by three separate systems, on three separate clocks: *did the transaction happen*, *does everyone's record of it agree*, and *has the money actually moved*. A capital markets trade goes through the exact same chain, and the three teams that answer those three questions have names: **Front Office, Middle Office, Back Office.**
+
+## Three different meanings of "done"
+
+Forget org charts. Forget who reports to whom. The only thing worth memorizing is that "done" means something different depending on which clock you're asking.
+
+**Front Office says "executed."** A trader, a salesperson, an execution algorithm — someone in Front Office got the order into the market and it matched. From the client's point of view, exactly like that UPI screen, this is the moment that feels like the trade. It happened in milliseconds to minutes. Nothing about "executed" says anything about whether the paperwork behind it is correct.
+
+**Middle Office says "matched and controlled."** Somebody now has to check that the trade Front Office thinks it did is the trade that actually landed in every system that needs to know about it — the right client account, the right price, the right currency, position limits respected, nothing double-booked. This runs on a same-day clock: hours, not milliseconds, but it has to finish before that day's cutoff, because everything downstream depends on this record being right.
+
+**Back Office says "settled."** Only once the trade is confirmed correct does the actual exchange happen — the buyer's cash leaves, the seller's securities move, and each side ends up holding what they paid for. This is the slowest clock of the three, running on a **T+1** cycle in both India and the US today: one full business day after the trade date.
+
+Three clocks, three different definitions of finished, stacked on top of the same single trade. And — same as with **[Risk](/essays/a-bank-trading-floor-is-a-marketplace-for-risk)**, which asks "what exposure did this create" at every one of these stages rather than at just one of them — none of the three offices is wrong. They're each reporting the true state of a different layer.
+
+## The same shape, in a real trade
+
+Say an institutional client tells their broker to buy 10,000 shares of Tata Motors on the NSE. The order reaches Front Office — sales, trading, the order and execution management systems — and it fills, maybe in three or four separate pieces as the market absorbs it. Seconds after the client asked, Front Office can honestly say: done, executed, filled. A trader in New York doing the same thing in Apple stock on the NASDAQ gets the identical feeling of "done," on the identical timescale.
+
+Neither trade is actually finished. Middle Office picks it up the same day: is this the account we think it is, does the price match what the counterparty's system says, does this push any position over a risk limit, has every fragment of that 10,000-share fill been correctly rolled up into one trade record. This is trade capture, enrichment, and reconciliation — the unglamorous work of making sure everyone's copy of "what happened" is the same copy. It has to close out before the day's cutoff, because what Middle Office signs off tonight is what gets sent for settlement tomorrow.
+
+Back Office then does the part that actually moves value. In India, the trade goes through a clearing corporation — NSE Clearing or, for a BSE trade, the Indian Clearing Corporation — which nets out the day's obligations, and the shares themselves move between demat accounts held at one of the two depositories, NSDL or CDSL, against the cash leg. In the US, the equivalent machinery runs through the DTCC — its clearing subsidiary matches and nets the trade, its depository subsidiary moves the shares. Different institutions, same job: on T+1, the Tata Motors buyer actually owns Tata Motors, and the Apple buyer actually owns Apple. Only at that point has the third clock finished — a full business day after the first one already felt finished to everyone involved.
+
+## Why the clock got faster on purpose
+
+Until recently, that Back Office clock ran on **T+2** in both markets — two business days, not one. India phased in T+1 for its entire equity market by January 2023; the US followed in May 2024, cutting its own T+2 standard down to T+1. Both moves were sold, correctly, as good for investors: less time for a counterparty to default before a trade settles, less capital tied up waiting.
+
+What that shift actually did to the *middle* clock is the part that rarely makes the announcement. A T+2 cycle gave Middle Office a full spare day of slack — if a mismatch surfaced late, there was still tomorrow to fix it before settlement. Cut settlement to T+1 and that slack disappears. Same-day trade matching stops being good practice and becomes the only thing standing between an error and a failed settlement. Firms that could previously catch a reconciliation break the morning after now have to catch it the same afternoon, which is exactly why **straight-through processing (STP) rate** — the percentage of trades that flow from execution to settlement with zero manual touches — turned from an efficiency metric into a genuine risk control almost overnight. Compress the slowest clock, and the middle one has to get faster just to keep the chain from breaking.
+
+## Why one person can never own two of these clocks
+
+There's a reason these three jobs sit with different people, or at minimum different systems, and it isn't tradition. Picture a trader who also ran their own end-of-day check. Their afternoon position has quietly moved past its authorized limit. Nobody outside that one desk is forcing an honest number to appear — the person who made the trade and the person who's supposed to catch the problem with it are the same person, so whatever they report simply becomes true. Hand that same check to someone in Middle Office who has nothing to gain by looking the other way, and the trade either matches what it should or it doesn't — there's no version of events left to quietly pick. That principle has a name, **segregation of duties**, and it's the entire reason Middle Office exists as a separate function at all rather than as one more step the trading desk does for itself. **[Rogue Trading](/essays/rogue-trading-when-the-person-trading-is-also-the-person-checking-the-trade)** is what two of finance's largest failures looked like once that exact separation quietly collapsed — worth reading as the other half of this essay: this one is why the three clocks stay apart, that one is what happens the moment they don't.
+
+## The real question
+
+Next time a status update says "check with Middle Office" or "that's stuck in Back Office," resist the urge to ask which department that is. Ask instead: *which clock hasn't finished yet?* Executed doesn't mean matched. Matched doesn't mean settled. All three can be true statements about the same trade, at the same moment, about three different layers of "done" — exactly like that phone screen that says "Payment Successful" while two banks are still hours away from actually agreeing on it.
