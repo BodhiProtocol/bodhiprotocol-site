@@ -44,6 +44,21 @@ This is where "brokerage" stops being one number and starts depending entirely o
 
 The pattern underneath that table: wherever a market is exchange-traded and agency-executed (equities, listed derivatives), the broker charges an explicit, itemized fee. Wherever a bank trades as principal against its own book (bonds, FX, OTC swaps), there usually isn't a visible "brokerage" line at all — the bank's profit is inside the price it quotes you, not added on top of it. Knowing which of those two worlds an asset class lives in is the actual answer to "how do investment banks calculate brokerage by asset class" — the honest answer for half the table is that they don't calculate a brokerage fee at all; they calculate a spread instead, and the two aren't the same thing wearing different names.
 
+## One asset class isn't one price: metals inside a commodities desk
+
+"Commodities" in that table hides as much variation as it reveals. Sit inside an international bank's [commodities desk](/essays/commodities-the-only-trade-you-could-drop-on-your-foot) for a day and gold, silver, copper, and platinum — four metals on the same desk, sometimes quoted by the same salesperson — get priced on four different logics, because liquidity and market structure differ metal by metal, not desk by desk.
+
+| Metal | Where it actually trades | How the bank prices it | Why it's priced that way |
+|---|---|---|---|
+| Gold | COMEX (part of CME Group) internationally; MCX in India | Tightest of the group — roughly 1–2bps institutional, or a few cents-per-ounce spread on OTC bullion | The single most liquid metal traded anywhere — the deepest order book gets the narrowest spread |
+| Silver | COMEX; MCX | Wider than gold — roughly 3–5bps, or a proportionally wider $/oz spread | Less liquid and more volatile than gold, so the bank needs a bigger cushion to hedge the position it just took on |
+| Copper | London Metal Exchange (LME) | Not bps at all — a flat commission per lot (25 tonnes), a structural holdover from LME's ring-dealing conventions | LME's entire fee architecture predates a common electronic bps standard — the mechanic is historical, not liquidity-driven |
+| Platinum / Palladium | NYMEX; LBMA OTC | Widest of the four — easily 8–15bps equivalent | Thinnest market of the group: demand concentrates in auto-catalyst industrial use, so one large order can move the price by itself |
+
+Put a number on it: a bank's commodities sales desk quoting $1,000,000 of notional in each metal, same day, same client tier, might land at $150 on gold (1.5bps), $400 on silver (4bps), and $1,000 on platinum (10bps) — nearly seven times the cost on the identical notional, purely because of which metal it is. Nobody's charging platinum more out of preference; the bank is pricing in the real cost of hedging a position in a market that thin.
+
+Copper is the outlier that proves the point a different way. Because LME still commissions per lot rather than per bps, a $1,000,000 copper trade doesn't translate into a clean bps figure at all — the fee depends on how many 25-tonne lots that notional works out to, not on the dollar value itself. India's version of the same instrument, MCX copper, trades in 2,500kg lots and is usually folded into the same flat per-lot brokerage plan an Indian broker already applies to gold and silver — a simplification international banks can't make, because LME's lot-based mechanic and COMEX's bps-based one are genuinely different systems, not two ways of describing the same fee.
+
 ## Sales credit — the number the client never sees
 
 Brokerage is what the client pays. Sales credit is a completely separate, internal number: how the bank splits that revenue between the people who serve the client relationship and the desk that actually executed or warehoused the risk.
