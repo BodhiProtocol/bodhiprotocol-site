@@ -59,6 +59,19 @@ Put a number on it: a bank's commodities sales desk quoting $1,000,000 of notion
 
 Copper is the outlier that proves the point a different way. Because LME still commissions per lot rather than per bps, a $1,000,000 copper trade doesn't translate into a clean bps figure at all — the fee depends on how many 25-tonne lots that notional works out to, not on the dollar value itself. India's version of the same instrument, MCX copper, trades in 2,500kg lots and is usually folded into the same flat per-lot brokerage plan an Indian broker already applies to gold and silver — a simplification international banks can't make, because LME's lot-based mechanic and COMEX's bps-based one are genuinely different systems, not two ways of describing the same fee.
 
+## The same pattern shows up in every other asset class
+
+Commodities didn't earn this variation by being a special case — it's just the easiest place to see it, because gold and copper sit on the same desk. The identical liquidity-driven spread shows up inside equities, fixed income, FX, and listed derivatives too, once you stop treating each as one uniform row.
+
+| Asset class | Cheapest tier to trade | Most expensive tier to trade | What's actually driving the gap |
+|---|---|---|---|
+| Equities | A liquid large-cap — a Nifty 50 or S&P 500 constituent, institutional ~3–5bps | An illiquid small-cap or micro-cap stock — 15–25bps or more | Market impact: a large order in a thin stock moves the price against the desk filling it, and the fee has to price in that risk |
+| Fixed income | Sovereign debt — Government of India securities, US Treasuries — a few bps | High-yield or distressed corporate credit — 50–100bps or more | Credit risk stacked on top of a much thinner secondary market, both widening the price a dealer needs to protect its own book |
+| FX | G10 major pairs — EUR/USD, USD/JPY — under a pip, institutional | Emerging-market or exotic pairs — USD/TRY, USD/ZAR — several pips wide | Shallower order books, plus real intervention risk from the relevant central bank |
+| Listed derivatives | A liquid index future — Nifty 50, S&P 500 e-mini — a near-flat per-lot fee | An illiquid, far-dated or deep out-of-the-money single-stock option | Market makers need more compensation to quote a contract almost nobody is actually trading |
+
+Every row in this table, and in the metals table before it, is answering the same underlying question with a different label stuck on it: how hard would it be for the bank to get out of this exact position if it had to, right now. That's the real variable behind "asset class," "instrument," and "liquidity tier" — three different names for the same thing.
+
 ## Sales credit — the number the client never sees
 
 Brokerage is what the client pays. Sales credit is a completely separate, internal number: how the bank splits that revenue between the people who serve the client relationship and the desk that actually executed or warehoused the risk.
@@ -80,6 +93,16 @@ A restaurant's cash register and its staff tip-pooling spreadsheet both referenc
 Brokerage and sales credit are exactly that pair of ledgers, and a trade-booking or commission-management system has to keep them that way: one client-facing, one strictly internal, computed from the same trade but never allowed to alter what the client was actually billed.
 
 That separation is where the real requirements live. A rate table has to apply the correct formula by instrument type — charging equity bps logic to a bond trade, or vice versa, silently over- or under-bills a client. The "lower of percentage or flat cap" rule needs explicit acceptance criteria for the boundary itself: what happens at the exact trade value where both sides compute equal, and which way does rounding go. And a sales-credit engine has to reconcile back to the same trade ID as the client-facing brokerage ledger without ever feeding forward into it — a system that lets an internal allocation influence what a client is charged has broken the one wall this whole model depends on. India's exchange bye-laws have long capped member brokerage at a ceiling — 2.5% of trade value under NSE and BSE rules — a limit that matters less today only because competition already pushed real rates far below it; the US never had an equivalent cap once the SEC abolished fixed minimum commissions on May 1, 1975 — "May Day" — the single event that made discount brokerage possible there in the first place, decades before it caught on in India.
+
+### The reconciliation break that isn't actually a break
+
+This is exactly the check [Middle Office runs every day](/essays/front-office-middle-office-back-office-three-clocks-on-one-trade) — the same "matched and controlled" clock that verifies price, account, and position limits also verifies that the commission charged on a trade matches what the bank's own rate card says it should be, before that trade is allowed to feed into settlement and, eventually, [Post-Settlement's books-and-records](/essays/what-a-trade-lifecycle-actually-looks-like). But that recon only works if the engine running it knows, trade by trade, which of the formulas above actually applies — because as every table in this piece shows, there's no single "expected commission" formula that covers a whole asset class, let alone the whole business.
+
+Feed a gold trade through a recon built for bps and it works cleanly: expected 1.5bps, actual 1.6bps, within tolerance, auto-matched. Feed a copper trade through that same bps-only recon and every single one of those trades throws a break — not because anything is actually wrong, but because LME's per-lot commission was never going to resolve into a clean bps figure to begin with. That's a false break: a real analyst's morning spent chasing a difference that doesn't exist, because the system applied equities-shaped logic to an LME instrument that runs on a different mechanic entirely.
+
+A genuine break looks different from that, and it's the one worth catching: a rate card entry that's gone stale, a trade booked under the wrong instrument code — a silver ticket tagged as gold — or a lot-size error on a copper trade that throws off the entire expected-commission calculation. Those real breaks get buried at exactly the rate the false ones pile up, because a badly modeled rate table dumps both into the same exception queue with no way to tell them apart on sight.
+
+Sales credit carries its own separate reconciliation, on a completely different ledger. Where the brokerage recon compares the bank's number against the broker's or client's confirm, the sales-credit recon checks something purely internal: that every trade's allocated sales credit sums back to exactly 100% of the gross commission booked against that trade ID — no more, which would mean two teams are both getting paid off the same revenue, and no less, which would mean some of it has quietly gone missing from both scorecards. Same discipline as the brokerage recon, just run on the other side of the wall this entire model depends on keeping intact.
 
 ## Lighthouse Insight
 
