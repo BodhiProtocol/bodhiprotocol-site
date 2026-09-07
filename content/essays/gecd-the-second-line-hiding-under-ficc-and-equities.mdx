@@ -1,0 +1,77 @@
+---
+title: "GECD: The Second Line Hiding Under FICC and Equities"
+description: "GECD stands for Global Equities and Commodity Derivatives — a real business line, used at banks like BNP Paribas, that pulls commodities out of FICC and sits it next to equity derivatives instead. What the four letters mean, why a bank would draw the floor this way, and what it teaches about acronyms that look fixed but aren't, with paired Indian and global examples throughout."
+hook: "FICC and Equities split a trading floor by what's being priced. GECD is proof there's a second line hiding underneath — one that splits by how."
+category: "Capital Markets"
+tags: ["markets", "trading", "derivatives"]
+author: "Surya"
+date: "2026-09-07"
+---
+
+Aditi has, by now, got the map memorised. FICC on one side of the trading floor, pricing whatever isn't about a single company — rates, currencies, commodities. Equities on the other, pricing whatever is. Two boxes. One clean line between them.
+
+Then a client sends over a counterparty's org chart, and one box refuses to sit in either half: **GECD.**
+
+Not a typo. Not a desk she's missed. A real business line, run at real scale by BNP Paribas and structured similarly at a handful of other global banks — and it does something her two-box map says shouldn't be possible. It takes commodities, the C that's supposed to live inside FICC, and files it next to equity derivatives instead.
+
+> GECD stands for Global Equities and Commodity Derivatives. It's a business line, used at banks including BNP Paribas, that groups equity derivatives and commodity derivatives together — deliberately separate from where commodities usually sit inside FICC.
+
+## What the four letters mean
+
+**Global** — the business runs across regions, not out of one trading hub.
+
+**Equities** — here specifically equity derivatives and structured products, not the plain buying and selling of shares covered in [Equities: The Business Line Priced Off One Company](/essays/equities-the-business-line-priced-off-one-company).
+
+**Commodity** — oil, gold, metals, agricultural contracts, priced as derivatives rather than delivered as physical barrels.
+
+**Derivatives** — the word doing the real work. GECD isn't "stocks and commodities." It's specifically the *derivative* instruments built on both — options, structured notes, swaps — not the underlying cash markets.
+
+At BNP Paribas, GECD sits inside Capital Markets & Derivatives and is built from three client-facing pieces: Structured Equity, Flow & Financing, and Commodity Derivatives. Two different underlyings — a company's stock, a barrel of crude — filed under one roof.
+
+## The line Aditi already knew
+
+Go back to the two-box map. [FICC prices the macroeconomy](/essays/ficc-the-business-line-where-nothing-is-priced-off-one-company): interest rates, exchange rates, commodity supply and demand. Equities prices one company's fundamentals. That line — *what* is being priced — is real, and it's why oil sits in FICC at most banks, next to bonds and currencies, not next to shares.
+
+Goldman Sachs's own public business pages still file FICC and Equities under one shared banner rather than describing them as two unrelated worlds — evidence that even the banks running the textbook split treat the boundary as a fence, not a wall. GECD just tests it harder: an entire business line built by moving one letter, C, across it.
+
+## Think of a tailor's shop
+
+Here's the piece Aditi's map was missing: a floor can be organised by *what* it prices, or by *how* it prices it — and those are two different lines, not one.
+
+Imagine a tailor's shop with two staff. One way to organise them: a cotton section and a silk section — grouped by material, the way FICC groups by "not one company" and Equities groups by "one company." A completely different way to organise the same two staff: everyone who does embroidery in one room, everyone who does plain stitching in another — grouped by *technique*, regardless of which fabric happens to be on the table.
+
+Equity options and commodity options are cut from different fabric — a stock and a barrel of oil aren't remotely the same thing. But they're stitched with the same technique: both are priced using volatility, using the same Greeks — [delta](/essays/delta-the-gear-ratio-between-an-option-and-its-stock), [gamma](/essays/gamma-the-feedback-loop-hiding-inside-every-delta-hedge), [vega](/essays/vega-the-price-of-not-knowing-what-happens-next) — regardless of whether the thing moving is a share price or a gold price. A plain bond or a spot currency trade doesn't need that machinery at all; it prices off a yield curve, not a volatility surface. GECD is a bank choosing to staff the embroidery room by skill, not by fabric.
+
+## Inside GECD: what the three pieces actually do
+
+| Piece | What it does | Indian example | Global example |
+| --- | --- | --- | --- |
+| **Structured Equity** | Packages equity-linked payoffs into notes for investors | An Indian wealth manager selling a principal-protected Market-Linked Debenture (MLD) whose return is tied to the Nifty 50 | BNP Paribas structuring a capital-protected note for a European private bank, linked to a global equity index |
+| **Commodity Derivatives** | Hedging and structured access to physical-goods prices, explained in [Commodity Derivatives: The Barrel That Cost Less Than Nothing](/essays/commodity-derivatives-the-barrel-that-cost-less-than-nothing) | An Indian gold refiner hedging import exposure through MCX gold futures | BNP Paribas providing a European airline a multi-year jet-fuel hedge |
+| **Flow & Financing** | Stock lending and swap-based financing for institutional clients, the equity-side counterpart to [Securities Lending](/essays/securities-lending-the-share-sold-short-more-than-once) | An Indian broker borrowing shares through NSE's Securities Lending and Borrowing (SLB) window to cover a short sale | BNP Paribas financing a hedge fund's equity basket through a total return swap |
+
+Three activities, two different underlyings, one shared skill: pricing and hedging optionality.
+
+## The Indian twist: a merger that made GECD's logic easier, not harder
+
+FICC's Indian regulatory story, as covered in [the FICC essay](/essays/ficc-the-business-line-where-nothing-is-priced-off-one-company), is a company with two bosses — the Reserve Bank of India covers government debt and currencies, SEBI covers corporate bonds and, since 2015, commodities. That 2015 date isn't a footnote here — it's the reason a GECD-style desk fits India more naturally than it fits the classic FICC/Equities split.
+
+Before September 2015, India's commodity derivatives answered to a separate regulator entirely: the Forward Markets Commission. That year, the FMC was merged into SEBI — the same regulator that already oversaw the National Stock Exchange's equity derivatives. Equity options on the NSE and commodity futures on the Multi Commodity Exchange (MCX) have, ever since, answered to one regulator, not two.
+
+That's the opposite of FICC's Indian problem. G-Secs and FX still answer to the RBI, a genuinely separate regulatory world from SEBI's equities and commodities. An Indian bank building a GECD-style desk — equity derivatives and commodity derivatives together — is combining two businesses that already share a regulator. An Indian bank building a classic FICC desk is combining businesses that still don't.
+
+## Why this matters for a Business Analyst
+
+Aditi's real problem isn't understanding what GECD means. It's what she almost built before she found out.
+
+She was scoping a trade reporting model for a client with counterparties across several banks, and her first draft hardcoded a rule straight out of the FICC essay: commodities route through the FICC reporting line, full stop. It's true at most banks. It is not true at BNP Paribas, where a gold options trade books through GECD's Commodity Derivatives desk — a different P&L line, a different risk aggregation, potentially a different regulatory return, from an outwardly identical trade at a bank organised the standard way.
+
+The instrument hadn't changed. The organisation chart around it had. A data model that assumes "commodity trade" always maps to "FICC business line" breaks the moment it meets a counterparty, or a client, filed the other way — and the failure won't announce itself as a bug. It'll show up as a reconciliation break, or a report that quietly puts a real trade in the wrong bucket, months after the assumption was baked in.
+
+## Lighthouse Insight
+
+Two boxes, one line, felt complete right up until a real org chart disagreed with it.
+
+FICC and Equities split a trading floor by asking *what's being priced* — a company, or the macroeconomy. GECD answers a different question entirely: *how is it priced* — through volatility and optionality, or through a curve. Both lines are real. They just don't run in the same direction, and a bank is free to organise around either one, or genuinely does.
+
+The lesson isn't "learn GECD as a fifth acronym." It's the same discipline [the FICC essay closed on](/essays/ficc-the-business-line-where-nothing-is-priced-off-one-company): before a system, a report or a data model assumes an acronym means one fixed thing, check which line the organisation in front of you actually drew.
