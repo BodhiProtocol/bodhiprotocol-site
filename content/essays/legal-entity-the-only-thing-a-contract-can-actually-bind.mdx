@@ -1,6 +1,6 @@
 ---
 title: "Legal Entity: The Only Thing a Contract Can Actually Bind"
-description: "A trade ticket, a loan agreement, a KYC form — all of them are signed by something the law recognises as a person, even though no human being is doing the signing. What a legal entity actually is, why regulators built an entire global system just to identify one correctly, what gets mistaken for one but isn't, and what an 'entity code' is actually checking — with paired Indian and international examples throughout."
+description: "A trade ticket, a loan agreement, a KYC form — all of them are signed by something the law recognises as a person, even though no human being is doing the signing. What a legal entity actually is, why RBI's CRILC and the ECB's AnaCredit exist to catch exactly the risk that hides when one is misidentified, what gets mistaken for a legal entity but isn't, and what an 'entity code' is actually checking, character by character — with paired Indian and international examples throughout."
 hook: "When Lehman Brothers collapsed in 2008, regulators weren't unwinding one company. They were unwinding thousands of separately incorporated ones, scattered across dozens of countries, with no consistent way to tell which one owed what to whom."
 category: "Capital Markets"
 tags: ["markets", "regulation", "reference-data"]
@@ -41,6 +41,16 @@ A bank doesn't just want to know it lent money to "the Ambani group" or "the Ada
 RBI didn't invent that 25% figure — it adopted it. The number comes from the Basel Committee on Banking Supervision's own global Large Exposures standard, built in direct response to the 2008 crisis, when supervisors trying to work out who was exposed to whom discovered that the same institution could appear on different banks' books under different names, different spellings, and different levels of its own corporate structure — with no reliable way to confirm two records pointed at the same legal entity. The US and EU's post-crisis reforms — Dodd-Frank in America, the Bank Recovery and Resolution Directive in Europe — went further still, requiring the largest banking groups to file "living wills": resolution plans mapped out entity by entity, so that if the group failed, regulators would know in advance exactly which legal entity held which asset, and could be wound down without freezing the rest.
 
 None of that works if "who's on the other side" is a guess.
+
+## The regulator's view: how one wrong match can hide a systemic risk
+
+Everything above explains why a regulator needs entity identity correct in theory. In practice, several regulators have built live, granular monitoring systems that only work if it's correct — and the failure mode when it isn't is worth walking through with real numbers, not just a principle.
+
+Since 2014, the RBI has required Indian banks and financial institutions to report every borrower with aggregate credit exposure of ₹5 crore or more, from every lender, into one system: the Central Repository of Information on Large Credits, or CRILC. The whole point is aggregation across lenders. A borrower owing ₹3 crore to Bank A and ₹4 crore to Bank B looks individually harmless to each bank — comfortably under the ₹5 crore threshold either one would separately worry about. Only when CRILC correctly joins both records to the same underlying legal entity does the real picture appear: ₹7 crore of aggregate exposure, past the threshold RBI actually cares about, and — if repayments have started slipping — a Special Mention Account flag raised system-wide, before either individual lender treats it as anything more than one small, well-behaved account. If Bank A reports the borrower as "X Pvt Ltd" and Bank B reports it under a slightly different registered name, or with a typo in the identifying code, that join never happens. The ₹7 crore exposure is real. The system just never sees it as one number.
+
+The European Central Bank built the same idea, at a larger scale, for the euro area. AnaCredit, its loan-by-loan credit register, has required banks across the currency union to report individual loans above €25,000 since 2018, tagged — wherever an LEI is available for the borrower — by that code specifically, so that a company borrowing from banks in three different countries shows up to supervisors as one exposure, not three unrelated ones sitting in three national datasets that never compare notes.
+
+Neither system is really about legal philosophy at that point. Both are, in effect, one very large join operation, run across every bank in a country or currency union, that only produces a correct answer if the key it's joining on — the entity's true identity — is unambiguous. Get that key wrong, and a systemic risk doesn't fail to exist. It just fails to be visible until after it's already happened.
 
 ## What is not a legal entity
 
