@@ -36,9 +36,9 @@ The same line was drawn, more famously, on the other side of the world more than
 
 A contract doesn't care who the humans in the room were. It cares which entity signed it. And once you're managing risk across an entire financial system rather than one deal, that distinction stops being a legal footnote and becomes the whole problem.
 
-A bank doesn't just want to know it lent money to "the Ambani group" or "the Adani group." It needs to know precisely which entity within that group borrowed, because different entities in the same business family can have wildly different assets, different debts, and different ability to pay — lumping them together hides exactly the concentration risk a regulator is trying to catch. The Reserve Bank of India's large exposure and group-exposure norms exist specifically to stop banks from unknowingly piling risk onto one corporate family by lending to it through five different, individually-small-looking entities.
+A bank doesn't just want to know it lent money to "the Ambani group" or "the Adani group." It needs to know precisely which entity within that group borrowed, because different entities in the same business family can have wildly different assets, different debts, and different ability to pay — lumping them together hides exactly the concentration risk a regulator is trying to catch. That's why the Reserve Bank of India's Large Exposures Framework, in force since 2019, puts a hard number on it: a bank's exposure to any single counterparty — or to a group of counterparties connected to each other — is capped at 25% of the bank's own Tier 1 capital. Checking that cap only means something if the system checking it can correctly tell that five small-looking borrowers are, in fact, the same connected group and not five unrelated ones.
 
-Internationally, the identical problem showed up at a systemic scale during the 2008 crisis, and it's the direct reason this whole topic exists as a regulatory concern today. When large banking groups failed or nearly failed, supervisors trying to work out who was exposed to whom discovered that the same institution could appear on different desks' books under different names, different spellings, and different levels of its own corporate structure — with no reliable way to confirm two records pointed at the same legal entity. In response, the G20 asked the Financial Stability Board to design a global fix, and the US and EU's post-crisis reforms — Dodd-Frank in America, the Bank Recovery and Resolution Directive in Europe — went further still, requiring the largest banking groups to file "living wills": resolution plans mapped out entity by entity, so that if the group failed, regulators would know in advance exactly which legal entity held which asset, and could be wound down without freezing the rest.
+RBI didn't invent that 25% figure — it adopted it. The number comes from the Basel Committee on Banking Supervision's own global Large Exposures standard, built in direct response to the 2008 crisis, when supervisors trying to work out who was exposed to whom discovered that the same institution could appear on different banks' books under different names, different spellings, and different levels of its own corporate structure — with no reliable way to confirm two records pointed at the same legal entity. The US and EU's post-crisis reforms — Dodd-Frank in America, the Bank Recovery and Resolution Directive in Europe — went further still, requiring the largest banking groups to file "living wills": resolution plans mapped out entity by entity, so that if the group failed, regulators would know in advance exactly which legal entity held which asset, and could be wound down without freezing the rest.
 
 None of that works if "who's on the other side" is a guess.
 
@@ -56,7 +56,14 @@ This is where reference-data systems most often go wrong, because plenty of thin
 
 Knowing, in principle, that entities matter is one thing. Building a system that can actually tell two similarly-named entities apart, at machine speed, across every bank and regulator on earth, is a different problem — and it needed its own solution.
 
-That solution is the Legal Entity Identifier, or LEI: a 20-character alphanumeric code, one per legal entity, issued under the ISO 17442 standard by accredited "Local Operating Units" and overseen globally by the GLEIF — the Global Legal Entity Identifier Foundation, set up in 2014 at the G20's request in the same post-crisis push described above. Unlike a company's name, which can be spelled, abbreviated, or translated a dozen different ways across a dozen systems, an LEI is meant to be unambiguous: exactly one code, embedded with a built-in check digit so a system can catch a typo the same way a bank account number catches one.
+That solution is the Legal Entity Identifier, or LEI: a 20-character alphanumeric code, one per legal entity, issued under the ISO 17442 standard by accredited "Local Operating Units" and overseen globally by the GLEIF — the Global Legal Entity Identifier Foundation, set up in 2014 at the G20's request in the same post-crisis push described above. Unlike a company's name, which can be spelled, abbreviated, or translated a dozen different ways across a dozen systems, an LEI is meant to be unambiguous: exactly one code, and the code isn't just a random string — every one of the 20 characters has a job.
+
+- **Characters 1–4**: which Local Operating Unit issued the code — effectively, which country or registry vouched for this entity
+- **Characters 5–6**: reserved, always "00"
+- **Characters 7–18**: the entity-specific identifier that LOU assigned — the part that's actually unique to this one company
+- **Characters 19–20**: two check digits, calculated from the other 18 the same way a credit card number's final digit is calculated from the rest
+
+That last part is what makes the code self-verifying. Change one digit of an LEI by mistake — a fat-fingered entry, a copy-paste error — and the check digits almost certainly stop matching, so a system can reject it on the spot instead of silently booking a trade against the wrong company.
 
 India adopted the same code rather than inventing its own. The RBI has, since 2017, progressively mandated LEIs — first for large corporate borrowers above a defined exposure threshold, then extended to participants transacting in government securities, money markets, and non-derivative forex and interest-rate derivative markets — precisely so a borrower's exposure across every bank in the system can be added up correctly, using one code instead of guessing from a name.
 
@@ -64,9 +71,11 @@ Europe went a step further and made the code load-bearing for the trade itself. 
 
 ## Why this matters for a Business Analyst
 
-### Think of two branches of the same family, in two different cities, running a business under the identical name
+### Think of two different books that happen to share the same title
 
-A supplier dealing with both has no way to know, from the name alone, whether it's extending credit to one risk or two completely separate ones. The name is not the business. Only checking who actually signs the paperwork tells you that.
+A library that catalogued books by title alone would eventually shelve two unrelated novels under one entry, or lose track of which of five reprints a reader actually borrowed. It works only because every book also carries an ISBN — a unique number, with its own check digit, that doesn't care what the cover says. The title is for humans. The ISBN is for the system.
+
+A company name is a book title. An LEI is its ISBN.
 
 A KYC or counterparty-master system that matches parties by name string — "Reliance Industries" today, "Reliance Industries Ltd." tomorrow, "RIL" from a different desk's feed — will quietly either merge two distinct entities into one exposure record or split one real entity into two, and either error understates or fabricates concentration risk in exactly the report a regulator is going to ask for first. Matching on the LEI instead of the name is what actually keeps a hierarchy — ultimate parent, intermediate holding company, operating subsidiary — untangled across systems that were never built by the same team, using the same naming convention, at the same time.
 
