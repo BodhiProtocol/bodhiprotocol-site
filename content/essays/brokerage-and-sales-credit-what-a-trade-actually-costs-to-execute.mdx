@@ -44,9 +44,9 @@ This is where "brokerage" stops being one number and starts depending entirely o
 
 The pattern underneath that table: wherever a market is exchange-traded and agency-executed (equities, listed derivatives), the broker charges an explicit, itemized fee. Wherever a bank trades as principal against its own book (bonds, FX, OTC swaps), there usually isn't a visible "brokerage" line at all — the bank's profit is inside the price it quotes you, not added on top of it. Knowing which of those two worlds an asset class lives in is the actual answer to "how do investment banks calculate brokerage by asset class" — the honest answer for half the table is that they don't calculate a brokerage fee at all; they calculate a spread instead, and the two aren't the same thing wearing different names.
 
-## One asset class isn't one price: metals inside a commodities desk
+## One asset class isn't one price — in commodities, and everywhere else
 
-"Commodities" in that table hides as much variation as it reveals. Sit inside an international bank's [commodities desk](/essays/commodities-the-only-trade-you-could-drop-on-your-foot) for a day and gold, silver, copper, and platinum — four metals on the same desk, sometimes quoted by the same salesperson — get priced on four different logics, because liquidity and market structure differ metal by metal, not desk by desk.
+"Commodities" in that table hides as much variation as it reveals, and metals make the easiest place to see it: sit inside an international bank's [commodities desk](/essays/commodities-the-only-trade-you-could-drop-on-your-foot) for a day and gold, silver, copper, and platinum — four metals on the same desk, sometimes quoted by the same salesperson — get priced on four different logics, because liquidity and market structure differ metal by metal, not desk by desk.
 
 | Metal | Where it actually trades | How the bank prices it | Why it's priced that way |
 |---|---|---|---|
@@ -59,18 +59,16 @@ Put a number on it: a bank's commodities sales desk quoting $1,000,000 of notion
 
 Copper is the outlier that proves the point a different way. Because LME still commissions per lot rather than per bps, a $1,000,000 copper trade doesn't translate into a clean bps figure at all — the fee depends on how many 25-tonne lots that notional works out to, not on the dollar value itself. India's version of the same instrument, MCX copper, trades in 2,500kg lots and is usually folded into the same flat per-lot brokerage plan an Indian broker already applies to gold and silver — a simplification international banks can't make, because LME's lot-based mechanic and COMEX's bps-based one are genuinely different systems, not two ways of describing the same fee.
 
-## The same pattern shows up in every other asset class
+The same liquidity-driven spread shows up outside commodities too — just swap "metal" for "liquidity tier":
 
-Commodities didn't earn this variation by being a special case — it's just the easiest place to see it, because gold and copper sit on the same desk. The identical liquidity-driven spread shows up inside equities, fixed income, FX, and listed derivatives too, once you stop treating each as one uniform row.
+| Asset class | Cheapest tier to trade | Most expensive tier to trade |
+|---|---|---|
+| Equities | A liquid large-cap — a Nifty 50 or S&P 500 constituent — institutional ~3–5bps | An illiquid small-cap or micro-cap stock — 15–25bps or more |
+| Fixed income | Sovereign debt — Government of India securities, US Treasuries — a few bps | High-yield or distressed corporate credit — 50–100bps or more |
+| FX | G10 major pairs — EUR/USD, USD/JPY — under a pip, institutional | Emerging-market or exotic pairs — USD/TRY, USD/ZAR — several pips wide |
+| Listed derivatives | A liquid index future — Nifty 50, S&P 500 e-mini — a near-flat per-lot fee | An illiquid, far-dated or deep out-of-the-money single-stock option |
 
-| Asset class | Cheapest tier to trade | Most expensive tier to trade | What's actually driving the gap |
-|---|---|---|---|
-| Equities | A liquid large-cap — a Nifty 50 or S&P 500 constituent, institutional ~3–5bps | An illiquid small-cap or micro-cap stock — 15–25bps or more | Market impact: a large order in a thin stock moves the price against the desk filling it, and the fee has to price in that risk |
-| Fixed income | Sovereign debt — Government of India securities, US Treasuries — a few bps | High-yield or distressed corporate credit — 50–100bps or more | Credit risk stacked on top of a much thinner secondary market, both widening the price a dealer needs to protect its own book |
-| FX | G10 major pairs — EUR/USD, USD/JPY — under a pip, institutional | Emerging-market or exotic pairs — USD/TRY, USD/ZAR — several pips wide | Shallower order books, plus real intervention risk from the relevant central bank |
-| Listed derivatives | A liquid index future — Nifty 50, S&P 500 e-mini — a near-flat per-lot fee | An illiquid, far-dated or deep out-of-the-money single-stock option | Market makers need more compensation to quote a contract almost nobody is actually trading |
-
-Every row in this table, and in the metals table before it, is answering the same underlying question with a different label stuck on it: how hard would it be for the bank to get out of this exact position if it had to, right now. That's the real variable behind "asset class," "instrument," and "liquidity tier" — three different names for the same thing.
+Every row across both tables is answering the same question with a different label stuck on it: how hard would it be for the bank to get out of this exact position if it had to, right now. That's the real variable behind "asset class," "instrument," and "liquidity tier" — three different names for the same thing.
 
 ## Sales credit — the number the client never sees
 
