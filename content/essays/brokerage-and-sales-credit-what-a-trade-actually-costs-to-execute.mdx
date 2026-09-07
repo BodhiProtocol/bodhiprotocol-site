@@ -1,0 +1,69 @@
+---
+title: "Brokerage and Sales Credit: What a Trade Actually Costs to Execute"
+description: "The types of brokerage that exist, the formulas behind each one, how investment banks price it differently by asset class — equities, bonds, FX, futures, swaps — and what \"sales credit\" actually means once the trade moves inside the bank. With paired Indian and international examples throughout."
+hook: "Two brokers can charge you for the exact same trade and never use the same formula once."
+category: "Capital Markets"
+tags: ["markets", "operations", "brokerage"]
+author: "Surya"
+date: "2026-09-07"
+---
+
+Think of a real estate agent's commission. One agent charges 2% of the sale price. Another, selling an identical flat next door, charges a flat ₹25,000 regardless of price. A third works for a big brokerage that quotes the fee in "basis points of deal value" because the client is a fund buying a hundred flats at once, not a family buying one. All three are paid for doing the same job — getting a transaction done — priced three completely different ways.
+
+Brokerage in capital markets works the same way. There is no one formula. What you're charged depends on which of four pricing models your broker uses, which asset class you're trading, and — once you're inside a bank rather than a retail app — a second, entirely internal number called sales credit that decides who at the bank gets paid for your trade.
+
+## What brokerage actually is — and isn't
+
+Brokerage is the fee your broker charges for executing your order. It is not the only line on your contract note. In India, a single trade also carries Securities Transaction Tax (STT), exchange transaction charges, SEBI turnover fees, stamp duty, and GST on the brokerage itself — none of which is brokerage, all of which get lumped into "what I paid to trade" in a client's head. The same split exists in the US: a trade can carry an SEC fee and a FINRA Trading Activity Fee alongside whatever the broker itself charges. Brokerage is specifically the broker's own fee for the service of getting the order filled — everything else is a statutory pass-through the broker collects but doesn't keep.
+
+## The four ways brokerage gets calculated
+
+**Percentage of trade value.** Brokerage = Trade Value × Rate. A full-service Indian broker like ICICI Direct or HDFC Securities has historically charged something like 0.30% on a delivery trade and 0.03% on an intraday one — buy ₹1,00,000 of shares for delivery and the brokerage alone is ₹300. Internationally, a traditional full-service US wealth manager pricing a trade as a percentage of order value is the same model, just a legacy of an era before discount brokers existed at all.
+
+**Flat fee per order.** A fixed rupee or dollar amount, independent of trade size. Zerodha's ₹20-or-0.03%-whichever-is-lower on intraday and F&O trades is the model that built India's discount-broking boom. Its zero-commission US counterpart is arguably no fee at all — [which is its own story, since "free" there is usually funded by payment for order flow instead](/essays/payment-for-order-flow-the-free-trade-someone-still-paid-for) rather than by the client paying nothing to anyone.
+
+**Per-share or per-contract.** Brokerage = Quantity × Rate per unit. This is how US institutional equities and listed options are typically priced — Interactive Brokers, for instance, has charged institutional clients around $0.005 per share with a small per-order minimum, and around $0.65 per options contract. Buy 10,000 shares at $0.005/share and the brokerage is $50, regardless of the stock's price. India's equivalent shows up in the derivatives segment: a flat fee "per lot" on F&O orders is the same per-unit logic, just denominated in lots instead of shares.
+
+**Basis points (bps) of notional.** Brokerage = Notional Value × (bps ÷ 10,000). This is the institutional and investment-banking convention — the unit small enough to price a fee that has to work whether the trade is ₹10 lakh or ₹1,000 crore. An institutional cash-equities desk, Indian or international, pricing a large block trade at 5bps means: on a ₹10 crore order, brokerage is ₹10,00,00,000 × (5 ÷ 10,000) = ₹5,00,000.
+
+The same ₹1 crore trade priced under each model lands nowhere near the same number: 0.30% is ₹30,000; a ₹20 flat fee is ₹20; 5bps is ₹5,000. None of these numbers is "the" brokerage rate — each is correct for the model it belongs to, which is exactly why comparing two brokers' rates without checking which model they quote in is comparing nothing at all.
+
+Most flat-fee brokers actually run a hybrid: brokerage = **minimum of** (percentage × trade value) **and** the flat cap. Zerodha's "₹20 or 0.03%, whichever is lower" is that rule stated explicitly — on a small trade, 0.03% might be less than ₹20, so the client pays the smaller number; on a large one, the flat ₹20 wins. It's a small formula, but it's exactly the kind of boundary condition that breaks a poorly tested commission engine: what happens at the exact value where both sides are equal, and does the system round to the client's benefit or the broker's?
+
+## How investment banks actually price it, asset class by asset class
+
+This is where "brokerage" stops being one number and starts depending entirely on what's being traded — because not every asset class even carries an explicit commission.
+
+| Asset class | How the fee is actually charged | Typical convention | Indian example | International example |
+|---|---|---|---|---|
+| Cash equities | Explicit commission, in bps of notional | ~3–10 bps on institutional agency trades | An institutional desk executing an FPI's block order in Reliance shares for a few bps | A US bulge-bracket agency equities desk pricing a large program trade in single-digit bps |
+| Fixed income (bonds) | No standalone commission — the dealer trades as principal and the fee is embedded in the [bid-ask spread](/essays/bonds-the-fixed-deposit-you-can-sell) | Spread of roughly 5–25bps, wider for illiquid or long-tenor paper | A primary dealer quoting a spread on a Government of India security via NDS-OM | A Wall Street dealer quoting a wider spread on a high-yield corporate bond than on a US Treasury |
+| FX | Spread (in pips) built into the quoted rate, or an explicit small commission on agency e-FX execution | 1–3 pips on major pairs; ~0.1–0.5bps agency commission on institutional e-FX flow | A corporate treasury getting a USD/INR quote from its relationship bank, spread already inside the rate | A US corporate executing EUR/USD on an e-FX platform, paying spread plus an optional bps commission |
+| Listed futures & options | Per-contract or per-lot fee, plus exchange and clearing fees passed straight through, unmarked up | Flat fee per lot/contract | An NSE F&O broker's flat per-lot charge plus SEBI turnover fee and exchange transaction charges | A CME futures broker's per-contract round-turn fee plus exchange and clearing fees |
+| OTC derivatives (interest rate & currency [swaps](/essays/swaps-the-number-that-never-moves)) | No brokerage line at all — the bank's margin is baked into the fixed rate it quotes | Spread embedded in the quoted rate, not itemized | An Indian corporate's INR interest rate swap, priced with the bank's margin folded into the fixed leg | A US corporate's USD interest rate swap, same mechanic, different currency |
+
+The pattern underneath that table: wherever a market is exchange-traded and agency-executed (equities, listed derivatives), the broker charges an explicit, itemized fee. Wherever a bank trades as principal against its own book (bonds, FX, OTC swaps), there usually isn't a visible "brokerage" line at all — the bank's profit is inside the price it quotes you, not added on top of it. Knowing which of those two worlds an asset class lives in is the actual answer to "how do investment banks calculate brokerage by asset class" — the honest answer for half the table is that they don't calculate a brokerage fee at all; they calculate a spread instead, and the two aren't the same thing wearing different names.
+
+## Sales credit — the number the client never sees
+
+Brokerage is what the client pays. Sales credit is a completely separate, internal number: how the bank splits that revenue between the people who serve the client relationship and the desk that actually executed or warehoused the risk.
+
+Say an institutional client's equity order generates $10,000 in commission. That $10,000 is booked once, as firm revenue. But two different teams get measured on it, so the bank runs an internal "sales credit" split — a pre-agreed grid, negotiated per desk and often per client tier — that might attribute, say, 40% ($4,000) to the salesperson who owns the client relationship and 60% ($6,000) to the trading desk that filled the order. Neither number changes what the client was billed. Both numbers exist purely to feed two different performance scorecards and, eventually, two different bonus pools from the same $10,000.
+
+Sales credit gets genuinely complicated the moment a client trades across multiple products with one coverage salesperson: a relationship manager covering a client's equities, FX, and rates business gets credited across all three, even though three different desks actually executed the trades — because the grid is measuring who owns the relationship, not who pressed the button. India's version of the same logic exists inside full-service brokers' RM payout structures — a relationship manager's payout is typically a percentage of the brokerage their client book generates — though it's rarely called "sales credit" outside the institutional and investment-banking world, where the term and the formal grid behind it are standard.
+
+## Why this matters for a Business Analyst
+
+### Think of two ledgers that must never touch
+
+A restaurant's cash register and its staff tip-pooling spreadsheet both reference the same bill. The customer only ever sees one number on the receipt. The tip split behind the counter can change entirely — a different formula, a different week, a different staff roster — without the customer's bill moving by a rupee.
+
+Brokerage and sales credit are exactly that pair of ledgers, and a trade-booking or commission-management system has to keep them that way: one client-facing, one strictly internal, computed from the same trade but never allowed to alter what the client was actually billed.
+
+That separation is where the real requirements live. A rate table has to apply the correct formula by instrument type — charging equity bps logic to a bond trade, or vice versa, silently over- or under-bills a client. The "lower of percentage or flat cap" rule needs explicit acceptance criteria for the boundary itself: what happens at the exact trade value where both sides compute equal, and which way does rounding go. And a sales-credit engine has to reconcile back to the same trade ID as the client-facing brokerage ledger without ever feeding forward into it — a system that lets an internal allocation influence what a client is charged has broken the one wall this whole model depends on. India's exchange bye-laws have long capped member brokerage at a ceiling — 2.5% of trade value under NSE and BSE rules — a limit that matters less today only because competition already pushed real rates far below it; the US never had an equivalent cap once the SEC abolished fixed minimum commissions on May 1, 1975 — "May Day" — the single event that made discount brokerage possible there in the first place, decades before it caught on in India.
+
+## Lighthouse Insight
+
+Go back to the three real estate agents — the same flat, three unrelated formulas, all technically correct.
+
+A trading commission isn't one number waiting to be looked up. It's a formula chosen from four possible shapes, applied to an asset class that may or may not even show a fee on the surface, then split a second time — invisibly, internally — between whoever owns the client and whoever took the risk. The contract note shows you the first number. The bank's own compensation grid is where the second one lives, and it was never meant for you to see it at all.
