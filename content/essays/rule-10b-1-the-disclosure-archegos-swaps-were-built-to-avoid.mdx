@@ -1,0 +1,63 @@
+---
+title: "Rule 10B-1: The Disclosure Archegos's Swaps Were Built to Avoid"
+description: "Archegos Capital Management never technically had to disclose anything, because owning the economic return on a stock through a swap isn't the same as owning the stock — and only the second one triggers public disclosure rules. What Rule 10B-1, the SEC's 2023 reform written directly in response to Archegos, actually requires; why Form PF and Basel's post-mortems close different halves of the same gap; and why SEBI had already required something structurally similar years earlier, for a completely different reason. Closes the Archegos arc that ran through Prime Brokerage and Counterparty Credit Risk, with paired Indian and global examples throughout."
+hook: "Bill Hwang built a stake in ViacomCBS large enough to move its stock price on exit. He never once had to file the disclosure a direct shareholder that size would have owed the market — because he never technically owned a single share."
+category: "Capital Markets"
+tags: ["markets", "risk", "regulation"]
+author: "Surya"
+date: "2026-09-09"
+---
+
+Think of a town rule that says nobody may buy more than ten seats in the front row of the stadium, so no one person can dominate the best view. A determined fan gets around it easily: pay nine friends to each buy a ticket in their own name, promise to reimburse them and collect their tickets on game day. Every individual purchase is completely legal. The rule was written to track who *buys* a seat. It was never written to track who actually *controls* it once the buying is done.
+
+[Counterparty Credit Risk](/essays/counterparty-credit-risk-the-desk-meant-to-see-the-whole-client) ended with Archegos Capital Management's leverage invisible to any single bank. This essay closes the loop one level up: that leverage was also invisible to the *public market*, and not by accident. It was invisible because of exactly the gap in the stadium rule — and in 2023, US regulators wrote a new rule aimed directly at closing it.
+
+## The disclosure that never applied
+
+> Under Section 13(d) of the US Securities Exchange Act, an investor who acquires beneficial ownership of more than 5% of a public company's shares must publicly disclose that stake. The rule was written around *ownership* — and a [total return swap](/essays/swaps-the-number-that-never-moves) was, for these purposes, deliberately not ownership at all.
+
+In a total return swap, the bank holds the actual shares on its own balance sheet. The client — Archegos — receives only the economic return: it profits if the stock rises, loses if it falls, but never legally owns a single share. Section 13(d)'s disclosure trigger is written around legal and beneficial ownership. Bill Hwang built stakes in ViacomCBS, Discovery and several other companies large enough, in economic terms, to move those stocks meaningfully on exit — and never crossed the ownership threshold that would have forced him to tell the market anything, because in the ownership rule's own terms, he never owned anything to disclose.
+
+This is the same structural gap covered in [Legal Entity: The Only Thing a Contract Can Actually Bind](/essays/legal-entity-the-only-thing-a-contract-can-actually-bind): a rule written around one specific legal form — direct share ownership — doing nothing at all once the same economic outcome is reached through a different legal form the rule never anticipated.
+
+## What Rule 10B-1 actually requires
+
+The SEC's response, adopted in late 2023, was Rule 10B-1 — a new requirement, under a section of the Exchange Act added by the Dodd-Frank reforms after 2008 but left unfinished for over a decade, that a market participant publicly report a large security-based swap position once it crosses a threshold the SEC sets, on a public schedule filed within one business day of crossing it. The SEC's own release cited exactly the blind spot Archegos exploited: swap-based economic exposure that never showed up in the market's existing ownership-disclosure machinery.
+
+It's a narrow fix, on purpose. Rule 10B-1 doesn't change who owns the shares — the bank still does — and it doesn't touch the aggregation problem inside any one bank that the [Counterparty Credit Risk](/essays/counterparty-credit-risk-the-desk-meant-to-see-the-whole-client) essay covered. It does something more specific: it makes the *size* of a large synthetic position visible to the market at large, the same way a large direct shareholding always was, closing off the one avenue where a position of Archegos's scale could exist and stay completely unreported to anyone outside the banks financing it.
+
+India has no direct equivalent forcing public disclosure of a large synthetic swap position in a domestically listed company. Its closest instrument, the Offshore Derivative Instrument framework covered below, targets a different route into the market entirely — a foreign investor's access to India through a note issued by a Foreign Portfolio Investor — not large swap exposure in general. A position built the way Archegos built its ViacomCBS stake, but domestically inside India rather than through an FPI-issued note, would land in a genuinely different gap than the one Rule 10B-1 was written to close.
+
+## The other half: Form PF and faster reporting
+
+Rule 10B-1 fixes public visibility. It does nothing for *regulatory* visibility on a faster clock — and a separate reform, adopted by the SEC and CFTC jointly in May 2023, targets exactly that. Amendments to Form PF, the confidential form large private fund advisers already had to file, now require a "current report" within 72 hours of specific trigger events: an extraordinary investment loss, a significant margin or counterparty default event, or a large, sudden drop in a fund's unencumbered cash. Before the amendment, a fund like Archegos would only have shown up in Form PF's quarterly or annual filing cycle — a reporting cadence slow enough that a position could build and unwind entirely between two scheduled filings, invisible to regulators the whole way through.
+
+Neither reform, by itself, would have stopped Archegos before the fact. Together, they answer two different questions the old rules simply didn't ask: how large is this position, visible to the market (Rule 10B-1), and how fast did something just go wrong, visible to the regulator (Form PF's 72-hour trigger).
+
+India runs a version of the second question continuously rather than event-by-event. SEBI's framework for Category III AIFs — the vehicles closest to a domestic hedge fund — caps how much leverage one of these funds can carry and requires it to report that leverage to SEBI on an ongoing basis, not just once a quarter. It's a live ceiling rather than a post-crisis 72-hour alarm, aimed at preventing the leverage from reaching Archegos-like levels in the first place rather than reporting fast once it already has.
+
+## What global supervisors did with the same lesson
+
+The Basel Committee and the Financial Stability Board, working at the level of banks rather than funds, published reviews in 2022 and 2023 examining how Archegos-style leverage had built up at all — and their recommendations track almost exactly onto the gap [Counterparty Credit Risk](/essays/counterparty-credit-risk-the-desk-meant-to-see-the-whole-client) described at Credit Suisse: better initial margining practice on non-centrally-cleared derivatives, closer counterparty due diligence into a client's total leverage rather than just the trade in front of a desk, and stronger internal escalation once a risk committee actually raises a flag. None of this is a new capital rule with a number attached, the way the Large Exposures Framework is. It's supervisory pressure aimed at the organizational failure the independent Credit Suisse investigation had already named — a genuine acknowledgment, at the global standard-setting level, that the measurement side of counterparty credit risk wasn't where 2021 actually broke. RBI, as a Basel Committee member that already imported the Large Exposures Framework almost verbatim, inherits this supervisory push the same way — expected to fold the same due-diligence and escalation expectations into how it examines Indian banks' exposure to leveraged domestic funds, not just to enforce the numeric ceiling covered earlier.
+
+Credit Suisse itself didn't survive to fully implement any of it. Weakened by Archegos alongside a string of other failures — including the earlier collapse of the supply-chain finance firm Greensill Capital, in which Credit Suisse had also been deeply involved — the bank lost enough market confidence that Swiss authorities engineered an emergency takeover by UBS in March 2023. Archegos wasn't the only cause. It was one of the clearest, most public examples of the "failure of management and controls" the bank's own investigators had already used to describe it.
+
+## Where India had already closed a version of this gap
+
+SEBI didn't write Rule 10B-1's Indian equivalent in response to Archegos. It had already built something structurally similar years earlier, for a different reason entirely. Offshore Derivative Instruments — commonly called Participatory Notes, or P-Notes — let an overseas investor gain exposure to Indian securities through a note issued by a registered Foreign Portfolio Investor, without registering with SEBI directly. For years, regulators worried this route let genuinely large, opaque positions build up in Indian markets with no visibility into who was actually behind them — a beneficial-ownership blind spot, for money-laundering and market-integrity reasons rather than counterparty-risk ones.
+
+SEBI's answer predates Archegos by years: ODI issuers must carry out know-your-customer checks on the end investor behind every note and report those positions to SEBI, and — the part that maps most directly onto Archegos's structure — a derivative may only serve as the underlying of an ODI where it's used to hedge the subscriber's own existing exposure, not to build a new speculative or leveraged position from scratch. An Indian equivalent of Archegos's strategy, built entirely from synthetic derivative exposure with no underlying position to hedge, runs directly into a restriction the US market didn't have any version of until 2023.
+
+Same underlying worry — a large position that exists, economically, without ever showing up as ownership — closed for different reasons, on different timelines, in two different markets.
+
+## Why this matters for a Business Analyst
+
+Go back to the nine friends buying tickets in their own names. The town eventually rewrote its rule to ask "who actually controls this block of seats," not just "whose name is on each ticket" — but only after someone had already done it at a scale big enough to notice.
+
+A compliance or reporting system built to satisfy today's disclosure rule is, by construction, building to the letter of a rule that was itself written in reaction to the last structure someone found. Rule 10B-1 didn't exist until swap-based synthetic ownership had already been used at Archegos's scale; SEBI's ODI restriction predates that specific lesson but was itself a reaction to a different, earlier version of the same blind spot. A BA designing a monitoring system that only flags what today's regulation defines as a reportable position is designing to catch yesterday's structure. The more durable requirement — harder to write acceptance criteria for, and exactly why it tends to get skipped — is monitoring economic exposure and control, the substance Section 13(d) was always trying to capture, rather than the current legal form a rule happens to name.
+
+## Lighthouse Insight
+
+Back to the stadium, and the nine tickets bought in nine names.
+
+Every reform in this essay does the same specific thing: it moves a rule that used to ask "whose name is on this" to instead ask "who actually controls this, no matter whose name is on it." Rule 10B-1 asks it of swap positions. Form PF's 72-hour trigger asks it faster. SEBI's ODI restriction asked a version of it years before either. None of them were written in advance of the structure they close. They were written after someone had already found the gap between the rule as worded and the outcome the rule was actually meant to prevent — which is the same gap that will exist again, in some new legal form nobody has used at scale yet, the day after the next reform closes this one.
