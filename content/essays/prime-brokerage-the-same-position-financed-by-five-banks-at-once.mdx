@@ -1,0 +1,62 @@
+---
+title: "Prime Brokerage: The Same Position, Financed by Five Banks at Once"
+description: "Prime brokerage bundles financing, securities lending, clearing and reporting into one relationship for one client, usually a hedge fund. In March 2021, Archegos Capital Management held roughly the same concentrated stock positions through swaps at five different prime brokers simultaneously — and no single bank could see what the other four saw. What prime brokerage actually bundles, how India keeps the same functions split across separately registered entities, and why the bundle's real weakness isn't the bank that provides it but the client who can hold five of them at once, with paired Indian and global examples throughout."
+hook: "Archegos Capital Management held the same concentrated stock positions through swaps at five different banks at once. Each bank could see its own slice of the exposure. None of them could see the other four."
+category: "Capital Markets"
+tags: ["markets", "prime-brokerage", "risk"]
+author: "Surya"
+date: "2026-09-09"
+---
+
+Think of a family with one contractor who handles the plumbing, the electrical, the roof and the annual inspection, all under one ongoing contract — one relationship instead of four separate ones, one point of contact who already knows the house. That's convenient right up until you realize the same family could quietly sign an identical contract with four other contractors, each one confident it's the only one holding the full picture of what's being built.
+
+Prime brokerage is a bank playing that first role for an institutional client, almost always a hedge fund. And in March 2021, a firm called Archegos Capital Management proved exactly how the second half plays out.
+
+## What prime brokerage actually bundles
+
+> A prime broker is a bank (or a broker-dealer arm of one) that bundles financing, securities lending, trade clearing and portfolio reporting into a single relationship for one client — instead of that client sourcing each service separately from whichever desk happens to offer it.
+
+The bundle usually holds four pieces:
+
+| Piece | What it does | Indian example | Global example |
+| --- | --- | --- | --- |
+| **Financing** | Lends the client cash against securities as collateral, so a position can be bought with borrowed money | Edelweiss/Nuvama providing margin funding to a domestic Category III AIF running a long-short equity book | Morgan Stanley Prime Brokerage financing a US hedge fund's leveraged long position |
+| **Securities lending** | Lends out shares the client needs to borrow to sell short, the same function covered in [Securities Lending: The Share Sold Short More Than Once](/essays/securities-lending-the-share-sold-short-more-than-once) | A domestic broker sourcing shares through NSE's SLB window on a fund's behalf | Credit Suisse's prime services desk borrowing shares from its own custody pool to lend to a client |
+| **Clearing & custody** | Clears the client's trades and holds the resulting securities | A SEBI-registered custodian and clearing member, held under the same banking group but each separately registered, executing and safekeeping trades for a Foreign Portfolio Investor | Goldman Sachs acting as both clearing broker and de facto custodian for a hedge fund's US positions |
+| **Reporting** | Consolidates positions, P&L and risk across the client's activity at that bank into one feed | A custodian's daily holding statement to an AIF's SEBI-mandated compliance officer | A prime broker's daily risk and margin report to a hedge fund's CFO |
+
+One relationship, four services, one client. That's the organizing idea — and it's a genuinely different axis from the two you've already seen split a trading floor. [Equities and FICC](/essays/ficc-the-business-line-where-nothing-is-priced-off-one-company) sort by what's being priced. [GECD](/essays/gecd-the-second-line-hiding-under-ficc-and-equities) sorts by what skill it takes to price it. Prime brokerage doesn't sort by product or skill at all — it sorts by *client*, wrapping several different products around one relationship instead of scattering that client's business across several desks.
+
+## Two different ways to assemble the same bundle
+
+The US, and most global prime brokers, deliver that bundle from inside one legal umbrella — the client signs largely one prime brokerage agreement, and financing, lending, clearing and reporting all flow from the same relationship team, even where distinct legal entities sit behind the scenes for regulatory reasons.
+
+India keeps the pieces apart on purpose. SEBI registers custodians, clearing members and stockbrokers as separate categories, each under its own regulations, even when a single banking group like ICICI or Kotak owns all three. A Foreign Portfolio Investor or a domestic AIF assembling a prime-brokerage-style stack in India is really assembling it from several separately registered entities that happen to share a parent — not from one entity holding one bundled license the way a US client experiences it. It's the same functional-separation instinct covered in [Legal Entity: The Only Thing a Contract Can Actually Bind](/essays/legal-entity-the-only-thing-a-contract-can-actually-bind): the relationship can feel like one bundle to the client while the obligations underneath it are still split across distinct legal entities, each bound only for its own piece.
+
+That split isn't friction for its own sake. It means no single Indian entity holds a client's financing, custody and clearing all at once — which is precisely the concentration that made Archegos possible.
+
+## Why markets needed this — and why the bundle can still fail
+
+Archegos wasn't a hedge fund in the regulatory sense. It was structured as a family office, a status that, under the US Family Office Rule, exempted it from registering as an investment adviser and from most of the position-disclosure obligations that would otherwise apply to a fund its size — a structural choice about which legal entity it counted as, in the same spirit as [the segregation-of-duties question the Legal Entity essay closes on](/essays/legal-entity-the-only-thing-a-contract-can-actually-bind). Its founder, Bill Hwang, built enormous concentrated positions in a handful of stocks including ViacomCBS and Discovery — not by buying the shares directly, but through [total return swaps](/essays/swaps-the-number-that-never-moves), a derivative that gives the economic exposure of owning a stock without the ownership itself ever showing up on a public disclosure filing.
+
+Here's the part that made the bundle dangerous rather than merely convenient: Archegos ran this strategy through prime brokerage relationships at multiple banks at once — Credit Suisse, Nomura, Morgan Stanley, UBS and Goldman Sachs among them. Each bank, as prime broker, saw the swaps *it* was financing for Archegos and [margined](/essays/margin-how-a-clearinghouse-turns-fear-into-collateral) that exposure on its own book. None of them had visibility into what the other four were financing for the same client on the same underlying stocks. Five separate, individually reasonable risk assessments, adding up to a client leverage picture no single bank could see.
+
+When ViacomCBS's share price fell sharply in late March 2021 after a large stock offering, Archegos faced margin calls at every one of its prime brokers simultaneously — the same underlying stock, the same client, five separate demands for collateral it didn't have enough of to meet all at once. Banks that moved fastest to sell the swap collateral, Goldman Sachs and Morgan Stanley among them, largely avoided losses. Credit Suisse, slower to unwind, lost roughly $5.5 billion. The exposure wasn't hidden through any illegal act — every individual prime brokerage relationship was properly documented and margined. It was hidden by the fact that the bundle exists per-bank, not across banks, and nothing in the structure requires one prime broker to know what a client's other prime brokers are financing.
+
+It's also, structurally, [wrong-way risk](/essays/wrong-way-risk-the-hedge-that-fails-when-you-need-it) at the level of the relationship itself: the very event that made Archegos unable to meet a margin call — the stock price collapsing — was the same event that made the collateral backing that margin call worth less, at every bank, at the same time.
+
+India's split-registration structure doesn't eliminate this risk, but it does put a different set of eyes on more of it. A custodian holding a Foreign Portfolio Investor's securities is a distinct, separately regulated entity from the broker executing trades and the bank providing financing — which means concentration risk in an Indian institutional client's book is, by construction, visible to more than one regulated party rather than sitting entirely inside one prime broker's private view, even though no single Indian regulator currently aggregates a client's total leverage across every bank it deals with either.
+
+## Why this matters for a Business Analyst
+
+Go back to the family with one contractor per house, times five houses, none of the contractors comparing notes.
+
+A risk system scoped around "the prime broker sees the client's full position" is scoping around something that was never true for a client using more than one prime broker — and nothing in a standard prime brokerage relationship requires the client to disclose that it has other ones. A BA building a counterparty risk model, a margin engine or an exposure report for a prime brokerage desk has to design for the honest answer: this desk's view of the client is complete for what this desk finances, and structurally incomplete for everything the client does elsewhere. That's not a data quality bug to be fixed by asking the client for more information. It's the actual shape of the business, and a model that quietly assumes otherwise will look correct every single day until the one day it isn't.
+
+The Indian split — custodian, clearing member and broker as separately registered entities even under one banking group — doesn't erase that gap either, but it does change where a BA should expect the gap to show up: not "does our desk see everything," but "which of the other separately registered entities in this client relationship might be holding a piece we don't consolidate into this report."
+
+## Lighthouse Insight
+
+Back to the five contractors, each one certain it's the only one on the job.
+
+Prime brokerage bundles a client's business the way a good contractor bundles a house's systems — genuinely more convenient, genuinely one relationship instead of several. But the bundle was only ever built around one bank's side of that relationship. Nothing about it requires, or even permits, that bank to see the identical bundle the same client has quietly built next door. Archegos didn't break that structure. It used it exactly as designed, five times over, until the collateral backing all five bundles fell on the same afternoon.
