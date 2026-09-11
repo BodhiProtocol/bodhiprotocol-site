@@ -3,6 +3,7 @@ import {
   Boxes,
   Brain,
   Cpu,
+  Landmark,
   Layers,
   Network,
   Route,
@@ -107,6 +108,23 @@ export const essaySeries: EssaySeries[] = [
       "off-market-transfer-the-share-that-moves-without-a-trade",
       "default-waterfall-who-pays-when-a-clearing-member-fails",
       "the-financial-dominoes-why-one-default-rarely-stays-one-default",
+    ],
+    nextSeriesId: "the-archegos-collapse",
+  },
+  {
+    id: "the-archegos-collapse",
+    title: "The Archegos Collapse",
+    blurb:
+      "One client, five banks, no line of sight across any of it — from where the leverage hid to how the unwind actually happened.",
+    icon: Landmark,
+    slugs: [
+      "gecd-the-second-line-hiding-under-ficc-and-equities",
+      "legal-entity-the-only-thing-a-contract-can-actually-bind",
+      "prime-brokerage-the-same-position-financed-by-five-banks-at-once",
+      "counterparty-credit-risk-the-desk-meant-to-see-the-whole-client",
+      "rule-10b-1-the-disclosure-archegos-swaps-were-built-to-avoid",
+      "total-return-swaps-the-leverage-built-into-the-financing-leg",
+      "block-trading-in-a-fire-sale-the-protection-that-only-works-alone",
     ],
   },
   {
