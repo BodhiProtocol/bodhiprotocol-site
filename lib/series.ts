@@ -121,10 +121,10 @@ export const essaySeries: EssaySeries[] = [
       "gecd-the-second-line-hiding-under-ficc-and-equities",
       "legal-entity-the-only-thing-a-contract-can-actually-bind",
       "prime-brokerage-the-same-position-financed-by-five-banks-at-once",
-      "counterparty-credit-risk-the-desk-meant-to-see-the-whole-client",
-      "rule-10b-1-the-disclosure-archegos-swaps-were-built-to-avoid",
       "total-return-swaps-the-leverage-built-into-the-financing-leg",
+      "counterparty-credit-risk-the-desk-meant-to-see-the-whole-client",
       "block-trading-in-a-fire-sale-the-protection-that-only-works-alone",
+      "rule-10b-1-the-disclosure-archegos-swaps-were-built-to-avoid",
     ],
   },
   {
