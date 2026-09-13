@@ -37,6 +37,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# cross-post script output (local preview files, not source)
+/.crosspost-output/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
