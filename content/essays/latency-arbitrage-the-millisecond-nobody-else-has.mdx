@@ -1,0 +1,52 @@
+---
+title: "Latency Arbitrage: The Millisecond Nobody Else Has"
+description: "Two regulators looked at the same problem — a trader with a faster line can act on a price change before the rest of the market even knows it happened — and proposed the identical fix. One built it. One shelved it after industry pushback. What latency arbitrage actually is, why India's regulator proposed a speed bump and never deployed one, and why a US exchange built the same idea into its own legal structure instead — with paired Indian and international examples throughout."
+hook: "Two regulators proposed the identical fix for the same problem. One built it. One wrote a paper about it and moved on."
+category: "Market Abuse"
+tags: ["market-abuse", "market-structure"]
+author: "Surya"
+date: "2026-09-13"
+---
+
+Think of a stadium where the day's forecast is announced on a giant public screen, updated the instant it changes, visible to everyone at once — except one person in the crowd is listening to the same forecast over a slightly faster radio. Nothing on the screen was hidden from anyone. That person just hears the update a fraction of a second before it appears for the rest of the stadium, and in that fraction of a second, places a bet the rest of the crowd hasn't had the chance to place yet.
+
+Latency arbitrage is that fraction of a second, run continuously, across every price update, in every market, all day. [Colocation](/essays/colocation-when-the-exchange-itself-decides-who-hears-first) explains how a trader's clock can start sooner than everyone else's. This is about what happens once it does.
+
+## What latency arbitrage actually is
+
+The same stock's price doesn't update everywhere at once. A trade on one venue can move the true price of a stock a few hundred microseconds before a second venue's own quote catches up — a gap too small for a human to notice, but large enough for automated systems to trade on. A trader fast enough to see the first venue's move can buy against the second venue's now-outdated, or "stale," quote before that venue has a chance to correct it — a close-to-guaranteed profit that has nothing to do with predicting where a price is going, and everything to do with knowing where it already went, sooner than the venue trading against you does.
+
+## Example 1: SEBI's shelved speed bump
+
+India's regulator saw this problem clearly, and proposed a direct structural fix for it. Between 2015 and 2016, SEBI put out discussion papers proposing a minimum resting time for orders — as short as 500 milliseconds during which an order couldn't be cancelled or amended — alongside random delays and randomized "speed bumps" aimed squarely at strategies built around placing and cancelling orders faster than slower participants could react. The stated purpose was exactly the same one exchanges elsewhere would later build: strip out the reward for being marginally faster than everyone else, not by banning speed, but by making a small amount of unpredictability part of the market's own timing.
+
+None of it was implemented. Market participants pushed back hard enough that the proposals were shelved, and SEBI itself noted in its own paper that no other regulator worldwide had mandated a resting-time mechanism at that point either — Australia's securities regulator had floated something similar and also chosen not to proceed. India identified the problem, designed a plausible fix, and set it down.
+
+## Example 2: IEX's speed bump, built and approved
+
+The US version of the same idea got built years before SEBI ever wrote its proposal down. IEX opened in October 2013 as a private trading venue — a dark pool, not yet a full exchange — founded by a group of former RBC traders who'd noticed their own large orders were consistently getting worse fills than expected, a story later dramatized in Michael Lewis's *Flash Boys*. From its first day of trading, IEX was built around a deliberate 350-microsecond delay — 38 miles of coiled fiber-optic cable — applied symmetrically to every order and every piece of outgoing market data that touches it. The delay isn't disguised or selectively applied. It's disclosed, it's identical for every participant, and its entire purpose is to remove the reward for reacting to a stale quote a few hundred microseconds before IEX's own system can correct it.
+
+What changed in June 2016 was scale, not invention: the SEC approved IEX's application to become a fully registered national stock exchange, letting the same mechanism that had run quietly as one dark pool among many now operate as a listed market in its own right. NYSE and Nasdaq opposed that upgrade specifically, arguing that deliberately slowing a market down conflicted with existing rules requiring "immediate" execution. The SEC disagreed, ruling that a delay applied identically to everyone wasn't the kind of selective advantage those rules were written to prevent. By the time SEBI's own discussion papers proposed a similar delay in 2015, IEX had already been running one, live, for two years.
+
+## The hidden tradeoff
+
+IEX's speed bump only equalizes latency on IEX itself. The other dozen-plus US lit exchanges remain exactly as fast, and exactly as exposed to the same race, as they were before IEX existed — a fix built at the level of one venue caps the problem there and leaves the underlying race everywhere else untouched. Even IEX's own liquidity providers still carry a version of the same risk on every other exchange their quotes also sit on.
+
+SEBI's proposal, had it gone through, would have applied far more broadly — NSE and BSE between them carry enough of India's total volume that a mandate there would have reached most of the market at once, a structurally more complete fix than IEX's single-venue version. It never got that chance, for the same reason NYSE and Nasdaq gave the SEC: slowing down cancellations doesn't only stop predatory latency arbitrage, it also slows legitimate market-makers reacting to real news, and India's market participants weren't willing to accept that cost the way IEX's regulator eventually decided the trade was worth making. Same fix, same objection, raised in both markets — one pushed it through anyway, and one didn't.
+
+## Why this matters for a Business Analyst
+
+A surveillance or market-data system that treats "the market price" as one single, instantaneous fact will never be able to represent what latency arbitrage actually depends on: the same nominal price legitimately existing at different real times on different venues, all at once. Modeling that correctly means every price has to carry a per-venue "as of" timestamp rather than being treated as one global truth — otherwise there's no way to even ask whether a trade profited from a stale quote, because the model has no concept of a quote being stale to begin with.
+
+The same gap shows up in a rules engine trying to flag suspicious fast cancellations. A genuine market-maker updating a quote the instant real news breaks and a predatory order placed only to bait and cancel produce the identical raw event — an order cancelled within milliseconds of being placed. A system calibrated to catch one without a way to distinguish it from the other will either wave through the abusive pattern it was built to catch, or choke off the legitimate liquidity-providing behavior a market actually needs, depending on which way the miscalibration runs.
+
+## Lighthouse Insight
+
+Go back to the radio in the stadium.
+
+The screen never lied, and the radio was never a hack — it just arrived a fraction of a second sooner, over and over, every single day. Two regulators looked at that fraction of a second and reached for the identical tool to close it. What actually separates the markets that still have this gap from the ones that don't isn't who noticed the problem first. It's who decided the cost of fixing it was worth paying, and who decided it wasn't — yet.
+
+## Reference anchors
+
+- [CNBC: SEC gives its blessing to IEX's "speed bump" trading, June 17, 2016](https://www.cnbc.com/2016/06/17/sec-gives-its-blessing-to-the-iexs-speed-bump-trading.html)
+- [SEBI discussion paper: minimum resting time and related market microstructure proposals](https://www.sebi.gov.in/sebi_data/attachdocs/1470393485587.pdf)
