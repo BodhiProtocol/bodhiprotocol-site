@@ -1,0 +1,62 @@
+---
+title: "Stub Quotes: The Price Nobody Meant to Trade At"
+description: "For years, market makers were allowed to satisfy their quoting obligations with a joke — a one-cent bid, a $100,000 ask, a price nobody was ever supposed to actually trade at. On May 6, 2010, for about fifteen minutes, those joke prices were the only ones left standing, and Accenture traded for a penny. What a stub quote actually is, why a very different kind of market failure hit India's Nifty two years later for the opposite reason, and why one market's fragility was too much liquidity walking away at once while the other's was too little standing between one mistake and the whole index — with paired Indian and international examples throughout."
+hook: "Accenture traded for one cent. Not because the company was worthless — because the only price left in the book was never meant to be traded at."
+category: "Market Abuse"
+tags: ["market-abuse", "market-structure", "volatility"]
+author: "Surya"
+date: "2026-09-13"
+---
+
+Think of an antique shop that keeps a small sign in the window: "will consider any offer, including absurd ones." It isn't an invitation. It's a formality — some rule requires the shop to always display *some* price for everything on the shelf, and rather than leave a blank tag, the owner writes down a number nobody could ever actually be expected to pay: ten times the item's real worth. For years, nobody does. Then one afternoon every other shop on the street shutters early at once, a buyer walks in with genuinely nowhere else to go, and the only price left standing in anyone's window is the joke one.
+
+That's what a stub quote is, and on May 6, 2010, for a few unbearable minutes, it was the only price left in the US stock market for some of the most ordinary names on it.
+
+## What a stub quote actually is
+
+A market maker is generally expected to keep a two-sided quote showing at all times — a price it will buy at, a price it will sell at. But a market maker that genuinely doesn't want to trade a particular stock at that moment doesn't have to leave the field blank. It can post a **stub quote** instead: a bid absurdly far below the real price, or an offer absurdly far above it — a penny, or $100,000 — technically satisfying the letter of a continuous-quoting requirement without any real intention or expectation that either price will ever be hit. For as long as genuine, competitively priced quotes from other participants sit in front of it, a stub quote is invisible in practice. It only becomes the market's actual price if every real quote in front of it disappears at once.
+
+## Example 1: The Flash Crash, May 6, 2010
+
+At 2:32 pm on May 6, 2010, a mutual fund complex — Waddell & Reed — began executing a large hedging sale: 75,000 E-mini S&P 500 futures contracts, worth about $4.1 billion, run by an algorithm instructed to sell at roughly 9% of trading volume with no limit on price and no limit on time. As markets grew more volatile, the algorithm's own trigger fed on that volatility — more volume meant the algorithm sold faster, which pushed volatility higher still.
+
+High-frequency firms making markets in the futures absorbed the early selling, then hedged their own growing risk by selling into the underlying stocks — and other HFT firms bought that risk from them, then resold it to each other in turn. Between 2:45:13 and 2:45:27 pm — fourteen seconds — high-frequency traders traded more than 27,000 contracts, nearly half of all volume in that window, while their *combined* net position changed by only about 200 contracts. The same risk was being passed hand to hand so fast it barely went anywhere at all — a "hot potato" nobody wanted to actually hold, each trade adding to volume and volatility without absorbing any of the actual selling pressure. [Colocation](/essays/colocation-when-the-exchange-itself-decides-who-hears-first) and [latency arbitrage](/essays/latency-arbitrage-the-millisecond-nobody-else-has) explain why firms this fast exist in the market at all; May 6 is what happens when every one of them decides, within the same few seconds, that it would rather not be the one left holding the risk.
+
+Genuine liquidity providers, none of them under any obligation to keep quoting, pulled back or stopped entirely. For a handful of specific stocks, the only quotes left standing were the stub quotes nobody had ever expected to trade against. Accenture, a real company with a normal share price, briefly executed at one cent. Apple briefly traded near $100,000. Neither move said anything about either company. It said that the actual market, for a few seconds, in those specific names, had simply emptied out — and the joke price in the window was the only one left to sell into. (What regulators built afterward to stop this from happening the same way twice — Limit Up-Limit Down, replacing stub quotes' formality with a continuously enforced band — is its own story, covered in [Circuit Breakers](/essays/circuit-breakers-the-pause-a-market-forces-on-itself).)
+
+## Example 2: NSE's freak trade, October 5, 2012
+
+India's version of a market briefly losing its mind had almost nothing to do with liquidity vanishing, and everything to do with one keystroke.
+
+A dealer at Emkay Global Financial Services meant to enter a sell order worth ₹17 lakh across the Nifty 50 basket. Instead, 17 lakh went into the *quantity* field rather than the value field, and the order transmitted to NSE's system as an attempt to sell a basket of Nifty stocks at a size nobody had intended. Fifty-nine erroneous orders executed before anyone could stop it, worth more than ₹650 crore combined, and the Nifty dropped 920 points — about 15.5% — in minutes.
+
+The part SEBI later found most troubling wasn't the dealer's mistake at all — mistakes happen — it was that NSE's own circuit breaker should have halted the market the moment the index crossed 10%, at 9:50:58 am, and didn't. Trading kept running for another six seconds, long enough for the index to blow straight through the 15% level before the halt actually fired at 9:51:04. SEBI's subsequent order found NSE's own risk management systems inadequate for letting a single erroneous order sequence run past a threshold the exchange's own rules said should have stopped it, and the regulator later censured NSE over the episode. The fifteen-minute halt that did eventually fire gave the index room to claw back most of the move once trading resumed. Emkay itself absorbed roughly ₹51 crore in losses from trades it never meant to place.
+
+Nothing about India's market structure emptied out that morning. NSE dominates Indian equity volume overwhelmingly, order flow isn't fragmented across a dozen competing venues the way it is in the US, and no fleet of high-frequency market makers had to simultaneously decide whether to keep quoting. The entire failure was one dealer's input error meeting two gaps in a row: nothing at order entry checked the size against anything resembling a sane multiple of the stock's normal volume, and the safety net that was supposed to catch it anyway — the 10% circuit breaker — simply didn't fire when its own trigger condition was met.
+
+## The hidden tradeoff
+
+Two very different markets produced a double-digit-percent move inside minutes, for close to opposite reasons. The US crash needed a market that was fast, deep, and fragmented enough to have dozens of independent, voluntary liquidity providers — exactly the structure [Smart Order Routing](/essays/smart-order-routing-one-order-a-dozen-venues) exists to navigate — all of whom could individually, rationally, and legally decide to stop quoting within the same few seconds, with nothing obligating any of them to stay. That's a fragility that only exists because the liquidity was never a promise in the first place; it was always somebody's voluntary choice, renewed quote by quote, and on May 6 that choice reversed everywhere at once.
+
+India's version needed almost the opposite conditions: a concentrated market with comparatively few independent participants standing between one bad order and the entire index, a pre-trade risk check that was never built to catch a value-for-quantity input error, and a circuit breaker that existed on paper but hadn't been verified to actually fire the moment its own stated condition was met. Fragmentation wasn't the axis this failure ran on either way — the fixes that mattered here sit at the broker's own order-entry system and the exchange's own trigger logic, not anywhere in the market's structure at all.
+
+## Why this matters for a Business Analyst
+
+A system field labeled "market maker" is not a synonym for "guaranteed liquidity," and treating it as one is exactly the assumption that breaks at the worst possible moment. Some market makers — an old-style exchange specialist, a designated market maker under an affirmative obligation — are contractually required to keep quoting through volatility. Many modern liquidity providers are not, and a risk model that assumes displayed depth will still be there under stress has no way to represent the fifteen seconds when it wasn't.
+
+The Emkay case points at a cheaper, more preventable gap: a price band or circuit breaker is a safety net that catches a falling trade after it's already executed, but a pre-trade check comparing an order's size to a sane multiple of the instrument's normal volume catches the same error before it ever reaches the matching engine. ₹650 crore had already traded by the time NSE's circuit breaker fired — six seconds later than the exchange's own rule said it should have. The fix that would have mattered most wasn't a faster breaker — it was a bounds check on the order itself, sitting upstream of the exchange entirely.
+
+And the six-second gap is its own separate lesson, sitting one level above either fix. A safety mechanism specified in a rulebook and a safety mechanism *verified, under load, to actually trigger at the threshold it names* are two different claims, and a test suite that only ever checks the rule exists — never that the system enforces it at the exact index level, in production conditions, under a burst of orders arriving in the same second — will pass right up until the one day a real breach needs it.
+
+## Lighthouse Insight
+
+Go back to the sign in the antique shop window.
+
+Nobody lied by hanging it there. The absurd price was always honestly absurd, posted precisely because it was never supposed to be paid. What changed on May 6, 2010 wasn't the sign — it was every other shop on the street closing at once, for reasons that had nothing to do with the one item in that window and everything to do with a few hundred people deciding, independently and within the same few seconds, that they'd rather not be open right now. The joke price was never the problem. The problem was a market that let it become the only one left.
+
+## Reference anchors
+
+- [CFTC & SEC: Findings Regarding the Market Events of May 6, 2010](https://www.sec.gov/files/marketevents-report.pdf)
+- [CFTC Office of the Chief Economist: The Flash Crash — The Impact of High Frequency Trading on an Electronic Market](https://www.cftc.gov/sites/default/files/idc/groups/public/@economicanalysis/documents/file/oce_flashcrash0314.pdf)
+- [Business Standard: Emkay Global admits error in Nifty crash, October 2012](https://www.business-standard.com/article/markets/emkay-global-admits-error-in-nifty-crash-112100900039_1.html)
+- [SEBI: Whole Time Member order on the NSE co-location and freak-trade risk management matter](https://www.sebi.gov.in/sebi_data/attachdocs/1412947246897.pdf)
