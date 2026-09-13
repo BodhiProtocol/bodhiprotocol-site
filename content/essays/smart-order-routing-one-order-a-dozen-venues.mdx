@@ -1,0 +1,50 @@
+---
+title: "Smart Order Routing: One Order, a Dozen Venues"
+description: "The same share of stock trades, at the same moment, on more than a dozen different US venues, each showing a slightly different price. The US made it illegal to execute your order anywhere except the venue quoting the best one. India built the same routing capability the same decade — and made it optional. What smart order routing actually is, why one market turned it into law and the other left it as a feature, and what got left out of both fixes — with paired Indian and international examples throughout."
+hook: "The same stock trades on more than a dozen exchanges at once. US law says your broker isn't even allowed to pick the wrong one."
+category: "Capital Markets"
+tags: ["markets", "equities", "market-structure"]
+author: "Surya"
+date: "2026-09-13"
+---
+
+Think of trying to buy ten thousand identical concert tickets in a city where no single box office holds anywhere near that many. A dozen scattered box offices each hold a small block, at slightly different prices, and every price can change the moment a block sells out. Walking to each one yourself, in order, means the cheapest tickets might be gone by the time you reach that counter. What you actually want is a runner at every box office simultaneously, buying from whichever one is cheapest at that exact second, moving up to the next-cheapest the instant one runs dry — so your ten thousand tickets get assembled from a dozen places at the best combination of prices available anywhere in the city, without you ever having to know which counter each one came from.
+
+That runner network is what a smart order router does for a stock order, and in the US, running one isn't optional. It's the law.
+
+## What smart order routing actually is
+
+A single company's shares don't trade in one place. The same stock trades simultaneously across more than a dozen registered US stock exchanges, plus dozens of dark pools and internalizing wholesalers — each one capable of showing its own best bid and ask at any given instant, each one capable of being wrong relative to the others for a few milliseconds at a time. Smart order routing is the system, built into a broker's or exchange's own infrastructure, that automatically finds the best available price across that entire scattered picture and sends the order — or splits it into pieces — to wherever that price actually is, rather than wherever the order happened to land first.
+
+## Example 1: SEBI's opt-in framework
+
+India built essentially the same capability, the same decade the US did — and made a structurally different choice about it. SEBI's 2010 circular permits Indian brokers to offer smart order routing between NSE and BSE, letting a broker's system choose where to send an order based on price, cost, speed, and likelihood of execution. But it is exactly that: permitted, not mandated. A broker has to apply separately to each exchange for approval, pass pre-trade risk testing and audit requirements, and choose to turn the feature on. Best execution in India is a standing obligation on the broker — not a structural guarantee built into how every exchange in the country is required to behave toward every other one.
+
+That choice lines up with what India's market actually looks like. NSE handles the overwhelming majority of the country's equity trading volume; BSE's share, for most listed stocks, is a fraction of that. A rule forcing every order to check both exchanges for the better price would, most of the time, find the same price it already had. Building a mandatory, market-wide routing law onto a market that isn't meaningfully fragmented in the first place solves a problem that mostly isn't there yet.
+
+## Example 2: Reg NMS, mandatory since 2005
+
+The US built the opposite answer, because it was solving the opposite problem. In 2005, the SEC adopted the Order Protection Rule — Rule 611 of Regulation NMS — making it a legal violation, not just poor practice, for a trading venue to execute an order at a price worse than a better price displayed and immediately accessible on any other protected venue at that same instant. That single rule is why every US broker and exchange had to build, or buy access to, a smart order router: with more than a dozen exchanges each independently quoting the same stock, "best execution" stopped being a duty a broker tried to honor and became a system requirement the law directly tested, trade by trade.
+
+## The hidden tradeoff
+
+Reg NMS solved the "worse price" problem completely — a US order genuinely cannot be executed at a documented worse price when a better one was live elsewhere. But mandating routing to whichever venue displays the best price created a new fight over who gets picked when several venues quote that identical best price at once. Exchanges compete for that tie-breaking order flow with rebates — paying a broker to route there — the same maker-taker economics behind [payment for order flow](/essays/payment-for-order-flow-the-free-trade-someone-still-paid-for). A router that's fully compliant with Rule 611's letter can still be steered, among several equally-priced venues, toward whichever one pays the most for the order — not necessarily whichever one is actually cheapest for the client once fees are counted.
+
+India's opt-in framework never built that particular arms race, because it never built the underlying reason for one: without a dozen genuinely competing venues, there's no rebate war over routing decisions to have. What it also never built is the guarantee. Best execution across NSE and BSE in India depends on a broker having applied for SOR, turned it on, and kept it running — not on a rule that makes the alternative illegal. One market removed the worst outcome and got a rebate problem in exchange. The other market avoided the rebate problem by never making the better outcome mandatory in the first place.
+
+## Why this matters for a Business Analyst
+
+"Best execution" is not one requirement — it's a different claim depending on whether the market underneath it makes routing mandatory or optional, and a compliance system built assuming the US model will misjudge the Indian one entirely. An audit trail checking "was this order routed to the best displayed price" is testing a real, binding legal requirement in the US and a broker-level policy choice in India; treating the second like the first will flag routing decisions as violations that were never against any rule to begin with, and treating the first like the second will miss real Rule 611 violations that carry direct legal exposure.
+
+The same system also has to separate "complied with the routing rule" from "was actually cheapest for the client," because rebates make those two different claims. A venue can legitimately be the required destination under Rule 611 and still not be the venue that left the most money in the client's account once the rebate the broker collected is netted out — and a system that logs only "routed to best displayed price: yes" has no way to show which of those two claims it actually proved.
+
+## Lighthouse Insight
+
+Go back to the runners at the box offices.
+
+Both cities have a version of that runner network now — one because the law leaves no other choice, one because a broker decided it was worth building. Neither runner network tells you where the ticket money that didn't go to the seller actually went, and that's the part worth watching in either market: a system that proves the price was fair on paper hasn't yet proven nobody was paid, quietly, to make sure it landed exactly there.
+
+## Reference anchors
+
+- [SEC: Rule 611 of Regulation NMS (Order Protection Rule) — Equity Market Structure Advisory Committee memo](https://www.sec.gov/spotlight/emsac/memo-rule-611-regulation-nms.pdf)
+- [SEBI Master Circular — Chapter 2: Trading Software and Technology (Smart Order Routing)](https://www.sebi.gov.in/sebi_data/commondocs/oct-2023/Chapter-2-Trading_Software_and_Technology_p.pdf)
