@@ -145,6 +145,7 @@ export const essaySeries: EssaySeries[] = [
       "securities-lending-the-share-sold-short-more-than-once",
       "payment-for-order-flow-the-free-trade-someone-still-paid-for",
       "internalization-the-book-to-book-trade-that-skips-the-exchange",
+      "systematic-internalisers-the-internaliser-that-has-to-publish-a-price",
     ],
   },
   {
