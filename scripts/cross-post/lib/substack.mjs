@@ -9,9 +9,9 @@ import { marked } from "marked";
 export function buildSubstackHtml(title, markdown, imageSrc, sourceUrl) {
   const bodyHtml = marked.parse(markdown);
   return `
-<div style="font-family: Georgia, 'Times New Roman', serif; max-width: 640px; margin: 0 auto; color: #0a0a0a;">
-  <img src="${imageSrc}" alt="${title}" style="width: 100%; height: auto; margin-bottom: 24px;" />
-  <h1 style="font-size: 32px; line-height: 1.2; margin-bottom: 24px;">${title}</h1>
+<div style="font-family: Georgia, 'Times New Roman', serif; font-size: 20px; line-height: 1.65; max-width: 680px; margin: 60px auto; color: #0a0a0a;">
+  <img src="${imageSrc}" alt="${title}" style="width: 100%; height: auto; margin-bottom: 32px;" />
+  <h1 style="font-size: 38px; line-height: 1.25; margin-bottom: 32px;">${title}</h1>
   ${bodyHtml}
   <p style="margin-top: 32px; font-size: 14px; color: #52525b;">
     Originally published at <a href="${sourceUrl}" style="color: #7c3aed;">bodhiprotocol.com</a>.
