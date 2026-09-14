@@ -3,8 +3,9 @@ import fs from "node:fs";
 import path from "node:path";
 
 import { loadEssay, toAbsoluteLinks } from "./lib/parse-essay.mjs";
-import { getMediumUserId, uploadMediumImage, createMediumDraft } from "./lib/medium.mjs";
-import { buildSubstackHtml, sendSubstackDraft } from "./lib/substack.mjs";
+import { getMediumUserId, uploadMediumImage, createMediumDraft, buildMediumHtml } from "./lib/medium.mjs";
+import { buildSubstackHtml } from "./lib/substack.mjs";
+import { resolveImageSrc } from "./lib/image.mjs";
 
 const SITE_URL = (process.env.CROSSPOST_SITE_URL || "https://bodhiprotocol.com").replace(/\/$/, "");
 const OUT_DIR = path.join(process.cwd(), ".crosspost-output");
@@ -16,11 +17,13 @@ Options:
   --substack-image <path-or-url>   Cover image for Substack (defaults to the essay's OG image)
   --medium-only                    Skip Substack
   --substack-only                  Skip Medium
-  --dry-run                        Never call Medium/Substack — just write the generated
-                                    payload/email to .crosspost-output/ for review
+  --dry-run                        Force the Medium paste-ready file even if a working
+                                    MEDIUM_INTEGRATION_TOKEN is set (for testing)
 
-With no credentials configured, the script runs as if --dry-run were passed.
-See scripts/cross-post/env.example for the environment variables it needs.`;
+Substack has no API of its own, so it always gets a paste-ready HTML file.
+Medium creates a real draft via its API only if MEDIUM_INTEGRATION_TOKEN is
+set and valid (Medium stopped issuing new tokens in 2025 — most accounts
+won't have one, and get a paste-ready file too). See env.example.`;
 
 function parseArgs(argv) {
   if (argv.length === 0 || argv[0] === "--help" || argv[0] === "-h") {
@@ -52,19 +55,23 @@ async function publishToMedium(essay, { markdown, canonicalUrl, mediumImage, dry
   const token = process.env.MEDIUM_INTEGRATION_TOKEN;
 
   if (dryRun || !token) {
-    if (!dryRun) console.warn("MEDIUM_INTEGRATION_TOKEN not set — falling back to dry run.");
-    const preview = {
-      title: essay.frontmatter.title,
-      contentFormat: "markdown",
+    if (!dryRun) {
+      console.warn(
+        "No MEDIUM_INTEGRATION_TOKEN — Medium stopped issuing new ones in 2025, so this is " +
+          "expected for most accounts. Writing a paste-ready file instead.",
+      );
+    }
+    const html = buildMediumHtml(
+      essay.frontmatter.title,
+      markdown,
+      resolveImageSrc(mediumImage),
       canonicalUrl,
-      tags: (essay.frontmatter.tags || []).slice(0, 5),
-      coverImage: mediumImage,
-      content: `![${essay.frontmatter.title}](${mediumImage})\n\n${markdown}`,
-      publishStatus: "draft",
-    };
-    const outFile = path.join(OUT_DIR, `${essay.slug}.medium.json`);
-    fs.writeFileSync(outFile, JSON.stringify(preview, null, 2));
-    console.log(`Dry run — wrote Medium payload to ${path.relative(process.cwd(), outFile)}`);
+      essay.frontmatter.tags || [],
+    );
+    const outFile = path.join(OUT_DIR, `${essay.slug}.medium.html`);
+    fs.writeFileSync(outFile, html);
+    console.log(`Wrote ${path.relative(process.cwd(), outFile)}`);
+    console.log("Open it in a browser, select all, copy, and paste into a new Medium story.");
     return;
   }
 
@@ -82,46 +89,16 @@ async function publishToMedium(essay, { markdown, canonicalUrl, mediumImage, dry
   console.log("(It's a draft — review and hit Publish on Medium when ready.)");
 }
 
-async function publishToSubstack(essay, { markdown, canonicalUrl, substackImage, dryRun }) {
+async function publishToSubstack(essay, { markdown, canonicalUrl, substackImage }) {
+  // Substack has no public API and no post-by-email feature — manual paste
+  // into its editor is the only path there is, for anyone's account.
   console.log("\n— Substack —");
-  const hasSmtpConfig =
-    process.env.SMTP_HOST &&
-    process.env.SMTP_USER &&
-    process.env.SMTP_PASS &&
-    process.env.SUBSTACK_POST_EMAIL;
+  const html = buildSubstackHtml(essay.frontmatter.title, markdown, resolveImageSrc(substackImage), canonicalUrl);
 
-  const isUrlImage = /^https?:\/\//.test(substackImage);
-  const imgSrcForHtml = isUrlImage ? substackImage : "cid:cover-image";
-  const html = buildSubstackHtml(essay.frontmatter.title, markdown, imgSrcForHtml, canonicalUrl);
-
-  if (dryRun || !hasSmtpConfig) {
-    if (!dryRun) console.warn("SMTP / SUBSTACK_POST_EMAIL not set — falling back to dry run.");
-    const outFile = path.join(OUT_DIR, `${essay.slug}.substack.html`);
-    fs.writeFileSync(outFile, html);
-    console.log(`Dry run — wrote Substack email body to ${path.relative(process.cwd(), outFile)}`);
-    if (!isUrlImage) {
-      console.log(
-        `(Preview references a local image via cid: — that only resolves once actually emailed.)`,
-      );
-    }
-    return;
-  }
-
-  await sendSubstackDraft({
-    smtp: {
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT || 587),
-      secure: process.env.SMTP_SECURE === "true",
-      auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
-    },
-    from: process.env.SMTP_FROM || process.env.SMTP_USER,
-    to: process.env.SUBSTACK_POST_EMAIL,
-    subject: essay.frontmatter.title,
-    html,
-    inlineImagePath: isUrlImage ? undefined : substackImage,
-  });
-  console.log(`Draft emailed to Substack (${process.env.SUBSTACK_POST_EMAIL}).`);
-  console.log("Check your Substack dashboard's Drafts — review and hit Send when ready.");
+  const outFile = path.join(OUT_DIR, `${essay.slug}.substack.html`);
+  fs.writeFileSync(outFile, html);
+  console.log(`Wrote ${path.relative(process.cwd(), outFile)}`);
+  console.log("Open it in a browser, select all, copy, and paste into a new Substack post.");
 }
 
 async function main() {
@@ -140,7 +117,7 @@ async function main() {
     await publishToMedium(essay, { markdown, canonicalUrl, mediumImage, dryRun: opts.dryRun });
   }
   if (!opts.skipSubstack) {
-    await publishToSubstack(essay, { markdown, canonicalUrl, substackImage, dryRun: opts.dryRun });
+    await publishToSubstack(essay, { markdown, canonicalUrl, substackImage });
   }
 
   console.log("\nDone.");

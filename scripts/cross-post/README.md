@@ -1,42 +1,41 @@
 # Cross-post an essay to Medium / Substack
 
-Takes one essay from `content/essays/*.mdx`, strips the frontmatter, rewrites
-internal links to absolute URLs, and:
+Takes one essay from `content/essays/*.mdx`, strips the frontmatter, and
+rewrites internal links to absolute URLs. Neither platform lets an outside
+tool publish for you anymore, so this produces **paste-ready HTML files** you
+copy into each platform's own editor by hand — no retyping or reformatting,
+but the final Publish/Send click is always yours.
 
-- **Medium**: creates a **draft** post via Medium's API, with `canonicalUrl`
-  pointed back at bodhiprotocol.com (so Google treats this site as the
-  original, not Medium).
-- **Substack**: emails the post to your Substack's hidden posting address,
-  where it lands as a **draft**.
-
-Both platforms always stop at a draft — publishing is a manual click, on
-purpose, so a bad auto-post never goes out under your name.
+- **Substack**: no public API, no post-by-email feature. Always gets a
+  paste-ready file.
+- **Medium**: stopped issuing new API integration tokens in 2025. If your
+  account has one from before then, the script creates a real **draft** post
+  via the API (with `canonicalUrl` pointed back at bodhiprotocol.com, so
+  Google treats this site as the original). Otherwise — true for most
+  accounts, check Settings → Security and apps → "Integration tokens" — it
+  gets the same paste-ready file as Substack.
 
 ## One-time setup
 
-1. `npm install` (adds `nodemailer` and `marked`, used only by this script).
-2. Copy `scripts/cross-post/env.example` to `scripts/cross-post/.env.local`
-   and fill it in:
-   - **Medium**: Settings → Integration tokens → generate one.
-   - **Substack**: find your posting-by-email address in your publication's
-     settings, and set up any SMTP account you control to send from (a
-     Gmail app password works fine for low volume).
-
-`.env.local` files are already gitignored — nothing here gets committed.
+1. `npm install` (adds `marked`, used only by this script, to convert
+   Markdown to HTML for the paste-ready files).
+2. Only relevant if your Medium account has a pre-2025 integration token:
+   copy `scripts/cross-post/env.example` to `scripts/cross-post/.env.local`
+   and paste the token in. `.env.local` files are already gitignored.
 
 ## Usage
 
 ```bash
-# Dry run — no credentials needed. Writes the generated Medium payload and
-# Substack email HTML into .crosspost-output/ so you can inspect them first.
-node scripts/cross-post/publish-essay.mjs bonds-the-fixed-deposit-you-can-sell --dry-run
-
-# Real run, once .env.local is filled in. Different cover image per platform:
-node --env-file=scripts/cross-post/.env.local scripts/cross-post/publish-essay.mjs \
-  bonds-the-fixed-deposit-you-can-sell \
+node scripts/cross-post/publish-essay.mjs bonds-the-fixed-deposit-you-can-sell \
   --medium-image ./path/to/medium-cover.png \
   --substack-image ./path/to/substack-cover.png
 ```
+
+This writes `.crosspost-output/<slug>.medium.html` and
+`.crosspost-output/<slug>.substack.html`. Open each in a browser, select all,
+copy, and paste into a new story/post on that platform — then add the cover
+image if it didn't carry over with the paste, and hit Publish/Send once
+you're happy with it.
 
 Image arguments accept either a local file path or an `http(s)://` URL. If
 omitted, both platforms fall back to the essay's own OG image
@@ -44,10 +43,7 @@ omitted, both platforms fall back to the essay's own OG image
 images per platform for anything you're actually publishing (Medium and
 Substack render cover images at different aspect ratios).
 
-Flags: `--medium-only`, `--substack-only`, `--dry-run`.
-
-With no credentials configured at all, the script behaves as if `--dry-run`
-were passed (with a warning) rather than failing outright.
+Flags: `--medium-only`, `--substack-only`.
 
 ## Known limitation
 

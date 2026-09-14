@@ -1,8 +1,11 @@
-import path from "node:path";
-import nodemailer from "nodemailer";
 import { marked } from "marked";
 
-/** Builds the HTML body emailed to Substack's posting address. `imageSrc` is either a URL or "cid:cover-image". */
+/**
+ * Renders the essay as plain HTML for copy-paste into Substack's own editor.
+ * Substack has no public API and no post-by-email feature — this manual-paste
+ * path is the only one that exists, for any account.
+ * Open the file in a browser, select all, copy, paste into a new Substack post.
+ */
 export function buildSubstackHtml(title, markdown, imageSrc, sourceUrl) {
   const bodyHtml = marked.parse(markdown);
   return `
@@ -15,17 +18,4 @@ export function buildSubstackHtml(title, markdown, imageSrc, sourceUrl) {
   </p>
 </div>
 `.trim();
-}
-
-/**
- * Emails the post to Substack's hidden posting address, where it lands as a
- * draft — Substack gives no way to skip the human review/send step.
- */
-export async function sendSubstackDraft({ smtp, from, to, subject, html, inlineImagePath }) {
-  const transporter = nodemailer.createTransport(smtp);
-  const attachments = inlineImagePath
-    ? [{ filename: path.basename(inlineImagePath), path: inlineImagePath, cid: "cover-image" }]
-    : [];
-
-  return transporter.sendMail({ from, to, subject, html, attachments });
 }

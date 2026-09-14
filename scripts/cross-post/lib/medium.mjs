@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { marked } from "marked";
 
 const MEDIUM_API = "https://api.medium.com/v1";
 
@@ -41,6 +42,30 @@ export async function uploadMediumImage(token, imagePathOrUrl) {
 
   const data = await mediumRequest(token, "/images", { method: "POST", body: form });
   return data.url;
+}
+
+/**
+ * Renders the essay as plain HTML for copy-paste into Medium's own editor —
+ * Medium has issued no new API integration tokens since 2025, so for most
+ * accounts this manual-paste path is the only one that actually works.
+ * Open the file in a browser, select all, copy, paste into a new Medium story.
+ */
+export function buildMediumHtml(title, markdown, imageSrc, canonicalUrl, tags) {
+  const bodyHtml = marked.parse(markdown);
+  const tagLine = tags.length ? tags.slice(0, 5).join(", ") : "(none)";
+  return `
+<div style="font-family: Georgia, 'Times New Roman', serif; max-width: 640px; margin: 0 auto; color: #0a0a0a;">
+  <img src="${imageSrc}" alt="${title}" style="width: 100%; height: auto; margin-bottom: 24px;" />
+  <h1 style="font-size: 32px; line-height: 1.2; margin-bottom: 24px;">${title}</h1>
+  ${bodyHtml}
+</div>
+<hr />
+<p style="font-family: sans-serif; font-size: 13px; color: #52525b;">
+  Not part of the story — for you, before you paste this in:<br />
+  Tags to add on Medium's publish screen: ${tagLine}<br />
+  Canonical link to set (Medium story menu "..." → "Change settings" → "Add canonical link"): ${canonicalUrl}
+</p>
+`.trim();
 }
 
 /** Creates a draft post (never auto-publishes) with a canonical link back to the site. */
