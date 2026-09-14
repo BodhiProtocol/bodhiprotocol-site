@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "crosspost": "node scripts/cross-post/publish-essay.mjs"
+    "crosspost": "node scripts/cross-post/publish-piece.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",

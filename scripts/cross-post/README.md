@@ -1,10 +1,18 @@
-# Cross-post an essay to Medium / Substack
+# Cross-post an essay or Great Minds entry to Medium / Substack
 
-Takes one essay from `content/essays/*.mdx`, strips the frontmatter, and
-rewrites internal links to absolute URLs. Neither platform lets an outside
-tool publish for you anymore, so this produces **paste-ready HTML files** you
-copy into each platform's own editor by hand — no retyping or reformatting,
-but the final Publish/Send click is always yours.
+Takes one piece from `content/essays/*.mdx` or `content/great-minds/*.mdx`
+(whichever has the slug), strips the frontmatter, and rewrites internal links
+to absolute URLs. Neither platform lets an outside tool publish for you
+anymore, so this produces **paste-ready HTML files** you copy into each
+platform's own editor by hand — no retyping or reformatting, but the final
+Publish/Send click is always yours.
+
+For a Great Minds entry, only the flowing-prose body at the bottom of the
+file is cross-posted — the wheel/timeline/mental-models frontmatter and any
+bespoke diagram component that drives the interactive page on the site are
+left out. The cover image (see below) still comes from that entry's own OG
+image, so you get a simple branded "infographic" card without needing the
+full diagram.
 
 - **Substack**: no public API, no post-by-email feature. Always gets a
   paste-ready file.
@@ -26,9 +34,12 @@ but the final Publish/Send click is always yours.
 ## Usage
 
 ```bash
-node scripts/cross-post/publish-essay.mjs bonds-the-fixed-deposit-you-can-sell \
+node scripts/cross-post/publish-piece.mjs bonds-the-fixed-deposit-you-can-sell \
   --medium-image ./path/to/medium-cover.png \
   --substack-image ./path/to/substack-cover.png
+
+# Works the same for a Great Minds entry:
+node scripts/cross-post/publish-piece.mjs dashrath-manjhi
 ```
 
 This writes `.crosspost-output/<slug>.medium.html` and
