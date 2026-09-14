@@ -4,6 +4,7 @@ import path from "node:path";
 
 import { loadEssay, toAbsoluteLinks } from "./lib/parse-essay.mjs";
 import { loadGreatMind } from "./lib/parse-great-mind.mjs";
+import { loadPlaybook } from "./lib/parse-playbook.mjs";
 import { getMediumUserId, uploadMediumImage, createMediumDraft, buildMediumHtml } from "./lib/medium.mjs";
 import { buildSubstackHtml } from "./lib/substack.mjs";
 import { resolveImageSrc } from "./lib/image.mjs";
@@ -13,26 +14,31 @@ const OUT_DIR = path.join(process.cwd(), ".crosspost-output");
 
 // Slug is looked up in each directory in turn -- first match wins.
 const CONTENT_TYPES = [
-  { urlSegment: "essays", dir: "content/essays", load: loadEssay },
-  { urlSegment: "great-minds", dir: "content/great-minds", load: loadGreatMind },
+  { urlSegment: "essays", dir: "content/essays", ext: ".mdx", load: loadEssay },
+  { urlSegment: "great-minds", dir: "content/great-minds", ext: ".mdx", load: loadGreatMind },
+  { urlSegment: "ba-playbooks", dir: "content/ba-playbooks", ext: ".ts", load: loadPlaybook },
 ];
 
-function resolvePiece(slug) {
+async function resolvePiece(slug) {
   for (const type of CONTENT_TYPES) {
-    if (fs.existsSync(path.join(process.cwd(), type.dir, `${slug}.mdx`))) {
-      return { piece: type.load(slug), urlSegment: type.urlSegment };
+    if (fs.existsSync(path.join(process.cwd(), type.dir, `${slug}${type.ext}`))) {
+      return { piece: await type.load(slug), urlSegment: type.urlSegment };
     }
   }
   throw new Error(
-    `No content found for slug "${slug}" in ${CONTENT_TYPES.map((t) => t.dir).join(" or ")}.`,
+    `No content found for slug "${slug}" in ${CONTENT_TYPES.map((t) => t.dir).join(", ")}.`,
   );
 }
 
 const USAGE = `Usage: node scripts/cross-post/publish-piece.mjs <slug> [options]
 
-Looks up <slug> in content/essays/ and content/great-minds/ (first match wins).
+Looks up <slug> in content/essays/, content/great-minds/, and
+content/ba-playbooks/ (first match wins).
 For a Great Minds entry, only its flowing-prose body is cross-posted -- the
 wheel/timeline/diagram data that drives the interactive page is left out.
+A BA Playbook has no article body at all -- its structured hacks/intro/
+closing fields are converted to Markdown instead. Only works for a
+hacks-driven playbook; one with a bespoke narrative body can't be read here.
 
 Options:
   --medium-image <path-or-url>     Cover image for Medium (defaults to the essay's OG image)
@@ -125,11 +131,15 @@ async function publishToSubstack(piece, { markdown, canonicalUrl, substackImage 
 
 async function main() {
   const opts = parseArgs(process.argv.slice(2));
-  const { piece, urlSegment } = resolvePiece(opts.slug);
+  const { piece, urlSegment } = await resolvePiece(opts.slug);
   console.log(`Found "${piece.frontmatter.title}" in content/${urlSegment}/`);
 
   const canonicalUrl = `${SITE_URL}/${urlSegment}/${piece.slug}`;
-  const defaultImage = `${SITE_URL}/${urlSegment}/${piece.slug}/opengraph-image`;
+  // A loader can supply its own better cover image (e.g. a playbook's purpose-built
+  // infographic) via piece.defaultImage; otherwise fall back to the page's OG image.
+  const defaultImage = piece.defaultImage
+    ? `${SITE_URL}${piece.defaultImage}`
+    : `${SITE_URL}/${urlSegment}/${piece.slug}/opengraph-image`;
   const mediumImage = opts.mediumImage || defaultImage;
   const substackImage = opts.substackImage || defaultImage;
   const markdown = toAbsoluteLinks(piece.body, SITE_URL);
