@@ -1,0 +1,54 @@
+---
+title: "Systematic Internalisers: The Internaliser That Has to Publish a Price"
+description: "A broker can internalize enough of its clients' trades in Europe that regulators stop treating it like an ordinary dealer and start treating it like a mini-exchange — required to publish a real, dealable price and honor it for anyone who asks, not just the client in front of it. What a Systematic Internaliser actually is, why MiFID II built the category at all, and why India's market structure never had to invent anything like it."
+hook: "A US wholesaler internalizing your order never has to show its price. Past a threshold in Europe, the law makes it."
+category: "Capital Markets"
+tags: ["markets", "equities", "market-structure"]
+author: "Surya"
+date: "2026-09-14"
+---
+
+Think of a moneychanger working out of a small counter, trading rupees for dollars with three or four customers a week, negotiating a fresh rate each time. Nobody outside those conversations needs to know what number she agreed to, and nobody can hold her to it tomorrow — it was a private deal between her and whoever was standing there. Now imagine she starts doing this so often, and for such large sums, that she's quietly become the going rate for that whole corner of the market. At that point, a regulator can reasonably say: your private counter has become a public one. Put up a rate board. Honor it for anyone who walks up and asks — not just the customer already in front of you.
+
+That's what a Systematic Internaliser is. Under MiFID II, the EU's core markets rulebook, a Systematic Internaliser — SI, in market shorthand — is an investment firm that deals on its own account to execute client orders outside a stock exchange or other trading venue, on a basis regulators define as "organised, frequent, systematic and substantial." Cross that threshold, in a given instrument, and you don't just get to keep internalizing quietly. You get reclassified as something closer to a venue than a dealer — with a venue's obligations attached.
+
+**Internalization asks whether a broker can be the counterparty to its own client. Systematic Internalisation asks what happens once it's doing that often enough to look like a market.**
+
+## What actually happens
+
+The frequent-and-systematic test isn't a vague feeling a compliance officer has — it's measured against quantitative thresholds set out in EU technical standards (RTS 1), comparing a firm's own off-venue dealing in an instrument against total EU trading volume in that instrument, and against the firm's own total trading in it. Cross the thresholds and SI status isn't optional; a firm is one whether it wants to be or not. But most large SIs — the equities and bonds desks at firms like Goldman Sachs International, JPMorgan, Barclays, and Citigroup, alongside non-bank market makers such as Jane Street, Citadel Securities, and Virtu Financial — opt in voluntarily, because SI status is also a licence to keep operating a business MiFID II would otherwise have shut down.
+
+That last point is the one that makes the category make sense. MiFIR — the regulation that sits alongside MiFID II — includes a Share Trading Obligation requiring EU investment firms to execute trades in EU shares on a regulated market, an MTF, an SI, or an equivalent venue. Once that rule exists, informal off-exchange internalization the way a US wholesaler does it — filling client orders out of inventory with no venue status at all — simply isn't a legal option for EU shares. If a firm wants to keep doing what [internalization](/essays/internalization-the-book-to-book-trade-that-skips-the-exchange) describes, on shares, it has to become one of the small number of things the law recognises as a legitimate place for that trade to happen.
+
+And becoming that thing carries real obligations, not just a new label. An equity SI in liquid instruments must publish firm, two-way quotes — a real bid and a real offer, not an indicative range — up to a size called Standard Market Size, and it generally has to honor those quotes if a client asks to deal at them. Every trade it executes still needs to be reported, through an Approved Publication Arrangement, into the market's post-trade tape. Compare that to the US wholesaler in the sibling essay: it has to beat or match the NBBO on each fill, but it never has to stream a continuous public quote anyone else can see and deal against. A US wholesaler internalizes in private and gets graded against a public number afterward. An EU Systematic Internaliser has to become part of the public number.
+
+## Why the category never had to exist in India
+
+The reason traces straight back to the same starting point as internalization itself. The Securities Contracts (Regulation) Act, 1956 requires listed-security trades to run through a recognised stock exchange's own matching engine — a broker in India isn't structurally free to deal against its own client off-exchange in the first place, so there was never an off-exchange internalization business for a regulator to look at and decide needed a quoting obligation bolted on.
+
+But there's a sharper way to see why the SI category specifically wasn't needed, beyond just repeating that internalization itself is closed off. The whole point of the SI regime is to recreate, for internalized flow, the one thing an exchange already gives every order for free: a public, dealable, continuously updating price anyone can see and trade against. SEBI does run market-making schemes — for instance on the SME platforms, and for options market makers providing two-way quotes in less liquid contracts — but those market makers still stream their quotes onto the exchange's own order book. They add depth to the public book; they don't become an alternative book. India never had to invent a "the internalizer must now act like a mini-exchange" category, because in India, the exchange was never something a broker's own dealing desk could stand apart from long enough to need one.
+
+## Why this matters for a Business Analyst
+
+### Think of a venue code that decides who owes the paperwork
+
+A courier company that only ever hands packages to one carrier can label every shipment the same way: carrier name, done. A courier company that sometimes uses its own in-house fleet has to label each shipment with which fleet actually carried it — because insurance liability, customs paperwork, and delivery guarantees all depend on that one field being right.
+
+A European investment firm's trade capture system carries that harder case as a permanent structural feature, and the rule it has to encode is a real branch, not a flat default. RTS 1 — the same technical standard that sets an SI's quoting thresholds — also fixes who has to make a trade public through an Approved Publication Arrangement. The general default is that the seller reports. But if exactly one side of the trade is a Systematic Internaliser in that instrument, the obligation flips to the SI regardless of whether it bought or sold; only when both sides are SIs does the plain seller-reports default come back. That means a trade capture system can't just hard-code "seller reports" — at the moment of execution it has to know each counterparty's SI status, in that specific instrument, to know who owes the report at all. SIs are even assigned their own four-character Market Identifier Code under ISO 10383 — Crédit Agricole CIB's equity SI, for instance, carries the code AACA — the same identifier family used for the London Stock Exchange (XLON) or the NSE (XNSE), so a trade against one is stamped with that firm-specific code, not a generic "OTC" flag.
+
+An Indian broker's trade capture system carries no equivalent branch. Every listed-equity order's venue field only ever resolves to one thing — the exchange it was routed to — because no other value was ever legally possible. Testing "does the system correctly identify who owes the trade report" is a real, non-trivial test case in a European build. In an Indian one, that question doesn't have a codepath to test.
+
+## Lighthouse Insight
+
+Return to the moneychanger's counter.
+
+A private rate, agreed between her and whoever happened to be standing there, only has to be fair to the two of them. A rate board bolted to the same counter, visible to anyone who walks past, has to be fair to everyone who might ask for it — and it has to still be there, honored, the next time someone checks. MiFID II looked at brokers internalizing enough client flow to matter and decided the second kind of price was the only one large enough to be trusted in private. In the US, internalization stays the first kind — a deal graded against a public number it never had to become. In India, the counter was never allowed to open in the first place. The exchange's own book was always the only rate board in the room.
+
+## Reference anchors
+
+- [EUR-Lex: MiFID II, Directive 2014/65/EU — Article 4(1)(20), Systematic Internaliser definition](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32014L0065)
+- [EUR-Lex: MiFIR, Regulation (EU) No 600/2014 — Article 23, Share Trading Obligation](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32014R0600)
+- [EUR-Lex: Commission Delegated Regulation (EU) 2017/587 (RTS 1) — SI quoting thresholds, Article 12 post-trade reporting responsibility](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32017R0587)
+- [FCA: Systematic Internalisers under UK MiFID](https://www.fca.org.uk/markets/mifid-ii/systematic-internalisers)
+- [ISO 20022 / ISO 10383: Market Identifier Codes Registration Procedures — Systematic Internaliser MIC assignment](https://www.iso20022.org/sites/default/files/documents/D7/MIC_Registration_Procedures.pdf)
+- [Securities Contracts (Regulation) Act, 1956 — full text](https://www.sebi.gov.in/acts/contractact.pdf)

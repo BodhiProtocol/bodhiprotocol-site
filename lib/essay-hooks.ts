@@ -26,6 +26,8 @@ const essayHooks: Record<string, string> = {
     "Not every share that changes hands was ever bought or sold.",
   "internalization-the-book-to-book-trade-that-skips-the-exchange":
     "Two clients want opposite things. Does their broker send that to a market — or just settle it in-house?",
+  "systematic-internalisers-the-internaliser-that-has-to-publish-a-price":
+    "A US wholesaler internalizing your order never has to show its price. Past a threshold in Europe, the law makes it.",
   "default-waterfall-who-pays-when-a-clearing-member-fails":
     "When a member fails, losses travel through a pre-built staircase.",
   "how-order-books-work":
