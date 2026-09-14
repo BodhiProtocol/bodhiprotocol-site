@@ -31,6 +31,20 @@ async function loadPlaybookModule(slug) {
   }
 }
 
+/**
+ * Cross-post-only intro overrides, keyed by slug. The site's own `intro`
+ * field is functional framing written for a reader already on the page --
+ * Medium/Substack need an actual hook to earn the read in the first place.
+ * Never changes the live site; only substitutes what gets cross-posted.
+ */
+const introOverrides = {
+  "jira-hacks-for-business-analysts": [
+    'It\'s 11 PM the night before a release, and a developer pings you: "What does this ticket actually mean?" You open it. Three lines of description. An acceptance criterion that just says "should work correctly." A decision from six weeks ago, buried somewhere inside forty-seven comments nobody has time to reread tonight.',
+    "None of that is really a Jira problem — Jira stored exactly what was typed into it. What's missing is a habit, not a feature.",
+    "These are twelve of them: small, specific ways to write tickets a developer and QA can act on without pinging you at 11 PM.",
+  ],
+};
+
 function renderValue(value) {
   if (Array.isArray(value)) return value.map((item) => `- ${item}`).join("\n");
   return value;
@@ -91,10 +105,8 @@ export async function loadPlaybook(slug) {
     );
   }
 
-  const sections = [
-    (data.intro || []).join("\n\n"),
-    (data.hacks || []).map(renderHack).join("\n\n"),
-  ];
+  const intro = introOverrides[slug] || data.intro || [];
+  const sections = [intro.join("\n\n"), (data.hacks || []).map(renderHack).join("\n\n")];
 
   const closingParts = [];
   if (data.closingHeading?.length) closingParts.push(`## ${data.closingHeading.join(" ")}`);
