@@ -1,0 +1,58 @@
+---
+title: "TCA: The Score That Decides Who Gets the Next Order"
+description: "VWAP, arrival price, and implementation shortfall each grade a single trade. Transaction Cost Analysis is what a desk builds when it stops grading trades one at a time and starts grading a broker, an algorithm, or a venue across thousands of them — the report that decides who gets tomorrow's order flow. Why buy-side desks deliberately randomize which broker fills which order just to keep that evidence honest, and how a 2020 SEBI circular quietly built the audit-trail infrastructure Indian TCA depends on."
+hook: "VWAP and arrival price grade one trade. TCA is built to grade the broker."
+category: "Capital Markets"
+tags: ["markets", "execution"]
+author: "Surya"
+date: "2026-09-15"
+---
+
+Think of a food-delivery platform trying to decide which driver gets tomorrow's hardest route — the one with the fragile order, the tight delivery window, the building with no elevator. Grading last night's single delivery barely helps: maybe the restaurant was slow, maybe there was one freak traffic jam, maybe it was just an unlucky order. What actually tells the platform something is the pattern across hundreds of deliveries — this driver is reliably late once it rains, that one damages packaging more than most, this particular route always runs longer than the app predicts. The platform isn't grading a delivery. It's grading a driver, using a record that outlives any single trip, to decide who earns the harder job tomorrow.
+
+That's the shift Transaction Cost Analysis makes, and it's the reason a trading desk doesn't stop at asking whether Tuesday's order beat VWAP.
+
+## What TCA actually is
+
+[VWAP](/essays/vwap-the-benchmark-every-trader-is-graded-against), [arrival price](/essays/arrival-price-the-clock-that-starts-when-you-decide), and [implementation shortfall](/essays/implementation-shortfall-the-cost-of-time-between-deciding-and-doing) are all benchmarks — each one answers a version of "how did this trade do?" Transaction Cost Analysis — TCA — isn't a fourth benchmark sitting next to them. It's the practice of running those same benchmarks across every trade a desk executes, then slicing the results by the dimension that actually changes: which broker handled the order, which algorithm the broker ran, which venue it routed to, what time of day, what the stock's liquidity looked like that morning. A single trade's implementation shortfall tells you about that trade. Six months of implementation shortfall, broken down by broker, tells you which broker to keep using.
+
+TCA runs in three stages, not one. Pre-trade, a cost model estimates what an order this size, in this stock, is likely to cost before a trader commits to a pace. Intra-trade, the desk watches a working order's live drift against its benchmark and can still intervene — slow down, speed up, switch venues — before the fill is final. Post-trade is the part most people mean when they say "TCA": the report, run after the fact, that rolls every fill from the period into a scorecard.
+
+That scorecard has one structural problem baked into it, and the industry built a specific tool to fix it. A trader who's free to hand easy, liquid orders to a favorite broker and awkward, illiquid ones to whoever's left will produce a scorecard that reflects the order's difficulty, not the broker's skill. The fix — widely called an **algo wheel** — takes that choice away from the trader: economically similar orders get spun across a defined set of brokers and algorithms essentially at random, turning what used to be a biased sample into something closer to a controlled trial. Only once the assignment is genuinely random does a gap in the resulting TCA numbers mean what it looks like it means.
+
+## Example 1: FINRA's "regular and rigorous" review, and the wheel built to prove it
+
+FINRA Rule 5310 requires a US broker-dealer to use "reasonable diligence" to get the best price reasonably available for a customer's order — and, for a firm that doesn't review every single order individually, it requires something more specific instead: a "regular and rigorous" review of execution quality across the venues and brokers it routes to. That phrase does a lot of work. It's a standing legal obligation to actually look, periodically and rigorously, at whether a desk's routing decisions are any good — without specifying exactly what "rigorous" has to mean in practice.
+
+The algo wheel is the industry's practical answer to that ambiguity. By the 2010s, buy-side trading desks — pension funds, asset managers, hedge funds — had a defensible way to show a regulator, a client, or an internal audit committee that they hadn't just checked once whether their broker list was any good: order flow was continuously, provably randomized across brokers, and the resulting TCA scorecard was the receipt. Europe's MiFID II pushed the same instinct further, in public rather than internal form — for several years, RTS 28 required EU investment firms to publish an annual report naming their top five execution venues and brokers by volume, alongside a qualitative account of the execution quality received there. When the UK's FCA reviewed how that public version was actually used, in 2021, it found the reports were barely read and abolished both RTS 28 and its sibling venue-side report, RTS 27, outright. The EU's own "quick fix" to MiFID II, by contrast, only suspended the venue-side RTS 27 report, leaving the buy-side's RTS 28 obligation to actually name its brokers and defend its execution quality in place. The public report may have failed as a piece of disclosure. The private discipline behind it — a wheel spinning order flow, a TCA report reading the results — never went away on either side of the Channel.
+
+## Example 2: What a 2020 SEBI circular quietly built
+
+India built the same underlying discipline from a different direction — not a published report meant for public comparison, but a private audit-trail requirement meant to make one possible at all. A SEBI circular dated September 17, 2020 (SEBI/HO/IMD/DF2/CIR/P/2020/175), effective the following year, required every mutual fund's asset management company to adopt a written policy governing how its dealing desk places and allocates trades across schemes — and, in the clause that matters most for TCA, to run a system-based mechanism that timestamps and logs order placement, execution, and allocation as an actual audit trail, not a description on paper. Pooled orders spanning multiple schemes had to be allocated pro-rata, at the same weighted-average fill price, so no single scheme's investors could quietly end up with the better fills.
+
+Nothing in that circular mentions transaction cost analysis by name. But it addresses the exact weak point [implementation shortfall](/essays/implementation-shortfall-the-cost-of-time-between-deciding-and-doing) already flags: a scorecard is only as honest as the timestamps underneath it. Before an AMC's dealing desk could produce a defensible broker scorecard — the kind of data an Indian fund house increasingly leans on when it periodically reviews which of its empanelled brokers keeps earning order flow — it first needed exactly the clean, system-enforced timestamp trail the 2020 circular made mandatory. The public-facing report Europe built and partly abandoned, and the private audit trail India quietly mandated instead, point at the same underlying fact: a scorecard nobody can trust the inputs of isn't a scorecard at all.
+
+## What the wheel can't fix
+
+Randomizing which broker gets an order fixes selection bias in who's being compared. It doesn't fix the deeper risk sitting underneath any measurement system used to hand out rewards: once a broker or an algorithm knows exactly which numbers decide next quarter's flow, it has every reason to optimize for those specific numbers rather than for genuinely good execution. An algorithm tuned to beat arrival price on the one metric a wheel happens to be grading it against can do that by trading more aggressively right at the start of an order and more passively once the benchmark clock has already been set — improving the graded number while doing nothing to reduce the client's real all-in cost. [People respond to incentives, not instructions](/essays/people-respond-to-incentives-not-instructions), and a TCA scorecard is, structurally, an incentive with a number attached. The wheel keeps the sample honest. It does nothing to stop the thing being measured from bending itself toward the measurement.
+
+## Why this matters for a Business Analyst
+
+### Think of an A/B test that never recorded who saw which version
+
+A company running two versions of a checkout page needs one record just as much as the conversion numbers themselves: which visitor actually saw which version, written down at the moment they were assigned — not reconstructed afterward from whoever happened to buy. Without that record, a 47% vs. 52% conversion gap is unfalsifiable; nobody can rule out that version B simply drew more returning customers that week.
+
+An algo wheel is the same experiment wearing trading clothes, and it inherits the same non-negotiable requirement. A TCA platform's requirements can't stop at "capture VWAP, arrival price, and implementation shortfall per order." They have to specify exactly where the wheel's assignment gets logged, at the moment it's made, and that every field feeding a cross-broker comparison — what counts as the "arrival" timestamp, what counts as a completed fill, how a partial fill that carries into the next session gets bucketed — is defined identically across every broker's data feed. Two brokers using slightly different clocks for "order received" will produce a scorecard that looks like a performance gap and is actually a definitions gap, and no downstream statistic can undo a comparison built on inputs that were never really the same thing to begin with.
+
+## Lighthouse Insight
+
+Return to the delivery platform. A single late delivery is an anecdote — it could be the restaurant, the weather, bad luck. A pattern across five hundred deliveries, with drivers assigned by the app rather than picked by a dispatcher with favorites, is evidence. Transaction Cost Analysis makes the same move with a trading desk's order flow: not "did this trade do fine," but "does this broker, this algorithm, this venue, keep doing fine, on a sample nobody got to cherry-pick." Europe tried to make that evidence public and mostly gave up on the idea. India built the audit trail underneath it and never made it public at all. Either way, the number that used to describe one trade has quietly become the number that decides who gets the next one.
+
+## Reference anchors
+
+- [FINRA Rule 5310: Best Execution and Interpositioning](https://www.finra.org/rules-guidance/rulebooks/finra-rules/5310)
+- [The TRADE: Broker wheel of fortune — the rise of the algo wheel](https://www.thetradenews.com/broker-wheel-of-fortune/)
+- [Virtu Financial: Algo Wheel — A Systematic, Quantifiable Approach to Best Execution](https://www.virtu.com/wp-content/themes/virtu-2019/microsite/documents/virtu-algowheel-2019.pdf)
+- [EUR-Lex: Directive (EU) 2021/338 — the MiFID II "quick fix," suspending RTS 27 reporting](https://eur-lex.europa.eu/eli/dir/2021/338)
+- [FCA: PS21/20 — Changes to UK MiFID's conduct and organisational requirements, removing RTS 27 and RTS 28 reporting](https://www.fca.org.uk/publications/policy-statements/ps21-20-changes-uk-mifids-conduct-and-organisational-requirements)
+- [SEBI: Circular on Mutual Funds, SEBI/HO/IMD/DF2/CIR/P/2020/175 (September 17, 2020)](https://www.sebi.gov.in/legal/circulars/sep-2020/circular-on-mutual-funds_47574.html)
