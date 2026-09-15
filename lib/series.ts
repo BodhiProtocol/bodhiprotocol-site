@@ -58,6 +58,7 @@ export const essaySeries: EssaySeries[] = [
       "vwap-the-benchmark-every-trader-is-graded-against",
       "arrival-price-the-clock-that-starts-when-you-decide",
       "implementation-shortfall-the-cost-of-time-between-deciding-and-doing",
+      "tca-the-score-that-decides-who-gets-the-next-order",
       "twap-how-to-buy-a-mountain-without-moving-the-price",
       "pov-the-algorithm-that-never-trades-alone",
       "iceberg-orders-the-trade-that-hides-its-own-size",
@@ -314,6 +315,11 @@ export const essayBridges: EssayBridge[] = [
     from: "what-spoofing-actually-looks-like",
     to: "rogue-trading-when-the-person-trading-is-also-the-person-checking-the-trade",
     label: "Spoofing fakes a signal to other traders; rogue trading hides a position from your own employer",
+  },
+  {
+    from: "tca-the-score-that-decides-who-gets-the-next-order",
+    to: "people-respond-to-incentives-not-instructions",
+    label: "A benchmark that decides who gets paid is a benchmark someone will learn to game",
   },
 ];
 
