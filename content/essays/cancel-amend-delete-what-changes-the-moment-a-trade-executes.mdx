@@ -1,0 +1,65 @@
+---
+title: "Cancel, Amend, Delete: What Changes the Moment a Trade Executes"
+description: "Three buttons on almost every trading screen — Cancel, Amend, Delete — quietly mean something completely different before a trade executes than after. Building that feature means gating it on the order's state, not the label on the button; CME's Rule 588 and SEBI's dynamic price bands show two markets solving the same problem from opposite ends of the clock."
+hook: "Cancel a resting order and it vanishes. Cancel an executed trade and — it doesn't. Not really."
+category: "Capital Markets"
+tags: ["markets", "operations", "risk"]
+author: "Surya"
+date: "2026-09-16"
+---
+
+Open Amazon before a package ships and there's a "Cancel order" button that actually removes it. Wait until it's out for delivery and that button is gone — what you get instead is "Return item," a completely different process: the item has to physically come back, someone inspects it, a refund gets issued days later. Same intent — "I don't want this" — two different mechanisms, because the thing you're undoing moved from a promise to an event.
+
+A trading screen has the same trap wearing three labels: **Cancel**, **Amend**, **Delete**. Ask a stakeholder to "build cancel/amend/delete for trades" and they usually mean one button each. What actually has to get built is two different systems hiding under the same three words — one for orders that haven't traded yet, one for trades that already have — and confusing which one a request belongs to is where a lot of trading-system defects live.
+
+## The same three words, two different clocks
+
+| Operation | Before execution (order still resting) | After execution (trade is done) |
+|---|---|---|
+| **Cancel** | Withdraw the order before it matches. Nothing has traded; nothing to unwind. | **Annul** the trade — the exchange or CCP reverses a matched, reported trade. Rare, discretionary, and never something a client can do unilaterally. |
+| **Amend** | Modify price, quantity, or other terms on a resting order. FIX calls this a Cancel/Replace. | **Correct** the trade's economic or settlement details (wrong account, wrong settlement date) without touching the traded price or quantity. |
+| **Delete** | Functionally identical to Cancel — most order-entry screens use it as a friendlier synonym for "withdraw this order." | Doesn't exist. There is no operation that erases an executed trade from the record. |
+
+That last row is the load-bearing one. [A trade's lifecycle](/essays/what-a-trade-lifecycle-actually-looks-like) produces records that regulators, clearing corporations, and counterparties all rely on for reconciliation — an executed trade has to stay provable, forever, even when it turns out to be wrong. So a system never deletes a confirmed trade. It writes a new, linked record that reverses or corrects the old one, and both records stay on file. "Delete" the trade, and the audit trail doesn't get cleaner — it gets a hole in it.
+
+## What actually gets built: gating on state, not on intent
+
+A cancel/amend/delete feature isn't three buttons — it's a permission matrix keyed to where the order or trade currently sits. [OrdStatus](/essays/fix-messages-order-status-is-a-state-execution-type-is-an-event) is the field that answers the question the whole feature depends on: is this thing still just a promise, or has it already become an event?
+
+- An order sitting at `OrdStatus=0 (New)` or `1 (Partially Filled)` can accept a cancel or an amend — there's still unfilled quantity to withdraw or reprice.
+- An order at `OrdStatus=2 (Filled)` can accept neither. The system has to reject the request before it's even sent, not wait for the exchange to bounce it.
+- The genuinely hard case is the race: a cancel request is in flight the instant the remaining quantity fills. The exchange doesn't quietly ignore the loser — it sends back `OrderCancelReject`, a separate message from the fill's own confirmation, so the client's system can tell "my cancel was too late" apart from "my cancel succeeded."
+
+Any acceptance criteria for a CAD feature has to name all three outcomes for a cancel request — accepted, rejected because already filled, rejected because the cancel lost the race — as three separate test cases, not one "cancel works" checkbox. An amend has its own trap worth writing down explicitly: reducing amended quantity below what's already filled has to be a hard reject, not a request the exchange is left to catch.
+
+## Two markets, two ends of the same problem
+
+### Example 1: International — CME lets the exchange undo a trade after the fact
+
+On CME Globex, a body called the Global Command Center can act after a futures trade has already executed, under **Rule 588**. If a trade prints at a price outside the contract's "non-reviewable range" — what the rule used to call the no-bust range — the GCC's default fix is a **price adjustment**: the trade stays on the books, but its recorded price is corrected to the edge of the reasonable range. Only trades the GCC judges can't be fairly repriced get cancelled outright. Either way, the official time-and-sales record shows exactly what happened: a cancelled trade is marked cancelled, never erased, and a price-adjusted trade shows both the original print and the adjustment layered on top of it. Nothing disappears from the tape — it just stops being the number anyone settles against.
+
+### Example 2: India — SEBI moved the fix to before the trade, not after
+
+India ran into the opposite-order version of the same problem in October 2012, when a single fat-fingered basket order briefly crashed the Nifty by hundreds of points before anyone could react — the incident behind [Emkay's rejected annulment request](/essays/fix-messages-order-status-is-a-state-execution-type-is-an-event). SEBI's response wasn't a better annulment process for after the fact. Through circulars **CIR/MRD/DP/34/2012** (December 2012) and **CIR/MRD/DP/25/2013** (September 2013), it made exchanges implement **dynamic price bands** — a live execution range, typically 10% around the previous close, flexed in 5% steps as the market genuinely moves — that reject an erroneous order before it can match at all. Where CME's Rule 588 is a cure applied after the trade, SEBI's dynamic bands are a prevention applied to the order before it becomes one. Same failure mode — a price nobody meant to trade at — solved from opposite ends of the clock.
+
+## Why it matters for a BA or QA
+
+A requirement that says "add cancel, amend, and delete to the trade blotter" is underspecified until it answers, for every state an order or trade can be in, which of the two systems above applies. A usable spec names:
+
+- The exact OrdStatus values a cancel or amend is legal from, and the rejection each illegal state should produce.
+- What happens on a race — the OrderCancelReject case — and that it must not be silently swallowed as "cancel failed, try again."
+- That a post-execution correction always creates a new linked record referencing the original (the way [ExecRefID points back to the ExecID it corrects](/essays/fix-messages-order-status-is-a-state-execution-type-is-an-event)), never overwrites or removes it.
+- Who is authorized to request each operation — a trader can cancel their own resting order unilaterally, but nobody on the client side can unilaterally annul an executed trade; that always routes through the exchange or CCP.
+
+A test plan that only exercises "cancel a resting order, confirm it's gone" has covered maybe a third of the feature. The other two-thirds are the states where cancel, amend, and delete all have to say no.
+
+## Lighthouse insight
+
+The Amazon example at the top isn't decoration — it's the whole mechanism. "Cancel order" and "return item" look like the same button with a different label because, to the customer, the intent never changed. To the system behind it, everything changed: one operation prevents a shipment, the other reverses one that already happened, and no amount of relabeling the button collapses that difference back into one operation. A trade CAD feature is the same fork wearing financial vocabulary — and the moment a spec treats Cancel, Amend, and Delete as three buttons instead of two systems gated on state, it's already missed the requirement that actually matters.
+
+## Reference anchors
+
+- [CME Group: Trade Cancellations and Price Adjustments on CME Globex](https://www.cmegroup.com/tools-information/lookups/advisories/market-regulation/SER-5013.html)
+- [CME Rulebook Chapter 5 — Rule 588](https://www.cmegroup.com/rulebook/CME/I/5/5.pdf)
+- [SEBI: Consolidated Master Circular, Equity Segment — dynamic price bands](https://www.bseindia.com/downloads1/Master_Circular_Equity.pdf)
+- [Business Standard: SEBI floats new rules to curb price volatility](https://www.business-standard.com/amp/article/markets/sebi-floats-new-rules-to-curb-price-volatility-110090300192_1.html)
