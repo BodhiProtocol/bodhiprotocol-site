@@ -129,6 +129,8 @@ import { ManjhiMountainCutDiagram } from "@/components/great-minds/manjhi-mounta
 import { ManjhiHeroBackground } from "@/components/great-minds/manjhi-hero-background";
 import { BorlaugCrossDiagram } from "@/components/great-minds/borlaug-cross-diagram";
 import { BorlaugHeroBackground } from "@/components/great-minds/borlaug-hero-background";
+import { NapoleonAscentDiagram } from "@/components/great-minds/napoleon-ascent-diagram";
+import { NapoleonHeroBackground } from "@/components/great-minds/napoleon-hero-background";
 import { MindGraphProvider } from "@/components/great-minds/mind-graph-context";
 import { getAllGreatMinds, getGreatMindBySlug, type GreatMindWithContent } from "@/lib/great-minds";
 import { mdxOptions } from "@/lib/mdx-options";
@@ -191,6 +193,7 @@ const heroDiagrams: Record<string, (mind: GreatMindWithContent) => ReactNode> = 
   "grace-hopper": (mind) => <HopperCompilerDiagram nodes={mind.wheel} />,
   "dashrath-manjhi": (mind) => <ManjhiMountainCutDiagram nodes={mind.wheel} />,
   "norman-borlaug": (mind) => <BorlaugCrossDiagram nodes={mind.wheel} />,
+  "napoleon-bonaparte": (mind) => <NapoleonAscentDiagram nodes={mind.wheel} />,
 };
 
 const heroBackgrounds: Record<string, ReactNode> = {
@@ -247,6 +250,7 @@ const heroBackgrounds: Record<string, ReactNode> = {
   "grace-hopper": <HopperHeroBackground />,
   "dashrath-manjhi": <ManjhiHeroBackground />,
   "norman-borlaug": <BorlaugHeroBackground />,
+  "napoleon-bonaparte": <NapoleonHeroBackground />,
 };
 
 interface GreatMindPageProps {
