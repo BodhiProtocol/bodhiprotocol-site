@@ -1,22 +1,24 @@
 ---
 title: "OMS vs. EMS: The Permission Layer and the Tactics Layer"
 description: "An Order Management System asks whether a trade is allowed to exist at all. An Execution Management System asks how to fill it without wrecking the price. Two systems, two clocks, two legal histories — from the 2010 Flash Crash to the SEC's 2026 proposal to tear up the rule that built the modern smart order router."
-hook: "One system asks if the order is allowed to exist. The other asks how to get it filled without moving the price."
+hook: "Finance decides if you're allowed to travel. The travel agent decides which flight you get. A trading desk runs the identical split — with a lot more money on the line."
 category: "Capital Markets"
 tags: ["markets", "infrastructure"]
 author: "Surya"
 date: "2026-09-17"
 ---
 
-A portfolio manager at a Mumbai-based fund decides, at 10:14 a.m., to buy 200,000 shares of Infosys. That decision is one sentence. Getting it filled safely takes two entirely different systems, built to answer two entirely different questions, and most of the confusion around [infrastructure](/essays/infrastructure-the-nine-systems-behind-every-trade) traces back to treating them as one.
+Think of booking a business trip through a large company. Two different people decide two different things, and neither ever asks the other's permission. Finance decides, once, before anything is booked, whether you're even allowed to go — is there budget, does your grade allow business class, does the destination need a visa — and it doesn't care which airline has a seat sale this week. A travel agent decides that part: live, right now, comparing today's fares across five airlines, timing the booking, splitting a big group across two flights if one is full. Nobody confuses "was I allowed to travel" with "which flight did I get." They're not even answering the same question.
+
+A trading desk runs the identical split, with a great deal more money riding on it, and two named systems standing in for the two people.
+
+At 10:14 a.m., a portfolio manager at a Mumbai-based fund decides to buy 200,000 shares of Infosys. That one-sentence decision needs both halves of the split above, running as real software, before it can safely become a filled order — and most of the confusion around [infrastructure](/essays/infrastructure-the-nine-systems-behind-every-trade) traces back to treating those two halves as one system instead of two.
 
 ## Two questions, not one
 
-The **Order Management System** asks: *is this order even allowed to exist?* Has this client cleared KYC? Is there enough margin? Does 200,000 shares breach a position limit, a client mandate, or a regulatory disclosure threshold? The OMS is the firm's permanent system of record — every order that has ever been entered anywhere in the firm lives here, whether or not it ever fills.
+The **Order Management System** plays finance's role. It asks: *is this order even allowed to exist?* Has this client cleared KYC? Is there enough margin? Does 200,000 shares breach a position limit, a client mandate, or a regulatory disclosure threshold? Like finance's approval, it runs once, before anything moves, and it is the firm's permanent system of record — every order ever entered anywhere in the firm lives here, whether or not it ever fills.
 
-The **Execution Management System** asks a completely different question, and it only gets asked once the OMS has already said yes: *given that this order is allowed, what's the smartest way to actually get it filled?* Which venue, which algorithm — [TWAP](/essays/twap-how-to-buy-a-mountain-without-moving-the-price), [VWAP](/essays/vwap-the-benchmark-every-trader-is-graded-against), [POV](/essays/pov-the-algorithm-that-never-trades-alone) — how much size to reveal, and in what order across which exchanges.
-
-The two systems also run on different clocks. The OMS mostly runs once, at the start — a gate that opens or stays shut before the order goes anywhere. The EMS runs continuously for as long as the order stays alive, re-deciding tactics tick by tick as the market moves under it.
+The **Execution Management System** plays the travel agent's role. It only gets asked once the OMS has already said yes, and the question is completely different: *given that this order is allowed, what's the smartest way to actually get it filled, right now?* Which venue, which algorithm — [TWAP](/essays/twap-how-to-buy-a-mountain-without-moving-the-price), [VWAP](/essays/vwap-the-benchmark-every-trader-is-graded-against), [POV](/essays/pov-the-algorithm-that-never-trades-alone) — how much size to reveal, and in what order across which exchanges. Like the travel agent, it keeps deciding for as long as the order stays alive, re-picking tactics tick by tick as the market moves under it — while the OMS, like finance, has already gone quiet.
 
 ## Example 1: the US permission layer, built after a crash
 
@@ -44,15 +46,15 @@ Vendors increasingly sell combined "OEMS" platforms — one login, one database,
 
 ## Why this matters for a Business Analyst
 
-### Think of a travel policy versus a travel agent
+### Back to the travel desk
 
-A company's finance team decides, once, whether you're allowed to book business class and whether the trip fits your budget — checked before anything is booked, and it doesn't care which airline has a seat sale today. A travel agent decides, live, which of five airlines to actually book you on right now, given today's fares and seat availability — and re-decides if a flight gets cancelled an hour later. Nobody would confuse "were you allowed to travel" with "which flight did you get." A poorly scoped requirement does exactly that.
+A poorly scoped requirement does exactly what would be absurd at the travel desk: it confuses "were you allowed to travel" with "which flight did you get."
 
 A ticket that reads "add a check so client X never exceeds their position limit" is ambiguous until you know which layer it belongs to. Put it in the OMS and it runs once, pre-trade, and blocks the order outright before the EMS ever sees it — correct if the limit is a hard mandate breach. Put the identical check in the EMS instead, and it becomes a live recheck on every child order the algorithm slices off — appropriate only if the limit is meant to be re-evaluated as the market moves. Get the layer wrong in the wrong direction, and a check meant to stop an order before it exists gets pushed downstream to a system that only ever sees the order after it is already live — the exact naked-access failure mode Rule 15c3-5 was written to close.
 
 ## Lighthouse Insight
 
-Two systems, two clocks, two questions that never merge even when the software does. And right now, the rulebook governing only one of those layers — the tactics layer, Regulation NMS Rule 611 — is sitting in an SEC comment file after twenty years, waiting to be rewritten or torn up entirely. The permission layer answers "should this exist." The tactics layer answers "how, right now." Neither question goes away. Only one of their rulebooks is being rewritten as this is being read.
+Finance never asks which flight you got. The travel agent never asks if you were allowed to go. Two systems, two clocks, two questions that never merge even when the software does. And right now, the rulebook governing only one of those layers — the tactics layer, Regulation NMS Rule 611 — is sitting in an SEC comment file after twenty years, waiting to be rewritten or torn up entirely. The permission layer answers "should this exist." The tactics layer answers "how, right now." Neither question goes away. Only one of their rulebooks is being rewritten as this is being read.
 
 ## Reference anchors
 
