@@ -16,12 +16,12 @@ That's the honest reason infrastructure is the part almost nobody explains. Clea
 
 Think of an order the way an airline thinks of a passenger, not a parcel.
 
-- **OMS (Order Management System)** is the flight plan and the control tower on your side of the trade — the broker or firm's system of record. It checks whether the order is even allowed to fly: KYC, margin, position limits, before it reaches a market.
-- **EMS (Execution Management System)** is the pilot. Once the OMS clears the order for takeoff, the EMS decides how to actually fly it — which venue, which algorithm, how much size to reveal at once.
+- **[OMS (Order Management System)](/essays/oms-vs-ems-the-permission-layer-and-the-tactics-layer)** is the flight plan and the control tower on your side of the trade — the broker or firm's system of record. It checks whether the order is even allowed to fly: KYC, margin, position limits, before it reaches a market.
+- **[EMS (Execution Management System)](/essays/oms-vs-ems-the-permission-layer-and-the-tactics-layer)** is the pilot. Once the OMS clears the order for takeoff, the EMS decides how to actually fly it — which venue, which algorithm, how much size to reveal at once.
 - **FIX Protocol** is the language every tower and every cockpit agrees to speak. It isn't a system, it's a message format — `NewOrderSingle`, `ExecutionReport` — that lets an OMS built by one company talk to an EMS built by another, and both talk to an exchange built by a third, without any of them needing to know how the others were coded.
 - **Market Data** is the weather radar. Every decision above — the EMS choosing an algorithm, the OMS running a risk check — is reading a live feed of quotes and depth. Without it, every system on this list is flying blind.
 - **Exchange Gateway** is the airport gate: the literal, often co-located, technical doorway an order passes through to enter the exchange's own infrastructure. It's the last hop before the order stops being yours and becomes the exchange's problem.
-- **Matching Engine** is air traffic control assigning runways. It's the software at the exchange's core that pairs your buy with someone's sell, by price-time priority, and stamps out a trade.
+- **[Matching Engine](/essays/the-matching-engine-the-algorithm-that-turns-two-orders-into-a-trade)** is air traffic control assigning runways. It's the software at the exchange's core that pairs your buy with someone's sell, by price-time priority, and stamps out a trade.
 
 That's six systems, and the order hasn't even settled yet.
 

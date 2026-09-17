@@ -41,6 +41,8 @@ export const essaySeries: EssaySeries[] = [
       "what-a-trade-lifecycle-actually-looks-like",
       "front-office-middle-office-back-office-three-clocks-on-one-trade",
       "infrastructure-the-nine-systems-behind-every-trade",
+      "oms-vs-ems-the-permission-layer-and-the-tactics-layer",
+      "the-matching-engine-the-algorithm-that-turns-two-orders-into-a-trade",
       "fix-messages-order-status-is-a-state-execution-type-is-an-event",
       "a-bank-trading-floor-is-a-marketplace-for-risk",
       "capital-market-system-two-paths-one-market",
@@ -320,6 +322,16 @@ export const essayBridges: EssayBridge[] = [
     from: "tca-the-score-that-decides-who-gets-the-next-order",
     to: "people-respond-to-incentives-not-instructions",
     label: "A benchmark that decides who gets paid is a benchmark someone will learn to game",
+  },
+  {
+    from: "the-matching-engine-the-algorithm-that-turns-two-orders-into-a-trade",
+    to: "order-types-nine-names-for-three-instincts",
+    label: "Price-time priority is the engine rule; an order type is how a trader plays to it",
+  },
+  {
+    from: "the-matching-engine-the-algorithm-that-turns-two-orders-into-a-trade",
+    to: "colocation-when-the-exchange-itself-decides-who-hears-first",
+    label: "Time priority only rewards whoever arrives first if everyone's clock starts at the same distance from the engine",
   },
 ];
 
