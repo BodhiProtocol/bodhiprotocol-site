@@ -1,0 +1,58 @@
+---
+title: "Market Data: The Broadcast Delay Nobody Else Can See"
+description: "The price on a retail screen and the price a trading firm's algorithm sees aren't the same feed arriving at the same time — they never have been. The SIP versus proprietary direct feeds, the SEC's still-unfinished 2020 rewrite of who gets to run the tape, NSE's colocation-only tick data, and the 38 miles of coiled fiber IEX built to blunt the gap."
+hook: "Two people can watch the identical match and see two different games — one live, one delayed. Markets run the same trick, legally, all day."
+category: "Capital Markets"
+tags: ["markets", "infrastructure"]
+author: "Surya"
+date: "2026-09-18"
+---
+
+Two friends watch the identical football match. One is in the stadium. The other is at home, watching a broadcast that's a few seconds behind. When the ball goes in, the friend in the stadium reacts first — not because they're faster or smarter, but because their feed of the same event simply arrived sooner. Neither friend is cheating. The delay is just built into how a broadcast works.
+
+Markets run a version of that same trick, permanently, by design, and almost nobody watching a stock price on a screen realizes they're the friend at home.
+
+## Two feeds of the same book
+
+Every price a market shows isn't one feed reaching everyone at once — it's several feeds of the identical order book, and they don't arrive at the same time. The **consolidated feed** — in the US called the **SIP** (Securities Information Processor) — is the broadcast: the official, regulated National Best Bid and Offer that every retail brokerage app is entitled to show. The **proprietary** or **direct feed**, sold straight from each exchange to whoever pays for it, is the stadium seat: richer (full order book depth, not just the best price) and, critically, faster.
+
+## Example 1: the US broadcast, and the rewrite still mid-flight
+
+For decades, the SIP was run under an odd arrangement: a small, exclusive group of processors — owned by the same exchange groups that also sell the faster proprietary feed — had sole rights to consolidate and publish the official tape. The SIP fell further behind the proprietary product every year, in both speed and the depth of data it carried, and the firms with the fastest connections quietly came to treat the SIP as the version nobody serious actually trades on.
+
+In December 2020 the SEC adopted the **Market Data Infrastructure** rule to close that gap two different ways: exchanges would have to send SIP-bound data and their own proprietary feeds over the same infrastructure, leaving at the same instant, instead of giving the paid product a head start; and the SIP's exclusive processors would be replaced by a "competing consolidator" model open to any qualified firm. Exchange groups challenged the rule, and the D.C. Circuit upheld it in 2022, clearing the legal path forward. As of today, the rewrite still isn't finished — the new Consolidated Tape Plan isn't expected to be fully operational until around April 2027. The broadcast and the stadium seat are, right now, still running exactly as they have for twenty years, mid-transition to something else.
+
+## Example 2: India's colocation-only feed
+
+NSE runs the equivalent split through a different mechanism. Its **Tick-by-Tick (TBT)** feed — the full order book, every update, multicast over a dedicated leased line — is available only inside NSE's own colocation facility. It never reaches DotEx, NSE's own data-vending arm, or the TAP server everyone outside the colo rack connects through. Anyone trading from outside that facility structurally cannot see the same depth at the same moment, by design, not by malfunction — this is the deeper mechanism underneath [colocation](/essays/colocation-when-the-exchange-itself-decides-who-hears-first).
+
+It got worse than "outside versus inside" for a stretch. SEBI's investigation into what became known as the dark-fibre colocation case found that NSE's own dissemination architecture broadcast the TBT feed sequentially, based on which broker's server happened to log in first each session — so even among firms paying the identical price for the identical colocation tier, whoever connected first got the update a few microseconds ahead of everyone else, entirely by an accident of connection order rather than anything the exchange had sold them.
+
+## What a market actually built to fight the gap
+
+IEX took the asymmetry seriously enough to build hardware around it. Every order entering or leaving IEX passes through 38 miles of deliberately coiled fiber-optic cable, adding a fixed 350-microsecond delay to all traffic — long enough for IEX to update its own reference price before an order arrives, specifically to stop firms from using a faster read of the market to trade against a quote that's about to go stale. It's a genuinely clever fix for one specific version of the problem, though not a complete one — sophisticated firms have since built models that predict where the price is heading before the delay even runs out, a subtler version of the same [latency arbitrage](/essays/latency-arbitrage-the-millisecond-nobody-else-has) the speed bump was built to blunt in the first place.
+
+## Reality check: this isn't a bug waiting to be found
+
+It's tempting to treat the gap between the SIP and a direct feed, or between NSE's public data and its colocation feed, as a flaw someone eventually fixes. It isn't, and it likely never fully will be — someone will always be willing to pay for a faster read of the same market, and an exchange has every commercial reason to keep selling one. The 2020 US rule and NSE's post-scandal fixes narrow specific unfair edges of the gap. Neither one, nor any future one, makes every participant see the identical order book at the identical instant.
+
+## Why this matters for a Business Analyst
+
+### Back to the stadium and the broadcast
+
+A support ticket that reads "the price shown on screen didn't match the price the trade actually filled at" isn't automatically a bug report. It might be an accurate description of exactly this gap, working as designed.
+
+A requirement for a trading app has to specify, explicitly, which feed powers which screen: the price a retail user sees is very likely SIP-derived — cheaper, official, and measurably behind. The price the firm's own routing engine actually trades against is the direct feed it pays for. A requirement that just says "display the real-time price" quietly assumes those are the same number arriving at the same moment, and they never are. Writing "real-time" without naming which feed it means is the same unresolved-decision-wearing-a-requirement's-clothes problem as [an acceptance criterion that just says 'fairly'](/essays/the-matching-engine-the-algorithm-that-turns-two-orders-into-a-trade) — it reads like a specification and isn't one yet.
+
+## Lighthouse Insight
+
+Nobody in the stadium is cheating the friend watching the broadcast at home. Markets simply decided, decades ago, to sell the stadium seat separately from the broadcast — and as of today, one of the biggest markets in the world is only partway through rewriting who's even allowed to run the broadcast truck.
+
+## Reference anchors
+
+- [SEC Press Release: SEC Adopts Rules to Modernize Key Market Infrastructure Responsible for Collecting, Consolidating, and Disseminating Equity Market Data (2020-311)](https://www.sec.gov/newsroom/press-releases/2020-311)
+- [SEC Final Rule: Market Data Infrastructure](https://www.sec.gov/files/rules/final/2020/34-90610.pdf)
+- [Sidley: D.C. Circuit Upholds SEC's Market Data Infrastructure Rules](https://www.sidley.com/en/insights/newsupdates/2022/06/dc-circuit-upholds-secs-market-data-infrastructure-rules-paving-the-way-for-competing-consolidators)
+- [ICSI: NSE Dark Fibre Co-Location Case — A Snapshot](https://www.icsi.edu/media/webmodules/NSE_DARK_FIBRE_CO-LOCATION_CASE_SNAPSHOT.pdf)
+- [NSE India: Data Usage and Data Sharing Policy](https://nsearchives.nseindia.com/web/sites/default/files/inline-files/NSE_DataUsageandSharingPolicy.pdf)
+- [IEX Exchange: Technology — the Speed Bump](https://www.iex.io/technology)

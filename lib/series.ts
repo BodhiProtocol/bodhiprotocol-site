@@ -43,6 +43,7 @@ export const essaySeries: EssaySeries[] = [
       "infrastructure-the-nine-systems-behind-every-trade",
       "oms-vs-ems-the-permission-layer-and-the-tactics-layer",
       "the-matching-engine-the-algorithm-that-turns-two-orders-into-a-trade",
+      "market-data-the-broadcast-delay-nobody-else-can-see",
       "fix-messages-order-status-is-a-state-execution-type-is-an-event",
       "a-bank-trading-floor-is-a-marketplace-for-risk",
       "capital-market-system-two-paths-one-market",
@@ -332,6 +333,11 @@ export const essayBridges: EssayBridge[] = [
     from: "the-matching-engine-the-algorithm-that-turns-two-orders-into-a-trade",
     to: "colocation-when-the-exchange-itself-decides-who-hears-first",
     label: "Time priority only rewards whoever arrives first if everyone's clock starts at the same distance from the engine",
+  },
+  {
+    from: "market-data-the-broadcast-delay-nobody-else-can-see",
+    to: "latency-arbitrage-the-millisecond-nobody-else-has",
+    label: "A faster feed is only worth building if someone can trade on the gap before it closes",
   },
 ];
 
