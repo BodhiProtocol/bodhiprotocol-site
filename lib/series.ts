@@ -44,6 +44,7 @@ export const essaySeries: EssaySeries[] = [
       "oms-vs-ems-the-permission-layer-and-the-tactics-layer",
       "the-matching-engine-the-algorithm-that-turns-two-orders-into-a-trade",
       "market-data-the-broadcast-delay-nobody-else-can-see",
+      "swift-and-the-custodian-the-shipping-label-and-the-warehouse",
       "fix-messages-order-status-is-a-state-execution-type-is-an-event",
       "a-bank-trading-floor-is-a-marketplace-for-risk",
       "capital-market-system-two-paths-one-market",
@@ -338,6 +339,11 @@ export const essayBridges: EssayBridge[] = [
     from: "market-data-the-broadcast-delay-nobody-else-can-see",
     to: "latency-arbitrage-the-millisecond-nobody-else-has",
     label: "A faster feed is only worth building if someone can trade on the gap before it closes",
+  },
+  {
+    from: "swift-and-the-custodian-the-shipping-label-and-the-warehouse",
+    to: "settlement-finality-when-a-trade-stops-being-a-promise",
+    label: "The instruction SWIFT carries only stops being a promise once the custodian actually books it",
   },
 ];
 
