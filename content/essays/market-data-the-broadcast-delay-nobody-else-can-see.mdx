@@ -1,6 +1,6 @@
 ---
 title: "Market Data: The Broadcast Delay Nobody Else Can See"
-description: "The price on a retail screen and the price a trading firm's algorithm sees aren't the same feed arriving at the same time — they never have been. The SIP versus proprietary direct feeds, the SEC's still-unfinished 2020 rewrite of who gets to run the tape, NSE's colocation-only tick data, and the 38 miles of coiled fiber IEX built to blunt the gap."
+description: "The price on a retail screen and the price a trading firm's algorithm sees aren't the same feed arriving at the same time — they never have been. The SIP versus proprietary direct feeds, the SEC's still-unfinished 2020 rewrite of who gets to run the tape, NSE's colocation-only tick data and the Supreme Court settlement that only closed the book on its own version of the gap two weeks before this was written, and the 38 miles of coiled fiber IEX built to blunt it."
 hook: "Two people can watch the identical match and see two different games — one live, one delayed. Markets run the same trick, legally, all day."
 category: "Capital Markets"
 tags: ["markets", "infrastructure"]
@@ -26,15 +26,17 @@ In December 2020 the SEC adopted the **Market Data Infrastructure** rule to clos
 
 NSE runs the equivalent split through a different mechanism. Its **Tick-by-Tick (TBT)** feed — the full order book, every update, multicast over a dedicated leased line — is available only inside NSE's own colocation facility. It never reaches DotEx, NSE's own data-vending arm, or the TAP server everyone outside the colo rack connects through. Anyone trading from outside that facility structurally cannot see the same depth at the same moment, by design, not by malfunction — this is the deeper mechanism underneath [colocation](/essays/colocation-when-the-exchange-itself-decides-who-hears-first).
 
-It got worse than "outside versus inside" for a stretch. SEBI's investigation into what became known as the dark-fibre colocation case found that NSE's own dissemination architecture broadcast the TBT feed sequentially, based on which broker's server happened to log in first each session — so even among firms paying the identical price for the identical colocation tier, whoever connected first got the update a few microseconds ahead of everyone else, entirely by an accident of connection order rather than anything the exchange had sold them.
+It got worse than "outside versus inside" for a stretch. Between 2010 and 2016, NSE disseminated that TBT feed over ordinary TCP connections — a protocol that, by nature, serves one connection at a time — so even among firms paying the identical price for the identical colocation tier, whoever's server happened to log in first each session got the update a few microseconds ahead of everyone else, entirely by an accident of connection order rather than anything the exchange had actually sold them. SEBI's investigation into what became known as the dark-fibre colocation case found exactly that pattern. The technical fix was real: NSE phased in true multicast dissemination — broadcasting the identical packet to every connected server at the same instant, instead of serving connections one by one — starting in 2014, and had fully retired the old TCP feed by 2016.
+
+The legal case took far longer to close than the architecture did. SEBI's 2019 order directed NSE to disgorge ₹625 crore plus interest; the Securities Appellate Tribunal set that disgorgement aside in 2023 and substituted a ₹100 crore penalty instead; NSE and SEBI eventually agreed to a ₹1,491.21 crore settlement, and the Supreme Court formally closed the case on September 3, 2026 — fifteen days before this was written, and a full decade after the flawed architecture that caused it was actually fixed.
 
 ## What a market actually built to fight the gap
 
 IEX took the asymmetry seriously enough to build hardware around it. Every order entering or leaving IEX passes through 38 miles of deliberately coiled fiber-optic cable, adding a fixed 350-microsecond delay to all traffic — long enough for IEX to update its own reference price before an order arrives, specifically to stop firms from using a faster read of the market to trade against a quote that's about to go stale. It's a genuinely clever fix for one specific version of the problem, though not a complete one — sophisticated firms have since built models that predict where the price is heading before the delay even runs out, a subtler version of the same [latency arbitrage](/essays/latency-arbitrage-the-millisecond-nobody-else-has) the speed bump was built to blunt in the first place.
 
-## Reality check: this isn't a bug waiting to be found
+## Reality check: what actually got fixed, and what never will
 
-It's tempting to treat the gap between the SIP and a direct feed, or between NSE's public data and its colocation feed, as a flaw someone eventually fixes. It isn't, and it likely never fully will be — someone will always be willing to pay for a faster read of the same market, and an exchange has every commercial reason to keep selling one. The 2020 US rule and NSE's post-scandal fixes narrow specific unfair edges of the gap. Neither one, nor any future one, makes every participant see the identical order book at the identical instant.
+It's tempting to read NSE's multicast fix, or the SEC's still-unfinished 2020 rule, as evidence the whole gap eventually closes. It doesn't, and it likely never fully will. What NSE actually fixed was an accident inside a paid tier — connection order deciding who got the identical product a few microseconds sooner. What nobody has fixed, or is trying to, is the tier itself: a colocation rack, and a direct feed, are still for sale, legally, to whoever pays for them, on both sides of the world. Someone will always be willing to pay for a faster read of the same market, and an exchange has every commercial reason to keep selling one.
 
 ## Why this matters for a Business Analyst
 
@@ -46,7 +48,7 @@ A requirement for a trading app has to specify, explicitly, which feed powers wh
 
 ## Lighthouse Insight
 
-Nobody in the stadium is cheating the friend watching the broadcast at home. Markets simply decided, decades ago, to sell the stadium seat separately from the broadcast — and as of today, one of the biggest markets in the world is only partway through rewriting who's even allowed to run the broadcast truck.
+Nobody in the stadium is cheating the friend watching the broadcast at home. Markets simply decided, decades ago, to sell the stadium seat separately from the broadcast. One market only finished closing the book on its own version of that unfairness a couple of weeks before this was written; the other is still only partway through rewriting who's even allowed to run the broadcast truck. Both stadium seats are still for sale either way.
 
 ## Reference anchors
 
@@ -54,5 +56,7 @@ Nobody in the stadium is cheating the friend watching the broadcast at home. Mar
 - [SEC Final Rule: Market Data Infrastructure](https://www.sec.gov/files/rules/final/2020/34-90610.pdf)
 - [Sidley: D.C. Circuit Upholds SEC's Market Data Infrastructure Rules](https://www.sidley.com/en/insights/newsupdates/2022/06/dc-circuit-upholds-secs-market-data-infrastructure-rules-paving-the-way-for-competing-consolidators)
 - [ICSI: NSE Dark Fibre Co-Location Case — A Snapshot](https://www.icsi.edu/media/webmodules/NSE_DARK_FIBRE_CO-LOCATION_CASE_SNAPSHOT.pdf)
+- [Free Press Journal: NSE's ₹1,500-Crore Settlement Draws a Line Under SEBI Cases as Supreme Court Closes Appeals](https://www.freepressjournal.in/business/nses-1500-crore-settlement-draws-a-line-under-sebi-cases-as-supreme-court-closes-appeals)
+- [Medium (Deepak Sanchety): Data Dissemination Part 2 — TBT vs. MTBT Data Dissemination](https://medium.com/@sanchety.deepak/data-dissemination-part-2-tbt-vs-mtbt-data-dissemination-969606c7d6e7)
 - [NSE India: Data Usage and Data Sharing Policy](https://nsearchives.nseindia.com/web/sites/default/files/inline-files/NSE_DataUsageandSharingPolicy.pdf)
 - [IEX Exchange: Technology — the Speed Bump](https://www.iex.io/technology)
