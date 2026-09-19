@@ -44,6 +44,7 @@ export const essaySeries: EssaySeries[] = [
       "oms-vs-ems-the-permission-layer-and-the-tactics-layer",
       "the-matching-engine-the-algorithm-that-turns-two-orders-into-a-trade",
       "market-data-the-broadcast-delay-nobody-else-can-see",
+      "the-exchange-gateway-the-checkpoint-that-never-stops-testing-you",
       "swift-and-the-custodian-the-shipping-label-and-the-warehouse",
       "fix-messages-order-status-is-a-state-execution-type-is-an-event",
       "a-bank-trading-floor-is-a-marketplace-for-risk",
@@ -344,6 +345,11 @@ export const essayBridges: EssayBridge[] = [
     from: "swift-and-the-custodian-the-shipping-label-and-the-warehouse",
     to: "settlement-finality-when-a-trade-stops-being-a-promise",
     label: "The instruction SWIFT carries only stops being a promise once the custodian actually books it",
+  },
+  {
+    from: "the-exchange-gateway-the-checkpoint-that-never-stops-testing-you",
+    to: "colocation-when-the-exchange-itself-decides-who-hears-first",
+    label: "The literal doorway an order passes through is often the same rack colocation buys a seat next to",
   },
 ];
 
