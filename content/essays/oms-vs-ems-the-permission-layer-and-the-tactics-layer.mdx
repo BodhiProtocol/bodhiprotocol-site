@@ -1,0 +1,65 @@
+---
+title: "OMS vs. EMS: The Permission Layer and the Tactics Layer"
+description: "An Order Management System asks whether a trade is allowed to exist at all. An Execution Management System asks how to fill it without wrecking the price. Two systems, two clocks, two legal histories — from the 2010 Flash Crash to the SEC's 2026 proposal to tear up the rule that built the modern smart order router."
+hook: "Finance decides if you're allowed to travel. The travel agent decides which flight you get. A trading desk runs the identical split — with a lot more money on the line."
+category: "Capital Markets"
+tags: ["markets", "infrastructure"]
+author: "Surya"
+date: "2026-09-17"
+---
+
+Think of booking a business trip through a large company. Two different people decide two different things, and neither ever asks the other's permission. Finance decides, once, before anything is booked, whether you're even allowed to go — is there budget, does your grade allow business class, does the destination need a visa — and it doesn't care which airline has a seat sale this week. A travel agent decides that part: live, right now, comparing today's fares across five airlines, timing the booking, splitting a big group across two flights if one is full. Nobody confuses "was I allowed to travel" with "which flight did I get." They're not even answering the same question.
+
+A trading desk runs the identical split, with a great deal more money riding on it, and two named systems standing in for the two people.
+
+At 10:14 a.m., a portfolio manager at a Mumbai-based fund decides to buy 200,000 shares of Infosys. That one-sentence decision needs both halves of the split above, running as real software, before it can safely become a filled order — and most of the confusion around [infrastructure](/essays/infrastructure-the-nine-systems-behind-every-trade) traces back to treating those two halves as one system instead of two.
+
+## Two questions, not one
+
+The **Order Management System** plays finance's role. It asks: *is this order even allowed to exist?* Has this client cleared KYC? Is there enough margin? Does 200,000 shares breach a position limit, a client mandate, or a regulatory disclosure threshold? Like finance's approval, it runs once, before anything moves, and it is the firm's permanent system of record — every order ever entered anywhere in the firm lives here, whether or not it ever fills.
+
+The **Execution Management System** plays the travel agent's role. It only gets asked once the OMS has already said yes, and the question is completely different: *given that this order is allowed, what's the smartest way to actually get it filled, right now?* Which venue, which algorithm — [TWAP](/essays/twap-how-to-buy-a-mountain-without-moving-the-price), [VWAP](/essays/vwap-the-benchmark-every-trader-is-graded-against), [POV](/essays/pov-the-algorithm-that-never-trades-alone) — how much size to reveal, and in what order across which exchanges. Like the travel agent, it keeps deciding for as long as the order stays alive, re-picking tactics tick by tick as the market moves under it — while the OMS, like finance, has already gone quiet.
+
+## Example 1: the US permission layer, built after a crash
+
+On May 6, 2010, the Flash Crash briefly erased and restored nearly a trillion dollars of US equity value in minutes, and regulators traced part of the damage to "naked access" — some clients were sending orders straight into an exchange under a broker's own market-participant ID, with no broker-side check sitting in between. In November 2010 the SEC adopted **Rule 15c3-5**, the Market Access Rule, making it illegal for a broker-dealer to grant market access without its own risk-management controls checking every order first: financial exposure limits, regulatory compliance, erroneous-order screens. It is, in effect, a legal requirement that a real OMS gate must exist, and that it must run before an order reaches the market, not after.
+
+## Example 2: India's permission layer
+
+India built the same instinct through a different door. **SEBI Circular CIR/MRD/DP/09/2012**, dated March 30, 2012 — the original "Broad Guidelines on Algorithmic Trading" — required any broker offering algorithmic trading to get the exchange's prior approval and to run "appropriate risk controls" (price bands, order-value ceilings, quantity limits) before an algorithmically generated order could ever reach the exchange. The US rule was a direct response to one specific crisis; the Indian rule was written into the algo-trading framework from day one, industry-wide. Different origin story, identical job: stop a bad order before it becomes the market's problem, at the OMS layer, before anything downstream even sees it.
+
+## Once the gate opens, a different question takes over
+
+Clearing the OMS doesn't mean the order is finished being decided about — it means a second, unrelated decision now begins: not "should this happen" but "how, right now, given where prices actually sit across every venue this instant."
+
+## Example 1: the US tactics layer, and the rule now being rewritten
+
+**Regulation NMS Rule 611**, the Order Protection Rule adopted in 2005, doesn't order a broker to route to the best-priced venue — it simply bans executing at a worse price than a protected quote displayed somewhere else. The practical effect is the same either way: a broker effectively has to run a smart order router constantly checking every protected venue, or risk an illegal trade-through. That rule has shaped US EMS design for two decades — and on June 11, 2026, the SEC proposed rescinding it entirely, arguing that two decades of exchange competition and technology have outgrown the assumptions Rule 611 was built on. The public comment period closed on August 17, 2026. As this is being read, the rule that built the modern EMS router is genuinely up for removal.
+
+## Example 2: the Indian tactics layer
+
+Before **SEBI Circular CIR/MRD/DP/26/2010**, dated August 27, 2010, an Indian broker's system could not automatically choose between NSE and BSE for the same stock — routing was manual, exchange by exchange. That circular permitted Smart Order Routing for the first time. It mattered more than it might sound: a Credit Suisse study from around the same time found BSE offered the better execution price roughly 35% of the time, despite carrying a small fraction of total trading volume. Any system that only ever routed to NSE by default was quietly leaving a real, measurable execution-quality gap on the table more than a third of the time — exactly the gap an EMS's job is to close.
+
+## Reality check: the boxes are merging, the questions aren't
+
+Vendors increasingly sell combined "OEMS" platforms — one login, one database, both layers under a single roof. That's a real trend, not a reason to stop distinguishing the two questions. Even inside a merged product, permission and tactics still run as separate rule engines, audited separately, because a regulator asking "why was this order allowed to exist" and a trader asking "why did it route there" are asking about two different failure modes, whatever the login screen looks like.
+
+## Why this matters for a Business Analyst
+
+### Back to the travel desk
+
+A poorly scoped requirement does exactly what would be absurd at the travel desk: it confuses "were you allowed to travel" with "which flight did you get."
+
+A ticket that reads "add a check so client X never exceeds their position limit" is ambiguous until you know which layer it belongs to. Put it in the OMS and it runs once, pre-trade, and blocks the order outright before the EMS ever sees it — correct if the limit is a hard mandate breach. Put the identical check in the EMS instead, and it becomes a live recheck on every child order the algorithm slices off — appropriate only if the limit is meant to be re-evaluated as the market moves. Get the layer wrong in the wrong direction, and a check meant to stop an order before it exists gets pushed downstream to a system that only ever sees the order after it is already live — the exact naked-access failure mode Rule 15c3-5 was written to close.
+
+## Lighthouse Insight
+
+Finance never asks which flight you got. The travel agent never asks if you were allowed to go. Two systems, two clocks, two questions that never merge even when the software does. And right now, the rulebook governing only one of those layers — the tactics layer, Regulation NMS Rule 611 — is sitting in an SEC comment file after twenty years, waiting to be rewritten or torn up entirely. The permission layer answers "should this exist." The tactics layer answers "how, right now." Neither question goes away. Only one of their rulebooks is being rewritten as this is being read.
+
+## Reference anchors
+
+- [SEC Final Rule: Risk Management Controls for Brokers or Dealers with Market Access (17 CFR 240.15c3-5)](https://www.sec.gov/files/rules/final/2010/34-63241.pdf)
+- [Federal Register: Risk Management Controls for Brokers or Dealers With Market Access](https://www.federalregister.gov/documents/2010/11/15/2010-28303/risk-management-controls-for-brokers-or-dealers-with-market-access)
+- [SEBI: Broad Guidelines on Algorithmic Trading, CIR/MRD/DP/09/2012 (March 30, 2012)](https://www.sebi.gov.in/legal/circulars/mar-2012/broad-guidelines-on-algorithmic-trading_22471.html)
+- [SEC Press Release: SEC Proposes Rescission of Regulation NMS Rules 611 and 610(e) (2026-54)](https://www.sec.gov/newsroom/press-releases/2026-54-sec-proposes-rescission-regulation-nms-rules-611-610e)
+- [NSE India: Smart Order Routing](https://www.nseindia.com/static/trade/platform-services-non-neat-smart-order-routing)

@@ -41,6 +41,11 @@ export const essaySeries: EssaySeries[] = [
       "what-a-trade-lifecycle-actually-looks-like",
       "front-office-middle-office-back-office-three-clocks-on-one-trade",
       "infrastructure-the-nine-systems-behind-every-trade",
+      "oms-vs-ems-the-permission-layer-and-the-tactics-layer",
+      "the-matching-engine-the-algorithm-that-turns-two-orders-into-a-trade",
+      "market-data-the-broadcast-delay-nobody-else-can-see",
+      "the-exchange-gateway-the-checkpoint-that-never-stops-testing-you",
+      "swift-and-the-custodian-the-shipping-label-and-the-warehouse",
       "fix-messages-order-status-is-a-state-execution-type-is-an-event",
       "a-bank-trading-floor-is-a-marketplace-for-risk",
       "capital-market-system-two-paths-one-market",
@@ -103,6 +108,7 @@ export const essaySeries: EssaySeries[] = [
       "novation-how-a-clearinghouse-becomes-everyones-counterparty",
       "margin-how-a-clearinghouse-turns-fear-into-collateral",
       "wrong-way-risk-the-hedge-that-fails-when-you-need-it",
+      "the-trade-repository-the-flight-recorder-for-the-market-nobody-could-see",
       "netting-how-finance-cancels-a-mountain-of-debt-into-a-pebble",
       "settlement-finality-when-a-trade-stops-being-a-promise",
       "settlement-fails-what-happens-when-a-trade-refuses-to-deliver",
@@ -320,6 +326,36 @@ export const essayBridges: EssayBridge[] = [
     from: "tca-the-score-that-decides-who-gets-the-next-order",
     to: "people-respond-to-incentives-not-instructions",
     label: "A benchmark that decides who gets paid is a benchmark someone will learn to game",
+  },
+  {
+    from: "the-matching-engine-the-algorithm-that-turns-two-orders-into-a-trade",
+    to: "order-types-nine-names-for-three-instincts",
+    label: "Price-time priority is the engine rule; an order type is how a trader plays to it",
+  },
+  {
+    from: "the-matching-engine-the-algorithm-that-turns-two-orders-into-a-trade",
+    to: "colocation-when-the-exchange-itself-decides-who-hears-first",
+    label: "Time priority only rewards whoever arrives first if everyone's clock starts at the same distance from the engine",
+  },
+  {
+    from: "market-data-the-broadcast-delay-nobody-else-can-see",
+    to: "latency-arbitrage-the-millisecond-nobody-else-has",
+    label: "A faster feed is only worth building if someone can trade on the gap before it closes",
+  },
+  {
+    from: "swift-and-the-custodian-the-shipping-label-and-the-warehouse",
+    to: "settlement-finality-when-a-trade-stops-being-a-promise",
+    label: "The instruction SWIFT carries only stops being a promise once the custodian actually books it",
+  },
+  {
+    from: "the-exchange-gateway-the-checkpoint-that-never-stops-testing-you",
+    to: "colocation-when-the-exchange-itself-decides-who-hears-first",
+    label: "The literal doorway an order passes through is often the same rack colocation buys a seat next to",
+  },
+  {
+    from: "the-trade-repository-the-flight-recorder-for-the-market-nobody-could-see",
+    to: "credit-default-swaps-protection-nobody-has-to-own",
+    label: "The exact product whose invisibility made a trade repository necessary in the first place",
   },
 ];
 
