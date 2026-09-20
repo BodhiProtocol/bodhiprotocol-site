@@ -108,6 +108,7 @@ export const essaySeries: EssaySeries[] = [
       "novation-how-a-clearinghouse-becomes-everyones-counterparty",
       "margin-how-a-clearinghouse-turns-fear-into-collateral",
       "wrong-way-risk-the-hedge-that-fails-when-you-need-it",
+      "the-trade-repository-the-flight-recorder-for-the-market-nobody-could-see",
       "netting-how-finance-cancels-a-mountain-of-debt-into-a-pebble",
       "settlement-finality-when-a-trade-stops-being-a-promise",
       "settlement-fails-what-happens-when-a-trade-refuses-to-deliver",
@@ -350,6 +351,11 @@ export const essayBridges: EssayBridge[] = [
     from: "the-exchange-gateway-the-checkpoint-that-never-stops-testing-you",
     to: "colocation-when-the-exchange-itself-decides-who-hears-first",
     label: "The literal doorway an order passes through is often the same rack colocation buys a seat next to",
+  },
+  {
+    from: "the-trade-repository-the-flight-recorder-for-the-market-nobody-could-see",
+    to: "credit-default-swaps-protection-nobody-has-to-own",
+    label: "The exact product whose invisibility made a trade repository necessary in the first place",
   },
 ];
 
