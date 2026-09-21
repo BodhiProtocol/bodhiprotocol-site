@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { Eyebrow } from "@/components/ui/typography";
+import { CadTerminalPreview } from "@/components/simulators/dashboard/cad-terminal-preview";
 import { FlywheelPreview } from "@/components/simulators/dashboard/flywheel-preview";
 import { InflationPreview } from "@/components/simulators/dashboard/inflation-preview";
 import { NetworkEffectsPreview } from "@/components/simulators/dashboard/network-effects-preview";
@@ -47,6 +48,12 @@ export default function SimulatorsPage() {
       <Section>
         <Container>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <SimulatorCard
+              href="/simulators/cad-terminal"
+              title="Cancel / Amend / Delete Terminal"
+              description="Predict how a real OMS blotter responds to cancel, amend, and correction requests."
+              preview={<CadTerminalPreview />}
+            />
             <SimulatorCard
               href="/simulators/trade-lifecycle"
               title="Trade Lifecycle Simulator"
