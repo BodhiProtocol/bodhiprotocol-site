@@ -40,6 +40,7 @@ export const essaySeries: EssaySeries[] = [
       "how-order-books-work",
       "what-a-trade-lifecycle-actually-looks-like",
       "front-office-middle-office-back-office-three-clocks-on-one-trade",
+      "the-security-master-the-name-every-system-has-to-agree-on",
       "infrastructure-the-nine-systems-behind-every-trade",
       "oms-vs-ems-the-permission-layer-and-the-tactics-layer",
       "the-matching-engine-the-algorithm-that-turns-two-orders-into-a-trade",
@@ -356,6 +357,11 @@ export const essayBridges: EssayBridge[] = [
     from: "the-trade-repository-the-flight-recorder-for-the-market-nobody-could-see",
     to: "credit-default-swaps-protection-nobody-has-to-own",
     label: "The exact product whose invisibility made a trade repository necessary in the first place",
+  },
+  {
+    from: "the-security-master-the-name-every-system-has-to-agree-on",
+    to: "off-market-transfer-the-share-that-moves-without-a-trade",
+    label: "The registry two depositories briefly disagreed on is the same one this transfer has to update correctly",
   },
 ];
 
