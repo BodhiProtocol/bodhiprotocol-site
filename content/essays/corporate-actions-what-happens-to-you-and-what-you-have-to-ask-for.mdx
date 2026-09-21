@@ -1,0 +1,51 @@
+---
+title: "Corporate Actions: What Happens to You, and What You Have to Ask For"
+description: "A stock split adjusts every shareholder's position automatically. A tender offer only pays out if you respond by a deadline nobody chases you about. DTCC's Letter of Agreement process for voluntary corporate actions, and the ex-date/record-date collision both the US and India's shift to T+1 settlement quietly created."
+hook: "A landlord raising the rent doesn't need your reply. A landlord offering a discount does — miss that deadline and nothing happens to you at all. You just quietly lose an option you'll never see again."
+category: "Capital Markets"
+tags: ["markets", "infrastructure"]
+author: "Surya"
+date: "2026-09-21"
+---
+
+A landlord can announce two very different things. Rent is going up next month, for everyone, automatically, whether or not you reply — that notice doesn't need your response to take effect. Or: unit renovations are available at a discount, but only for tenants who sign up by Friday. Miss the first announcement and nothing changes; it was always going to happen to you. Miss the second and nothing happens either — except now you've quietly lost an option you will never get back, and nobody is going to chase you down about it.
+
+Every public company runs the identical split every time it does anything that touches its shareholders, and the difference between those two kinds of notice is the entire discipline of processing a corporate action.
+
+## The two kinds of corporate action
+
+A **mandatory** corporate action — a stock split, a cash dividend, a merger completed by operation of law — happens to every eligible holder automatically. Nobody has to do anything, and nobody can opt out; the position simply changes. A **voluntary** corporate action — a tender offer, a rights issue, a bondholder consent solicitation — requires an active response by a fixed deadline, and the default for not responding is almost always the worse outcome. Confusing the two isn't a subtle mistake. Treating a voluntary action as if it will apply itself means a shareholder loses a choice they never knew they had to make.
+
+## Example 1: the US machinery behind a voluntary election
+
+DTCC runs the plumbing for most US voluntary corporate actions. For a tender offer, the company or acquirer submits a **Letter of Agreement** — the formal terms of the offer — and the agent handling it is required to approve and adhere to everything in that letter within one business day of DTCC presenting it. From there, every shareholder's custodian or broker is on the hook to notify its clients, capture their election before the deadline, and instruct DTCC accordingly; a client who opts into the offer has their position frozen until the deal pays out and automatically swapped for cash. Get any link in that chain wrong — a notification that goes out late, an election that doesn't reach the custodian in time — and the shareholder's actual entitlement quietly reverts to whatever the default for non-response was.
+
+The US complicated its own timeline further on May 28, 2024, when it shortened standard settlement from T+2 to **T+1**. Under the old two-day cycle, a stock's ex-date and record date for a dividend naturally landed a day apart, which gave processing systems a built-in buffer. Compressing settlement to one day pushed the ex-date and record date onto the identical calendar day for the first time — a structural change the industry is still reconciling around, because a system built assuming those two dates always fell separately now has to handle them landing together, every time, for every dividend.
+
+## Example 2: India hit the identical collision first, and is still tuning it
+
+India moved to T+1 well before the US did — becoming the first major global equity market to complete the shift, phased in across 2022 and finished on January 27, 2023, more than a year ahead of the American switch. The same ex-date/record-date compression followed immediately: under India's T+1 cycle, buying a stock on its ex-dividend date routinely means the settlement lands after the record date has already passed, so the shareholder who just bought in gets no dividend at all — the same mechanical collision the US only started living with in 2024.
+
+SEBI is still actively adjusting the operational edges of that transition. A circular dated June 5, 2024 (SEBI/HO/MIRSD/MIRSD-PoD1/P/CIR/2024/75) mandated that the payout of securities be credited directly to a client's own account rather than routed through an intermediary first. A follow-up circular that October (SEBI/HO/MRD/MRD-PoD-2/P/CIR/2024/137) pushed the final securities pay-out deadline in the daily settlement schedule from 1:30 p.m. back to 3:30 p.m. Two years after India led the world into T+1, the regulator is still finding places where the compressed schedule needed more room, not less.
+
+## Reality check: the risk was never in the automatic half
+
+It's worth being precise about where the actual operational risk sits. A mandatory action carries almost none of it — every eligible holder gets it, there's no election to miss, no deadline to track. Every real point of failure in this system lives in the voluntary half: a notification that doesn't reach a shareholder in time, a deadline tracked less rigorously than a hard compliance date, a default outcome nobody explained clearly enough in advance. The fix was never "build a safety net" — there isn't one, structurally, because the entire design of a voluntary action is that non-response has a defined, final consequence. The fix is treating every voluntary deadline with the same seriousness as a regulatory filing date, because functionally, for the shareholder on the other end, that's exactly what it is.
+
+## Why this matters for a Business Analyst
+
+### Back to the landlord
+
+A requirement that says "process corporate actions" isn't a requirement until it separates the two categories explicitly. A mandatory action needs a system that applies the change to every eligible position automatically, on the correct date, with no client-facing step at all. A voluntary action needs the opposite: a tracked deadline, a captured election, a defined default for silence, and proof that the notification actually reached the client with enough time to respond. Building the mandatory workflow for a voluntary action delays something that should have applied itself. Building the voluntary workflow for a mandatory action adds an election step to something the shareholder was never going to be asked about. Both mistakes come from the same root cause: not asking, on day one, which of the two kinds of notice this particular corporate action actually is.
+
+## Lighthouse Insight
+
+The landlord raising the rent never needed anyone's reply. The landlord offering the discount needed exactly one thing — a response by Friday — and built nothing to catch anyone who missed it. Markets run both kinds of notice, at scale, every single day, and two of the world's largest equity markets are still, years apart, adjusting to a timeline compression that made the space between those notices smaller than it has ever been. The automatic half was never the hard part. The half that requires an answer, by a deadline nobody repeats, always was.
+
+## Reference anchors
+
+- [DTCC: About Tender Offers](https://www.dtcc.com/products/training/helpfiles/asset_services/corporate_actions/help/ptoprtop/about/ptoprtop_about_tender_offers.htm)
+- [DTCC: Asset Services Reorganizations Service Guide](https://www.dtcc.com/~/media/Files/Downloads/legal/service-guides/Reorganizations.pdf)
+- [FINRA Rule 6490: Processing of Company-Related Actions](https://www.finra.org/rules-guidance/rulebooks/finra-rules/6490)
+- [SEBI: Change in Timing for Securities Payout in the Activity Schedule for T+1 Rolling Settlement](https://www.sebi.gov.in/legal/circulars/oct-2024/change-in-timing-for-securities-payout-in-the-activity-schedule-for-t-1-rolling-settlement_87512.html)
+- [NSE India: Settlement Cycle](https://www.nseindia.com/static/products-services/equity-market-settlement-cycle)
