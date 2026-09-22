@@ -1,0 +1,35 @@
+---
+title: "The Decision Outlives the Meeting Where It Was Made"
+description: "A requirement change leaves the system with a new rule and nothing else. The reason it changed lives exactly as long as the conversation where it was decided — unless someone writes it down before that conversation ends."
+hook: "The system remembers the new rule forever. It doesn't remember why, unless someone made it remember."
+category: "Business Analysis"
+tags: ["process", "change-management"]
+author: "Surya"
+date: "2026-09-24"
+---
+
+LIMIT-2201 is six months old when Fraud Review pulls it up: a client's daily transfer limit that reads ₹10,00,000, when every other client at the same tier reads ₹2,00,000. Nobody remembers deciding this. The Jira ticket says "updated per business request." The Slack channel where it was actually agreed rolled off retention four months ago. The two people who were in that conversation have both moved teams. The system enforces the ₹10,00,000 limit exactly as faithfully as it enforces every other rule it holds — it has no idea this one is different, because nothing about how it stores a rule distinguishes "we decided this carefully" from "we're not sure anymore why this is here."
+
+That's the part a mid-sprint change never warns anyone about. The system keeps the *what* forever — a rule, once changed, just runs, uncomplaining, indefinitely. It keeps none of the *why*, because the why was never really part of the requirement. It lived in a conversation, and a conversation ends.
+
+## Think of it as a rule your parents made once
+
+Your parents agree, one weekend, that you can stay out an hour later on Fridays. Nobody writes it down — why would they, everyone in the room remembers it. It works fine for years, because the people who made the rule are also the people enforcing it. Then a new babysitter reads the house rules, sees "10 p.m. curfew," and has no way to know it's actually 11 p.m. on Fridays, because that exception only ever existed as something your parents remembered saying to each other once. The rule didn't fail. The memory of why it was an exception is what ran out — and it ran out silently, with nobody noticing until someone who wasn't in the room needed the answer.
+
+A codebase is the world's most literal babysitter. It will enforce ₹10,00,000 forever, precisely, without ever wondering whether anyone still agrees with it.
+
+## Why a change request is the wrong unit to track
+
+[The Requirement Changed Mid-Sprint. Now What?](/ba-playbooks/requirement-changed-mid-sprint) covers the mechanics of handling this well in the moment — tracing what a change actually touches before agreeing to it. [Scope Creep Is a Timing Problem](/essays/scope-creep-is-a-timing-problem) covers what the same change costs depending on when it arrives. Both are about the moment of the decision. Neither is about what happens to that decision after the sprint ends, the ticket closes, and the only two people who remember *why* move on to other things — which is a separate failure, and a more expensive one, because it doesn't show up until someone who wasn't in the room goes looking for an answer that was never written down anywhere the system could keep.
+
+The instinct is to treat "update the limit to ₹10,00,000" as the deliverable. It isn't. The deliverable is a rule *and* a reason, and only one of those two things is enforced by the software. The reason has to be enforced by a habit, because nothing else is going to carry it forward.
+
+## What actually needs to survive the meeting
+
+A decision record doesn't need to be long — it needs four things a Jira comment thread almost never captures cleanly: who asked for the change and why, who accepted the risk of making it, what it replaces, and whether it was ever meant to be permanent. For LIMIT-2201, that fourth field is the one that would have mattered most: if the increase was a temporary accommodation for one client's one-time large transfer, tied to a specific event, a decision record with a review date attached would have surfaced it for reconsideration on its own — instead of sitting there, indistinguishable from a deliberate permanent policy, until an unrelated fraud review happened to notice the number looked wrong. [Who Owns the Requirement](/ba-playbooks/who-owns-the-requirement) covers naming the decision owner at the moment of the call; a decision record is that same ownership question, written down so it's still answerable after the owner has moved teams.
+
+None of this needs a formal change-management tool. A one-paragraph note pinned to the ticket — *requested by Fraud Ops after a specific verified-transfer complaint, accepted by the Risk desk lead, supersedes the standard ₹2,00,000 tier limit, reviewed at 90 days* — would have turned LIMIT-2201 from a six-month investigation into a five-minute lookup. The cost isn't writing the paragraph. It's remembering to write it at the only moment it's still cheap to write — while the reason is still in someone's head, not after it's already left the building along with the two people who knew it.
+
+## The one-question check
+
+Before closing out any requirement change, it's worth asking one question nobody's system will ever ask on its own: **if a stranger reads this rule with no memory of this conversation, does anything nearby tell them why it exists and whether it's still supposed to?** If the honest answer is "no, but everyone here remembers," that's not an answer — that's a countdown, and it ends the day everyone here stops being here.

@@ -201,7 +201,7 @@ export const essaySeries: EssaySeries[] = [
     id: "the-analysts-craft",
     title: "The Analyst's Craft",
     blurb:
-      "From a stakeholder's vague sentence to a test case an engineer can actually build against.",
+      "From a stakeholder's vague sentence to a test case an engineer can actually build against — and what has to survive after the ticket closes.",
     icon: Boxes,
     slugs: [
       "why-jargon-is-a-wall",
@@ -212,6 +212,7 @@ export const essaySeries: EssaySeries[] = [
       "what-happens-between-a-jira-ticket-and-a-test-case",
       "why-jira-tickets-rot-in-backlog",
       "scope-creep-is-a-timing-problem",
+      "the-decision-outlives-the-meeting-where-it-was-made",
     ],
   },
 ];
