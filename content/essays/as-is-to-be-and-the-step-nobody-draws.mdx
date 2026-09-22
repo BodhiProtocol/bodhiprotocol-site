@@ -16,7 +16,7 @@ Neither diagram was wrong. That's what makes this failure mode so easy to walk i
 
 You photograph your current living room — that's the As-Is. You save a Pinterest board of how you want the new place arranged — that's the To-Be. Both pictures are real, both are useful, and neither one tells you that the bookshelf won't fit through the new doorway, that the lamp needs a different kind of plug, or that you don't actually own a couch shaped like the one in the inspiration photo. The thing that turns two pictures into an actual move is a third document nobody photographs: a list, item by item, of what changes, what gets bought, what gets discarded, and in what order — because some of those items block others. The pictures aren't the plan. The list is.
 
-That third document has a name in process work: **gap analysis**. It's the only one of the three that isn't a diagram, which is exactly why it's the one that gets skipped — it doesn't present well in a steering committee deck, so teams stop at the two pictures that do.
+That third document has a name in process work: a **fit-gap analysis**, often shortened to just gap analysis. It's the only one of the three that isn't a diagram, which is exactly why it's the one that gets skipped — it doesn't present well in a steering committee deck, so teams stop at the two pictures that do.
 
 ## What the As-Is map actually needs to capture
 
@@ -31,6 +31,8 @@ A To-Be diagram earns its keep by forcing a team to agree on a target before any
 A gap analysis is a row-by-row table, not a picture: for every step or case on the As-Is map, what's the corresponding step on the To-Be map, what specifically has to change to get from one to the other, who owns making that change, and — critically — does a path even exist yet. Run CONF-114 through that table honestly and one row reads: *structured-notes confirmations — As-Is: PDF via email — To-Be: matched from a structured feed — Gap: no structured data source exists for this counterparty type yet.* [SWIFT and the Custodian](/essays/swift-and-the-custodian-the-shipping-label-and-the-warehouse) covers exactly this distinction from the messaging side — a To-Be design that assumes a structured feed is only real once something is actually generating one, and for a product type still confirmed by PDF, nothing is. That row, flagged in week one of a two-day workshop, is a scoping conversation. Discovered in week three of a build, it's a defect, a delayed release, and a desk that's been asking for three weeks why their trades won't match.
 
 The reason this table gets skipped isn't laziness — it's that two diagrams *feel* like progress in a way a table of open gaps doesn't. A steering committee nods along to a before-and-after picture. A gap analysis, done honestly, produces a list of unresolved problems in the middle of a meeting that was supposed to be a sign-off. That's an uncomfortable meeting to run. It's a much cheaper one than the meeting three weeks later where the same gap gets discovered in production instead.
+
+None of this requires a two-day workshop. An agile team scoping the same change as a single afternoon spike is doing the identical three-part work — current state, target state, and the row-by-row comparison between them — just with less ceremony and no steering committee deck. Skip the comparison in a spike and CONF-114's exact failure still happens; it just surfaces in a sprint review instead of a status meeting.
 
 ## The one-question check
 
