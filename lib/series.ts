@@ -206,6 +206,7 @@ export const essaySeries: EssaySeries[] = [
     slugs: [
       "why-jargon-is-a-wall",
       "the-acronym-wall-every-new-banking-ba-hits",
+      "as-is-to-be-and-the-step-nobody-draws",
       "from-stakeholder-sentence-to-acceptance-criteria",
       "writing-requirements-that-survive-contact-with-engineering",
       "what-happens-between-a-jira-ticket-and-a-test-case",
