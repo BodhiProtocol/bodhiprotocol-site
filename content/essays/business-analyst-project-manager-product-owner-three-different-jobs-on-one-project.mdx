@@ -1,0 +1,51 @@
+---
+title: "Business Analyst, Project Manager, Product Owner: Three Different Jobs on One Project"
+description: "The three titles get used like synonyms in most meetings. They aren't — each one answers a different question, and the confusion between them is where scope, schedule, and requirements actually break."
+hook: "Ask a BA, a PM, and a PO the same question in the same meeting, and you'll get three different answers — because they're not answering the same question."
+category: "Business Analysis"
+tags: ["career", "roles"]
+author: "Surya"
+date: "2026-09-22"
+---
+
+FXNET-482 hits the scoping call on a Monday morning: a client has complained that cross-currency netting is taking too long. Three people are on the call — a BA, a PM, and a PO — and before anyone has scoped what "too long" even means, the PM says, "We can turn this around in three weeks." Nobody has checked whether this beats the nineteen other things already in the backlog. Nobody has written down what "faster" is supposed to mean for a trade that fails validation mid-netting. The date is already the only fact in the room, and for the next three weeks, everything else will bend around it instead of the other way around.
+
+That's not a story about a bad PM. It's what happens when three questions that need three different owners all get answered by whoever spoke first — and it's the same failure whether the titles in the room are Business Analyst, Project Manager, and Product Owner, or one person wearing all three hats badly.
+
+## Think of it as renovating a house
+
+A homeowner decides they want a bigger kitchen. That's it — that's the whole instruction. An architect turns "bigger kitchen" into an actual drawing: exact dimensions, where the plumbing has to move, which wall is load-bearing and can't come down. A general contractor takes that drawing and turns it into a schedule: which trade shows up which week, what it costs, what happens if the plumber is late. Three different people, three different skills, and none of them can quietly do the other two's job without something breaking — the homeowner can't draw the plumbing route from instinct, the architect can't promise a move-in date, and the contractor can't decide whether the kitchen should even get bigger in the first place.
+
+That's the same split underneath Product Owner, Business Analyst, and Project Manager. The Product Owner is the homeowner — they decide what gets built and why it matters. The Business Analyst is the architect — they turn that decision into something precise enough to actually build. The Project Manager is the contractor — they turn the precise version into a schedule, a budget, and a delivery date. FXNET-482 needed all three, in that order. It got the contractor's date first.
+
+## The Product Owner decides what, and why it's worth doing now
+
+A Product Owner's real job is prioritization, not description, and the artifact that job produces is the ranked backlog sitting on top of a roadmap — not the individual ticket. Given twenty things a bank's trading desk could build next quarter — a real-time trade-breaks dashboard, a faster FX netting workflow, a self-service report for compliance — the PO's job is to decide which one earns the next sprint, based on business value, regulatory pressure, or client demand, and to defend that ranking to a steering committee. For FXNET-482, that means answering one question before anything else gets written: does fixing this beat the other nineteen items already ranked above it? "The client complained" isn't a reason on its own until it's weighed against everything else the backlog is already promising.
+
+What a PO isn't responsible for is precision. "Faster FX netting" is a perfectly good backlog item and a completely unusable requirement — it doesn't say what "faster" means, which currency pairs, what happens when two trades net to zero, or who approves an exception. That gap is deliberate, not a failure of the PO's writing. It's the next job's entire reason to exist.
+
+## The Business Analyst decides exactly what that means
+
+This is the architect's drawing, and its artifacts have names: a requirements document or functional spec, acceptance criteria, and — the piece that closes the loop back to testing — a requirements traceability matrix mapping each requirement to the test case that proves it was built. A BA takes "faster FX netting" and turns it into something an engineer and a QA tester can both read the same way: the exact trigger, the exact output, and every edge case the one-line version left out. For FXNET-482, that's the actual work — what happens if a trade fails validation mid-netting, does a partial net get reversed or held, who gets notified. [Writing Requirements That Survive Contact With Engineering](/essays/writing-requirements-that-survive-contact-with-engineering) covers getting from a vague sentence to something testable; [From Stakeholder Sentence to Acceptance Criteria](/essays/from-stakeholder-sentence-to-acceptance-criteria) covers the same gap from the elicitation side.
+
+The BA doesn't decide whether FXNET-482 ships this quarter or next — that's the PO's call, made before the BA gets involved. And the BA doesn't commit to a delivery date — that's the next job. What the BA owns is whether, once built, the thing actually does what the business meant, in every case, not just the obvious one.
+
+## The Project Manager decides when, at what cost, and around what risk
+
+The contractor's schedule, tracked in a project plan and a RAID log — risks, assumptions, issues, dependencies — that gets summarized upward at steering committee. A PM takes the BA's *finished* requirement and works out the sequencing: which team builds it, what it depends on (does netting logic touch a treasury batch job that only runs overnight?), what could go wrong, and what date goes on the slide. That's a real skill with its own failure mode: a PM who commits a date before the requirement is scoped is promising a number nobody has earned yet. [Scope Creep Is a Timing Problem](/essays/scope-creep-is-a-timing-problem) is this same failure from a different angle — a date gets fixed early, the requirement keeps evolving after, and the PM ends up defending a commitment the BA hadn't finished writing when it was made.
+
+A PM also isn't the person who should decide what "faster" means, or whether FXNET-482 was the right priority at all. When a PM answers those questions instead of routing them, the project doesn't move faster — those decisions just get made by whoever's holding the calendar, instead of whoever actually owns them.
+
+## The fourth title in the room
+
+Agile teams often add a fourth person to these calls — a Scrum Master — and the confusion there is the mirror image of the other three. A Scrum Master doesn't own what, precision, or when; the job is making sure the team *can* answer those questions without friction — running the ceremonies, clearing blockers, protecting the sprint from mid-cycle interruptions. A Scrum Master who starts ranking the backlog or promising a date isn't overlapping with the PO or PM — they're answering a question that was never theirs to answer in the first place, for the same reason it's a problem when anyone else does it: nobody checked which of the three questions was actually on the table.
+
+## Where FXNET-482 actually went
+
+The PM's three-week promise skipped the PO's ranking and forced the BA to scope backward from a date instead of forward from a requirement. With no time to decide what should happen to a trade that fails validation mid-netting, the build shipped with partial nets silently held rather than reversed — not because anyone chose that, but because nobody had the room to choose anything. It worked until a client's netting run hit exactly that case three weeks after go-live, and what should have been one line in a requirements document became a production incident and an apology call. A RACI matrix — who's responsible, accountable, consulted, informed — would have caught this before the PM ever opened their mouth; see [Who Owns the Requirement](/ba-playbooks/who-owns-the-requirement) for what happens when that ownership question goes unasked. [What Nobody Tells a New Business Analyst](/essays/what-nobody-tells-a-new-business-analyst) covers the same root cause from a new BA's side — taking a request at face value without checking who actually owns the decision behind it.
+
+None of this requires three separate people. Plenty of banking teams run lean enough that one person carries BA and PM together, sometimes all three. That's not automatically wrong — it's wrong when the person forgets which hat they're wearing mid-sentence, answering a scheduling question with prioritization logic or a prioritization question with a schedule, because nobody in the room, including them, paused to notice which of the three questions was actually on the table.
+
+## The one-question check
+
+Before answering anything in a scoping call, it's worth silently sorting the question that was just asked into one of three buckets: **is this asking what we should build, what that means exactly, or when and at what cost?** Run FXNET-482 back through that filter and the fix is obvious in hindsight — the PM's three-week promise should have waited on the PO's ranking and the BA's scope, not the other way around. Answer a scheduling question with a date before the other two questions have been answered, and the mismatch won't show up in that meeting. It'll show up three weeks later, as a production incident wearing a ticket number.

@@ -1,0 +1,39 @@
+---
+title: "As-Is, To-Be, and the Step Nobody Draws"
+description: "A current-state diagram and a target-state diagram both looking finished is not the same as knowing how to get from one to the other. The comparison between them — not either drawing — is the actual deliverable, and it's the one step most process-mapping workshops skip."
+hook: "Two clean diagrams walked into a steering committee. Neither one said what had to happen to turn the first into the second."
+category: "Business Analysis"
+tags: ["process", "requirements"]
+author: "Surya"
+date: "2026-09-23"
+---
+
+CONF-114 gets a two-day workshop: map how trade confirmations get matched today, map how they'll get matched once a new vendor tool goes live, present both to the steering committee. The workshop delivers exactly that — a clean As-Is diagram showing confirmations arriving by email and getting matched by hand, and a clean To-Be diagram showing them arriving as a structured feed and matching automatically. Both diagrams are accurate. Both get signed off in the same meeting. Three weeks into the build, the structured-notes desk asks why none of their trades are matching, and the answer turns out to be that their counterparties still send confirmations as a PDF attachment, not a structured message — a case that was never on either diagram, because the As-Is map was drawn from the standard operating procedure, not from watching what the structured-notes desk actually does.
+
+Neither diagram was wrong. That's what makes this failure mode so easy to walk into: two accurate pictures of two different moments in time, and nobody ever produced the document that sits between them and asks, case by case, what it actually takes to turn the first picture into the second — or whether that path even exists yet for every version of the process, not just the common one.
+
+## Think of it as moving apartments
+
+You photograph your current living room — that's the As-Is. You save a Pinterest board of how you want the new place arranged — that's the To-Be. Both pictures are real, both are useful, and neither one tells you that the bookshelf won't fit through the new doorway, that the lamp needs a different kind of plug, or that you don't actually own a couch shaped like the one in the inspiration photo. The thing that turns two pictures into an actual move is a third document nobody photographs: a list, item by item, of what changes, what gets bought, what gets discarded, and in what order — because some of those items block others. The pictures aren't the plan. The list is.
+
+That third document has a name in process work: a **fit-gap analysis**, often shortened to just gap analysis. It's the only one of the three that isn't a diagram, which is exactly why it's the one that gets skipped — it doesn't present well in a steering committee deck, so teams stop at the two pictures that do.
+
+## What the As-Is map actually needs to capture
+
+An As-Is diagram is only as good as where it came from, and the fastest way to produce a wrong one is to draw it from the policy document instead of the floor. A **swimlane diagram** — one lane per role or system, showing who touches the process and where it hands off — drawn from the SOP shows the process as it's *supposed* to run. The structured-notes desk's PDF workaround was never in the SOP, because it's an exception someone improvised months ago and never got written down; it only shows up if someone actually shadows the desk or pulls a sample of real transactions and checks. This is the same trap a new BA hits with an org chart: the formal version and the real version are different documents, and only one of them is true. [What Nobody Tells a New Business Analyst](/essays/what-nobody-tells-a-new-business-analyst) covers the org-chart version of this same mistake — the fix here is identical: verify against what people actually do, not against what a document says they do.
+
+## What the To-Be map is for, and where it goes wrong alone
+
+A To-Be diagram earns its keep by forcing a team to agree on a target before anyone starts building toward it. The danger is designing it in isolation from the As-Is — sketching the ideal automated flow for the *common* case, and quietly assuming every variant of the current process maps onto it cleanly. CONF-114's To-Be diagram was a perfectly reasonable design for confirmations that already arrive as a structured message. It just never got checked against every lane of the As-Is map to confirm a path existed for the ones that don't. [Writing Requirements That Survive Contact With Engineering](/essays/writing-requirements-that-survive-contact-with-engineering) makes the same point about a single requirement — write the exception paths before the happy path, because the happy path is the one that never surfaces a gap.
+
+## The comparison is the deliverable
+
+A gap analysis is a row-by-row table, not a picture: for every step or case on the As-Is map, what's the corresponding step on the To-Be map, what specifically has to change to get from one to the other, who owns making that change, and — critically — does a path even exist yet. Run CONF-114 through that table honestly and one row reads: *structured-notes confirmations — As-Is: PDF via email — To-Be: matched from a structured feed — Gap: no structured data source exists for this counterparty type yet.* [SWIFT and the Custodian](/essays/swift-and-the-custodian-the-shipping-label-and-the-warehouse) covers exactly this distinction from the messaging side — a To-Be design that assumes a structured feed is only real once something is actually generating one, and for a product type still confirmed by PDF, nothing is. That row, flagged in week one of a two-day workshop, is a scoping conversation. Discovered in week three of a build, it's a defect, a delayed release, and a desk that's been asking for three weeks why their trades won't match.
+
+The reason this table gets skipped isn't laziness — it's that two diagrams *feel* like progress in a way a table of open gaps doesn't. A steering committee nods along to a before-and-after picture. A gap analysis, done honestly, produces a list of unresolved problems in the middle of a meeting that was supposed to be a sign-off. That's an uncomfortable meeting to run. It's a much cheaper one than the meeting three weeks later where the same gap gets discovered in production instead.
+
+None of this requires a two-day workshop. An agile team scoping the same change as a single afternoon spike is doing the identical three-part work — current state, target state, and the row-by-row comparison between them — just with less ceremony and no steering committee deck. Skip the comparison in a spike and CONF-114's exact failure still happens; it just surfaces in a sprint review instead of a status meeting.
+
+## The one-question check
+
+Before a To-Be diagram gets signed off, it's worth asking one question for every lane on the As-Is map, not just the common ones: **for this case specifically, what changes to get here, who owns that change, and does a path to it exist yet — or are we assuming one that hasn't been built?** A diagram that can't answer that for every case isn't finished. It's just the part of the work that was easy to draw.
