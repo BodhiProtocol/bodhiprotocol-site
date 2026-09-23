@@ -1,0 +1,35 @@
+---
+title: "MoSCoW Isn't a Framework, It's a Fight You're Avoiding"
+description: "Must, Should, Could, Won't only means something when it's checked against a shared ceiling everyone agreed to. Without one, every stakeholder just labels their own request Must Have, and the framework becomes a polite way to never say no out loud."
+hook: "Three stakeholders, three Must Haves, one slot in the sprint — and a framework that let all three walk out of the room feeling heard."
+category: "Business Analysis"
+tags: ["prioritization", "process"]
+author: "Surya"
+date: "2026-09-25"
+---
+
+DASH-77 goes into backlog grooming for a trading desk's dashboard with three requests, submitted by three different stakeholders, each tagged **Must Have**: Risk wants real-time exposure alerts, Compliance wants an audit-log export ahead of a regulator deadline, Front Office wants a faster live-price refresh. The team has capacity for one of the three this quarter. All three leave the meeting satisfied, because all three got the label they asked for. Nobody in the room said no to anybody. Nobody in the room also decided anything — the "Must Have" column just got three items longer, and the actual decision is still sitting there, unmade, wearing a label that was supposed to mean it was settled.
+
+MoSCoW didn't fail here. It was never actually used — the four letters got borrowed, the discipline that makes them mean something didn't.
+
+## Think of it as packing a suitcase with a weight limit
+
+Sort a suitcase into Must Pack (passport, medication), Should Pack (the good jacket), Could Pack (a second pair of shoes), and Won't Pack This Trip (the fourth book), and the sorting only forces an honest choice because the suitcase has an actual weight limit. If you never weigh it, "Must Pack" stops meaning anything — you'll call the shoes a Must too, and the jacket, and probably the book, because nothing is checking you against a real ceiling. The four categories aren't what make the packing honest. The scale is.
+
+**MoSCoW** — Must have, Should have, Could have, Won't have — works the same way, and it was designed with exactly that scale built in: the method (from DSDM, the framework that coined it) pairs the four buckets with a rule that Must Haves are capped at roughly 60% of available capacity, Should and Could split most of the rest, with real room held back — not sorted freely up to any size. Most teams that adopt MoSCoW keep the four labels and drop the ceiling. That's the entire failure in one sentence: a scale-free suitcase, sorted very confidently.
+
+## Why "Must Have" is free to claim without a ceiling
+
+Nothing about saying "this is a Must Have" costs a stakeholder anything if there's no shared capacity it has to fit inside. Risk isn't wrong that real-time alerts matter. Compliance isn't wrong that a regulator deadline is real. Front Office isn't wrong that traders feel every second of refresh lag. Each one is making a completely honest claim about their own request in isolation — and MoSCoW without a ceiling never asks any of them to make that claim *against* the other two, so all three honest claims coexist peacefully in the same column, right up until the sprint has room for exactly one of them and somebody has to find out which, later, the expensive way.
+
+[Business Analyst, Project Manager, Product Owner](/essays/business-analyst-project-manager-product-owner-three-different-jobs-on-one-project) covers whose job that ranking actually is — the Product Owner's, specifically because ranking means someone has to be willing to tell two of three stakeholders their thing lost, out loud, with a reason attached. A ceiling-free MoSCoW session is what it looks like when that job gets quietly declined instead: everyone gets the label that makes them feel prioritized, and the real ranking gets deferred to whoever ends up with sprint capacity left over, decided by default instead of by anyone actually deciding.
+
+## What the ceiling actually forces into the open
+
+Put a real number on the table — this quarter has room for one of the three — and the conversation changes shape immediately, because now every "Must Have" claim has to survive being compared to the other two, not just defended on its own. Compliance's audit-log export has an external, fixed regulator date; miss it and there's a real, named consequence next quarter. Risk's alert system is genuinely important and has no hard date attached to *this* quarter specifically. Front Office's refresh-rate request is a real improvement with no deadline at all. Run the ceiling honestly and Compliance's Must Have is the only one of the three that's actually forced by something outside the room — which is exactly the kind of distinction "Must Have" is supposed to draw, and exactly the distinction that never got drawn when all three requests could claim the label for free. [Two PMs, Two Different Priorities](/ba-playbooks/two-pms-two-different-priorities) covers the reconciliation mechanics once a ceiling surfaces a real conflict like this one — same principle, worked as a step-by-step framework instead of a narrative.
+
+Risk and Front Office don't leave that conversation happy. They leave it with an actual reason — a regulator date beats an internal preference this specific quarter — instead of a vague sense that their request evaporated somewhere between the grooming session and the sprint board. That's a worse meeting to sit through than the one where everyone got called a Must Have. It's a far better one than the meeting three months later where Risk asks why their alert system, tagged Must Have since spring, still isn't built.
+
+## The one-question check
+
+Before accepting any label in a prioritization session, it's worth asking one question out loud, to the room, not just to yourself: **does this Must Have fit inside a ceiling everyone here has actually agreed to, or is "Must Have" just the word we're using so nobody has to hear no today?** A framework that lets every request through unchanged isn't prioritizing anything. It's just recording, politely, what everyone already wanted before the meeting started.
