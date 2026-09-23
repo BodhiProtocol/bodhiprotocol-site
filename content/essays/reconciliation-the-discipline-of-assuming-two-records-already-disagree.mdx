@@ -1,0 +1,51 @@
+---
+title: "Reconciliation: The Discipline of Assuming Two Records Already Disagree"
+description: "Everyone who has ever checked a bank statement against their own memory of what they spent has already done reconciliation. Markets run the identical check between every pair of systems in this series — and MF Global's 2011 collapse and Karvy Stock Broking's 2019 default both show what happens when the check exists on paper but nobody obeys what it finds."
+hook: "Everyone who's checked a bank statement against their own memory has done reconciliation. Markets just run it at a scale where the gap can hide a billion dollars."
+category: "Capital Markets"
+tags: ["markets", "infrastructure"]
+author: "Surya"
+date: "2026-09-23"
+---
+
+Everyone who has ever checked a bank statement against their own memory of what they spent has already done reconciliation. You don't assume the statement is right and your memory is wrong, or the other way around — you assume, going in, that the two might disagree, and the entire point of looking is to find exactly where and why.
+
+Markets run the identical check, constantly, between every pair of systems that claims to know the same fact — and at a scale where the gap between two records can hide a genuine, years-long problem instead of one forgotten coffee.
+
+## Three kinds of break
+
+A **reconciliation break** is any point where two independent records of the same supposed fact don't match, and breaks come in three distinct flavors. An **economic break** means the underlying fact really is different — a price, a quantity, a settlement date that's genuinely wrong on one side. A **reference-data break** means the underlying fact is identical but described differently — the same counterparty recorded as "ABC Securities" in one system and "ABC Sec Ltd" in another, the exact drift [the security master](/essays/the-security-master-the-name-every-system-has-to-agree-on) exists to prevent. And a **missing-record break** — the loudest kind — means one side has no entry to compare against at all, which could mean the trade never happened, or just hasn't arrived yet. Confusing these three is its own operational risk: a reference-data typo and a missing trade do not deserve the same urgency, and treating them identically either wastes attention on a naming quirk or buries a genuine gap under a pile of harmless ones. (The site's own [Reconciliation Break Finder](/simulators/reconciliation-break-finder) simulator is built around telling these three apart.)
+
+## Example 1: the check existed, and someone moved the money anyway
+
+In the US, futures commission merchants are legally required to keep customer funds segregated from the firm's own money under CFTC Rule 1.20 — and a companion rule, 1.32, requires a **daily computation** comparing exactly how much should be segregated against exactly how much actually sits in the segregated accounts, submitted to regulators by noon of the following business day. The reconciliation isn't a best practice here. It's a standing legal requirement, run every single day, specifically so a shortfall can never go undetected for long.
+
+MF Global ran that computation right up until its collapse — and the number it produced on October 26, 2011 showed a deficiency, five days before the firm filed for what was then the eighth-largest bankruptcy in US history. In the chaos of the firm's final week, its CEO, Jon Corzine, personally directed an employee to wire $200 million out of a customer segregated account to cover an overdraft in the firm's own house account. By the time regulators finished tracing the damage, roughly $1.6 billion was missing from customer funds — the first time in history segregated customer money had simply vanished from a US futures firm. Corzine was later ordered to pay a $5 million civil penalty and permanently barred from the futures industry. The reconciliation had done its job. It correctly showed the shortfall. Nobody with the authority to move money was required to obey what it found.
+
+## Example 2: the check barely ran at all, until it was forced to
+
+Karvy Stock Broking ran a version of the identical failure at a different scale, over a much longer stretch. Using the Power of Attorney clients grant a broker to facilitate trading, Karvy pledged client securities to raise loans for a group real-estate company — including shares belonging to clients who hadn't placed a single trade with the firm. By the time SEBI intervened in November 2019, the total default exceeded ₹2,000 crore, and the misuse had run for years because nothing was forcing a routine check of what clients actually held against what Karvy had quietly pledged elsewhere. SEBI barred Karvy from taking new clients and directed the depositories, NSDL and CDSL, to stop acting on the firm's power-of-attorney instructions altogether.
+
+The structural fix came later, and it removed the opportunity rather than just tightening the check. A SEBI circular dated June 8, 2023 mandated that stock brokers and clearing members **upstream** all client funds to clearing corporations daily, effective July 1, 2023 — no client money may sit with a broker overnight at all anymore. Where Karvy's era required someone to notice a reconciliation gap before it could be exploited, the post-2023 rule tries to make the gap itself impossible to hold open past the end of the trading day.
+
+## Reality check: two different ways the same failure shows up
+
+MF Global and Karvy failed in opposite directions. MF Global's reconciliation existed, ran on schedule, and correctly flagged the problem — the failure was that a human being with authority overrode what it found. Karvy's underlying gap ran for years because nothing routine was forcing anyone to compare client holdings against what the broker had actually done with them — the failure was that the check barely existed at the scale where it mattered. Neither one was fixed by a better spreadsheet. MF Global's aftermath tightened enforcement of a rule that already existed; Karvy's aftermath removed the broker's ability to hold the assets that made the gap possible in the first place. A reconciliation process only protects anyone if its output is either obeyed or the situation it's checking for is structurally prevented from existing — computing the right number and then permitting someone to act as if it were wrong protects nobody at all.
+
+## Why this matters for a Business Analyst
+
+### Back to the bank statement
+
+A requirement that says "reconcile trades daily" isn't finished until it answers the question MF Global's case makes unavoidable: what happens the moment the two sides don't match? Does the system halt the affected process automatically, or does it just log a warning someone can choose to read tomorrow? A reconciliation whose output can be overridden by the same person or desk it's meant to be checking has satisfied the letter of "we reconcile daily" while missing the entire reason the requirement exists. The [Reconciliation Break Finder](/simulators/reconciliation-break-finder) is a good place to practice the first half of this skill — spotting which of the three break types you're looking at. The harder half, the one MF Global exposes, is designing what happens automatically the instant a real break is found, before anyone gets the chance to decide it can wait.
+
+## Lighthouse Insight
+
+Two failures, both eventually caught, both fixed only after the fact. MF Global had the mathematically correct answer sitting in a regulatory filing five days before it collapsed, and moved the money anyway. Karvy's gap went unreconciled long enough to reach ₹2,000 crore before a regulator forced the comparison that should have been routine from day one. The bank statement was never the hard part, for a person or for a market. Actually obeying what it says, the moment it disagrees with you, always is.
+
+## Reference anchors
+
+- [eCFR: 17 CFR 1.20 — Futures Customer Funds to Be Segregated and Separately Accounted For](https://www.ecfr.gov/current/title-17/chapter-I/part-1/subject-group-ECFR0b7db1d7cacc538/section-1.20)
+- [CFTC: MF Global Inc. Trustee's Second Interim Report](https://www.cftc.gov/sites/default/files/idc/groups/public/@newsroom/documents/file/mfglobaliinvestreport060412.pdf)
+- [Congressional Research Service: The MF Global Bankruptcy, Missing Customer Funds, and Proposals for Reform](https://nationalaglawcenter.org/wp-content/uploads/assets/crs/R42091.pdf)
+- [Moneylife: SEBI Bars Karvy Stock Broking From Taking New Clients for Misusing Client Securities](https://www.moneylife.in/article/sebi-bars-karvy-stock-broking-from-taking-new-clients-for-misusing-client-securities/67214.html)
+- [NSDL: SEBI Circular on Upstreaming of Clients' Funds by Stock Brokers/Clearing Members to Clearing Corporations](https://nsdl.co.in/downloadables/pdf/2023-0067-Policy-SEBI%20Circular%20on%20Upstreaming%20of%20clients%20funds%20by%20Stock%20Brokers%20(SBs)%20%20Clearing%20Members%20(CMs)%20to%20Clearing%20Corporations%20(CCs).pdf)

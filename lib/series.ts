@@ -41,6 +41,7 @@ export const essaySeries: EssaySeries[] = [
       "what-a-trade-lifecycle-actually-looks-like",
       "front-office-middle-office-back-office-three-clocks-on-one-trade",
       "the-security-master-the-name-every-system-has-to-agree-on",
+      "reconciliation-the-discipline-of-assuming-two-records-already-disagree",
       "infrastructure-the-nine-systems-behind-every-trade",
       "oms-vs-ems-the-permission-layer-and-the-tactics-layer",
       "the-matching-engine-the-algorithm-that-turns-two-orders-into-a-trade",
@@ -368,6 +369,11 @@ export const essayBridges: EssayBridge[] = [
     from: "corporate-actions-what-happens-to-you-and-what-you-have-to-ask-for",
     to: "settlement-finality-when-a-trade-stops-being-a-promise",
     label: "Whether you were even a holder of record depends on exactly when the trade stopped being a promise",
+  },
+  {
+    from: "reconciliation-the-discipline-of-assuming-two-records-already-disagree",
+    to: "rogue-trading-when-the-person-trading-is-also-the-person-checking-the-trade",
+    label: "Barings and PNB are what happens when the person supposed to force the reconciliation is the one with the most reason not to",
   },
 ];
 
