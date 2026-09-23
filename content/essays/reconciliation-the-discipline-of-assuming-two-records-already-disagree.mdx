@@ -14,7 +14,15 @@ Markets run the identical check, constantly, between every pair of systems that 
 
 ## Three kinds of break
 
-A **reconciliation break** is any point where two independent records of the same supposed fact don't match, and breaks come in three distinct flavors. An **economic break** means the underlying fact really is different — a price, a quantity, a settlement date that's genuinely wrong on one side. A **reference-data break** means the underlying fact is identical but described differently — the same counterparty recorded as "ABC Securities" in one system and "ABC Sec Ltd" in another, the exact drift [the security master](/essays/the-security-master-the-name-every-system-has-to-agree-on) exists to prevent. And a **missing-record break** — the loudest kind — means one side has no entry to compare against at all, which could mean the trade never happened, or just hasn't arrived yet. Confusing these three is its own operational risk: a reference-data typo and a missing trade do not deserve the same urgency, and treating them identically either wastes attention on a naming quirk or buries a genuine gap under a pile of harmless ones. (The site's own [Reconciliation Break Finder](/simulators/reconciliation-break-finder) simulator is built around telling these three apart.)
+A **reconciliation break** is any point where two independent records of the same supposed fact don't match. Not every break means the same thing, though, and markets sort them into three distinct kinds.
+
+Sometimes the underlying fact really is different on one side — a price, a quantity, a settlement date that's just wrong somewhere in the chain. That's an **economic break**, and it's the one that actually needs fixing before anyone can trust either record again.
+
+Sometimes the underlying fact is identical, and only its spelling disagrees — the same counterparty sitting in one system as "ABC Securities" and in another as "ABC Sec Ltd." That's a **reference-data break**, the exact drift [the security master](/essays/the-security-master-the-name-every-system-has-to-agree-on) exists to prevent, and it's usually harmless once someone confirms both sides mean the same thing.
+
+And sometimes one side simply has nothing to compare against at all. That's a **missing-record break** — the loudest kind, because it could mean the trade never happened, or just that it hasn't arrived yet, and nobody can tell which from the gap alone.
+
+Confusing these three is its own operational risk. Treating a spelling difference with the same urgency as a vanished trade wastes attention on a naming quirk. Treating a vanished trade with the same shrug as a spelling difference buries a genuine gap under a pile of harmless ones. (The site's own [Reconciliation Break Finder](/simulators/reconciliation-break-finder) simulator is built around telling these three apart.)
 
 ## Example 1: the check existed, and someone moved the money anyway
 
