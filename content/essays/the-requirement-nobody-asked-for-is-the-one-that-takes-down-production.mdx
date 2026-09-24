@@ -1,0 +1,35 @@
+---
+title: "The Requirement Nobody Asked For Is the One That Takes Down Production"
+description: "\"Clients can download their monthly statement as a PDF\" is a complete functional requirement and an incomplete one at the same time. It never says how many clients, how fast, or what happens when everyone tries at once — and that's the requirement that actually breaks."
+hook: "The feature worked perfectly for five testers in UAT. It had never once been asked to work for forty thousand people in the same hour."
+category: "Business Analysis"
+tags: ["requirements", "quality"]
+author: "Surya"
+date: "2026-09-26"
+---
+
+STMT-140 reads clean: "As a client, I can download my monthly statement as a PDF." Development builds it. QA runs five test accounts through it in UAT — click, generate, download, done — and signs off. It ships. On the 1st of the following month, every client who's ever received a statement gets the same notification at roughly the same time, and forty thousand of them click download inside the same two-hour window. The report-generation queue, built and tested against five sequential requests, backs up within minutes. Downloads that took two seconds in UAT take twenty minutes in production, then they start timing out, then support gets the calls.
+
+Nobody wrote a bad requirement. STMT-140 says exactly what the feature does, correctly, and every word of it is still true in production — clients really can download their statement as a PDF. It just never said how many clients, how fast, or what's supposed to happen when a lot of them try to at once. That gap has a name, and it's the specific kind of gap that a UAT sign-off with five test accounts is structurally incapable of catching, no matter how carefully it's run.
+
+## Think of it as one pizza order on Super Bowl Sunday
+
+"One large pepperoni pizza" is a complete order. It says exactly what you want. It doesn't say how fast you need it, whether it has to stay hot for two hours, or what happens if five hundred other people place the identical order in the same ten minutes. A pizza place that has only ever promised "we can make a pepperoni pizza" — and proved it, correctly, by making one — finds out the hard way, on the one night everyone orders at once, that "we can make it" and "we can make five hundred of them inside an hour without the kitchen falling over" were never the same promise. The order was never wrong. It just never mentioned the part that turns out to matter most on the night it actually gets tested.
+
+## The category has a name, and it's not an edge case
+
+[Writing Requirements That Survive Contact With Engineering](/essays/writing-requirements-that-survive-contact-with-engineering) covers writing the unhappy paths — what happens when an input is wrong, missing, or duplicated. STMT-140's gap is a different axis entirely: every input was correct, every single request behaved exactly as specified, and the system still went down, because nothing about *volume, speed, or load* was ever specified at all. That category is a **non-functional requirement** — how well the system does something, not what it does — and it's not a fringe concern software engineering bolted on later. ISO/IEC 25010, the standard quality model, names eight characteristics a working system needs beyond doing the right thing at all: functional suitability sits alongside **performance efficiency**, **reliability**, **security**, **usability**, **compatibility**, **maintainability**, and **portability**. STMT-140 nailed the first one and never wrote down a number for the second.
+
+## Why it's the requirement nobody thinks to ask for
+
+A functional requirement gets written because someone in the room says a sentence — "clients should be able to download their statement" — and a BA turns that sentence into acceptance criteria. A non-functional requirement almost never arrives as a sentence at all, because nobody experiences "handles forty thousand concurrent downloads" as a *want*. Nobody in a requirements workshop says "I'd like the report queue to survive month-end" the way they say "I'd like a PDF download button" — the capacity need is real, but it's invisible until it's violated, which means it has to be asked for on purpose or it doesn't get asked for at all. Worse, when it does occur to someone, it usually gets waved off as somebody else's job — "that's infrastructure's problem," "the platform team handles scaling" — as if a number nobody wrote down could still somehow get built to.
+
+UAT can't rescue this by accident, either. A test pass with five accounts is, by construction, a single-user demo — it proves the feature works, not that it survives the one day a year every client wants it simultaneously. A non-functional gap and a clean UAT sign-off aren't in tension. They're fully compatible, which is exactly why this failure mode reaches production so often: everything that got tested passed.
+
+## What actually needed to be on the ticket
+
+STMT-140 didn't need an essay's worth of infrastructure planning attached to it — it needed one more sentence with a number in it, decided in the same workshop as the functional requirement, not discovered afterward: *the service must support at least 40,000 statement downloads within a two-hour peak window, with 95% completing in under ten seconds, degrading to a visible queue position rather than a timeout past that.* That sentence turns "handles load" from an assumption everyone was quietly making into a requirement someone actually tests against — load-tested before go-live, not learned about live. It's not a harder requirement to write than the functional one. It's just a different question, and nobody asks it unless writing it down is treated as part of the job, not a favor to whichever team gets paged when it's missing.
+
+## The one-question check
+
+Before calling a requirement done, it's worth asking one question that has nothing to do with whether the feature works: **what happens the one day everyone wants this at the same time, and does anything in this requirement say what "handles that" actually means?** If the honest answer is "we assumed it would be fine," that assumption is the real requirement — it just hasn't been written down yet, and it will get tested in production whether anyone wrote it down or not.
