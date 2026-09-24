@@ -377,6 +377,16 @@ export const essayBridges: EssayBridge[] = [
     to: "rogue-trading-when-the-person-trading-is-also-the-person-checking-the-trade",
     label: "Barings and PNB are what happens when the person supposed to force the reconciliation is the one with the most reason not to",
   },
+  {
+    from: "market-surveillance-the-camera-and-the-smoke-detector",
+    to: "what-spoofing-actually-looks-like",
+    label: "The order-by-order pattern this essay describes is exactly what a camera-style system has to be able to reconstruct",
+  },
+  {
+    from: "market-surveillance-the-camera-and-the-smoke-detector",
+    to: "the-exchange-gateway-the-checkpoint-that-never-stops-testing-you",
+    label: "SEBI's order-to-trade ratio penalty is the same smoke-detector design, aimed at gateway capacity instead of price manipulation",
+  },
 ];
 
 const seriesBySlug = new Map<string, { series: EssaySeries; order: number }>();

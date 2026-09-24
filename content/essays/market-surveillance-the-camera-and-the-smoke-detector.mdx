@@ -1,0 +1,49 @@
+---
+title: "Market Surveillance: The Camera and the Smoke Detector"
+description: "A security camera doesn't stop a break-in — it just remembers everything so investigators can reconstruct it later. A smoke detector doesn't record anything — it triggers an automatic response the instant it senses something wrong. The US built the camera, and it's currently being torn down and rebuilt; India built the smoke detector, and keeps recalibrating it every few years."
+hook: "A security camera doesn't stop a break-in. A smoke detector doesn't record anything. Markets built both kinds of systems, and they catch completely different things."
+category: "Capital Markets"
+tags: ["markets", "infrastructure", "surveillance"]
+author: "Surya"
+date: "2026-09-24"
+---
+
+A security camera doesn't stop a break-in. It just records everything, faithfully, so that afterward someone can reconstruct exactly what happened, frame by frame, no matter how subtle or slow-moving the actual crime was. A smoke detector does the opposite: it records nothing at all, but the instant it senses something wrong, it triggers an automatic response — first a beep, then, if nothing changes, the sprinklers — without waiting for anyone to review footage first.
+
+Markets built literal versions of both, at the scale of an entire national exchange, and most people have only ever heard of one.
+
+## Two answers to one question
+
+A **market surveillance system** exists to answer a single question at a scale no human could manage manually: across every order, every cancellation, every trade happening right now, does anything here look like manipulation? There are two structurally different ways to build an answer to that question. One is the **camera**: capture a complete, permanent, reconstructible record of every event, so an investigator can later prove exactly what a suspicious pattern actually was. The other is the **smoke detector**: define statistical thresholds in advance, and the instant real activity crosses one, trigger an automatic, escalating response — no investigator required before the first restriction kicks in.
+
+## Example 1: the US built the camera, and it's currently mid-teardown
+
+The US answer is the **Consolidated Audit Trail**, created under SEC Rule 613 in 2012 as a direct response to the May 2010 Flash Crash, when regulators discovered they couldn't quickly reconstruct which orders across which exchanges had actually driven the collapse. CAT's entire purpose is to be the camera: every order, cancellation, and execution across the US equity and options markets, tagged and linked into one traceable record regulators can query after the fact.
+
+That camera has spent the last two years in open institutional crisis. Its running costs grew far beyond the SEC's original 2016 estimate as trading volumes outpaced every projection, and in July 2025 the Eleventh Circuit vacated the SEC's existing CAT funding order outright, ruling it arbitrary and capricious for letting exchanges pass the entire cost onto broker-dealers without ever updating that stale 2016 estimate. The SEC's replacement funding order, adopted in March 2026, is already being challenged by the same industry petitioners — the court has so far only declined to pause it while the case proceeds, as of a July 2026 order, not ruled on it. Then, in August 2026, SEC staff began drafting a rulemaking to scrap Rule 613 altogether and replace CAT's entire reporting structure with something else, a transition not expected to finish until late 2027. The camera that exists specifically so nobody has to guess what happened is, right now, one it will take another year to know the final shape of.
+
+## Example 2: India built the smoke detector, and keeps recalibrating it
+
+India's answer runs on the opposite design. **GSM (Graded Surveillance Measure)** and **ASM (Additional Surveillance Measure)** don't try to reconstruct anything — they watch live statistical signals and act automatically. GSM reviews companies quarterly against fundamentals and governance flags, and escalates a stock through graded stages — tighter margin requirements, trade-for-trade settlement, additional deposit requirements — the worse its signals look; the framework itself was streamlined at a joint SEBI-exchange surveillance meeting on November 28, 2019, cutting the number of GSM stages from six to four. ASM runs on a faster clock, watching short-term windows of five to fifteen days and longer-term windows of sixty to ninety days for unusual price or volume moves, and imposes its own restrictions — lower price bands, higher margins — the moment a stock crosses a threshold, with no investigator's sign-off required before the first restriction applies.
+
+## Reality check: neither system replaces the other
+
+It's tempting to read one of these as simply the better design. Neither is. CAT can, in principle, reconstruct any pattern regulators later think to look for — but it does nothing automatically in the moment a pattern is actually happening, which is exactly the gap that let the 2010 Flash Crash run its course before anyone could act. ASM and GSM act within days, without waiting for a human to build a case — but they can only ever catch the specific statistical signatures they were tuned to watch for, and a graded, threshold-based system will occasionally flag a stock's genuine, healthy volatility with the same trade-for-trade restriction it uses for actual manipulation, the automated equivalent of a smoke detector going off at burnt toast. A market that only builds the camera can explain a crisis perfectly, months later. A market that only builds the smoke detector can stop some things fast and will occasionally punish the wrong stock for it. Neither substitutes for the other; each is answering a different half of "did anything just go wrong."
+
+## Why this matters for a Business Analyst
+
+### Back to the camera and the detector
+
+A requirement that says "add market surveillance" isn't finished until it names which of the two systems it actually means, because they need entirely different things to succeed. A camera-style system needs complete, accurate, fully reconciled records more than it needs speed — a CAT-style build that's fast but drops 2% of events has failed at the one thing it exists to do. A detector-style system needs the opposite: statistical thresholds and graded response tiers defined precisely up front, because a trigger that's too sensitive punishes normal trading, and one that's too loose never fires at all. Specifying "surveillance" without picking one is asking for a system that will be evaluated against a standard nobody agreed to.
+
+## Lighthouse Insight
+
+A security camera and a smoke detector solve two different problems in the same building, and neither one is obsolete just because the other exists. Right now, the US is in the middle of deciding what its camera even looks like going forward, more than a year into a funding fight with no final answer yet. India keeps recalibrating its smoke detector every few years, tightening the thresholds without ever pretending the detector alone is enough. Both markets have accepted the same quiet fact: watching an entire market for trouble was never going to be one system's job.
+
+## Reference anchors
+
+- [SEC: Rule 613 (Consolidated Audit Trail)](https://www.sec.gov/about/divisions-offices/division-trading-markets/rule-613-consolidated-audit-trail)
+- [Sidley Austin: Eleventh Circuit Vacates SEC's 2023 Funding Order for the Consolidated Audit Trail](https://www.sidley.com/en/insights/newsupdates/2025/08/eleventh-circuit-vacates-secs-2023-funding-order-for-the-consolidated-audit-trail-cat)
+- [SEC: Fact Sheet — Seeking Public Input on the Consolidated Audit Trail and Other Matters](https://www.sec.gov/files/34-105251-fact-sheet.pdf)
+- [NSE India: Graded Surveillance Measure (GSM)](https://www.nseindia.com/static/regulations/graded-surveillance-measure)
+- [NSE: Graded Surveillance Measure (GSM) — Frequently Asked Questions](https://nsearchives.nseindia.com/web/sites/default/files/inline-files/FAQs%20-%20Graded%20Surveillance%20Measure%20(GSM)_15.4.25.pdf)
