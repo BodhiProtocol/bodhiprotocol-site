@@ -1,0 +1,50 @@
+---
+title: "Sanctions Screening: The List That Has to Catch Every Spelling of the Same Name"
+description: "KYC checks who someone is once, at onboarding. Sanctions screening checks every single transaction, forever, against a government list of names nobody is allowed to pay — and the same real name can legally be spelled a dozen different ways. Bank of Scotland's November 2025 fine for a transliteration gap, next to India's dual UNSC-and-domestic list requirement and the wrongful-freeze risk baked into it."
+hook: "A list that only catches the exact spelling of a name isn't a list. It's a suggestion."
+category: "Capital Markets"
+tags: ["markets", "infrastructure", "surveillance"]
+author: "Surya"
+date: "2026-09-25"
+---
+
+Think of a school librarian keeping a list of students who can't check out books until they return an overdue one. The list has "Mohammed A." written on it. A student signs in at the front desk as "Muhammad A." — same real kid, same real fine owed, just a different spelling of an identical name. Does the front desk catch it, or does the exact same person walk out with a new book because the letters didn't line up?
+
+Banks run a version of this problem at a scale where getting it wrong is a federal case, not an overdue fine.
+
+## What sanctions screening actually is
+
+[KYC](/essays/the-acronym-wall-every-new-banking-ba-hits) checks who a customer is once, at onboarding, and again periodically after that. **Sanctions screening** is a different layer entirely: a real-time check run against every single transaction, forever, matching every counterparty's name against a government-maintained list of people and entities nobody is legally allowed to pay. It never stops, because the list itself never stops changing, and a name that was clean yesterday can be added — or removed — overnight.
+
+The entire technical challenge lives in one fact: names don't have one correct spelling once you cross a script or a language. A name that starts in Arabic, Cyrillic, or Farsi can legitimately transliterate into Latin letters several different ways, and a sanctioned person doesn't have to try hard to exploit that — sometimes the mismatch happens with nobody trying at all. A screening system built to catch only exact spelling matches will miss real hits constantly. That's why every serious system runs **fuzzy matching** — deliberately catching close-but-not-identical spellings — and why getting the fuzziness calibrated right, not too loose, not too tight, is the actual engineering problem underneath the compliance requirement.
+
+## Example 1: the UK, and the spelling that got through
+
+On November 10, 2025, the UK's Office of Financial Sanctions Implementation fined Bank of Scotland £160,000 for processing 24 payments, totalling more than £77,000, into and out of a personal account belonging to Dmitrii Ovsyannikov — a person designated under the UK's Russia sanctions regime. The screening system wasn't blind to Ovsyannikov's name; it just didn't register a transliteration variant of it as the same real person the sanctions list had already named. The system worked exactly as built. It just wasn't built to catch that particular spelling. It's the same category of gap OFAC flagged in a 2020 settlement with Deutsche Bank Trust Company Americas, which the regulator said had effectively no fuzzy matching for names running at all — an extreme version of the identical problem, a screening system checking for exact spellings in a world where exact spellings are the exception, not the rule.
+
+## Example 2: India runs two lists, and the harder failure is the opposite one
+
+India's sanctions regime is structurally more complex from the outset. Under Section 51A of the Unlawful Activities (Prevention) Act, 1967, Indian banks have to screen against **two separate lists**, not one: the United Nations Security Council's global list, circulated through RBI, and India's own domestic list under UAPA Schedules I and IV — individuals and organizations the Indian government has designated on its own authority, entirely independent of what the UN has decided. RBI's Master Direction on KYC requires daily verification of customer databases against both, and a match on either one triggers the same freeze-and-report procedure.
+
+Running two lists creates a failure mode the UK case doesn't show at all: getting a **delisting** wrong is just as dangerous as missing an addition. When the UNSC or the Indian government removes a name, every bank's own copy of that list has to update just as fast as it does for an addition — and RBI's own guidance flags that failing to do so leads to wrongfully frozen accounts, real customer grievances, and its own category of regulatory exposure. The UK's failure was a name slipping through it should have caught. India's structurally harder failure is a name staying caught after it should have been let go.
+
+## Reality check: two failure directions, one underlying problem
+
+Bank of Scotland's gap and India's delisting risk look like opposite problems, and in the moment they are — one is a false negative, letting a real hit through; the other is a stale positive, holding onto a match that no longer exists. But both come from the identical root cause: a screening system's copy of "who's on the list, spelled how" has to stay in perfect, continuous sync with a list that itself never stops moving, and it has to do that across every legitimate spelling variant a real name can take. That's the same discipline [the security master](/essays/the-security-master-the-name-every-system-has-to-agree-on) demands for what an instrument is, applied instead to who a person is — except here, being a day late doesn't just misfile a trade. It either lets a sanctioned counterparty through, or leaves an innocent one frozen.
+
+## Why this matters for a Business Analyst
+
+### Back to the library list
+
+A requirement that says "screen against sanctions lists" is unfinished on three separate fronts at once. Which lists — one, like most Western programs, or more than one, the way India's UAPA regime requires? How fuzzy should the name matching be — exact-match-only will miss real hits, the way Bank of Scotland's system did, but matching too loosely buries a compliance team in false positives until real alerts stop getting read at all? And how fast do list changes propagate into the live system in both directions — because a requirement that only specifies how additions get picked up, and says nothing about how delistings get cleared, is a requirement that guarantees the exact wrongful-freeze risk RBI's own guidance warns about.
+
+## Lighthouse Insight
+
+The librarian's list only works if "Mohammed" and "Muhammad" both point back to the identical overdue fine. A bank's sanctions list has to do that same trick, at scale, in both directions, forever — catching a spelling that shouldn't slip through, and letting go of one that no longer belongs on the list at all. Bank of Scotland got fined for the first kind of miss. India built its entire system around the fact that the second kind is just as real. Neither market has finished solving it, because the list, and every legitimate way to spell a name on it, never stops changing.
+
+## Reference anchors
+
+- [OFSI: Penalty Publication Notice — Lloyds Banking Group / Bank of Scotland (2026)](https://assets.publishing.service.gov.uk/media/697741f167ae94b3280137ee/Penalty_Publication_Notice_LBG_2026.pdf)
+- [OFAC: Deutsche Bank Trust Company Americas Settlement (2020)](https://ofac.treasury.gov/recent-actions)
+- [RBI: Master Direction — Know Your Customer (KYC) Direction, 2016 (as amended)](https://www.rbi.org.in/Scripts/BS_ViewMasDirections.aspx?id=11566)
+- [TrackWizz: Sanctions Screening in India — What the Law Actually Requires](https://trackwizz.com/knowledge-hub/sanctions-screening-india-law-requirements/)

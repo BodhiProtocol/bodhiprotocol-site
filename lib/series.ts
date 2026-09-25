@@ -387,6 +387,16 @@ export const essayBridges: EssayBridge[] = [
     to: "the-exchange-gateway-the-checkpoint-that-never-stops-testing-you",
     label: "SEBI's order-to-trade ratio penalty is the same smoke-detector design, aimed at gateway capacity instead of price manipulation",
   },
+  {
+    from: "sanctions-screening-the-list-that-has-to-catch-every-spelling",
+    to: "the-acronym-wall-every-new-banking-ba-hits",
+    label: "KYC checks who someone is once; this is the layer that keeps checking on every transaction after that",
+  },
+  {
+    from: "sanctions-screening-the-list-that-has-to-catch-every-spelling",
+    to: "the-security-master-the-name-every-system-has-to-agree-on",
+    label: "The same golden-record discipline, applied to who a person is instead of what an instrument is",
+  },
 ];
 
 const seriesBySlug = new Map<string, { series: EssaySeries; order: number }>();
