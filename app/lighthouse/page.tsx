@@ -8,15 +8,16 @@ import { SuggestedPath } from "@/components/lighthouse/suggested-path";
 import { getAllBlueprints } from "@/lib/blueprints";
 
 const description =
-  "Visual-metaphor blueprints that break down the core concepts behind AI, capital markets, business analysis, decision making, and economics.";
+  "The Business Analyst Blueprint Curriculum — visual-metaphor blueprints that break down the core concepts behind AI, capital markets, business analysis, decision making, and economics.";
+const title = "Project Lighthouse: The Business Analyst Blueprint Curriculum";
 
 export const metadata: Metadata = {
-  title: "Project Lighthouse",
+  title,
   description,
   alternates: { canonical: "/lighthouse" },
   openGraph: {
     type: "website",
-    title: "Project Lighthouse",
+    title,
     description,
     url: "/lighthouse",
     images: ["/opengraph-image"],
