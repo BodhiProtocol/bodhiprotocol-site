@@ -397,6 +397,11 @@ export const essayBridges: EssayBridge[] = [
     to: "the-security-master-the-name-every-system-has-to-agree-on",
     label: "The same golden-record discipline, applied to who a person is instead of what an instrument is",
   },
+  {
+    from: "risk-management-engines-the-gauge-the-driver-isnt-supposed-to-touch",
+    to: "counterparty-credit-risk-the-desk-meant-to-see-the-whole-client",
+    label: "A measurement failure and an enforcement failure — the two ways a risk number stops protecting anyone",
+  },
 ];
 
 const seriesBySlug = new Map<string, { series: EssaySeries; order: number }>();
