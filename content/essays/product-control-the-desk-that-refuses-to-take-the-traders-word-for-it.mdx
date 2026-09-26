@@ -1,0 +1,94 @@
+---
+title: "Product Control: The Desk That Refuses to Take the Trader's Word for It"
+description: "Every trading desk reports its own profit every evening. Product Control is the team whose whole job is to not believe that number until it's been rebuilt from prices the trader didn't choose. Credit Suisse's structured credit group in 2007, where four bankers were charged by the SEC with 'marking to P&L' — picking the profit first and the prices second — on $3 billion of subprime bonds, and India's answer at system scale: bond prices a bank isn't allowed to pick for itself, a capital rule that refuses to count profit from prices nobody can check, and an RBI that in April 2026 refused to let banks spread a bond-market loss over several quarters."
+hook: "A trading card is worth whatever the last kid actually paid for one — not whatever its owner says it's worth."
+category: "Capital Markets"
+tags: ["markets", "risk", "controls"]
+author: "Surya"
+date: "2026-09-26"
+---
+
+Think of a kid at school with a shiny, rare trading card. Ask him what it's worth and he'll tell you five hundred rupees, easily. But the last three kids who actually sold that same card in the playground got two hundred for it. So what's his card worth?
+
+Not five hundred. It's worth two hundred, because that's what someone actually paid. His five hundred is what he *hopes* it's worth. And if his parents are giving him pocket money based on how rich his card collection looks, he has a very good reason to keep saying five hundred.
+
+Every bank trading floor has this exact kid, every evening, on a much larger scale. A trader holds positions whose value changes by the minute, and at the end of the day somebody has to say what those positions are worth, and so how much money the desk made. The trader knows the positions better than anyone in the building. The trader also has more riding on the answer than anyone in the building. **Product Control** is the team that exists because of those two facts together: it rebuilds the desk's profit every day from prices the trader didn't choose, and it refuses to sign off until that number can be explained.
+
+## What Product Control actually does
+
+Product Control sits in the middle office. It usually reports up to the Chief Financial Officer, never to the head of trading, and that reporting line is what the whole function stands on. It owns three jobs, and each one closes a different gap.
+
+**1. The daily P&L, rebuilt.** At the close, a desk sends its own estimate of the day's profit and loss, called the *flash* P&L. Product Control then produces the *official* P&L: the number that goes into the bank's books, built from the bank's own trade records and end-of-day prices. The two should roughly match. When they don't, the gap is a question someone has to answer before the next morning.
+
+**2. P&L explain (or attribution).** Think of your monthly household budget. Your bank balance went down ₹8,000 this month. Knowing that isn't enough; you want to know *why*: ₹5,000 more on groceries, ₹2,000 for a doctor's visit, ₹1,000 you can't account for. That last ₹1,000 is the one worth worrying about. A P&L explain does the same to a trading book. It splits the day's result into its causes: how much came from the market moving (for an options book, that means [delta](/essays/delta-the-gear-ratio-between-an-option-and-its-stock) and [gamma](/essays/gamma-the-feedback-loop-hiding-inside-every-delta-hedge)), how much from volatility changing ([vega](/essays/vega-the-price-of-not-knowing-what-happens-next)), how much from time passing ([theta](/essays/theta-the-cost-of-being-right-too-late)), how much from new trades booked today, and how much from fees and funding. Whatever is left over is the **unexplained P&L**. A healthy book has very little of it. A large unexplained number, especially a *profit*, is one of the loudest alarms in a bank, because a profit nobody can explain is either a model error or a price someone chose.
+
+**3. Independent Price Verification (IPV).** This is the playground check. Traders mark their own positions every day; they have to, because they need a live view of what they hold. Then, at least monthly and far more often for liquid books, Product Control takes every mark and compares it against a source the trader doesn't control: exchange closing prices, broker quotes, consensus pricing services, or recent actual trades. Any mark outside an agreed tolerance gets challenged, and if the trader can't justify it, it gets moved, and the P&L moves with it.
+
+How hard that check is depends on how much real market exists for the thing being priced. Accounting standards (IFRS 13 internationally, and its Indian equivalent, Ind AS 113) sort every position into three levels, and they're easiest to picture with a cricket bat:
+
+- **Level 1**: the exact bat is in a shop window with a price tag. A listed share or a benchmark government bond. The price is simply observed.
+- **Level 2**: that exact bat isn't for sale, but a nearly identical one is, so you start from its price and adjust. A corporate bond valued off similar bonds' yields; most standard derivatives.
+- **Level 3**: a custom bat nobody else has ever made or sold. There's no price to observe, so the value comes from a model with assumptions somebody chose. Complex structured products, illiquid loans, distressed debt.
+
+Level 1 is almost impossible to fake. Level 3 is where Product Control earns its salary. And because even a careful Level 3 value is still an estimate, banks also hold **valuation reserves** (regulators call them prudent valuation adjustments): a deliberate cushion held back from reported profit for bid-offer spreads, model uncertainty and positions too large to sell at the screen price. It's the difference between telling your parents "my collection is worth ₹2,000" and "₹2,000, but I'd only bet on ₹1,600 if I had to sell it all tomorrow."
+
+## How this differs from the checks next to it
+
+Product Control is easy to confuse with its neighbours, so it's worth being exact. [Reconciliation](/essays/reconciliation-the-discipline-of-assuming-two-records-already-disagree) checks that two *records* of a trade agree: that the quantity, price and date the desk booked match what the custodian holds. It can pass perfectly while both records carry the same wrong valuation. [The market risk engine](/essays/risk-management-engines-the-gauge-the-driver-isnt-supposed-to-touch) asks how much the book *could* lose tomorrow. Product Control asks whether the profit it *says* it made today is true. And [rogue trading](/essays/rogue-trading-when-the-person-trading-is-also-the-person-checking-the-trade) is about positions hidden from the bank entirely. The failure below is quieter than that. Every trade was on the books, visible to anyone who looked. What was false was the price written next to them.
+
+## Example 1: Credit Suisse picked the profit first and the prices second
+
+By late 2007, subprime mortgage bonds were in freefall across the market. Credit Suisse's structured credit trading group held billions of dollars of them. According to the SEC's 2012 complaint, the group's global head, Kareem Serageldin, regularly told his head of hedge trading, David Higgs, what P&L number he wanted to see. Higgs then directed two traders to mark the book in whatever way produced it. The SEC's own phrase for the method is the cleanest definition of a product control failure ever written down: they were **"marking to P&L" rather than marking to fair value.** The answer came first; the prices were worked backwards from it.
+
+The SEC alleged the group deliberately ignored specific market information showing sharp price declines, and that the scheme peaked at year-end 2007, when roughly $3 billion of subprime bonds were carried at falsely overstated prices, just in time for bonus season and, in Serageldin's case, a hoped-for promotion. Days after that year-end close, in a recorded call, Serageldin and Higgs acknowledged the prices were too high and worried aloud that the bank's risk staff would *spot* it. That one word tells you what the independent check was supposed to be, and that the people being checked were counting on getting past it.
+
+They did, for a while. When the mispricing was finally caught in February 2008, Credit Suisse disclosed $2.65 billion in additional subprime-related losses. Britain's regulator, the FSA, later fined the bank £5.6 million, and its findings describe a product control failure in plain words: Credit Suisse didn't adequately supervise the group, didn't act in time on concerns that had been raised about its pricing, and lacked the systems and controls to spot, for roughly five months, that those positions were wrongly valued. Serageldin pleaded guilty and was sentenced in November 2013 to 30 months in prison. He is widely described as the only Wall Street banker jailed in the United States for conduct tied to the 2008 financial crisis, and his crime wasn't a bad bet. It was a false price.
+
+The uncomfortable part is *why* five months passed. Level 3 subprime bonds in a frozen market had very few real trades to check against, so the traders really were the people in the building who knew the most about what those bonds were worth. That is the trap Product Control is built for. The less observable a price is, the more a controller depends on the trader's own judgement. And that's exactly when the trader's judgement can't be taken on trust.
+
+## Example 2: India took the price out of the bank's hands
+
+India's banking system was built on a different kind of trading book. Indian banks' treasuries are dominated not by exotic structured credit but by enormous holdings of government securities, bonds that are liquid, standardized and mostly Level 1 or Level 2. That changes where the risk sits. The danger isn't a trader inventing a price for a one-of-a-kind instrument. It's a whole bank, facing a whole bond market falling at once, wanting a softer number than the market is giving it. India's answer has been to take the choice away at three separate layers.
+
+**First, the price itself.** Since March 31, 2018, Indian banks have valued government securities using prices published by Financial Benchmarks India Ltd (FBIL), a benchmark administrator, which took that job over from the industry body FIMMDA. The bank doesn't produce the mark and then have it checked. The mark arrives from outside, the same for every bank. That's IPV built into the market's plumbing rather than performed desk by desk. (RBI has also, for years, required bank treasuries to separate front office, middle office and back office, so valuation doesn't sit with the dealers.)
+
+**Second, the model-based price.** RBI's Master Direction on investment portfolios, issued September 12, 2023 and in force from April 1, 2024, brought the Level 1/2/3 hierarchy into Indian bank rules and then drew a hard line under the bottom level. Net unrealised gains from Level 3 investments, profit that exists only because of a model, can't be paid out as dividends, and are deducted from the bank's core CET1 capital. In plain terms: RBI lets a bank *report* profit from a price nobody can observe, but it won't let the bank *count* it. It's the kid's parents saying, "Fine, tell us the card is worth five hundred, but your pocket money is still based on two hundred."
+
+**Third, the timing of the loss.** A mark is only honest if the loss shows up when it happens. In early 2018, after Indian bond yields rose 67 basis points in a single quarter, RBI let banks spread the mark-to-market losses for the December 2017 and March 2018 quarters over up to four quarters, citing the systemic impact of the yield spike. It paired that relief with a new requirement that banks build an Investment Fluctuation Reserve for the next time. The next time came in 2026. After the West Asia crisis began in late February, the 10-year government bond yield pushed past 7% and bank treasury books took the hit. Banks asked RBI to let them stagger the losses again. On April 15, 2026, RBI said no: the full impact had to be recorded in the March 2026 results, with no deferral or staggered recognition.
+
+Put 2018 next to 2026 and you're looking at the same argument a product controller has with a desk every month, only here it's the regulator having it with the entire banking system. The loss is real today. Spreading it over a year doesn't make it smaller, only harder to see.
+
+## Why this matters for a Business Analyst
+
+### Back to the playground
+
+"Build a P&L report" is not a requirement. It's a request for a number, and Credit Suisse had a P&L report every single day. What it lacked was a system that made the number hard to choose. A BA scoping anything that touches valuation, pricing or P&L should push the requirement until it answers questions like these:
+
+- **Where does each price come from, and who can override it?** Every mark should carry its source (exchange, FBIL, vendor, broker quote, model) and a timestamp. A manual override should need a reason code and a second person's approval: the same [maker-checker](/essays/rogue-trading-when-the-person-trading-is-also-the-person-checking-the-trade) rule, applied to prices instead of trades.
+- **What's the tolerance, and what happens when it's breached?** "IPV flags differences" is unfinished. The requirement is the threshold (by product, by fair value level), who gets the exception, how long they have to resolve it, and whether the book can be signed off with it still open.
+- **How stale is too stale?** A price that hasn't changed in ten trading days on a bond everyone else is repricing is a Level 3 mark in disguise. The system should detect it, not wait for someone to notice.
+- **Is unexplained P&L a number or a gate?** If unexplained P&L above a limit doesn't block the official P&L from being published, it's just a report. For a QA or testing professional, this is the test case that matters most: inject a mark outside tolerance and a P&L move the attribution can't explain, then prove the sign-off stops.
+- **Does every position carry its fair value level?** Level tags drive the reserves, the capital deduction under RBI's rules, and the disclosures. A Level 3 position quietly tagged Level 2 escapes all three.
+
+Behind every one of those is the same design principle: the person whose bonus depends on a number should never be the last person to touch it.
+
+## The hidden tradeoff
+
+Product Control is structurally outgunned. Traders are paid more, know the instruments better and are usually right about their own marks. Most challenges end with the controller agreeing. A controller who pushes back on every mark slows the desk down and makes enemies. A controller who stops pushing back becomes the rubber stamp Credit Suisse's traders were hoping for. And the pressure runs exactly the wrong way: the positions hardest to price independently, where the controller has to lean most on the trader's own expertise, are the same positions where a false mark is easiest to hide and most expensive to find. That tension never resolves. The best a bank can do is build the system so that pushing back is cheap: prices sourced automatically, tolerances enforced by the system, and overrides that leave a trail someone else will read.
+
+## Lighthouse Insight
+
+The kid with the trading card isn't necessarily lying. Maybe he truly believes his card is special. That's the point. Product Control was never built to catch liars. It's built so that belief, however sincere, is never enough to put a number on the books. Credit Suisse's bankers wrote down the profit they wanted and worked the prices out afterwards; an independent check that nobody on the desk could argue down would have surfaced the gap months before the bank finally admitted it. India built that check into the plumbing: prices the bank doesn't choose, model profit it can't count, and, as of this April, losses it can't postpone. Either way, the principle is the same: what you own is worth what someone would actually pay for it today, and the job of an entire desk is to make sure nobody in the building gets to answer that question for themselves.
+
+## Reference anchors
+
+- [SEC: SEC Charges Former Credit Suisse Investment Bankers in Subprime Bond Pricing Scheme During Credit Crisis, 1 February 2012](https://www.sec.gov/news/press/2012/2012-23.htm)
+- [SEC: Complaint against Kareem Serageldin, David Higgs, Salmaan Siddiqui and Faisal Siddiqui](https://www.sec.gov/files/litigation/complaints/2012/comp-pr2012-23.pdf)
+- [US Attorney's Office, SDNY: Former Credit Suisse Managing Director Sentenced in Manhattan Federal Court to 30 Months in Prison](https://www.justice.gov/usao-sdny/pr/former-credit-suisse-managing-director-sentenced-manhattan-federal-court-30-months)
+- [University of Chicago Law Review: The Making of a Mismarker — The Case of the Only Banker Jailed in the U.S. for His Role in the Financial Crash](https://lawreview.uchicago.edu/online-archive/making-mismarker-case-only-banker-jailed-us-his-role-financial-crash)
+- [Money Marketing: FSA fines Credit Suisse £5.6m for systems and controls failings](https://www.moneymarketing.co.uk/news/fsa-fines-credit-suisse-5-6m-for-systems-and-controls-failing/)
+- [RBI: Master Direction — Classification, Valuation and Operation of Investment Portfolio of Commercial Banks (Directions), 2023](https://taxguru.in/rbi/master-direction-classification-valuation-operation-investment-portfolio-commercial-banks-directions-2023.html)
+- [Business Standard: FBIL takes over from FIMMDA for valuation of government securities, 2 April 2018](https://www.business-standard.com/article/pti-stories/fbil-takes-over-from-fimmda-for-valuation-of-government-securities-118040200437_1.html)
+- [Business Standard: RBI allows banks to spread bond trading losses over four quarters, 2 April 2018](https://www.business-standard.com/article/finance/rbi-allows-banks-to-spread-bond-trading-losses-over-four-quarters-118040200766_1.html)
+- [Business Standard: RBI open market operations help banks cut treasury losses in Q4FY26, 27 March 2026](https://www.business-standard.com/finance/news/rbi-omos-help-banks-cut-treasury-losses-in-q4-126032701114_1.html)
+- [Kotak Neo: RBI's tough call on treasury losses may hurt bank profits, 15 April 2026](https://www.kotakneo.com/news/market-news/rbi-rejects-banks-treasury-loss-deferral-q4-impact-15-april/)

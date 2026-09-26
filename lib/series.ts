@@ -402,6 +402,16 @@ export const essayBridges: EssayBridge[] = [
     to: "counterparty-credit-risk-the-desk-meant-to-see-the-whole-client",
     label: "A measurement failure and an enforcement failure — the two ways a risk number stops protecting anyone",
   },
+  {
+    from: "product-control-the-desk-that-refuses-to-take-the-traders-word-for-it",
+    to: "rogue-trading-when-the-person-trading-is-also-the-person-checking-the-trade",
+    label: "A false price on a visible trade versus a real trade hidden entirely — two different ways a desk's number stops being true",
+  },
+  {
+    from: "product-control-the-desk-that-refuses-to-take-the-traders-word-for-it",
+    to: "risk-management-engines-the-gauge-the-driver-isnt-supposed-to-touch",
+    label: "Product Control asks whether today's profit is true; the risk engine asks what tomorrow could cost — both fail the same way when the desk sets the number",
+  },
 ];
 
 const seriesBySlug = new Map<string, { series: EssaySeries; order: number }>();
