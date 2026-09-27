@@ -3,7 +3,7 @@ import { getAllEssays } from "@/lib/essays";
 import { getAllPlaybooks } from "@/lib/ba-playbooks";
 import { getAllPlaybooksPtBr } from "@/lib/ba-playbooks-pt-br";
 import { getAllGreatMinds } from "@/lib/great-minds";
-import { getAllInvisibleBusinesses } from "@/lib/invisible-businesses";
+import { getAllInvisibleBusinesses, titleWithCompany } from "@/lib/invisible-businesses";
 import { getAllTools } from "@/lib/tools";
 import { getAllResources } from "@/lib/resources";
 
@@ -40,7 +40,7 @@ export function getSearchIndex(): SearchItem[] {
 
   const invisibleBusinesses: SearchItem[] = getAllInvisibleBusinesses().map((episode) => ({
     type: "invisibleBusiness",
-    title: episode.title,
+    title: titleWithCompany(episode),
     description: episode.description,
     category: "Invisible Businesses",
     tags: [],

@@ -81,7 +81,8 @@ export default async function Image({ params }: { params: Promise<{ slug: string
                 border: "2px solid #7c3aed",
               }}
             >
-              Episode {String(episode.episode).padStart(2, "0")}
+              Episode {String(episode.episode).padStart(2, "0")} · The Hidden Economics of{" "}
+              {episode.company}
             </div>
           ) : null}
           <div

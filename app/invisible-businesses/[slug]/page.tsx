@@ -58,6 +58,8 @@ import { NextEpisodeCta } from "@/components/invisible-businesses/next-episode-c
 import {
   getAllInvisibleBusinesses,
   getInvisibleBusinessBySlug,
+  hiddenEconomicsLine,
+  titleWithCompany,
   type InvisibleBusinessWithContent,
 } from "@/lib/invisible-businesses";
 import { ibIllustrations } from "@/lib/ib-illustrations";
@@ -126,13 +128,15 @@ export async function generateMetadata({ params }: IBPageProps): Promise<Metadat
   const episode = getInvisibleBusinessBySlug(slug);
   if (!episode) return {};
 
+  const fullTitle = titleWithCompany(episode);
+
   return {
-    title: episode.title,
+    title: fullTitle,
     description: episode.description,
     authors: [{ name: episode.author }],
     alternates: { canonical: `/invisible-businesses/${episode.slug}` },
     openGraph: {
-      title: episode.title,
+      title: fullTitle,
       description: episode.description,
       type: "article",
       publishedTime: episode.date,
@@ -140,7 +144,7 @@ export async function generateMetadata({ params }: IBPageProps): Promise<Metadat
     },
     twitter: {
       card: "summary_large_image",
-      title: episode.title,
+      title: fullTitle,
       description: episode.description,
     },
   };
@@ -204,6 +208,7 @@ export default async function InvisibleBusinessPage({ params }: IBPageProps) {
       <JsonLd data={breadcrumbJsonLd} />
       <IBHero
         episode={episode.episode}
+        kicker={hiddenEconomicsLine(episode.company)}
         title={episode.title}
         tagline={episode.tagline}
         author={episode.author}
