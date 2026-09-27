@@ -49,6 +49,7 @@ import { BajajFinanceEpisodeBody } from "@/components/invisible-businesses/bajaj
 import { DmartEpisodeBody } from "@/components/invisible-businesses/dmart-episode-body";
 import { PhonepeEpisodeBody } from "@/components/invisible-businesses/phonepe-episode-body";
 import { CitadelEpisodeBody } from "@/components/invisible-businesses/citadel-episode-body";
+import { LahoriEpisodeBody } from "@/components/invisible-businesses/lahori-episode-body";
 import { BigIdeaCard } from "@/components/invisible-businesses/big-idea-card";
 import { FlywheelDiagram } from "@/components/invisible-businesses/flywheel-diagram";
 import { InsightGrid } from "@/components/invisible-businesses/insight-grid";
@@ -109,6 +110,7 @@ const customEpisodeBodies: Record<
   "the-rent-dmart-never-pays": DmartEpisodeBody,
   "phonepe-doesnt-sell-payments": PhonepeEpisodeBody,
   "citadel-securities-real-business-is-the-order-flow": CitadelEpisodeBody,
+  "lahori-zeera-where-your-10-rupees-goes": LahoriEpisodeBody,
 };
 
 interface IBPageProps {

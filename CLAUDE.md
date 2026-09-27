@@ -26,6 +26,8 @@ The recurring judgment call across this codebase: **each new entry in a content 
 
 When adding a new entry to either series, default to designing a new bespoke visual unless there's a specific reason to reuse an existing one. Don't propose "just reuse the last diagram" as the default.
 
+**Invisible Businesses titles (decided Sept 2026):** no more "X's Real Business Is Y" or "X Doesn't Sell Y". Those are absolute claims that aren't literally true (Gillette does sell razors). New episodes carry the series line **"The Hidden Economics of [Company]"** as the eyebrow next to the episode number (`kicker` prop on `IBArticleHero`), and the big title is a specific hook the episode itself proves with a sourced number, or a question (e.g. Ep 43, Lahori Zeera: "Where Your ₹10 Actually Goes"). Retitling the 42 older episodes to this pattern is planned but not yet done; keep their slugs unchanged when it happens so shared links don't break. Episode formats can also break from the standard hook → sections → takeaways shape (Ep 43 follows one ₹10 note stop by stop with a sticky tracker).
+
 ## Architecture pattern for a new content type
 
 Mirror the existing pattern (Invisible Businesses / Great Minds):
