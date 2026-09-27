@@ -16,7 +16,10 @@ import { Container } from "@/components/ui/container";
 import { Divider } from "@/components/ui/divider";
 import { Section } from "@/components/ui/section";
 import { Eyebrow } from "@/components/ui/typography";
-import type { InvisibleBusinessWithContent } from "@/lib/invisible-businesses";
+import {
+  hiddenEconomicsLine,
+  type InvisibleBusinessWithContent,
+} from "@/lib/invisible-businesses";
 import { mdxOptions } from "@/lib/mdx-options";
 
 const stopIds = rupeeStops.map((stop) => stop.id);
@@ -51,7 +54,7 @@ function LahoriEpisodeBody({ episode }: { episode: InvisibleBusinessWithContent 
           <article className="flex min-w-0 flex-col gap-10">
             <IBArticleHero
               episode={episode.episode}
-              kicker="The Hidden Economics of Lahori Zeera"
+              kicker={hiddenEconomicsLine(episode.company)}
               title={episode.title}
               tagline={episode.tagline}
               author={episode.author}

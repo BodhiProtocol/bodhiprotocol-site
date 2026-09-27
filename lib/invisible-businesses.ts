@@ -19,6 +19,7 @@ interface InvisibleBusinessFrontmatter {
   title: string;
   tagline: string;
   episode: number;
+  company: string;
   description: string;
   author: string;
   date: string;
@@ -44,6 +45,7 @@ function readEpisodeFile(filename: string): InvisibleBusinessWithContent {
     title: frontmatter.title,
     tagline: frontmatter.tagline,
     episode: frontmatter.episode,
+    company: frontmatter.company,
     description: frontmatter.description,
     author: frontmatter.author,
     date: frontmatter.date,
@@ -99,4 +101,16 @@ export function getAdjacentInvisibleBusinesses(slug: string): {
     previous: index > 0 ? episodes[index - 1] : null,
     next: index < episodes.length - 1 ? episodes[index + 1] : null,
   };
+}
+
+/** The series line shown above every episode title, e.g. "The Hidden Economics of Disney". */
+export function hiddenEconomicsLine(company: string): string {
+  return `The Hidden Economics of ${company}`;
+}
+
+/** Title for tabs, link previews and search: prefixed with the company unless the title already names it. */
+export function titleWithCompany(episode: { title: string; company: string }): string {
+  return episode.title.toLowerCase().includes(episode.company.toLowerCase())
+    ? episode.title
+    : `${episode.company}: ${episode.title}`;
 }
