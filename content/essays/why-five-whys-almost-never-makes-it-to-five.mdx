@@ -1,0 +1,35 @@
+---
+title: "Why 'Five Whys' Almost Never Makes It to Five"
+description: "The technique is named for persistence, not for the number five. Most root-cause investigations stop at the first answer that sounds plausible — usually the second or third why — because that's where the trail first points at a person instead of a process."
+hook: "The first 'why' that names someone else's mistake is exactly where most people stop asking."
+category: "Business Analysis"
+tags: ["process", "root-cause"]
+author: "Surya"
+date: "2026-09-27"
+---
+
+TICKET-2933 has been closed six times this year. Each time, the fix is identical: clear the stuck queue, rerun the batch, mark it resolved. Each time, three to five weeks later, the same nightly reconciliation report shows a mismatched balance again — reopened under a new ticket number, so nobody notices it's the same failure wearing a different ID.
+
+Every one of those six closures had a real, true answer behind it: "the queue got stuck." That's not a lie. It's just not the bottom of anything.
+
+## Think of it as a headache that keeps coming back
+
+You've probably taken a painkiller for a headache, felt fine by evening, and had the exact same headache again two days later — because the painkiller answered "what hurts," not "why does this keep happening." The screen brightness, the skipped lunch, the pillow that's wrong for your neck: none of those get investigated as long as the pain itself keeps being the only thing anyone treats. Five Whys is the discipline of refusing to stop at "what hurts" — asking one more question past the first answer that makes the symptom go away, until the question lands on something that, if it changed, would mean this specific failure literally couldn't happen again.
+
+## The technique, and the example that's been taught for forty years
+
+The name comes from Taiichi Ohno, the engineer behind the Toyota Production System, who described it with a story that's still the field's standard teaching example: a welding robot on the line stopped mid-cycle. Why did the robot stop? A fuse blew from a circuit overload. Why did the circuit overload? The bearings were under-lubricated and locked up. Why were the bearings under-lubricated? The oil pump wasn't circulating enough oil. Why wasn't the pump circulating enough oil? Its intake was clogged with metal shavings. Why was the intake clogged? There was no filter on it to catch shavings from the machining process upstream.
+
+Notice where the easy stop would have been. "The robot stopped because of a blown fuse" is true, and replacing the fuse gets the line running again in ten minutes. It's also exactly the kind of fix TICKET-2933 keeps getting: real, immediate, and guaranteed to need doing again, because nothing about the actual cause — the missing filter — ever changed.
+
+## Five is a floor, not a target
+
+Nothing about the technique requires exactly five questions. Some problems bottom out at three; a few need eight. Treating "five" as a checklist to complete is how people convince themselves they've done a root-cause investigation when they've really just asked enough questions to feel finished. The number was never the discipline. The discipline is refusing to stop at an answer just because it's plausible, satisfying, or convenient to close the ticket on.
+
+## The tell that you haven't reached bottom yet
+
+A root cause has a specific shape: it names something structural — a missing safeguard, a rule nobody wrote down, a check nobody built — not a person or a one-off event. "The analyst forgot to validate the file" isn't a root cause; it's a symptom wearing a different costume, because the real question is why the system let an unvalidated file through in the first place. Run TICKET-2933 through that test: "the queue got stuck" isn't bottom. Why did it get stuck? A specific record with a malformed reference ID entered the queue. Why did a malformed record get that far? Because nothing upstream validates the reference field before it queues. That's a root cause — it names a missing check, not a bad night. Build that validation once, and TICKET-2933 stops reopening under new numbers, because the thing that let it happen six times no longer exists.
+
+## The one-question check
+
+Before closing a ticket on its stated cause, it's worth asking one more question: **does this answer explain why the exact same failure can't happen again, or does it only explain what happened this time?** If it only explains this time, the investigation isn't finished — it just found a plausible place to stop.

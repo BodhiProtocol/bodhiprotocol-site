@@ -214,6 +214,7 @@ export const essaySeries: EssaySeries[] = [
       "why-jira-tickets-rot-in-backlog",
       "scope-creep-is-a-timing-problem",
       "the-decision-outlives-the-meeting-where-it-was-made",
+      "why-five-whys-almost-never-makes-it-to-five",
     ],
   },
 ];
