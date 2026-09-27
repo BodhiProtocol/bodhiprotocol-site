@@ -1,7 +1,8 @@
 // One ₹10 bottle of Lahori Zeera, split by where each paisa ends up. The tax
 // share is exact (40% GST inside a ₹10 MRP); the shopkeeper and distributor
 // cuts are estimates; the rest applies Archian Foods' reported FY25 cost ratios
-// (on ₹540 Cr revenue) to what's left. Shared by the scroll tracker and the
+// (on ₹540 Cr revenue) to what's left. The last stop takes no cut: it's about how
+// fast the note returns, not where it goes. Shared by the scroll tracker and the
 // full-split diagram so the two can never disagree. Amounts sum to 10.00.
 
 interface RupeeCut {
@@ -54,6 +55,7 @@ const rupeeStops: RupeeStop[] = [
     short: "What Lahori keeps",
     cuts: [{ label: "Lahori's profit", amount: 0.25, profit: true }],
   },
+  { id: "stop-8-how-fast-the-note-comes-back", short: "How fast it comes back", cuts: [] },
 ];
 
 const allRupeeCuts = rupeeStops.flatMap((stop) => stop.cuts);

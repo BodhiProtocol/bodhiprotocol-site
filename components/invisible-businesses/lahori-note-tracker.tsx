@@ -48,6 +48,8 @@ function useActiveStop() {
   return activeIndex;
 }
 
+const profitStopIndex = rupeeStops.findIndex((stop) => stop.cuts.some((cut) => cut.profit));
+
 function spentThrough(activeIndex: number) {
   return rupeeStops
     .slice(0, activeIndex + 1)
@@ -101,9 +103,11 @@ function LahoriNoteTracker() {
         </p>
         <p className="font-serif text-4xl font-medium tabular-nums">{formatRupees(left)}</p>
         <p className="text-xs text-muted-foreground">
-          {activeIndex === rupeeStops.length - 1
-            ? "All that's left for the company"
-            : "Still travelling"}
+          {activeIndex < profitStopIndex
+            ? "Still travelling"
+            : activeIndex === profitStopIndex
+              ? "All that's left for the company"
+              : "Paid up front, and back again soon"}
         </p>
         <NoteBar activeIndex={activeIndex} />
       </div>
