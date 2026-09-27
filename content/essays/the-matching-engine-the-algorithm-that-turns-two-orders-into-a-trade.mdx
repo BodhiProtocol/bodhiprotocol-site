@@ -1,0 +1,64 @@
+---
+title: "The Matching Engine: The Algorithm That Turns Two Orders Into a Trade"
+description: "Every 'trade executed' notification is one sentence of code deciding whose order counted first. Price-time priority versus CME's pro-rata futures algorithms, NSE's pre-open equilibrium auction versus NYSE's human-assisted open, and what a 2015 NYSE halt and a 2021 NSE outage reveal about the systems the matching engine can't run without."
+hook: "Every trade executed notification is one sentence of code deciding whose order went first."
+category: "Capital Markets"
+tags: ["markets", "infrastructure"]
+author: "Surya"
+date: "2026-09-18"
+---
+
+Two orders arrive at an exchange within microseconds of each other, at the identical price, for the identical stock. Only one of them can be the one that trades first. Something has to decide, instantly, with no appeal — and that something is a single piece of software sitting at the core of every exchange in the world: the matching engine.
+
+Once an order clears the [OMS and EMS](/essays/oms-vs-ems-the-permission-layer-and-the-tactics-layer) and reaches the exchange gateway, the matching engine is the last decision-maker in the chain, and the only one whose decision is final the instant it's made.
+
+## The rule almost every market defaults to
+
+Most matching engines run on **price-time priority**: the best price always wins first, and among every order sitting at the identical price, whoever arrived first gets filled first. It's the same instinct as a queue at a ticket counter — a better offer cuts the line entirely, but two people offering the identical price get served strictly in the order they showed up. This is the rule underneath the [order book](/essays/how-order-books-work) and the reason a resting [limit order](/essays/order-types-nine-names-for-three-instincts) that's been sitting for an hour fills before an identical one placed a second ago.
+
+It isn't the only rule an exchange can choose, and the choice is never neutral.
+
+## Example 1: CME's alternative — rewarding size instead of speed
+
+CME Group doesn't run pure price-time priority everywhere. Think of splitting a pizza not by who called in the order first, but by how many slices each person already asked for — that's the idea behind **pro-rata** matching. For many of its interest-rate and currency futures — Eurodollar futures historically, and products like EUR/USD futures — CME's Globex engine uses pro-rata allocation instead of FIFO: an incoming order gets split across every resting order at the best price in proportion to each one's size, rounded down to the nearest whole contract, with any leftover allocated by arrival time. The 2-year Treasury futures contract runs a deliberate hybrid, nicknamed the "K algorithm," blending roughly 40% FIFO with 60% pro-rata.
+
+The difference isn't cosmetic. Under FIFO, being first matters more than being big — a small order that arrived a second earlier fills completely before a much larger one behind it gets anything. Under pro-rata, being big matters more than being first — a large resting order earns a proportional slice of every incoming trade regardless of when it was placed, which measurably rewards size over speed and, as a side effect, makes prices somewhat less efficient than a pure FIFO book. An exchange doesn't just pick a tie-breaking rule when it chooses between these two. It picks which kind of trader — the fast one or the large one — its market rewards.
+
+## Example 2: NSE's price-time priority, and the fifteen minutes it deliberately abandons
+
+NSE's continuous market runs strict price-time priority all day, but the exchange runs a genuinely different matching algorithm for exactly fifteen minutes each morning: the **pre-open call auction**, 9:00 to 9:15 a.m. From 9:00 to roughly 9:08, the engine collects every buy and sell order without matching a single one, building a full book with zero trades. Only once that window closes does it switch modes entirely and compute one **equilibrium price** — the single price that lets the largest possible quantity trade — from the whole accumulated book at once, rather than matching arrivals one at a time as they land. If more than one candidate price would clear the identical quantity, the tie-break falls first to whichever price leaves the smallest unmatched imbalance, then to whichever price sits closest to the previous day's close.
+
+It's the same engine, running an entirely different algorithm, because a market that has been closed overnight has a different problem to solve — find one fair starting price for a system with sixteen hours of pent-up information behind it — than a market that's already running and just needs the next order matched.
+
+NYSE solves the same problem with a visible human layer NSE's version doesn't have. In the minutes before 9:30 a.m., NYSE continuously publishes an Indicative Opening Price, Indicative Matched Volume, and Order Imbalance for every listed stock — the same batch-auction logic NSE runs blind until the close of its own window. But NYSE also assigns a **Designated Market Maker** to every listed name, with standing authority to commit the firm's own capital against a large imbalance before the auction locks in a price. NSE's opening algorithm is purely mechanical. NYSE's is the identical mathematical idea with a human allowed to lean on the scale.
+
+## What the engine actually promises
+
+A matching engine's real job isn't just "match orders." It's produce the exact same result every time from the exact same inputs, so that a trade can never later be credibly disputed as arbitrary. That determinism is why the engine — and everything that has to feed it live, trustworthy information — being unavailable is treated as a market-wide emergency rather than an inconvenience.
+
+**NYSE, July 8, 2015.** A routine software update, rolled out to bring the exchange into compliance with new timestamp requirements, left some customer gateways running a version that couldn't communicate properly with the trading units behind them. The mismatch worsened through the morning until NYSE suspended trading in every listed symbol at 11:32 a.m. ET and didn't reopen until just after 3 p.m. — roughly three and a half hours where NYSE's matching engines sat idle not because their own logic failed, but because the layer responsible for reliably handing them orders couldn't do its job.
+
+**NSE, February 24, 2021.** Construction work severed telecom links between NSE's primary and backup data centers, and an undocumented failover routine on the storage system behind it didn't behave the way NSE's own design required. The matching algorithm itself was never the problem — but the online risk-management system belonging to NSE Clearing, the check that has to run and clear before a trade can be allowed to happen at all, went dark with it. NSE halted the entire market for close to four hours rather than let anything match without that check in place.
+
+Neither engine actually got price-time priority wrong that day. Both markets stopped because a system feeding the engine, or depending on what it produces, lost the ability to be trusted — which is the real lesson: "match this order" is only ever the last link in a chain the engine cannot run without.
+
+## Why this matters for a Business Analyst
+
+### Think of a scoring system with no do-overs
+
+Picture a competition's scoring system built to declare a winner the instant a tie-breaker rule fires — no pause, no "let us check with the judges," no revisiting the call five minutes later. A matching engine occupies exactly that role, for every trade on an exchange, thousands of times a second, and it can never come back afterward and reconsider.
+
+That's why the word "fairly" is dangerous in a requirement. "The system should match incoming orders fairly" means something different depending on which real algorithm sits behind it: fair in a FIFO book means whoever pressed submit first; fair in a CME-style pro-rata book means whoever is holding the largest resting order; fair for NSE's first fifteen minutes means neither of those — it means whichever price clears the most shares. [Writing a requirement that survives contact with engineering](/essays/writing-requirements-that-survive-contact-with-engineering) means picking one of those three explicitly. An acceptance criterion that just says "fairly" isn't a requirement yet. It's an unresolved design decision still wearing a requirement's clothes.
+
+## Lighthouse Insight
+
+Every exchange in the world runs some version of the same idea — two lists, one rule for breaking a tie — and no two exchanges picked the identical rule. The same exchange doesn't even use one rule all day: NSE runs price-time priority for six and a half hours and an entirely different algorithm for the fifteen minutes before it opens. The engine's job was never only to match orders. It was to decide, in advance and on the record, exactly whose claim on a trade counts first — and then never once change its mind about it afterward.
+
+## Reference anchors
+
+- [CME Group: Supported Matching Algorithms](https://www.cmegroup.com/confluence/display/EPICSANDBOX/Supported+Matching+Algorithms)
+- [Databento: CME Matching Algorithms Explained](https://databento.com/blog/cme-matching-algorithms-explained)
+- [NSE India: Pre-Open Session](https://www.nseindia.com/static/products-services/equity-market-pre-open)
+- [NYSE: Designated Market Makers](https://www.nyse.com/publicdocs/nyse/markets/nyse/designated_market_makers.pdf)
+- [NPR: NYSE Says Software Update to Blame for Trading Halt (July 8, 2015)](https://www.npr.org/sections/thetwo-way/2015/07/09/421485685/nyse-says-software-update-to-blame-for-trading-halt)
+- [Moneylife: NSE Trading Halt — SEBI Probe Reveals Faulty Design and Low Capacity at the Exchange and NCL](https://www.moneylife.in/article/nse-trading-halt-sebi-probe-reveals-faulty-design-and-low-capacity-at-the-exchange-and-ncl/66739.html)

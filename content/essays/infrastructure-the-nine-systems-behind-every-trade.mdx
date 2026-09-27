@@ -16,12 +16,12 @@ That's the honest reason infrastructure is the part almost nobody explains. Clea
 
 Think of an order the way an airline thinks of a passenger, not a parcel.
 
-- **OMS (Order Management System)** is the flight plan and the control tower on your side of the trade — the broker or firm's system of record. It checks whether the order is even allowed to fly: KYC, margin, position limits, before it reaches a market.
-- **EMS (Execution Management System)** is the pilot. Once the OMS clears the order for takeoff, the EMS decides how to actually fly it — which venue, which algorithm, how much size to reveal at once.
+- **[OMS (Order Management System)](/essays/oms-vs-ems-the-permission-layer-and-the-tactics-layer)** is the flight plan and the control tower on your side of the trade — the broker or firm's system of record. It checks whether the order is even allowed to fly: KYC, margin, position limits, before it reaches a market.
+- **[EMS (Execution Management System)](/essays/oms-vs-ems-the-permission-layer-and-the-tactics-layer)** is the pilot. Once the OMS clears the order for takeoff, the EMS decides how to actually fly it — which venue, which algorithm, how much size to reveal at once.
 - **FIX Protocol** is the language every tower and every cockpit agrees to speak. It isn't a system, it's a message format — `NewOrderSingle`, `ExecutionReport` — that lets an OMS built by one company talk to an EMS built by another, and both talk to an exchange built by a third, without any of them needing to know how the others were coded.
-- **Market Data** is the weather radar. Every decision above — the EMS choosing an algorithm, the OMS running a risk check — is reading a live feed of quotes and depth. Without it, every system on this list is flying blind.
-- **Exchange Gateway** is the airport gate: the literal, often co-located, technical doorway an order passes through to enter the exchange's own infrastructure. It's the last hop before the order stops being yours and becomes the exchange's problem.
-- **Matching Engine** is air traffic control assigning runways. It's the software at the exchange's core that pairs your buy with someone's sell, by price-time priority, and stamps out a trade.
+- **[Market Data](/essays/market-data-the-broadcast-delay-nobody-else-can-see)** is the weather radar. Every decision above — the EMS choosing an algorithm, the OMS running a risk check — is reading a live feed of quotes and depth. Without it, every system on this list is flying blind.
+- **[Exchange Gateway](/essays/the-exchange-gateway-the-checkpoint-that-never-stops-testing-you)** is the airport gate: the literal, often co-located, technical doorway an order passes through to enter the exchange's own infrastructure. It's the last hop before the order stops being yours and becomes the exchange's problem.
+- **[Matching Engine](/essays/the-matching-engine-the-algorithm-that-turns-two-orders-into-a-trade)** is air traffic control assigning runways. It's the software at the exchange's core that pairs your buy with someone's sell, by price-time priority, and stamps out a trade.
 
 That's six systems, and the order hasn't even settled yet.
 
@@ -30,8 +30,8 @@ That's six systems, and the order hasn't even settled yet.
 A completed trade still isn't a settled one.
 
 - **CCP (Central Counterparty)** steps in immediately after the match and, through [novation](/essays/novation-how-a-clearinghouse-becomes-everyones-counterparty), becomes the buyer to your sell and the seller to your buy — mutualizing the risk that either original side might not show up.
-- **SWIFT** is the international mail system for what follows. It doesn't move money or securities itself; it carries the verified instruction that tells banks and custodians to move them.
-- **Custodian** is where the trade actually lands — the institution that holds your securities and cash after settlement, and handles what happens to them afterward: dividends, splits, corporate actions.
+- **[SWIFT](/essays/swift-and-the-custodian-the-shipping-label-and-the-warehouse)** is the international mail system for what follows. It doesn't move money or securities itself; it carries the verified instruction that tells banks and custodians to move them.
+- **[Custodian](/essays/swift-and-the-custodian-the-shipping-label-and-the-warehouse)** is where the trade actually lands — the institution that holds your securities and cash after settlement, and handles what happens to them afterward: dividends, splits, corporate actions.
 
 ## Example 1: A trade's flight path in India
 

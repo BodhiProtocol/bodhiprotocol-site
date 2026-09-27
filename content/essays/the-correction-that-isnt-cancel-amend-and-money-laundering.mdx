@@ -1,0 +1,56 @@
+---
+title: "The Correction That Isn't: How Cancel and Amend Get Used to Launder a Trade"
+description: "Spoofing exploits the cancel side of a trade's lifecycle. Cherry-picking exploits the allocation step. There's a third abuse living in the same neighborhood, and it targets the operation this site's cancel/amend/delete essay treats as routine: the post-execution correction. India's client-code-modification abuse and Deutsche Bank's Russian mirror trades show what happens when 'who does this trade actually belong to' gets decided after the outcome is already known — with the audit trail relabeled as a mistake instead of a value transfer."
+hook: "A genuine correction fixes an error nobody could have profited from knowing about in advance. A laundering correction fixes exactly that."
+category: "Market Abuse"
+tags: ["market-abuse", "surveillance", "money-laundering"]
+author: "Surya"
+date: "2026-09-16"
+---
+
+Five friends split a pizza and agree upfront: everyone pays an equal share. The pizza arrives, one slice is burnt, and — fair enough — they adjust afterward so the person who got the burnt slice pays a little less. That's a correction. It fixes a real problem nobody could have arranged for in advance.
+
+Now imagine the same group "corrects" the bill every single week, and it always happens to work out that whoever complained loudest pays least, regardless of which slice was actually burnt. At that point "correction" isn't the right word anymore for what's happening. The bill-splitting step — meant to fix honest mistakes — has become the mechanism for deciding who pays, after everyone already knows who wants what.
+
+Trading has this exact same step, and [the cancel/amend/delete essay on this site](/essays/cancel-amend-delete-what-changes-the-moment-a-trade-executes) already named why it exists: a trade's record is never deleted once it's confirmed, only corrected — a new entry that fixes an account, a settlement date, or a client code, leaving the original price and quantity untouched. That correction tool is routine and necessary. It's also the third place, after cancel and after allocation, where this site's Market Abuse essays haven't yet gone — because a correction made *after* everyone already knows which trade made money is doing something very different from a correction made to fix an honest mistake.
+
+## Not the same abuse as the other two
+
+Worth being precise about what this essay isn't, since two adjacent abuses are already covered here in depth. [Spoofing](/essays/what-spoofing-actually-looks-like) lives entirely on the cancel side, before execution — fake orders that were never meant to trade. [Cherry-picking](/essays/allocation-one-block-trade-many-owners) lives on the allocation side — a fund manager choosing, after a block fills, which of *their own* clients gets which slice of one execution.
+
+This is a third thing: not faking an order, and not favoring one client over another within a single fiduciary relationship — it's changing *whose trade this was at all*, after the fact, between parties who may have no real relationship to each other beyond the transaction being reassigned. The tool that makes this possible is the same "fix a genuine error" correction mechanism every trading system needs. The abuse is running it backward — deciding the counterparty after the outcome is known, instead of before.
+
+## India: when "client code modification" stopped meaning "fixed a typo"
+
+Every broker's dealing desk needs a way to fix a genuine punching error — a dealer keys in the wrong client account code seconds after placing an order, and correcting it before settlement is routine, necessary, and, done properly, harmless. Indian exchanges call this **Client Code Modification (CCM)**: the broker changes which client's account a trade is booked against, after execution.
+
+Tax authorities noticed it was being used for something else. The Central Board of Direct Taxes flagged to the exchanges that client codes were being switched well after the fact, and not to fix typos — trades were being rebooked from one client code to another specifically once it was clear which side had turned profitable and which hadn't, letting a broker or a ring of related clients shift gains into one entity and losses into another. That's not a correction of a mistake nobody could have foreseen. It's a decision about who legally owns a profit or a loss, made only once the market had already answered the question of which was which — the exact inversion of what a correction mechanism is supposed to be for, and a channel that let unaccounted cash surface as a "clean" trading gain in one client code while the matching loss sat quietly in another.
+
+SEBI's response, tightened through circulars in 2011, didn't ban CCM — genuine errors still happen. It made non-institutional modifications expensive: a trading member doing "unnecessary" client code changes on non-institutional trades faces a penalty of 2% of the value of every modified trade, once such modifications exceed 5% of that member's non-institutional turnover, and exchanges were required to report the original code, the modified code, and both clients' PAN numbers for every change. The fix wasn't to remove the correction tool. It was to make using it at scale, without a genuine reason, cost more than whatever it was disguising.
+
+## International: when the "correction" is really a pair of trades, not one
+
+Deutsche Bank's Moscow equities desk ran a different mechanism toward the same end between 2012 and 2014, at a scale far beyond anything a single client-code fix could reach. A Russian client would place an order to buy blue-chip Russian stock in rubles; almost immediately, a related counterparty — typically registered offshore, in Cyprus, Estonia, or Latvia — would sell the identical stock, in identical size, through the bank's London desk, settled in US dollars. Run that pair more than 2,400 times, and you've moved roughly $10 billion out of Russia dressed up as ordinary securities trading, with no genuine investment purpose behind either leg — the stock itself was incidental; the point was the payment on the other side of it landing offshore in hard currency.
+
+This isn't a cancel or an amend at all — both trades were genuine, filled, and never touched again. It's the structural sibling of the CCM story: instead of reassigning who owns a trade after the outcome is known, the mirror-trade scheme built the reassignment directly into a matched pair of trades from the start, so no correction step was ever needed to notice. Regulators fined Deutsche Bank $425 million (New York's Department of Financial Services) and £163 million (the UK's FCA) in 2017, both for the same underlying finding: the bank's controls never asked why thousands of trades existed that had no economic purpose beyond moving money across a border.
+
+Put the two side by side and the lesson isn't about cancel or amend specifically — it's that *any* point in a trade's lifecycle where "who this belongs to" is a decision rather than a market fact is a place money can be laundered through, whether that decision gets made by relabeling one trade after the fact or by pairing two genuine trades that were never meant to net out to anything real.
+
+## Why it matters for a BA or QA
+
+A control that only checks *whether* a client code modification or trade correction was reported misses the fraud entirely — CCM abuse was always fully visible in the exchange's own records, right down to both PANs, and it still ran for years before enforcement caught up. What a system actually needs to flag is the **timing and pattern** relative to outcome, the same principle the allocation essay makes for cherry-picking: a modification rate that spikes specifically for a broker or client group, concentrated in trades that moved favorably before the switch, is the tell — not the existence of modifications themselves, which happen constantly and legitimately.
+
+That means building, as a standing control rather than an audit finding: a modification-rate threshold per broker that triggers review before it triggers a fine; a rule that timestamps every correction against the trade's own fill time and flags any gap wide enough that the outcome was already knowable; and, for cross-border desks, screening matched or mirrored trade pairs between related counterparties for genuine economic purpose, not just for matching price and size. None of that requires banning corrections — it requires treating "who benefited from this correction, and when did they know the outcome" as the question surveillance actually has to answer.
+
+## Lighthouse insight
+
+Go back to the pizza. Nobody minds an honest adjustment for the slice that came out burnt — that's what makes a fair correction fair: it fixes something nobody could have arranged in their own favor in advance. What breaks is the same tool run the other direction, deciding who owes what only once everyone already knows who wants to avoid paying. A trading system's correction and rebooking tools exist for exactly the honest version of that fix. The CCM abuse SEBI spent years unwinding, and the $10 billion that moved out of Russia through Deutsche Bank's mirror trades, are the same principle at two different scales: the moment "who owns this" becomes a decision made after the market has already spoken, the correction step stops being a fix and starts being the fraud.
+
+## Reference anchors
+
+- [Business Standard: Client code change rules for brokers made strict, 2011](https://www.business-standard.com/article/markets/client-code-change-rules-for-brokers-made-strict-111080300043_1.html)
+- [Business Standard: SEBI to impose penalty for client code modification, 2011](https://www.business-standard.com/article/markets/sebi-to-impose-penalty-for-client-code-modification-111070600103_1.html)
+- [A2Z Taxcorp: SEBI keen to relax punching errors in trades but concerned over tax evasion, circular trading](https://a2ztaxcorp.net/sebi-keen-to-relax-punching-errors-in-trades-but-concerned-over-tax-evasion-circular-trading/)
+- [FCA: Deutsche Bank fined £163 million for anti-money laundering controls failings, 2017](https://www.fca.org.uk/news/press-releases/fca-fines-deutsche-bank-163-million-anti-money-laundering-controls-failure)
+- [NYDFS: Deutsche Bank press release on Russian mirror-trading settlement, 2017](https://www.dfs.ny.gov/reports_and_publications/press_releases/pr1701301)
+- [Bloomberg: Deutsche Bank ends N.Y. mirror-trade probe for $425 million](https://www.bloomberg.com/news/articles/2017-01-30/deutsche-bank-settles-n-y-mirror-trade-probe-for-425-million)

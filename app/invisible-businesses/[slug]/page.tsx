@@ -48,6 +48,7 @@ import { UrbanCompanyEpisodeBody } from "@/components/invisible-businesses/urban
 import { BajajFinanceEpisodeBody } from "@/components/invisible-businesses/bajaj-finance-episode-body";
 import { DmartEpisodeBody } from "@/components/invisible-businesses/dmart-episode-body";
 import { PhonepeEpisodeBody } from "@/components/invisible-businesses/phonepe-episode-body";
+import { CitadelEpisodeBody } from "@/components/invisible-businesses/citadel-episode-body";
 import { BigIdeaCard } from "@/components/invisible-businesses/big-idea-card";
 import { FlywheelDiagram } from "@/components/invisible-businesses/flywheel-diagram";
 import { InsightGrid } from "@/components/invisible-businesses/insight-grid";
@@ -107,6 +108,7 @@ const customEpisodeBodies: Record<
   "bajaj-finance-makes-its-money-on-loan-two": BajajFinanceEpisodeBody,
   "the-rent-dmart-never-pays": DmartEpisodeBody,
   "phonepe-doesnt-sell-payments": PhonepeEpisodeBody,
+  "citadel-securities-real-business-is-the-order-flow": CitadelEpisodeBody,
 };
 
 interface IBPageProps {
