@@ -1,0 +1,31 @@
+---
+title: "RACI Doesn't Work Until Exactly One Person Is Accountable"
+description: "R, C, and I are the easy letters. The whole technique lives or dies on one rule nobody enforces: the 'A' column needs exactly one name in it, never zero, never several."
+hook: "Three people accountable for the same control means zero people accountable for it."
+category: "Business Analysis"
+tags: ["process", "accountability"]
+author: "Surya"
+date: "2026-09-27"
+---
+
+A reconciliation break sits unresolved for eleven days before anyone notices it's still open. Ops assumed Risk was chasing it, because Risk gets copied on every exception report. Risk assumed Ops owned it, because reconciliation breaks default to an Ops queue. Technology assumed both of them had it, because the system correctly flagged the break and did its job the moment it appeared. Three teams, three reasonable assumptions, eleven days where an actual dollar mismatch just sat there — because the control's RACI matrix listed all three teams as **Accountable**.
+
+## Think of it as three roommates and one dish in the sink
+
+You've probably lived somewhere a dish sat in the sink for a week because it was "everyone's kitchen" — which in practice meant it was no one's dish. If three people are each a third responsible for washing it, all three can honestly say it wasn't really on them when someone finally complains. A RACI matrix exists to stop that exact math from running at work. It does that with one specific number: not zero people answerable for a thing, and not several — exactly one person whose name is the answer when someone asks "whose job was this."
+
+## What the four letters actually divide
+
+**Responsible** is whoever does the work — and this one *can* be several people; three analysts can all be Responsible for testing the same control. **Accountable** is the one person who answers for whether it got done and got done right, even if they delegated every bit of the doing. **Consulted** means a real, two-way conversation happens before a decision — their input can change the outcome. **Informed** means a one-way notice after the fact — they need to know, but they don't get a vote. Most matrices that fail get R and A tangled together, treating "does the work" and "answers for the work" as the same question. They aren't. A junior analyst can be Responsible for running a reconciliation every day without ever being the person who answers for it going unresolved.
+
+## The rule that actually carries the whole technique
+
+Everything above is standard definition. The part that actually determines whether a RACI matrix does anything is a single constraint most teams quietly break: **exactly one A per row, never zero, never more than one.** Listing three teams as jointly Accountable feels inclusive — nobody's left out, nobody's singled out, everyone's a stakeholder. It also means the matrix has stopped doing its one job. A row with zero A's is an oversight. A row with three A's is the same oversight wearing a more polite costume, because the practical effect — no single name answers for it — is identical either way.
+
+## Run the reconciliation break back through it
+
+Give that control a real RACI instead of a friendly one: Ops is Accountable, full stop — the break belongs to them from the moment it opens until it closes, whoever else is in the room. Risk is Consulted — they set the materiality threshold and get pulled in before an old break gets escalated or written off, with real input into that call. Technology is Informed — they need visibility that the break exists, but they're not the ones whose job it is to chase it down. Run the same eleven-day gap through that assignment and it can't happen the same way, because there was exactly one name the break belonged to from minute one, not three people each holding a third of an excuse.
+
+## The one-question check
+
+Before treating a RACI matrix as finished, check every row against one question: **is there exactly one name in the "A" column — not zero, not several?** If any row fails that check, it isn't more carefully covered by having extra names in it. It's covered by nobody in particular.

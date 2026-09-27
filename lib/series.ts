@@ -215,6 +215,7 @@ export const essaySeries: EssaySeries[] = [
       "scope-creep-is-a-timing-problem",
       "the-decision-outlives-the-meeting-where-it-was-made",
       "why-five-whys-almost-never-makes-it-to-five",
+      "raci-doesnt-work-until-exactly-one-person-is-accountable",
     ],
   },
 ];
