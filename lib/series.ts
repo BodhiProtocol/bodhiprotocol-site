@@ -402,6 +402,11 @@ export const essayBridges: EssayBridge[] = [
     to: "counterparty-credit-risk-the-desk-meant-to-see-the-whole-client",
     label: "A measurement failure and an enforcement failure — the two ways a risk number stops protecting anyone",
   },
+  {
+    from: "post-trade-compression-the-subscription-netting-never-cancels",
+    to: "netting-how-finance-cancels-a-mountain-of-debt-into-a-pebble",
+    label: "Netting collapses what has to be paid; compression is the separate act of destroying the contracts themselves",
+  },
 ];
 
 const seriesBySlug = new Map<string, { series: EssaySeries; order: number }>();
