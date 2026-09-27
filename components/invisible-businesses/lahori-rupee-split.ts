@@ -20,7 +20,7 @@ interface RupeeStop {
 }
 
 const rupeeStops: RupeeStop[] = [
-  { id: "stop-1-a-price-that-never-moves", short: "The price", cuts: [] },
+  { id: "stop-1-a-price-built-around-one-note", short: "The price", cuts: [] },
   {
     id: "stop-2-the-fizz-tax",
     short: "The fizz tax",
