@@ -18,12 +18,12 @@ Here's the part almost nobody knows: at that moment, your bank still hasn't actu
 
 Think of passing a note to a friend across a classroom. You don't throw it; you hand it to the person next to you, who hands it on, and the teacher at the front makes sure every note goes to the right desk. Nobody needs to know where your friend sits. They only need their name.
 
-UPI works the same way. The "name" is your **UPI ID**, or virtual payment address (VPA), something like `surya@okbank`. It's a nickname that points to your bank account without revealing the account number. When you pay, the message travels like this:
+Brazil's Pix made this idea famous with **Pix keys**: instead of typing a bank and account number, you pay someone's phone number, email address, tax ID or a random key, and the central bank's directory looks up which account it belongs to. UPI does the same with your **UPI ID**, or virtual payment address (VPA), something like `surya@okbank`: a nickname that points to your bank account without revealing the account number. When you pay, the message travels like this:
 
 1. **Your app** (PhonePe, Google Pay, Paytm, your bank's own app) packages the request: who's paying, who's being paid, how much.
-2. It goes to the app's **payment service provider (PSP) bank**, the bank that sponsors that app onto UPI. Apps like PhonePe aren't banks; they ride on partner banks.
+2. It goes to the app's **payment service provider (PSP) bank**, the bank that sponsors that app onto UPI. Apps like PhonePe and Google Pay aren't banks; in NPCI's language they're **third-party application providers (TPAPs)**, and they ride on partner banks.
 3. The PSP bank passes it to **NPCI's central switch**. NPCI, the National Payments Corporation of India, is the teacher at the front of the class: it knows which bank sits behind every UPI ID.
-4. NPCI sends a debit request to **your bank** (the *issuer*). Your bank checks your **UPI PIN**. The app never sees it; it's encrypted on your phone and only your bank can read it. If the PIN is right and the money's there, your bank debits you.
+4. NPCI sends a debit request to **your bank** (the *issuer*). Your bank checks your **UPI PIN**. The app never sees it: it's encrypted on your phone before it leaves, and it's your bank that verifies it. If the PIN is right and the money's there, your bank debits you.
 5. NPCI sends a credit instruction to **the chai-wala's bank** (the *beneficiary*), which credits the chai-wala's account.
 6. Confirmations flow back, and the soundbox speaks.
 
@@ -39,19 +39,20 @@ Countries have made different choices here, and the choice matters.
 
 **The United Kingdom's Faster Payments**, launched in 2008, made the same one India did: deferred net settlement, with settlement at the Bank of England three times a business day. To make sure a bank can't fail to pay its net bill, UK participants **prefund**, keeping enough money at the central bank to cover the most they could possibly owe.
 
-**Brazil's Pix** (launched November 2020) and **the US FedNow** (July 2023) went the other way: **real-time gross settlement**. Every single payment settles individually, instantly, in central bank money. There's no end-of-cycle bill, because each payment has already been paid, bank to bank, the moment it happens.
+**Brazil's Pix** (launched November 2020) and **the US FedNow** (July 2023) went the other way: **real-time gross settlement**. Every payment settles individually and instantly in central bank money, so there's no end-of-cycle bill at all.
 
-**India's UPI** chose netting for a reason: volume. UPI handled a record **23.66 billion transactions in July 2026**, about 76 crore a day. Settling each one individually through central bank accounts would mean moving money between banks about 76 crore times a day; netting shrinks that to a handful of transfers per cycle. The trade-off is a small window where the chai-wala has been paid but the chai-wala's bank hasn't yet. For you, that's invisible. For a bank's treasury team, it's a number they watch all day. It's the difference between a payment being *done* and being [final](/essays/settlement-finality-when-a-trade-stops-being-a-promise).
+**India's UPI** chose netting for volume: a record **23.66 billion transactions in July 2026**, about 76 crore a day. Settling each one individually would mean 76 crore bank-to-bank transfers a day; netting shrinks that to a handful per cycle. The trade-off is a window where the chai-wala has been paid but the chai-wala's bank hasn't. Invisible to you; watched all day by every bank's treasury team. It's the gap between a payment being *done* and being [final](/essays/settlement-finality-when-a-trade-stops-being-a-promise).
 
 ## Why it's free, and who pays anyway
 
 Think of a public road. You don't pay each time you drive on it, but somebody built it and somebody maintains it. "Free" means the cost moved, not that it vanished.
 
-In **Brazil**, Pix is free between individuals, but businesses can be charged, and merchants typically pay around 0.33% per payment, a fraction of the 2–5% they pay to accept cards. That fee helps banks cover the cost of running it.
+In **Brazil**, Pix is free between individuals, but banks are allowed to charge businesses for receiving Pix payments, and they set their own prices, generally well below what the same shop pays to accept cards. Those business fees help banks cover the cost of running it.
 
 **India** went further. Since 1 January 2020, the fee a merchant pays to accept a UPI payment (the *merchant discount rate*, or MDR) has been set at **zero** by law. So who pays for the servers, the fraud checks and the customer support?
 
 - **The government, partly.** For 2024–25, the Union Cabinet approved **₹1,500 crore** to pay banks 0.15% on UPI payments of up to ₹2,000 to small merchants. Only 80% is paid automatically; the rest depends on the bank keeping technical failures below 0.75% and uptime above 99.5%. The subsidy is designed to buy reliability, not just volume.
+- **Credit, increasingly.** Since 2022, RuPay credit cards can be linked to UPI, and those payments are *not* free for the shop: merchants pay an interchange fee of roughly 1–2%, except small merchants on payments up to ₹2,000. It's how "free" UPI is quietly growing a paid lane.
 - **The banks and apps, mostly.** They carry the running cost and try to earn it back elsewhere. That's the whole business model behind [Paytm's soundbox](/invisible-businesses/paytm-doesnt-sell-payments) and [PhonePe's loans and insurance](/invisible-businesses/phonepe-doesnt-sell-payments): the free payment is how they get close enough to sell you something that isn't free.
 
 ## Why UPI grew faster than anything else
@@ -66,7 +67,7 @@ Here's the scale gap. The IMF has identified UPI as the world's largest real-tim
 | Cost to the person paying | Free | Free | Set by your bank | Usually free |
 | Scale | ~23.7 billion a month | ~6.6 billion a month | ~8.4 million in all of 2025 | Far smaller than UPI |
 
-The difference isn't mainly technology. It's **interoperability**, and who's allowed in. In India, any UPI app can pay any UPI ID at any bank, and third-party apps like PhonePe and Google Pay were allowed to build on it from the start. Brazil did something similar: its central bank required large banks to offer Pix, so it was everywhere on day one. FedNow is voluntary; about 1,800 banks and credit unions had joined by 2026, but many can receive payments without yet being able to send them. A payment network is only as useful as the number of people you can reach with it.
+The difference isn't mainly technology. It's **interoperability**, and who's allowed in. In India, any UPI app can pay any UPI ID at any bank, and third-party apps like PhonePe and Google Pay were allowed to build on it from the start. Brazil did something similar: its central bank required large banks to offer Pix, so it was everywhere on day one. FedNow is voluntary; about 1,800 banks and credit unions had joined by 2026, but many can receive payments without yet being able to send them. A payment network is only as useful as the number of people you can reach with it, which is also why UPI now reaches abroad: since February 2023 it has been linked to Singapore's PayNow, so money can move between the two countries' fast-payment systems using a UPI ID on one side and a phone number on the other.
 
 ## Where it breaks
 
@@ -83,9 +84,11 @@ Scale at this speed brings two problems a slower system never has to face.
 Every UPI flow has states between "started" and "done", and most production problems in payments live in those states, not in the happy path.
 
 - **Pending is a real state.** A payment can debit you and then time out before the other bank confirms. A requirement that only says "the payment succeeds or fails" has skipped the case customers actually complain about. [Acceptance criteria](/essays/from-stakeholder-sentence-to-acceptance-criteria) need to name what the user sees, and what the system does, while a payment is pending.
-- **Reversals have a legal clock.** Under the RBI's 2019 turnaround-time framework, a failed UPI payment where money has left your account must be reversed by the next day (T+1); after that, the bank owes compensation of ₹100 a day. "Refund failed payments" is not a requirement. "Auto-reverse within T+1, and flag anything older for compensation" is.
+- **Reversals have a legal clock, and India's is short.** Under the RBI's 2019 turnaround-time framework, a failed UPI payment where money has left your account must be reversed by the next day (T+1); after that, the bank owes compensation of ₹100 a day. "Refund failed payments" is not a requirement. "Auto-reverse within T+1, and flag anything older for compensation" is.
 - **Three records must agree.** The app, the bank and NPCI each keep their own record of every payment, and settlement happens in cycles later. A good design [assumes those records already disagree](/essays/reconciliation-the-discipline-of-assuming-two-records-already-disagree) and says how the mismatch gets found and fixed, not whether.
 - **Retries must not double-pay.** If an app retries a request after a timeout, the system has to recognise it as the same payment, not a new one. Testers should try it on purpose.
+- **Limits are part of the spec.** Most UPI payments are capped at ₹1 lakh each, with higher caps for specific categories such as tax, hospital and education payments. **UPI Lite** is a separate lane entirely: small payments of up to ₹1,000 from an on-device balance of up to ₹5,000, with no PIN. Every one of those numbers is a boundary a tester should hit exactly, and just over.
+- **Disputes have their own plumbing.** The US gives banks a long, rule-bound window: under Regulation E, a bank generally has 10 business days to investigate a consumer's electronic-payment error. UPI routes complaints through NPCI's **UDIR** (Unified Dispute and Issue Resolution) system, raised from inside the payment app, and since November 2025 disputes even settle in their own separate cycles. A requirement should say which journey a complaint takes, not just that one "can be raised".
 
 ## Lighthouse Insight
 
@@ -102,4 +105,6 @@ UPI's trick is that it separated two things most people assume are one: the *pro
 - [Business Standard: NPCI extends market-share cap deadline to end-2026](https://www.business-standard.com/finance/news/npci-extends-market-cap-deadline-for-upi-apps-by-two-years-to-end-of-2026-124123100856_1.html)
 - [Wikipedia: Pix (payment system)](https://en.wikipedia.org/wiki/Pix_(payment_system))
 - [Federal Reserve Financial Services: FedNow volume and value statistics](https://www.frbservices.org/resources/financial-services/fednow/volume-value-stats)
+- [NPCI: RuPay Credit Card on UPI FAQs](https://www.npci.org.in/what-we-do/rupay/rupay-credit-card-on-upi/faqs)
+- [ClearTax: UPI Lite limits](https://cleartax.in/s/what-is-upi-lite)
 - [World Bank: UK Faster Payments case study](https://fastpayments.worldbank.org/sites/default/files/2021-09/World_Bank_FPS_UK_FPS_Case_Study.pdf)
