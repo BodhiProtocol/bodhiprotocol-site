@@ -409,6 +409,11 @@ export const essayBridges: EssayBridge[] = [
     to: "netting-how-finance-cancels-a-mountain-of-debt-into-a-pebble",
     label: "Netting collapses what has to be paid; compression is the separate act of destroying the contracts themselves",
   },
+  {
+    from: "t-plus-1-settlement-the-deadline-shrank-but-the-money-still-has-to-cross-an-ocean",
+    to: "settlement-fails-what-happens-when-a-trade-refuses-to-deliver",
+    label: "A shorter deadline reduces how long a fail can sit unnoticed — it doesn't reduce what happens once one occurs",
+  },
 ];
 
 const seriesBySlug = new Map<string, { series: EssaySeries; order: number }>();

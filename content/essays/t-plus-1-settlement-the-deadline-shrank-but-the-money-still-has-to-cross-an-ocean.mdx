@@ -1,0 +1,54 @@
+---
+title: "T+1 Settlement: The Deadline Shrank. The Money Still Has to Cross an Ocean."
+description: "The US cut its settlement deadline from two days to one in May 2024 — sixteen months after India had already finished doing the same thing across its entire equity market. Both markets hit the identical wall on the way: a shorter deadline forces foreign-exchange conversion into a same-day scramble. India hit it first, in 2022, and is still writing the fix; the US is only now catching up to the same problem."
+hook: "Cutting a payment deadline from two days to one makes a promise safer for whoever's waiting on it — and a lot less forgiving for whoever's money has to cross a border first."
+category: "Capital Markets"
+tags: ["markets", "settlement", "infrastructure"]
+author: "Surya"
+date: "2026-09-28"
+---
+
+Tell a friend "I'll pay you back for the movie tickets sometime this week" and the promise carries real slack — plenty of time for money to arrive from wherever it's coming from, get converted if it started out in a different currency, and land somewhere you can actually reach it. Tell them "I'll pay you back by tomorrow morning" instead, and the promise is safer for your friend — less time for you to forget, less time for something to go sideways — but only if the money is already close enough to reach in time. If it's still crossing a border, a shorter deadline doesn't make it arrive any faster. It just makes the gap between "the money left" and "the money's needed here" a lot harder to hide.
+
+Markets run on a version of that exact promise, timed in trading days instead of hours, and in 2024 one of the largest markets on earth cut that deadline in half — about sixteen months after a market roughly a tenth its size had already finished doing the same thing, faster.
+
+## What a settlement cycle actually promises
+
+Executing a trade and settling it are two different moments in the [trade lifecycle](/essays/what-a-trade-lifecycle-actually-looks-like) — the deal is struck the instant a buy and sell match, but the actual exchange of cash for securities happens later, on a schedule every market sets in advance. **T+2** meant two full business days of gap between those two moments; **T+1** cuts that gap to one. The point isn't speed for its own sake — every day a trade sits unsettled is a day either side could still fail to deliver, exactly the exposure the two friends' example already makes personal: the longer the gap between agreeing and paying, the more can go wrong in between. Shortening the cycle shrinks that window for everyone holding an unsettled trade. It does not shrink everything that has to happen to actually settle it — and that mismatch is where the real story sits.
+
+## Example 1: the US cut the window, and immediately felt how far the money has to travel
+
+The US Securities and Exchange Commission adopted its T+1 rule on February 15, 2023, and it took effect on May 28, 2024, amending Exchange Act Rule 15c6-1(a) to shrink the standard settlement cycle for most securities transactions from two business days to one. The SEC's stated goal was straightforward: less time between execution and settlement means fewer unsettled trades exposed to a counterparty default or a sudden price move in the meantime.
+
+For a domestic US trade, cutting a day out of the cycle is close to a pure win. For a foreign investor — a European pension fund or an Asian asset manager buying US shares — it exposed a problem T+2 had always quietly absorbed: converting currency into US dollars to actually pay for the trade. Under T+2, that conversion had a full extra business day of slack. Under T+1, the foreign-exchange leg has to be arranged on the trade date itself, or first thing the next morning — right as the US market closes at 4pm Eastern, already 10pm in Frankfurt and the middle of the night across most of Asia. GFMA's Global FX Division flagged this gap well before the deadline arrived, warning that a meaningful share of the market's existing FX arrangements simply weren't built for a same-day turnaround. The deadline for delivering securities got a day shorter. The clock for sourcing the dollars to pay for them didn't move at all.
+
+## Example 2: India got there first, and hit the identical wall on the way
+
+India finished this exact transition well before the US even started. SEBI phased Indian equities into T+1 starting with the 100 smallest-market-cap stocks in February 2022, adding the next 500 every month after that, until the entire market — more than 5,000 listed securities — was trading T+1 by January 27, 2023. That's the whole of India's equity market on the shorter cycle roughly sixteen months before the US moved a single US stock off T+2.
+
+India didn't stop there either. In March 2024, SEBI launched an optional T+0 settlement cycle — same-day, not next-day — starting with a 25-stock pilot running through a dedicated same-day trading window each morning. It expanded steadily, reaching the top 500 stocks by market capitalisation by the end of January 2025, still running alongside T+1 rather than replacing it, so brokers and investors who aren't ready can simply keep using the slower cycle.
+
+But India had already lived through the US's exact FX problem, years earlier, from the other direction. When SEBI first moved toward T+1, foreign portfolio investors warned regulators directly that the change would turn India into what one industry body bluntly called a "pre-funding market" — because a T+1 cycle forces an FPI's custodian to book the foreign-exchange conversion into rupees on the trade date itself, instead of the more relaxed T+2-era practice of arranging it the following morning once FX markets were properly open. FPIs settling on a gross basis, rather than netting purchases against sales, found themselves holding more idle cash and absorbing more forex-conversion slippage than the old cycle ever required.
+
+## Reality check: the same squeeze, hitting in the same order
+
+It's tempting to read this as "the US struggled and India sailed through," but that's not quite what happened. The same structural tension — a shorter settlement deadline demanding foreign exchange be arranged faster than some investors' operational setup allows — hit both markets. India just hit it first, back when it made its own move to T+1, and has had several years longer to work on a fix. As of this year, SEBI has a live proposal on the table to permit net settlement of funds for FPI transactions specifically to ease that pre-funding burden — letting a foreign investor's sale proceeds offset its purchase obligations within the same cycle instead of funding both in full, separately. The US is now roughly where India was in 2022: aware of the squeeze, watching the cost show up in real operational friction, and working out its own version of a fix. Shortening a settlement cycle doesn't just move a deadline. It relocates the strain to whichever part of the chain was already running closest to the edge — and that part turns out to be the same one in every market that tries it.
+
+## Why this matters for a Business Analyst
+
+A requirement that says "move to T+1" is unfinished if it stops at the trade-processing system. The harder half of the requirement lives in a completely different workflow: how foreign-exchange conversion for cross-border clients gets rebooked onto a same-day or next-morning cutoff instead of the extra day it used to have, and whether that client's funding model is gross — funding every purchase and every sale separately — or net, offsetting one against the other within the cycle. Scoping a settlement-cycle change without touching the FX-funding workflow it depends on is exactly how a market discovers its real bottleneck only after the shorter deadline is already live — which is precisely what happened to the US in 2024, on a problem India's own FPIs had already flagged years before.
+
+## Lighthouse Insight
+
+Go back to the friend waiting on movie-ticket money. A shorter deadline is a better deal for whoever's waiting — right up until it collides with money that was always going to take a certain amount of time to arrive, no matter how firmly the deadline gets moved. The US learned that lesson in May 2024. India had already learned the identical one, in the opposite order, two years earlier — and is still, in 2026, writing the fix.
+
+## Reference anchors
+
+- [SEC: Chair Gensler Statement on Upcoming Implementation of T+1 Settlement Cycle](https://www.sec.gov/newsroom/press-releases/2024-62)
+- [White & Case: T+1 Settlement Cycle to Take Effect on May 28, 2024](https://www.whitecase.com/insight-alert/t1-settlement-cycle-take-effect-may-28-2024)
+- [GFMA Global FX Division: FX Considerations for T+1 U.S. Securities Settlement](https://www.gfma.org/wp-content/uploads/2023/05/gfxd-fx-considerations-for-t1-u.s-securities-settlement-may23-003.pdf)
+- [ION Group: India's T+1 — Advancing Settlement Efficiency](https://iongroup.com/blog/markets/india-introduces-t-1-trade-settlement/)
+- [SEBI: Introduction of Beta Version of T+0 Rolling Settlement Cycle (March 2024)](https://www.sebi.gov.in/legal/circulars/mar-2024/introduction-of-beta-version-of-t-0-rolling-settlement-cycle-on-optional-basis-in-addition-to-the-existing-t-1-settlement-cycle-in-equity-cash-markets_82455.html)
+- [SEBI: Enhancement in the Scope of Optional T+0 Rolling Settlement Cycle (December 2024)](https://www.sebi.gov.in/legal/circulars/dec-2024/enhancement-in-the-scope-of-optional-t-0-rolling-settlement-cycle-in-addition-to-the-existing-t-1-settlement-cycle-in-equity-cash-markets_89443.html)
+- [Business Standard: T+1 Will Make India a Pre-Funding Market for FPIs, Says ASIFMA](https://www.business-standard.com/article/markets/t-1-will-make-india-a-pre-funding-market-for-fpis-says-asifma-121082600075_1.html)
+- [SEBI: Proposal to Permit Net Settlement of Funds for Transactions Done by Foreign Portfolio Investors](https://www.sebi.gov.in/sebi_data/meetingfiles/apr-2026/1775802683050_1.pdf)
