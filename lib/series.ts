@@ -414,6 +414,11 @@ export const essayBridges: EssayBridge[] = [
     to: "settlement-fails-what-happens-when-a-trade-refuses-to-deliver",
     label: "A shorter deadline reduces how long a fail can sit unnoticed — it doesn't reduce what happens once one occurs",
   },
+  {
+    from: "cross-margining-the-umbrella-stall-next-to-the-ice-cream-stall",
+    to: "margin-how-a-clearinghouse-turns-fear-into-collateral",
+    label: "Margin prices one position's worst day; cross-margining is what happens once two positions' worst days can't coincide",
+  },
 ];
 
 const seriesBySlug = new Map<string, { series: EssaySeries; order: number }>();

@@ -1,0 +1,53 @@
+---
+title: "Cross-Margining: The Umbrella Stall Standing Next to the Ice-Cream Stall"
+description: "Margining two hedged positions separately charges for a bad day that, for both of them together, basically can't happen. The Brady Report's own investigation of the 1987 crash found the absence of cross-margining had made the crash's payment strains worse — and the fix it called for now produces over $2 billion in daily margin savings, just extended to individual customers in 2026. SEBI built its own version through a precise, continuously-checked statistical rule instead — and both approaches share the same real risk: the discount only holds as long as the correlation it's built on does."
+hook: "A lender who margins your umbrella stall and your ice-cream stall separately is charging you for a bad day that, for both of them at once, basically can't happen."
+category: "Capital Markets"
+tags: ["markets", "clearing", "risk"]
+author: "Surya"
+date: "2026-09-29"
+---
+
+Imagine you run two stalls on the same street: one selling umbrellas, one selling ice cream. A rainy day is terrible for ice cream and great for umbrellas. A scorching day is the reverse. A lender sizing up how much backup cash you'd need for a disaster, and doing it stall by stall, would ask you to set aside enough for the umbrella stall's worst day *and* separately enough for the ice-cream stall's worst day — as if both could happen together. They basically never can. The real risk of your combined operation on any given day is a lot smaller than the sum of each stall's worst case added up.
+
+Financial markets run a very literal version of that same math, across clearinghouses that don't always talk to each other, and getting it wrong either wastes an enormous amount of capital or quietly under-prices a risk that's about to matter.
+
+## What margin misses when it's calculated one position at a time
+
+[Margin](/essays/margin-how-a-clearinghouse-turns-fear-into-collateral) is collateral a clearinghouse demands upfront to cover a position's potential future loss. The gap shows up when a trader holds two positions — often cleared at two different clearinghouses entirely — that move in opposite directions when the market moves: a Treasury bond and a Treasury futures contract, or a stock index future and its close correlate. Margined separately, each clearinghouse sizes collateral as if its own position could lose money on the worst possible day, with no regard for the fact that the other position is very likely gaining on that exact same day. **Cross-margining** is the arrangement that lets two clearinghouses recognize the offset and charge for the portfolio's real combined risk instead of the sum of two imagined worst cases that can't actually occur together.
+
+## Example 1: the US built this after 1987 exposed the waste, and just extended who gets it
+
+The Options Clearing Corporation and CME Clearing have run a cross-margining program since 1989, and the link to the crash that prompted it is documented, not incidental. The Presidential Task Force on Market Mechanisms — the Brady Report, published January 1988 — found that the *absence* of a cross-margining system between the futures and securities options markets had itself contributed to the payment strains firms faced during the October 1987 crash: members holding hedged positions across separate clearinghouses had to fund each side's margin calls independently, against each clearinghouse's own worst case, instead of against their real, offsetting combined risk. OCC and CME's program is the fix the Task Force's own report called for, letting a firm's offsetting options and futures positions be evaluated together instead of separately.
+
+A newer version of the same idea has been running for over twenty years between CME and the DTCC's Fixed Income Clearing Corporation (FICC), letting a firm's cash Treasury holdings at FICC offset against Treasury futures at CME — producing more than $2 billion in daily margin savings for the firms already eligible, with eligible offsetting positions seeing capital efficiencies of up to 80%. Until recently, this benefit belonged only to the clearing members and net members of the two clearinghouses — not to the end clients whose positions actually created the offset. That changed in 2026: the SEC and CFTC both approved orders permitting an expanded "Customer Cross-Margining Arrangement," extending the same collateral efficiency directly to end-user clients for the first time, explicitly framed by regulators as a way to strengthen liquidity in the US Treasury market — a market that has drawn sustained regulatory attention over the past several years for exactly the kind of stress-period fragility cross-margining is meant to relieve.
+
+## Example 2: India built the same discount through a formula, not a negotiation
+
+SEBI's version of cross-margining started narrower and has been extended in specific, quantified steps rather than through a bilateral arrangement between two institutions. In December 2008, SEBI first allowed cross-margining between the cash equity and exchange-traded equity derivatives segments for the same underlying stock — a trader long a stock and short its future gets recognized as holding a genuine hedge, not two independent bets. In November 2019, SEBI extended the benefit to correlated equity indices, but only under a precise statistical test: the smaller index's constituents have to make up at least 80% of its own weight within the larger index, and the two indices' values need a correlation above 0.90 sustained over six months — checked again every month, and immediately on any day the index composition changes. In April 2024, SEBI extended cross-margin benefits further, to offsetting positions carrying different expiry dates.
+
+Where the US arrangement runs on a negotiated agreement between two specific clearinghouses that has been expanded to more participants over decades, SEBI's runs on a formula that has to keep re-qualifying itself on a fixed schedule, for as long as the benefit is claimed.
+
+## Reality check: the discount only holds as long as the correlation does
+
+It's worth being precise about what cross-margining is actually betting on: that the statistical relationship between two positions — Treasuries and Treasury futures, or one equity index and another — keeps holding under stress the same way it held under the calm conditions the correlation was originally measured against. Correlations that look stable for months can compress, break, or even flip during exactly the kind of sharp, systemic move that makes margin matter most in the first place — which is the specific danger SEBI's monthly re-check and six-month correlation threshold exist to catch before it goes unnoticed. A cross-margining benefit granted once and never re-verified is a discount based on math that was true when it was calculated and is simply assumed to still be true later. The US's older, negotiated arrangements and the newer customer-level expansion both carry the identical exposure in a less explicitly scheduled form: the offset is real until the day the correlation it depends on isn't, and nothing about a clearinghouse agreement guarantees that day announces itself in advance.
+
+## Why this matters for a Business Analyst
+
+A requirement that says "implement cross-margining" is unfinished until it specifies what happens the day the correlation assumption fails. Does the system automatically revoke the margin benefit and issue a same-day call for the difference the moment a monitored correlation drops below its threshold — the way SEBI's monthly and event-triggered checks are designed to force — or does it keep treating two positions as offsetting until a human happens to notice the relationship has broken? The second version isn't a smaller version of cross-margining. It's a margin shortfall wearing the discount's name, sitting quietly on the book until the one day it's tested for real.
+
+## Lighthouse Insight
+
+Go back to the umbrella stall and the ice-cream stall. The discount on their combined risk is entirely fair — right up until the day something hits the whole street at once: a flood that shuts down both stalls, a crash that drags every correlated position down together regardless of which side of the hedge it sat on. Cross-margining frees up real capital by refusing to charge for a disaster that almost never happens to both sides simultaneously. The genuinely hard part, on both sides of the world, is building a system honest enough to notice the day "almost never" stops being true.
+
+## Reference anchors
+
+- [Presidential Task Force on Market Mechanisms: Report (the Brady Report), January 1988](https://www.sechistorical.org/collection/papers/1980/1988_0101_BradyReport.pdf)
+- [CME Group: The Options Clearing Corporation and CME Group Mark 20 Years of Cross-Margining Partnership](https://investor.cmegroup.com/news-releases/news-release-details/options-clearing-corporation-and-cme-group-mark-20-years-cross)
+- [OCC: Cross Margin Programs](https://www.theocc.com/risk-management/cross-margin-programs)
+- [CME Group: CME-FICC Cross-Margin Program](https://www.cmegroup.com/solutions/clearing/cme-ficc-cross-margin-program.html)
+- [SEC: SEC Approves Exemptive Order and Proposed Rule Change to Permit Customer Cross-Margining in the U.S. Treasury Market (2026)](https://www.sec.gov/newsroom/press-releases/2026-36-sec-approves-exemptive-order-proposed-rule-change-permit-customer-cross-margining-us-treasury-market)
+- [CFTC: CFTC Approves Order to Further Strengthen U.S. Treasury Market Liquidity](https://www.cftc.gov/PressRoom/PressReleases/9214-26)
+- [SEBI: Introduction of Cross-Margining Facility in Respect of Offsetting Positions in Co-Related Equity Indices (2019)](https://www.sebi.gov.in/legal/circulars/nov-2019/introduction-of-cross-margining-facility-in-respect-of-offsetting-positions-in-corelated-equity-indices_44896.html)
+- [SEBI: Cross Margin Benefits for Offsetting Positions Having Different Expiry Dates (2024)](https://www.sebi.gov.in/legal/circulars/apr-2024/cross-margin-benefits-for-offsetting-positions-having-different-expiry-dates_82977.html)
+- [NSE Clearing: Cross-Margining](https://www.nseclearing.in/risk-management/capital-market/cross-margining)
