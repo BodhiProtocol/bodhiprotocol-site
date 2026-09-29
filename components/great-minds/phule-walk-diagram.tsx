@@ -35,7 +35,7 @@ const STATION_LOW_Y = 41;
 // The 1897 walk runs under the first one. The last stop sits on it, not on
 // the 1848 route, so each road carries only its own story.
 const LAST_WALK_Y = 68;
-// Index of the "First School" stop — the schoolhouse only lights once it's visited.
+// Index of the "Bhide Wada" stop — the schoolhouse only lights once it's visited.
 const FIRST_SCHOOL_INDEX = 2;
 // Index of "The Walk" stop — the one that leaves marks of what was thrown.
 const WALK_INDEX = 3;
@@ -293,15 +293,15 @@ function PhuleWalkDiagram({ nodes }: { nodes: GreatMindWheelNode[] }) {
         >
           {routeComplete ? (
             <>
-              3 schools
+              3 girls&apos; schools
               <br />
-              ~150 girls
+              ~150 pupils
               <br />
               by 1851
             </>
           ) : schoolOpen ? (
             <>
-              1 school
+              Girls&apos; school
               <br />
               1848
             </>
@@ -345,7 +345,7 @@ function PhuleWalkDiagram({ nodes }: { nodes: GreatMindWheelNode[] }) {
             </>
           ) : cycleComplete ? (
             <span className="font-semibold text-foreground">
-              She walked toward a classroom at seventeen and toward a clinic at sixty-six — both times for someone
+              She walked toward a classroom as a teenager and toward a clinic at sixty-six — both times for someone
               else&apos;s child.
             </span>
           ) : (
