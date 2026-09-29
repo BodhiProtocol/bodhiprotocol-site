@@ -415,6 +415,11 @@ export const essayBridges: EssayBridge[] = [
     label: "A shorter deadline reduces how long a fail can sit unnoticed — it doesn't reduce what happens once one occurs",
   },
   {
+    from: "23-hour-trading-new-yorks-night-is-indias-morning",
+    to: "t-plus-1-settlement-the-deadline-shrank-but-the-money-still-has-to-cross-an-ocean",
+    label: "The night session's 8 PM trade-date switch is what decides which T+1 settlement day an overnight trade lands on",
+  },
+  {
     from: "cross-margining-the-umbrella-stall-next-to-the-ice-cream-stall",
     to: "margin-how-a-clearinghouse-turns-fear-into-collateral",
     label: "Margin prices one position's worst day; cross-margining is what happens once two positions' worst days can't coincide",
