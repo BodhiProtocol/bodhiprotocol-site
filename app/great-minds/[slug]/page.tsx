@@ -129,6 +129,8 @@ import { ManjhiMountainCutDiagram } from "@/components/great-minds/manjhi-mounta
 import { ManjhiHeroBackground } from "@/components/great-minds/manjhi-hero-background";
 import { BorlaugCrossDiagram } from "@/components/great-minds/borlaug-cross-diagram";
 import { BorlaugHeroBackground } from "@/components/great-minds/borlaug-hero-background";
+import { AryabhataBoatDiagram } from "@/components/great-minds/aryabhata-boat-diagram";
+import { AryabhataHeroBackground } from "@/components/great-minds/aryabhata-hero-background";
 import { TagoreWallsDiagram } from "@/components/great-minds/tagore-walls-diagram";
 import { TagoreHeroBackground } from "@/components/great-minds/tagore-hero-background";
 import { PhuleWalkDiagram } from "@/components/great-minds/phule-walk-diagram";
@@ -200,6 +202,7 @@ const heroDiagrams: Record<string, (mind: GreatMindWithContent) => ReactNode> = 
   "napoleon-bonaparte": (mind) => <NapoleonAscentDiagram nodes={mind.wheel} />,
   "savitribai-phule": (mind) => <PhuleWalkDiagram nodes={mind.wheel} />,
   "rabindranath-tagore": (mind) => <TagoreWallsDiagram nodes={mind.wheel} />,
+  aryabhata: (mind) => <AryabhataBoatDiagram nodes={mind.wheel} />,
 };
 
 const heroBackgrounds: Record<string, ReactNode> = {
@@ -259,6 +262,7 @@ const heroBackgrounds: Record<string, ReactNode> = {
   "napoleon-bonaparte": <NapoleonHeroBackground />,
   "savitribai-phule": <PhuleHeroBackground />,
   "rabindranath-tagore": <TagoreHeroBackground />,
+  aryabhata: <AryabhataHeroBackground />,
 };
 
 interface GreatMindPageProps {
