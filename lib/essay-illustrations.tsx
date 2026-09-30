@@ -8,6 +8,7 @@ import { CapitalMarketPathsIllustration } from "@/components/essays/capital-mark
 import { CarriagePhaseIllustration } from "@/components/essays/carriage-phase-illustration";
 import { CdsProtectionIllustration } from "@/components/essays/cds-protection-illustration";
 import { CircuitBreakerIllustration } from "@/components/essays/circuit-breaker-illustration";
+import { TwentyThreeHourDayIllustration } from "@/components/essays/twenty-three-hour-day-illustration";
 import { CobraEffectIllustration } from "@/components/essays/cobra-effect-illustration";
 import { ColocationIllustration } from "@/components/essays/colocation-illustration";
 import { ConfidenceIllustration } from "@/components/essays/confidence-illustration";
@@ -100,6 +101,7 @@ export const essayIllustrations: Record<string, ComponentType> = {
   "credit-default-swaps-protection-nobody-has-to-own":
     CdsProtectionIllustration,
   "circuit-breakers-the-pause-a-market-forces-on-itself": CircuitBreakerIllustration,
+  "23-hour-trading-new-yorks-night-is-indias-morning": TwentyThreeHourDayIllustration,
   "rogue-trading-when-the-person-trading-is-also-the-person-checking-the-trade":
     RogueTradingIllustration,
   "colocation-when-the-exchange-itself-decides-who-hears-first": ColocationIllustration,
