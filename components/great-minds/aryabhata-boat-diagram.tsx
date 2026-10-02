@@ -29,6 +29,23 @@ const STAR_COUNT = 14;
 // never changes — it only moves from the sky to the Earth.
 const SPIN_SPEED = 24;
 
+function polar(r: number, deg: number) {
+  const rad = (deg * Math.PI) / 180;
+  return { x: CX + r * Math.cos(rad), y: CY + r * Math.sin(rad) };
+}
+
+// An arc from one angle to another, drawn clockwise or anticlockwise.
+function arcPath(r: number, fromDeg: number, toDeg: number, clockwise: boolean) {
+  const a = polar(r, fromDeg);
+  const b = polar(r, toDeg);
+  return `M ${a.x} ${a.y} A ${r} ${r} 0 0 ${clockwise ? 1 : 0} ${b.x} ${b.y}`;
+}
+
+// Static direction arrows show who is carrying the motion even when animation
+// is off: the sky's arrow fades out as the Earth's fades in.
+const SKY_ARROW = arcPath(STAR_R + 3.2, -72, -28, true);
+const EARTH_ARROW = arcPath(EARTH_R + 2.6, 160, 110, false);
+
 function stopPoint(index: number, count: number) {
   const angle = -Math.PI / 2 + (index / count) * Math.PI * 2;
   return { x: CX + STOP_RX * Math.cos(angle), y: CY + STOP_RY * Math.sin(angle) };
@@ -107,6 +124,34 @@ function AryabhataBoatDiagram({ nodes }: { nodes: GreatMindWheelNode[] }) {
               />
             ))}
           </g>
+
+          <defs>
+            <marker id="aryabhata-arrowhead" viewBox="0 0 6 6" refX="3" refY="3" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+              <path d="M 0 0 L 6 3 L 0 6 Z" className="fill-brand" />
+            </marker>
+          </defs>
+          <motion.path
+            d={SKY_ARROW}
+            fill="none"
+            strokeWidth={0.6}
+            strokeLinecap="round"
+            className="stroke-brand"
+            markerEnd="url(#aryabhata-arrowhead)"
+            initial={{ opacity: 0 }}
+            animate={played ? { opacity: 0.85 * (1 - progress) } : {}}
+            transition={{ duration: reducedMotion ? 0 : 0.5 }}
+          />
+          <motion.path
+            d={EARTH_ARROW}
+            fill="none"
+            strokeWidth={0.6}
+            strokeLinecap="round"
+            className="stroke-brand"
+            markerEnd="url(#aryabhata-arrowhead)"
+            initial={{ opacity: 0 }}
+            animate={played ? { opacity: 0.85 * progress } : {}}
+            transition={{ duration: reducedMotion ? 0 : 0.5 }}
+          />
 
           {/* The Earth, with one observer standing on it — the passenger in the boat. */}
           <motion.g
