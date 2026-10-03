@@ -129,6 +129,8 @@ import { ManjhiMountainCutDiagram } from "@/components/great-minds/manjhi-mounta
 import { ManjhiHeroBackground } from "@/components/great-minds/manjhi-hero-background";
 import { BorlaugCrossDiagram } from "@/components/great-minds/borlaug-cross-diagram";
 import { BorlaugHeroBackground } from "@/components/great-minds/borlaug-hero-background";
+import { PaniniRuleEngineDiagram } from "@/components/great-minds/panini-rule-engine-diagram";
+import { PaniniHeroBackground } from "@/components/great-minds/panini-hero-background";
 import { AryabhataBoatDiagram } from "@/components/great-minds/aryabhata-boat-diagram";
 import { AryabhataHeroBackground } from "@/components/great-minds/aryabhata-hero-background";
 import { TagoreWallsDiagram } from "@/components/great-minds/tagore-walls-diagram";
@@ -203,6 +205,7 @@ const heroDiagrams: Record<string, (mind: GreatMindWithContent) => ReactNode> = 
   "savitribai-phule": (mind) => <PhuleWalkDiagram nodes={mind.wheel} />,
   "rabindranath-tagore": (mind) => <TagoreWallsDiagram nodes={mind.wheel} />,
   aryabhata: (mind) => <AryabhataBoatDiagram nodes={mind.wheel} />,
+  panini: (mind) => <PaniniRuleEngineDiagram nodes={mind.wheel} />,
 };
 
 const heroBackgrounds: Record<string, ReactNode> = {
@@ -263,6 +266,7 @@ const heroBackgrounds: Record<string, ReactNode> = {
   "savitribai-phule": <PhuleHeroBackground />,
   "rabindranath-tagore": <TagoreHeroBackground />,
   aryabhata: <AryabhataHeroBackground />,
+  panini: <PaniniHeroBackground />,
 };
 
 interface GreatMindPageProps {
