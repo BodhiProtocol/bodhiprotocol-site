@@ -79,6 +79,13 @@ const essayMdxComponents: MDXComponents = {
   SawVsMarketVisual,
   StoryBridge,
   TradeExecutionHero,
+  // Wide markdown tables scroll inside their own box on phones instead of
+  // pushing the whole page sideways.
+  table: (props) => (
+    <div className="overflow-x-auto">
+      <table {...props} />
+    </div>
+  ),
 };
 
 export function generateStaticParams() {
