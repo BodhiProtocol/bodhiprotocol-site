@@ -8,6 +8,10 @@ author: "Surya"
 date: "2026-07-22"
 ---
 
+Think of the checks at an airport security line as three tiers of scrutiny, not one. Everyone walks through the same first metal detector — the baseline, applied to every passenger equally. A smaller number get pulled aside for a closer, manual check because something in their profile or documents raised a flag. A very small number get taken to a private room for a much deeper review, reserved for the highest-risk cases. Nobody would confuse the second tier with the third, or expect the first to catch what only the third is built to catch.
+
+A bank runs an identical structure on every new customer — just under different names.
+
 A new BA joins a bank's onboarding project and sits through their first requirements session. Someone says: "run EDD, check the PEP flag, and if it trips, file a SAR." Everyone else in the room nods. The BA is expected to write acceptance criteria for that sentence by the end of the day, and nothing in a general business-analysis background prepared them for it — this isn't ambiguous stakeholder language to translate, it's a stack of regulatory terms that already have precise, non-negotiable meanings, and getting them wrong doesn't just produce a bad ticket. It produces a control that fails in production, at a bank, with real money moving through it.
 
 ## KYC isn't one control, it's a ladder
@@ -16,7 +20,17 @@ KYC, CDD, and EDD are not three words for the same thing — they're three rungs
 
 ## The acronyms aren't academic — they're where the fines land
 
-This isn't abstract vocabulary homework. In India, the RBI fined **HDFC Bank** ₹1 crore for non-compliance with its KYC and Anti-Money Laundering directions, alongside lapses in fraud reporting — the same rung-of-the-ladder confusion this essay is about, at one of the country's largest private banks. **Danske Bank** pleaded guilty and forfeited $2 billion after its Estonian branch processed roughly $160 billion in non-resident flows with almost no real identity verification — arguably the purest large-scale KYC failure on record. **ING Bank** paid €775 million in what was, at the time, the largest criminal settlement in Dutch history, for classic CDD breakdowns: missing customer files, wrong risk classifications, no periodic reviews. **HSBC** paid $1.921 billion after its own internal risk rating flagged its Mexican affiliate as highest-risk — which should have triggered EDD and didn't — and cartel cash moved through undetected for years. **US Bancorp** paid $613 million for failing to timely file SARs on a customer later sentenced to 16+ years for a fraud scheme that laundered at least $2 billion, after capping how many alerts its own monitoring system could generate based on available staff rather than actual risk. Every one of these started as a requirement someone wrote.
+This isn't abstract vocabulary homework. Every acronym in this ladder has a real bank attached to the moment it got confused.
+
+### Example 1: India — a KYC rung missed at HDFC Bank
+
+The RBI fined **HDFC Bank** ₹1 crore for non-compliance with its KYC and Anti-Money Laundering directions, alongside lapses in fraud reporting — the same rung-of-the-ladder confusion this essay is about, at one of the country's largest private banks.
+
+### Example 2: International — every other rung, and what it cost
+
+**Danske Bank** pleaded guilty and forfeited $2 billion after its Estonian branch processed roughly $160 billion in non-resident flows with almost no real identity verification — arguably the purest large-scale KYC failure on record. **ING Bank** paid €775 million in what was, at the time, the largest criminal settlement in Dutch history, for classic CDD breakdowns: missing customer files, wrong risk classifications, no periodic reviews. **HSBC** paid $1.921 billion after its own internal risk rating flagged its Mexican affiliate as highest-risk — which should have triggered EDD and didn't — and cartel cash moved through undetected for years. **US Bancorp** paid $613 million for failing to timely file SARs on a customer later sentenced to 16+ years for a fraud scheme that laundered at least $2 billion, after capping how many alerts its own monitoring system could generate based on available staff rather than actual risk.
+
+Every one of these started as a requirement someone wrote.
 
 ## Knowing the rung decides what the requirement actually says
 
