@@ -8,6 +8,7 @@ import { CapitalMarketPathsIllustration } from "@/components/essays/capital-mark
 import { CarriagePhaseIllustration } from "@/components/essays/carriage-phase-illustration";
 import { CdsProtectionIllustration } from "@/components/essays/cds-protection-illustration";
 import { CircuitBreakerIllustration } from "@/components/essays/circuit-breaker-illustration";
+import { BondSlipIllustration } from "@/components/essays/bond-slip-illustration";
 import { DeltaGearIllustration } from "@/components/essays/delta-gear-illustration";
 import { ThetaMeltingScoopsIllustration } from "@/components/essays/theta-melting-scoops-illustration";
 import { ForwardStoredRiskIllustration } from "@/components/essays/forward-stored-risk-illustration";
@@ -101,6 +102,7 @@ export const essayIllustrations: Record<string, ComponentType> = {
   "a-bank-trading-floor-is-a-marketplace-for-risk": TradingDesksIllustration,
   "options-the-right-to-walk-away": OptionsPayoffIllustration,
   "futures-the-bet-that-settles-every-single-day": FuturesMarkToMarketIllustration,
+  "bonds-the-fixed-deposit-you-can-sell": BondSlipIllustration,
   "delta-the-gear-ratio-between-an-option-and-its-stock": DeltaGearIllustration,
   "theta-the-cost-of-being-right-too-late": ThetaMeltingScoopsIllustration,
   "forwards-the-same-bet-without-the-safety-net": ForwardStoredRiskIllustration,
