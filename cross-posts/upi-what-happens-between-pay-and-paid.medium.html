@@ -1,0 +1,123 @@
+<div style="font-family: Georgia, 'Times New Roman', serif; font-size: 20px; line-height: 1.65; max-width: 680px; margin: 60px auto; color: #0a0a0a;">
+  <img src="https://bodhiprotocol.com/essays/upi-what-happens-between-pay-and-paid/opengraph-image" alt="UPI: What Happens in the Seconds Between 'Pay' and 'Paid'" style="width: 100%; height: auto; margin-bottom: 32px;" />
+  <h1 style="font-size: 38px; line-height: 1.25; margin-bottom: 32px;">UPI: What Happens in the Seconds Between 'Pay' and 'Paid'</h1>
+  <p>You&#39;re at a chai stall. You scan the QR code taped to the counter, type 10, enter four digits, and before you&#39;ve put your phone away a little speaker on the counter says <em>&quot;Paytm par das rupaye prapt hue.&quot;</em> Ten rupees received.</p>
+<p>In those few seconds, your phone, a payments app, your bank, the chai-wala&#39;s bank and a switch run by a company most people have never heard of have all talked to each other. Your bank has checked a PIN it never lets anyone else see. The chai-wala has the money. And nobody, not you and not the stall, paid a single paisa in fees.</p>
+<p>Here&#39;s the part almost nobody knows: at that moment, your bank still hasn&#39;t actually paid the chai-wala&#39;s bank. That happens later, in a batch, a few hours from now. The system is built so you never have to care. This essay is about the people who do have to care.</p>
+<h2>What actually happens when you tap &quot;Pay&quot;</h2>
+<p>Think of passing a note to a friend across a classroom. You don&#39;t throw it; you hand it to the person next to you, who hands it on, and the teacher at the front makes sure every note goes to the right desk. Nobody needs to know where your friend sits. They only need their name.</p>
+<p>Brazil&#39;s Pix made this idea famous with <strong>Pix keys</strong>: instead of typing a bank and account number, you pay someone&#39;s phone number, email address, tax ID or a random key, and the central bank&#39;s directory looks up which account it belongs to. UPI does the same with your <strong>UPI ID</strong>, or virtual payment address (VPA), something like <code>surya@okbank</code>: a nickname that points to your bank account without revealing the account number. When you pay, the message travels like this:</p>
+<ol>
+<li><strong>Your app</strong> (PhonePe, Google Pay, Paytm, your bank&#39;s own app) packages the request: who&#39;s paying, who&#39;s being paid, how much.</li>
+<li>It goes to the app&#39;s <strong>payment service provider (PSP) bank</strong>, the bank that sponsors that app onto UPI. Apps like PhonePe and Google Pay aren&#39;t banks; in NPCI&#39;s language they&#39;re <strong>third-party application providers (TPAPs)</strong>, and they ride on partner banks.</li>
+<li>The PSP bank passes it to <strong>NPCI&#39;s central switch</strong>. NPCI, the National Payments Corporation of India, is the teacher at the front of the class: it knows which bank sits behind every UPI ID.</li>
+<li>NPCI sends a debit request to <strong>your bank</strong> (the <em>issuer</em>). Your bank checks your <strong>UPI PIN</strong>. The app never sees it: it&#39;s encrypted on your phone before it leaves, and it&#39;s your bank that verifies it. If the PIN is right and the money&#39;s there, your bank debits you.</li>
+<li>NPCI sends a credit instruction to <strong>the chai-wala&#39;s bank</strong> (the <em>beneficiary</em>), which credits the chai-wala&#39;s account.</li>
+<li>Confirmations flow back, and the soundbox speaks.</li>
+</ol>
+<p>Two things make this secure without being annoying. <strong>Device binding</strong>: when you set up UPI, your phone silently sends an SMS from the SIM registered with your bank, tying that phone to that account. And the <strong>PIN</strong>: something only you know, checked only by your bank. Something you have plus something you know. That&#39;s two-factor authentication, done so smoothly most people don&#39;t notice it happened.</p>
+<h2>The money moves later than the message</h2>
+<p>Now the part in the opening. Think of a school canteen that lets every class run a tab. Through the day, kids from 7A buy from 7B&#39;s stall and 7B buys from 7A&#39;s. Nobody hands over cash for each packet of chips. At the end of the day, the teacher adds it all up, and 7A pays 7B only the <em>difference</em>.</p>
+<p>That&#39;s <strong>deferred net settlement</strong>, and it&#39;s how UPI settles between banks. When you pay, your bank debits you and the chai-wala&#39;s bank credits the stall <em>immediately</em>: that&#39;s why the money is already there. But the two banks don&#39;t transfer money to each other for that one payment. NPCI adds up every UPI payment between every pair of banks over a window of time, works out who owes whom overall, and the banks settle that one net figure through their accounts at the RBI, using the RTGS system. UPI runs this in cycles through the day: since November 2025, ten cycles for regular payments, with two more kept separately for disputes. (If the idea of cancelling a mountain of payments into one figure is new, <a href="https://bodhiprotocol.com/essays/netting-how-finance-cancels-a-mountain-of-debt-into-a-pebble">netting</a> explains it in full.)</p>
+<p>Countries have made different choices here, and the choice matters.</p>
+<p><strong>The United Kingdom&#39;s Faster Payments</strong>, launched in 2008, made the same one India did: deferred net settlement, with settlement at the Bank of England three times a business day. To make sure a bank can&#39;t fail to pay its net bill, UK participants <strong>prefund</strong>, keeping enough money at the central bank to cover the most they could possibly owe.</p>
+<p><strong>Brazil&#39;s Pix</strong> (launched November 2020) and <strong>the US FedNow</strong> (July 2023) went the other way: <strong>real-time gross settlement</strong>. Every payment settles individually and instantly in central bank money, so there&#39;s no end-of-cycle bill at all.</p>
+<p><strong>India&#39;s UPI</strong> chose netting for volume: a record <strong>23.66 billion transactions in July 2026</strong>, about 76 crore a day. Settling each one individually would mean 76 crore bank-to-bank transfers a day; netting shrinks that to a handful per cycle. The trade-off is a window where the chai-wala has been paid but the chai-wala&#39;s bank hasn&#39;t. Invisible to you; watched all day by every bank&#39;s treasury team. It&#39;s the gap between a payment being <em>done</em> and being <a href="https://bodhiprotocol.com/essays/settlement-finality-when-a-trade-stops-being-a-promise">final</a>.</p>
+<h2>Why it&#39;s free, and who pays anyway</h2>
+<p>Think of a public road. You don&#39;t pay each time you drive on it, but somebody built it and somebody maintains it. &quot;Free&quot; means the cost moved, not that it vanished.</p>
+<p>In <strong>Brazil</strong>, Pix is free between individuals, but banks are allowed to charge businesses for receiving Pix payments, and they set their own prices, generally well below what the same shop pays to accept cards. Those business fees help banks cover the cost of running it.</p>
+<p><strong>India</strong> went further. Since 1 January 2020, the fee a merchant pays to accept a UPI payment (the <em>merchant discount rate</em>, or MDR) has been set at <strong>zero</strong> by law. So who pays for the servers, the fraud checks and the customer support?</p>
+<ul>
+<li><strong>The government, partly.</strong> For 2024–25, the Union Cabinet approved <strong>₹1,500 crore</strong> to pay banks 0.15% on UPI payments of up to ₹2,000 to small merchants. Only 80% is paid automatically; the rest depends on the bank keeping technical failures below 0.75% and uptime above 99.5%. The subsidy is designed to buy reliability, not just volume.</li>
+<li><strong>Credit, increasingly.</strong> Since 2022, RuPay credit cards can be linked to UPI, and those payments are <em>not</em> free for the shop: merchants pay an interchange fee of roughly 1–2%, except small merchants on payments up to ₹2,000. It&#39;s how &quot;free&quot; UPI is quietly growing a paid lane.</li>
+<li><strong>The banks and apps, mostly.</strong> They carry the running cost and try to earn it back elsewhere. That&#39;s the whole business model behind <a href="https://bodhiprotocol.com/invisible-businesses/paytm-doesnt-sell-payments">Paytm&#39;s soundbox</a> and <a href="https://bodhiprotocol.com/invisible-businesses/phonepe-doesnt-sell-payments">PhonePe&#39;s loans and insurance</a>: the free payment is how they get close enough to sell you something that isn&#39;t free.</li>
+</ul>
+<h2>Why UPI grew faster than anything else</h2>
+<p>Here&#39;s the scale gap. The IMF has identified UPI as the world&#39;s largest real-time retail payment system, with roughly <strong>49% of all real-time payment transactions globally</strong>. Pix, the second great success story, handled about 6.6 billion transactions in May 2025. FedNow handled <strong>8.4 million in the whole of 2025</strong>; UPI does more than that in under twenty minutes.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>UPI (India)</th>
+<th>Pix (Brazil)</th>
+<th>FedNow (US)</th>
+<th>Faster Payments (UK)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Launched</td>
+<td>2016</td>
+<td>2020</td>
+<td>2023</td>
+<td>2008</td>
+</tr>
+<tr>
+<td>Run by</td>
+<td>NPCI (owned by banks)</td>
+<td>Central Bank of Brazil</td>
+<td>Federal Reserve</td>
+<td>Pay.UK</td>
+</tr>
+<tr>
+<td>Bank-to-bank settlement</td>
+<td>Deferred net, in cycles</td>
+<td>Real-time gross</td>
+<td>Real-time gross</td>
+<td>Deferred net, prefunded</td>
+</tr>
+<tr>
+<td>Cost to the person paying</td>
+<td>Free</td>
+<td>Free</td>
+<td>Set by your bank</td>
+<td>Usually free</td>
+</tr>
+<tr>
+<td>Scale</td>
+<td>~23.7 billion a month</td>
+<td>~6.6 billion a month</td>
+<td>~8.4 million in all of 2025</td>
+<td>Far smaller than UPI</td>
+</tr>
+</tbody></table>
+<p>The difference isn&#39;t mainly technology. It&#39;s <strong>interoperability</strong>, and who&#39;s allowed in. In India, any UPI app can pay any UPI ID at any bank, and third-party apps like PhonePe and Google Pay were allowed to build on it from the start. Brazil did something similar: its central bank required large banks to offer Pix, so it was everywhere on day one. FedNow is voluntary; about 1,800 banks and credit unions had joined by 2026, but many can receive payments without yet being able to send them. A payment network is only as useful as the number of people you can reach with it, which is also why UPI now reaches abroad: since February 2023 it has been linked to Singapore&#39;s PayNow, so money can move between the two countries&#39; fast-payment systems using a UPI ID on one side and a phone number on the other.</p>
+<h2>Where it breaks</h2>
+<p>Scale at this speed brings two problems a slower system never has to face.</p>
+<p><strong>Fraud built on speed.</strong> Brazil hit this first: after a wave of Pix-related crime, including people being forced to make transfers, its central bank in 2021 limited Pix transfers between individuals to R$1,000 at night. India&#39;s weak spot was the <strong>collect request</strong>, where someone else asks you to pay and you approve it. Scammers sent fake requests dressed up as refunds or prizes; people entered their PIN thinking they were <em>receiving</em> money. After years of trying caps, NPCI switched off person-to-person collect requests entirely from <strong>1 October 2025</strong>. Merchant collect requests, like paying at an online checkout, still work, because the customer started that payment themselves.</p>
+<p><strong>Concentration.</strong> China shows where this can end up: two private apps, Alipay and WeChat Pay, handle the vast majority of its mobile payments. India is heading the same way. PhonePe and Google Pay together processed about 85% of UPI volume in late 2024. NPCI has set a 30% cap on any single app&#39;s share to stop it, but has pushed the deadline back twice; it now falls at the end of <strong>December 2026</strong>. A public road where two companies own almost every car is a policy question, not just a market one.</p>
+<h2>Why this matters for a Business Analyst</h2>
+<h3>Think of a message that says &quot;sent&quot; before it says &quot;delivered&quot;</h3>
+<p>Every UPI flow has states between &quot;started&quot; and &quot;done&quot;, and most production problems in payments live in those states, not in the happy path.</p>
+<ul>
+<li><strong>Pending is a real state.</strong> A payment can debit you and then time out before the other bank confirms. A requirement that only says &quot;the payment succeeds or fails&quot; has skipped the case customers actually complain about. <a href="https://bodhiprotocol.com/essays/from-stakeholder-sentence-to-acceptance-criteria">Acceptance criteria</a> need to name what the user sees, and what the system does, while a payment is pending.</li>
+<li><strong>Reversals have a legal clock, and India&#39;s is short.</strong> Under the RBI&#39;s 2019 turnaround-time framework, a failed UPI payment where money has left your account must be reversed by the next day (T+1); after that, the bank owes compensation of ₹100 a day. &quot;Refund failed payments&quot; is not a requirement. &quot;Auto-reverse within T+1, and flag anything older for compensation&quot; is.</li>
+<li><strong>Three records must agree.</strong> The app, the bank and NPCI each keep their own record of every payment, and settlement happens in cycles later. A good design <a href="https://bodhiprotocol.com/essays/reconciliation-the-discipline-of-assuming-two-records-already-disagree">assumes those records already disagree</a> and says how the mismatch gets found and fixed, not whether.</li>
+<li><strong>Retries must not double-pay.</strong> If an app retries a request after a timeout, the system has to recognise it as the same payment, not a new one. Testers should try it on purpose.</li>
+<li><strong>Limits are part of the spec.</strong> Most UPI payments are capped at ₹1 lakh each, with higher caps for specific categories such as tax, hospital and education payments. <strong>UPI Lite</strong> is a separate lane entirely: small payments of up to ₹1,000 from an on-device balance of up to ₹5,000, with no PIN. Every one of those numbers is a boundary a tester should hit exactly, and just over.</li>
+<li><strong>Disputes have their own plumbing.</strong> The US gives banks a long, rule-bound window: under Regulation E, a bank generally has 10 business days to investigate a consumer&#39;s electronic-payment error. UPI routes complaints through NPCI&#39;s <strong>UDIR</strong> (Unified Dispute and Issue Resolution) system, raised from inside the payment app, and since November 2025 disputes even settle in their own separate cycles. A requirement should say which journey a complaint takes, not just that one &quot;can be raised&quot;.</li>
+</ul>
+<h2>Lighthouse Insight</h2>
+<p>UPI&#39;s trick is that it separated two things most people assume are one: the <em>promise</em> that you&#39;ve been paid and the <em>money</em> actually moving between banks. The promise travels in seconds, for free, to anyone. The money follows in a batch, a few hours later, between several hundred banks that trust the system enough to wait. Brazil and the US decided the money should move with the promise. India decided the promise was enough, and built the busiest payment system on Earth on that decision.</p>
+<h2>Reference anchors</h2>
+<ul>
+<li><a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2257087&amp;reg=3&amp;lang=1">PIB: UPI completes 10 years, world&#39;s largest real-time payments platform</a></li>
+<li><a href="https://www.whalesbook.com/news/English/technology/UPI-Hits-Record-2366-Billion-Transactions-in-July-2026/6a6da1cc0f4505b5a03c6a11">Whalesbook: UPI hits record 23.66 billion transactions in July 2026</a></li>
+<li><a href="https://www.business-standard.com/amp/markets/capital-market-news/upi-has-around-49-share-in-global-real-time-payment-system-transaction-volume-125120900273_1.html">Business Standard: UPI has around 49% share of global real-time payment volume (IMF)</a></li>
+<li><a href="https://www.business-standard.com/finance/personal-finance/new-upi-transaction-rules-from-nov-3-here-s-what-changes-for-users-banks-125092300373_1.html">Business Standard: New UPI settlement rules from November 3, 2025</a></li>
+<li><a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2112771&amp;reg=48&amp;lang=2">PIB: Cabinet approves incentive scheme for low-value BHIM-UPI transactions</a></li>
+<li><a href="https://www.medianama.com/2025/08/223-npci-p2p-collect-payments-oct-1-what-it-means/">MediaNama: NPCI to discontinue P2P collect requests from October 1, 2025</a></li>
+<li><a href="https://www.business-standard.com/finance/news/npci-extends-market-cap-deadline-for-upi-apps-by-two-years-to-end-of-2026-124123100856_1.html">Business Standard: NPCI extends market-share cap deadline to end-2026</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Pix_(payment_system)">Wikipedia: Pix (payment system)</a></li>
+<li><a href="https://www.frbservices.org/resources/financial-services/fednow/volume-value-stats">Federal Reserve Financial Services: FedNow volume and value statistics</a></li>
+<li><a href="https://www.npci.org.in/what-we-do/rupay/rupay-credit-card-on-upi/faqs">NPCI: RuPay Credit Card on UPI FAQs</a></li>
+<li><a href="https://cleartax.in/s/what-is-upi-lite">ClearTax: UPI Lite limits</a></li>
+<li><a href="https://fastpayments.worldbank.org/sites/default/files/2021-09/World_Bank_FPS_UK_FPS_Case_Study.pdf">World Bank: UK Faster Payments case study</a></li>
+</ul>
+
+</div>
+<hr style="max-width: 680px; margin: 0 auto;" />
+<p style="font-family: sans-serif; font-size: 13px; color: #52525b; max-width: 680px; margin: 16px auto;">
+  Not part of the story — for you, before you paste this in:<br />
+  Tags to add on Medium's publish screen: payments, infrastructure, india<br />
+  Canonical link to set (Medium story menu "..." → "Change settings" → "Add canonical link"): https://bodhiprotocol.com/essays/upi-what-happens-between-pay-and-paid
+</p>
