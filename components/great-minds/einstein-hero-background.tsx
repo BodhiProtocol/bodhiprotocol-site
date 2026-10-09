@@ -9,7 +9,7 @@ function EinsteinHeroBackground() {
       className="pointer-events-none absolute inset-0 h-full w-full text-brand/[0.08]"
       preserveAspectRatio="xMidYMid slice"
     >
-      {[120, 160, 200, 240].map((baseY, i) => (
+      {[120, 160, 200, 240].map((baseY) => (
         <path
           key={baseY}
           d={`M 480 ${baseY} Q 660 ${baseY + 50} 780 ${baseY}`}
