@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { OrderBookSimulator } from "@/components/simulators/order-book/order-book-simulator";
+import { SimulatorJsonLd } from "@/components/simulators/simulator-json-ld";
 
 const description =
   "Move orders and see how they affect the market price — learn bid, ask, spread, liquidity, and price discovery by doing.";
@@ -19,5 +20,10 @@ export const metadata: Metadata = {
 };
 
 export default function OrderBookPage() {
-  return <OrderBookSimulator />;
+  return (
+    <>
+      <SimulatorJsonLd name="Order Book" description={description} path="/simulators/order-book" />
+      <OrderBookSimulator />
+    </>
+  );
 }

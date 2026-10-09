@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { InflationSimulator } from "@/components/simulators/inflation/inflation-simulator";
+import { SimulatorJsonLd } from "@/components/simulators/simulator-json-ld";
 
 const description =
   "See how interest rates, money supply, and productivity pull inflation, growth, and unemployment in different directions.";
@@ -19,5 +20,10 @@ export const metadata: Metadata = {
 };
 
 export default function InflationPage() {
-  return <InflationSimulator />;
+  return (
+    <>
+      <SimulatorJsonLd name="Inflation" description={description} path="/simulators/inflation" />
+      <InflationSimulator />
+    </>
+  );
 }

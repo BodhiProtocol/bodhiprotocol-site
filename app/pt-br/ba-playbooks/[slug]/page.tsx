@@ -26,6 +26,7 @@ import { GuiaDeDescobertaDeNovoProjetoBody } from "@/components/ba-playbooks/gui
 import { JsonLd } from "@/components/shared/json-ld";
 import { getPlaybookPtBrBySlug, getPlaybookPtBrSlugs } from "@/lib/ba-playbooks-pt-br";
 import { getEnSlugForPtBrSlug } from "@/lib/ba-playbooks-i18n";
+import { pageTitle } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 
 interface PlaybookPtBrPageProps {
@@ -63,7 +64,7 @@ export async function generateMetadata({ params }: PlaybookPtBrPageProps): Promi
   const enSlug = getEnSlugForPtBrSlug(slug);
 
   return {
-    title: seoTitle,
+    title: pageTitle(seoTitle),
     description: seoDescription,
     authors: [{ name: guide.author }],
     alternates: {
