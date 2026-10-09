@@ -55,6 +55,7 @@ import { TradeLifecycleIllustration } from "@/components/essays/trade-lifecycle-
 import { TradingDesksIllustration } from "@/components/essays/trading-desks-illustration";
 import { TwapIllustration } from "@/components/essays/twap-illustration";
 import { VwapIllustration } from "@/components/essays/vwap-illustration";
+import { ShareRelendingIllustration } from "@/components/essays/share-relending-illustration";
 
 export const essayIllustrations: Record<string, ComponentType> = {
   "allocation-one-block-trade-many-owners": AllocationIllustration,
@@ -88,6 +89,7 @@ export const essayIllustrations: Record<string, ComponentType> = {
   "settlement-fails-what-happens-when-a-trade-refuses-to-deliver":
     SettlementFailIllustration,
   "repo-the-overnight-loan-thats-legally-two-trades": RepoIllustration,
+  "securities-lending-the-share-sold-short-more-than-once": ShareRelendingIllustration,
   "the-decisions-that-never-stopped-billing": SubscriptionBillingIllustration,
   "capital-market-system-two-paths-one-market": CapitalMarketPathsIllustration,
   "shiv-pressed-buy-trade-execution": TradeExecutionCardIllustration,
