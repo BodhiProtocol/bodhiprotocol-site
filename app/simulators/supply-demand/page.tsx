@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { SupplyDemandSimulator } from "@/components/simulators/supply-demand/supply-demand-simulator";
+import { SimulatorJsonLd } from "@/components/simulators/simulator-json-ld";
 
 const description =
   "See how price is determined by the balance between buyers and sellers. Move the sliders and watch the equilibrium respond.";
@@ -19,5 +20,10 @@ export const metadata: Metadata = {
 };
 
 export default function SupplyDemandPage() {
-  return <SupplyDemandSimulator />;
+  return (
+    <>
+      <SimulatorJsonLd name="Supply & Demand" description={description} path="/simulators/supply-demand" />
+      <SupplyDemandSimulator />
+    </>
+  );
 }

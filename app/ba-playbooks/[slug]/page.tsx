@@ -37,6 +37,7 @@ import {
 } from "@/lib/ba-playbooks";
 import { playbookRecommendations } from "@/lib/content-relations";
 import { getPtBrSlugForEnSlug } from "@/lib/ba-playbooks-i18n";
+import { pageTitle } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 
 interface PlaybookPageProps {
@@ -102,7 +103,7 @@ export async function generateMetadata({ params }: PlaybookPageProps): Promise<M
   const ptBrSlug = getPtBrSlugForEnSlug(guide.slug);
 
   return {
-    title: seoTitle,
+    title: pageTitle(seoTitle),
     description: seoDescription,
     authors: [{ name: guide.author }],
     alternates: {

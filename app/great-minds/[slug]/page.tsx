@@ -146,6 +146,7 @@ import { NapoleonHeroBackground } from "@/components/great-minds/napoleon-hero-b
 import { MindGraphProvider } from "@/components/great-minds/mind-graph-context";
 import { getAllGreatMinds, getGreatMindBySlug, type GreatMindWithContent } from "@/lib/great-minds";
 import { mdxOptions } from "@/lib/mdx-options";
+import { pageTitle } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 
 // Each Great Mind gets its own bespoke hero diagram — the visual metaphor is
@@ -294,7 +295,7 @@ export async function generateMetadata({ params }: GreatMindPageProps): Promise<
   const seoDescription = mind.seoDescription ?? mind.description;
 
   return {
-    title: seoTitle,
+    title: pageTitle(seoTitle),
     description: seoDescription,
     alternates: { canonical: `/great-minds/${mind.slug}` },
     openGraph: {
@@ -365,11 +366,18 @@ export default async function GreatMindPage({ params }: GreatMindPageProps) {
     };
   });
 
-  const personJsonLd = {
+  const articleJsonLd = {
     "@context": "https://schema.org",
-    "@type": "Person",
-    name: mind.name,
-    description: mind.description,
+    "@type": "Article",
+    headline: mind.seoTitle ?? mind.name,
+    description: mind.seoDescription ?? mind.description,
+    image: `${mindUrl}/opengraph-image`,
+    datePublished: mind.date,
+    dateModified: mind.date,
+    about: { "@type": "Person", name: mind.name, description: mind.description },
+    author: { "@type": "Person", name: "Surya" },
+    publisher: { "@type": "Organization", name: siteConfig.name, url: siteConfig.url },
+    mainEntityOfPage: { "@type": "WebPage", "@id": mindUrl },
     url: mindUrl,
   };
 
@@ -385,7 +393,7 @@ export default async function GreatMindPage({ params }: GreatMindPageProps) {
 
   return (
     <>
-      <JsonLd data={personJsonLd} />
+      <JsonLd data={articleJsonLd} />
       <JsonLd data={breadcrumbJsonLd} />
       <MindGraphProvider>
         <GreatMindsHero

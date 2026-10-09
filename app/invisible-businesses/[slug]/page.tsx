@@ -64,6 +64,7 @@ import {
 } from "@/lib/invisible-businesses";
 import { ibIllustrations } from "@/lib/ib-illustrations";
 import { mdxOptions } from "@/lib/mdx-options";
+import { pageTitle } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 
 // Episodes with a bespoke one-off page layout. Slugs not listed here fall back
@@ -131,7 +132,7 @@ export async function generateMetadata({ params }: IBPageProps): Promise<Metadat
   const fullTitle = titleWithCompany(episode);
 
   return {
-    title: fullTitle,
+    title: pageTitle(fullTitle),
     description: episode.description,
     authors: [{ name: episode.author }],
     alternates: { canonical: `/invisible-businesses/${episode.slug}` },
