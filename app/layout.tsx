@@ -7,7 +7,6 @@ import { Footer } from "@/components/layout/footer";
 import { JsonLd } from "@/components/shared/json-ld";
 import { Tracker } from "@/components/analytics/tracker";
 import { AdminShortcut } from "@/components/admin/admin-shortcut";
-import { getSearchIndex } from "@/lib/search-index";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
@@ -80,13 +79,13 @@ const websiteJsonLd = {
   },
 };
 
+const isStaticExport = process.env.NEXT_PUBLIC_STATIC_EXPORT === "1";
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const searchItems = getSearchIndex();
-
   return (
     <html
       lang="en"
@@ -107,14 +106,19 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
-          <Navbar searchItems={searchItems} />
+          <Navbar />
           <main id="main-content" className="flex-1">
             {children}
           </main>
           <Footer />
-          <Analytics />
-          <Tracker />
-          <AdminShortcut />
+          {/* Server-backed (Vercel Analytics, /api/collect, /admin) -- absent from the static build. */}
+          {!isStaticExport && (
+            <>
+              <Analytics />
+              <Tracker />
+              <AdminShortcut />
+            </>
+          )}
         </ThemeProvider>
       </body>
     </html>

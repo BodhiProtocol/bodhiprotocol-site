@@ -18,13 +18,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { isNavLinkActive, navLinks, seriesLinks } from "@/lib/nav-links";
-import type { SearchItem } from "@/lib/search-index";
 import { cn } from "@/lib/utils";
 
 const navLinkClassName =
   "rounded-full px-2.5 py-1.5 text-sm font-medium text-foreground/70 transition-colors duration-200 hover:bg-muted hover:text-foreground";
 
-function Navbar({ searchItems }: { searchItems: SearchItem[] }) {
+function Navbar() {
   const [scrolled, setScrolled] = React.useState(false);
   const pathname = usePathname();
 
@@ -114,7 +113,7 @@ function Navbar({ searchItems }: { searchItems: SearchItem[] }) {
 
           <div className="flex items-center gap-1.5">
             <LanguageSwitcher className="hidden lg:inline-flex" />
-            <CommandMenu items={searchItems} />
+            <CommandMenu />
             <ThemeToggle className="hidden lg:inline-flex" />
             <MobileNav />
           </div>
