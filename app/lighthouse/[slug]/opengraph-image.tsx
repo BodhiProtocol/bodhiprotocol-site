@@ -1,10 +1,15 @@
 import { ImageResponse } from "next/og";
 
-import { getBlueprintBySlug } from "@/lib/blueprints";
+import { getBlueprintBySlug, getAllBlueprints } from "@/lib/blueprints";
 import { categoryColors, defaultCategoryColor } from "@/lib/category-colors";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+
+// Pre-render one image per entry at build time (needed for the static export).
+export function generateStaticParams() {
+  return getAllBlueprints().map((blueprint) => ({ slug: blueprint.slug }));
+}
 
 export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;

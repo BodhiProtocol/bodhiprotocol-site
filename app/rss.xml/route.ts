@@ -3,6 +3,9 @@ import { siteConfig } from "@/lib/site-config";
 
 const SITE_URL = siteConfig.url;
 
+// The feed only changes when content changes, so build it once at deploy time.
+export const dynamic = "force-static";
+
 function escapeXml(value: string): string {
   return value
     .replace(/&/g, "&amp;")

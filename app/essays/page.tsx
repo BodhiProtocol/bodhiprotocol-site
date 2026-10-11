@@ -23,7 +23,10 @@ export const metadata: Metadata = {
 };
 
 export default function EssaysPage() {
-  const essays = getAllEssays();
+  // Cards only need frontmatter -- drop the full MDX body so it isn't shipped to
+  // the browser (it made this one page ~1.5 MB).
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const essays = getAllEssays().map(({ content, ...essay }) => essay);
 
   return (
     <>

@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/components/shared/app-link";
 
 import { trackEvent } from "@/lib/analytics/track-event";
 import { Card } from "@/components/ui/card";

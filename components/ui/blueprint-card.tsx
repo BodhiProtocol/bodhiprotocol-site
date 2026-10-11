@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/components/shared/app-link";
 
 import { Card } from "@/components/ui/card";
 import { Tag } from "@/components/ui/tag";

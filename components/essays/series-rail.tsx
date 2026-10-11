@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/components/shared/app-link";
 import { ChevronRight } from "lucide-react";
 
 import { Muted } from "@/components/ui/typography";

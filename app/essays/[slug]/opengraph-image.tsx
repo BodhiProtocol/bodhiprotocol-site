@@ -1,10 +1,15 @@
 import { ImageResponse } from "next/og";
 
 import { categoryColors, defaultCategoryColor } from "@/lib/category-colors";
-import { getEssayBySlug } from "@/lib/essays";
+import { getEssayBySlug, getAllEssays } from "@/lib/essays";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+
+// Pre-render one image per entry at build time (needed for the static export).
+export function generateStaticParams() {
+  return getAllEssays().map((essay) => ({ slug: essay.slug }));
+}
 
 export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;

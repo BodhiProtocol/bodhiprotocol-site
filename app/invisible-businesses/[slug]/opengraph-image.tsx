@@ -1,9 +1,14 @@
 import { ImageResponse } from "next/og";
 
-import { getInvisibleBusinessBySlug } from "@/lib/invisible-businesses";
+import { getInvisibleBusinessBySlug, getAllInvisibleBusinesses } from "@/lib/invisible-businesses";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+
+// Pre-render one image per entry at build time (needed for the static export).
+export function generateStaticParams() {
+  return getAllInvisibleBusinesses().map((episode) => ({ slug: episode.slug }));
+}
 
 // The OG renderer's bundled font has no ₹ glyph (it draws an empty box), so any
 // text containing ₹ is laid out word by word with the symbol drawn as an SVG.

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/components/shared/app-link";
 
 import { Tag } from "@/components/ui/tag";
 import { Muted } from "@/components/ui/typography";

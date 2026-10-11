@@ -40,6 +40,14 @@ function NewsletterForm({
     setStatus("loading");
     setError(null);
 
+    // The static build (build:static) has no /api to post to -- same message the
+    // API itself returns when the newsletter database isn't configured.
+    if (process.env.NEXT_PUBLIC_STATIC_EXPORT === "1") {
+      setError("Newsletter signup isn't set up yet.");
+      setStatus("error");
+      return;
+    }
+
     try {
       const response = await fetch("/api/newsletter", {
         method: "POST",
