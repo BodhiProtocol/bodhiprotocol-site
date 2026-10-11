@@ -21,3 +21,9 @@ The shorter deadline exposed a problem the old one had quietly absorbed: for a f
 "It worked in UAT." "The same code went to production." Both true. The Cancel button still vanished.
 
 Production sent an order status called ALLOCATED that UAT had never seen. Same code does not mean the same system.
+
+## Aryabhata: The 23-Year-Old Who Said the Earth Spins
+
+In 499 CE, a 23-year-old near modern Patna said the stars only look like they move, the way trees on the shore seem to slide past a boat. It's the Earth that turns.
+
+His spinning Earth then lost the argument for a thousand years, to one reasonable question about a bird flying back to its nest.
