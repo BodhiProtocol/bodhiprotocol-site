@@ -49,6 +49,7 @@ import {
 import { getReadNextEssays } from "@/lib/essay-paths";
 import { essayIllustrations } from "@/lib/essay-illustrations";
 import { mdxOptions } from "@/lib/mdx-options";
+import { pageTitle } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 
 interface EssayPageProps {
@@ -101,7 +102,7 @@ export async function generateMetadata({ params }: EssayPageProps): Promise<Meta
   const seoDescription = essay.seoDescription ?? essay.description;
 
   return {
-    title: seoTitle,
+    title: pageTitle(seoTitle),
     description: seoDescription,
     authors: [{ name: essay.author }],
     alternates: { canonical: `/essays/${essay.slug}` },
