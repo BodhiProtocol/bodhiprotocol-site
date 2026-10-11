@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 
 import { siteConfig } from "@/lib/site-config";
 
+export const dynamic = "force-static";
+
 // AI *training* crawlers re-crawl every page repeatedly and send no readers back;
 // their load helped push the site over the Vercel Hobby quota (Oct 2026). AI
 // *search* bots (OAI-SearchBot, ChatGPT-User, PerplexityBot, Claude-SearchBot)

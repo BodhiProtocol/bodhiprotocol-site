@@ -5,19 +5,29 @@ import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrettyCode from "rehype-pretty-code";
 
+// `npm run build:static` sets this to produce a plain-files site (out/) that any
+// static host can serve, e.g. Cloudflare Pages. Server-only features (admin,
+// /api, middleware) are left out of that build -- see scripts/build-static.mjs.
+const isStaticExport = process.env.STATIC_EXPORT === "1";
+
 const nextConfig: NextConfig = {
   pageExtensions: ["ts", "tsx", "mdx"],
+  output: isStaticExport ? "export" : undefined,
   images: {
     formats: ["image/avif", "image/webp"],
+    unoptimized: isStaticExport,
   },
   poweredByHeader: false,
-  async redirects() {
-    return [
-      { source: "/labs", destination: "/tools", permanent: true },
-      { source: "/navigator", destination: "/lighthouse#suggested-path", permanent: true },
-    ];
-  },
+  // Static hosts can't run these; build-static.mjs writes them to out/_redirects.
+  ...(!isStaticExport && { redirects }),
 };
+
+async function redirects() {
+  return [
+    { source: "/labs", destination: "/tools", permanent: true },
+    { source: "/navigator", destination: "/lighthouse#suggested-path", permanent: true },
+  ];
+}
 
 const withMDX = createMDX({
   extension: /\.mdx?$/,

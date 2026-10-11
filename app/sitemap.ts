@@ -9,6 +9,8 @@ import { getAllInvisibleBusinesses } from "@/lib/invisible-businesses";
 import { seoLearningPages } from "@/lib/seo-learning-pages";
 import { siteConfig } from "@/lib/site-config";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
     "",

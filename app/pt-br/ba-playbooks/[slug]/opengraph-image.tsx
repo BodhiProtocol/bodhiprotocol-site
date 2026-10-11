@@ -1,10 +1,15 @@
 import { ImageResponse } from "next/og";
 
 import { categoryColors, defaultCategoryColor } from "@/lib/category-colors";
-import { getPlaybookPtBrBySlug } from "@/lib/ba-playbooks-pt-br";
+import { getPlaybookPtBrBySlug, getPlaybookPtBrSlugs } from "@/lib/ba-playbooks-pt-br";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+
+// Pre-render one image per entry at build time (needed for the static export).
+export function generateStaticParams() {
+  return getPlaybookPtBrSlugs().map((slug) => ({ slug }));
+}
 
 export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
