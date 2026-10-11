@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/components/shared/app-link";
 import { ArrowRight, Waypoints } from "lucide-react";
 
 import { Card } from "@/components/ui/card";

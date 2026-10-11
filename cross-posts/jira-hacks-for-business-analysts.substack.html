@@ -1,0 +1,254 @@
+<div style="font-family: Georgia, 'Times New Roman', serif; font-size: 20px; line-height: 1.65; max-width: 680px; margin: 60px auto; color: #0a0a0a;">
+  <img src="https://bodhiprotocol.com/images/ba-playbooks/jira-hacks-for-business-analysts-infographic.png" alt="Jira Hacks for Business Analysts" style="width: 100%; height: auto; margin-bottom: 32px;" />
+  <h1 style="font-size: 38px; line-height: 1.25; margin-bottom: 32px;">Jira Hacks for Business Analysts</h1>
+  <p>It&#39;s 11 PM the night before a release, and a developer pings you: &quot;What does this ticket actually mean?&quot; You open it. Three lines of description. An acceptance criterion that just says &quot;should work correctly.&quot; A decision from six weeks ago, buried somewhere inside forty-seven comments nobody has time to reread tonight.</p>
+<p>None of that is really a Jira problem — Jira stored exactly what was typed into it. What&#39;s missing is a habit, not a feature.</p>
+<p>These are twelve of them: small, specific ways to write tickets a developer and QA can act on without pinging you at 11 PM.</p>
+<h2>1. Stop writing recurring tickets from scratch</h2>
+<p><em>If the structure already works, reuse it.</em></p>
+<p><strong>Before:</strong>
+Create a completely new Jira ticket every time.</p>
+<p><strong>After:</strong></p>
+<ul>
+<li>Clone the closest matching ticket</li>
+<li>Remove irrelevant context</li>
+<li>Update the requirement</li>
+<li>Validate links and acceptance criteria</li>
+</ul>
+<p><strong>Why it helps:</strong> You preserve useful structure while reducing accidental omissions.</p>
+<p><strong>When to use:</strong> Recurring changes across products, markets, releases, or similar workflows.</p>
+<p><strong>Pro tip:</strong> Never blindly clone old assumptions, dates, owners, or dependencies.</p>
+<h2>2. Put context before the user story</h2>
+<p><em>A developer should understand the problem before reading the solution.</em></p>
+<p><strong>Flow:</strong> Context → Business Problem → User Story → Business Rules → Acceptance Criteria → Data Requirements → Dependencies → Out of Scope → Open Questions</p>
+<p><strong>Why it helps:</strong> &quot;As a user...&quot; rarely explains enough about why a change exists.</p>
+<p><strong>Copy Template:</strong></p>
+<pre><code>CONTEXT:
+
+BUSINESS PROBLEM:
+
+USER STORY:
+As a...
+I want...
+So that...
+
+BUSINESS RULES:
+
+ACCEPTANCE CRITERIA:
+
+DATA REQUIREMENTS:
+
+DEPENDENCIES:
+
+OUT OF SCOPE:
+
+OPEN QUESTIONS:
+</code></pre>
+<h2>3. Write acceptance criteria QA can actually test</h2>
+<p><em>If QA cannot clearly determine pass or fail, the acceptance criterion is probably too vague.</em></p>
+<p><strong>Flow:</strong> Vague requirement → Observable behaviour → Pass / Fail</p>
+<p><strong>Before:</strong>
+User should be able to view the trade.</p>
+<p><strong>After:</strong></p>
+<ul>
+<li>Given a matched trade</li>
+<li>When the analyst opens Trade Details</li>
+<li>Then execution venue, quantity, price, and execution timestamp are displayed</li>
+</ul>
+<p><strong>Why it helps:</strong> Testable acceptance criteria reduce interpretation gaps between BA, developers, and QA.</p>
+<h2>4. Link dependencies instead of describing them</h2>
+<p><em>Relationships should be modelled, not buried inside paragraphs.</em></p>
+<p><strong>Flow:</strong> Epic → Story → Depends on API Story → Blocked by Environment Task</p>
+<p><strong>Why it helps:</strong> Linked issues are visible, searchable, and much easier to trace than narrative dependency notes.</p>
+<p><strong>When to use:</strong> Cross-team, API, infrastructure, data, or upstream/downstream dependencies.</p>
+<h2>5. Separate business rules from acceptance criteria</h2>
+<p><em>Rules describe how the business works. Acceptance criteria describe how the system should behave.</em></p>
+<p><strong>Business Rule:</strong> Orders above £1 million require supervisory approval.</p>
+<p><strong>Acceptance Criterion:</strong> Given an order value above £1 million, when the trader submits the order, then the order enters Pending Approval status.</p>
+<p><strong>Why it helps:</strong> Mixing them makes requirements harder to maintain and test.</p>
+<h2>6. Use labels like a taxonomy, not hashtags</h2>
+<p><em>Labels become useful only when the team agrees what they mean.</em></p>
+<p><strong>Before:</strong></p>
+<ul>
+<li>urgent</li>
+<li>new</li>
+<li>important</li>
+<li>change</li>
+<li>team1</li>
+<li>misc</li>
+</ul>
+<p><strong>After:</strong></p>
+<ul>
+<li>regulatory</li>
+<li>trade-surveillance</li>
+<li>market-data</li>
+<li>client-onboarding</li>
+<li>emea</li>
+<li>release-2026-q3</li>
+</ul>
+<p><strong>Why it helps:</strong> Consistent labels improve filtering, dashboards, reporting, and historical analysis.</p>
+<p><strong>Pro tip:</strong> If everybody invents their own labels, labels eventually become useless.</p>
+<h2>7. Create filters you will actually reuse</h2>
+<p><em>A good Jira filter turns searching into one click.</em></p>
+<p>Replace the bracketed placeholders with your own project key and field names before saving — exact JQL syntax depends on your project&#39;s custom fields.</p>
+<p><strong>Why it helps:</strong> A saved filter turns a recurring manual hunt into a permanent, shareable view.</p>
+<p><strong>My open stories:</strong></p>
+<pre><code>project = &quot;[YOUR PROJECT]&quot; AND assignee = currentUser() AND status != Done ORDER BY priority DESC
+</code></pre>
+<p><strong>Blocked BA stories:</strong></p>
+<pre><code>project = &quot;[YOUR PROJECT]&quot; AND status = &quot;Blocked&quot; AND labels = &quot;requirements&quot; ORDER BY updated DESC
+</code></pre>
+<p><strong>Stories missing acceptance criteria:</strong></p>
+<pre><code>project = &quot;[YOUR PROJECT]&quot; AND issuetype = Story AND &quot;Acceptance Criteria&quot; is EMPTY
+</code></pre>
+<p><strong>Items in current release:</strong></p>
+<pre><code>project = &quot;[YOUR PROJECT]&quot; AND fixVersion = &quot;[CURRENT RELEASE]&quot; ORDER BY status ASC
+</code></pre>
+<p><strong>Recently changed tickets:</strong></p>
+<pre><code>project = &quot;[YOUR PROJECT]&quot; AND updated &gt;= -3d ORDER BY updated DESC
+</code></pre>
+<h2>8. Build a BA dashboard, not another status dashboard</h2>
+<p><em>A BA dashboard should show where thinking or decisions are stuck.</em></p>
+<ul>
+<li>Requirements awaiting clarification</li>
+<li>Blocked stories</li>
+<li>Open dependencies</li>
+<li>Items awaiting a business decision</li>
+<li>UAT defects</li>
+<li>Stories changed during the current sprint</li>
+</ul>
+<p><strong>Why it helps:</strong> That&#39;s more useful to a BA than simply seeing how many tickets are &quot;In Progress.&quot;</p>
+<h2>9. Don&#39;t hide decisions inside comments</h2>
+<p><em>Comments record conversation. Requirements should record the resulting truth.</em></p>
+<p><strong>Before:</strong>
+Requirement changed as discussed.</p>
+<p><strong>After:</strong></p>
+<ul>
+<li>Decision: Orders cancelled before acknowledgement will not generate surveillance alerts</li>
+<li>Reason: The event is not considered an executed trading action</li>
+<li>Date: 08 Aug 2026</li>
+<li>Decision owner: Business Surveillance</li>
+<li>Related requirement: REQ-142</li>
+</ul>
+<p><strong>Why it helps:</strong> Six months later, nobody wants to read 47 comments to reconstruct a decision.</p>
+<p><strong>Copy Decision Template:</strong></p>
+<pre><code>Decision: [what changed]
+Reason: [why]
+Date: [date]
+Decision owner: [who]
+Related requirement: [ticket/requirement ID]
+</code></pre>
+<h2>10. Add a Definition of Ready check</h2>
+<p><em>A ticket being created does not mean a ticket is ready.</em></p>
+<ul>
+<li><input disabled="" type="checkbox"> Business problem understood</li>
+<li><input disabled="" type="checkbox"> Acceptance criteria written</li>
+<li><input disabled="" type="checkbox"> Business rules identified</li>
+<li><input disabled="" type="checkbox"> Dependencies linked</li>
+<li><input disabled="" type="checkbox"> Data requirements understood</li>
+<li><input disabled="" type="checkbox"> Designs available if required</li>
+<li><input disabled="" type="checkbox"> Open questions resolved</li>
+<li><input disabled="" type="checkbox"> Test approach understood</li>
+</ul>
+<p><strong>Why it helps:</strong> A lightweight readiness check prevents partially understood requirements from quietly entering development.</p>
+<p><strong>Copy Checklist:</strong></p>
+<pre><code>Definition of Ready:
+[ ] Business problem understood
+[ ] Acceptance criteria written
+[ ] Business rules identified
+[ ] Dependencies linked
+[ ] Data requirements understood
+[ ] Designs available if required
+[ ] Open questions resolved
+[ ] Test approach understood
+</code></pre>
+<h2>11. Use subtasks only for real pieces of work</h2>
+<p><em>Do not turn every action you take into a Jira subtask.</em></p>
+<p><strong>Before:</strong></p>
+<ul>
+<li>Story</li>
+<li>→ Discuss</li>
+<li>→ Analyse</li>
+<li>→ Email team</li>
+<li>→ Update Jira</li>
+<li>→ Check again</li>
+</ul>
+<p><strong>After:</strong></p>
+<ul>
+<li>Story</li>
+<li>→ Backend implementation</li>
+<li>→ UI implementation</li>
+<li>→ Data migration</li>
+<li>→ QA validation</li>
+</ul>
+<p><strong>Why it helps:</strong> Subtasks are useful when they represent trackable delivery work, not a personal to-do list.</p>
+<h2>12. Build one reusable BA story template</h2>
+<p><em>Every hack in this guide eventually comes back to one thing.</em></p>
+<p>Start every ticket with a structure that reminds you what to think about.</p>
+<ul>
+<li>Context</li>
+<li>Business Problem</li>
+<li>User Story</li>
+<li>Business Rules</li>
+<li>Acceptance Criteria</li>
+<li>Data Requirements</li>
+<li>Dependencies</li>
+<li>Out of Scope</li>
+<li>Open Questions</li>
+<li>Decisions</li>
+</ul>
+<p><strong>Why it helps:</strong> A single master template means every new ticket starts from the same complete structure instead of a blank page.</p>
+<h2>You don&#39;t need more Jira. You need clearer Jira.</h2>
+<p>Most Jira problems are not really Jira problems. They are information-design problems. Clear context, explicit decisions, visible dependencies, and testable acceptance criteria make the tool much easier to work with.</p>
+<p><strong>BA Jira Story Template:</strong></p>
+<pre><code>TITLE
+
+CONTEXT
+Explain what is happening and why this change exists.
+
+BUSINESS PROBLEM
+What problem are we solving?
+
+USER STORY
+As a...
+I want...
+So that...
+
+BUSINESS RULES
+
+
+ACCEPTANCE CRITERIA
+AC1
+Given...
+When...
+Then...
+
+AC2
+Given...
+When...
+Then...
+
+DATA REQUIREMENTS
+Inputs:
+Outputs:
+Source systems:
+Key fields:
+
+DEPENDENCIES
+Linked issues:
+Systems:
+Teams:
+
+OUT OF SCOPE
+
+
+OPEN QUESTIONS
+
+
+DECISIONS
+</code></pre>
+
+  <p style="margin-top: 32px; font-size: 14px; color: #52525b;">
+    Originally published at <a href="https://bodhiprotocol.com/ba-playbooks/jira-hacks-for-business-analysts" style="color: #7c3aed;">bodhiprotocol.com</a>.
+  </p>
+</div>

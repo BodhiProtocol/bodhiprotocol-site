@@ -1,0 +1,17 @@
+// Cloudflare Workers config: serves the static export (out/) as plain assets --
+// no server code runs, so requests are free and unmetered. `wrangler deploy`
+// runs build:static itself (build.command below), so the dashboard's deploy
+// command `npx wrangler deploy` works whatever its build command is set to.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "bodhiprotocol-site",
+  "compatibility_date": "2026-10-01",
+  "build": {
+    "command": "npm run build:static"
+  },
+  "assets": {
+    "directory": "./out",
+    // Serve the site's own 404 page (out/404.html) for unknown URLs.
+    "not_found_handling": "404-page"
+  }
+}

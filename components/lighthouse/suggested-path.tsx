@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/components/shared/app-link";
 
 import { useRevealOnScroll } from "@/components/essays/use-reveal-on-scroll";
 import { Badge } from "@/components/ui/badge";

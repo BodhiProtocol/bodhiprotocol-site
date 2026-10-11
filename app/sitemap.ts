@@ -17,6 +17,8 @@ import { MIN_INDEXED_TAG_ESSAYS } from "@/lib/seo";
 import { seoLearningPages } from "@/lib/seo-learning-pages";
 import { siteConfig } from "@/lib/site-config";
 
+export const dynamic = "force-static";
+
 // lastModified is only set where a real content date exists. Stamping every
 // page with the build time tells Google everything changes on every deploy,
 // which teaches it to ignore the field.

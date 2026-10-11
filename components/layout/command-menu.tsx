@@ -5,15 +5,21 @@ import dynamic from "next/dynamic";
 import { Search } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { loadSearchIndex } from "@/components/layout/load-search-index";
 import type { SearchItem } from "@/lib/search-index";
 
 const SearchDialog = dynamic(() =>
   import("@/components/layout/search-dialog").then((mod) => mod.SearchDialog),
 );
 
-function CommandMenu({ items }: { items: SearchItem[] }) {
+function CommandMenu() {
   const [open, setOpen] = React.useState(false);
   const [mounted, setMounted] = React.useState(false);
+  const [items, setItems] = React.useState<SearchItem[]>([]);
+
+  React.useEffect(() => {
+    if (mounted) loadSearchIndex().then(setItems);
+  }, [mounted]);
 
   React.useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {

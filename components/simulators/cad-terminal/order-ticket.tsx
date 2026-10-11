@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/components/shared/app-link";
 import { ArrowRight, CheckCircle2, RotateCcw, Send, XCircle } from "lucide-react";
 
 import { cn } from "@/lib/utils";
