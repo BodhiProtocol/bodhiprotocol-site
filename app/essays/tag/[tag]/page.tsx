@@ -9,6 +9,7 @@ import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { JsonLd } from "@/components/shared/json-ld";
 import { getAllTags, getEssaysByTag, slugifyTerm } from "@/lib/essays";
+import { MIN_INDEXED_TAG_ESSAYS } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 
 interface TagPageProps {
@@ -31,6 +32,8 @@ export async function generateMetadata({ params }: TagPageProps): Promise<Metada
     title,
     description,
     alternates: { canonical: `/essays/tag/${tagSlug}` },
+    robots:
+      result.essays.length < MIN_INDEXED_TAG_ESSAYS ? { index: false, follow: true } : undefined,
     openGraph: {
       type: "website",
       title,

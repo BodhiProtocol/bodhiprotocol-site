@@ -20,6 +20,7 @@ import {
 } from "@/lib/blueprints";
 import { blueprintIllustrations } from "@/lib/blueprint-illustrations";
 import { mdxOptions } from "@/lib/mdx-options";
+import { pageTitle } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 
 interface BlueprintPageProps {
@@ -38,7 +39,7 @@ export async function generateMetadata({
   if (!blueprint) return {};
 
   return {
-    title: blueprint.title,
+    title: pageTitle(blueprint.title),
     description: blueprint.summary,
     alternates: { canonical: `/lighthouse/${blueprint.slug}` },
     openGraph: {

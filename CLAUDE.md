@@ -36,6 +36,7 @@ Mirror the existing pattern (Invisible Businesses / Great Minds):
 3. `content/<type>/*.mdx` — git-tracked content, no database
 4. `app/<type>/page.tsx` (landing grid) + `app/<type>/[slug]/page.tsx` + `opengraph-image.tsx`
 5. `components/<type>/` — generic/reusable components (hero, TOC, card) vs. bespoke-per-entry components (diagrams), wired via a **slug-keyed registry** (e.g. `customEpisodeBodies` in `app/invisible-businesses/[slug]/page.tsx`, `heroDiagrams`/`heroBackgrounds` in Great Minds) — not a growing if/ternary chain.
+6. SEO: wrap the detail page's metadata title in `pageTitle()` (`lib/seo.ts`; drops the " — BodhiProtocol" suffix when it would push the title past ~60 chars), add an `Article` JSON-LD block like the other detail pages, and add the routes to `app/sitemap.ts` with `lastModified` from the entry's real `date`. Never use `new Date()` there, which tells Google every page changed on every deploy. Tag pages with fewer than `MIN_INDEXED_TAG_ESSAYS` essays are `noindex` and left out of the sitemap.
 
 ## Workflow conventions
 

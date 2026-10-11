@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { TradeLifecycleSimulator } from "@/components/simulators/trade-lifecycle/trade-lifecycle-simulator";
+import { SimulatorJsonLd } from "@/components/simulators/simulator-json-ld";
 
 const description =
   "Follow a trade from execution to settlement, see the systems involved, and learn where capital markets BAs catch operational risk.";
@@ -19,5 +20,10 @@ export const metadata: Metadata = {
 };
 
 export default function TradeLifecyclePage() {
-  return <TradeLifecycleSimulator />;
+  return (
+    <>
+      <SimulatorJsonLd name="Trade Lifecycle Simulator" description={description} path="/simulators/trade-lifecycle" />
+      <TradeLifecycleSimulator />
+    </>
+  );
 }

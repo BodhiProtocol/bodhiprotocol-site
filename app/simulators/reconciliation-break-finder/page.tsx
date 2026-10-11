@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { ReconciliationBreakFinder } from "@/components/simulators/reconciliation-break-finder/reconciliation-break-finder";
+import { SimulatorJsonLd } from "@/components/simulators/simulator-json-ld";
 
 const description =
   "Compare front-office and back-office trade records, identify reconciliation breaks, and learn how capital markets BAs diagnose real settlement problems.";
@@ -19,5 +20,10 @@ export const metadata: Metadata = {
 };
 
 export default function ReconciliationBreakFinderPage() {
-  return <ReconciliationBreakFinder />;
+  return (
+    <>
+      <SimulatorJsonLd name="Reconciliation Break Finder" description={description} path="/simulators/reconciliation-break-finder" />
+      <ReconciliationBreakFinder />
+    </>
+  );
 }
