@@ -42,6 +42,7 @@ import { RepoIllustration } from "@/components/essays/repo-illustration";
 import { RequirementIllustration } from "@/components/essays/requirement-illustration";
 import { RequirementsTranslatorIllustration } from "@/components/essays/requirements-translator-illustration";
 import { RogueTradingIllustration } from "@/components/essays/rogue-trading-illustration";
+import { PnlExplainIllustration } from "@/components/essays/pnl-explain-illustration";
 import { SettlementFailIllustration } from "@/components/essays/settlement-fail-illustration";
 import { SettlementFinalityIllustration } from "@/components/essays/settlement-finality-illustration";
 import { SniperIllustration } from "@/components/essays/sniper-illustration";
@@ -122,6 +123,8 @@ export const essayIllustrations: Record<string, ComponentType> = {
   "23-hour-trading-new-yorks-night-is-indias-morning": TwentyThreeHourDayIllustration,
   "rogue-trading-when-the-person-trading-is-also-the-person-checking-the-trade":
     RogueTradingIllustration,
+  "product-control-the-desk-that-refuses-to-take-the-traders-word-for-it":
+    PnlExplainIllustration,
   "colocation-when-the-exchange-itself-decides-who-hears-first": ColocationIllustration,
   "insider-trading-the-edge-that-isnt-skill-its-a-phone-call": InsiderTradingIllustration,
   "front-office-middle-office-back-office-three-clocks-on-one-trade": ThreeClocksIllustration,

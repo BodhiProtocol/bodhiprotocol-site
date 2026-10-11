@@ -424,6 +424,16 @@ export const essayBridges: EssayBridge[] = [
     to: "margin-how-a-clearinghouse-turns-fear-into-collateral",
     label: "Margin prices one position's worst day; cross-margining is what happens once two positions' worst days can't coincide",
   },
+  {
+    from: "product-control-the-desk-that-refuses-to-take-the-traders-word-for-it",
+    to: "rogue-trading-when-the-person-trading-is-also-the-person-checking-the-trade",
+    label: "A false price on a visible trade versus a real trade hidden entirely — two different ways a desk's number stops being true",
+  },
+  {
+    from: "product-control-the-desk-that-refuses-to-take-the-traders-word-for-it",
+    to: "risk-management-engines-the-gauge-the-driver-isnt-supposed-to-touch",
+    label: "Product Control asks whether today's profit is true; the risk engine asks what tomorrow could cost — both fail the same way when the desk sets the number",
+  },
 ];
 
 const seriesBySlug = new Map<string, { series: EssaySeries; order: number }>();
