@@ -286,12 +286,20 @@ export function generateStaticParams() {
   return getAllGreatMinds().map((mind) => ({ slug: mind.slug }));
 }
 
+// "Name: positioning" by default, so a retitled positioning line (or a new
+// entry) never leaves a stale or missing search title. `seoTitle` in
+// frontmatter still overrides it when an entry needs a hand-written one.
+function greatMindSeoTitle(mind: { name: string; positioning?: string; seoTitle?: string }) {
+  if (mind.seoTitle) return mind.seoTitle;
+  return mind.positioning ? `${mind.name}: ${mind.positioning}` : mind.name;
+}
+
 export async function generateMetadata({ params }: GreatMindPageProps): Promise<Metadata> {
   const { slug } = await params;
   const mind = getGreatMindBySlug(slug);
   if (!mind) return {};
 
-  const seoTitle = mind.seoTitle ?? mind.name;
+  const seoTitle = greatMindSeoTitle(mind);
   const seoDescription = mind.seoDescription ?? mind.description;
 
   return {
@@ -369,7 +377,7 @@ export default async function GreatMindPage({ params }: GreatMindPageProps) {
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: mind.seoTitle ?? mind.name,
+    headline: greatMindSeoTitle(mind),
     description: mind.seoDescription ?? mind.description,
     image: `${mindUrl}/opengraph-image`,
     datePublished: mind.date,

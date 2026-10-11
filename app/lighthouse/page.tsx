@@ -7,17 +7,18 @@ import { BlueprintList } from "@/components/lighthouse/blueprint-list";
 import { SuggestedPath } from "@/components/lighthouse/suggested-path";
 import { getAllBlueprints } from "@/lib/blueprints";
 
-const description =
-  "Visual-metaphor blueprints that break down the core concepts behind AI, capital markets, business analysis, decision making, and economics.";
+const seoTitle = "Project Lighthouse: Business Analyst Blueprints for Capital Markets & AI";
+const seoDescription =
+  "Business analyst blueprints that turn AI, capital markets, decision-making, and economics concepts into one memorable visual metaphor each.";
 
 export const metadata: Metadata = {
-  title: "Project Lighthouse",
-  description,
+  title: seoTitle,
+  description: seoDescription,
   alternates: { canonical: "/lighthouse" },
   openGraph: {
     type: "website",
-    title: "Project Lighthouse",
-    description,
+    title: seoTitle,
+    description: seoDescription,
     url: "/lighthouse",
     images: ["/opengraph-image"],
   },
