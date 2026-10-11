@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 
 interface IBHeroProps {
   episode: number;
+  kicker?: string;
   title: string;
   tagline: string;
   author: string;
@@ -16,6 +17,7 @@ interface IBHeroProps {
 
 function IBHero({
   episode,
+  kicker,
   title,
   tagline,
   author,
@@ -26,7 +28,10 @@ function IBHero({
 }: IBHeroProps) {
   return (
     <div className="flex flex-col items-center gap-6 py-16 text-center sm:py-24">
-      <Eyebrow className="text-brand">Episode {String(episode).padStart(2, "0")}</Eyebrow>
+      <Eyebrow className="text-brand">
+        Episode {String(episode).padStart(2, "0")}
+        {kicker ? ` · ${kicker}` : null}
+      </Eyebrow>
       <h1 className="max-w-3xl font-serif text-4xl font-medium tracking-tight text-balance sm:text-6xl">
         {title}
       </h1>

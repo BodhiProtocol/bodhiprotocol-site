@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { NetworkEffectsSimulator } from "@/components/simulators/network-effects/network-effects-simulator";
+import { SimulatorJsonLd } from "@/components/simulators/simulator-json-ld";
 
 const description =
   "Move the sliders and discover why products like WhatsApp, Visa, LinkedIn, Uber, Airbnb, and YouTube become more valuable as more people join.";
@@ -19,5 +20,10 @@ export const metadata: Metadata = {
 };
 
 export default function NetworkEffectsPage() {
-  return <NetworkEffectsSimulator />;
+  return (
+    <>
+      <SimulatorJsonLd name="Network Effects" description={description} path="/simulators/network-effects" />
+      <NetworkEffectsSimulator />
+    </>
+  );
 }

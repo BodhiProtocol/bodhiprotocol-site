@@ -7,6 +7,8 @@ interface IBArticleHeroProps {
   author: string;
   date: string;
   readingTime: string;
+  /** Optional series line shown after the episode number (e.g. "The Hidden Economics of Lahori Zeera"). */
+  kicker?: string;
 }
 
 // Left-aligned hero that lives inside the article column of a bespoke episode
@@ -19,10 +21,14 @@ function IBArticleHero({
   author,
   date,
   readingTime,
+  kicker,
 }: IBArticleHeroProps) {
   return (
     <header className="flex flex-col gap-4">
-      <Eyebrow className="text-brand">Episode {String(episode).padStart(2, "0")}</Eyebrow>
+      <Eyebrow className="text-brand">
+        Episode {String(episode).padStart(2, "0")}
+        {kicker ? ` · ${kicker}` : null}
+      </Eyebrow>
       <h1 className="font-serif text-4xl font-medium tracking-tight text-balance sm:text-5xl">
         {title}
       </h1>

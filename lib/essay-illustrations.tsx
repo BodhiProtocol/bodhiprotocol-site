@@ -8,6 +8,12 @@ import { CapitalMarketPathsIllustration } from "@/components/essays/capital-mark
 import { CarriagePhaseIllustration } from "@/components/essays/carriage-phase-illustration";
 import { CdsProtectionIllustration } from "@/components/essays/cds-protection-illustration";
 import { CircuitBreakerIllustration } from "@/components/essays/circuit-breaker-illustration";
+import { BondSlipIllustration } from "@/components/essays/bond-slip-illustration";
+import { DeltaGearIllustration } from "@/components/essays/delta-gear-illustration";
+import { ThetaMeltingScoopsIllustration } from "@/components/essays/theta-melting-scoops-illustration";
+import { ForwardStoredRiskIllustration } from "@/components/essays/forward-stored-risk-illustration";
+import { FiccTwoRegulatorsIllustration } from "@/components/essays/ficc-two-regulators-illustration";
+import { TwentyThreeHourDayIllustration } from "@/components/essays/twenty-three-hour-day-illustration";
 import { CobraEffectIllustration } from "@/components/essays/cobra-effect-illustration";
 import { ColocationIllustration } from "@/components/essays/colocation-illustration";
 import { ConfidenceIllustration } from "@/components/essays/confidence-illustration";
@@ -49,6 +55,10 @@ import { TradeLifecycleIllustration } from "@/components/essays/trade-lifecycle-
 import { TradingDesksIllustration } from "@/components/essays/trading-desks-illustration";
 import { TwapIllustration } from "@/components/essays/twap-illustration";
 import { VwapIllustration } from "@/components/essays/vwap-illustration";
+import { ShareRelendingIllustration } from "@/components/essays/share-relending-illustration";
+import { GammaHillIllustration } from "@/components/essays/gamma-hill-illustration";
+import { VegaForecastIllustration } from "@/components/essays/vega-forecast-illustration";
+import { RhoHorizonIllustration } from "@/components/essays/rho-horizon-illustration";
 
 export const essayIllustrations: Record<string, ComponentType> = {
   "allocation-one-block-trade-many-owners": AllocationIllustration,
@@ -82,6 +92,10 @@ export const essayIllustrations: Record<string, ComponentType> = {
   "settlement-fails-what-happens-when-a-trade-refuses-to-deliver":
     SettlementFailIllustration,
   "repo-the-overnight-loan-thats-legally-two-trades": RepoIllustration,
+  "securities-lending-the-share-sold-short-more-than-once": ShareRelendingIllustration,
+  "gamma-the-feedback-loop-hiding-inside-every-delta-hedge": GammaHillIllustration,
+  "vega-the-price-of-not-knowing-what-happens-next": VegaForecastIllustration,
+  "rho-the-greek-that-only-shows-up-when-you-wait-long-enough": RhoHorizonIllustration,
   "the-decisions-that-never-stopped-billing": SubscriptionBillingIllustration,
   "capital-market-system-two-paths-one-market": CapitalMarketPathsIllustration,
   "shiv-pressed-buy-trade-execution": TradeExecutionCardIllustration,
@@ -96,10 +110,16 @@ export const essayIllustrations: Record<string, ComponentType> = {
   "a-bank-trading-floor-is-a-marketplace-for-risk": TradingDesksIllustration,
   "options-the-right-to-walk-away": OptionsPayoffIllustration,
   "futures-the-bet-that-settles-every-single-day": FuturesMarkToMarketIllustration,
+  "bonds-the-fixed-deposit-you-can-sell": BondSlipIllustration,
+  "delta-the-gear-ratio-between-an-option-and-its-stock": DeltaGearIllustration,
+  "theta-the-cost-of-being-right-too-late": ThetaMeltingScoopsIllustration,
+  "forwards-the-same-bet-without-the-safety-net": ForwardStoredRiskIllustration,
   "swaps-the-number-that-never-moves": SwapsNetSettlementIllustration,
   "credit-default-swaps-protection-nobody-has-to-own":
     CdsProtectionIllustration,
   "circuit-breakers-the-pause-a-market-forces-on-itself": CircuitBreakerIllustration,
+  "ficc-the-business-line-where-nothing-is-priced-off-one-company": FiccTwoRegulatorsIllustration,
+  "23-hour-trading-new-yorks-night-is-indias-morning": TwentyThreeHourDayIllustration,
   "rogue-trading-when-the-person-trading-is-also-the-person-checking-the-trade":
     RogueTradingIllustration,
   "colocation-when-the-exchange-itself-decides-who-hears-first": ColocationIllustration,

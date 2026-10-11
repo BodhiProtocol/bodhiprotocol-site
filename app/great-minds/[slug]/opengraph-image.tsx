@@ -1,9 +1,14 @@
 import { ImageResponse } from "next/og";
 
-import { getGreatMindBySlug } from "@/lib/great-minds";
+import { getGreatMindBySlug, getAllGreatMinds } from "@/lib/great-minds";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+
+// Pre-render one image per entry at build time (needed for the static export).
+export function generateStaticParams() {
+  return getAllGreatMinds().map((mind) => ({ slug: mind.slug }));
+}
 
 export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;

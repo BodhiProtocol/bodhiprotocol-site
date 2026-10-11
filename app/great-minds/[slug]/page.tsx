@@ -129,11 +129,24 @@ import { ManjhiMountainCutDiagram } from "@/components/great-minds/manjhi-mounta
 import { ManjhiHeroBackground } from "@/components/great-minds/manjhi-hero-background";
 import { BorlaugCrossDiagram } from "@/components/great-minds/borlaug-cross-diagram";
 import { BorlaugHeroBackground } from "@/components/great-minds/borlaug-hero-background";
+import { VenkataswamyTwoQueuesDiagram } from "@/components/great-minds/venkataswamy-two-queues-diagram";
+import { VenkataswamyHeroBackground } from "@/components/great-minds/venkataswamy-hero-background";
+import { BuddhaPrescriptionDiagram } from "@/components/great-minds/buddha-prescription-diagram";
+import { BuddhaHeroBackground } from "@/components/great-minds/buddha-hero-background";
+import { PaniniRuleEngineDiagram } from "@/components/great-minds/panini-rule-engine-diagram";
+import { PaniniHeroBackground } from "@/components/great-minds/panini-hero-background";
+import { AryabhataBoatDiagram } from "@/components/great-minds/aryabhata-boat-diagram";
+import { AryabhataHeroBackground } from "@/components/great-minds/aryabhata-hero-background";
+import { TagoreWallsDiagram } from "@/components/great-minds/tagore-walls-diagram";
+import { TagoreHeroBackground } from "@/components/great-minds/tagore-hero-background";
+import { PhuleWalkDiagram } from "@/components/great-minds/phule-walk-diagram";
+import { PhuleHeroBackground } from "@/components/great-minds/phule-hero-background";
 import { NapoleonAscentDiagram } from "@/components/great-minds/napoleon-ascent-diagram";
 import { NapoleonHeroBackground } from "@/components/great-minds/napoleon-hero-background";
 import { MindGraphProvider } from "@/components/great-minds/mind-graph-context";
 import { getAllGreatMinds, getGreatMindBySlug, type GreatMindWithContent } from "@/lib/great-minds";
 import { mdxOptions } from "@/lib/mdx-options";
+import { pageTitle } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 
 // Each Great Mind gets its own bespoke hero diagram — the visual metaphor is
@@ -194,6 +207,12 @@ const heroDiagrams: Record<string, (mind: GreatMindWithContent) => ReactNode> = 
   "dashrath-manjhi": (mind) => <ManjhiMountainCutDiagram nodes={mind.wheel} />,
   "norman-borlaug": (mind) => <BorlaugCrossDiagram nodes={mind.wheel} />,
   "napoleon-bonaparte": (mind) => <NapoleonAscentDiagram nodes={mind.wheel} />,
+  "savitribai-phule": (mind) => <PhuleWalkDiagram nodes={mind.wheel} />,
+  "rabindranath-tagore": (mind) => <TagoreWallsDiagram nodes={mind.wheel} />,
+  aryabhata: (mind) => <AryabhataBoatDiagram nodes={mind.wheel} />,
+  panini: (mind) => <PaniniRuleEngineDiagram nodes={mind.wheel} />,
+  "gautama-buddha": (mind) => <BuddhaPrescriptionDiagram nodes={mind.wheel} />,
+  "g-venkataswamy": (mind) => <VenkataswamyTwoQueuesDiagram nodes={mind.wheel} />,
 };
 
 const heroBackgrounds: Record<string, ReactNode> = {
@@ -251,6 +270,12 @@ const heroBackgrounds: Record<string, ReactNode> = {
   "dashrath-manjhi": <ManjhiHeroBackground />,
   "norman-borlaug": <BorlaugHeroBackground />,
   "napoleon-bonaparte": <NapoleonHeroBackground />,
+  "savitribai-phule": <PhuleHeroBackground />,
+  "rabindranath-tagore": <TagoreHeroBackground />,
+  aryabhata: <AryabhataHeroBackground />,
+  panini: <PaniniHeroBackground />,
+  "gautama-buddha": <BuddhaHeroBackground />,
+  "g-venkataswamy": <VenkataswamyHeroBackground />,
 };
 
 interface GreatMindPageProps {
@@ -270,7 +295,7 @@ export async function generateMetadata({ params }: GreatMindPageProps): Promise<
   const seoDescription = mind.seoDescription ?? mind.description;
 
   return {
-    title: seoTitle,
+    title: pageTitle(seoTitle),
     description: seoDescription,
     alternates: { canonical: `/great-minds/${mind.slug}` },
     openGraph: {
@@ -341,11 +366,18 @@ export default async function GreatMindPage({ params }: GreatMindPageProps) {
     };
   });
 
-  const personJsonLd = {
+  const articleJsonLd = {
     "@context": "https://schema.org",
-    "@type": "Person",
-    name: mind.name,
-    description: mind.description,
+    "@type": "Article",
+    headline: mind.seoTitle ?? mind.name,
+    description: mind.seoDescription ?? mind.description,
+    image: `${mindUrl}/opengraph-image`,
+    datePublished: mind.date,
+    dateModified: mind.date,
+    about: { "@type": "Person", name: mind.name, description: mind.description },
+    author: { "@type": "Person", name: "Surya" },
+    publisher: { "@type": "Organization", name: siteConfig.name, url: siteConfig.url },
+    mainEntityOfPage: { "@type": "WebPage", "@id": mindUrl },
     url: mindUrl,
   };
 
@@ -361,7 +393,7 @@ export default async function GreatMindPage({ params }: GreatMindPageProps) {
 
   return (
     <>
-      <JsonLd data={personJsonLd} />
+      <JsonLd data={articleJsonLd} />
       <JsonLd data={breadcrumbJsonLd} />
       <MindGraphProvider>
         <GreatMindsHero

@@ -62,6 +62,8 @@ export interface InvisibleBusinessNextEpisode {
 export interface InvisibleBusiness {
   slug: string;
   title: string;
+  /** Company the episode is about. Titles no longer name it, so cards, tabs and previews add it. */
+  company: string;
   tagline: string;
   episode: number;
   description: string;

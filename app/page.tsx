@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/components/shared/app-link";
 import { ArrowRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";

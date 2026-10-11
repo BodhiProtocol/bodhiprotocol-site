@@ -214,6 +214,8 @@ export const essaySeries: EssaySeries[] = [
       "why-jira-tickets-rot-in-backlog",
       "scope-creep-is-a-timing-problem",
       "the-decision-outlives-the-meeting-where-it-was-made",
+      "why-five-whys-almost-never-makes-it-to-five",
+      "raci-doesnt-work-until-exactly-one-person-is-accountable",
     ],
   },
 ];
@@ -401,6 +403,26 @@ export const essayBridges: EssayBridge[] = [
     from: "risk-management-engines-the-gauge-the-driver-isnt-supposed-to-touch",
     to: "counterparty-credit-risk-the-desk-meant-to-see-the-whole-client",
     label: "A measurement failure and an enforcement failure — the two ways a risk number stops protecting anyone",
+  },
+  {
+    from: "post-trade-compression-the-subscription-netting-never-cancels",
+    to: "netting-how-finance-cancels-a-mountain-of-debt-into-a-pebble",
+    label: "Netting collapses what has to be paid; compression is the separate act of destroying the contracts themselves",
+  },
+  {
+    from: "t-plus-1-settlement-the-deadline-shrank-but-the-money-still-has-to-cross-an-ocean",
+    to: "settlement-fails-what-happens-when-a-trade-refuses-to-deliver",
+    label: "A shorter deadline reduces how long a fail can sit unnoticed — it doesn't reduce what happens once one occurs",
+  },
+  {
+    from: "23-hour-trading-new-yorks-night-is-indias-morning",
+    to: "t-plus-1-settlement-the-deadline-shrank-but-the-money-still-has-to-cross-an-ocean",
+    label: "The night session's 8 PM trade-date switch is what decides which T+1 settlement day an overnight trade lands on",
+  },
+  {
+    from: "cross-margining-the-umbrella-stall-next-to-the-ice-cream-stall",
+    to: "margin-how-a-clearinghouse-turns-fear-into-collateral",
+    label: "Margin prices one position's worst day; cross-margining is what happens once two positions' worst days can't coincide",
   },
   {
     from: "product-control-the-desk-that-refuses-to-take-the-traders-word-for-it",

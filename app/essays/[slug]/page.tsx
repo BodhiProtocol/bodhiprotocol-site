@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import type { MDXComponents } from "mdx/types";
-import Link from "next/link";
+import { Link } from "@/components/shared/app-link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 
@@ -49,6 +49,7 @@ import {
 import { getReadNextEssays } from "@/lib/essay-paths";
 import { essayIllustrations } from "@/lib/essay-illustrations";
 import { mdxOptions } from "@/lib/mdx-options";
+import { pageTitle } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 
 interface EssayPageProps {
@@ -79,6 +80,13 @@ const essayMdxComponents: MDXComponents = {
   SawVsMarketVisual,
   StoryBridge,
   TradeExecutionHero,
+  // Wide markdown tables scroll inside their own box on phones instead of
+  // pushing the whole page sideways.
+  table: (props) => (
+    <div className="overflow-x-auto">
+      <table {...props} />
+    </div>
+  ),
 };
 
 export function generateStaticParams() {
@@ -94,7 +102,7 @@ export async function generateMetadata({ params }: EssayPageProps): Promise<Meta
   const seoDescription = essay.seoDescription ?? essay.description;
 
   return {
-    title: seoTitle,
+    title: pageTitle(seoTitle),
     description: seoDescription,
     authors: [{ name: essay.author }],
     alternates: { canonical: `/essays/${essay.slug}` },

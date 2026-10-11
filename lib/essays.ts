@@ -139,12 +139,16 @@ export function slugifyTerm(term: string): string {
   return term.trim().toLowerCase().replace(/\s+/g, "-");
 }
 
+/** One entry per tag URL: tags that only differ by case (e.g. "FX" and "fx") share a slug, so keep the first spelling. */
 export function getAllTags(): string[] {
-  const tags = new Set<string>();
+  const tagsBySlug = new Map<string, string>();
   for (const essay of getAllEssays()) {
-    for (const tag of essay.tags) tags.add(tag);
+    for (const tag of essay.tags) {
+      const slug = slugifyTerm(tag);
+      if (!tagsBySlug.has(slug)) tagsBySlug.set(slug, tag);
+    }
   }
-  return Array.from(tags).sort();
+  return Array.from(tagsBySlug.values()).sort();
 }
 
 export function getAllCategories(): string[] {

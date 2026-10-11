@@ -49,6 +49,7 @@ import { BajajFinanceEpisodeBody } from "@/components/invisible-businesses/bajaj
 import { DmartEpisodeBody } from "@/components/invisible-businesses/dmart-episode-body";
 import { PhonepeEpisodeBody } from "@/components/invisible-businesses/phonepe-episode-body";
 import { CitadelEpisodeBody } from "@/components/invisible-businesses/citadel-episode-body";
+import { LahoriEpisodeBody } from "@/components/invisible-businesses/lahori-episode-body";
 import { BigIdeaCard } from "@/components/invisible-businesses/big-idea-card";
 import { FlywheelDiagram } from "@/components/invisible-businesses/flywheel-diagram";
 import { InsightGrid } from "@/components/invisible-businesses/insight-grid";
@@ -57,10 +58,13 @@ import { NextEpisodeCta } from "@/components/invisible-businesses/next-episode-c
 import {
   getAllInvisibleBusinesses,
   getInvisibleBusinessBySlug,
+  hiddenEconomicsLine,
+  titleWithCompany,
   type InvisibleBusinessWithContent,
 } from "@/lib/invisible-businesses";
 import { ibIllustrations } from "@/lib/ib-illustrations";
 import { mdxOptions } from "@/lib/mdx-options";
+import { pageTitle } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 
 // Episodes with a bespoke one-off page layout. Slugs not listed here fall back
@@ -109,6 +113,7 @@ const customEpisodeBodies: Record<
   "the-rent-dmart-never-pays": DmartEpisodeBody,
   "phonepe-doesnt-sell-payments": PhonepeEpisodeBody,
   "citadel-securities-real-business-is-the-order-flow": CitadelEpisodeBody,
+  "lahori-zeera-where-your-10-rupees-goes": LahoriEpisodeBody,
 };
 
 interface IBPageProps {
@@ -124,13 +129,15 @@ export async function generateMetadata({ params }: IBPageProps): Promise<Metadat
   const episode = getInvisibleBusinessBySlug(slug);
   if (!episode) return {};
 
+  const fullTitle = titleWithCompany(episode);
+
   return {
-    title: episode.title,
+    title: pageTitle(fullTitle),
     description: episode.description,
     authors: [{ name: episode.author }],
     alternates: { canonical: `/invisible-businesses/${episode.slug}` },
     openGraph: {
-      title: episode.title,
+      title: fullTitle,
       description: episode.description,
       type: "article",
       publishedTime: episode.date,
@@ -138,7 +145,7 @@ export async function generateMetadata({ params }: IBPageProps): Promise<Metadat
     },
     twitter: {
       card: "summary_large_image",
-      title: episode.title,
+      title: fullTitle,
       description: episode.description,
     },
   };
@@ -202,6 +209,7 @@ export default async function InvisibleBusinessPage({ params }: IBPageProps) {
       <JsonLd data={breadcrumbJsonLd} />
       <IBHero
         episode={episode.episode}
+        kicker={hiddenEconomicsLine(episode.company)}
         title={episode.title}
         tagline={episode.tagline}
         author={episode.author}

@@ -1,0 +1,168 @@
+---
+title: "23-Hour Trading: New York's Night Is India's Morning"
+description: "From 6 December 2026, Nasdaq and NYSE plan to trade US stocks 23 hours a day, five days a week. The overnight session runs 9 PM to 4 AM in New York, which is 7:30 AM to 2:30 PM in India. Keeping the doors open is the easy part. The hard part is everything built around a market that used to close: the price feed, the trade date, the circuit breakers, the options you'd hedge with, and the one hour a day that still has to hold all of it."
+hook: "A market that never closes still needs somewhere to put the day's work. In the new US schedule, that's one hour, from 8 to 9 PM."
+category: "Capital Markets"
+tags: ["markets", "market-structure", "infrastructure"]
+author: "Surya"
+date: "2026-09-29"
+---
+
+On Monday, 7 December 2026, at ten in the morning, a software tester in Pune can open a trading app, type in Apple, and buy a share.
+
+Nothing unusual about that, except for one thing. In New York it is half past eleven on Sunday night. The city is asleep. And until a few hours earlier, no American stock exchange would have accepted her order.
+
+Think of a shop that has always closed at night and now decides to stay open. Keeping the lights on and a person at the counter is the easy part. The hard part is everything the shop used to do *after* closing: counting the cash, updating the stock register, restocking the shelves, fixing the broken fridge. None of that went away. It just lost the night it used to happen in.
+
+That is what is about to happen to the US stock market. And the most important part of the new schedule isn't the 23 hours it's open. It's the **one hour it isn't**.
+
+## The headline, and the part it leaves out
+
+The social-media version of this story says the US stock market "will soon look a lot more like crypto." That's half right.
+
+Here is what is actually scheduled. Nasdaq and NYSE both plan to switch on overnight trading on **6 December 2026**. The SEC approved Nasdaq's 23-hour plan in April 2026. Nasdaq's new trading day has three parts:
+
+| Part of the day | New York time (ET) | India time (IST), Dec to early March |
+|---|---|---|
+| Day session (includes the familiar 9:30 AM to 4 PM) | 4:00 AM to 8:00 PM | 2:30 PM to 6:30 AM next morning |
+| **The pause** | **8:00 PM to 9:00 PM** | **6:30 AM to 7:30 AM** |
+| Night session | 9:00 PM to 4:00 AM | 7:30 AM to 2:30 PM |
+| Weekend: fully closed | Friday 8 PM to Sunday 9 PM | Saturday 6:30 AM to Monday 7:30 AM |
+
+From mid-March to early November, when the US moves its clocks forward for summer and India doesn't, every IST time in that table shifts one hour earlier.
+
+Read the India column again. **New York's night session lands almost exactly on India's working day.** The only time an Indian investor can't trade a US stock on a weekday is an hour around breakfast.
+
+Crypto trades 24 hours a day, 7 days a week. This is 23 hours a day, 5 days a week. The weekend is still closed. The daily pause is still there. That missing hour and those missing two days aren't loose ends someone forgot to finish. They exist because a stock trade doesn't end when it's matched. Everything that happens after the match was built around a market that closed, and it still needs somewhere to happen.
+
+To see why, follow one order through each step.
+
+## Why anyone wants to trade at 3 AM
+
+Start with who's asking. Most of the demand comes from people who are wide awake while New York sleeps.
+
+**Internationally:** Until now, the main place to trade US stocks overnight wasn't an exchange at all. It was **Blue Ocean**, an *alternative trading system* (ATS). Think of the difference between a public hall and a private room: an exchange is the public hall with its own official rulebook and a place in the national price feed, while an ATS is a private room, regulated by the SEC but run by a company for its own clients. Blue Ocean's own chief executive has said that South Korean investors made up roughly **65% of its business two years ago and about 35% in 2026**, with much of the rest coming from the rest of Asia-Pacific. Many of those Korean investors trade US *leveraged ETFs*, index funds built to move two or three times as much as the market in a day. Korean investors held about $5.24 billion in just one of them, a 3x semiconductor fund called SOXL. For them, New York's night is lunchtime.
+
+**In India:** India has already shown what happens when the price of something is set in another time zone. Gold, silver and crude oil are priced by markets in London and New York. So **MCX**, India's commodities exchange, keeps its metals and energy contracts open from 9 AM until **11:30 PM or 11:55 PM IST**. Which one depends on whether the US is on summer time. When New York moves its clocks, MCX moves its closing time to keep the same overlap. An Indian exchange literally sets its clock by America, because traders want to trade while the price is being made.
+
+The US night session is the same idea running the other way. The price of Apple is set in New York, and a large share of the people who want to trade it are awake in Seoul, Singapore and Pune.
+
+## Stop 1: the order needs a price to aim at
+
+Back to the tester in Pune. Before she can buy, she needs to know what Apple costs right now.
+
+Think of shopping in a market where none of the stalls have price tags and you can't see what anyone else paid. You could still buy. You'd just be guessing.
+
+In the US, the price tag is the **SIP**, the Securities Information Processor. Think of it as the official scoreboard. Every exchange sends its best buy price, best sell price and every completed trade to one consolidated feed, and that feed is the reference everyone else checks against (the [market data essay](/essays/market-data-the-broadcast-delay-nobody-else-can-see) covers why being a few microseconds faster than it is worth money). Until now, the SIP simply switched off at 8 PM. Overnight trades on a private venue didn't show up on the official scoreboard in real time.
+
+In July 2026 the SEC approved the SIPs extending their hours to run from **Sunday 9 PM to Friday 8 PM ET**, pausing at 8 PM each evening, starting 6 December. That approval was the last big thing the exchanges were waiting for.
+
+It matters because traders have already been trading without a scoreboard. In September 2026 the Korea Herald reported that Korean investors were placing overnight orders in some popular US leveraged ETFs **without being able to see live bid and ask prices**. The market-participant term for that was "blind" trading.
+
+Nasdaq's other safeguard is about what kind of order is allowed at all. In the night session it accepts **limit orders only**. (A limit order says "buy at this price or better". A market order says "buy at whatever the price is", and the [order types essay](/essays/order-types-nine-names-for-three-instincts) covers both.) At 3 AM there may be very few sellers. A market order in a near-empty order book can fill at a price nobody meant, which is the [stub quote](/essays/stub-quotes-the-price-nobody-meant-to-trade-at) problem, so the night session doesn't accept market orders.
+
+**India's version of the scoreboard problem** is the reverse. NSE's cash market is closed at night, so there is no domestic overnight price for Indian shares at all. The number the whole Indian market watches at 8 AM to guess how the day will open is **GIFT Nifty**, a Nifty 50 futures contract traded on NSE International Exchange in GIFT City, Gujarat. It trades in two sessions, **6:30 AM to 3:40 PM and 4:35 PM to 2:45 AM IST**, about 21 hours a day. India already has a nearly-round-the-clock price for its main index. It just lives on a separate exchange, built for foreign investors, rather than on the market where most Indians actually buy their shares.
+
+## Stop 2: which day is it?
+
+Her order fills. Now comes a question nobody used to have to ask: **what date did this trade happen on?**
+
+Think of a restaurant that closes its accounts at 8 PM every evening. A family that walks in at 9 PM and pays for dinner goes into *tomorrow's* accounts, even though the clock still says today. The kitchen isn't confused. The restaurant has simply decided where one business day ends and the next begins.
+
+The US market made the same decision. DTCC's clearing arm, NSCC (the body that sits between every buyer and seller and guarantees the trade gets settled), has run **24x5 since 28 June 2026**, from Sunday 8 PM to Friday 8 PM ET. The **trade date turns over at 8 PM ET**. DTCC's own example: a trade at 9 PM to 11:59 PM on 23 November gets a trade date of **24 November**. A trade between midnight and 4 AM on 24 November also gets 24 November.
+
+So the Pune tester's order, placed at 10 AM IST on Monday 7 December (11:30 PM Sunday in New York), carries a **trade date of Monday 7 December**. Under US [T+1 settlement](/essays/t-plus-1-settlement-the-deadline-shrank-but-the-money-still-has-to-cross-an-ocean), it settles on Tuesday 8 December. On Sunday night in New York, the market is already running on Monday's date.
+
+This is why the pause is 8 to 9 PM. It's the hour when one trade date is closed and the next one opens. It's also why the pause only runs Monday to Thursday: on Friday the market simply stops at 8 PM and doesn't reopen until Sunday night.
+
+**India** hasn't had to face this, and MCX shows why. Its evening session runs until 11:30 or 11:55 PM IST, and then it stops. Its trading day never crosses midnight, so "the trade date" and "the calendar date" never disagree. India has pushed its trading day very late in the evening without ever running it past midnight. The US has now gone further, so for five nights a week its business day starts on the previous calendar evening.
+
+## Stop 3: what stops a 3 AM crash?
+
+Now the part that should worry you a little.
+
+Think of a highway at 3 AM. There are far fewer cars. That sounds safer, but one driver swerving has nothing around them to slow them down. A thin night-time market is the same: with few buyers and sellers, one large order can move the price much further than it would at 11 AM, and the gap between the best buy and best sell price (the *spread*) is usually wider.
+
+During the day, US stocks have **Limit Up-Limit Down** (LULD): if a stock's price moves too far, too fast, trading in it pauses for a few minutes. The [circuit breakers essay](/essays/circuit-breakers-the-pause-a-market-forces-on-itself) covers how that works. Nasdaq's night session uses **price-protection bands** instead. Think of a speed limit that blocks you rather than pulls you over: a trade outside the band is simply rejected, but hitting the band doesn't set off the daytime-style pause. The SIP is adding a new **overnight LULD indicator** from 6 December so everyone can see those night-time bands. The night session also stops at 4 AM on purpose, so that early-morning company news can move prices before any bands based on the previous day's prices kick in.
+
+**The case that shows why this matters: 5 August 2024.** Markets across Asia collapsed that Monday, and panic spread to US stocks before New York had even opened. Asian investors rushed to trade US stocks overnight, and they did it through Blue Ocean. Its system hit capacity and it shut down its matching engine (the part that pairs buyers with sellers). **All orders placed between 2:45 PM and 4:06 PM Korea time were cancelled.** That's 1:45 AM to 3:06 AM in New York, and 11:15 AM to 12:36 PM in India. About **₩630 billion (roughly $457 million) of trades by Korean investors, across about 90,000 accounts at 19 Korean brokers**, were undone. Trades people thought they'd made simply stopped existing. The 19 brokers suspended their daytime US-stock trading from 16 August 2024, and it didn't resume until November 2025.
+
+The night session wasn't too quiet that night. It was far busier than it was built for, and it broke. A thin market's other risk is a sudden rush of traffic onto a road designed for a few cars. Nasdaq and NYSE running the night session is partly an answer to that: exchange-grade systems, on the official scoreboard, with published price bands.
+
+**India's regulator looked at the same risk and said no.** In 2023 NSE proposed an **evening session from 6 PM to 9 PM** for index futures and options. In May 2024 SEBI returned the application, citing a lack of feedback from the broker community. Traditional brokers had raised staffing, cost and technology concerns. NSE's chief executive told analysts the plan was "shelved."
+
+The background matters. A SEBI study published in January 2023 found that **89% of individual traders in equity futures and options lost money**. An updated study in September 2024 put it at **93% between FY22 and FY24**, with total losses of over **₹1.8 lakh crore**. SEBI didn't say that was why it turned down the evening session. But when nine out of ten retail derivatives traders already lose money, three more hours a night is a hard thing for a regulator to sign off. What India *did* approve is revealing. From 3 August 2026 the F&O market closes at **3:40 PM instead of 3:30 PM**, a ten-minute extension so futures stay open alongside the new closing auction in the cash market. The US is adding hours. India is adding minutes.
+
+## Stop 4: the hedge that isn't open yet
+
+Say the tester owns Apple shares and bad news breaks at 11 PM in New York. She can now sell. What she can't do is protect herself without selling.
+
+Think of an umbrella shop that closes exactly when it starts raining. You can still leave the party, but you can't buy an umbrella and stay.
+
+In markets, the umbrella is usually an **option**, for example a *put*, which pays off if the price falls (the [options essay](/essays/options-the-right-to-walk-away) explains how). Under the new schedule, US shares trade at 3 AM but **US stock options don't**. Cboe, the biggest US options exchange, has started extending hours for some single-stock options into the early morning (from 7:30 AM ET) and a short window after the 4 PM close, and says the aim is exactly this: to let investors hedge while the underlying shares are trading. Nothing covers 9 PM to 4 AM yet. There's a knock-on effect too: the market makers who sell options hedge them by trading the shares themselves, so if the overnight share market is thin, options prices the next morning will reflect that.
+
+**India's version is starker.** An Indian investor holding Nifty stocks who sees bad news at 9 PM has **no domestic tool at all** until NSE opens at 9:15 AM. NSE's derivatives close at 3:40 PM, and GIFT Nifty, the one index contract that is open, is built for foreign and institutional investors; most resident retail investors can watch it but not trade it. The US is closing half of that gap: shares at night, options not yet. India has kept its gap, knowingly, for the reasons in Stop 3.
+
+## Stop 5: the news that used to wait until morning
+
+The last change is one most people won't notice until it hits them.
+
+US companies usually release their quarterly results after the 4 PM close. The idea is that investors get the evening to read the numbers before the next real trading session. Some trading already happened in the thin 4 PM to 8 PM after-hours window, but from 8 PM until 4 AM there was silence. Now there is a full, official session running straight through that silence.
+
+The same thing affects how companies raise money. Law firms have already flagged the effect on *confidentially marketed public offerings*: share sales a company quietly pitches to big investors after the close and prices before the next open, precisely because the stock isn't trading while the deal is being arranged. With a night session, the stock *is* trading.
+
+**In India**, SEBI's listing rules (LODR) require a company to disclose the outcome of a board meeting, including results, within 30 minutes of the meeting ending. So results often land in the middle of the trading day or shortly after the 3:30 PM close. Either way, anything that lands after the close has a full night before the market can react. India's quiet night still works as a cooling-off period. America's no longer will.
+
+## Reality check: an extension, not a revolution
+
+The headline makes this sound like a finished transformation. It isn't, yet.
+
+- **The weekend is still closed**, from Friday 8 PM to Sunday 9 PM ET. That's Saturday 6:30 AM to Monday 7:30 AM IST.
+- **The daily pause is still there**, because clearing, the price feed and the trade-date switch all need it.
+- **Night trading is limit-orders-only**, with price bands instead of the full daytime halt rules.
+- **Options mostly aren't there**, so hedging at night is still hard.
+- **The volume won't be close to daytime.** Blue Ocean's own forecast is that overnight trading *could* reach about 10% of total US volume. That's a big number for a new session, but it still means the night market will be much thinner than the day market.
+
+Even India's longest market works the same way. GIFT Nifty trades 21 hours a day, and it still stops for 55 minutes between its two sessions. Every market that stretches its hours still keeps a gap somewhere, because clearing and record-keeping have to happen when trading isn't. The question is only where the gap goes and how short it can be.
+
+## Why this matters for a Business Analyst or QA
+
+For anyone writing requirements or test cases for a system that touches US equities, "the market is now open longer" is the least interesting part of the change. The real work is every hidden assumption that the market closes:
+
+- **Trade date is no longer the calendar date.** Any logic that takes the date from a timestamp is now wrong for trades between 9 PM and midnight ET. The boundary tests write themselves: 7:59:59 PM, 8:00:00 PM, 9:00:00 PM, 11:59:59 PM, 12:00:00 AM, the Friday 8 PM stop and the Sunday 9 PM start, plus the weekends when the US changes its clocks and every IST mapping moves by an hour.
+- **"End of day" just got shorter.** Batch jobs that had an eight-hour overnight window (risk runs, margin calls, reconciliations, client statements) now get sixty minutes, Monday to Thursday. Someone has to decide what moves, what gets faster, and what runs while trading is live.
+- **Order validation depends on the session.** A market order is fine at 11 AM and should be rejected at 11 PM. Session-aware validation needs a requirement, and a negative test.
+- **A band isn't a halt.** Daytime LULD pauses a stock. Night-time bands reject the trade. Anything reading "is this stock halted?" needs to know which rule applies right now.
+- **The operations team may be in India.** The night session runs almost entirely through Indian office hours. For banks and brokers with operations centres in Pune, Bengaluru or Hyderabad, "overnight support" for US trading becomes daytime work, and it needs to be staffed and planned that way.
+
+The best way to find these in a requirements review is to ask one question of every process: *"What did this assume happened while the market was closed?"*
+
+## Lighthouse Insight
+
+Go back to the shop that decided to stay open all night. The customers get what they wanted: someone at the counter at 3 AM. But the cash still has to be counted, the register updated and the shelves restocked, and that work now has to fit into a much smaller gap.
+
+That's what 6 December actually changes. For someone in Pune, the US market will be open through almost the whole working day, with only an hour's break around breakfast. Behind that, New York has had to squeeze the price feed, the clearing house, the trade-date switch and the safety rules into one hour a night. India is watching the same demand, the same risk and the same data about retail losses, and so far it has chosen to add minutes, not hours.
+
+## Reference anchors
+
+- [Jones Day: NYSE and Nasdaq Move to 23-Hour Trading Day (September 2026)](https://www.jonesday.com/en/insights/2026/09/nyse-and-nasdaq-move-to-23hour-trading-day-overnight-session-is-an-evolution-but-not-yet-a-revolution)
+- [Yahoo Finance: Nasdaq Plans Nearly 23-Hour Trading Day From December](https://finance.yahoo.com/markets/stocks/articles/nasdaq-plans-nearly-23-hour-210330984.html)
+- [Federal Register: Nasdaq Proposed Rule Change to Extend Trading Hours to 23 Hours a Day, Five Days a Week](https://www.federalregister.gov/documents/2026/01/13/2026-00416/self-regulatory-organizations-the-nasdaq-stock-market-llc-notice-of-filing-of-proposed-rule-change)
+- [Simpson Thacher: SEC Approves Nasdaq's "23/5" Trading Proposal](https://www.stblaw.com/about-us/publications/view/2026/04/29/looking-ahead-to-extended-trading-sec-approves-nasdaq-s-23-5-trading-proposal)
+- [DTCC: NSCC Now Live With Clearing Hours Extended to 24x5](https://www.dtcc.com/news/2026/june/29/nscc-now-live-with-clearing-hours-extended)
+- [DTCC: The Shift to 24x5 Trading (trade-date examples)](https://dtcc.com/-/media/Files/Downloads/Transformation/theshiftto24x5trading.pdf)
+- [PR Newswire: SIPs Receive SEC Approval for Extended Trading Hours Initiative](https://www.prnewswire.com/news-releases/sips-receive-sec-approval-for-extended-trading-hours-initiative-302820006.html)
+- [Nasdaq Trader: UTP SIP Extended Trading Hours Update](https://www.nasdaqtrader.com/TraderNews.aspx?id=UTP2026-24)
+- [Cboe: Equity Options Extended Trading Hours FAQ](https://www.cboe.com/document/tech-spec/document/technical-specifications/equity-options-extended-trading-hours-faq/)
+- [Faegre Drinker: New Nasdaq 23/5 Rule and Its Potential Impact on Confidentially Marketed Public Offerings](https://www.faegredrinker.com/en/insights/publications/2026/6/new-nasdaq-23-5-rule-and-its-potential-impact-on-confidentially-marketed-public-offerings)
+- [CNBC: Robinhood Says No 24-Hour Trading on Monday Due to Issue at Third-Party Venue (August 2024)](https://www.cnbc.com/2024/08/05/robinhood-no-24-hour-trading-monday-due-to-issue-at-third-party-venue.html)
+- [Korea Herald: W630b Korean Trades Canceled Amid Huge Global Sell-Off](https://m.koreaherald.com/article/3450138)
+- [Blue Ocean: Korea Resumes Daytime US Stock Trading (November 2025)](https://blueocean-tech.io/2025/11/04/blue-ocean-korea-trading-resumes/)
+- [Blue Ocean / Aju Business Daily: CEO on Korea's Share of Global Volume (March 2026)](https://blueocean-tech.io/2026/03/20/blue-ocean-ceo-brian-hyndman-korea-market-asia-strategy-hub/)
+- [Global Trading: Blue Ocean Says Overnight Trading Could Reach 10% of Total Volumes](https://www.globaltrading.net/blue-ocean-overnight-trading-could-reach-10-of-total-volumes/)
+- [Korea Herald: Korean Investors Face "Blind" Trading in Popular US Leveraged ETFs](https://www.koreaherald.com/article/10860485)
+- [MCX Trading Hours Revised From March 9, 2026 Due to US DST (ICICI Direct)](https://www.icicidirect.com/ilearn/commodity/articles/mcx-revision-in-trading-hours-from-march-09-2026)
+- [GIFT Nifty Trading Hours (AlgoTest)](https://algotest.in/blog/understanding-gift-nifty-trading-timings-and-their-impact-on-your-trades/)
+- [Business Standard: SEBI Rejects NSE's Proposal to Extend Trading Hours for Equity Derivatives (May 2024)](https://www.business-standard.com/markets/stock-market-news/sebi-rejects-nse-s-proposal-to-extend-trading-hours-for-equity-derivatives-124050700929_1.html)
+- [SEBI: Updated Study Reveals 93% of Individual Traders Incurred Losses in Equity F&O (September 2024)](https://www.sebi.gov.in/media-and-notifications/press-releases/sep-2024/updated-sebi-study-reveals-93-of-individual-traders-incurred-losses-in-equity-fando-between-fy22-and-fy24-aggregate-losses-exceed-1-8-lakh-crores-over-three-years_86906.html)
+- [Groww: NSE Extends F&O Trading Hours by 10 Minutes From August 3, 2026](https://groww.in/blog/nse-extends-f-and-o-trading-hours-by-10-minutes-new-timings-effective-from-august-3-2026)
