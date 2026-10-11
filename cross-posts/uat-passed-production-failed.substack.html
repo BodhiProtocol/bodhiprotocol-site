@@ -1,0 +1,91 @@
+<div style="font-family: Georgia, 'Times New Roman', serif; font-size: 20px; line-height: 1.65; max-width: 680px; margin: 60px auto; color: #0a0a0a;">
+  <img src="https://bodhiprotocol.com/images/ba-playbooks/uat-passed-production-failed-infographic.png" alt="It Worked in UAT. Why Did It Fail in Production?" style="width: 100%; height: auto; margin-bottom: 32px;" />
+  <h1 style="font-size: 38px; line-height: 1.25; margin-bottom: 32px;">It Worked in UAT. Why Did It Fail in Production?</h1>
+  <p>Monday morning. A message appears in the project group: &quot;Customers cannot cancel some orders. This worked in UAT. What changed?&quot; QA says: &quot;We tested cancellation. It passed.&quot; Development says: &quot;The same code went to production.&quot; Operations says: &quot;Real customers are still affected.&quot;</p>
+<p>Everyone may be telling the truth. A feature can pass UAT and still fail in production, not because UAT was useless, but because production is rarely just UAT with more users. It has different data, integrations, permissions, configuration, timing and volume. Same code does not mean the same system.</p>
+<p>Here&#39;s the real case. An Indian e-commerce company introduces self-service order cancellation. The requirement says a customer can cancel an order until it has been dispatched. In UAT, QA tests PLACED, READY_TO_PACK and DISPATCHED. Everything passes. The feature goes live. Then a customer tries to cancel a shoe order that hasn&#39;t been dispatched, and the Cancel order button is missing.</p>
+<p>Follow the transaction, not the opinions. The app asks for the order details, the order service fetches the fulfilment status, and the warehouse system returns ALLOCATED. The cancellation rule checks whether that status is cancellable, and ALLOCATED isn&#39;t on the list. So the service says no, and the app hides the button. The screen did exactly what it was told. The first real difference appeared earlier: production returned a status nobody had used in UAT.</p>
+<p>Before anyone refreshes data or changes configuration, preserve that one failing example: the order ID, the exact time, the channel, the expected and actual behaviour, and the release version. Without it, every team investigates a slightly different problem. Then check the seven places production most often differs from UAT:</p>
+<h2>1. Data</h2>
+<p><em>Look for values that never appeared in UAT.</em></p>
+<p>Missing fields, historical records, duplicates and unexpected formats. ALLOCATED existed in production but not in the UAT test set.</p>
+<p><strong>Why it helps:</strong> Most &quot;it worked in UAT&quot; incidents trace back to a real production value the test data never included.</p>
+<h2>2. Integrations</h2>
+<p><em>UAT may use a stub, simulator or simplified downstream system.</em></p>
+<p>Compare API versions, fields, mappings, authentication, timeouts and retries. A stub can return three clean statuses while the live system returns many more.</p>
+<p><strong>Why it helps:</strong> A passing stub proves the integration contract as understood — not the integration as it actually behaves in production.</p>
+<h2>3. Configuration and feature flags</h2>
+<p><em>The code can be identical while settings change its behaviour.</em></p>
+<p>Compare business-rule values, thresholds, country or product settings, feature flags and routing rules.</p>
+<p><strong>Why it helps:</strong> &quot;Same code went to production&quot; can still be true while the behaviour is entirely different, if a setting differs.</p>
+<h2>4. User roles and permissions</h2>
+<p><em>A feature tested with an administrator account may behave differently for a real customer.</em></p>
+<p>Check both what the user can see and what the service account can access.</p>
+<p><strong>Why it helps:</strong> Role-scoped behaviour is one of the easiest differences to miss because the UAT tester rarely has the same access as a production user.</p>
+<h2>5. Timing</h2>
+<p><em>Some failures exist only at a particular moment.</em></p>
+<p>A batch run, stale cache, cut-off time, time-zone conversion, event-order problem or concurrent update — ordinary daytime UAT rarely touches these.</p>
+<p><strong>Why it helps:</strong> A payment near midnight or a daylight-saving change can expose timing assumptions no UAT script ever exercised.</p>
+<h2>6. Volume and concurrency</h2>
+<p><em>One clean test transaction is not the same as thousands of customers acting together.</em></p>
+<p>Production may introduce queues, locking, delayed messages, duplicate events or timeouts.</p>
+<p><strong>Why it helps:</strong> Concurrency bugs are often invisible in UAT by construction — there&#39;s rarely enough simultaneous load to trigger them.</p>
+<h2>7. Deployment</h2>
+<p><em>&quot;Included in the release&quot; and &quot;active in production&quot; are not always the same statement.</em></p>
+<p>Confirm the application version, database scripts, configuration, reference data, scheduled jobs and dependent releases that actually reached production.</p>
+<p><strong>Why it helps:</strong> A missing reference-data update or an inactive dependent release can silently undo a feature that shipped correctly.</p>
+<h2>UAT did not lie. It answered the question you asked.</h2>
+<p>Production exposed the question you forgot to ask. Preserve one failure. Trace the transaction. Compare the environments. Find the first difference. Return to the business rule.</p>
+<p><strong>UAT-to-Production Investigation Checklist:</strong></p>
+<pre><code>UAT-TO-PRODUCTION INVESTIGATION
+
+IMPACT AND CONTAINMENT
+[ ] Affected users, products, regions and channels identified
+[ ] Financial, data, regulatory and operational risk assessed
+[ ] Safe workaround, rollback or feature control considered
+
+FAILING EXAMPLE
+[ ] Transaction or record ID captured
+[ ] User, role, channel and region recorded
+[ ] Exact date and time recorded
+[ ] Expected behaviour written clearly
+[ ] Actual behaviour written clearly
+[ ] Screenshot, response or error captured
+
+COMPARE ENVIRONMENTS
+[ ] Application version
+[ ] Configuration and feature flags
+[ ] Reference data and mappings
+[ ] User and service permissions
+[ ] API and integration versions
+[ ] Test stub versus live integration
+[ ] Batch jobs, cache and timing
+[ ] Data shape, history and volume
+
+TRACE THE FLOW
+[ ] End-to-end transaction path mapped
+[ ] First point of divergence identified
+[ ] Upstream and downstream impact checked
+[ ] Related transactions searched
+
+CLASSIFY
+[ ] Code defect
+[ ] Requirement gap
+[ ] Test coverage gap
+[ ] Configuration issue
+[ ] Data issue
+[ ] Deployment issue
+
+CLOSE PROPERLY
+[ ] Business decision recorded
+[ ] Requirement or rule updated
+[ ] UAT data and regression tests updated
+[ ] Production-like scenario added
+[ ] Monitoring or alerting considered
+[ ] Related features checked for the same assumption
+</code></pre>
+
+  <p style="margin-top: 32px; font-size: 14px; color: #52525b;">
+    Originally published at <a href="https://bodhiprotocol.com/ba-playbooks/uat-passed-production-failed" style="color: #7c3aed;">bodhiprotocol.com</a>.
+  </p>
+</div>
