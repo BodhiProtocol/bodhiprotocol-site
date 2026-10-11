@@ -1,5 +1,7 @@
 # Cross-post inventory
 
+> The live pipeline (status, dates, links, backlog) now lives on the Cross-Post Pipeline board: https://claude.ai/artifact/Vn3AKuwBdLFQg5fabHMjPc. This file keeps the paste-ready file names.
+
 What has been prepared or published on Substack and Medium. Update this every
 time a piece is generated or goes live.
 
