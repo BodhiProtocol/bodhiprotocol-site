@@ -1,0 +1,14 @@
+// Cloudflare Workers config: serves the static export (`npm run build:static`
+// writes out/) as plain assets -- no server code runs, so requests are free and
+// unmetered. Cloudflare build settings: build command `npm run build:static`,
+// deploy command `npx wrangler deploy`.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "bodhiprotocol-site",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./out",
+    // Serve the site's own 404 page (out/404.html) for unknown URLs.
+    "not_found_handling": "404-page"
+  }
+}
