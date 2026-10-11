@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
+import { Link } from "@/components/shared/app-link";
 import { usePathname } from "next/navigation";
 import { ChevronDownIcon } from "lucide-react";
 

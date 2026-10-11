@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/components/shared/app-link";
 import { Users } from "lucide-react";
 
 import { GlassCard } from "@/components/great-minds/glass-card";

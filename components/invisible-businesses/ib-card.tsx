@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/components/shared/app-link";
 
 import { GlassCard } from "@/components/invisible-businesses/glass-card";
 import { Muted } from "@/components/ui/typography";
