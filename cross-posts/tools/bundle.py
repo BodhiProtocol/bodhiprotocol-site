@@ -37,6 +37,11 @@ def lst(items, k, v):
 def take(key):
     return f"<blockquote>{e(d[key])}</blockquote>" if d.get(key) else ""
 
+def rep(t):
+    for old, new in cfg.get("replace", {}).items():
+        t = t.replace(old, new)
+    return t
+
 intro = paras(body)
 for old, new in cfg.get("replace", {}).items():
     intro = [p.replace(old, new) for p in intro]
@@ -52,7 +57,7 @@ parts.append("<h2>Thinking Process</h2>" + lst(d["thinkingProcess"], "title", "d
 parts.append("<h2>Mental Models</h2>" + lst(d["mentalModels"], "name", "description") + take("mentalModelsTakeaway"))
 parts.append("<h2>Big Ideas</h2>" + lst(d["bigIdeas"], "title", "description"))
 if d.get("scholarshipNotes"):
-    parts.append("<h2>Notes on the Record</h2><ul>" + "".join(f"<li>{e(n)}</li>" for n in d["scholarshipNotes"]) + "</ul>")
+    parts.append("<h2>Notes on the Record</h2><ul>" + "".join(f"<li>{e(rep(n))}</li>" for n in d["scholarshipNotes"]) + "</ul>")
 parts.append("".join(f"<p>{e(p)}</p>" for p in paras(d["closingReflection"])))
 parts.append(f'<p><em>Originally published on <a href="{url}">BodhiProtocol</a> as part of the Great Minds series. '
              f'<a href="https://bodhiprotocol.com/great-minds">Explore all the Great Minds</a>.</em></p>')
@@ -76,7 +81,7 @@ def kit(platform):
         fields.append(field("Original link (Story settings → Advanced → originally published elsewhere)", url))
     steps = "".join(f"<li>{s}</li>" for s in p["steps"])
     imgs = "".join(
-        f'<div class="thumb"><img src="{data_uri(i["path"])}" alt="{e(i["alt"])}" /><span>{e(i["use"])}</span></div>'
+        f'<div class="thumb"><img src="{data_uri(i["path"])}" alt="{e(i["alt"])}" /><span>{e(i["use"] if platform == "substack" else i["use"].replace(" (and Substack social preview)", ""))}</span></div>'
         for i in [cfg["cover"]] + cfg.get("inline", []))
     name = "Substack" if platform == "substack" else "Medium"
     return f"""<!doctype html>

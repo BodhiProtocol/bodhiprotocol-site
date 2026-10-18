@@ -1,0 +1,17 @@
+{
+  "slug": "savitribai-phule",
+  "title": "The Teacher Who Carried a Spare Sari",
+  "subtitle": "Savitribai Phule learned to read as a child bride. Then she taught the girls Pune didn't want taught.",
+  "replace": {"This page": "This piece", "this page": "this piece"},
+  "cover": {"path": "images/savitribai-phule-cover.png", "alt": "BodhiProtocol Great Minds: Savitribai Phule, The Teacher Who Carried a Spare Sari", "caption": "BodhiProtocol · Great Minds", "use": "Cover: top of the post (and Substack social preview)"},
+  "inline": [{"path": "images/savitribai-phule-walk-diagram.png", "alt": "Savitribai Phule's route: home, learns to read, trains, Bhide Wada, the walk, thrown out, school; then 1897, the last carry, the clinic", "caption": "Her route: from learning to read, to the Bhide Wada school in 1848, to the plague clinic in 1897.", "use": "Inside: after the second paragraph", "after_paragraph": 2}],
+  "substack": {
+    "email_subject": "They threw dung at her on the way to school. She kept walking.",
+    "note": "In 1848, men lined a teenage teacher's walk to school in Pune and threw dung, mud and stones at her. Eight years earlier, she couldn't read at all.\n\nShe never won the argument about whether girls should learn to read. She made it irrelevant, by teaching them anyway.",
+    "steps": ["Click <b>Copy article</b> below, then paste into the body of a new Substack post.", "Copy the Title and Subtitle into their own boxes at the top, then delete the duplicate title and subtitle at the start of the body.", "If the images didn't come through, delete the empty space and upload the cover and the route diagram with the image button (right-click each image above → Save image as…).", "Settings → Social preview image: upload the cover.", "Settings → Email header: paste the email subject line.", "Post the Substack Note 1–2 days before you publish."]
+  },
+  "medium": {
+    "tags": ["Savitribai Phule", "History", "Education", "Women In History", "India"],
+    "steps": ["Click <b>Copy article</b> below, then paste into a new Medium story. The first two lines become the title and subtitle.", "If the images didn't come through, click on an empty line, press <b>+</b>, choose the image icon and upload the cover and the route diagram (right-click each image above → Save image as…).", "On the publish screen, add the five tags.", "After publishing: ⋯ menu → Story settings → Advanced settings → turn on “originally published elsewhere” and paste the original link."]
+  }
+}
