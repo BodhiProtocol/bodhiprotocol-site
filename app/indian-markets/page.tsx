@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 
 import { LearningPage } from "@/components/seo/learning-page";
 import { getSeoLearningPage } from "@/lib/seo-learning-pages";
+import { pageTitle } from "@/lib/seo";
 
 const page = getSeoLearningPage("indian-markets");
 
 export const metadata: Metadata = {
-  title: page.seoTitle,
+  title: pageTitle(page.seoTitle),
   description: page.seoDescription,
   alternates: { canonical: "/indian-markets" },
   openGraph: {

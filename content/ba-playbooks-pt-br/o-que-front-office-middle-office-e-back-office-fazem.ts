@@ -63,7 +63,7 @@ export const oQueFrontOfficeMiddleOfficeEBackOfficeFazem: Omit<Playbook, "readin
     "Qualquer um tentando entender como o Capital Markets realmente funciona",
   ],
   bodyText,
-  seoTitle: "Front Office, Middle Office e Back Office Explicados | BodhiProtocol",
+  seoTitle: "Front Office, Middle Office e Back Office Explicados",
   seoDescription:
     "Entenda Front Office, Middle Office, Back Office, Market Data, Reference Data e Risk acompanhando uma operação de Capital Markets da ordem até a liquidação.",
   closingHeading: [

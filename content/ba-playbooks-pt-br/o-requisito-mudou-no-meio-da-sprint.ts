@@ -50,7 +50,7 @@ export const oRequisitoMudouNoMeioDaSprint: Omit<Playbook, "readingTime"> = {
     "QAs e desenvolvedores que precisam do raio de impacto mapeado antes de mexer no código ou nos casos de teste",
     "Líderes de entrega e Product Owners decidindo entre absorver, dividir, trocar, adiar ou parar o trabalho",
   ],
-  seoTitle: "Checklist de Mudança de Requisito no Meio da Sprint para BAs | BodhiProtocol",
+  seoTitle: "Checklist de Mudança de Requisito no Meio da Sprint para BAs",
   seoDescription:
     "Um framework de 8 passos para lidar com uma mudança de requisito no meio da sprint — Mudança, Por Quê, Raio de Impacto, Esforço, Opções, Decisão, Rastro, Comunicar.",
   closingHeading: ["Uma mudança de requisito de duas linhas", "pode criar uma mudança de entrega de vinte itens."],

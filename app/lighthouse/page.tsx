@@ -6,13 +6,14 @@ import { Section } from "@/components/ui/section";
 import { BlueprintList } from "@/components/lighthouse/blueprint-list";
 import { SuggestedPath } from "@/components/lighthouse/suggested-path";
 import { getAllBlueprints } from "@/lib/blueprints";
+import { pageTitle } from "@/lib/seo";
 
 const seoTitle = "Project Lighthouse: Business Analyst Blueprints for Capital Markets & AI";
 const seoDescription =
   "Business analyst blueprints that turn AI, capital markets, decision-making, and economics concepts into one memorable visual metaphor each.";
 
 export const metadata: Metadata = {
-  title: seoTitle,
+  title: pageTitle(seoTitle),
   description: seoDescription,
   alternates: { canonical: "/lighthouse" },
   openGraph: {

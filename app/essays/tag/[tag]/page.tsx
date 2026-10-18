@@ -9,7 +9,7 @@ import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { JsonLd } from "@/components/shared/json-ld";
 import { getAllTags, getEssaysByTag, slugifyTerm } from "@/lib/essays";
-import { MIN_INDEXED_TAG_ESSAYS } from "@/lib/seo";
+import { MIN_INDEXED_TAG_ESSAYS, essayListDescription } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 
 interface TagPageProps {
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: TagPageProps): Promise<Metada
   if (!result) return {};
 
   const title = `Essays tagged "${result.tag}"`;
-  const description = `${result.essays.length} essay${result.essays.length === 1 ? "" : "s"} tagged "${result.tag}" on BodhiProtocol.`;
+  const description = essayListDescription(`"${result.tag}"`, result.essays);
 
   return {
     title,

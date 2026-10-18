@@ -183,7 +183,7 @@ export const guiaDeDescobertaDeNovoProjeto: Omit<Playbook, "readingTime"> = {
     "Qualquer um que já ouviu \"você já está confortável com o projeto?\" cedo demais",
   ],
   bodyText,
-  seoTitle: "Guia de Descoberta de Novo Projeto para Business Analysts | BodhiProtocol",
+  seoTitle: "Guia de Descoberta de Novo Projeto para Business Analysts",
   seoDescription:
     "Um guia prático de descoberta para os primeiros 30 dias para Business Analysts — as perguntas que revelam por que um projeto existe, quem realmente decide, como o processo funciona hoje e quais sistemas e dado o fazem funcionar.",
   closingHeading: [

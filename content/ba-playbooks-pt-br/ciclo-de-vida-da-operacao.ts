@@ -46,7 +46,7 @@ export const cicloDeVidaDaOperacao: Omit<Playbook, "readingTime"> = {
     "QAs e desenvolvedores tentando descobrir a qual estágio um defeito realmente pertence",
     "Qualquer um prestes a escrever um requisito que toca o processamento de operações",
   ],
-  seoTitle: "Guia do Ciclo de Vida da Operação — Da Ordem à Liquidação para BAs | BodhiProtocol",
+  seoTitle: "Guia do Ciclo de Vida da Operação — Da Ordem à Liquidação para BAs",
   seoDescription:
     "Os cinco estágios de uma operação — Ordem, Execução, Enriquecimento & Confirmação, Clearing, Liquidação — explicados estágio a estágio para Analistas de Negócios, com um modelo gratuito de checklist de estágio.",
   closingHeading: ["Uma operação não é um evento só.", "São cinco estágios, e cada um pode quebrar sozinho."],

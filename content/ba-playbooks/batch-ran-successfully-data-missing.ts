@@ -50,7 +50,7 @@ export const batchRanSuccessfullyDataMissing: Omit<Playbook, "readingTime"> = {
     "QAs and developers trying to isolate which pipeline stage actually dropped records",
     "Anyone who's had to explain \"the job is green\" to someone holding the wrong number",
   ],
-  seoTitle: "The Batch Ran Successfully — So Why Is the Data Missing? | BodhiProtocol",
+  seoTitle: "The Batch Ran Successfully — So Why Is the Data Missing?",
   seoDescription:
     "A step-by-step BA guide to investigating missing data after a successful batch run — tracing counts through Source, Extract, Transform, Validate, Load, Reconcile and Consume to find the first gap.",
   closingHeading: ["A green status proves the process finished.", "It doesn't prove the business outcome was correct."],

@@ -11,12 +11,13 @@ import {
   getPlaybookCategories,
   plannedPlaybooks,
 } from "@/lib/ba-playbooks";
+import { pageTitle } from "@/lib/seo";
 
 const description =
   "Practical Business Analyst playbooks for Jira, requirements, UAT, APIs, data, stakeholders, delivery and capital markets.";
 
 export const metadata: Metadata = {
-  title: "BA Playbooks — Practical Guides for Business Analysts",
+  title: pageTitle("BA Playbooks — Practical Guides for Business Analysts"),
   description,
   alternates: {
     canonical: "/ba-playbooks",

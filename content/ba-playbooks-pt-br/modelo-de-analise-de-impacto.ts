@@ -58,7 +58,7 @@ export const modeloDeAnaliseDeImpacto: Omit<Playbook, "readingTime"> = {
     "Times de produto tentando fazer \"sem impacto\" significar alguma coisa antes da produção provar o contrário",
   ],
   bodyText,
-  seoTitle: "Modelo de Análise de Impacto para Business Analysts | BodhiProtocol",
+  seoTitle: "Modelo de Análise de Impacto para Business Analysts",
   seoDescription:
     "Um framework prático de análise de impacto em 10 áreas e um modelo gratuito para Business Analysts — processo de negócio, usuários, sistemas, dado, controles, efeitos downstream, falha, migração, performance e teste.",
   closingHeading: ["Quem descobre sobre essa mudança", "depois que nosso sistema estiver pronto?"],

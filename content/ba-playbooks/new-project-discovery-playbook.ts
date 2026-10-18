@@ -183,7 +183,7 @@ export const newProjectDiscoveryPlaybook: Omit<Playbook, "readingTime"> = {
     "Anyone who's been asked \"are you comfortable with the project now?\" too early",
   ],
   bodyText,
-  seoTitle: "New Project Discovery Playbook for Business Analysts | BodhiProtocol",
+  seoTitle: "New Project Discovery Playbook for Business Analysts",
   seoDescription:
     "A practical first-30-days new project discovery guide for Business Analysts — the questions that uncover why a project exists, who really decides, how the process works today, and which systems and data make it run.",
   closingHeading: [

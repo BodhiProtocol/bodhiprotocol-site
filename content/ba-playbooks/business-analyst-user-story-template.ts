@@ -55,7 +55,7 @@ export const businessAnalystUserStoryTemplate: Omit<Playbook, "readingTime"> = {
     "Anyone trying to understand how real requirements work inside technology teams",
   ],
   bodyText,
-  seoTitle: "Business Analyst User Story Template + Examples | BodhiProtocol",
+  seoTitle: "Business Analyst User Story Template + Examples",
   seoDescription:
     "A practical Business Analyst user story template with acceptance criteria, business rules, data requirements, dependencies, examples and a free readiness checklist.",
   closingHeading: [

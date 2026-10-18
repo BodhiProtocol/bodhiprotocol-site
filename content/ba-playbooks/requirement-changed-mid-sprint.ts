@@ -50,7 +50,7 @@ export const requirementChangedMidSprint: Omit<Playbook, "readingTime"> = {
     "QAs and developers who need the blast radius mapped before they touch code or test cases",
     "Delivery leads and Product Owners deciding whether to absorb, split, swap, defer or stop the work",
   ],
-  seoTitle: "Mid-Sprint Requirement Change Checklist for Business Analysts | BodhiProtocol",
+  seoTitle: "Mid-Sprint Requirement Change Checklist for Business Analysts",
   seoDescription:
     "An 8-step framework for handling a requirement change mid-sprint — Change, Why, Blast Radius, Effort, Options, Decision, Trace, Communicate — with a free checklist and impact note template.",
   closingHeading: ["A two-line requirement change", "can create a twenty-item delivery change."],

@@ -50,7 +50,7 @@ export const oBatchRodouComSucessoPorQueOsDadosSumiram: Omit<Playbook, "readingT
     "QAs e desenvolvedores tentando isolar qual estágio do pipeline realmente perdeu registros",
     "Qualquer um que já teve que explicar \"o job está verde\" para alguém segurando o número errado",
   ],
-  seoTitle: "O Batch Rodou com Sucesso — Então Por Que os Dados Sumiram? | BodhiProtocol",
+  seoTitle: "O Batch Rodou com Sucesso — Então Por Que os Dados Sumiram?",
   seoDescription:
     "Um guia de BA passo a passo para investigar dados faltantes depois de um batch bem-sucedido — rastreando contagens por Origem, Extração, Transformação, Validação, Carga, Reconciliação e Consumo para achar a primeira lacuna.",
   closingHeading: ["Um status verde prova que o processo terminou.", "Não prova que o resultado de negócio estava correto."],

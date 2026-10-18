@@ -58,7 +58,7 @@ export const impactAnalysisTemplate: Omit<Playbook, "readingTime"> = {
     "Product teams trying to make \"no impact\" mean something before production finds out otherwise",
   ],
   bodyText,
-  seoTitle: "Impact Analysis Template for Business Analysts | BodhiProtocol",
+  seoTitle: "Impact Analysis Template for Business Analysts",
   seoDescription:
     "A practical 10-area impact analysis framework and free template for Business Analysts — business process, users, systems, data, controls, downstream effects, failure, migration, performance and testing.",
   closingHeading: ["Who finds out about this change", "after our system is finished?"],

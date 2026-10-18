@@ -38,7 +38,7 @@ export const storyIsDoneWhyCantWeReleaseIt: Omit<Playbook, "readingTime"> = {
     "Delivery leads tracing why a finished feature still can't ship",
     "QA and developers who want release blockers visible before go-live, not during it",
   ],
-  seoTitle: "Release Readiness Checklist for Business Analysts | BodhiProtocol",
+  seoTitle: "Release Readiness Checklist for Business Analysts",
   seoDescription:
     "An eight-gate release readiness framework for Business Analysts — Acceptance, Testing, Dependencies, Non-functional, Data & Config, Sign-off, Deployment, Monitoring — with a free one-page checklist.",
   closingHeading: ["Done for the team", "is not the same as ready for the customer."],

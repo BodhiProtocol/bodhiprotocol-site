@@ -10,6 +10,7 @@ import { Section } from "@/components/ui/section";
 import { JsonLd } from "@/components/shared/json-ld";
 import { categoryIcons } from "@/lib/category-icons";
 import { getAllCategories, getEssaysByCategory, slugifyTerm } from "@/lib/essays";
+import { essayListDescription } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 
 interface CategoryPageProps {
@@ -28,7 +29,7 @@ export async function generateMetadata({
   if (!result) return {};
 
   const title = `${result.category} essays`;
-  const description = `${result.essays.length} essay${result.essays.length === 1 ? "" : "s"} on ${result.category} from BodhiProtocol.`;
+  const description = essayListDescription(result.category, result.essays);
 
   return {
     title,

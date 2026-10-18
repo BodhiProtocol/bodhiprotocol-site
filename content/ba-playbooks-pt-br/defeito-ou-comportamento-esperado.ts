@@ -45,7 +45,7 @@ export const defeitoOuComportamentoEsperado: Omit<Playbook, "readingTime"> = {
     "QA e desenvolvedores decidindo se algo é um bug ou uma especificação",
     "Líderes de entrega que querem discordâncias resolvidas com evidência, não opinião",
   ],
-  seoTitle: "Defeito vs Comportamento Esperado: Um Framework de Decisão para BAs | BodhiProtocol",
+  seoTitle: "Defeito vs Comportamento Esperado: Um Framework de Decisão para BAs",
   seoDescription:
     "Um framework prático de BA para classificar comportamento de sistema em disputa como defeito, comportamento esperado, lacuna de requisito ou problema de configuração.",
   closingHeading: [

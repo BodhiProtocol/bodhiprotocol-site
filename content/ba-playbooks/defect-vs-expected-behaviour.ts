@@ -45,7 +45,7 @@ export const defectVsExpectedBehaviour: Omit<Playbook, "readingTime"> = {
     "QA and developers deciding whether something is a bug or a spec",
     "Delivery leads who want disagreements resolved with evidence, not opinion",
   ],
-  seoTitle: "Defect vs Expected Behaviour: A BA Decision Framework | BodhiProtocol",
+  seoTitle: "Defect vs Expected Behaviour: A BA Decision Framework",
   seoDescription:
     "A practical BA framework for classifying disputed system behaviour as a defect, expected behaviour, requirement gap, or configuration issue — with a free one-page Decision Sheet.",
   closingHeading: [

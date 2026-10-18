@@ -77,7 +77,7 @@ export const oQueOBaDeveChecarAntesDaUat: Omit<Playbook, "readingTime"> = {
     "Recém-formados e aspirantes a BA aprendendo o que \"pronto\" realmente significa além do plano de teste",
     "Qualquer um que já viu uma manhã de UAT virar troubleshooting em vez de teste",
   ],
-  seoTitle: "Checklist de Prontidão Pré-UAT para Business Analysts | BodhiProtocol",
+  seoTitle: "Checklist de Prontidão Pré-UAT para Business Analysts",
   seoDescription:
     "O que exatamente um BA deveria checar antes de a UAT começar? Um framework de prontidão pré-UAT em 8 pontos — escopo, casos de teste, dado, ambiente, acesso, integrações, configuração e stakeholders.",
   closingHeading: ["Não pergunte se está pronto.", "Pergunte o que prova que está pronto."],

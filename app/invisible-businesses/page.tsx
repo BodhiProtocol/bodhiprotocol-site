@@ -5,12 +5,13 @@ import { Section } from "@/components/ui/section";
 import { Eyebrow } from "@/components/ui/typography";
 import { IBCard } from "@/components/invisible-businesses/ib-card";
 import { getAllInvisibleBusinesses } from "@/lib/invisible-businesses";
+import { pageTitle } from "@/lib/seo";
 
 const description =
-  "Great companies rarely sell what people think they sell. Discover the invisible business models behind the world's most successful companies.";
+  "How companies really make money: the hidden business models behind Amazon, Nike, Costco, Amul, Jio, Zerodha and more, each backed by a sourced number.";
 
 export const metadata: Metadata = {
-  title: "Invisible Businesses",
+  title: pageTitle("Invisible Businesses: How Companies Really Make Money"),
   description,
   alternates: { canonical: "/invisible-businesses" },
   openGraph: {

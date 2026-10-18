@@ -46,7 +46,7 @@ export const tradeLifecyclePlaybook: Omit<Playbook, "readingTime"> = {
     "QAs and developers trying to work out which stage a defect actually belongs to",
     "Anyone about to write a requirement that touches trade processing",
   ],
-  seoTitle: "Trade Lifecycle Playbook — Order to Settlement for BAs | BodhiProtocol",
+  seoTitle: "Trade Lifecycle Playbook — Order to Settlement for BAs",
   seoDescription:
     "The five stages of a trade — Order, Execution, Enrichment & Confirmation, Clearing, Settlement — explained stage by stage for Business Analysts, with a free stage checklist template.",
   closingHeading: ["A trade isn't one event.", "It's five stages, and each one can break on its own."],

@@ -76,7 +76,7 @@ export const preUatReadinessChecklist: Omit<Playbook, "readingTime"> = {
     "Freshers and aspiring BAs learning what \"ready\" actually means beyond the test plan",
     "Anyone who's watched a UAT morning turn into troubleshooting instead of testing",
   ],
-  seoTitle: "Pre-UAT Readiness Checklist for Business Analysts | BodhiProtocol",
+  seoTitle: "Pre-UAT Readiness Checklist for Business Analysts",
   seoDescription:
     "What exactly should a BA check before UAT starts? An 8-point pre-UAT readiness framework — scope, test cases, data, environment, access, integrations, configuration and stakeholders — with a free checklist and GO / Conditional Go / No-Go decision guide.",
   closingHeading: ["Don't ask if it's ready.", "Ask what proves it is ready."],

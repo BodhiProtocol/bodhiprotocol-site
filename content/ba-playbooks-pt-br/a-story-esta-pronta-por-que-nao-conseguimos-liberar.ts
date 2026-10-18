@@ -38,7 +38,7 @@ export const aStoryEstaProntaPorQueNaoConseguimosLiberar: Omit<Playbook, "readin
     "Líderes de entrega rastreando por que uma funcionalidade terminada ainda não consegue ir para produção",
     "QA e desenvolvedores que querem os bloqueadores de release visíveis antes do go-live, não durante ele",
   ],
-  seoTitle: "Checklist de Prontidão para Release para Business Analysts | BodhiProtocol",
+  seoTitle: "Checklist de Prontidão para Release para Business Analysts",
   seoDescription:
     "Um framework de prontidão para release em oito portões para Business Analysts — Aceitação, Testes, Dependências, Não Funcional, Dados & Config, Aprovação, Deploy, Monitoramento.",
   closingHeading: ["Pronto para o time", "não é a mesma coisa que pronto para o cliente."],

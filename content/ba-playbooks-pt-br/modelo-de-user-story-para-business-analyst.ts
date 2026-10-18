@@ -55,7 +55,7 @@ export const modeloDeUserStoryParaBusinessAnalyst: Omit<Playbook, "readingTime">
     "Qualquer um tentando entender como requisitos reais funcionam dentro de times de tecnologia",
   ],
   bodyText,
-  seoTitle: "Modelo de User Story para Business Analyst + Exemplos | BodhiProtocol",
+  seoTitle: "Modelo de User Story para Business Analyst + Exemplos",
   seoDescription:
     "Um modelo prático de user story para Business Analyst com critérios de aceitação, regras de negócio, requisitos de dado, dependências, exemplos e um checklist de prontidão gratuito.",
   closingHeading: [

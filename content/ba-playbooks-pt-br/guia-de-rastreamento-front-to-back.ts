@@ -79,7 +79,7 @@ export const guiaDeRastreamentoFrontToBack: Omit<Playbook, "readingTime"> = {
     "Business Analysts fazendo investigação de causa raiz ou impacto entre sistemas bancários, de e-commerce, seguros ou saúde",
     "Qualquer um que recebeu um ID e a instrução \"só descobre o que aconteceu\"",
   ],
-  seoTitle: "Guia de Rastreamento Front-to-Back | BodhiProtocol",
+  seoTitle: "Guia de Rastreamento Front-to-Back",
   seoDescription:
     "Um framework de rastreamento em cinco passos — Marcar, Mapear, Perguntar, Comparar, Explicar — para achar exatamente onde uma operação, ordem, sinistro ou ticket quebrou.",
   closingHeading: ["Não pergunte quem quebrou.", "Pergunte onde a história parou de bater."],

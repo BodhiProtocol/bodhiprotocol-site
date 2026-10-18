@@ -6,12 +6,13 @@ import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { ResourceList } from "@/components/library/resource-list";
 import { getAllResources } from "@/lib/resources";
+import { pageTitle } from "@/lib/seo";
 
 const description =
   "A curated library of the books, papers, and courses worth your time on AI, capital markets, business analysis, decision making, and economics — each with a note on why.";
 
 export const metadata: Metadata = {
-  title: "Library",
+  title: pageTitle("Library: Best Books on AI, Markets and Business Analysis"),
   description,
   alternates: { canonical: "/library" },
   openGraph: {

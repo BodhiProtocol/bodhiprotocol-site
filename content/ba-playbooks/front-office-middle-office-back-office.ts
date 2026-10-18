@@ -63,7 +63,7 @@ export const frontOfficeMiddleOfficeBackOffice: Omit<Playbook, "readingTime"> = 
     "Anyone trying to understand how Capital Markets actually work",
   ],
   bodyText,
-  seoTitle: "Front Office, Middle Office & Back Office Explained | BodhiProtocol",
+  seoTitle: "Front Office, Middle Office & Back Office Explained",
   seoDescription:
     "Understand Front Office, Middle Office, Back Office, Market Data, Reference Data and Risk by following one Capital Markets trade from order to settlement.",
   closingHeading: [

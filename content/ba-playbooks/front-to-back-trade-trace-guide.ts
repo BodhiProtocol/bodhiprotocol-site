@@ -79,7 +79,7 @@ export const frontToBackTradeTraceGuide: Omit<Playbook, "readingTime"> = {
     "Business Analysts doing root-cause or impact investigation across banking, e-commerce, insurance or healthcare systems",
     "Anyone handed an ID and told \"just find out what happened\"",
   ],
-  seoTitle: "Front-to-Back Trade Trace Guide | BodhiProtocol",
+  seoTitle: "Front-to-Back Trade Trace Guide",
   seoDescription:
     "A five-step trace framework — Tag, Route, Ask, Compare, Explain — for finding exactly where a trade, order, claim or ticket broke, with a free trace log template.",
   closingHeading: ["Don't ask who broke it.", "Ask where the story stopped matching."],
