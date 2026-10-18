@@ -27,3 +27,9 @@ Production sent an order status called ALLOCATED that UAT had never seen. Same c
 In 499 CE, a 23-year-old near modern Patna said the stars only look like they move, the way trees on the shore seem to slide past a boat. It's the Earth that turns.
 
 His spinning Earth then lost the argument for a thousand years, to one reasonable question about a bird flying back to its nest.
+
+## Savitribai Phule: The Teacher Who Carried a Spare Sari
+
+In 1848, men lined a teenage teacher's walk to school in Pune and threw dung, mud and stones at her. Eight years earlier, she couldn't read at all.
+
+She never won the argument about whether girls should learn to read. She made it irrelevant, by teaching them anyway.
