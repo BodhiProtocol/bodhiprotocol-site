@@ -1,0 +1,17 @@
+{
+  "slug": "g-venkataswamy",
+  "title": "The Surgeon Who Learned From McDonald's",
+  "subtitle": "Dr. G. Venkataswamy was retired at 58, with arthritic hands. Then he built one of the world's largest eye-care systems.",
+  "replace": {"This page": "This piece", "this page": "this piece", "are left out here": "are left out", "not used here": "not used"},
+  "cover": {"path": "images/g-venkataswamy-cover.png", "alt": "BodhiProtocol Great Minds: Dr. G. Venkataswamy, The Surgeon Who Learned From McDonald's", "caption": "BodhiProtocol · Great Minds", "use": "Cover: top of the post (and Substack social preview)"},
+  "inline": [{"path": "images/g-venkataswamy-diagram.png", "alt": "Two queues, one line: paying and free patients merge into one hospital line through eye camps and cross-subsidy, then prep line, two tables, Aurolab, same result", "caption": "Two queues, one line: paying and free patients get the same operation.", "use": "Inside: after the fourth paragraph", "after_paragraph": 4}],
+  "substack": {
+    "email_subject": "Retired at 58. Then he built one of the world's largest eye hospitals.",
+    "note": "Retired by the government at 58, with fingers bent by arthritis, an eye surgeon opened an 11-bed hospital in Madurai and asked a strange question: if a hamburger chain can serve millions the same quality, quickly and cheaply, why can't a hospital do that for eyesight?\n\nKindness decides what problem you solve. Only a good system decides how many people you reach.",
+    "steps": ["Click <b>Copy article</b> below, then paste into the body of a new Substack post.", "Copy the Title and Subtitle into their own boxes at the top, then delete the duplicate title and subtitle at the start of the body.", "If the images didn't come through, delete the empty space and upload the cover and the diagram with the image button (right-click each image above → Save image as…).", "Settings → Social preview image: upload the cover.", "Settings → Email header: paste the email subject line.", "Post the Substack Note 1–2 days before you publish."]
+  },
+  "medium": {
+    "tags": ["Healthcare", "Social Entrepreneurship", "India", "Leadership", "Operations"],
+    "steps": ["Click <b>Copy article</b> below, then paste into a new Medium story. The first two lines become the title and subtitle.", "If the images didn't come through, click on an empty line, press <b>+</b>, choose the image icon and upload the cover and the diagram (right-click each image above → Save image as…).", "On the publish screen, add the five tags.", "After publishing: ⋯ menu → Story settings → Advanced settings → turn on “originally published elsewhere” and paste the original link."]
+  }
+}
