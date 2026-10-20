@@ -1,0 +1,41 @@
+{
+ "slug": "story-is-done-why-cant-we-release-it",
+ "name": "The Story Is Done",
+ "url": "https://bodhiprotocol.com/ba-playbooks/story-is-done-why-cant-we-release-it",
+ "article_html": ".crosspost-output/story-is-done-why-cant-we-release-it.substack.html",
+ "title": "The Story Is Done. Why Can't We Release It?",
+ "subtitle": "Jira says DONE. Release says not yet. Eight gates between a finished story and a safe release.",
+ "cover": {
+  "path": "images/story-is-done-infographic.jpg",
+  "alt": "BodhiProtocol BA Playbook infographic: The Story Is Done. Why Can't We Release It?",
+  "caption": "BodhiProtocol · BA Playbooks",
+  "use": "Cover: top of the post (and Substack social preview)"
+ },
+ "substack": {
+  "email_subject": "Jira says DONE. So why can't we release it?",
+  "note": "The developer has finished coding. QA has tested it. Acceptance criteria are green. Jira says DONE.\n\nSo you ask, \"Can we release it?\" And someone replies, \"Not yet.\" The feature works. The release path doesn't.",
+  "steps": [
+   "Click <b>Copy article</b> below, then paste into the body of a new Substack post.",
+   "Copy the Title and Subtitle into their own boxes at the top, then delete the duplicate title and subtitle at the start of the body.",
+   "If the cover didn't come through, delete the empty space and upload it with the image button (right-click the image above → Save image as…).",
+   "Settings → Social preview image: upload the cover.",
+   "Settings → Email header: paste the email subject line.",
+   "Post the Substack Note 1–2 days before you publish."
+  ]
+ },
+ "medium": {
+  "tags": [
+   "Business Analysis",
+   "Agile",
+   "Release Management",
+   "Software Testing",
+   "Product Management"
+  ],
+  "steps": [
+   "Click <b>Copy article</b> below, then paste into a new Medium story. The first two lines become the title and subtitle.",
+   "If the cover didn't come through, click on an empty line, press <b>+</b>, choose the image icon and upload it (right-click the image above → Save image as…).",
+   "On the publish screen, add the five tags.",
+   "After publishing: ⋯ menu → Story settings → Advanced settings → turn on “originally published elsewhere” and paste the original link."
+  ]
+ }
+}

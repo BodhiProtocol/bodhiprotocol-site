@@ -6,15 +6,26 @@ Each kit is a single HTML file: a "before you paste" panel (title, subtitle,
 tags or email subject, Note, steps, copy buttons) followed by the article,
 with the cover and any inline images embedded so the file works offline.
 """
-import base64, html, json, os, sys, yaml
+import base64, html, json, os, re, sys, yaml
 
 cfg = json.load(open(sys.argv[1]))
 root, out = sys.argv[2], sys.argv[3]
 slug = cfg["slug"]
-raw = open(os.path.join(root, f"content/great-minds/{slug}.mdx")).read()
-_, fm, body = raw.split("---", 2)
-d = yaml.safe_load(fm)
-url = f"https://bodhiprotocol.com/great-minds/{slug}"
+if cfg.get("article_html"):
+    # Pre-rendered article body (from scripts/cross-post): keep everything after its <h1>,
+    # minus its own cover image and "Originally published" footer.
+    src = open(cfg["article_html"]).read()
+    src = src.split("</h1>", 1)[1]
+    src = re.split(r'<p style="margin-top: 32px', src)[0]
+    src = re.sub(r"</div>\s*$", "", src.strip())
+    d = {"name": cfg["name"]}
+    body = ""
+    url = cfg["url"]
+else:
+    raw = open(os.path.join(root, f"content/great-minds/{slug}.mdx")).read()
+    _, fm, body = raw.split("---", 2)
+    d = yaml.safe_load(fm)
+    url = f"https://bodhiprotocol.com/great-minds/{slug}"
 
 def e(s):
     return html.escape(s, quote=True)
@@ -42,25 +53,30 @@ def rep(t):
         t = t.replace(old, new)
     return t
 
-intro = paras(body)
-for old, new in cfg.get("replace", {}).items():
-    intro = [p.replace(old, new) for p in intro]
+if cfg.get("article_html"):
+    parts = [figure(cfg["cover"]), rep(src),
+             f'<p><em>Originally published on <a href="{url}">BodhiProtocol</a>. '
+             f'<a href="https://bodhiprotocol.com">Explore more at bodhiprotocol.com</a>.</em></p>']
+else:
+    intro = paras(body)
+    for old, new in cfg.get("replace", {}).items():
+        intro = [p.replace(old, new) for p in intro]
 
-parts = [figure(cfg["cover"])]
-for i, p in enumerate(intro):
-    parts.append(f"<p>{e(p)}</p>")
-    for img in cfg.get("inline", []):
-        if img["after_paragraph"] == i + 1:
-            parts.append(figure(img))
-parts.append("<h2>Core Philosophy</h2>" + "".join(f"<p>{e(p)}</p>" for p in paras(d["corePhilosophy"])) + take("corePhilosophyTakeaway"))
-parts.append("<h2>Thinking Process</h2>" + lst(d["thinkingProcess"], "title", "description") + take("thinkingProcessTakeaway"))
-parts.append("<h2>Mental Models</h2>" + lst(d["mentalModels"], "name", "description") + take("mentalModelsTakeaway"))
-parts.append("<h2>Big Ideas</h2>" + lst(d["bigIdeas"], "title", "description"))
-if d.get("scholarshipNotes"):
-    parts.append("<h2>Notes on the Record</h2><ul>" + "".join(f"<li>{e(rep(n))}</li>" for n in d["scholarshipNotes"]) + "</ul>")
-parts.append("".join(f"<p>{e(p)}</p>" for p in paras(d.get("closingReflection", ""))))
-parts.append(f'<p><em>Originally published on <a href="{url}">BodhiProtocol</a> as part of the Great Minds series. '
-             f'<a href="https://bodhiprotocol.com/great-minds">Explore all the Great Minds</a>.</em></p>')
+    parts = [figure(cfg["cover"])]
+    for i, p in enumerate(intro):
+        parts.append(f"<p>{e(p)}</p>")
+        for img in cfg.get("inline", []):
+            if img["after_paragraph"] == i + 1:
+                parts.append(figure(img))
+    parts.append("<h2>Core Philosophy</h2>" + "".join(f"<p>{e(p)}</p>" for p in paras(d["corePhilosophy"])) + take("corePhilosophyTakeaway"))
+    parts.append("<h2>Thinking Process</h2>" + lst(d["thinkingProcess"], "title", "description") + take("thinkingProcessTakeaway"))
+    parts.append("<h2>Mental Models</h2>" + lst(d["mentalModels"], "name", "description") + take("mentalModelsTakeaway"))
+    parts.append("<h2>Big Ideas</h2>" + lst(d["bigIdeas"], "title", "description"))
+    if d.get("scholarshipNotes"):
+        parts.append("<h2>Notes on the Record</h2><ul>" + "".join(f"<li>{e(rep(n))}</li>" for n in d["scholarshipNotes"]) + "</ul>")
+    parts.append("".join(f"<p>{e(p)}</p>" for p in paras(d.get("closingReflection", ""))))
+    parts.append(f'<p><em>Originally published on <a href="{url}">BodhiProtocol</a> as part of the Great Minds series. '
+                 f'<a href="https://bodhiprotocol.com/great-minds">Explore all the Great Minds</a>.</em></p>')
 article = "\n".join(parts)
 
 def field(label, value, multiline=False):
