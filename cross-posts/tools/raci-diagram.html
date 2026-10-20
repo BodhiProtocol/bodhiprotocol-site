@@ -1,0 +1,48 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Geist:wght@400;500;600&family=Geist+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#fafafa;font-family:Geist,system-ui,sans-serif;color:#0a0a0a}
+.w{width:1200px;padding:56px 72px 56px;box-sizing:border-box}
+.eb{font-family:"Geist Mono",monospace;font-size:15px;letter-spacing:.12em;color:#7c3aed;text-transform:uppercase}
+h1{font-family:Fraunces,Georgia,serif;font-size:44px;margin:10px 0 6px;line-height:1.1}
+.sub{color:#52525b;font-size:19px;margin:0 0 32px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+.card{background:#fff;border:1.5px solid #e4dcf7;border-radius:14px;padding:22px 24px}
+.card.bad{border-color:#f0c48a;background:#fffaf2}
+.card.good{border-color:#7c3aed;background:#f7f3fe}
+.lbl{font-family:"Geist Mono",monospace;font-size:14px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.bad .lbl{color:#b45309}.good .lbl{color:#7c3aed}
+.ctl{font-size:17px;color:#52525b;margin-bottom:16px}
+table{width:100%;border-collapse:collapse;font-size:19px}
+th{font-family:"Geist Mono",monospace;font-size:14px;color:#52525b;text-align:left;font-weight:500;padding:6px 0;border-bottom:1px solid #e4dcf7}
+td{padding:12px 0;border-bottom:1px solid #eee}
+td.r,th.r{text-align:right}
+.pill{display:inline-block;min-width:34px;text-align:center;border-radius:8px;padding:4px 10px;font-family:"Geist Mono",monospace;font-weight:500;font-size:18px}
+.A{background:#7c3aed;color:#fff}.Abad{background:#d97706;color:#fff}.C{background:#efe8fd;color:#7c3aed}.I{background:#efeff1;color:#52525b}
+.out{margin-top:16px;font-size:18px;font-weight:600}
+.bad .out{color:#b45309}.good .out{color:#6d28d9}
+.key{margin-top:26px;display:flex;gap:26px;font-size:16px;color:#52525b;flex-wrap:wrap}
+.key b{color:#0a0a0a}
+.foot{margin-top:18px;font-size:17px;color:#52525b;border-top:1px solid #e4dcf7;padding-top:16px;display:flex;justify-content:space-between}
+.foot b{color:#0a0a0a}
+</style></head><body><div class="w">
+<div class="eb">BodhiProtocol · Business Analysis</div>
+<h1>Three A's means no A</h1>
+<p class="sub">The same reconciliation break, run through two RACI matrices.</p>
+<div class="cols">
+ <div class="card bad"><div class="lbl">The friendly matrix</div><div class="ctl">Control: unresolved reconciliation break</div>
+  <table><tr><th>Team</th><th class="r">Role</th></tr>
+  <tr><td>Ops</td><td class="r"><span class="pill Abad">A</span></td></tr>
+  <tr><td>Risk</td><td class="r"><span class="pill Abad">A</span></td></tr>
+  <tr><td>Technology</td><td class="r"><span class="pill Abad">A</span></td></tr></table>
+  <div class="out">Each team assumed another had it. The break sat open for 11 days.</div></div>
+ <div class="card good"><div class="lbl">The real matrix</div><div class="ctl">Control: unresolved reconciliation break</div>
+  <table><tr><th>Team</th><th class="r">Role</th></tr>
+  <tr><td>Ops</td><td class="r"><span class="pill A">A</span></td></tr>
+  <tr><td>Risk</td><td class="r"><span class="pill C">C</span></td></tr>
+  <tr><td>Technology</td><td class="r"><span class="pill I">I</span></td></tr></table>
+  <div class="out">One name owns the break from the minute it opens.</div></div>
+</div>
+<div class="key"><span><b>R</b> does the work (can be several)</span><span><b>A</b> answers for it (exactly one)</span><span><b>C</b> two-way input before a decision</span><span><b>I</b> told after the fact</span></div>
+<div class="foot"><span><b>The check:</b> is there exactly one name in the "A" column, not zero, not several?</span><span>bodhiprotocol.com</span></div>
+</div></body></html>

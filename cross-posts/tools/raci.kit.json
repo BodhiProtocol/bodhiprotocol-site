@@ -1,0 +1,41 @@
+{
+ "slug": "raci-doesnt-work-until-exactly-one-person-is-accountable",
+ "name": "RACI",
+ "url": "https://bodhiprotocol.com/essays/raci-doesnt-work-until-exactly-one-person-is-accountable",
+ "article_html": ".crosspost-output/raci-doesnt-work-until-exactly-one-person-is-accountable.substack.html",
+ "title": "RACI Doesn't Work Until Exactly One Person Is Accountable",
+ "subtitle": "Three people accountable for the same control means zero people accountable for it.",
+ "cover": {
+  "path": "images/raci-diagram.jpg",
+  "alt": "Three A's means no A: the same reconciliation break in a RACI matrix with three Accountable teams versus one with Ops Accountable, Risk Consulted and Technology Informed",
+  "caption": "The same reconciliation break, run through two RACI matrices.",
+  "use": "Cover: top of the post (and Substack social preview)"
+ },
+ "substack": {
+  "email_subject": "Three teams were accountable. The break sat open for 11 days.",
+  "note": "A reconciliation break sat unresolved for eleven days. Ops assumed Risk had it. Risk assumed Ops had it. Technology assumed they both did. The RACI matrix listed all three as Accountable.\n\nThree A's in one row isn't extra cover. It's covered by nobody in particular.",
+  "steps": [
+   "Click <b>Copy article</b> below, then paste into the body of a new Substack post.",
+   "Copy the Title and Subtitle into their own boxes at the top, then delete the duplicate title and subtitle at the start of the body.",
+   "If the image didn't come through, delete the empty space and upload it with the image button (right-click the image above → Save image as…).",
+   "Settings → Social preview image: upload the image.",
+   "Settings → Email header: paste the email subject line.",
+   "Post the Substack Note 1–2 days before you publish."
+  ]
+ },
+ "medium": {
+  "tags": [
+   "Business Analysis",
+   "RACI",
+   "Project Management",
+   "Accountability",
+   "Leadership"
+  ],
+  "steps": [
+   "Click <b>Copy article</b> below, then paste into a new Medium story. The first two lines become the title and subtitle.",
+   "If the image didn't come through, click on an empty line, press <b>+</b>, choose the image icon and upload it (right-click the image above → Save image as…).",
+   "On the publish screen, add the five tags.",
+   "After publishing: ⋯ menu → Story settings → Advanced settings → turn on “originally published elsewhere” and paste the original link."
+  ]
+ }
+}
