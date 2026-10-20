@@ -58,7 +58,7 @@ parts.append("<h2>Mental Models</h2>" + lst(d["mentalModels"], "name", "descript
 parts.append("<h2>Big Ideas</h2>" + lst(d["bigIdeas"], "title", "description"))
 if d.get("scholarshipNotes"):
     parts.append("<h2>Notes on the Record</h2><ul>" + "".join(f"<li>{e(rep(n))}</li>" for n in d["scholarshipNotes"]) + "</ul>")
-parts.append("".join(f"<p>{e(p)}</p>" for p in paras(d["closingReflection"])))
+parts.append("".join(f"<p>{e(p)}</p>" for p in paras(d.get("closingReflection", ""))))
 parts.append(f'<p><em>Originally published on <a href="{url}">BodhiProtocol</a> as part of the Great Minds series. '
              f'<a href="https://bodhiprotocol.com/great-minds">Explore all the Great Minds</a>.</em></p>')
 article = "\n".join(parts)

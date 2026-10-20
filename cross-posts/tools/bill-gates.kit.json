@@ -1,0 +1,50 @@
+{
+ "slug": "bill-gates",
+ "title": "The Man Who Read His Way to Certainty",
+ "subtitle": "Twice a year, Bill Gates disappears to a cabin with hundreds of papers. Almost all of it gets thrown away. That's the point.",
+ "replace": {
+  "the real subject of this page": "the real subject of this story"
+ },
+ "cover": {
+  "path": "images/bill-gates-cover.png",
+  "alt": "BodhiProtocol Great Minds: Bill Gates, The Man Who Read His Way to Certainty",
+  "caption": "BodhiProtocol · Great Minds",
+  "use": "Cover: top of the post (and Substack social preview)"
+ },
+ "inline": [
+  {
+   "path": "images/bill-gates-diagram.png",
+   "alt": "Bill Gates' funnel: read, isolate, compress, commit",
+   "caption": "Read enormously, then commit to almost none of it.",
+   "use": "Inside: after the second paragraph",
+   "after_paragraph": 2
+  }
+ ],
+ "substack": {
+  "email_subject": "He reads everything. Then he throws almost all of it away.",
+  "note": "Twice a year, Bill Gates disappears: no phone, no staff, just a cabin on the Washington coast and a locked case of paper. By the end of the week, most of it will never be mentioned again.\n\nThe value was never in reading more than everyone else. It was in being willing to throw almost all of it away.",
+  "steps": [
+   "Click <b>Copy article</b> below, then paste into the body of a new Substack post.",
+   "Copy the Title and Subtitle into their own boxes at the top, then delete the duplicate title and subtitle at the start of the body.",
+   "If the images didn't come through, delete the empty space and upload the cover and the funnel diagram with the image button (right-click each image above → Save image as…).",
+   "Settings → Social preview image: upload the cover.",
+   "Settings → Email header: paste the email subject line.",
+   "Post the Substack Note 1–2 days before you publish."
+  ]
+ },
+ "medium": {
+  "tags": [
+   "Bill Gates",
+   "Microsoft",
+   "Decision Making",
+   "Leadership",
+   "Philanthropy"
+  ],
+  "steps": [
+   "Click <b>Copy article</b> below, then paste into a new Medium story. The first two lines become the title and subtitle.",
+   "If the images didn't come through, click on an empty line, press <b>+</b>, choose the image icon and upload the cover and the funnel diagram (right-click each image above → Save image as…).",
+   "On the publish screen, add the five tags.",
+   "After publishing: ⋯ menu → Story settings → Advanced settings → turn on “originally published elsewhere” and paste the original link."
+  ]
+ }
+}
