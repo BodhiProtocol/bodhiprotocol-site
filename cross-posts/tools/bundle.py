@@ -54,6 +54,11 @@ def rep(t):
     return t
 
 if cfg.get("article_html"):
+    for img in cfg.get("inline", []):
+        # For pre-rendered articles, place an inline image just before a named section heading.
+        if img.get("before_heading"):
+            h = html.escape(img["before_heading"], quote=True)
+            src = src.replace(f"<h2>{h}</h2>", figure(img) + f"\n<h2>{h}</h2>", 1)
     parts = [figure(cfg["cover"]), rep(src),
              f'<p><em>Originally published on <a href="{url}">BodhiProtocol</a>. '
              f'<a href="https://bodhiprotocol.com">Explore more at bodhiprotocol.com</a>.</em></p>']

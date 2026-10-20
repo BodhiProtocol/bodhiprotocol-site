@@ -6,9 +6,9 @@
  "title": "RACI Doesn't Work Until Exactly One Person Is Accountable",
  "subtitle": "Three people accountable for the same control means zero people accountable for it.",
  "cover": {
-  "path": "images/raci-diagram.jpg",
-  "alt": "Three A's means no A: the same reconciliation break in a RACI matrix with three Accountable teams versus one with Ops Accountable, Risk Consulted and Technology Informed",
-  "caption": "The same reconciliation break, run through two RACI matrices.",
+  "path": "images/raci-designed-cover.jpg",
+  "alt": "RACI Doesn't Work Until Exactly One Person Is Accountable: an illustrated summary of the 11-day reconciliation break, the three-A matrix, and the fix with Ops Accountable, Risk Consulted and Technology Informed",
+  "caption": "BodhiProtocol · Essays",
   "use": "Cover: top of the post (and Substack social preview)"
  },
  "substack": {
@@ -37,5 +37,14 @@
    "On the publish screen, add the five tags.",
    "After publishing: ⋯ menu → Story settings → Advanced settings → turn on “originally published elsewhere” and paste the original link."
   ]
- }
+ },
+ "inline": [
+  {
+   "path": "images/raci-diagram.jpg",
+   "alt": "Three A's means no A: the friendly matrix versus the real matrix",
+   "caption": "The same reconciliation break, run through two RACI matrices.",
+   "use": "Inside: before \"Run the reconciliation break back through it\"",
+   "before_heading": "Run the reconciliation break back through it"
+  }
+ ]
 }
