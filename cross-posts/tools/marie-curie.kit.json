@@ -1,0 +1,17 @@
+{
+  "slug": "marie-curie",
+  "title": "The Woman Who Made the Invisible Measurable",
+  "subtitle": "Marie Curie spent four years turning a faint glow in a shed into a number on a scale.",
+  "replace": {"the real subject of this page": "the real subject of this story"},
+  "cover": {"path": "images/marie-curie-cover.png", "alt": "BodhiProtocol Great Minds: Marie Curie, The Woman Who Made the Invisible Measurable", "caption": "BodhiProtocol · Great Minds", "use": "Cover: top of the post (and Substack social preview)"},
+  "inline": [{"path": "images/marie-curie-diagram.png", "alt": "Marie Curie's five-step method: gather, dissolve, concentrate, crystallize, isolate", "caption": "Her method: the same five steps, refined over four years.", "use": "Inside: after the second paragraph", "after_paragraph": 2}],
+  "substack": {
+    "email_subject": "The glow came first. The number took four years.",
+    "note": "At night, Marie and Pierre Curie sometimes walked back out to the shed just to watch their test tubes glow. For months, that faint blue-green light was the only evidence anything was there at all.\n\nShe never called it a discovery. She called it a measurement.",
+    "steps": ["Click <b>Copy article</b> below, then paste into the body of a new Substack post.", "Copy the Title and Subtitle into their own boxes at the top, then delete the duplicate title and subtitle at the start of the body.", "If the images didn't come through, delete the empty space and upload the cover and the diagram with the image button (right-click each image above → Save image as…).", "Settings → Social preview image: upload the cover.", "Settings → Email header: paste the email subject line.", "Post the Substack Note 1–2 days before you publish."]
+  },
+  "medium": {
+    "tags": ["Marie Curie", "Science", "History", "Women In Science", "Physics"],
+    "steps": ["Click <b>Copy article</b> below, then paste into a new Medium story. The first two lines become the title and subtitle.", "If the images didn't come through, click on an empty line, press <b>+</b>, choose the image icon and upload the cover and the diagram (right-click each image above → Save image as…).", "On the publish screen, add the five tags.", "After publishing: ⋯ menu → Story settings → Advanced settings → turn on “originally published elsewhere” and paste the original link."]
+  }
+}

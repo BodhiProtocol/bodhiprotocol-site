@@ -1,0 +1,50 @@
+{
+ "slug": "steve-jobs",
+ "title": "The Man Who Stood at the Intersection",
+ "subtitle": "Steve Jobs didn't invent the mouse or the graphical interface. He saw, in ten minutes, how to hand them to everyone.",
+ "replace": {
+  "the real subject of this page": "the real subject of this story"
+ },
+ "cover": {
+  "path": "images/steve-jobs-cover.png",
+  "alt": "BodhiProtocol Great Minds: Steve Jobs, The Man Who Stood at the Intersection",
+  "caption": "BodhiProtocol · Great Minds",
+  "use": "Cover: top of the post (and Substack social preview)"
+ },
+ "inline": [
+  {
+   "path": "images/steve-jobs-diagram.png",
+   "alt": "Steve Jobs at the intersection of engineering, systems, design and story",
+   "caption": "Where his thinking sat: engineering, systems, design and story.",
+   "use": "Inside: after the second paragraph",
+   "after_paragraph": 2
+  }
+ ],
+ "substack": {
+  "email_subject": "Ten minutes at Xerox PARC changed what a computer was for.",
+  "note": "In December 1979, Steve Jobs watched a ten-minute demo at Xerox PARC: a pointer moving across a screen of overlapping windows. Within days, he had reorganized part of Apple's engineering team around it.\n\nHe didn't invent the mouse or the graphical interface. He saw what it would take to hand them to an ordinary person.",
+  "steps": [
+   "Click <b>Copy article</b> below, then paste into the body of a new Substack post.",
+   "Copy the Title and Subtitle into their own boxes at the top, then delete the duplicate title and subtitle at the start of the body.",
+   "If the images didn't come through, delete the empty space and upload the cover and the intersection diagram with the image button (right-click each image above → Save image as…).",
+   "Settings → Social preview image: upload the cover.",
+   "Settings → Email header: paste the email subject line.",
+   "Post the Substack Note 1–2 days before you publish."
+  ]
+ },
+ "medium": {
+  "tags": [
+   "Steve Jobs",
+   "Apple",
+   "Product Design",
+   "Leadership",
+   "Technology"
+  ],
+  "steps": [
+   "Click <b>Copy article</b> below, then paste into a new Medium story. The first two lines become the title and subtitle.",
+   "If the images didn't come through, click on an empty line, press <b>+</b>, choose the image icon and upload the cover and the intersection diagram (right-click each image above → Save image as…).",
+   "On the publish screen, add the five tags.",
+   "After publishing: ⋯ menu → Story settings → Advanced settings → turn on “originally published elsewhere” and paste the original link."
+  ]
+ }
+}

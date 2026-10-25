@@ -1,0 +1,55 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Geist:wght@400;500;600&family=Geist+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#fafafa;font-family:Geist,system-ui,sans-serif;color:#0a0a0a}
+.w{width:1200px;padding:52px 72px 48px;box-sizing:border-box}
+.eb{font-family:"Geist Mono",monospace;font-size:15px;letter-spacing:.12em;color:#7c3aed;text-transform:uppercase}
+h1{font-family:Fraunces,Georgia,serif;font-size:46px;margin:10px 0 6px;line-height:1.1}
+.sub{color:#52525b;font-size:19px;margin:0 0 28px}
+.ask{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.bubble{font-family:Fraunces,Georgia,serif;font-size:26px;background:#fff;border:1.5px solid #e4dcf7;border-radius:18px 18px 18px 4px;padding:12px 22px}
+.ask span{font-size:17px;color:#52525b}
+.cols{display:grid;grid-template-columns:1fr 1.25fr;gap:28px}
+.card{border-radius:14px;padding:22px 24px;border:1.5px solid #e4dcf7;background:#fff}
+.early{border-color:#7c3aed;background:#f7f3fe}
+.late{border-color:#f0c48a;background:#fffaf2}
+.lbl{font-family:"Geist Mono",monospace;font-size:14px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.early .lbl{color:#7c3aed}.late .lbl{color:#b45309}
+.when{font-family:Fraunces,Georgia,serif;font-size:26px;margin-bottom:14px}
+.doc{display:flex;gap:12px;align-items:center;font-size:18px;line-height:1.45}
+.doc i{flex:none;width:44px;height:54px;border:1.5px solid #7c3aed;border-radius:4px;background:#fff;position:relative}
+.doc i:after{content:"";position:absolute;left:8px;right:8px;top:24px;height:3px;background:#7c3aed;border-radius:2px}
+.price{margin-top:16px;font-size:17px;color:#52525b}
+.price b{color:#7c3aed}
+.stack{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.box{border:1.5px solid #f0c48a;background:#fff;border-radius:10px;padding:10px 12px;font-size:17px}
+.box small{display:block;font-family:"Geist Mono",monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#b45309}
+.box.wide{grid-column:1/-1}
+.late .price b{color:#b45309}
+.q{margin-top:24px;border:1.5px dashed #7c3aed;border-radius:14px;padding:16px 22px;background:#fff;font-size:19px;line-height:1.45}
+.q .lbl{color:#7c3aed}
+.foot{margin-top:18px;font-size:17px;color:#52525b;display:flex;justify-content:space-between;gap:20px}
+.foot b{color:#0a0a0a}
+</style></head><body><div class="w">
+<div class="eb">BodhiProtocol · Business Analysis</div>
+<h1>Same sentence. Different price tag.</h1>
+<p class="sub">Scope creep is a timing problem, not a willpower problem.</p>
+<div class="ask"><div class="bubble">“Can we also filter by region?”</div><span>Asked twice. Same words, same length.</span></div>
+<div class="cols">
+ <div class="card early"><div class="lbl">Asked in the requirements workshop</div>
+  <div class="when">Before anything is built</div>
+  <div class="doc"><i></i><div>One sentence added to a document nobody has built against yet.</div></div>
+  <div class="price">It contradicts: <b>nothing</b></div></div>
+ <div class="card late"><div class="lbl">Asked three days into the sprint</div>
+  <div class="when">After code exists around the old assumption</div>
+  <div class="stack">
+   <div class="box"><small>Unwind</small>The data model</div>
+   <div class="box"><small>Rewrite</small>The query</div>
+   <div class="box"><small>Rework</small>Component 1</div>
+   <div class="box"><small>Rework</small>Component 2</div>
+   <div class="box wide"><small>Taken from</small>Sprint hours already promised to other work</div>
+  </div></div>
+</div>
+<div class="q"><div class="lbl">Ask it out loud before saying yes</div>“What already-built work does this contradict, and what’s willing to come out to make room for it?”</div>
+<div class="foot"><span><b>The request didn’t get bigger.</b> The number of things it contradicts did.</span><span>bodhiprotocol.com</span></div>
+</div></body></html>

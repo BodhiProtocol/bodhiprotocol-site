@@ -1,0 +1,41 @@
+{
+ "slug": "the-decision-outlives-the-meeting-where-it-was-made",
+ "name": "The Decision Outlives the Meeting",
+ "url": "https://bodhiprotocol.com/essays/the-decision-outlives-the-meeting-where-it-was-made",
+ "article_html": ".crosspost-output/the-decision-outlives-the-meeting-where-it-was-made.substack.html",
+ "title": "The Decision Outlives the Meeting Where It Was Made",
+ "subtitle": "The system remembers the new rule forever. It doesn't remember why, unless someone made it remember.",
+ "cover": {
+  "path": "images/decision-diagram.jpg",
+  "alt": "The system keeps the what, it forgets the why: LIMIT-2201's ₹10,00,000 limit, what was lost, and the four-field decision record that would have saved it",
+  "caption": "LIMIT-2201: the rule survived. The reason didn't.",
+  "use": "Cover: top of the post (and Substack social preview)"
+ },
+ "substack": {
+  "email_subject": "Nobody remembers deciding this ₹10,00,000 limit.",
+  "note": "LIMIT-2201: one client's daily transfer limit reads ₹10,00,000. Every other client at the same tier reads ₹2,00,000. The Jira ticket says \"updated per business request.\" The Slack thread is gone. Both people who decided it have moved teams.\n\nThe system remembers the rule forever. It doesn't remember why.",
+  "steps": [
+   "Click <b>Copy article</b> below, then paste into the body of a new Substack post.",
+   "Copy the Title and Subtitle into their own boxes at the top, then delete the duplicate title and subtitle at the start of the body.",
+   "If the image didn't come through, delete the empty space and upload it with the image button (right-click the image above → Save image as…).",
+   "Settings → Social preview image: upload the image.",
+   "Settings → Email header: paste the email subject line.",
+   "Post the Substack Note 1–2 days before you publish."
+  ]
+ },
+ "medium": {
+  "tags": [
+   "Business Analysis",
+   "Requirements",
+   "Change Management",
+   "Documentation",
+   "Agile"
+  ],
+  "steps": [
+   "Click <b>Copy article</b> below, then paste into a new Medium story. The first two lines become the title and subtitle.",
+   "If the image didn't come through, click on an empty line, press <b>+</b>, choose the image icon and upload it (right-click the image above → Save image as…).",
+   "On the publish screen, add the five tags.",
+   "After publishing: ⋯ menu → Story settings → Advanced settings → turn on “originally published elsewhere” and paste the original link."
+  ]
+ }
+}

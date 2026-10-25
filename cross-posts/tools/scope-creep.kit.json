@@ -1,0 +1,35 @@
+{
+ "slug": "scope-creep-is-a-timing-problem",
+ "name": "Scope Creep Is a Timing Problem",
+ "url": "https://bodhiprotocol.com/essays/scope-creep-is-a-timing-problem",
+ "article_html": ".crosspost-output/scope-creep-is-a-timing-problem.substack.html",
+ "title": "Scope Creep Is a Timing Problem, Not a Willpower Problem",
+ "subtitle": "The same change costs a sentence in a requirements meeting and a sprint once code exists to contradict it.",
+ "cover": {
+  "path": "cross-posts/images/scope-creep-diagram.png",
+  "alt": "Same sentence, different price tag: 'Can we also filter by region?' asked in the requirements workshop contradicts nothing; asked three days into the sprint it unwinds the data model, the query and two components, and takes hours already promised to other work",
+  "caption": "The request didn't get bigger. The number of things it contradicts did.",
+  "use": "Cover: top of the post (and Substack social preview)"
+ },
+ "substack": {
+  "email_subject": "\"Can we also filter by region?\" costs nothing. Until it doesn't.",
+  "note": "\"Can we also filter by region?\"\n\nIn a requirements workshop, that's one sentence added to a document nobody has built against yet.\n\nThree days into the sprint, the same sentence means unwinding a data model, a query and two components.\n\nThe request didn't get bigger. The number of things it contradicts did.",
+  "steps": [
+   "Click <b>Copy article</b> below, then paste into the body of a new Substack post.",
+   "Copy the Title and Subtitle into their own boxes at the top, then delete the duplicate title and subtitle at the start of the body.",
+   "If the image didn't come through, delete the empty space and upload it with the image button (right-click the image above → Save image as…).",
+   "Settings → Social preview image: upload the image.",
+   "Settings → Email header: paste the email subject line.",
+   "Post the Substack Note 1–2 days before you publish."
+  ]
+ },
+ "medium": {
+  "tags": ["Business Analysis", "Agile", "Scope Creep", "Project Management", "Scrum"],
+  "steps": [
+   "Click <b>Copy article</b> below, then paste into a new Medium story. The first two lines become the title and subtitle.",
+   "If the image didn't come through, click on an empty line, press <b>+</b>, choose the image icon and upload it (right-click the image above → Save image as…).",
+   "On the publish screen, add the five tags.",
+   "After publishing: ⋯ menu → Story settings → Advanced settings → turn on “originally published elsewhere” and paste the original link."
+  ]
+ }
+}

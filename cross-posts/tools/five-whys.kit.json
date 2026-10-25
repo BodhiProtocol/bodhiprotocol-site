@@ -1,0 +1,41 @@
+{
+ "slug": "why-five-whys-almost-never-makes-it-to-five",
+ "name": "Five Whys",
+ "url": "https://bodhiprotocol.com/essays/why-five-whys-almost-never-makes-it-to-five",
+ "article_html": ".crosspost-output/why-five-whys-almost-never-makes-it-to-five.substack.html",
+ "title": "Why 'Five Whys' Almost Never Makes It to Five",
+ "subtitle": "The first 'why' that names someone else's mistake is exactly where most people stop asking.",
+ "cover": {
+  "path": "images/five-whys-diagram.jpg",
+  "alt": "Where Five Whys usually stops: Taiichi Ohno's welding robot chain, from a blown fuse (the easy stop) to a missing filter (the root cause)",
+  "caption": "Ohno's welding-robot chain: the easy stop vs. the root cause.",
+  "use": "Cover: top of the post (and Substack social preview)"
+ },
+ "substack": {
+  "email_subject": "The ticket has been closed six times this year. Same fix every time.",
+  "note": "TICKET-2933 has been closed six times this year. Each time: clear the stuck queue, rerun the batch, mark it resolved. Three to five weeks later, it's back under a new number.\n\n\"The queue got stuck\" isn't a lie. It's just not the bottom of anything.",
+  "steps": [
+   "Click <b>Copy article</b> below, then paste into the body of a new Substack post.",
+   "Copy the Title and Subtitle into their own boxes at the top, then delete the duplicate title and subtitle at the start of the body.",
+   "If the image didn't come through, delete the empty space and upload it with the image button (right-click the image above → Save image as…).",
+   "Settings → Social preview image: upload the image.",
+   "Settings → Email header: paste the email subject line.",
+   "Post the Substack Note 1–2 days before you publish."
+  ]
+ },
+ "medium": {
+  "tags": [
+   "Business Analysis",
+   "Root Cause Analysis",
+   "Problem Solving",
+   "Lean",
+   "Process Improvement"
+  ],
+  "steps": [
+   "Click <b>Copy article</b> below, then paste into a new Medium story. The first two lines become the title and subtitle.",
+   "If the image didn't come through, click on an empty line, press <b>+</b>, choose the image icon and upload it (right-click the image above → Save image as…).",
+   "On the publish screen, add the five tags.",
+   "After publishing: ⋯ menu → Story settings → Advanced settings → turn on “originally published elsewhere” and paste the original link."
+  ]
+ }
+}
