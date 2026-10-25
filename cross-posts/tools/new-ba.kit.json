@@ -1,0 +1,41 @@
+{
+ "slug": "what-nobody-tells-a-new-business-analyst",
+ "name": "What Nobody Tells a New Business Analyst",
+ "url": "https://bodhiprotocol.com/essays/what-nobody-tells-a-new-business-analyst",
+ "article_html": ".crosspost-output/what-nobody-tells-a-new-business-analyst.substack.html",
+ "title": "What Nobody Tells a New Business Analyst",
+ "subtitle": "BA training teaches you to write a user story. It doesn't teach you who's allowed to approve it, how big it really is, or what to do when two stakeholders both think they're the priority.",
+ "cover": {
+  "path": "cross-posts/images/new-ba-diagram.png",
+  "alt": "What nobody tells a new business analyst: the parts with a checklist (user stories, acceptance criteria, meetings, jargon) versus three questions learned only by getting them wrong once: who's allowed to say yes, how big is it really, and what to do when two stakeholders want opposite things",
+  "caption": "Training covers the skills. The work stalls on three questions it never mentions.",
+  "use": "Cover: top of the post (and Substack social preview)"
+ },
+ "substack": {
+  "email_subject": "The job description says \"gather requirements.\" It skips the hard parts.",
+  "note": "A new BA can write a user story, draft acceptance criteria and run a meeting.\n\nThen a stakeholder asks for something, and the work stalls on three questions no training deck covers:\n\nWho's allowed to say yes to this?\nHow big is it, really?\nWhat happens when the person two desks over wants the opposite?",
+  "steps": [
+   "Click <b>Copy article</b> below, then paste into the body of a new Substack post.",
+   "Copy the Title and Subtitle into their own boxes at the top, then delete the duplicate title and subtitle at the start of the body.",
+   "If the image didn't come through, delete the empty space and upload it with the image button (right-click the image above → Save image as…).",
+   "Settings → Social preview image: upload the image.",
+   "Settings → Email header: paste the email subject line.",
+   "Post the Substack Note 1–2 days before you publish."
+  ]
+ },
+ "medium": {
+  "tags": [
+   "Business Analysis",
+   "Career Advice",
+   "Stakeholder Management",
+   "Requirements",
+   "Agile"
+  ],
+  "steps": [
+   "Click <b>Copy article</b> below, then paste into a new Medium story. The first two lines become the title and subtitle.",
+   "If the image didn't come through, click on an empty line, press <b>+</b>, choose the image icon and upload it (right-click the image above → Save image as…).",
+   "On the publish screen, add the five tags.",
+   "After publishing: ⋯ menu → Story settings → Advanced settings → turn on “originally published elsewhere” and paste the original link."
+  ]
+ }
+}

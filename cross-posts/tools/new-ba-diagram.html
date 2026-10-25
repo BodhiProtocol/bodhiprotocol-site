@@ -1,0 +1,44 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Geist:wght@400;500;600&family=Geist+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#fafafa;font-family:Geist,system-ui,sans-serif;color:#0a0a0a}
+.w{width:1200px;padding:52px 72px 48px;box-sizing:border-box}
+.eb{font-family:"Geist Mono",monospace;font-size:15px;letter-spacing:.12em;color:#7c3aed;text-transform:uppercase}
+h1{font-family:Fraunces,Georgia,serif;font-size:46px;margin:10px 0 6px;line-height:1.1}
+.sub{color:#52525b;font-size:19px;margin:0 0 30px}
+.cols{display:grid;grid-template-columns:.8fr 1.4fr;gap:28px;align-items:stretch}
+.card{border-radius:14px;padding:22px 24px;border:1.5px solid #e4dcf7;background:#fff}
+.deck{border-color:#7c3aed;background:#f7f3fe}
+.gap{border-color:#f0c48a;background:#fffaf2}
+.lbl{font-family:"Geist Mono",monospace;font-size:14px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px}
+.deck .lbl{color:#7c3aed}.gap .lbl{color:#b45309}
+.tick{display:flex;gap:12px;align-items:center;font-size:19px;padding:9px 0;border-bottom:1px solid #e4dcf7}
+.tick:last-child{border:0}
+.tick b{flex:none;width:28px;height:28px;border-radius:50%;background:#7c3aed;color:#fff;display:grid;place-items:center;font-size:15px}
+.q{display:grid;grid-template-columns:36px 1fr;gap:6px 14px;padding:12px 0;border-bottom:1px solid #f3dcbb}
+.q:last-child{border:0}
+.q b{grid-row:span 2;width:36px;height:36px;border-radius:50%;border:2px dashed #b45309;color:#b45309;display:grid;place-items:center;font-family:Fraunces,Georgia,serif;font-size:20px}
+.q .t{font-family:Fraunces,Georgia,serif;font-size:23px}
+.q .d{font-size:16px;color:#52525b}
+.check{margin-top:24px;border:1.5px dashed #7c3aed;border-radius:14px;padding:16px 22px;background:#fff;font-size:19px;line-height:1.45}
+.check .lbl{color:#7c3aed;margin-bottom:6px}
+.foot{margin-top:18px;font-size:17px;color:#52525b;display:flex;justify-content:space-between;gap:20px}
+.foot b{color:#0a0a0a}
+</style></head><body><div class="w">
+<div class="eb">BodhiProtocol · Business Analysis</div>
+<h1>What nobody tells a new business analyst</h1>
+<p class="sub">Training covers the skills. The work stalls on three questions it never mentions.</p>
+<div class="cols">
+ <div class="card deck"><div class="lbl">The parts with a checklist</div>
+  <div class="tick"><b>✓</b>Write a user story</div>
+  <div class="tick"><b>✓</b>Draft acceptance criteria</div>
+  <div class="tick"><b>✓</b>Run a meeting</div>
+  <div class="tick"><b>✓</b>Learn the jargon</div></div>
+ <div class="card gap"><div class="lbl">Learned only by getting it wrong once</div>
+  <div class="q"><b>1</b><div class="t">Who's allowed to say yes?</div><div class="d">The formal org chart and the real sign-off path are never the same document.</div></div>
+  <div class="q"><b>2</b><div class="t">How big is it, really?</div><div class="d">"Just add a filter" touches four systems. Something enormous is one config change.</div></div>
+  <div class="q"><b>3</b><div class="t">Two stakeholders want opposite things.</div><div class="d">Don't quietly pick a side. Name the conflict, in writing, to whoever owns the tradeoff.</div></div></div>
+</div>
+<div class="check"><div class="lbl">The one-question check</div>“If I write this exactly as asked, who besides the person asking has to agree with it?”</div>
+<div class="foot"><span><b>If the answer is “I don’t know”,</b> that’s the first task, not the requirement.</span><span>bodhiprotocol.com</span></div>
+</div></body></html>
