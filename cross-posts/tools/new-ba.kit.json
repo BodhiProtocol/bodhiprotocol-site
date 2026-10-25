@@ -6,9 +6,9 @@
  "title": "What Nobody Tells a New Business Analyst",
  "subtitle": "BA training teaches you to write a user story. It doesn't teach you who's allowed to approve it, how big it really is, or what to do when two stakeholders both think they're the priority.",
  "cover": {
-  "path": "cross-posts/images/new-ba-diagram.png",
-  "alt": "What nobody tells a new business analyst: the parts with a checklist (user stories, acceptance criteria, meetings, jargon) versus three questions learned only by getting them wrong once: who's allowed to say yes, how big is it really, and what to do when two stakeholders want opposite things",
-  "caption": "Training covers the skills. The work stalls on three questions it never mentions.",
+  "path": "cross-posts/images/new-ba-designed-cover.jpg",
+  "alt": "What Nobody Tells a New Business Analyst: the org chart is your real onboarding; everything looks the same size until it isn't; don't quietly pick a side; jargon is easy, the real work isn't; always ask who besides the requester has to agree",
+  "caption": "Better questions. Smoother delivery. A stronger BA.",
   "use": "Cover: top of the post (and Substack social preview)"
  },
  "substack": {
