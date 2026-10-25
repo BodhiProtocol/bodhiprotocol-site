@@ -6,9 +6,9 @@
  "title": "Scope Creep Is a Timing Problem, Not a Willpower Problem",
  "subtitle": "The same change costs a sentence in a requirements meeting and a sprint once code exists to contradict it.",
  "cover": {
-  "path": "cross-posts/images/scope-creep-diagram.png",
-  "alt": "Same sentence, different price tag: 'Can we also filter by region?' asked in the requirements workshop contradicts nothing; asked three days into the sprint it unwinds the data model, the query and two components, and takes hours already promised to other work",
-  "caption": "The request didn't get bigger. The number of things it contradicts did.",
+  "path": "cross-posts/images/scope-creep-designed-cover.jpg",
+  "alt": "Scope creep is a timing problem, not a willpower problem: a region filter is an easy change early, expensive rework mid-sprint, the sprint is already full, a silent yes hides the cost, a visible tradeoff is reprioritization. What comes out to make room?",
+  "caption": "Same request. Different cost.",
   "use": "Cover: top of the post (and Substack social preview)"
  },
  "substack": {
@@ -24,7 +24,13 @@
   ]
  },
  "medium": {
-  "tags": ["Business Analysis", "Agile", "Scope Creep", "Project Management", "Scrum"],
+  "tags": [
+   "Business Analysis",
+   "Agile",
+   "Scope Creep",
+   "Project Management",
+   "Scrum"
+  ],
   "steps": [
    "Click <b>Copy article</b> below, then paste into a new Medium story. The first two lines become the title and subtitle.",
    "If the image didn't come through, click on an empty line, press <b>+</b>, choose the image icon and upload it (right-click the image above → Save image as…).",
